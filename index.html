@@ -453,6 +453,27 @@ h2.s-title em{font-style:normal;
 .f-submit:hover{transform:translateY(-3px);box-shadow:0 0 64px rgba(46,222,191,.45)}
 .f-note{font-size:.78rem;color:rgba(255,255,255,.35);margin-top:14px}
 
+/* WhatsApp */
+.wa-btn{
+  display:block;width:100%;
+  background:#25D366;color:#fff;
+  padding:17px;border-radius:100px;
+  font-family:'Heebo',sans-serif;font-size:1.05rem;font-weight:800;
+  text-align:center;text-decoration:none;
+  box-shadow:0 0 32px rgba(37,211,102,.3);
+  transition:all .3s;margin-bottom:0;
+}
+.wa-btn:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 0 48px rgba(37,211,102,.45)}
+.or-divider{
+  display:flex;align-items:center;gap:16px;
+  margin:24px 0;color:rgba(255,255,255,.3);font-size:.85rem;
+}
+.or-divider::before,.or-divider::after{
+  content:'';flex:1;height:1px;
+  background:rgba(255,255,255,.1);
+}
+.or-divider span{white-space:nowrap}
+
 /* ─── FOOTER ─── */
 footer{
   background:rgba(0,0,0,.4);
@@ -782,16 +803,26 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
     <div class="s-label">הרשמה</div>
     <h2 class="s-title">מוכן <em>להתחיל</em>?</h2>
     <p class="s-sub" style="margin:0 auto">השאר פרטים ונחזור אליך תוך 24 שעות עם כל הפרטים.</p>
-    <div class="form-box reveal">
+    <!-- WhatsApp CTA -->
+    <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA"
+       target="_blank" class="wa-btn">
+      שלח לי הודעה בוואטסאפ
+    </a>
+    <div class="or-divider"><span>או מלא פרטים ואחזור אליך</span></div>
+
+    <form class="form-box reveal" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shvadron.ai"/>
+      <input type="hidden" name="_next" value="https://yochanan11.github.io/shvadron-ai/thanks.html"/>
+      <input type="hidden" name="_captcha" value="false"/>
       <div class="f-row">
-        <div class="f-g"><label>שם פרטי *</label><input type="text" placeholder="ישראל"/></div>
-        <div class="f-g"><label>שם משפחה *</label><input type="text" placeholder="ישראלי"/></div>
+        <div class="f-g"><label>שם פרטי *</label><input type="text" name="שם פרטי" placeholder="ישראל" required/></div>
+        <div class="f-g"><label>שם משפחה *</label><input type="text" name="שם משפחה" placeholder="ישראלי" required/></div>
       </div>
-      <div class="f-g"><label>טלפון *</label><input type="tel" placeholder="050-0000000"/></div>
-      <div class="f-g"><label>אימייל</label><input type="email" placeholder="israel@example.com"/></div>
+      <div class="f-g"><label>טלפון *</label><input type="tel" name="טלפון" placeholder="050-0000000" required/></div>
+      <div class="f-g"><label>אימייל</label><input type="email" name="אימייל" placeholder="israel@example.com"/></div>
       <div class="f-g">
         <label>תחום עיסוק</label>
-        <select>
+        <select name="תחום עיסוק">
           <option value="">בחר תחום...</option>
           <option>הנהלת חשבונות / כספים</option>
           <option>עבודה סוציאלית</option>
@@ -805,11 +836,11 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
       </div>
       <div class="f-g">
         <label>מה האתגר הגדול שלך מול AI? (אופציונלי)</label>
-        <textarea placeholder="ספר לנו מה מעניין אותך..."></textarea>
+        <textarea name="אתגר" placeholder="ספר לנו מה מעניין אותך..."></textarea>
       </div>
-      <button class="f-submit">שלח פרטים ואחזור אליך בהקדם</button>
+      <button type="submit" class="f-submit">שלח פרטים ואחזור אליך בהקדם</button>
       <p class="f-note">הפרטים שלך מאובטחים ולא יועברו לגורם שלישי</p>
-    </div>
+    </form>
   </div>
 </section>
 
