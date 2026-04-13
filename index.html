@@ -248,7 +248,8 @@ h2.s-title em{font-style:normal;
   top:-60px;right:-60px;width:200px;height:200px;
   background:radial-gradient(circle,rgba(46,222,191,.2),transparent 70%);
 }
-.a-photo{width:130px;height:130px;border-radius:50%;object-fit:cover;object-position:center 10%;margin:0 auto 20px;display:block;border:2px solid rgba(46,222,191,.4);box-shadow:0 0 32px rgba(46,222,191,.15)}
+.a-photo-wrap{width:130px;height:130px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:2px solid rgba(46,222,191,.4);box-shadow:0 0 32px rgba(46,222,191,.15);position:relative}
+.a-photo{width:130px;height:auto;display:block;margin-top:-8px;margin-right:auto;margin-left:auto}
 .a-name{font-size:1.5rem;font-weight:900;margin-bottom:6px}
 .a-role{font-size:.88rem;color:var(--teal);font-weight:600;margin-bottom:24px}
 .a-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
@@ -636,7 +637,7 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 <section class="about">
   <div class="about-wrap">
     <div class="about-card reveal">
-      <img class="a-photo" src="yochanan.jpg" alt="יוחנן שבדרון"/>
+      <div class="a-photo-wrap"><img class="a-photo" src="yochanan.jpg" alt="יוחנן שבדרון"/></div>
       <div class="a-name">יוחנן שבדרון</div>
       <div class="a-role">מומחה AI ומרצה</div>
       <div class="a-chips">
