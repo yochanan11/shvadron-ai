@@ -60,7 +60,8 @@ nav{
   box-shadow:0 2px 16px rgba(0,0,0,.06);
   transition:padding .3s;
 }
-.logo img{height:50px;width:auto;display:block}
+.logo img{height:62px;width:auto;display:block}
+@media(max-width:600px){.logo img{height:44px}}
 .nav-btn{
   background:linear-gradient(135deg,var(--teal),var(--blue2));
   color:#0a1628;
@@ -85,6 +86,29 @@ nav{
   display:flex;flex-direction:column;gap:56px;
   position:relative;z-index:2;
 }
+/* ─── BRAND DECO SHAPES ─── */
+.brand-deco{
+  position:absolute;top:0;left:0;
+  width:340px;height:320px;
+  pointer-events:none;z-index:1;
+  overflow:visible;
+}
+.bd-blue{position:absolute;top:-80px;left:-60px;width:260px;opacity:.92}
+.bd-teal{position:absolute;top:-50px;left:100px;width:200px;opacity:.95}
+.bd-gray{
+  position:absolute;top:140px;left:140px;
+  width:72px;height:72px;
+  border-radius:50%;
+  background:#9aa5b4;
+  opacity:.75;
+}
+@media(max-width:900px){
+  .brand-deco{width:220px;height:200px;transform:scale(.7);transform-origin:top left}
+}
+@media(max-width:600px){
+  .brand-deco{display:none}
+}
+
 /* animated orbs - soft on light bg */
 .orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
 .orb1{width:700px;height:700px;top:-200px;right:-250px;
@@ -694,6 +718,19 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 
 <!-- HERO -->
 <section class="hero">
+  <!-- brand decorative shapes (top-left corner, like the ad) -->
+  <div class="brand-deco" aria-hidden="true">
+    <!-- blue organic blob -->
+    <svg class="bd-blue" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 240 C-20 200 -30 110 10 60 C50 10 140 -10 190 30 C240 70 260 160 220 210 C180 260 100 290 60 270 C40 260 50 260 30 240Z" fill="#0063ed"/>
+    </svg>
+    <!-- teal chevron -->
+    <svg class="bd-teal" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 158 L100 24 L176 158" stroke="#2edebf" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <!-- gray circle -->
+    <div class="bd-gray"></div>
+  </div>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
