@@ -89,21 +89,43 @@ nav{
 /* ─── BRAND DECO SHAPES ─── */
 .brand-deco{
   position:absolute;top:0;left:0;
-  width:340px;height:320px;
+  width:380px;height:360px;
   pointer-events:none;z-index:1;
   overflow:visible;
+  will-change:transform;
 }
-.bd-blue{position:absolute;top:-80px;left:-60px;width:260px;opacity:.92}
-.bd-teal{position:absolute;top:-50px;left:100px;width:200px;opacity:.95}
+.bd-blue{
+  position:absolute;top:-90px;left:-70px;width:290px;opacity:.93;
+  animation:floatBlue 9s ease-in-out infinite;
+}
+.bd-teal{
+  position:absolute;top:-55px;left:110px;width:220px;opacity:.97;
+  animation:floatTeal 7s ease-in-out infinite;
+}
 .bd-gray{
-  position:absolute;top:140px;left:140px;
-  width:72px;height:72px;
+  position:absolute;top:155px;left:150px;
+  width:76px;height:76px;
   border-radius:50%;
-  background:#9aa5b4;
-  opacity:.75;
+  background:#8c95a4;
+  opacity:.7;
+  animation:floatGray 11s ease-in-out infinite;
+}
+@keyframes floatBlue{
+  0%,100%{transform:translate(0,0) rotate(0deg)}
+  33%{transform:translate(10px,-14px) rotate(4deg)}
+  66%{transform:translate(-6px,8px) rotate(-2deg)}
+}
+@keyframes floatTeal{
+  0%,100%{transform:translate(0,0) rotate(0deg)}
+  40%{transform:translate(-8px,12px) rotate(-3deg)}
+  70%{transform:translate(6px,-8px) rotate(2deg)}
+}
+@keyframes floatGray{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(8px,-10px)}
 }
 @media(max-width:900px){
-  .brand-deco{width:220px;height:200px;transform:scale(.7);transform-origin:top left}
+  .brand-deco{transform:scale(.65);transform-origin:top left}
 }
 @media(max-width:600px){
   .brand-deco{display:none}
@@ -722,13 +744,16 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 <section class="hero">
   <!-- brand decorative shapes (top-left corner, like the ad) -->
   <div class="brand-deco" aria-hidden="true">
-    <!-- blue organic blob -->
-    <svg class="bd-blue" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M30 240 C-20 200 -30 110 10 60 C50 10 140 -10 190 30 C240 70 260 160 220 210 C180 260 100 290 60 270 C40 260 50 260 30 240Z" fill="#0063ed"/>
+    <!-- blue organic blob — left leg of the A mark -->
+    <svg class="bd-blue" viewBox="0 0 280 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M140 10 C200 10 260 50 265 120 C270 190 220 260 155 275 C90 290 20 250 8 180 C-4 110 30 40 80 18 C100 10 120 10 140 10Z" fill="#0063ed"/>
+      <path d="M140 10 C120 10 100 10 80 18 C30 40 -4 110 8 180 C12 200 20 218 32 232" stroke="#0052cc" stroke-width="3" opacity="0.3"/>
     </svg>
-    <!-- teal chevron -->
-    <svg class="bd-teal" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M24 158 L100 24 L176 158" stroke="#2edebf" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- teal chevron — right/top of the A mark, two thick diagonal arms -->
+    <svg class="bd-teal" viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18 175 L110 18 L202 175" stroke="#2edebf" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- small teal dot (the "i" dot in Ai logo) -->
+      <circle cx="110" cy="10" r="10" fill="#2edebf" opacity="0.7"/>
     </svg>
     <!-- gray circle -->
     <div class="bd-gray"></div>
@@ -1125,6 +1150,14 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   }
   tick();setInterval(tick,1000);
 })();
+
+// Parallax on brand deco shapes
+const brandDeco=document.querySelector('.brand-deco');
+if(brandDeco){
+  window.addEventListener('scroll',()=>{
+    brandDeco.style.transform='translateY('+window.scrollY*.35+'px)';
+  },{passive:true});
+}
 
 // Hide FAB near register
 const fab=document.querySelector('.fab');
