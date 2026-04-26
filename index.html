@@ -103,7 +103,7 @@ nav{
 @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.06)}}
 
 /* ─── GLOBAL GRID ─── */
-.hero,.pain,.curriculum,.tools,.register{
+.hero,.pain,.curriculum,.tools,.faq-section{
   background-image:
     linear-gradient(rgba(0,99,237,.045) 1px,transparent 1px),
     linear-gradient(90deg,rgba(0,99,237,.045) 1px,transparent 1px);
@@ -483,9 +483,24 @@ h2.s-title em{font-style:normal;
 .t-name{font-weight:700;font-size:.88rem;color:var(--text)}
 .t-role{font-size:.78rem;color:var(--muted)}
 
+/* ─── PRICE ─── */
+.hero-price{display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap}
+.price-old{font-size:1rem;color:var(--muted);text-decoration:line-through}
+.price-now{font-size:1.75rem;font-weight:900;color:var(--teal-text)}
+.price-badge{background:rgba(229,62,62,.1);color:var(--urgent);border:1px solid rgba(229,62,62,.2);padding:4px 14px;border-radius:100px;font-size:.78rem;font-weight:700}
+.reg-price-block{display:flex;align-items:center;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.reg-price-block .price-now{font-size:2rem}
+
+/* ─── FAQ ─── */
+.faq-section{background-color:var(--bg2);padding:80px 6%}
+.faq-grid{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:var(--card);border:1.5px solid var(--border);border-top:3px solid var(--teal-accent);border-radius:16px;padding:24px 28px;box-shadow:var(--shadow)}
+.faq-q{font-weight:800;font-size:1rem;color:var(--text);margin-bottom:10px}
+.faq-a{color:var(--text2);line-height:1.75;font-size:.93rem}
+
 /* ─── REGISTER ─── */
 .register{
-  background-color:var(--bg2);
+  background-color:var(--bg);
   position:relative;overflow:hidden;
 }
 .register::before{
@@ -753,7 +768,12 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
         </div>
       </div>
       <div class="urgency-note">⚡ מספר המקומות מוגבל — שמרו מקום עכשיו</div>
-      <div class="hero-ctas" style="margin-top:28px">
+      <div class="hero-price">
+        <span class="price-old">800 ₪</span>
+        <span class="price-now">680 ₪</span>
+        <span class="price-badge">מחיר מוקדם</span>
+      </div>
+      <div class="hero-ctas" style="margin-top:16px">
         <a href="#register" class="cta-main">שמרו מקום עכשיו</a>
         <a href="#curriculum" class="cta-ghost">מה לומדים?</a>
       </div>
@@ -772,8 +792,8 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
       <div class="h-num-lbl">כלי AI שתשלטו בהם</div>
     </div>
     <div class="h-num">
-      <div class="h-num-val">זום</div>
-      <div class="h-num-lbl">מכל מקום בנוחות</div>
+      <div class="h-num-val">300+</div>
+      <div class="h-num-lbl">בוגרים מרוצים</div>
     </div>
     <div class="h-num">
       <div class="h-num-val">100%</div>
@@ -1003,13 +1023,52 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="s-head c">
+    <div class="s-label">שאלות נפוצות</div>
+    <h2 class="s-title">יש לך <em>שאלות</em>?</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item reveal">
+      <div class="faq-q">האם צריך ידע מוקדם בטכנולוגיה?</div>
+      <div class="faq-a">בכלל לא. הקורס בנוי מאפס ומתאים לכל אחד, גם מי שלא פתח מחשב לצרכים מקצועיים בחייו. מגיעים כמו שאתה — ויוצאים עם יכולות אמיתיות.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">האם המפגשים מוקלטים?</div>
+      <div class="faq-a">כן. כל מפגש מוקלט ונשלח לך תוך 24 שעות. אם לא יכולת להגיע — צופה בהקלטה בנוחות ובלי לפספס כלום.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">מה המחיר וכיצד משלמים?</div>
+      <div class="faq-a">המחיר המוקדם הוא <strong>680 ₪</strong> (במקום 800 ₪). לאחר ההרשמה יוחנן ייצור איתך קשר ישירות ויסדיר את התשלום בצורה הנוחה לך.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">למי הקורס מתאים?</div>
+      <div class="faq-a">לכל אחד שרוצה לשלב AI בחיי העבודה שלו — עצמאים, שכירים, בעלי עסקים, מנהלים. הקורס מותאם במיוחד לציבור החרדי עם דוגמאות ותרגילים מהחיים האמיתיים שלך.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">מה אם יש לי שאלה בין המפגשים?</div>
+      <div class="faq-a">יוחנן זמין בוואטסאפ ומשיב תוך שעות. לא נשארים לבד עם שאלות.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">מה קורה אחרי שממלאים טופס?</div>
+      <div class="faq-a">תוך שעה תקבל אישור בוואטסאפ. תוך 24 שעות יוחנן יצור איתך קשר אישי לאישור המקום ולסידור התשלום.</div>
+    </div>
+  </div>
+</section>
+
 <!-- REGISTER -->
 <section class="register" id="register">
   <div class="reg-inner">
     <div class="s-label">הרשמה</div>
     <h2 class="s-title">מוכן <em>להתחיל</em>?</h2>
     <p class="s-sub" style="margin:0 auto">השאר פרטים ונחזור אליך תוך 24 שעות עם כל הפרטים.</p>
-    <div class="or-divider" style="margin-top:32px"><span>מלא פרטים ואחזור אליך</span></div>
+    <div class="reg-price-block">
+      <span class="price-old">800 ₪</span>
+      <span class="price-now">680 ₪</span>
+      <span class="price-badge">מחיר מוקדם — נגמר בקרוב</span>
+    </div>
+    <div class="or-divider" style="margin-top:24px"><span>מלא פרטים ואחזור אליך</span></div>
 
     <form class="form-box reveal" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
