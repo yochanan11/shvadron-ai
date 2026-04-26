@@ -1107,6 +1107,31 @@ window.addEventListener('scroll',()=>{
   fab.style.opacity=show?'1':'0';
   fab.style.pointerEvents=show?'auto':'none';
 },{passive:true});
+
+// Google Sheets form integration
+const GAS_URL='REPLACE_WITH_YOUR_GAS_URL';
+document.querySelector('.form-box').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const form=e.target;
+  const btn=form.querySelector('.f-submit');
+  const orig=btn.textContent;
+  btn.textContent='שולח...';
+  btn.disabled=true;
+  const fd=new FormData(form);
+  const params=new URLSearchParams();
+  fd.forEach((v,k)=>params.append(k,v));
+  // Save to Google Sheets
+  if(GAS_URL&&GAS_URL!=='REPLACE_WITH_YOUR_GAS_URL'){
+    fetch(GAS_URL,{method:'POST',mode:'no-cors',body:params}).catch(()=>{});
+  }
+  // Send email via formsubmit.co
+  try{
+    await fetch('https://formsubmit.co/ajax/yochanansh818@gmail.com',{
+      method:'POST',body:fd,headers:{'Accept':'application/json'}
+    });
+  }catch(_){}
+  window.location.href='https://yochanan11.github.io/shvadron-ai/thanks.html';
+});
 </script>
 </body>
 </html>
