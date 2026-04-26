@@ -129,6 +129,11 @@ nav{
 }
 @media(max-width:600px){
   .brand-deco{display:none}
+  .deco-lines{display:none}
+}
+.deco-lines{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;z-index:1;
 }
 
 /* animated orbs - soft on light bg */
@@ -334,6 +339,7 @@ h2.s-title em{font-style:normal;
 .pain-card{
   background:var(--card);
   border:1px solid var(--border);
+  border-top:3px solid rgba(46,222,191,.5);
   border-radius:20px;
   padding:30px 26px;
   position:relative;overflow:hidden;
@@ -395,16 +401,17 @@ h2.s-title em{font-style:normal;
 .mod{
   background:var(--card);
   border:1px solid var(--border);
+  border-right:3px solid rgba(46,222,191,.5);
   border-radius:16px;
   padding:22px 22px;
   display:flex;gap:16px;align-items:flex-start;
   box-shadow:var(--shadow);
   transition:border-color .3s,transform .3s,box-shadow .3s;
 }
-.mod:hover{border-color:rgba(0,99,237,.2);transform:translateX(-4px);box-shadow:var(--shadow-lg)}
+.mod:hover{border-color:rgba(0,150,124,.3);border-right-color:var(--teal-text);transform:translateX(-4px);box-shadow:var(--shadow-lg)}
 .mod-n{
   flex-shrink:0;width:36px;height:36px;
-  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  background:linear-gradient(135deg,var(--teal-text),var(--blue2));
   border-radius:10px;
   display:flex;align-items:center;justify-content:center;
   font-weight:900;font-size:.85rem;color:#fff;
@@ -423,13 +430,14 @@ h2.s-title em{font-style:normal;
 .ben{
   background:var(--card);
   border:1px solid var(--border);
+  border-top:3px solid rgba(46,222,191,.4);
   border-radius:24px;
   padding:32px 28px;
   position:relative;overflow:hidden;
   box-shadow:var(--shadow);
   transition:transform .3s,border-color .3s,box-shadow .3s;
 }
-.ben:hover{transform:translateY(-5px);border-color:rgba(0,99,237,.15);box-shadow:var(--shadow-lg)}
+.ben:hover{transform:translateY(-5px);border-top-color:var(--teal-text);box-shadow:var(--shadow-lg)}
 .ben.big{grid-column:span 2}
 .ben.tall{grid-row:span 2}
 .ben::after{
@@ -494,12 +502,13 @@ h2.s-title em{font-style:normal;
 .t-card{
   background:var(--card);
   border:1px solid var(--border);
+  border-top:3px solid rgba(46,222,191,.45);
   border-radius:24px;padding:32px 28px;
   position:relative;
   box-shadow:var(--shadow);
   transition:border-color .3s,transform .3s,box-shadow .3s;
 }
-.t-card:hover{border-color:rgba(0,99,237,.15);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.t-card:hover{border-top-color:var(--teal-text);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
 .t-quote{
   font-size:3.5rem;line-height:1;font-family:Georgia,serif;
   background:linear-gradient(135deg,var(--teal-text),var(--blue2));
@@ -749,15 +758,23 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
       <path d="M140 10 C200 10 260 50 265 120 C270 190 220 260 155 275 C90 290 20 250 8 180 C-4 110 30 40 80 18 C100 10 120 10 140 10Z" fill="#0063ed"/>
       <path d="M140 10 C120 10 100 10 80 18 C30 40 -4 110 8 180 C12 200 20 218 32 232" stroke="#0052cc" stroke-width="3" opacity="0.3"/>
     </svg>
-    <!-- teal chevron — right/top of the A mark, two thick diagonal arms -->
-    <svg class="bd-teal" viewBox="0 0 220 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M18 175 L110 18 L202 175" stroke="#2edebf" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- small teal dot (the "i" dot in Ai logo) -->
-      <circle cx="110" cy="10" r="10" fill="#2edebf" opacity="0.7"/>
+    <!-- teal V-shape — two rounded pill arms forming the A mark, with white cutouts -->
+    <svg class="bd-teal" viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="14" y="0" width="82" height="185" rx="41" fill="#2edebf" transform="rotate(20 55 92)"/>
+      <rect x="164" y="0" width="82" height="185" rx="41" fill="#2edebf" transform="rotate(-20 205 92)"/>
+      <circle cx="72" cy="52" r="30" fill="white" opacity="0.75"/>
+      <circle cx="188" cy="52" r="30" fill="white" opacity="0.75"/>
     </svg>
     <!-- gray circle -->
     <div class="bd-gray"></div>
   </div>
+  <!-- subtle decorative arc lines -->
+  <svg class="deco-lines" aria-hidden="true" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M-50 550 Q200 300 500 350 T900 200" stroke="rgba(0,99,237,.07)" stroke-width="1.5" fill="none"/>
+    <path d="M-50 500 Q200 260 500 310 T900 160" stroke="rgba(46,222,191,.06)" stroke-width="1" fill="none"/>
+    <path d="M700 -50 Q500 200 550 400 T400 700" stroke="rgba(0,99,237,.05)" stroke-width="1.5" fill="none"/>
+    <path d="M750 -50 Q560 180 600 380 T450 680" stroke="rgba(46,222,191,.05)" stroke-width="1" fill="none"/>
+  </svg>
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
