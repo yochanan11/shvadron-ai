@@ -317,11 +317,12 @@ h2.s-title em{font-style:normal;
   gap:64px;align-items:center;max-width:1100px;margin:0 auto;
 }
 .about-card{
-  background:linear-gradient(135deg,rgba(0,99,237,.05),rgba(46,222,191,.03));
-  border:1.5px solid rgba(0,99,237,.12);
+  background:var(--card);
+  border:1.5px solid rgba(46,222,191,.35);
+  border-top:3px solid var(--teal2);
   border-radius:28px;padding:40px 32px;
   text-align:center;
-  box-shadow:0 8px 40px rgba(0,99,237,.08);
+  box-shadow:var(--shadow-lg);
   position:relative;overflow:hidden;
 }
 .about-card::after{
