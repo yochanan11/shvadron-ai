@@ -45,6 +45,8 @@
   --shadow:0 4px 24px rgba(0,0,0,.07);
   --shadow-lg:0 8px 48px rgba(0,0,0,.11);
   --urgent:#e53e3e;
+  --white:#ffffff;
+  --teal-accent:rgba(46,222,191,.5);
 }
 html{scroll-behavior:smooth}
 body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);direction:rtl;overflow-x:hidden}
@@ -214,7 +216,7 @@ h1.hero-title{
   position:absolute;bottom:0;left:0;right:0;
   height:35%;z-index:2;
   border-radius:0 0 32px 32px;
-  background:linear-gradient(to top,var(--bg2),transparent);
+  background:linear-gradient(to top,var(--card),transparent);
   pointer-events:none;
 }
 .hero-photo{
@@ -249,7 +251,7 @@ h1.hero-title{
   margin-top:72px;
   background:var(--bg2);
   border:1.5px solid var(--border);
-  border-top:3px solid var(--teal);
+  border-top:3px solid var(--teal-accent);
   border-radius:20px;
   overflow:hidden;
   box-shadow:var(--shadow);
@@ -293,7 +295,7 @@ h2.s-title em{font-style:normal;
 .pain-card{
   background:var(--card);
   border:1px solid var(--border);
-  border-top:3px solid rgba(46,222,191,.5);
+  border-top:3px solid var(--teal-accent);
   border-radius:20px;
   padding:30px 26px;
   position:relative;overflow:hidden;
@@ -318,11 +320,12 @@ h2.s-title em{font-style:normal;
   gap:64px;align-items:center;max-width:1100px;margin:0 auto;
 }
 .about-card{
-  background:linear-gradient(135deg,rgba(0,99,237,.05),rgba(46,222,191,.03));
-  border:1.5px solid rgba(0,99,237,.12);
+  background:var(--card);
+  border:1px solid var(--border);
+  border-top:3px solid var(--teal-accent);
   border-radius:28px;padding:40px 32px;
   text-align:center;
-  box-shadow:0 8px 40px rgba(0,99,237,.08);
+  box-shadow:var(--shadow);
   position:relative;overflow:hidden;
 }
 .about-card::after{
@@ -355,7 +358,7 @@ h2.s-title em{font-style:normal;
 .mod{
   background:var(--card);
   border:1px solid var(--border);
-  border-right:3px solid rgba(46,222,191,.5);
+  border-right:3px solid var(--teal-accent);
   border-radius:16px;
   padding:22px 22px;
   display:flex;gap:16px;align-items:flex-start;
@@ -384,7 +387,7 @@ h2.s-title em{font-style:normal;
 .ben{
   background:var(--card);
   border:1px solid var(--border);
-  border-top:3px solid rgba(46,222,191,.4);
+  border-top:3px solid var(--teal-accent);
   border-radius:24px;
   padding:32px 28px;
   position:relative;overflow:hidden;
@@ -448,7 +451,7 @@ h2.s-title em{font-style:normal;
 }
 
 /* ─── TESTIMONIALS ─── */
-.testi-section{background:var(--bg)}
+.testi-section{background:var(--bg2)}
 .testi-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:18px;max-width:1000px;margin:0 auto;
@@ -456,7 +459,7 @@ h2.s-title em{font-style:normal;
 .t-card{
   background:var(--card);
   border:1px solid var(--border);
-  border-top:3px solid rgba(46,222,191,.45);
+  border-top:3px solid var(--teal-accent);
   border-radius:24px;padding:32px 28px;
   position:relative;
   box-shadow:var(--shadow);
@@ -500,7 +503,8 @@ h2.s-title em{font-style:normal;
 }
 .form-box{
   background:var(--card);
-  border:1.5px solid var(--border);
+  border:1px solid var(--border);
+  border-top:3px solid var(--teal-accent);
   border-radius:28px;padding:48px 40px;
   margin-top:48px;
   box-shadow:var(--shadow-lg);
@@ -578,12 +582,12 @@ h2.s-title em{font-style:normal;
 /* ─── FOOTER ─── */
 footer{
   background:#0a1628;
-  border-top:none;
+  border-top:3px solid var(--teal-accent);
   padding:48px 6%;text-align:center;
-  color:rgba(255,255,255,.45);font-size:.88rem;
+  color:rgba(255,255,255,.65);font-size:.88rem;
 }
 footer strong{color:#fff}
-footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
+footer .ft{color:var(--teal-text);font-weight:700;margin-top:6px;font-size:.85rem}
 
 /* ─── FLOAT ─── */
 .fab{
@@ -640,7 +644,7 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 }
 
 /* ─── COUNTDOWN ─── */
-.cd-section{padding:40px 20px;background:var(--bg2);border-bottom:1px solid var(--border);border-top:1px solid var(--border);text-align:center}
+.cd-section{padding:56px 20px;background:var(--bg);border-bottom:1px solid var(--border);text-align:center}
 .cd-wrap{max-width:700px;margin:0 auto}
 .cd-title{font-size:1.1rem;font-weight:800;letter-spacing:.14em;color:var(--teal-text);text-transform:uppercase;margin-bottom:6px}
 .cd-sub{font-size:1rem;color:var(--muted);margin-bottom:28px}
@@ -797,7 +801,7 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
       <div class="cd-colon">:</div>
       <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
     </div>
-    <div class="cd-sub" style="margin-top:24px;margin-bottom:4px;font-size:1.2rem;color:var(--white)">יום רביעי, 6.5.2026 | 17:00</div>
+    <div class="cd-sub" style="margin-top:24px;margin-bottom:4px;font-size:1.2rem;color:var(--text)">יום רביעי, 6.5.2026 | 17:00</div>
     <div class="cd-sub" style="font-size:1rem;margin-bottom:0">4 מפגשים בימי רביעי · שעתיים כל מפגש</div>
   </div>
 </section>
