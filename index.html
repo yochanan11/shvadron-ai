@@ -60,6 +60,7 @@ nav{
   box-shadow:0 2px 16px rgba(0,0,0,.06);
   transition:padding .3s;
 }
+.logo{text-decoration:none}
 .logo img{height:62px;width:auto;display:block}
 @media(max-width:600px){.logo img{height:44px}}
 .nav-btn{
@@ -101,11 +102,13 @@ nav{
 @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
 @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.06)}}
 
-/* dot grid - subtle */
+/* grid lines - subtle */
 .grid-bg{
   position:absolute;inset:0;
-  background-image:radial-gradient(rgba(0,99,237,.07) 1px,transparent 1px);
-  background-size:32px 32px;
+  background-image:
+    linear-gradient(rgba(0,99,237,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,99,237,.05) 1px,transparent 1px);
+  background-size:80px 80px;
 }
 
 .hero-inner{
@@ -696,7 +699,7 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 
 <!-- NAV -->
 <nav>
-  <div class="logo"><img src="logo.png" alt="שבדרון AI - קורס בינה מלאכותית בעברית"/></div>
+  <a href="#" class="logo"><img src="logo.png" alt="שבדרון AI - קורס בינה מלאכותית בעברית"/></a>
   <a href="#register" class="nav-btn">הירשם עכשיו</a>
 </nav>
 
