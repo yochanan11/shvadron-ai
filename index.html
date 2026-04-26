@@ -80,7 +80,7 @@ nav{
   flex-direction:column;
   padding:120px 6% 80px;
   position:relative;overflow:hidden;
-  background:var(--bg2);
+  background-color:var(--bg2);
 }
 .hero-wrap{
   width:100%;max-width:1100px;
@@ -102,12 +102,11 @@ nav{
 @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
 @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.06)}}
 
-/* grid lines - subtle */
-.grid-bg{
-  position:absolute;inset:0;
+/* ─── GLOBAL GRID ─── */
+section,.hero,.cd-section{
   background-image:
-    linear-gradient(rgba(0,99,237,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,99,237,.05) 1px,transparent 1px);
+    linear-gradient(rgba(0,99,237,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,99,237,.045) 1px,transparent 1px);
   background-size:80px 80px;
 }
 
@@ -284,7 +283,7 @@ h2.s-title em{font-style:normal;
 .s-head.c{text-align:center}.s-head.c .s-sub{margin:0 auto}
 
 /* ─── PAIN ─── */
-.pain{background:var(--bg)}
+.pain{background-color:var(--bg)}
 .pain-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -312,7 +311,7 @@ h2.s-title em{font-style:normal;
 .pain-card p{font-size:.87rem;color:var(--muted);line-height:1.75}
 
 /* ─── ABOUT ─── */
-.about{background:var(--bg2)}
+.about{background-color:var(--bg2)}
 .about-wrap{
   display:grid;grid-template-columns:400px 1fr;
   gap:64px;align-items:center;max-width:1100px;margin:0 auto;
@@ -346,7 +345,7 @@ h2.s-title em{font-style:normal;
 .about-text p:last-child{margin-bottom:0}
 
 /* ─── CURRICULUM ─── */
-.curriculum{background:var(--bg)}
+.curriculum{background-color:var(--bg)}
 .mod-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -374,7 +373,7 @@ h2.s-title em{font-style:normal;
 .mod p{font-size:.82rem;color:var(--muted);line-height:1.65}
 
 /* ─── BENTO BENEFITS ─── */
-.benefits{background:var(--bg2)}
+.benefits{background-color:var(--bg2)}
 .bento{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -426,7 +425,7 @@ h2.s-title em{font-style:normal;
 }
 
 /* ─── TOOLS ─── */
-.tools{background:var(--bg);padding:80px 6%}
+.tools{background-color:var(--bg);padding:80px 6%}
 .tools-scroll{
   display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
   max-width:860px;margin:0 auto;
@@ -448,7 +447,7 @@ h2.s-title em{font-style:normal;
 }
 
 /* ─── TESTIMONIALS ─── */
-.testi-section{background:var(--bg)}
+.testi-section{background-color:var(--bg2)}
 .testi-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:18px;max-width:1000px;margin:0 auto;
@@ -485,7 +484,7 @@ h2.s-title em{font-style:normal;
 
 /* ─── REGISTER ─── */
 .register{
-  background:var(--bg);
+  background-color:var(--bg);
   position:relative;overflow:hidden;
 }
 .register::before{
@@ -640,7 +639,7 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 }
 
 /* ─── COUNTDOWN ─── */
-.cd-section{padding:40px 20px;background:var(--bg2);border-bottom:1px solid var(--border);border-top:1px solid var(--border);text-align:center}
+.cd-section{padding:56px 20px;background-color:var(--bg);border-bottom:1px solid var(--border);text-align:center}
 .cd-wrap{max-width:700px;margin:0 auto}
 .cd-title{font-size:1.1rem;font-weight:800;letter-spacing:.14em;color:var(--teal-text);text-transform:uppercase;margin-bottom:6px}
 .cd-sub{font-size:1rem;color:var(--muted);margin-bottom:28px}
@@ -709,7 +708,6 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
   <div class="orb orb1"></div>
   <div class="orb orb2"></div>
   <div class="orb orb3"></div>
-  <div class="grid-bg"></div>
   <div class="hero-wrap">
   <div class="hero-inner">
     <div class="hero-text">
