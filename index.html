@@ -1,1256 +1,1397 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>קורס AI בעברית | יוחנן שבדרון - ללמוד בינה מלאכותית בצורה מעשית</title>
-<meta name="description" content="קורס AI מעשי בעברית עם יוחנן שבדרון. לומדים ChatGPT, Claude, Gemini וסוכני AI בזום. 50% תרגול חי בכל שיעור. מתאים לכל תחום ורמה. הירשם עכשיו!"/>
-<meta name="keywords" content="קורס AI, קורס בינה מלאכותית, קורס ChatGPT, ללמוד AI בעברית, קורס AI לעסקים, שבדרון AI, יוחנן שבדרון, AI לעבודה, כלי AI, Claude, Gemini, Custom GPTs"/>
-<meta name="author" content="יוחנן שבדרון"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://www.shwadron-ai.com/"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHWADRON.AI | קורס AI מעשי עם יוחנן שבדרון</title>
+  <meta name="description" content="קורס AI מעשי בעברית עם יוחנן שבדרון. 4 מפגשי זום, תרגול חי, ChatGPT, Claude, Gemini וסוכן AI אישי." />
+  <meta name="keywords" content="קורס AI, קורס בינה מלאכותית, ChatGPT, Claude, Gemini, סוכן AI, יוחנן שבדרון, SHWADRON.AI" />
+  <meta name="author" content="יוחנן שבדרון" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.shwadron-ai.com/" />
 
-<!-- Open Graph (WhatsApp / Facebook) -->
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://www.shwadron-ai.com/"/>
-<meta property="og:title" content="קורס AI בעברית | יוחנן שבדרון"/>
-<meta property="og:description" content="קורס AI מעשי בעברית. לומדים ChatGPT, Claude, Gemini וסוכני AI. 50% תרגול חי. מתאים לכל תחום ורמה."/>
-<meta property="og:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
-<meta property="og:locale" content="he_IL"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.shwadron-ai.com/" />
+  <meta property="og:title" content="SHWADRON.AI | תתחיל להפעיל AI בשבילך" />
+  <meta property="og:description" content="ב-4 מפגשי זום מעשיים תלמד להשתמש בכלי AI מובילים ולצאת עם סוכן AI אישי." />
+  <meta property="og:image" content="https://www.shwadron-ai.com/yochanan.jpg" />
+  <meta property="og:locale" content="he_IL" />
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="קורס AI בעברית | יוחנן שבדרון"/>
-<meta name="twitter:description" content="קורס AI מעשי בעברית. לומדים ChatGPT, Claude, Gemini וסוכני AI. 50% תרגול חי."/>
-<meta name="twitter:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
-<link rel="icon" type="image/png" href="icon.png?v=2"/>
-<link rel="apple-touch-icon" href="icon.png?v=2"/>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --blue:#0063ed;
-  --blue2:#0f8eea;
-  --teal:#2edebf;
-  --teal2:#00c9a7;
-  --teal-text:#00967c;
-  --bg:#f5f6fa;
-  --bg2:#ffffff;
-  --bg3:#eef1f8;
-  --card:#ffffff;
-  --text:#0a1628;
-  --text2:#4a5568;
-  --muted:#718096;
-  --border:rgba(0,0,0,.08);
-  --shadow:0 4px 24px rgba(0,0,0,.07);
-  --shadow-lg:0 8px 48px rgba(0,0,0,.11);
-  --urgent:#e53e3e;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);direction:rtl;overflow-x:hidden}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SHWADRON.AI | קורס AI מעשי" />
+  <meta name="twitter:description" content="4 מפגשי זום מעשיים, תרגול חי וסוכן AI אישי." />
+  <meta name="twitter:image" content="https://www.shwadron-ai.com/yochanan.jpg" />
 
-/* ─── NAV ─── */
-nav{
-  position:fixed;top:0;width:100%;z-index:200;
-  padding:14px 6%;
-  display:flex;justify-content:space-between;align-items:center;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  box-shadow:0 2px 16px rgba(0,0,0,.06);
-  transition:padding .3s;
-}
-.logo{text-decoration:none}
-.logo img{height:62px;width:auto;display:block}
-@media(max-width:600px){.logo img{height:44px}}
-.nav-btn{
-  background:linear-gradient(135deg,var(--teal),var(--teal2));
-  color:#0a1628;
-  padding:10px 28px;border-radius:100px;
-  font-weight:800;font-size:.88rem;text-decoration:none;
-  box-shadow:0 4px 16px rgba(46,222,191,.3);
-  transition:all .2s;
-}
-.nav-btn:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(46,222,191,.45)}
+  <link rel="icon" type="image/png" href="icon.png?v=3" />
+  <link rel="apple-touch-icon" href="icon.png?v=3" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-/* ─── HERO ─── */
-.hero{
-  min-height:100vh;
-  display:flex;align-items:center;justify-content:center;
-  flex-direction:column;
-  padding:120px 6% 80px;
-  position:relative;overflow:hidden;
-  background-color:var(--bg2);
-}
-.hero-wrap{
-  width:100%;max-width:1100px;
-  display:flex;flex-direction:column;gap:56px;
-  position:relative;z-index:2;
-}
+  <style>
+    :root {
+      --ink: #071427;
+      --ink-soft: #26364f;
+      --muted: #65738a;
+      --blue: #0a4aa6;
+      --blue-deep: #082b62;
+      --blue-soft: #eaf2ff;
+      --cyan: #13b8d7;
+      --gold: #c9a85d;
+      --gold-soft: #fff6df;
+      --surface: #ffffff;
+      --paper: #f6f8fb;
+      --line: #dce4ef;
+      --line-strong: #c9d5e5;
+      --shadow: 0 20px 60px rgba(8, 43, 98, 0.12);
+      --shadow-soft: 0 12px 34px rgba(7, 20, 39, 0.08);
+      --radius: 8px;
+      --radius-lg: 8px;
+      --max: 1180px;
+    }
 
-/* animated orbs - soft on light bg */
-.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.orb1{width:700px;height:700px;top:-200px;right:-250px;
-  background:radial-gradient(circle,rgba(0,99,237,.1),transparent 70%);
-  animation:drift1 12s ease-in-out infinite}
-.orb2{width:600px;height:600px;bottom:-150px;left:-200px;
-  background:radial-gradient(circle,rgba(46,222,191,.14),transparent 70%);
-  animation:drift2 15s ease-in-out infinite}
-.orb3{width:400px;height:400px;top:40%;left:30%;
-  background:radial-gradient(circle,rgba(15,142,234,.07),transparent 70%);
-  animation:drift1 9s ease-in-out infinite reverse}
-@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}}
-@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.06)}}
+    * {
+      box-sizing: border-box;
+    }
 
-/* ─── GLOBAL GRID ─── */
-.hero,.benefits,.about,.testi-section,.cd-section{
-  background-image:
-    linear-gradient(rgba(0,99,237,.045) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,99,237,.045) 1px,transparent 1px);
-  background-size:80px 80px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.hero-inner{
-  position:relative;z-index:2;width:100%;max-width:1100px;
-  display:grid;grid-template-columns:1fr 420px;
-  gap:60px;align-items:center;
-}
-.hero-text{}
-.hero-chip{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,71,87,.12);
-  border:1px solid rgba(255,71,87,.4);
-  color:var(--urgent);
-  padding:7px 20px;border-radius:100px;
-  font-size:.82rem;font-weight:700;margin-bottom:32px;
-  letter-spacing:.5px;
-}
-.hero-chip::before{content:'';width:7px;height:7px;background:var(--urgent);border-radius:50%;animation:pulse 1.8s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+    body {
+      margin: 0;
+      direction: rtl;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Heebo", Arial, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-/* ─── COURSE DETAIL BAR ─── */
-.course-bar{
-  display:flex;flex-wrap:wrap;gap:0;
-  background:var(--bg);
-  border:1.5px solid var(--border);
-  border-radius:18px;overflow:hidden;
-  margin-top:36px;
-  box-shadow:var(--shadow);
-}
-.cb-item{
-  flex:1;min-width:90px;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:6px;padding:18px 14px;
-  border-left:1px solid var(--border);
-  text-align:center;
-}
-.cb-item:last-child{border-left:none}
-.cb-icon{font-size:1.5rem;line-height:1}
-.cb-val{font-size:.82rem;font-weight:800;color:var(--text);line-height:1.25}
-.cb-lbl{font-size:.68rem;color:var(--muted);letter-spacing:.02em}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* ─── BENEFIT CHIPS ─── */
-.benefit-chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:flex-end}
-.bc{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 18px;border-radius:100px;
-  font-size:.85rem;font-weight:700;
-}
-.bc-teal{background:rgba(0,150,124,.08);border:1px solid rgba(0,150,124,.2);color:var(--teal-text)}
-.bc-blue{background:rgba(0,99,237,.08);border:1px solid rgba(0,99,237,.2);color:var(--blue)}
-.bc-check{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0}
-.bc-teal .bc-check{background:var(--teal-text);color:#fff}
-.bc-blue .bc-check{background:var(--blue);color:#fff}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* ─── URGENCY BAR ─── */
-.urgency-note{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(229,62,62,.06);
-  border:1px solid rgba(229,62,62,.2);
-  color:var(--urgent);
-  padding:8px 20px;border-radius:100px;
-  font-size:.82rem;font-weight:700;
-  margin-top:20px;
-  animation:urgencyPulse 2.5s ease-in-out infinite;
-}
-@keyframes urgencyPulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(229,62,62,0)}
-  50%{box-shadow:0 0 12px 3px rgba(229,62,62,.1)}
-}
+    button,
+    input {
+      font: inherit;
+    }
 
-h1.hero-title{
-  font-size:clamp(2.6rem,5vw,4.6rem);
-  font-weight:900;line-height:1.1;
-  letter-spacing:-2px;
-  margin-bottom:24px;
-  text-align:right;
-  color:var(--text);
-}
-.grad-text{
-  background:linear-gradient(135deg,var(--blue) 0%,var(--teal) 55%,var(--teal2) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-size:200% 200%;
-  animation:gradShift 6s ease infinite;
-}
-@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-.hero-sub{
-  font-size:clamp(.95rem,1.8vw,1.15rem);
-  color:var(--muted);line-height:1.85;
-  margin:0 0 40px;text-align:right;
-}
-.hero-sub strong{color:var(--text)}
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid rgba(220, 228, 239, 0.9);
+      backdrop-filter: blur(18px);
+    }
 
-.hero-ctas{display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap}
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-/* photo column */
-.hero-photo-wrap{
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
-}
-.hero-photo-wrap::after{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;
-  height:35%;z-index:2;
-  border-radius:0 0 32px 32px;
-  background:linear-gradient(to top,var(--bg2),transparent);
-  pointer-events:none;
-}
-.hero-photo{
-  width:100%;max-width:340px;
-  border-radius:32px;
-  display:block;
-  position:relative;z-index:1;
-  box-shadow:0 20px 60px rgba(0,99,237,.15),0 8px 24px rgba(0,0,0,.08);
-  border:3px solid rgba(46,222,191,.35);
-}
-.cta-main{
-  background:linear-gradient(135deg,var(--teal),var(--teal2));
-  color:#0a1628;font-weight:800;font-size:1.05rem;
-  padding:18px 48px;border-radius:100px;
-  text-decoration:none;
-  box-shadow:0 8px 32px rgba(46,222,191,.4);
-  transition:all .3s;
-}
-.cta-main:hover{transform:translateY(-3px);box-shadow:0 12px 48px rgba(46,222,191,.55)}
-.cta-ghost{
-  background:transparent;
-  border:1.5px solid var(--teal2);
-  color:var(--teal-text);
-  padding:17px 40px;border-radius:100px;
-  text-decoration:none;font-weight:600;
-  transition:all .3s;
-}
-.cta-ghost:hover{border-color:var(--teal);background:rgba(46,222,191,.1);transform:translateY(-3px)}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
 
-.hero-numbers{
-  display:flex;justify-content:center;gap:0;
-  margin-top:72px;
-  background:var(--bg2);
-  border:1.5px solid var(--border);
-  border-top:3px solid var(--teal);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-}
-.h-num{
-  flex:1;padding:24px 20px;text-align:center;
-  border-left:1px solid var(--border);
-}
-.h-num:last-child{border-left:none}
-.h-num-val{font-size:2rem;font-weight:900;color:var(--teal-text);}
-.h-num-lbl{font-size:.78rem;color:var(--muted);margin-top:4px}
+    .brand img {
+      width: 176px;
+      height: auto;
+    }
 
-/* ─── SECTION COMMON ─── */
-section{padding:100px 6%}
-.s-label{
-  display:inline-block;
-  font-size:.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-  color:var(--teal-text);margin-bottom:16px;
-  background:rgba(0,150,124,.08);
-  padding:4px 14px;border-radius:100px;
-}
-h2.s-title{
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:900;line-height:1.15;letter-spacing:-1px;
-  color:var(--text);margin-bottom:16px;
-}
-h2.s-title em{font-style:normal;
-  background:linear-gradient(90deg,var(--teal-text),var(--blue2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.s-sub{font-size:1.05rem;color:var(--muted);line-height:1.9;max-width:580px}
-.s-head{margin-bottom:60px}
-.s-head.c{text-align:center}.s-head.c .s-sub{margin:0 auto}
+    .brand-line {
+      color: var(--muted);
+      font-size: 0.92rem;
+      white-space: nowrap;
+      border-right: 1px solid var(--line);
+      padding-right: 14px;
+    }
 
-/* ─── PAIN ─── */
-.pain{background-color:var(--bg)}
-.pain-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:16px;
-}
-.pain-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-top:3px solid rgba(46,222,191,.5);
-  border-radius:20px;
-  padding:30px 26px;
-  position:relative;overflow:hidden;
-  box-shadow:var(--shadow);
-  transition:border-color .3s,transform .3s,box-shadow .3s;
-}
-.pain-card::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(0,99,237,.03),transparent);
-  opacity:0;transition:opacity .3s;
-}
-.pain-card:hover{border-color:rgba(0,99,237,.18);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.pain-card:hover::before{opacity:1}
-.p-icon{font-size:2rem;margin-bottom:16px}
-.pain-card h3{font-size:.98rem;font-weight:700;margin-bottom:8px;line-height:1.4;color:var(--text)}
-.pain-card p{font-size:.87rem;color:var(--muted);line-height:1.75}
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* ─── ABOUT ─── */
-.about{background-color:var(--bg2)}
-.about-wrap{
-  display:grid;grid-template-columns:400px 1fr;
-  gap:64px;align-items:center;max-width:1100px;margin:0 auto;
-}
-.about-card{
-  background:var(--card);
-  border:1.5px solid rgba(46,222,191,.35);
-  border-top:3px solid var(--teal2);
-  border-radius:28px;padding:40px 32px;
-  text-align:center;
-  box-shadow:var(--shadow-lg);
-  position:relative;overflow:hidden;
-}
-.about-card::after{
-  content:'';position:absolute;
-  top:-60px;right:-60px;width:200px;height:200px;
-  background:radial-gradient(circle,rgba(0,99,237,.06),transparent 70%);
-}
-.a-photo-wrap{width:180px;height:180px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:4px solid var(--teal2);box-shadow:0 0 0 6px rgba(46,222,191,.18),0 8px 32px rgba(0,99,237,.12);position:relative}
-.a-photo{width:180px;height:auto;display:block;margin-top:-10px;margin-right:auto;margin-left:auto}
-.a-name{font-size:1.5rem;font-weight:900;margin-bottom:6px;color:var(--text)}
-.a-role{font-size:.88rem;color:var(--teal-text);font-weight:600;margin-bottom:24px}
-.a-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.a-chip{
-  background:rgba(0,99,237,.06);
-  border:1px solid rgba(0,99,237,.12);
-  padding:5px 14px;border-radius:100px;
-  font-size:.78rem;font-weight:600;color:var(--text2);
-}
-.about-text p{font-size:1rem;color:var(--muted);line-height:1.95;margin-bottom:20px}
-.about-text p strong{color:var(--text)}
-.about-text p:last-child{margin-bottom:0}
+    .btn {
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
 
-/* ─── CURRICULUM ─── */
-.curriculum{background-color:var(--bg)}
-.mod-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:14px;max-width:1100px;margin:0 auto;
-}
-.mod{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-right:3px solid rgba(46,222,191,.5);
-  border-radius:16px;
-  padding:22px 22px;
-  display:flex;gap:16px;align-items:flex-start;
-  box-shadow:var(--shadow);
-  transition:border-color .3s,transform .3s,box-shadow .3s;
-}
-.mod:hover{border-color:rgba(0,150,124,.3);border-right-color:var(--teal-text);transform:translateX(-4px);box-shadow:var(--shadow-lg)}
-.mod-n{
-  flex-shrink:0;width:36px;height:36px;
-  background:linear-gradient(135deg,var(--teal-text),var(--blue2));
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  font-weight:900;font-size:.85rem;color:#fff;
-}
-.mod h3{font-size:.95rem;font-weight:700;margin-bottom:5px;color:var(--text)}
-.mod p{font-size:.82rem;color:var(--muted);line-height:1.65}
+    .btn:hover {
+      transform: translateY(-1px);
+    }
 
-/* ─── BENTO BENEFITS ─── */
-.benefits{background-color:var(--bg2)}
-.bento{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:auto;
-  gap:16px;max-width:1100px;margin:0 auto;
-}
-.ben{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-top:3px solid rgba(46,222,191,.4);
-  border-radius:24px;
-  padding:32px 28px;
-  position:relative;overflow:hidden;
-  box-shadow:var(--shadow);
-  transition:transform .3s,border-color .3s,box-shadow .3s;
-}
-.ben:hover{transform:translateY(-5px);border-top-color:var(--teal-text);box-shadow:var(--shadow-lg)}
-.ben.big{grid-column:span 2}
-.ben.tall{grid-row:span 2}
-.ben::after{
-  content:'';position:absolute;
-  border-radius:50%;pointer-events:none;filter:blur(60px);
-  width:150px;height:150px;opacity:0;
-  transition:opacity .4s;
-}
-.ben:hover::after{opacity:1}
-.ben.b1::after{background:rgba(0,99,237,.08);bottom:-40px;left:-40px}
-.ben.b2::after{background:rgba(0,99,237,.08);top:-40px;right:-40px}
-.ben.b3::after{background:rgba(0,150,124,.06);bottom:-40px;right:-40px}
-.ben.b4::after{background:rgba(0,150,124,.06);top:-40px;left:-40px}
-.ben.b5::after{background:rgba(0,99,237,.07);bottom:-40px;left:-40px}
-.ben.b6::after{background:rgba(0,99,237,.07);top:-30px;right:-30px}
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue-deep), var(--blue));
+      box-shadow: 0 12px 28px rgba(10, 74, 166, 0.24);
+    }
 
-.ben-icon{font-size:2.4rem;margin-bottom:20px;display:block}
-.ben h3{font-size:1.2rem;font-weight:800;margin-bottom:10px;color:var(--text)}
-.ben p{font-size:.9rem;color:var(--muted);line-height:1.8}
-.ben-big-num{
-  font-size:4.5rem;font-weight:900;line-height:1;
-  background:linear-gradient(135deg,var(--teal-text),var(--blue2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:10px;
-}
-.ben-tag{
-  display:inline-block;
-  background:rgba(0,150,124,.1);
-  color:var(--teal-text);
-  padding:4px 14px;border-radius:100px;
-  font-size:.75rem;font-weight:700;margin-bottom:14px;
-}
+    .btn-primary:hover {
+      box-shadow: 0 16px 34px rgba(10, 74, 166, 0.3);
+    }
 
-/* ─── TOOLS ─── */
-.tools{background-color:var(--bg);padding:80px 6%}
-.tools-scroll{
-  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
-  max-width:860px;margin:0 auto;
-}
-.t-pill{
-  background:var(--card);
-  border:1.5px solid var(--border);
-  padding:12px 24px;border-radius:100px;
-  font-weight:700;font-size:.92rem;color:var(--text2);
-  box-shadow:var(--shadow);
-  transition:all .25s;cursor:default;
-}
-.t-pill:hover{
-  background:rgba(0,99,237,.06);
-  border-color:rgba(0,99,237,.3);
-  color:var(--blue);
-  transform:translateY(-3px);
-  box-shadow:0 8px 24px rgba(0,99,237,.12);
-}
+    .btn-secondary {
+      color: var(--blue-deep);
+      background: #fff;
+      border: 1px solid var(--line-strong);
+    }
 
-/* ─── TESTIMONIALS ─── */
-.testi-section{background-color:var(--bg2)}
-.testi-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:18px;max-width:1000px;margin:0 auto;
-}
-.t-card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-top:3px solid rgba(46,222,191,.45);
-  border-radius:24px;padding:32px 28px;
-  position:relative;
-  box-shadow:var(--shadow);
-  transition:border-color .3s,transform .3s,box-shadow .3s;
-}
-.t-card:hover{border-top-color:var(--teal-text);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.t-quote{
-  font-size:3.5rem;line-height:1;font-family:Georgia,serif;
-  background:linear-gradient(135deg,var(--teal-text),var(--blue2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  margin-bottom:4px;
-}
-.t-stars{color:#f59e0b;font-size:.9rem;margin-bottom:14px;letter-spacing:2px}
-.t-card p{font-size:.92rem;color:var(--muted);line-height:1.85;margin-bottom:24px}
-.t-author{display:flex;align-items:center;gap:12px}
-.t-av{
-  width:42px;height:42px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1rem;font-weight:800;color:#fff;flex-shrink:0;
-}
-.av1{background:linear-gradient(135deg,var(--blue),var(--blue2))}
-.av2{background:linear-gradient(135deg,var(--teal2),var(--blue2))}
-.av3{background:linear-gradient(135deg,#8b5cf6,var(--blue))}
-.t-name{font-weight:700;font-size:.88rem;color:var(--text)}
-.t-role{font-size:.78rem;color:var(--muted)}
+    .btn-gold {
+      color: #2b210c;
+      background: linear-gradient(135deg, #f2d88e, var(--gold));
+      box-shadow: 0 12px 26px rgba(201, 168, 93, 0.24);
+    }
 
-/* ─── PRICE ─── */
-.hero-price{display:flex;align-items:center;gap:12px;margin-top:20px;flex-wrap:wrap}
-.price-old{font-size:1rem;color:var(--muted);text-decoration:line-through}
-.price-now{font-size:1.75rem;font-weight:900;color:var(--teal-text)}
-.price-badge{background:rgba(229,62,62,.1);color:var(--urgent);border:1px solid rgba(229,62,62,.2);padding:4px 14px;border-radius:100px;font-size:.78rem;font-weight:700}
-.reg-price-block{display:flex;align-items:center;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap}
-.reg-price-block .price-now{font-size:2rem}
+    .section {
+      padding: 86px 0;
+    }
 
-/* ─── FAQ ─── */
-.faq-section{background-color:var(--bg);padding:80px 6%}
-.faq-grid{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.faq-item{background:var(--card);border:1.5px solid var(--border);border-top:3px solid var(--teal2);border-radius:16px;padding:24px 28px;box-shadow:var(--shadow)}
-.faq-q{font-weight:800;font-size:1rem;color:var(--text);margin-bottom:10px}
-.faq-a{color:var(--text2);line-height:1.75;font-size:.93rem}
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      border: 1px solid #d4e4fb;
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
 
-/* ─── REGISTER ─── */
-.register{
-  background-color:var(--bg);
-  position:relative;overflow:hidden;
-}
-.register::before{
-  content:'';position:absolute;
-  top:-200px;left:50%;transform:translateX(-50%);
-  width:800px;height:600px;
-  background:radial-gradient(ellipse,rgba(0,99,237,.06),transparent 65%);
-}
-.reg-inner{
-  max-width:640px;margin:0 auto;text-align:center;
-  position:relative;z-index:2;
-}
-.form-box{
-  background:var(--card);
-  border:1.5px solid var(--border);
-  border-radius:28px;padding:48px 40px;
-  margin-top:48px;
-  box-shadow:var(--shadow-lg);
-}
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-.f-g{margin-bottom:14px}
-.f-g label{
-  display:block;font-size:.8rem;font-weight:600;
-  color:var(--text2);margin-bottom:6px;letter-spacing:.3px
-}
-.f-g input,.f-g select,.f-g textarea{
-  width:100%;
-  background:var(--bg);
-  border:1.5px solid var(--border);
-  border-radius:12px;
-  padding:13px 16px;
-  font-family:'Heebo',sans-serif;font-size:.95rem;
-  color:var(--text);direction:rtl;
-  transition:border-color .2s,background .2s,box-shadow .2s;
-}
-.f-g input::placeholder,.f-g textarea::placeholder{color:#a0aec0}
-.f-g select option{background:#fff;color:var(--text)}
-.f-g input:focus,.f-g select:focus,.f-g textarea:focus{
-  outline:none;
-  border-color:var(--blue);
-  background:#fff;
-  box-shadow:0 0 0 3px rgba(0,99,237,.08);
-}
-.f-g textarea{resize:vertical;min-height:88px}
-.f-submit{
-  width:100%;
-  background:linear-gradient(135deg,var(--teal),var(--teal2));
-  color:#0a1628;border:none;
-  padding:17px;border-radius:100px;
-  font-family:'Heebo',sans-serif;font-size:1.05rem;font-weight:800;
-  cursor:pointer;
-  box-shadow:0 8px 32px rgba(0,99,237,.35);
-  transition:all .3s;margin-top:8px;
-}
-.f-submit:hover{transform:translateY(-3px);box-shadow:0 12px 48px rgba(0,99,237,.45)}
-.f-note{font-size:.78rem;color:var(--muted);margin-top:14px}
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--cyan);
+    }
 
-/* WhatsApp FAB */
-.wa-fab{
-  position:fixed;
-  bottom:28px;right:28px;
-  z-index:300;
-  width:56px;height:56px;
-  background:#25D366;
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px rgba(37,211,102,.45);
-  transition:all .3s;
-  animation:waGlow 3s ease-in-out infinite;
-}
-.wa-fab:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(37,211,102,.6)}
-@keyframes waGlow{
-  0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}
-  50%{box-shadow:0 4px 32px rgba(37,211,102,.7)}
-}
-@media(max-width:600px){
-  .wa-fab{width:48px;height:48px;bottom:90px;right:16px}
-  .wa-fab svg{width:24px;height:24px}
-}
-.or-divider{
-  display:flex;align-items:center;gap:16px;
-  margin:24px 0;color:var(--muted);font-size:.85rem;
-}
-.or-divider::before,.or-divider::after{
-  content:'';flex:1;height:1px;
-  background:var(--border);
-}
-.or-divider span{white-space:nowrap}
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
 
-/* ─── FOOTER ─── */
-footer{
-  background:#0a1628;
-  border-top:none;
-  padding:48px 6%;text-align:center;
-  color:rgba(255,255,255,.45);font-size:.88rem;
-}
-footer strong{color:#fff}
-footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
+    .section-head.center {
+      margin-inline: auto;
+      text-align: center;
+    }
 
-/* ─── FLOAT ─── */
-.fab{
-  position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
-  z-index:300;
-  background:linear-gradient(135deg,var(--teal),var(--teal2));
-  color:#0a1628;font-weight:800;font-size:.95rem;
-  padding:15px 40px;border-radius:100px;
-  text-decoration:none;white-space:nowrap;
-  box-shadow:0 8px 40px rgba(46,222,191,.4);
-  transition:all .3s;
-  animation:fabGlow 3s ease-in-out infinite;
-}
-.fab:hover{transform:translateX(-50%) translateY(-3px);box-shadow:0 12px 56px rgba(46,222,191,.55)}
-@keyframes fabGlow{
-  0%,100%{box-shadow:0 8px 32px rgba(46,222,191,.35)}
-  50%{box-shadow:0 8px 56px rgba(46,222,191,.5)}
-}
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
 
-/* ─── REVEAL ─── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
-.reveal.on{opacity:1;transform:translateY(0)}
+    h1 {
+      font-size: clamp(2.55rem, 6vw, 5.15rem);
+      line-height: 1.02;
+      letter-spacing: 0;
+      margin-bottom: 22px;
+      font-weight: 900;
+    }
 
-/* ─── RESPONSIVE ─── */
-@media(max-width:1000px){
-  .hero-inner{grid-template-columns:1fr 340px;gap:40px}
-}
-@media(max-width:900px){
-  .bento{grid-template-columns:1fr 1fr}
-  .ben.big{grid-column:span 2}
-  .about-wrap{grid-template-columns:1fr;gap:32px}
-  .about-card{max-width:380px;margin:0 auto}
-  .hero-inner{grid-template-columns:1fr;text-align:center}
-  .hero-photo-wrap{display:none}
-  h1.hero-title{text-align:center}
-  .hero-sub{text-align:center}
-  .hero-ctas{justify-content:center}
-  .hero-numbers{justify-content:center}
-}
-@media(max-width:600px){
-  .bento{grid-template-columns:1fr}
-  .ben.big{grid-column:span 1}
-  .ben.tall{grid-row:span 1}
-  .f-row{grid-template-columns:1fr}
-  .hero-numbers{flex-direction:column}
-  .h-num{border-left:none;border-bottom:1px solid var(--border)}
-  .fab{width:85%;text-align:center}
-  h1.hero-title{letter-spacing:-1px}
-  .logo img{height:36px}
-  .cb-item{min-width:70px;padding:14px 8px}
-  .cb-icon{font-size:1.25rem}
-  .benefit-chips{justify-content:center}
-  .course-bar{border-radius:14px}
-  .cb-hide-mobile{display:none}
-  .hero{padding-top:80px;padding-bottom:48px;min-height:auto}
-  .hero-numbers{margin-top:32px}
-  .hero-price{justify-content:center}
-  section{padding:56px 5%}
-  .s-head{margin-bottom:36px}
-  .faq-section{padding:56px 5%}
-  .tools{padding:56px 5%}
-  .about-card{padding:32px 20px}
-  .cd-section{padding:40px 20px}
-  h2.s-title{font-size:1.85rem;letter-spacing:-.5px}
-  .reg-inner{padding:40px 20px}
-}
+    h2 {
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      line-height: 1.13;
+      letter-spacing: 0;
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
 
-/* ─── HERO EXTRAS ─── */
-.hero-fit{font-size:.95rem;color:var(--text2);font-weight:500;margin:0 0 12px;text-align:right}
-.hero-details{
-  font-size:.82rem;color:var(--muted);
-  background:var(--bg);border:1px solid var(--border);
-  border-radius:100px;padding:10px 22px;
-  display:inline-block;margin-top:8px;
-  line-height:1.6;
-}
-.hero-trust{font-size:.75rem;color:var(--muted);margin-top:10px;letter-spacing:.02em}
+    h3 {
+      font-size: 1.28rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+      font-weight: 850;
+    }
 
-/* ─── PAIN TRANSITION ─── */
-.pain-transition{
-  max-width:700px;margin:40px auto 0;text-align:center;
-  font-size:1rem;color:var(--text2);line-height:1.85;
-  padding:28px 32px;background:var(--card);
-  border-radius:16px;border-top:3px solid var(--teal2);
-  box-shadow:var(--shadow);
-}
-.pain-transition strong{color:var(--text)}
+    .lead {
+      color: var(--ink-soft);
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      line-height: 1.85;
+      margin-bottom: 0;
+    }
 
-/* ─── OUTCOMES ─── */
-.outcomes-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:12px;max-width:1100px;margin:0 auto 48px;
-}
-.outcome-item{
-  background:var(--card);border:1px solid var(--border);
-  border-right:3px solid var(--teal2);border-radius:14px;
-  padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
-  box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;
-}
-.outcome-item:hover{transform:translateX(-3px);box-shadow:var(--shadow-lg)}
-.outcome-icon{flex-shrink:0;font-size:1.3rem;line-height:1;margin-top:2px}
-.outcome-item p{font-size:.9rem;color:var(--text2);line-height:1.65;font-weight:500}
-.syllabus-label{
-  text-align:center;font-size:.78rem;font-weight:700;letter-spacing:3px;
-  text-transform:uppercase;color:var(--muted);margin:0 auto 28px;
-  display:block;
-}
+    .muted {
+      color: var(--muted);
+    }
 
-/* ─── TRUST LIST ─── */
-.trust-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:24px}
-.trust-list li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:var(--text2);line-height:1.6}
-.trust-check{
-  flex-shrink:0;width:22px;height:22px;
-  background:linear-gradient(135deg,var(--teal2),var(--blue2));
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:.7rem;color:#fff;margin-top:1px;
-}
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(246, 248, 251, 0.94)),
+        linear-gradient(90deg, rgba(10, 74, 166, 0.05) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(10, 74, 166, 0.04) 1px, transparent 1px);
+      background-size: auto, 74px 74px, 74px 74px;
+      padding: 72px 0 46px;
+    }
 
-/* ─── COUNTDOWN ─── */
-.cd-section{padding:56px 20px;background-color:var(--bg2);border-bottom:1px solid var(--border);text-align:center}
-.cd-wrap{max-width:700px;margin:0 auto}
-.cd-title{font-size:1.1rem;font-weight:800;letter-spacing:.14em;color:var(--teal-text);text-transform:uppercase;margin-bottom:6px}
-.cd-sub{font-size:1rem;color:var(--muted);margin-bottom:28px}
-.cd-timer{display:flex;justify-content:center;align-items:flex-start;gap:4px;direction:ltr}
-.cd-unit{display:flex;flex-direction:column;align-items:center;min-width:90px}
-.cd-val{font-size:3.6rem;font-weight:900;line-height:1;background:linear-gradient(135deg,var(--teal-text),var(--blue2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.cd-lbl{font-size:.9rem;color:var(--muted);margin-top:8px;letter-spacing:.08em}
-.cd-colon{font-size:3rem;font-weight:900;color:rgba(0,150,124,.25);line-height:1;padding-top:6px}
-@media(max-width:600px){.cd-val{font-size:2.4rem}.cd-unit{min-width:62px}.cd-colon{font-size:2rem}}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 56px;
+      align-items: center;
+    }
 
-/* ─── MOBILE: NEW ELEMENTS ─── */
-@media(max-width:600px){
-  .hero-details{font-size:.75rem;padding:8px 16px;display:block;text-align:center}
-  .hero-fit{text-align:center}
-  .hero-trust{text-align:center}
-  .outcomes-grid{grid-template-columns:1fr}
-  .outcome-item{padding:14px 16px}
-  .pain-transition{padding:20px;font-size:.93rem}
-  .trust-list li{font-size:.9rem}
-  .syllabus-label{font-size:.72rem}
-  .section-cta{padding:40px 5%}
-}
-@media(max-width:900px){
-  .outcomes-grid{grid-template-columns:1fr 1fr}
-}
-</style>
+    .hero-copy {
+      padding: 18px 0;
+    }
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Course",
-      "name": "קורס AI מעשי בעברית",
-      "description": "קורס בינה מלאכותית מעשי בעברית. לומדים ChatGPT, Claude, Gemini, Custom GPTs וסוכני AI. 50% תרגול חי בכל שיעור.",
-      "provider": {
-        "@type": "Person",
-        "name": "יוחנן שבדרון",
-        "url": "https://www.shwadron-ai.com/"
-      },
-      "url": "https://www.shwadron-ai.com/",
-      "inLanguage": "he",
-      "courseMode": "online",
-      "educationalLevel": "Beginner",
-      "startDate": "2026-05-06",
-      "image": "https://www.shwadron-ai.com/yochanan.jpg"
-    },
-    {
-      "@type": "Person",
-      "name": "יוחנן שבדרון",
-      "url": "https://www.shwadron-ai.com/",
-      "image": "https://www.shwadron-ai.com/yochanan.jpg",
-      "jobTitle": "מדריך AI",
-      "knowsAbout": ["בינה מלאכותית", "ChatGPT", "Claude AI", "Gemini", "AI Agents", "Custom GPTs"],
-      "sameAs": ["https://www.shwadron-ai.com/"]
-    },
-    {
-      "@type": "WebSite",
-      "url": "https://www.shwadron-ai.com/",
-      "name": "שבדרון AI",
-      "inLanguage": "he",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.shwadron-ai.com/"
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      color: var(--blue-deep);
+      border-radius: 999px;
+      padding: 8px 15px;
+      font-weight: 800;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(7, 20, 39, 0.05);
+    }
+
+    .title-mark {
+      color: var(--blue);
+    }
+
+    .hero-sub {
+      color: var(--ink-soft);
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      line-height: 1.8;
+      max-width: 720px;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 680px;
+    }
+
+    .point {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-soft);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 13px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(7, 20, 39, 0.04);
+    }
+
+    .point b {
+      color: var(--blue-deep);
+    }
+
+    .point::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .hero-card {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-frame {
+      position: relative;
+      min-height: 520px;
+      background: linear-gradient(145deg, #eef4fc, #ffffff);
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      padding: 24px 24px 0;
+    }
+
+    .photo-frame img {
+      width: min(100%, 390px);
+      max-height: 520px;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 18px 28px rgba(7, 20, 39, 0.18));
+    }
+
+    .hero-card-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border-top: 1px solid var(--line);
+    }
+
+    .hero-card-info div {
+      background: #fff;
+      padding: 16px;
+    }
+
+    .info-value {
+      display: block;
+      color: var(--blue-deep);
+      font-size: 1.25rem;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .trust {
+      padding: 30px 0 70px;
+      background: var(--paper);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      min-height: 124px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--blue-deep);
+      font-size: 1.65rem;
+      line-height: 1.1;
+      margin-bottom: 8px;
+      font-weight: 900;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-weight: 650;
+      line-height: 1.35;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 38px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pain {
+      background: #fff;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 11px;
+      align-items: start;
+      color: var(--ink-soft);
+      font-weight: 650;
+    }
+
+    .check-list li::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      border: 5px solid #fff;
+      outline: 1px solid #bfd4f0;
+    }
+
+    .pain-card {
+      background: linear-gradient(180deg, #0a2d64, #071427);
+      color: #fff;
+      border: 0;
+      box-shadow: 0 22px 60px rgba(7, 20, 39, 0.22);
+    }
+
+    .pain-card h3,
+    .pain-card p {
+      color: #fff;
+    }
+
+    .pain-card p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.08rem;
+      margin-bottom: 20px;
+    }
+
+    .pain-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .pain-tags span {
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 700;
+    }
+
+    .solution {
+      background: linear-gradient(180deg, var(--paper), #fff);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .feature {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      min-height: 228px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .feature-number {
+      display: inline-flex;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .agent {
+      background:
+        linear-gradient(135deg, rgba(8, 43, 98, 0.96), rgba(7, 20, 39, 0.98)),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: auto, 56px 56px, 56px 56px;
+      color: #fff;
+    }
+
+    .agent .eyebrow {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+
+    .agent .lead,
+    .agent .muted {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .agent-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .agent-visual {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+    }
+
+    .agent-window {
+      background: #fff;
+      color: var(--ink);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .window-top {
+      display: flex;
+      gap: 6px;
+      padding: 13px;
+      background: #edf2f7;
+      border-bottom: 1px solid #d9e2ee;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--line-strong);
+    }
+
+    .window-body {
+      padding: 22px;
+    }
+
+    .prompt-line {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      color: var(--ink-soft);
+      background: #fbfcfe;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .response-lines {
+      display: grid;
+      gap: 8px;
+    }
+
+    .response-lines span {
+      height: 10px;
+      border-radius: 999px;
+      background: #dce8f8;
+    }
+
+    .response-lines span:nth-child(2) {
+      width: 82%;
+    }
+
+    .response-lines span:nth-child(3) {
+      width: 62%;
+      background: #f1dfaa;
+    }
+
+    .tools {
+      background: #fff;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+    }
+
+    .tool {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px 12px;
+      min-height: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 10px 26px rgba(7, 20, 39, 0.05);
+    }
+
+    .tool-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, var(--blue-soft), #fff);
+      border: 1px solid #d5e5f8;
+      position: relative;
+    }
+
+    .tool-mark::after {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .tool strong {
+      font-size: 0.98rem;
+    }
+
+    .instructor {
+      background: var(--paper);
+    }
+
+    .instructor-card {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 42px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(22px, 4vw, 40px);
+      box-shadow: var(--shadow);
+    }
+
+    .instructor-photo {
+      border-radius: 8px;
+      overflow: hidden;
+      background: #eef4fc;
+      aspect-ratio: 4 / 5;
+    }
+
+    .instructor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .quote {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-right: 4px solid var(--gold);
+      background: var(--gold-soft);
+      color: #493a17;
+      border-radius: 8px 0 0 8px;
+      font-weight: 800;
+    }
+
+    .syllabus {
+      background: #fff;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      counter-reset: lesson;
+    }
+
+    .lesson {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-soft);
+      min-height: 210px;
+    }
+
+    .lesson::before {
+      counter-increment: lesson;
+      content: counter(lesson);
+      display: inline-flex;
+      width: 38px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--blue-deep);
+      color: #fff;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .testimonials {
+      background: var(--paper);
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .testimonial {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .testimonial p {
+      color: var(--ink-soft);
+      font-size: 1.02rem;
+      margin-bottom: 22px;
+    }
+
+    .person {
+      border-top: 1px solid var(--line);
+      padding-top: 15px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .person strong {
+      display: block;
+      color: var(--ink);
+      font-size: 1rem;
+    }
+
+    .urgency {
+      background: linear-gradient(180deg, #fff, var(--paper));
+    }
+
+    .urgency-card {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 42px);
+      box-shadow: var(--shadow);
+    }
+
+    .price {
+      background: var(--blue-soft);
+      border: 1px solid #d4e4fb;
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-weight: 750;
+    }
+
+    .price strong {
+      display: block;
+      color: var(--blue-deep);
+      font-size: clamp(2.3rem, 5vw, 3.6rem);
+      line-height: 1;
+      font-weight: 950;
+      margin: 8px 0;
+    }
+
+    .price span {
+      color: var(--muted);
+      text-decoration: line-through;
+      font-weight: 800;
+    }
+
+    .form-section {
+      background:
+        linear-gradient(180deg, rgba(8, 43, 98, 0.96), rgba(7, 20, 39, 0.98)),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: auto, 68px 68px, 68px 68px;
+      color: #fff;
+      padding-bottom: 48px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .form-section .lead,
+    .form-section .muted {
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .lead-card {
+      background: #fff;
+      color: var(--ink);
+      border-radius: var(--radius-lg);
+      padding: clamp(22px, 4vw, 34px);
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.22);
+    }
+
+    .form-box {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    label {
+      color: var(--ink-soft);
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    input {
+      width: 100%;
+      height: 54px;
+      border: 1px solid var(--line-strong);
+      border-radius: 8px;
+      padding: 0 15px;
+      color: var(--ink);
+      background: #fff;
+      outline: 0;
+      transition: border 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(10, 74, 166, 0.1);
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin: 4px 0 0;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.14);
+      margin-top: 58px;
+      padding-top: 26px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.94rem;
+    }
+
+    .wa-fab {
+      position: fixed;
+      left: 22px;
+      bottom: 22px;
+      z-index: 45;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: #25d366;
+      box-shadow: 0 14px 34px rgba(37, 211, 102, 0.32);
+      font-weight: 950;
+      font-size: 1.02rem;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .split,
+      .agent-box,
+      .urgency-card,
+      .form-grid,
+      .instructor-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        max-width: 560px;
+        margin-inline: auto;
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .feature-grid,
+      .timeline {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tool-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .instructor-photo {
+        max-width: 420px;
       }
     }
-  ]
-}
-</script>
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .brand img {
+        width: 138px;
+      }
+
+      .brand-line,
+      .nav-actions .btn-secondary {
+        display: none;
+      }
+
+      .nav-actions .btn {
+        min-height: 42px;
+        padding: 0 15px;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 42px 0 34px;
+      }
+
+      .hero-copy {
+        padding: 0;
+      }
+
+      .tagline {
+        font-size: 0.9rem;
+      }
+
+      .hero-actions .btn,
+      .form-actions .btn {
+        width: 100%;
+      }
+
+      .hero-points {
+        gap: 8px;
+      }
+
+      .point {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .photo-frame {
+        min-height: 420px;
+      }
+
+      .hero-card-info {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 62px 0;
+      }
+
+      .trust {
+        padding-bottom: 50px;
+      }
+
+      .trust-grid,
+      .feature-grid,
+      .timeline,
+      .testimonial-grid,
+      .tool-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metric,
+      .feature,
+      .lesson {
+        min-height: auto;
+      }
+
+      .agent-visual {
+        padding: 14px;
+      }
+
+      .tool {
+        min-height: 82px;
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: right;
+        gap: 12px;
+      }
+
+      .tool-mark {
+        margin: 0;
+        flex: 0 0 auto;
+      }
+
+      .instructor-photo {
+        width: 100%;
+        max-width: none;
+      }
+
+      .footer {
+        flex-direction: column;
+      }
+
+      .wa-fab {
+        left: 14px;
+        bottom: 14px;
+        width: 52px;
+        height: 52px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="logo"><img src="logo.svg" alt="שבדרון AI - קורס בינה מלאכותית בעברית"/></a>
-  <a href="#register" class="nav-btn">הירשם עכשיו</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <!-- brand decorative shapes (top-left corner, like the ad) -->
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
-  <div class="orb orb3"></div>
-  <div class="hero-wrap">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-chip">🔥 נותרו 5 מקומות בלבד · הקורס הבא: 6.5.2026</div>
-      <h1 class="hero-title">
-        <span class="grad-text">הופך אותך למאסטר ב-AI</span>
-      </h1>
-      <p class="hero-sub">
-        4 מפגשי זום מעשיים שבהם תלמד להשתמש בכלי AI, לבנות סוכן אישי, לחסוך זמן בעבודה ולהוציא תוצאות אמיתיות — כבר תוך כדי הקורס.
-      </p>
-      <p class="hero-fit">מתאים לבעלי עסקים, שכירים ואנשי מקצוע — גם בלי רקע טכני.</p>
-      <div class="hero-details">📅 יום רביעי 06/05 &nbsp;·&nbsp; 4 מפגשים &nbsp;·&nbsp; שעתיים כל מפגש &nbsp;·&nbsp; בזום &nbsp;·&nbsp; תרגול חי</div>
-      <div class="hero-ctas" style="margin-top:28px">
-        <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
-        <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A3%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA" target="_blank" class="cta-ghost">קבל פרטים בוואטסאפ</a>
-      </div>
-      <div class="hero-trust">ללא התחייבות &nbsp;·&nbsp; חזרה מהירה &nbsp;·&nbsp; מספר המקומות מוגבל</div>
-      <div class="hero-price">
-        <span class="price-old">800 ₪</span>
-        <span class="price-now">680 ₪</span>
-        <span class="price-badge">מחיר מוקדם</span>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="SHWADRON.AI">
+        <img src="logo.svg" alt="SHWADRON.AI" width="176" height="49" />
+        <span class="brand-line">יוחנן שבדרון הופך אותך למאסטר</span>
+      </a>
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A7%D7%95%D7%A8%D7%A1%20AI" target="_blank" rel="noopener">וואטסאפ</a>
+        <a class="btn btn-primary" href="#lead-form">בדוק מקום</a>
       </div>
     </div>
-    <div class="hero-photo-wrap">
-      <img class="hero-photo" src="yochanan.jpg" alt="יוחנן שבדרון - מדריך AI, קורס בינה מלאכותית בעברית"/>
-    </div>
-  </div>
-  <div class="hero-numbers">
-    <div class="h-num">
-      <div class="h-num-val">50%</div>
-      <div class="h-num-lbl">תרגול חי בכל שיעור</div>
-    </div>
-    <div class="h-num">
-      <div class="h-num-val">7+</div>
-      <div class="h-num-lbl">כלי AI שתשלטו בהם</div>
-    </div>
-    <div class="h-num">
-      <div class="h-num-val">300+</div>
-      <div class="h-num-lbl">בוגרים מרוצים</div>
-    </div>
-    <div class="h-num">
-      <div class="h-num-val">4</div>
-      <div class="h-num-lbl">מפגשי זום אינטנסיביים</div>
-    </div>
-  </div>
-  </div>
-</section>
+  </header>
 
-<!-- PAIN -->
-<section class="pain">
-  <div class="s-head c">
-    <div class="s-label">האתגר שלך</div>
-    <h2 class="s-title">מכיר את <em>זה</em>?</h2>
-  </div>
-  <div class="pain-grid">
-    <div class="pain-card reveal">
-      <div class="p-icon">🤷</div>
-      <h3>"כולם מדברים על AI, אבל אני עדיין לא יודע מאיפה להתחיל"</h3>
-      <p>חסר לך בסיס הדרגתי שיסביר הכל מאפס, בלי ז'רגון טכני מבלבל.</p>
-    </div>
-    <div class="pain-card reveal">
-      <div class="p-icon">⏳</div>
-      <h3>"אני מבזבז זמן על משימות שAI יכול לעשות בדקות"</h3>
-      <p>אחרים כבר עובדים חכם יותר, עם הכלים הנכונים ובלי לבזבז זמן.</p>
-    </div>
-    <div class="pain-card reveal">
-      <div class="p-icon">😤</div>
-      <h3>"ניסיתי ChatGPT וקיבלתי תשובות כלליות שלא באמת עזרו"</h3>
-      <p>בלי פרומפטים נכונים, ה-AI נותן תוצאות גנריות שלא עוזרות לך בעבודה.</p>
-    </div>
-    <div class="pain-card reveal">
-      <div class="p-icon">😰</div>
-      <h3>"אני מרגיש שהעולם מתקדם ואני לא רוצה להישאר מאחור"</h3>
-      <p>מי שלא ישתלב עם AI כבר מרגיש את זה. זה לא משהו שיקרה, זה קורה עכשיו.</p>
-    </div>
-  </div>
-  <div class="pain-transition reveal">
-    בדיוק בשביל זה נבנה הקורס — <strong>לא כדי להרשים אותך במושגים, אלא כדי שתדע לעבוד עם AI בפועל.</strong>
-  </div>
-  <div style="text-align:center;margin-top:32px">
-    <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
-  </div>
-</section>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="tagline">יוחנן שבדרון הופך אותך למאסטר</div>
+          <h1>תפסיק לשמוע על AI. <span class="title-mark">תתחיל להפעיל אותו בשבילך.</span></h1>
+          <p class="hero-sub">
+            ב-4 מפגשי זום מעשיים תלמד להשתמש ב-ChatGPT, Claude, Gemini וסוכני AI כדי לחסוך זמן, לבנות תוצרים אמיתיים ולעבוד חכם יותר.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#lead-form">בדוק אם נשאר מקום</a>
+            <a class="btn btn-secondary" href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A7%D7%95%D7%A8%D7%A1%20AI" target="_blank" rel="noopener">קבל פרטים בוואטסאפ</a>
+          </div>
+          <div class="hero-points" aria-label="פרטי הקורס">
+            <span class="point"><b>300+</b> בוגרים</span>
+            <span class="point"><b>4</b> מפגשי זום</span>
+            <span class="point"><b>תרגול חי</b> בכל מפגש</span>
+            <span class="point"><b>סוכן AI</b> אישי</span>
+            <span class="point"><b>5</b> מקומות בלבד</span>
+            <span class="point"><b>680 ₪</b> במקום 800 ₪</span>
+          </div>
+        </div>
 
-<!-- ABOUT -->
-<section class="about">
-  <div class="about-wrap">
-    <div class="about-card reveal">
-      <div class="a-photo-wrap"><img class="a-photo" src="yochanan.jpg" alt="יוחנן שבדרון - מדריך AI, קורס בינה מלאכותית בעברית"/></div>
-      <div class="a-name">יוחנן שבדרון</div>
-      <div class="a-role">מומחה AI ומרצה</div>
-      <div class="a-chips">
-        <span class="a-chip">ChatGPT</span>
-        <span class="a-chip">הנדסת פרומפטים</span>
-        <span class="a-chip">סוכני AI</span>
-        <span class="a-chip">Generative AI</span>
-        <span class="a-chip">AI לעסקים</span>
-        <span class="a-chip">מצגות עם AI</span>
-        <span class="a-chip">Claude Code</span>
-        <span class="a-chip">סקילים</span>
+        <aside class="hero-card" aria-label="יוחנן שבדרון">
+          <div class="photo-frame">
+            <img src="yochanan-landing.jpg" alt="יוחנן שבדרון" width="900" height="1350" fetchpriority="high" />
+          </div>
+          <div class="hero-card-info">
+            <div>
+              <span class="info-value">6.5.2026</span>
+              <span class="info-label">פתיחת המחזור הקרוב</span>
+            </div>
+            <div>
+              <span class="info-value">שעתיים</span>
+              <span class="info-label">כל מפגש, בזום חי</span>
+            </div>
+          </div>
+        </aside>
       </div>
-    </div>
-    <div class="about-text reveal">
-      <div class="s-label">המרצה</div>
-      <h2 class="s-title">למה ללמוד דווקא <em>איתי</em>?</h2>
-      <p>
-        בן 33, חסיד קרלין, נשוי ואב לארבעה. בוגר מדעי המחשב עם התמחות בבינה מלאכותית,
-        <strong>מפתח אפליקציות ומנתח נתונים</strong>.
-        יוחנן <strong>מכיר את הציבור החרדי מבפנים</strong> ויודע איך לדבר על טכנולוגיה בלי שתרגיש שזה לא בשבילך.
-      </p>
-      <ul class="trust-list">
-        <li><span class="trust-check">✓</span>בוגר מדעי המחשב עם התמחות בבינה מלאכותית</li>
-        <li><span class="trust-check">✓</span>ניסיון בפיתוח אפליקציות, ניתוח נתונים ואוטומציות</li>
-        <li><span class="trust-check">✓</span>מסביר בשפה פשוטה — גם למי שמתחיל מאפס</li>
-        <li><span class="trust-check">✓</span>כל שיעור הוא עבודה מעשית, לא הרצאה תיאורטית</li>
-        <li><span class="trust-check">✓</span>כל משתתף יוצא עם סוכן AI אישי שמותאם לצורך שלו</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- CURRICULUM -->
-<section class="curriculum" id="curriculum">
-  <div class="s-head c">
-    <div class="s-label">תוצאות הקורס</div>
-    <h2 class="s-title">מה תדע לעשות <em>בסוף הקורס</em>?</h2>
-    <p class="s-sub">לא מה נלמד — מה תוציא מזה לעבודה ולחיים.</p>
-  </div>
-  <div class="outcomes-grid">
-    <div class="outcome-item reveal"><span class="outcome-icon">✍️</span><p>לכתוב פרומפטים שמוציאים תשובות מדויקות ושימושיות</p></div>
-    <div class="outcome-item reveal"><span class="outcome-icon">🤖</span><p>לבנות סוכן AI אישי שמותאם לעבודה או לעסק שלך</p></div>
-    <div class="outcome-item reveal"><span class="outcome-icon">📄</span><p>להכין תוכן, מיילים, מסמכים ומצגות מהר יותר</p></div>
-    <div class="outcome-item reveal"><span class="outcome-icon">🔍</span><p>לבצע מחקר ובדיקת מידע בצורה חכמה ומדויקת</p></div>
-    <div class="outcome-item reveal"><span class="outcome-icon">🧭</span><p>לדעת מתי להשתמש ב-ChatGPT, Claude, Gemini וכל כלי אחר</p></div>
-    <div class="outcome-item reveal"><span class="outcome-icon">⚡</span><p>לחסוך זמן במשימות שחוזרות על עצמן בעבודה שלך</p></div>
-    <div class="outcome-item reveal"><span class="outcome-icon">🧠</span><p>להבין את הבסיס של AI בלי להסתבך במונחים טכניים</p></div>
-    <div class="outcome-item reveal"><span class="outcome-icon">🛡️</span><p>להשתמש ב-AI בצורה בטוחה, אחראית ומעשית</p></div>
-  </div>
-  <span class="syllabus-label">הסילבוס המלא</span>
-  <div class="mod-grid">
-    <div class="mod reveal"><div class="mod-n">1</div><div><h3>מה זה AI בכלל</h3><p>איך זה עובד מבפנים, היכן אתה כבר פוגש אותו בלי לדעת, ותרגיל ראשון עם ChatGPT.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">2</div><div><h3>כיצד מכונות לומדות</h3><p>Machine Learning ורשתות נוירונים בשפה פשוטה, בלי נוסחאות.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">3</div><div><h3>Generative AI וכלים מובילים</h3><p>ChatGPT, Gemini, Claude, DALL·E, Midjourney, Runway, ElevenLabs ועוד.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">4</div><div><h3>7 עקרונות לפרומפטים שעובדים</h3><p>ניסוח מדויק, הגדרת תפקיד, אילוצים, Zero-Shot ועד Chain-of-Thought.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">5</div><div><h3>טכניקות פרומפטינג מתקדמות</h3><p>One-Shot, Few-Shot, Self-Criticism, Iterative, כל מה שגורם ל-AI לתת תוצאות טובות.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">6</div><div><h3>סוכני AI ו-GPTs מותאמים אישית</h3><p>בונים סוכן AI לתחום שלך, כולל סוכן שכותב מיילים ואחד שבונה מצגות.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">7</div><div><h3>מצגות מקצועיות עם AI</h3><p>7 שלבים: מהגדרת מסר עד עיצוב ב-DALL·E וסיום מושלם ב-Gamma.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">8</div><div><h3>תרגול חי + אתגר אישי</h3><p>כל משתתף עוזב עם פתרון מעשי לאתגר מהעבודה שלו עצמו.</p></div></div>
-  </div>
-  <div style="text-align:center;margin-top:48px">
-    <a href="#register" class="cta-main">אני רוצה להצטרף לקורס הזה</a>
-  </div>
-</section>
-
-<!-- BENTO BENEFITS -->
-<section class="benefits">
-  <div class="s-head c">
-    <div class="s-label">למה הקורס הזה?</div>
-    <h2 class="s-title">מה <em>תרוויח</em> מהקורס?</h2>
-    <p class="s-sub">לא עוד קורס שמסביר מה זה ChatGPT. כאן יוצאים עם ידיים שעובדות.</p>
-  </div>
-  <div class="bento">
-    <div class="ben big b1 reveal">
-      <span class="ben-tag">הבידול שלנו</span>
-      <div class="ben-big-num">50%</div>
-      <h3>תרגול חי, לא רק הקשבה</h3>
-      <p>קרוב למחצית מהשיעור אתה עובד בפועל. לא צופה, לא מקשיב. עושה. כל שיעור מסתיים עם משהו שלוקחים הביתה ומשתמשים בו למחרת.</p>
-    </div>
-    <div class="ben b2 reveal">
-      <span class="ben-icon">💬</span>
-      <h3>בשפה שלך</h3>
-      <p>הסברים שמתאימים לך, בלי ז'רגון, עם דוגמאות שלקוחות מהחיים האמיתיים שלך.</p>
-    </div>
-    <div class="ben tall b3 reveal">
-      
-      <h3>חיסכון דרמטי בזמן</h3>
-      <p>בנה מצגת מקצועית ב-20% מהזמן של סוכנות עיצוב. ערוך מחקר מעמיק בדקות. כתוב מיילים ב-10 שניות.</p>
-      <div style="margin-top:20px;background:rgba(46,222,191,.1);border:1px solid rgba(46,222,191,.2);border-radius:14px;padding:18px">
-        <div style="font-size:2rem;font-weight:900;color:var(--teal)">80%</div>
-        <div style="font-size:.82rem;color:var(--muted);margin-top:4px">חיסכון בזמן בניית מצגות</div>
+    <section class="trust" aria-label="נתוני אמון">
+      <div class="container trust-grid">
+        <div class="metric"><strong>300+</strong><span>בוגרים שלמדו לעבוד עם AI בפועל</span></div>
+        <div class="metric"><strong>4</strong><span>מפגשים חיים, קצרים וממוקדים</span></div>
+        <div class="metric"><strong>50%</strong><span>תרגול חי ולא רק צפייה והסברים</span></div>
+        <div class="metric"><strong>7+</strong><span>כלי AI מובילים לעבודה יומיומית</span></div>
+        <div class="metric"><strong>1</strong><span>סוכן AI אישי שמותאם אליך</span></div>
+        <div class="metric"><strong>ליווי</strong><span>שאלות, הכוונה וסדר גם אחרי השיעור</span></div>
       </div>
-    </div>
-    <div class="ben b4 reveal">
-      <span class="ben-icon">🎯</span>
-      <h3>רלוונטי לתחום שלך</h3>
-      <p>חשבונאות, עבודה סוציאלית, ניהול, הנדסה. כל תרגיל מותאם לתחום שלך ספציפית.</p>
-    </div>
-    <div class="ben b5 reveal">
-      <span class="ben-icon">💻</span>
-      <h3>זום מכל מקום</h3>
-      <p>לא צריך לנסוע. למד מהבית, מהמשרד, מכל מקום נוח לך.</p>
-    </div>
-    <div class="ben big b6 reveal">
-      <span class="ben-icon">🚀</span>
-      <h3>מהציבור לקדמת הטכנולוגיה</h3>
-      <p>כלים שאנשי מקצוע גובים עליהם אלפי שקלים, אתה לומד להשתמש בהם לבד. שוק העבודה משתנה ואתה יכול להיות בקדמה שלו.</p>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- TOOLS -->
-<section class="tools">
-  <div class="s-head c">
-    <div class="s-label">כלי AI</div>
-    <h2 class="s-title">הכלים שתשלוט <em>בהם</em></h2>
-    <p class="s-sub" style="margin:0 auto">שליטה אמיתית בכלים שהעולם משתמש בהם עכשיו.</p>
-  </div>
-  <div class="tools-scroll">
-    <div class="t-pill">ChatGPT</div>
-    <div class="t-pill">Claude AI</div>
-    <div class="t-pill">Gemini</div>
-    <div class="t-pill">Gamma</div>
-    <div class="t-pill">Custom GPTs</div>
-    <div class="t-pill">Google Gems</div>
-    <div class="t-pill">AI Agents</div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testi-section">
-  <div class="s-head c">
-    <div class="s-label">ביקורות</div>
-    <h2 class="s-title">מה אומרים <em>הבוגרים</em>?</h2>
-    <p class="s-sub">אנשים רגילים שלא ידעו כלום על AI ועכשיו משתמשים בו כל יום.</p>
-  </div>
-  <div class="testi-grid">
-    <div class="t-card reveal">
-      <div class="t-quote">"</div>
-      <p>יצאתי מהקורס עם סוכן AI שכותב לי מיילים ועונה ללקוחות. חסכתי שעתיים ביום מהיום הראשון. לא האמנתי שזה אפשרי.</p>
-      <div class="t-stars">★★★★★</div>
-      <div class="t-author">
-        <div class="t-av av1">מ</div>
-        <div>
-          <div class="t-name">משה כהן, בני ברק</div>
-          <div class="t-role">בעל עסק · הנהלת חשבונות</div>
+    <section class="section pain">
+      <div class="container split">
+        <div class="section-head">
+          <span class="eyebrow">הפער שנפתח עכשיו</span>
+          <h2>העולם כבר עובד עם AI. השאלה היא אם גם אתה.</h2>
+          <p class="lead">
+            אנשים סביבך כבר כותבים מהר יותר, בונים מצגות, מייצרים תוכן, מנתחים מידע וחוסכים שעות עבודה. לא בגלל שהם טכנולוגיים במיוחד, אלא כי הם למדו לעבוד נכון עם הכלים.
+          </p>
+        </div>
+        <div class="panel pain-card">
+          <h3>מה עוצר הרבה אנשים?</h3>
+          <p>לא חוסר יכולת. בעיקר בלבול, עומס, חוסר סדר ופחד להתחיל ממקום לא נכון.</p>
+          <div class="pain-tags">
+            <span>יותר מדי כלים</span>
+            <span>אין שיטה ברורה</span>
+            <span>קשה לדעת מה עובד</span>
+            <span>פחד לכתוב פרומפט לא נכון</span>
+            <span>חוסר ביטחון מול הטכנולוגיה</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="t-card reveal">
-      <div class="t-quote">"</div>
-      <p>הייתי בטוחה שזה לא בשבילי. אחרי השיעור הראשון כבר הפקתי מצגת מקצועית לוועדה. יוחנן מסביר בצורה שכולם מבינים.</p>
-      <div class="t-stars">★★★★★</div>
-      <div class="t-author">
-        <div class="t-av av2">מ</div>
-        <div>
-          <div class="t-name">מרים לוי, ירושלים</div>
-          <div class="t-role">עובדת סוציאלית</div>
+    </section>
+
+    <section class="section solution">
+      <div class="container split">
+        <div class="panel">
+          <span class="eyebrow">הפתרון</span>
+          <h2>בדיוק בשביל זה נבנה הקורס</h2>
+          <p class="lead">
+            זה לא קורס תיאורטי על בינה מלאכותית. זה קורס מעשי, ברור ומדויק שבו לומדים איך להשתמש בכלי AI אמיתיים ביום יום, בלי רקע טכני ובלי להסתבך.
+          </p>
+        </div>
+        <ul class="check-list" aria-label="מה לומדים בקורס">
+          <li>איך להפוך משימה יומיומית לפרומפט ברור שמייצר תוצאה טובה.</li>
+          <li>איך לבחור בין ChatGPT, Claude ו-Gemini לפי הצורך שלך.</li>
+          <li>איך לבנות תהליך עבודה שחוסך זמן ולא רק נותן תשובה חד פעמית.</li>
+          <li>איך לצאת עם סוכן AI אישי שמכיר את סגנון העבודה שלך.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">מה יוצא לך מזה</span>
+          <h2>לא רק ידע. יכולת עבודה חדשה.</h2>
+          <p class="lead">בסוף הקורס אתה לא נשאר עם מושגים. אתה יוצא עם כלים, תוצרים ושיטה ברורה לעבודה.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-number">1</span>
+            <h3>סוכן AI אישי</h3>
+            <p class="muted">סוכן שמותאם לעבודה שלך, לשפה שלך ולמשימות שחוזרות אצלך באמת.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">2</span>
+            <h3>עבודה חכמה יותר</h3>
+            <p class="muted">שימוש נכון ב-ChatGPT, Claude ו-Gemini לפי סוג המשימה והתוצאה הרצויה.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">3</span>
+            <h3>פרומפטים שימושיים</h3>
+            <p class="muted">תבניות עבודה למשימות יומיומיות כמו כתיבה, תכנון, מחקר וסיכום מידע.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-number">4</span>
+            <h3>תוצרים אמיתיים</h3>
+            <p class="muted">כלים ליצירת תוכן, מצגות, מחקר, ניתוח וחיסכון בזמן כבר תוך כדי הקורס.</p>
+          </article>
         </div>
       </div>
-    </div>
-    <div class="t-card reveal">
-      <div class="t-quote">"</div>
-      <p>עכשיו אני יודע בדיוק איזה כלי לבחור ואיך לשלב AI בעבודה שלי. הזמן שחסכתי מאז הקורס שווה פי עשרה ממחיר הכרטיס.</p>
-      <div class="t-stars">★★★★★</div>
-      <div class="t-author">
-        <div class="t-av av3">א</div>
+    </section>
+
+    <section class="section agent">
+      <div class="container agent-box">
         <div>
-          <div class="t-name">אברהם שפירא, מודיעין עילית</div>
-          <div class="t-role">מנהל פרויקטים</div>
+          <span class="eyebrow">גולת הכותרת</span>
+          <h2>סוכן AI אישי משלך</h2>
+          <p class="lead">
+            במהלך הקורס תבנה סוכן שמותאם לצרכים שלך. הוא לא רעיון באוויר, אלא נכס עבודה שימושי שיכול לעזור לך לכתוב, לתכנן, לבדוק, לסכם ולהתקדם מהר יותר.
+          </p>
+        </div>
+        <div class="agent-visual" aria-label="המחשה של סוכן AI אישי">
+          <div class="agent-window">
+            <div class="window-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="window-body">
+              <div class="prompt-line">הסוכן האישי שלי: עזור לי להפוך רעיון לתוכנית עבודה מסודרת</div>
+              <div class="response-lines"><span></span><span></span><span></span></div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="s-head c">
-    <div class="s-label">שאלות נפוצות</div>
-    <h2 class="s-title">יש לך <em>שאלות</em>?</h2>
-  </div>
-  <div class="faq-grid">
-    <div class="faq-item reveal">
-      <div class="faq-q">האם צריך ידע מוקדם בטכנולוגיה?</div>
-      <div class="faq-a">בכלל לא. הקורס בנוי מאפס ומתאים לכל אחד, גם מי שלא פתח מחשב לצרכים מקצועיים בחייו. מגיעים כמו שאתה, ויוצאים עם יכולות אמיתיות.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">האם המפגשים מוקלטים?</div>
-      <div class="faq-a">כן. כל מפגש מוקלט ונשלח לך תוך 24 שעות. אם לא יכולת להגיע, צופה בהקלטה בנוחות ובלי לפספס כלום.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">מה המחיר וכיצד משלמים?</div>
-      <div class="faq-a">המחיר המוקדם הוא <strong>680 ₪</strong> (במקום 800 ₪). לאחר ההרשמה יוחנן ייצור איתך קשר ישירות ויסדיר את התשלום בצורה הנוחה לך.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">למי הקורס מתאים?</div>
-      <div class="faq-a">לכל אחד שרוצה לשלב AI בחיי העבודה שלו: עצמאים, שכירים, בעלי עסקים, מנהלים. הקורס מותאם במיוחד לציבור החרדי עם דוגמאות ותרגילים מהחיים האמיתיים שלך.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">מה אם יש לי שאלה בין המפגשים?</div>
-      <div class="faq-a">יוחנן זמין בוואטסאפ ומשיב תוך שעות. לא נשארים לבד עם שאלות.</div>
-    </div>
-    <div class="faq-item reveal">
-      <div class="faq-q">מה קורה אחרי שממלאים טופס?</div>
-      <div class="faq-a">תוך שעה תקבל אישור בוואטסאפ. תוך 24 שעות יוחנן יצור איתך קשר אישי לאישור המקום ולסידור התשלום.</div>
-    </div>
-  </div>
-</section>
-
-<!-- COUNTDOWN -->
-<section class="cd-section">
-  <div class="cd-wrap">
-    <div class="cd-title">הקורס הבא מתחיל בעוד</div>
-    <div class="cd-timer">
-      <div class="cd-unit"><div class="cd-val" id="cd-d">00</div><div class="cd-lbl">ימים</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-h">00</div><div class="cd-lbl">שעות</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-m">00</div><div class="cd-lbl">דקות</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
-    </div>
-    <div class="cd-sub" style="margin-top:24px;margin-bottom:4px;font-size:1.2rem">יום רביעי, 6.5.2026 | 17:00</div>
-    <div class="cd-sub" style="font-size:1rem;margin-bottom:0">4 מפגשים בימי רביעי · שעתיים כל מפגש</div>
-  </div>
-</section>
-
-<!-- REGISTER -->
-<section class="register" id="register">
-  <div class="reg-inner">
-    <div class="s-label">הרשמה</div>
-    <h2 class="s-title">רוצה לבדוק התאמה ל<em>קורס הקרוב</em>?</h2>
-    <p class="s-sub" style="margin:0 auto">השאר פרטים ואחזור אליך עם כל המידע על המחזור הקרוב.</p>
-    <div class="reg-price-block">
-      <span class="price-old">800 ₪</span>
-      <span class="price-now">680 ₪</span>
-      <span class="price-badge">מחיר מוקדם · נותרו 5 מקומות</span>
-    </div>
-
-    <form class="form-box reveal" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
-      <input type="hidden" name="_next" value="https://yochanan11.github.io/shvadron-ai/thanks.html"/>
-      <input type="hidden" name="_captcha" value="false"/>
-      <input type="hidden" name="_template" value="table"/>
-      <input type="hidden" name="_autoresponse" value="שלום! תודה שנרשמת לקורס AI של יוחנן שבדרון 🎉
-
-קיבלתי את הפרטים שלך ואחזור אליך תוך 24 שעות לאישור המקום וסידור התשלום.
-
-אם יש לך שאלה עד אז, מוזמן לכתוב לי ישירות בוואטסאפ: 052-7169921
-
-יוחנן שבדרון
-shwadron.ai"/>
-      <div class="f-g"><label for="f-name">שם מלא *</label><input id="f-name" type="text" name="שם" placeholder="ישראל ישראלי" required/></div>
-      <div class="f-g"><label for="f-phone">טלפון *</label><input id="f-phone" type="tel" name="טלפון" placeholder="050-0000000" required/></div>
-      <div class="f-g">
-        <label for="f-field">תחום עיסוק (אופציונלי)</label>
-        <select id="f-field" name="תחום">
-          <option value="">בחר תחום...</option>
-          <option>הנהלת חשבונות / כספים</option>
-          <option>עבודה סוציאלית</option>
-          <option>ניהול / מנהל</option>
-          <option>הנדסה / טכנולוגיה</option>
-          <option>חינוך / הוראה</option>
-          <option>בעל עסק</option>
-          <option>משפטים</option>
-          <option>אחר</option>
-        </select>
+    <section class="section tools">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">הכלים שתכיר</span>
+          <h2>כלי AI מובילים, בלי רשימת מושגים מבלבלת</h2>
+          <p class="lead">נלמד מה עושים עם כל כלי, מתי הוא מתאים, ואיך מחברים אותו לתהליך עבודה פשוט.</p>
+        </div>
+        <div class="tool-grid">
+          <div class="tool"><span class="tool-mark"></span><strong>ChatGPT</strong></div>
+          <div class="tool"><span class="tool-mark"></span><strong>Claude</strong></div>
+          <div class="tool"><span class="tool-mark"></span><strong>Gemini</strong></div>
+          <div class="tool"><span class="tool-mark"></span><strong>Gamma</strong></div>
+          <div class="tool"><span class="tool-mark"></span><strong>Custom GPTs</strong></div>
+          <div class="tool"><span class="tool-mark"></span><strong>Google Gems</strong></div>
+          <div class="tool"><span class="tool-mark"></span><strong>AI Agents</strong></div>
+        </div>
       </div>
-      <button type="submit" class="f-submit">שלח פרטים</button>
-      <p class="f-note">הפרטים נשמרים לשיחת התאמה בלבד.</p>
-    </form>
-    <div class="or-divider" style="margin-top:28px"><span>או</span></div>
-    <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A3%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA"
-       target="_blank"
-       style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-weight:800;font-size:1rem;padding:16px 32px;border-radius:100px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.35);transition:all .3s;margin-top:4px"
-       onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(37,211,102,.5)'"
-       onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(37,211,102,.35)'">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="22" height="22"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.45 11.45 0 0 1-5.823-1.587l-.418-.248-4.33 1.062 1.1-4.22-.272-.432A11.5 11.5 0 1 1 16 27.5zm6.29-8.61c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
-      קבל פרטים בוואטסאפ
-    </a>
-  </div>
-</section>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-  <div style="margin-bottom:14px;display:flex;justify-content:center"><img src="icon-logo.png" alt="SHWADRON.AI" style="height:60px;width:auto"/></div>
-  <p><strong>יוחנן שבדרון</strong>, מרכז הכשרה והדרכה לשילוב AI בחיים ובעבודה</p>
-  <p class="ft">יוחנן שבדרון הופך אותך למאסטר ב-AI</p>
-  <p style="margin-top:18px;font-size:.75rem;opacity:.4">© 2026 יוחנן שבדרון · כל הזכויות שמורות</p>
-</footer>
+    <section class="section instructor">
+      <div class="container instructor-card">
+        <div class="instructor-photo">
+          <img src="yochanan-landing.jpg" alt="יוחנן שבדרון, מרצה הקורס" width="900" height="1350" loading="lazy" />
+        </div>
+        <div>
+          <span class="eyebrow">מי ילמד אותך?</span>
+          <h2>יוחנן שבדרון</h2>
+          <p class="lead">
+            יוחנן מחבר בין חדשנות, פשטות ותוצאה. הוא מסביר בגובה העיניים, לוקח נושאים מורכבים והופך אותם לברורים, ומראה איך AI נכנס לעבודה אמיתית ולא נשאר כעוד כלי שמנסים פעם אחת ושוכחים.
+          </p>
+          <ul class="check-list">
+            <li>הסברים ברורים גם למי שאין לו רקע טכני.</li>
+            <li>התמקדות במה שעובד בפועל, לא במה שנשמע מרשים.</li>
+            <li>חיבור לכלים, משימות ותוצרים מהיום יום.</li>
+          </ul>
+          <div class="quote">יוחנן שבדרון הופך אותך למאסטר</div>
+        </div>
+      </div>
+    </section>
 
-<!-- FAB -->
-<a href="#register" class="fab">⚡ בדוק אם נשאר מקום · נותרו 5 מקומות</a>
+    <section class="section syllabus">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">סילבוס קצר וברור</span>
+          <h2>4 מפגשים. הרבה תרגול. בלי סיבוכים.</h2>
+        </div>
+        <div class="timeline">
+          <article class="lesson">
+            <h3>היכרות עם עולם ה-AI</h3>
+            <p class="muted">מה חשוב לדעת, איך הכלים עובדים, ואיך מתחילים בלי לטבוע במידע.</p>
+          </article>
+          <article class="lesson">
+            <h3>פרומפטים וכלים מובילים</h3>
+            <p class="muted">עבודה מעשית עם ChatGPT, Claude ו-Gemini למשימות יומיומיות.</p>
+          </article>
+          <article class="lesson">
+            <h3>סוכני AI ועבודה מעשית</h3>
+            <p class="muted">הבנת סוכנים, בניית תהליך עבודה ויצירת נכס שמשרת אותך.</p>
+          </article>
+          <article class="lesson">
+            <h3>יישום אישי והטמעה</h3>
+            <p class="muted">התאמה לתחום שלך, שיפור התוצרים והכנסה לשגרה מקצועית.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<!-- WhatsApp FAB -->
-<a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA"
-   target="_blank" class="wa-fab" title="שלח הודעה בוואטסאפ">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="28" height="28">
-    <path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.45 11.45 0 0 1-5.823-1.587l-.418-.248-4.33 1.062 1.1-4.22-.272-.432A11.5 11.5 0 1 1 16 27.5zm6.29-8.61c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/>
-  </svg>
-</a>
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">הוכחות חברתיות</span>
+          <h2>מה בוגרים מספרים</h2>
+        </div>
+        <div class="testimonial-grid">
+          <article class="testimonial">
+            <p>"הגעתי בלי סדר בראש. אחרי המפגשים הבנתי איך לגשת לכלי AI בצורה מסודרת, והתחלתי להשתמש בזה בעבודה כמעט כל יום."</p>
+            <div class="person"><strong>משה ל.</strong> בעל עסק בתחום השירותים</div>
+          </article>
+          <article class="testimonial">
+            <p>"אהבתי שזה לא היה שיעור תיאורטי. יוחנן הדגים, תרגל איתנו, ויצאתי עם פרומפטים שאני באמת משתמשת בהם."</p>
+            <div class="person"><strong>רחל ש.</strong> מנהלת משרד</div>
+          </article>
+          <article class="testimonial">
+            <p>"הסוכן האישי היה החלק ששינה לי את החשיבה. פתאום הבנתי איך AI יכול להיכנס לתהליך עבודה קבוע ולא רק לענות על שאלה."</p>
+            <div class="person"><strong>דוד א.</strong> יועץ ומרצה</div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<script>
-// Reveal on scroll
-const obs = new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')})
-},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    <section class="section urgency">
+      <div class="container urgency-card">
+        <div>
+          <span class="eyebrow">המחזור הקרוב</span>
+          <h2>נפתח בתאריך 6.5.2026</h2>
+          <p class="lead">נותרו 5 מקומות בלבד. הקורס מתקיים בזום חי, 4 מפגשים, שעתיים כל מפגש, עם תרגול מעשי והכוונה ברורה.</p>
+        </div>
+        <div class="price">
+          <small>מחיר מוקדם</small>
+          <strong>680 ₪</strong>
+          <span>במקום 800 ₪</span>
+        </div>
+      </div>
+    </section>
 
-// Countdown
-(function(){
-  var t=new Date('2026-05-06T17:00:00');
-  function pad(n){return String(n).padStart(2,'0')}
-  function tick(){
-    var diff=t-new Date();
-    if(diff<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(function(id){document.getElementById(id).textContent='00'});return}
-    document.getElementById('cd-d').textContent=pad(Math.floor(diff/86400000));
-    document.getElementById('cd-h').textContent=pad(Math.floor(diff%86400000/3600000));
-    document.getElementById('cd-m').textContent=pad(Math.floor(diff%3600000/60000));
-    document.getElementById('cd-s').textContent=pad(Math.floor(diff%60000/1000));
-  }
-  tick();setInterval(tick,1000);
-})();
+    <section class="section form-section" id="lead-form">
+      <div class="container form-grid">
+        <div>
+          <span class="eyebrow">הרשמה והתאמה</span>
+          <h2>רוצה להיכנס למחזור הקרוב?</h2>
+          <p class="lead">
+            השאר פרטים עכשיו ונבדוק התאמה לקורס. המקום נשמר רק לאחר אישור הרשמה ותשלום.
+          </p>
+        </div>
 
-// Hide FAB near register
-const fab=document.querySelector('.fab');
-const reg=document.querySelector('#register');
-window.addEventListener('scroll',()=>{
-  const r=reg.getBoundingClientRect();
-  const show=r.top>window.innerHeight||r.bottom<0;
-  fab.style.opacity=show?'1':'0';
-  fab.style.pointerEvents=show?'auto':'none';
-},{passive:true});
+        <div class="lead-card">
+          <form class="form-box" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="ליד חדש מדף הנחיתה SHWADRON.AI" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://www.shwadron-ai.com/thanks.html" />
 
-// Google Sheets form integration
-const GAS_URL='https://script.google.com/macros/s/AKfycbzG8op1dqWRqtC_OqpvH6oME2N1s7kLG_HW5BTu91y9p2lGt0xL_B180fFNckYMi_mS7w/exec';
-document.querySelector('.form-box').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const form=e.target;
-  const btn=form.querySelector('.f-submit');
-  const orig=btn.textContent;
-  btn.textContent='שולח...';
-  btn.disabled=true;
-  const fd=new FormData(form);
-  const params=new URLSearchParams();
-  fd.forEach((v,k)=>params.append(k,v));
-  // Save to Google Sheets
-  if(GAS_URL&&GAS_URL!=='REPLACE_WITH_YOUR_GAS_URL'){
-    fetch(GAS_URL,{method:'POST',mode:'no-cors',body:params}).catch(()=>{});
-  }
-  // Send email via formsubmit.co
-  try{
-    await fetch('https://formsubmit.co/ajax/yochanansh818@gmail.com',{
-      method:'POST',body:fd,headers:{'Accept':'application/json'}
-    });
-  }catch(_){}
-  window.location.href='https://yochanan11.github.io/shvadron-ai/thanks.html';
-});
-</script>
+            <div class="field">
+              <label for="name">שם מלא</label>
+              <input id="name" name="שם מלא" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="phone">טלפון</label>
+              <input id="phone" name="טלפון" type="tel" inputmode="tel" autocomplete="tel" required />
+            </div>
+            <div class="field">
+              <label for="profession">תחום עיסוק</label>
+              <input id="profession" name="תחום עיסוק" type="text" autocomplete="organization-title" required />
+            </div>
+
+            <p class="form-note">יוחנן יחזור אליך עם פרטים מסודרים ואישור מקום, אם עדיין נשאר מקום פנוי.</p>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">בדוק אם נשאר לי מקום</button>
+              <a class="btn btn-secondary" href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%94%D7%A7%D7%A8%D7%95%D7%91" target="_blank" rel="noopener">קבל פרטים בוואטסאפ</a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <footer class="container footer">
+        <span>SHWADRON.AI</span>
+        <span>יוחנן שבדרון הופך אותך למאסטר</span>
+      </footer>
+    </section>
+  </main>
+
+  <a class="wa-fab" href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener" aria-label="שלח הודעה בוואטסאפ">WA</a>
 </body>
 </html>
