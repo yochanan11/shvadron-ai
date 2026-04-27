@@ -103,7 +103,7 @@ nav{
 @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.06)}}
 
 /* ─── GLOBAL GRID ─── */
-.hero,.pain,.curriculum,.tools,.faq-section{
+.hero,.benefits,.about,.testi-section,.cd-section{
   background-image:
     linear-gradient(rgba(0,99,237,.045) 1px,transparent 1px),
     linear-gradient(90deg,rgba(0,99,237,.045) 1px,transparent 1px);
@@ -283,7 +283,7 @@ h2.s-title em{font-style:normal;
 .s-head.c{text-align:center}.s-head.c .s-sub{margin:0 auto}
 
 /* ─── PAIN ─── */
-.pain{background-color:var(--bg2)}
+.pain{background-color:var(--bg)}
 .pain-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -311,7 +311,7 @@ h2.s-title em{font-style:normal;
 .pain-card p{font-size:.87rem;color:var(--muted);line-height:1.75}
 
 /* ─── ABOUT ─── */
-.about{background-color:var(--bg)}
+.about{background-color:var(--bg2)}
 .about-wrap{
   display:grid;grid-template-columns:400px 1fr;
   gap:64px;align-items:center;max-width:1100px;margin:0 auto;
@@ -346,7 +346,7 @@ h2.s-title em{font-style:normal;
 .about-text p:last-child{margin-bottom:0}
 
 /* ─── CURRICULUM ─── */
-.curriculum{background-color:var(--bg2)}
+.curriculum{background-color:var(--bg)}
 .mod-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -374,7 +374,7 @@ h2.s-title em{font-style:normal;
 .mod p{font-size:.82rem;color:var(--muted);line-height:1.65}
 
 /* ─── BENTO BENEFITS ─── */
-.benefits{background-color:var(--bg)}
+.benefits{background-color:var(--bg2)}
 .bento{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -426,7 +426,7 @@ h2.s-title em{font-style:normal;
 }
 
 /* ─── TOOLS ─── */
-.tools{background-color:var(--bg2);padding:80px 6%}
+.tools{background-color:var(--bg);padding:80px 6%}
 .tools-scroll{
   display:flex;flex-wrap:wrap;gap:12px;justify-content:center;
   max-width:860px;margin:0 auto;
@@ -448,7 +448,7 @@ h2.s-title em{font-style:normal;
 }
 
 /* ─── TESTIMONIALS ─── */
-.testi-section{background-color:var(--bg)}
+.testi-section{background-color:var(--bg2)}
 .testi-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:18px;max-width:1000px;margin:0 auto;
@@ -492,7 +492,7 @@ h2.s-title em{font-style:normal;
 .reg-price-block .price-now{font-size:2rem}
 
 /* ─── FAQ ─── */
-.faq-section{background-color:var(--bg2);padding:80px 6%}
+.faq-section{background-color:var(--bg);padding:80px 6%}
 .faq-grid{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
 .faq-item{background:var(--card);border:1.5px solid var(--border);border-top:3px solid var(--teal-accent);border-radius:16px;padding:24px 28px;box-shadow:var(--shadow)}
 .faq-q{font-weight:800;font-size:1rem;color:var(--text);margin-bottom:10px}
@@ -655,7 +655,7 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 }
 
 /* ─── COUNTDOWN ─── */
-.cd-section{padding:56px 20px;background-color:var(--bg);border-bottom:1px solid var(--border);text-align:center}
+.cd-section{padding:56px 20px;background-color:var(--bg2);border-bottom:1px solid var(--border);text-align:center}
 .cd-wrap{max-width:700px;margin:0 auto}
 .cd-title{font-size:1.1rem;font-weight:800;letter-spacing:.14em;color:var(--teal-text);text-transform:uppercase;margin-bottom:6px}
 .cd-sub{font-size:1rem;color:var(--muted);margin-bottom:28px}
@@ -798,24 +798,6 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
   </div>
 </section>
 
-<!-- COUNTDOWN -->
-<section class="cd-section">
-  <div class="cd-wrap">
-    <div class="cd-title">הקורס הבא מתחיל בעוד</div>
-    <div class="cd-timer">
-      <div class="cd-unit"><div class="cd-val" id="cd-d">00</div><div class="cd-lbl">ימים</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-h">00</div><div class="cd-lbl">שעות</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-m">00</div><div class="cd-lbl">דקות</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
-    </div>
-    <div class="cd-sub" style="margin-top:24px;margin-bottom:4px;font-size:1.2rem;color:var(--white)">יום רביעי, 6.5.2026 | 17:00</div>
-    <div class="cd-sub" style="font-size:1rem;margin-bottom:0">4 מפגשים בימי רביעי · שעתיים כל מפגש</div>
-  </div>
-</section>
-
 <!-- PAIN -->
 <section class="pain">
   <div class="s-head c">
@@ -844,6 +826,30 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
       <h3>"פוחד שהטכנולוגיה תעקוף אותי בשוק העבודה"</h3>
       <p>מי שלא ישתלב עם AI כבר מרגיש את זה. זה לא משהו שיקרה, זה קורה עכשיו.</p>
     </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum" id="curriculum">
+  <div class="s-head c">
+    <div class="s-label">תוכן הקורס</div>
+    <h2 class="s-title">מה <em>לומדים</em>?</h2>
+    <p class="s-sub">10 נושאים מחולקים על פני 4 מפגשים אינטנסיביים. כל שיעור: הסבר ותרגול חי שיוצא איתך.</p>
+  </div>
+  <div class="mod-grid">
+    <div class="mod reveal"><div class="mod-n">1</div><div><h3>מה זה AI בכלל</h3><p>איך זה עובד מבפנים, היכן אתה כבר פוגש אותו בלי לדעת, ותרגיל ראשון עם ChatGPT.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">2</div><div><h3>כיצד מכונות לומדות</h3><p>Machine Learning ורשתות נוירונים בשפה פשוטה, בלי נוסחאות.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">3</div><div><h3>Generative AI וכלים מובילים</h3><p>ChatGPT, Gemini, Claude, DALL·E, Midjourney, Runway, ElevenLabs ועוד.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">4</div><div><h3>7 עקרונות לפרומפטים שעובדים</h3><p>ניסוח מדויק, הגדרת תפקיד, אילוצים, Zero-Shot ועד Chain-of-Thought.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">5</div><div><h3>טכניקות פרומפטינג מתקדמות</h3><p>One-Shot, Few-Shot, Self-Criticism, Iterative, כל מה שגורם ל-AI לתת תוצאות טובות.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">6</div><div><h3>סוכני AI ו-GPTs מותאמים אישית</h3><p>בונים סוכן AI לתחום שלך, כולל סוכן שכותב מיילים ואחד שבונה מצגות.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">7</div><div><h3>מצגות מקצועיות עם AI</h3><p>7 שלבים: מהגדרת מסר עד עיצוב ב-DALL·E וסיום מושלם ב-Gamma.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">8</div><div><h3>מחקר עמוק עם AI</h3><p>מתודולוגיית מחקר, אימות מקורות ומניעת הזיות.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">9</div><div><h3>אוטומציה ו-AI לעסקים</h3><p>שילוב AI בזרימת העבודה ויצירת יתרון תחרותי אמיתי.</p></div></div>
+    <div class="mod reveal"><div class="mod-n">10</div><div><h3>תרגול חי + אתגר אישי</h3><p>כל משתתף עוזב עם פתרון מעשי לאתגר מהעבודה שלו עצמו.</p></div></div>
+  </div>
+  <div style="text-align:center;margin-top:48px">
+    <a href="#register" class="cta-main">אני רוצה להצטרף לקורס הזה</a>
   </div>
 </section>
 
@@ -883,30 +889,6 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
         שיוצא איתך לעולם ומשנה את דרך העבודה שלך.
       </p>
     </div>
-  </div>
-</section>
-
-<!-- CURRICULUM -->
-<section class="curriculum" id="curriculum">
-  <div class="s-head c">
-    <div class="s-label">תוכן הקורס</div>
-    <h2 class="s-title">מה <em>לומדים</em>?</h2>
-    <p class="s-sub">10 נושאים מחולקים על פני 4 מפגשים אינטנסיביים. כל שיעור: הסבר ותרגול חי שיוצא איתך.</p>
-  </div>
-  <div class="mod-grid">
-    <div class="mod reveal"><div class="mod-n">1</div><div><h3>מה זה AI בכלל</h3><p>איך זה עובד מבפנים, היכן אתה כבר פוגש אותו בלי לדעת, ותרגיל ראשון עם ChatGPT.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">2</div><div><h3>כיצד מכונות לומדות</h3><p>Machine Learning ורשתות נוירונים בשפה פשוטה, בלי נוסחאות.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">3</div><div><h3>Generative AI וכלים מובילים</h3><p>ChatGPT, Gemini, Claude, DALL·E, Midjourney, Runway, ElevenLabs ועוד.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">4</div><div><h3>7 עקרונות לפרומפטים שעובדים</h3><p>ניסוח מדויק, הגדרת תפקיד, אילוצים, Zero-Shot ועד Chain-of-Thought.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">5</div><div><h3>טכניקות פרומפטינג מתקדמות</h3><p>One-Shot, Few-Shot, Self-Criticism, Iterative, כל מה שגורם ל-AI לתת תוצאות טובות.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">6</div><div><h3>סוכני AI ו-GPTs מותאמים אישית</h3><p>בונים סוכן AI לתחום שלך, כולל סוכן שכותב מיילים ואחד שבונה מצגות.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">7</div><div><h3>מצגות מקצועיות עם AI</h3><p>7 שלבים: מהגדרת מסר עד עיצוב ב-DALL·E וסיום מושלם ב-Gamma.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">8</div><div><h3>מחקר עמוק עם AI</h3><p>מתודולוגיית מחקר, אימות מקורות ומניעת הזיות.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">9</div><div><h3>אוטומציה ו-AI לעסקים</h3><p>שילוב AI בזרימת העבודה ויצירת יתרון תחרותי אמיתי.</p></div></div>
-    <div class="mod reveal"><div class="mod-n">10</div><div><h3>תרגול חי + אתגר אישי</h3><p>כל משתתף עוזב עם פתרון מעשי לאתגר מהעבודה שלו עצמו.</p></div></div>
-  </div>
-  <div style="text-align:center;margin-top:48px">
-    <a href="#register" class="cta-main">אני רוצה להצטרף לקורס הזה</a>
   </div>
 </section>
 
@@ -1052,6 +1034,24 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
       <div class="faq-q">מה קורה אחרי שממלאים טופס?</div>
       <div class="faq-a">תוך שעה תקבל אישור בוואטסאפ. תוך 24 שעות יוחנן יצור איתך קשר אישי לאישור המקום ולסידור התשלום.</div>
     </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="cd-section">
+  <div class="cd-wrap">
+    <div class="cd-title">הקורס הבא מתחיל בעוד</div>
+    <div class="cd-timer">
+      <div class="cd-unit"><div class="cd-val" id="cd-d">00</div><div class="cd-lbl">ימים</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-h">00</div><div class="cd-lbl">שעות</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-m">00</div><div class="cd-lbl">דקות</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
+    </div>
+    <div class="cd-sub" style="margin-top:24px;margin-bottom:4px;font-size:1.2rem">יום רביעי, 6.5.2026 | 17:00</div>
+    <div class="cd-sub" style="font-size:1rem;margin-bottom:0">4 מפגשים בימי רביעי · שעתיים כל מפגש</div>
   </div>
 </section>
 
