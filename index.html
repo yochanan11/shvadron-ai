@@ -666,6 +666,57 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
   .reg-inner{padding:40px 20px}
 }
 
+/* ─── HERO EXTRAS ─── */
+.hero-fit{font-size:.95rem;color:var(--text2);font-weight:500;margin:0 0 12px;text-align:right}
+.hero-details{
+  font-size:.82rem;color:var(--muted);
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:100px;padding:10px 22px;
+  display:inline-block;margin-top:8px;
+  line-height:1.6;
+}
+.hero-trust{font-size:.75rem;color:var(--muted);margin-top:10px;letter-spacing:.02em}
+
+/* ─── PAIN TRANSITION ─── */
+.pain-transition{
+  max-width:700px;margin:40px auto 0;text-align:center;
+  font-size:1rem;color:var(--text2);line-height:1.85;
+  padding:28px 32px;background:var(--card);
+  border-radius:16px;border-top:3px solid var(--teal2);
+  box-shadow:var(--shadow);
+}
+.pain-transition strong{color:var(--text)}
+
+/* ─── OUTCOMES ─── */
+.outcomes-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:12px;max-width:1100px;margin:0 auto 48px;
+}
+.outcome-item{
+  background:var(--card);border:1px solid var(--border);
+  border-right:3px solid var(--teal2);border-radius:14px;
+  padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+  box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;
+}
+.outcome-item:hover{transform:translateX(-3px);box-shadow:var(--shadow-lg)}
+.outcome-icon{flex-shrink:0;font-size:1.3rem;line-height:1;margin-top:2px}
+.outcome-item p{font-size:.9rem;color:var(--text2);line-height:1.65;font-weight:500}
+.syllabus-label{
+  text-align:center;font-size:.78rem;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--muted);margin:0 auto 28px;
+  display:block;
+}
+
+/* ─── TRUST LIST ─── */
+.trust-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.trust-list li{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:var(--text2);line-height:1.6}
+.trust-check{
+  flex-shrink:0;width:22px;height:22px;
+  background:linear-gradient(135deg,var(--teal2),var(--blue2));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:#fff;margin-top:1px;
+}
+
 /* ─── COUNTDOWN ─── */
 .cd-section{padding:56px 20px;background-color:var(--bg2);border-bottom:1px solid var(--border);text-align:center}
 .cd-wrap{max-width:700px;margin:0 auto}
@@ -741,48 +792,22 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
     <div class="hero-text">
       <div class="hero-chip">🔥 נותרו 5 מקומות בלבד · הקורס הבא: 6.5.2026</div>
       <h1 class="hero-title">
-        יוחנן שבדרון<br/>
         <span class="grad-text">הופך אותך למאסטר ב-AI</span>
       </h1>
       <p class="hero-sub">
-        תוך 4 שיעורים תדע בדיוק איך לעבוד עם AI. תחסוך שעות ביום,<br/>
-        תיצור דברים שלא חשבת שאפשר, בצורה מעשית ובעברית פשוטה.
+        4 מפגשי זום מעשיים שבהם תלמד להשתמש בכלי AI, לבנות סוכן אישי, לחסוך זמן בעבודה ולהוציא תוצאות אמיתיות — כבר תוך כדי הקורס.
       </p>
-      <div class="course-bar">
-        <div class="cb-item">
-          <span class="cb-icon">📅</span>
-          <span class="cb-val">יום רביעי<br/>06/05 · 17:00</span>
-          <span class="cb-lbl">תאריך פתיחה</span>
-        </div>
-        <div class="cb-item">
-          <span class="cb-icon">👥</span>
-          <span class="cb-val">4</span>
-          <span class="cb-lbl">מפגשים</span>
-        </div>
-        <div class="cb-item cb-hide-mobile">
-          <span class="cb-icon">🕐</span>
-          <span class="cb-val">שעתיים</span>
-          <span class="cb-lbl">כל מפגש</span>
-        </div>
-        <div class="cb-item cb-hide-mobile">
-          <span class="cb-icon">🎥</span>
-          <span class="cb-val">בזום</span>
-          <span class="cb-lbl">מכל מקום</span>
-        </div>
-        <div class="cb-item">
-          <span class="cb-icon">📈</span>
-          <span class="cb-val">תרגול חי</span>
-          <span class="cb-lbl">50% בכל שיעור</span>
-        </div>
+      <p class="hero-fit">מתאים לבעלי עסקים, שכירים ואנשי מקצוע — גם בלי רקע טכני.</p>
+      <div class="hero-details">📅 יום רביעי 06/05 &nbsp;·&nbsp; 4 מפגשים &nbsp;·&nbsp; שעתיים כל מפגש &nbsp;·&nbsp; בזום &nbsp;·&nbsp; תרגול חי</div>
+      <div class="hero-ctas" style="margin-top:28px">
+        <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
+        <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A3%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA" target="_blank" class="cta-ghost">קבל פרטים בוואטסאפ</a>
       </div>
+      <div class="hero-trust">ללא התחייבות &nbsp;·&nbsp; חזרה מהירה &nbsp;·&nbsp; מספר המקומות מוגבל</div>
       <div class="hero-price">
         <span class="price-old">800 ₪</span>
         <span class="price-now">680 ₪</span>
         <span class="price-badge">מחיר מוקדם</span>
-      </div>
-      <div class="hero-ctas" style="margin-top:16px">
-        <a href="#register" class="cta-main">שמרו מקום עכשיו</a>
-        <a href="#curriculum" class="cta-ghost">מה לומדים?</a>
       </div>
     </div>
     <div class="hero-photo-wrap">
@@ -803,8 +828,8 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
       <div class="h-num-lbl">בוגרים מרוצים</div>
     </div>
     <div class="h-num">
-      <div class="h-num-val">100%</div>
-      <div class="h-num-lbl">פרקטי ורלוונטי לך</div>
+      <div class="h-num-val">4</div>
+      <div class="h-num-lbl">מפגשי זום אינטנסיביים</div>
     </div>
   </div>
   </div>
@@ -814,30 +839,32 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 <section class="pain">
   <div class="s-head c">
     <div class="s-label">האתגר שלך</div>
-    <h2 class="s-title">מכיר את <em>התחושות</em> האלה?</h2>
-    <p class="s-sub">אתה לא לבד. אלו הבעיות שרוב האנשים מגיעים איתן, ויוצאים בלעדיהן.</p>
+    <h2 class="s-title">מכיר את <em>זה</em>?</h2>
   </div>
   <div class="pain-grid">
     <div class="pain-card reveal">
-      
-      <h3>"כולם מדברים על AI אבל אני לא יודע מאיפה להתחיל"</h3>
+      <div class="p-icon">🤷</div>
+      <h3>"כולם מדברים על AI, אבל אני עדיין לא יודע מאיפה להתחיל"</h3>
       <p>חסר לך בסיס הדרגתי שיסביר הכל מאפס, בלי ז'רגון טכני מבלבל.</p>
     </div>
     <div class="pain-card reveal">
-      
-      <h3>"אני מבזבז שעות על דברים שAI יכול לעשות בדקות"</h3>
+      <div class="p-icon">⏳</div>
+      <h3>"אני מבזבז זמן על משימות שAI יכול לעשות בדקות"</h3>
       <p>אחרים כבר עובדים חכם יותר, עם הכלים הנכונים ובלי לבזבז זמן.</p>
     </div>
     <div class="pain-card reveal">
-      
-      <h3>"ניסיתי ChatGPT אבל לא יצא לי כלום שימושי"</h3>
+      <div class="p-icon">😤</div>
+      <h3>"ניסיתי ChatGPT וקיבלתי תשובות כלליות שלא באמת עזרו"</h3>
       <p>בלי פרומפטים נכונים, ה-AI נותן תוצאות גנריות שלא עוזרות לך בעבודה.</p>
     </div>
     <div class="pain-card reveal">
-      
-      <h3>"פוחד שהטכנולוגיה תעקוף אותי בשוק העבודה"</h3>
+      <div class="p-icon">😰</div>
+      <h3>"אני מרגיש שהעולם מתקדם ואני לא רוצה להישאר מאחור"</h3>
       <p>מי שלא ישתלב עם AI כבר מרגיש את זה. זה לא משהו שיקרה, זה קורה עכשיו.</p>
     </div>
+  </div>
+  <div class="pain-transition reveal">
+    בדיוק בשביל זה נבנה הקורס — <strong>לא כדי להרשים אותך במושגים, אלא כדי שתדע לעבוד עם AI בפועל.</strong>
   </div>
 </section>
 
@@ -861,21 +888,19 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
     </div>
     <div class="about-text reveal">
       <div class="s-label">המרצה</div>
-      <h2 class="s-title">יוחנן <em>שבדרון</em></h2>
+      <h2 class="s-title">למה ללמוד דווקא <em>איתי</em>?</h2>
       <p>
-        בוגר תואר במדעי המחשב עם התמחות בבינה מלאכותית, <strong>מפתח אפליקציות ומנתח נתונים</strong>.
-        יוחנן יודע לפרק דברים מורכבים לחתיכות קטנות שאפשר לעשות איתן משהו.
-        לא סתם להסביר, אלא לגרום לך להבין ולזכור.
+        בן 33, חסיד קרלין, נשוי ואב לארבעה. בוגר מדעי המחשב עם התמחות בבינה מלאכותית,
+        <strong>מפתח אפליקציות ומנתח נתונים</strong>.
+        יוחנן <strong>מכיר את הציבור החרדי מבפנים</strong> ויודע איך לדבר על טכנולוגיה בלי שתרגיש שזה לא בשבילך.
       </p>
-      <p>
-        בן 33, חסיד קרלין, נשוי ואב לארבעה. יוחנן <strong>מכיר את הציבור החרדי מבפנים</strong>
-        ויודע איך לדבר על טכנולוגיה בלי שתרגיש שזה לא בשבילך.
-        הוא מסביר בשפה שלך, בקצב שלך.
-      </p>
-      <p>
-        לא עוד הרצאה תיאורטית. כאן כל שיעור הוא <strong>תרגיל אמיתי</strong>
-        שיוצא איתך לעולם ומשנה את דרך העבודה שלך.
-      </p>
+      <ul class="trust-list">
+        <li><span class="trust-check">✓</span>בוגר מדעי המחשב עם התמחות בבינה מלאכותית</li>
+        <li><span class="trust-check">✓</span>ניסיון בפיתוח אפליקציות, ניתוח נתונים ואוטומציות</li>
+        <li><span class="trust-check">✓</span>מסביר בשפה פשוטה — גם למי שמתחיל מאפס</li>
+        <li><span class="trust-check">✓</span>כל שיעור הוא עבודה מעשית, לא הרצאה תיאורטית</li>
+        <li><span class="trust-check">✓</span>כל משתתף יוצא עם סוכן AI אישי שמותאם לצורך שלו</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -883,10 +908,21 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 <!-- CURRICULUM -->
 <section class="curriculum" id="curriculum">
   <div class="s-head c">
-    <div class="s-label">תוכן הקורס</div>
-    <h2 class="s-title">מה <em>לומדים</em>?</h2>
-    <p class="s-sub">8 נושאים מחולקים על פני 4 מפגשים אינטנסיביים. כל שיעור: הסבר ותרגול חי שיוצא איתך.</p>
+    <div class="s-label">תוצאות הקורס</div>
+    <h2 class="s-title">מה תדע לעשות <em>בסוף הקורס</em>?</h2>
+    <p class="s-sub">לא מה נלמד — מה תוציא מזה לעבודה ולחיים.</p>
   </div>
+  <div class="outcomes-grid">
+    <div class="outcome-item reveal"><span class="outcome-icon">✍️</span><p>לכתוב פרומפטים שמוציאים תשובות מדויקות ושימושיות</p></div>
+    <div class="outcome-item reveal"><span class="outcome-icon">🤖</span><p>לבנות סוכן AI אישי שמותאם לעבודה או לעסק שלך</p></div>
+    <div class="outcome-item reveal"><span class="outcome-icon">📄</span><p>להכין תוכן, מיילים, מסמכים ומצגות מהר יותר</p></div>
+    <div class="outcome-item reveal"><span class="outcome-icon">🔍</span><p>לבצע מחקר ובדיקת מידע בצורה חכמה ומדויקת</p></div>
+    <div class="outcome-item reveal"><span class="outcome-icon">🧭</span><p>לדעת מתי להשתמש ב-ChatGPT, Claude, Gemini וכל כלי אחר</p></div>
+    <div class="outcome-item reveal"><span class="outcome-icon">⚡</span><p>לחסוך זמן במשימות שחוזרות על עצמן בעבודה שלך</p></div>
+    <div class="outcome-item reveal"><span class="outcome-icon">🧠</span><p>להבין את הבסיס של AI בלי להסתבך במונחים טכניים</p></div>
+    <div class="outcome-item reveal"><span class="outcome-icon">🛡️</span><p>להשתמש ב-AI בצורה בטוחה, אחראית ומעשית</p></div>
+  </div>
+  <span class="syllabus-label">הסילבוס המלא</span>
   <div class="mod-grid">
     <div class="mod reveal"><div class="mod-n">1</div><div><h3>מה זה AI בכלל</h3><p>איך זה עובד מבפנים, היכן אתה כבר פוגש אותו בלי לדעת, ותרגיל ראשון עם ChatGPT.</p></div></div>
     <div class="mod reveal"><div class="mod-n">2</div><div><h3>כיצד מכונות לומדות</h3><p>Machine Learning ורשתות נוירונים בשפה פשוטה, בלי נוסחאות.</p></div></div>
@@ -906,7 +942,7 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 <section class="benefits">
   <div class="s-head c">
     <div class="s-label">למה הקורס הזה?</div>
-    <h2 class="s-title">היתרונות ש<em>יפתיעו</em> אותך</h2>
+    <h2 class="s-title">מה <em>תרוויח</em> מהקורס?</h2>
     <p class="s-sub">לא עוד קורס שמסביר מה זה ChatGPT. כאן יוצאים עם ידיים שעובדות.</p>
   </div>
   <div class="bento">
@@ -1069,14 +1105,13 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 <section class="register" id="register">
   <div class="reg-inner">
     <div class="s-label">הרשמה</div>
-    <h2 class="s-title">נשארו <em>5 מקומות</em> בלבד</h2>
-    <p class="s-sub" style="margin:0 auto">השאר פרטים, יוחנן יחזור אליך תוך שעה בוואטסאפ.</p>
+    <h2 class="s-title">רוצה לבדוק התאמה ל<em>קורס הקרוב</em>?</h2>
+    <p class="s-sub" style="margin:0 auto">השאר פרטים ואחזור אליך עם כל המידע על המחזור הקרוב.</p>
     <div class="reg-price-block">
       <span class="price-old">800 ₪</span>
       <span class="price-now">680 ₪</span>
-      <span class="price-badge">מחיר מוקדם · נגמר בקרוב</span>
+      <span class="price-badge">מחיר מוקדם · נותרו 5 מקומות</span>
     </div>
-    <div class="or-divider" style="margin-top:24px"><span>מלא פרטים ואחזור אליך</span></div>
 
     <form class="form-box reveal" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
@@ -1091,14 +1126,10 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 
 יוחנן שבדרון
 shwadron.ai"/>
-      <div class="f-row">
-        <div class="f-g"><label>שם פרטי *</label><input type="text" name="שם" placeholder="ישראל" required/></div>
-        <div class="f-g"><label>שם משפחה *</label><input type="text" name="משפחה" placeholder="ישראלי" required/></div>
-      </div>
+      <div class="f-g"><label>שם מלא *</label><input type="text" name="שם" placeholder="ישראל ישראלי" required/></div>
       <div class="f-g"><label>טלפון *</label><input type="tel" name="טלפון" placeholder="050-0000000" required/></div>
-      <div class="f-g"><label>אימייל *</label><input type="email" name="אימייל" placeholder="israel@example.com" required/></div>
       <div class="f-g">
-        <label>תחום עיסוק</label>
+        <label>תחום עיסוק (אופציונלי)</label>
         <select name="תחום">
           <option value="">בחר תחום...</option>
           <option>הנהלת חשבונות / כספים</option>
@@ -1111,12 +1142,8 @@ shwadron.ai"/>
           <option>אחר</option>
         </select>
       </div>
-      <div class="f-g">
-        <label>מה האתגר הגדול שלך מול AI? (אופציונלי)</label>
-        <textarea name="אתגר" placeholder="ספר לנו מה מעניין אותך..."></textarea>
-      </div>
-      <button type="submit" class="f-submit">שלח פרטים ואחזור אליך בהקדם</button>
-      <p class="f-note">הפרטים שלך מאובטחים ולא יועברו לגורם שלישי</p>
+      <button type="submit" class="f-submit">שלח פרטים</button>
+      <p class="f-note">הפרטים נשמרים לשיחת התאמה בלבד.</p>
     </form>
   </div>
 </section>
@@ -1130,7 +1157,7 @@ shwadron.ai"/>
 </footer>
 
 <!-- FAB -->
-<a href="#register" class="fab">⚡ שמרו מקום עכשיו · מקומות מוגבלים</a>
+<a href="#register" class="fab">⚡ בדוק אם נשאר מקום · נותרו 5 מקומות</a>
 
 <!-- WhatsApp FAB -->
 <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA"
