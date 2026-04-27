@@ -1393,5 +1393,46 @@
   </main>
 
   <a class="wa-fab" href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D" target="_blank" rel="noopener" aria-label="שלח הודעה בוואטסאפ">WA</a>
+
+  <script>
+    const GAS_URL = "https://script.google.com/macros/s/AKfycbzG8op1dqWRqtC_OqpvH6oME2N1s7kLG_HW5BTu91y9p2lGt0xL_B180fFNckYMi_mS7w/exec";
+    const THANKS_URL = "https://www.shwadron-ai.com/thanks.html";
+
+    document.querySelector(".form-box").addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      const formData = new FormData(form);
+      const fullName = formData.get("שם מלא") || "";
+
+      formData.append("שם", fullName);
+      formData.append("תחום", formData.get("תחום עיסוק") || "");
+      formData.append("מקור", "SHWADRON.AI Landing Page");
+      formData.append("תאריך", new Date().toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" }));
+
+      submitButton.disabled = true;
+      submitButton.textContent = "שולח פרטים...";
+
+      try {
+        await Promise.allSettled([
+          fetch(GAS_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: new URLSearchParams(formData)
+          }),
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" }
+          })
+        ]);
+      } finally {
+        submitButton.textContent = originalText;
+        window.location.href = THANKS_URL;
+      }
+    });
+  </script>
 </body>
 </html>
