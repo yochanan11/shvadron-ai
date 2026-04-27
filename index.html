@@ -989,6 +989,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
+      direction: ltr;
     }
 
     .countdown-item {
@@ -997,6 +998,7 @@
       border-radius: 8px;
       padding: 12px 8px;
       text-align: center;
+      direction: rtl;
     }
 
     .countdown-item strong {
@@ -1338,7 +1340,24 @@
       }
 
       .countdown-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .countdown {
+        padding: 14px 10px;
+      }
+
+      .countdown-item {
+        padding: 10px 4px;
+      }
+
+      .countdown-item strong {
+        font-size: 1.25rem;
+      }
+
+      .countdown-item span {
+        font-size: 0.78rem;
       }
 
       .agent-visual {
@@ -1696,8 +1715,8 @@
             <li>תרגול חי</li>
             <li>סוכן AI אישי</li>
           </ul>
-          <div class="countdown" data-countdown="2026-05-06T20:30:00+03:00" aria-label="שעון עצר עד פתיחת הקורס">
-            <p class="countdown-title">שעון עצר עד פתיחת הקורס</p>
+          <div class="countdown" id="course-countdown" data-countdown="2026-05-06T20:30:00+03:00" aria-label="זמן שנותר עד פתיחת הקורס">
+            <p class="countdown-title">המחזור נפתח בעוד</p>
             <div class="countdown-grid" aria-live="polite">
               <div class="countdown-item">
                 <strong data-countdown-days>0</strong>
