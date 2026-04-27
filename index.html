@@ -728,6 +728,22 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 .cd-lbl{font-size:.9rem;color:var(--muted);margin-top:8px;letter-spacing:.08em}
 .cd-colon{font-size:3rem;font-weight:900;color:rgba(0,150,124,.25);line-height:1;padding-top:6px}
 @media(max-width:600px){.cd-val{font-size:2.4rem}.cd-unit{min-width:62px}.cd-colon{font-size:2rem}}
+
+/* ─── MOBILE: NEW ELEMENTS ─── */
+@media(max-width:600px){
+  .hero-details{font-size:.75rem;padding:8px 16px;display:block;text-align:center}
+  .hero-fit{text-align:center}
+  .hero-trust{text-align:center}
+  .outcomes-grid{grid-template-columns:1fr}
+  .outcome-item{padding:14px 16px}
+  .pain-transition{padding:20px;font-size:.93rem}
+  .trust-list li{font-size:.9rem}
+  .syllabus-label{font-size:.72rem}
+  .section-cta{padding:40px 5%}
+}
+@media(max-width:900px){
+  .outcomes-grid{grid-template-columns:1fr 1fr}
+}
 </style>
 
 <script type="application/ld+json">
@@ -865,6 +881,9 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
   </div>
   <div class="pain-transition reveal">
     בדיוק בשביל זה נבנה הקורס — <strong>לא כדי להרשים אותך במושגים, אלא כדי שתדע לעבוד עם AI בפועל.</strong>
+  </div>
+  <div style="text-align:center;margin-top:32px">
+    <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
   </div>
 </section>
 
@@ -1126,11 +1145,11 @@ footer .ft{color:var(--teal);font-weight:700;margin-top:6px;font-size:.85rem}
 
 יוחנן שבדרון
 shwadron.ai"/>
-      <div class="f-g"><label>שם מלא *</label><input type="text" name="שם" placeholder="ישראל ישראלי" required/></div>
-      <div class="f-g"><label>טלפון *</label><input type="tel" name="טלפון" placeholder="050-0000000" required/></div>
+      <div class="f-g"><label for="f-name">שם מלא *</label><input id="f-name" type="text" name="שם" placeholder="ישראל ישראלי" required/></div>
+      <div class="f-g"><label for="f-phone">טלפון *</label><input id="f-phone" type="tel" name="טלפון" placeholder="050-0000000" required/></div>
       <div class="f-g">
-        <label>תחום עיסוק (אופציונלי)</label>
-        <select name="תחום">
+        <label for="f-field">תחום עיסוק (אופציונלי)</label>
+        <select id="f-field" name="תחום">
           <option value="">בחר תחום...</option>
           <option>הנהלת חשבונות / כספים</option>
           <option>עבודה סוציאלית</option>
@@ -1145,6 +1164,15 @@ shwadron.ai"/>
       <button type="submit" class="f-submit">שלח פרטים</button>
       <p class="f-note">הפרטים נשמרים לשיחת התאמה בלבד.</p>
     </form>
+    <div class="or-divider" style="margin-top:28px"><span>או</span></div>
+    <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A3%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA"
+       target="_blank"
+       style="display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;font-weight:800;font-size:1rem;padding:16px 32px;border-radius:100px;text-decoration:none;box-shadow:0 6px 24px rgba(37,211,102,.35);transition:all .3s;margin-top:4px"
+       onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(37,211,102,.5)'"
+       onmouseout="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(37,211,102,.35)'">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="22" height="22"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.45 11.45 0 0 1-5.823-1.587l-.418-.248-4.33 1.062 1.1-4.22-.272-.432A11.5 11.5 0 1 1 16 27.5zm6.29-8.61c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+      קבל פרטים בוואטסאפ
+    </a>
   </div>
 </section>
 
