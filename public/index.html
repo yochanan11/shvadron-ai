@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>קורס AI לציבור החרדי | לימוד AI לחרדים עם יוחנן שבדרון</title>
+<meta name="description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. לימוד AI לחרדים בלי רקע טכני, כולל ChatGPT, Claude, Gemini, תרגול חי וכלים מעשיים לעבודה."/>
+<meta name="keywords" content="קורס AI, קורס בינה מלאכותית, קורס ChatGPT, ללמוד AI בעברית, קורס AI לעסקים, שבדרון AI, יוחנן שבדרון, AI לעבודה, כלי AI, Claude, Gemini, Custom GPTs, AI לציבור החרדי"/>
+<meta name="author" content="יוחנן שבדרון"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://www.shwadron-ai.com/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.shwadron-ai.com/"/>
+<meta property="og:title" content="קורס AI לציבור החרדי | לימוד AI לחרדים עם יוחנן שבדרון"/>
+<meta property="og:description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. לימוד AI לחרדים בלי רקע טכני, כולל ChatGPT, Claude, Gemini, תרגול חי וכלים מעשיים לעבודה."/>
+<meta property="og:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
+<meta property="og:locale" content="he_IL"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="קורס AI לציבור החרדי | לימוד AI לחרדים עם יוחנן שבדרון"/>
+<meta name="twitter:description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. לימוד AI לחרדים בלי רקע טכני, כולל ChatGPT, Claude, Gemini."/>
+<meta name="twitter:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
+<link rel="icon" type="image/png" href="icon.svg"/>
+<link rel="apple-touch-icon" href="icon-logo.png"/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#0063ed;
+  --blue2:#0f8eea;
+  --teal:#2edebf;
+  --teal2:#00c9a7;
+  --teal-text:#00967c;
+  --navy:#0a1628;
+  --bg:#f3f4f8;
+  --bg2:#ffffff;
+  --card:#ffffff;
+  --text:#0d0d0d;
+  --text2:#1f2937;
+  --muted:#6b7280;
+  --border:rgba(0,0,0,.11);
+  --shadow:0 2px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.13);
+  --urgent:#dc2626;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Heebo',sans-serif;
+  background:var(--bg2);
+  color:var(--text);
+  direction:rtl;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  padding:0 6%;
+  display:flex;justify-content:space-between;align-items:center;
+  background:#0d0d0d;
+  height:64px;
+}
+.logo img{height:48px;width:auto;display:block}
+.nav-links{
+  display:flex;align-items:center;gap:6px;
+  list-style:none;
+}
+.nav-links a{
+  color:rgba(255,255,255,.72);
+  font-size:.875rem;font-weight:600;
+  text-decoration:none;
+  padding:7px 14px;border-radius:8px;
+  transition:color .2s,background .2s;
+  white-space:nowrap;
+}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-btn{
+  background:var(--blue);
+  color:#fff;
+  padding:9px 22px;border-radius:8px;
+  font-weight:700;font-size:.85rem;text-decoration:none;
+  transition:background .2s;
+  white-space:nowrap;
+}
+.nav-btn:hover{background:#0052cc}
+/* hamburger */
+.nav-hamburger{
+  display:none;flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:none;padding:4px;
+}
+.nav-hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:768px){
+  .nav-links{
+    display:none;position:fixed;top:64px;right:0;left:0;
+    background:#0d0d0d;flex-direction:column;align-items:stretch;
+    padding:12px 6% 20px;gap:2px;
+    border-top:1px solid rgba(255,255,255,.1);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 16px;border-radius:8px;font-size:1rem}
+  .nav-btn-wrap{display:none}
+  .nav-hamburger{display:flex}
+  .logo img{height:40px}
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  background:#fff;
+  position:relative;overflow:hidden;
+  padding-top:80px;
+}
+.hero-circuit{
+  position:absolute;inset:0;pointer-events:none;z-index:0;
+}
+.hero-content{
+  flex:1;width:100%;max-width:1280px;
+  margin:0 auto;padding:0 6%;
+  display:flex;align-items:stretch;
+  position:relative;z-index:1;
+}
+.hero-text-col{
+  flex:1;display:flex;flex-direction:column;
+  justify-content:center;
+  padding:60px 0 80px;
+}
+.hero-char-col{
+  width:440px;flex-shrink:0;
+  position:relative;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.hero-char-glow{
+  position:absolute;
+  width:420px;height:420px;
+  background:radial-gradient(ellipse at center,rgba(0,99,237,.045) 0%,rgba(46,222,191,.03) 52%,transparent 74%);
+  border-radius:50%;
+  top:50%;left:50%;
+  transform:translate(-50%,-30%);
+  pointer-events:none;
+}
+.hero-character-img{
+  position:relative;z-index:2;
+  width:100%;max-width:420px;
+  height:auto;display:block;
+  object-fit:contain;object-position:bottom center;
+  filter:drop-shadow(0 20px 48px rgba(0,99,237,.09));
+}
+.hero-band{
+  height:10px;
+  background:linear-gradient(90deg,#0a1628 0%,var(--blue) 42%,var(--teal2) 100%);
+  flex-shrink:0;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,99,237,.07);
+  border:1px solid rgba(0,99,237,.18);
+  color:var(--blue);
+  padding:6px 16px;border-radius:100px;
+  font-size:.78rem;font-weight:700;
+  margin-bottom:22px;align-self:flex-start;
+}
+.hero-badge-dot{
+  width:6px;height:6px;background:var(--blue);
+  border-radius:50%;flex-shrink:0;
+  animation:dot-blink 1.8s ease-in-out infinite;
+}
+@keyframes dot-blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-name{
+  font-size:clamp(3rem,6.5vw,5.8rem);
+  font-weight:900;line-height:1.0;
+  letter-spacing:-3px;color:var(--text);
+  margin-bottom:10px;
+}
+.hero-services{
+  font-size:clamp(1.3rem,3vw,2.4rem);
+  font-weight:900;
+  color:var(--blue);margin-bottom:18px;
+  letter-spacing:-.5px;line-height:1.2;
+}
+.hero-sep{
+  width:56px;height:3px;
+  background:linear-gradient(90deg,var(--teal2),var(--blue));
+  border-radius:2px;
+  margin-bottom:14px;
+}
+.hero-desc{
+  font-size:.9rem;color:var(--muted);
+  margin-bottom:18px;line-height:1.7;
+  max-width:460px;
+}
+h1.hero-title{
+  font-size:clamp(1.25rem,2.2vw,1.75rem);
+  font-weight:800;line-height:1.4;
+  letter-spacing:-.3px;color:var(--text);
+  margin-bottom:10px;
+}
+h1.hero-title .accent{
+  background:linear-gradient(130deg,var(--blue) 0%,var(--teal2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-slogan{
+  font-size:.88rem;font-weight:600;
+  color:var(--teal-text);
+  margin-bottom:26px;letter-spacing:.01em;
+}
+.hero-trust-chips{display:flex;flex-wrap:wrap;gap:7px}
+.htc{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(0,150,124,.06);
+  border:1px solid rgba(0,150,124,.14);
+  color:var(--teal-text);
+  padding:5px 11px;border-radius:100px;
+  font-size:.73rem;font-weight:600;
+}
+.htc::before{content:'✓ ';font-size:.62rem;font-weight:900}
+
+/* Shared CTAs */
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.cta-main{
+  background:var(--blue);
+  color:#fff;font-weight:800;font-size:1rem;
+  padding:16px 38px;border-radius:100px;
+  text-decoration:none;
+  box-shadow:0 4px 20px rgba(0,99,237,.28);
+  transition:all .25s;
+}
+.cta-main:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,99,237,.38)}
+.cta-wa{
+  display:flex;align-items:center;gap:8px;
+  background:#fff;
+  border:1.5px solid var(--border);
+  color:var(--text2);
+  font-weight:600;font-size:.9rem;
+  padding:15px 26px;border-radius:100px;
+  text-decoration:none;
+  transition:all .25s;
+}
+.cta-wa:hover{border-color:rgba(37,211,102,.4);color:#128c3f;transform:translateY(-2px)}
+.price-old{color:var(--muted);text-decoration:line-through;font-size:.95rem}
+.price-now{font-size:2rem;font-weight:900;color:var(--text)}
+.price-badge{
+  background:rgba(220,38,38,.08);
+  border:1px solid rgba(220,38,38,.2);
+  color:var(--urgent);
+  padding:4px 12px;border-radius:100px;
+  font-size:.75rem;font-weight:700;
+}
+
+/* COUNTDOWN */
+.cd-section{
+  background:var(--navy);
+  padding:52px 6%;
+  text-align:center;
+}
+.cd-wrap{max-width:680px;margin:0 auto}
+.cd-eyebrow{
+  font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:20px;
+}
+.cd-timer{
+  display:flex;justify-content:center;align-items:flex-start;
+  gap:4px;direction:ltr;
+}
+.cd-unit{display:flex;flex-direction:column;align-items:center;min-width:88px}
+.cd-val{
+  font-size:3rem;font-weight:900;line-height:1;
+  color:#fff;
+}
+.cd-lbl{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.06em}
+.cd-colon{font-size:2.6rem;font-weight:900;color:rgba(255,255,255,.18);line-height:1;padding-top:2px}
+.cd-detail{
+  margin-top:24px;
+  font-size:.88rem;color:rgba(255,255,255,.45);
+}
+.cd-detail strong{color:rgba(255,255,255,.75)}
+@media(max-width:600px){
+  .cd-val{font-size:2.1rem}
+  .cd-unit{min-width:58px}
+  .cd-colon{font-size:1.8rem}
+}
+
+/* BRAND PHRASE */
+.brand-phrase{
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  padding:36px 6%;
+  text-align:center;
+}
+.brand-phrase-text{
+  max-width:680px;margin:0 auto;
+  font-size:1.05rem;font-weight:500;
+  color:var(--text2);
+  line-height:1.8;
+}
+.brand-phrase-text strong{
+  color:var(--teal-text);font-weight:700;
+}
+
+/* TRUST BAR */
+.trust-bar{
+  background:var(--bg2);
+  border-bottom:1px solid var(--border);
+  padding:0 6%;
+}
+.trust-inner{
+  max-width:1050px;margin:0 auto;
+  display:flex;flex-wrap:wrap;
+  justify-content:center;
+}
+.trust-item{
+  display:flex;flex-direction:column;align-items:center;
+  padding:28px 32px;
+  border-left:1px solid var(--border);
+  text-align:center;
+  min-width:150px;
+}
+.trust-item:last-child{border-left:none}
+.trust-val{
+  font-size:1.8rem;font-weight:900;color:var(--text);line-height:1;
+  min-width:3.5ch;display:inline-block;
+}
+.trust-lbl{font-size:.76rem;color:var(--muted);margin-top:6px;line-height:1.4}
+@media(max-width:720px){
+  .trust-item{min-width:45%;padding:18px 12px;border-left:none;border-bottom:1px solid var(--border)}
+  .trust-item:nth-last-child(-n+2){border-bottom:none}
+}
+
+/* SECTIONS */
+section{padding:96px 6%}
+.s-label{
+  display:inline-block;
+  font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--teal-text);margin-bottom:14px;
+}
+h2.s-title{
+  font-size:clamp(1.9rem,3.5vw,3rem);
+  font-weight:900;line-height:1.18;letter-spacing:-.8px;
+  color:var(--text);margin-bottom:14px;
+}
+h2.s-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--blue),var(--teal2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.s-sub{font-size:1rem;color:var(--muted);line-height:1.85;max-width:560px}
+.s-head{margin-bottom:56px}
+.s-head.c{text-align:center}
+.s-head.c .s-sub{margin:0 auto}
+
+/* PAIN */
+.pain{background:var(--bg2)}
+.pain-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  max-width:960px;margin:0 auto;
+  align-items:start;
+}
+.pain-col-title{
+  font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.pain-list{
+  display:flex;flex-direction:column;gap:10px;
+  list-style:none;
+}
+.pain-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.9rem;color:var(--text2);line-height:1.6;
+  padding:13px 16px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.pain-check{
+  flex-shrink:0;
+  width:20px;height:20px;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:700;
+  margin-top:1px;
+}
+.pain-check.green{background:rgba(0,150,124,.12);color:var(--teal-text)}
+.pain-check.red{background:rgba(220,38,38,.1);color:var(--urgent)}
+@media(max-width:720px){
+  .pain-layout{grid-template-columns:1fr;gap:28px}
+}
+
+/* SOLUTION */
+.solution{background:var(--bg)}
+.sol-inner{max-width:860px;margin:0 auto}
+.sol-body{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-right:4px solid var(--teal2);
+  border-radius:20px;
+  padding:40px;
+}
+.sol-body p{
+  font-size:1.02rem;color:var(--text2);line-height:1.9;
+  margin-bottom:16px;
+}
+.sol-body p:last-of-type{margin-bottom:0}
+.sol-body strong{color:var(--text);font-weight:700}
+.sol-points{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;margin-top:28px;
+}
+.sol-pt{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.88rem;color:var(--text2);line-height:1.55;
+}
+.sol-pt-icon{
+  flex-shrink:0;
+  width:20px;height:20px;
+  background:var(--teal2);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:.65rem;font-weight:900;
+  margin-top:1px;
+}
+@media(max-width:580px){
+  .sol-points{grid-template-columns:1fr}
+  .sol-body{padding:26px 22px}
+}
+
+/* BENEFITS */
+.benefits{background:var(--bg2)}
+.ben-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  max-width:860px;margin:0 auto;
+}
+.ben-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-top:3px solid var(--teal2);
+  border-radius:20px;
+  padding:32px 28px;
+  box-shadow:var(--shadow);
+  transition:transform .25s,box-shadow .25s;
+}
+.ben-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.ben-num{
+  font-size:1.75rem;font-weight:900;
+  color:var(--teal2);
+  margin-bottom:14px;line-height:1;
+}
+.ben-card h3{font-size:1rem;font-weight:800;color:var(--text);margin-bottom:10px}
+.ben-card p{font-size:.87rem;color:var(--muted);line-height:1.75}
+@media(max-width:580px){.ben-grid{grid-template-columns:1fr}}
+
+/* AGENT */
+.agent-section{
+  background:var(--navy);
+  padding:88px 6%;
+}
+.agent-inner{
+  max-width:980px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 360px;
+  gap:64px;align-items:center;
+}
+.agent-label{
+  display:inline-block;
+  font-size:.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:14px;
+}
+.agent-title{
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  font-weight:900;line-height:1.2;
+  color:#fff;margin-bottom:16px;
+  letter-spacing:-.5px;
+}
+.agent-title span{color:var(--teal)}
+.agent-sub{
+  font-size:.98rem;color:rgba(255,255,255,.58);
+  line-height:1.85;margin-bottom:28px;
+}
+.agent-list{
+  list-style:none;
+  display:flex;flex-direction:column;gap:10px;
+}
+.agent-list li{
+  display:flex;align-items:center;gap:10px;
+  font-size:.88rem;color:rgba(255,255,255,.72);
+  line-height:1.5;
+}
+.agent-list li::before{
+  content:'';flex-shrink:0;
+  width:6px;height:6px;
+  background:var(--teal);border-radius:50%;
+}
+.agent-card-visual{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:28px 24px;
+}
+.acv-label{
+  font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--teal);margin-bottom:18px;
+}
+.acv-examples{display:flex;flex-direction:column;gap:10px}
+.acv-ex{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;
+  padding:14px 16px;
+  font-size:.83rem;color:rgba(255,255,255,.65);
+  line-height:1.55;
+}
+.acv-ex strong{color:rgba(255,255,255,.9);font-weight:700;display:block;margin-bottom:4px}
+.acv-actions{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:18px;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.acv-action-chip{
+  background:rgba(46,222,191,.12);
+  border:1px solid rgba(46,222,191,.22);
+  color:var(--teal);
+  padding:6px 14px;border-radius:100px;
+  font-size:.76rem;font-weight:700;
+}
+@media(max-width:800px){
+  .agent-inner{grid-template-columns:1fr;gap:36px}
+  .agent-card-visual{max-width:460px}
+}
+
+/* TOOLS */
+.tools{background:var(--bg);padding:80px 6%}
+.tools-pills{
+  display:flex;flex-wrap:wrap;gap:10px;
+  justify-content:center;
+  max-width:740px;margin:0 auto;
+}
+.t-pill{
+  background:var(--bg2);
+  border:1.5px solid var(--border);
+  padding:10px 22px;border-radius:100px;
+  font-weight:700;font-size:.88rem;color:var(--text2);
+  box-shadow:var(--shadow);
+  transition:all .2s;cursor:default;
+}
+.t-pill:hover{
+  border-color:rgba(0,99,237,.25);
+  color:var(--blue);
+  transform:translateY(-2px);
+}
+
+/* ABOUT */
+.about{background:var(--bg2)}
+.about-wrap{
+  display:grid;grid-template-columns:340px 1fr;
+  gap:72px;align-items:center;
+  max-width:1000px;margin:0 auto;
+}
+.about-photo-frame{
+  background:linear-gradient(160deg,#edf3fb 0%,#e2ecf8 100%);
+  border-radius:28px;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:center;
+  min-height:380px;
+}
+.about-photo-main{
+  width:100%;height:auto;display:block;
+  object-fit:contain;object-position:center bottom;
+}
+.about-label-dot{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.78rem;font-weight:700;color:var(--blue);
+  margin-bottom:16px;
+}
+.about-label-dot::before{
+  content:'';width:8px;height:8px;
+  background:var(--blue);border-radius:50%;flex-shrink:0;
+}
+.about-main-name{
+  font-size:clamp(2rem,3.8vw,3rem);
+  font-weight:900;line-height:1.08;
+  letter-spacing:-1.2px;color:var(--text);
+  margin-bottom:8px;
+}
+.about-role-new{
+  font-size:1rem;font-weight:700;
+  color:var(--text2);margin-bottom:18px;
+}
+.about-body-text{
+  font-size:.95rem;color:var(--muted);
+  line-height:1.9;margin-bottom:22px;
+}
+.about-bullets{
+  list-style:none;
+  display:flex;flex-direction:column;gap:11px;
+  margin-bottom:28px;
+}
+.about-bullets li{
+  display:flex;align-items:center;gap:10px;
+  font-size:.92rem;font-weight:600;color:var(--text2);
+}
+.about-bullets li::before{
+  content:'';flex-shrink:0;
+  width:8px;height:8px;
+  background:var(--blue);border-radius:50%;
+}
+.about-final-slogan{
+  font-size:.98rem;font-weight:800;color:var(--text);
+}
+@media(max-width:820px){
+  .about-wrap{grid-template-columns:1fr;gap:36px}
+  .about-photo-frame{max-width:320px;margin:0 auto;min-height:300px}
+}
+
+/* CURRICULUM */
+.curriculum{background:var(--bg);padding:96px 6%}
+.sessions{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  max-width:980px;margin:0 auto;
+}
+.session{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:28px 24px;
+  box-shadow:var(--shadow);
+  transition:transform .25s,box-shadow .25s;
+}
+.session:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.session-header{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.session-num{
+  flex-shrink:0;
+  width:36px;height:36px;
+  background:var(--navy);
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:.82rem;color:#fff;
+}
+.session-title{font-size:.98rem;font-weight:800;color:var(--text)}
+.session-topics{
+  list-style:none;
+  display:flex;flex-direction:column;gap:8px;
+}
+.session-topics li{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:.83rem;color:var(--muted);line-height:1.55;
+}
+.session-topics li::before{
+  content:'';flex-shrink:0;
+  width:5px;height:5px;
+  background:var(--teal2);border-radius:50%;
+  margin-top:6px;
+}
+@media(max-width:620px){.sessions{grid-template-columns:1fr}}
+
+/* TESTIMONIALS */
+.testi-section{background:var(--bg2)}
+.testi-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;max-width:980px;margin:0 auto;
+}
+.t-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-top:3px solid var(--teal2);
+  border-radius:20px;padding:28px 24px;
+  box-shadow:var(--shadow);
+  transition:transform .25s,box-shadow .25s;
+}
+.t-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.t-stars{color:#f59e0b;font-size:.82rem;letter-spacing:2px;margin-bottom:14px}
+.t-card p{font-size:.9rem;color:var(--text2);line-height:1.85;margin-bottom:22px}
+.t-author{display:flex;align-items:center;gap:10px}
+.t-av{
+  width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;flex-shrink:0;
+  font-weight:800;color:#fff;
+}
+.av1{background:linear-gradient(135deg,var(--blue),var(--blue2))}
+.av2{background:linear-gradient(135deg,var(--teal2),var(--blue2))}
+.av3{background:linear-gradient(135deg,#8b5cf6,var(--blue))}
+.t-name{font-weight:700;font-size:.85rem;color:var(--text)}
+.t-role{font-size:.75rem;color:var(--muted)}
+
+/* WHATSAPP PROOF */
+.wa-proof-section{background:var(--bg);padding:80px 6%}
+.wa-proof-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  max-width:980px;margin:0 auto;
+}
+.wa-proof-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.wa-proof-card img{
+  width:100%;height:auto;display:block;
+}
+.wa-proof-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:220px;
+  padding:28px 20px;
+  text-align:center;
+  background:var(--bg);
+  border:2px dashed var(--border);
+  border-radius:18px;
+}
+.wa-proof-placeholder p{
+  font-size:.82rem;color:var(--muted);line-height:1.7;max-width:220px;
+}
+.wa-proof-placeholder .wa-icon{
+  width:40px;height:40px;
+  background:rgba(37,211,102,.1);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:12px;
+}
+@media(max-width:820px){
+  .wa-proof-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:540px){
+  .wa-proof-grid{
+    grid-template-columns:1fr;
+    max-width:360px;
+  }
+}
+
+/* URGENCY */
+.urgency{
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:72px 6%;
+}
+.urgency-inner{
+  max-width:820px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.urg-card{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px 22px;
+  box-shadow:var(--shadow);
+}
+.urg-val{font-size:1.6rem;font-weight:900;color:var(--text);line-height:1}
+.urg-lbl{font-size:.8rem;color:var(--muted);margin-top:6px}
+.urg-card.highlight{
+  border-color:rgba(220,38,38,.2);
+  background:rgba(220,38,38,.03);
+}
+.urg-card.highlight .urg-val{color:var(--urgent)}
+.urgency-ctas{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  margin-top:32px;max-width:820px;margin-left:auto;margin-right:auto;
+}
+@media(max-width:580px){.urgency-inner{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-section{background:var(--bg);padding:80px 6%}
+.faq-grid{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.faq-item{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+}
+.faq-btn{
+  width:100%;text-align:right;
+  background:none;border:none;
+  padding:22px 24px;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  font-family:'Heebo',sans-serif;
+}
+.faq-q{font-weight:800;font-size:.95rem;color:var(--text)}
+.faq-arrow{
+  flex-shrink:0;
+  width:22px;height:22px;
+  border-radius:50%;
+  background:var(--bg);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s;
+  font-size:.65rem;color:var(--muted);
+}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-body{
+  display:none;
+  padding:0 24px 20px;
+}
+.faq-item.open .faq-body{display:block}
+.faq-a{color:var(--muted);line-height:1.75;font-size:.88rem}
+
+/* REGISTER */
+.register{background:var(--bg2);padding:96px 6%}
+.reg-inner{max-width:580px;margin:0 auto;text-align:center}
+.reg-price-block{
+  display:flex;align-items:center;gap:12px;
+  justify-content:center;margin-top:18px;flex-wrap:wrap;
+}
+.price-now-lg{font-size:2.2rem;font-weight:900;color:var(--text)}
+.form-box{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:24px;padding:40px 36px;
+  text-align:right;
+  box-shadow:var(--shadow-lg);
+  margin-top:32px;
+}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.f-g{margin-bottom:12px}
+.f-g label{
+  display:block;font-size:.78rem;font-weight:600;
+  color:var(--text2);margin-bottom:5px;
+}
+.f-g input,.f-g select{
+  width:100%;
+  background:var(--bg2);
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  padding:13px 14px;
+  font-family:'Heebo',sans-serif;font-size:.95rem;
+  color:var(--text);direction:rtl;
+  transition:border-color .2s,background .2s;
+}
+.f-g input::placeholder{color:#9ca3af}
+.f-g select option{background:#fff;color:var(--text)}
+.f-g input:focus,.f-g select:focus{
+  outline:none;
+  border-color:var(--blue);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(0,99,237,.1);
+}
+.f-submit{
+  width:100%;
+  background:var(--blue);
+  color:#fff;border:none;
+  padding:17px;border-radius:100px;
+  font-family:'Heebo',sans-serif;font-size:1rem;font-weight:800;
+  cursor:pointer;
+  transition:all .25s;margin-top:6px;
+}
+.f-submit:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,99,237,.32)}
+.f-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.f-wa-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;
+  background:#fff;
+  border:1.5px solid var(--border);
+  color:var(--text2);
+  padding:14px;border-radius:100px;
+  font-family:'Heebo',sans-serif;font-size:.92rem;font-weight:600;
+  cursor:pointer;text-decoration:none;
+  transition:all .2s;margin-top:10px;
+}
+.f-wa-btn:hover{border-color:rgba(37,211,102,.4);color:#128c3f}
+.f-note{font-size:.74rem;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6}
+@media(max-width:560px){
+  .f-row{grid-template-columns:1fr}
+  .form-box{padding:28px 20px}
+}
+
+/* FOOTER */
+footer{
+  background:var(--navy);
+  padding:48px 6%;text-align:center;
+  color:rgba(255,255,255,.38);font-size:.84rem;
+}
+footer strong{color:rgba(255,255,255,.82)}
+.ft-slogan{color:var(--teal);font-weight:600;margin-top:6px;font-size:.82rem}
+
+/* FAB */
+.fab{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  z-index:300;
+  background:var(--navy);
+  color:#fff;font-weight:800;font-size:.9rem;
+  padding:14px 36px;border-radius:100px;
+  text-decoration:none;white-space:nowrap;
+  box-shadow:0 8px 28px rgba(10,22,40,.28);
+  transition:opacity .3s,transform .3s;
+}
+.fab:hover{transform:translateX(-50%) translateY(-2px)}
+@media(max-width:600px){.fab{width:88%;text-align:center;padding:14px 20px;font-size:.85rem}}
+
+/* WhatsApp FAB */
+.wa-fab{
+  position:fixed;bottom:28px;right:28px;z-index:300;
+  width:52px;height:52px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(37,211,102,.38);
+  transition:all .3s;
+}
+.wa-fab:hover{transform:scale(1.08)}
+@media(max-width:600px){
+  .wa-fab{width:46px;height:46px;bottom:88px;right:14px}
+  .wa-fab svg{width:22px;height:22px}
+}
+
+/* AGENT CHAT UI */
+.agent-chat-ui{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;
+  overflow:hidden;
+}
+.acu-header{
+  display:flex;align-items:center;gap:12px;
+  padding:16px 20px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.acu-avatar{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:.78rem;color:#fff;
+  flex-shrink:0;
+}
+.acu-name{font-weight:700;font-size:.88rem;color:#fff}
+.acu-status{
+  display:flex;align-items:center;gap:5px;
+  font-size:.7rem;color:rgba(255,255,255,.45);
+  margin-top:2px;
+}
+.acu-status-dot{
+  width:6px;height:6px;background:#22c55e;
+  border-radius:50%;flex-shrink:0;
+}
+.acu-tabs{
+  display:flex;padding:10px 14px 0;gap:4px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  overflow-x:auto;scrollbar-width:none;
+}
+.acu-tabs::-webkit-scrollbar{display:none}
+.acu-tab{
+  background:none;border:none;cursor:pointer;
+  padding:6px 11px;border-radius:8px 8px 0 0;
+  font-family:'Heebo',sans-serif;
+  font-size:.72rem;font-weight:600;
+  color:rgba(255,255,255,.4);
+  white-space:nowrap;
+  border-bottom:2px solid transparent;
+  margin-bottom:-1px;
+  transition:all .18s;
+}
+.acu-tab.active{color:var(--teal);border-bottom-color:var(--teal);background:rgba(46,222,191,.07)}
+.acu-messages{
+  padding:14px 14px 10px;
+  display:flex;flex-direction:column;gap:9px;
+}
+.acu-msg{
+  padding:9px 13px;border-radius:13px;
+  font-size:.81rem;line-height:1.55;max-width:88%;
+}
+.acu-msg.user{
+  background:rgba(0,99,237,.28);
+  color:rgba(255,255,255,.92);
+  align-self:flex-start;
+  border-radius:13px 13px 13px 4px;
+}
+.acu-msg.ai{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.09);
+  color:rgba(255,255,255,.78);
+  align-self:flex-end;
+  border-radius:13px 13px 4px 13px;
+}
+.acu-suggestions{
+  display:flex;flex-wrap:wrap;gap:6px;
+  padding-top:2px;
+}
+.acu-sug{
+  background:rgba(46,222,191,.1);
+  border:1px solid rgba(46,222,191,.22);
+  color:var(--teal);
+  padding:4px 11px;border-radius:100px;
+  font-family:'Heebo',sans-serif;
+  font-size:.71rem;font-weight:600;
+  cursor:default;
+}
+.acu-input-row{
+  display:flex;gap:8px;align-items:center;
+  padding:11px 14px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.acu-input-row input{
+  flex:1;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:9px;
+  padding:8px 12px;
+  font-family:'Heebo',sans-serif;font-size:.8rem;
+  color:rgba(255,255,255,.45);
+  direction:rtl;outline:none;
+}
+.acu-input-row input::placeholder{color:rgba(255,255,255,.28)}
+.acu-send{
+  background:linear-gradient(135deg,var(--blue),var(--teal2));
+  border:none;border-radius:9px;
+  width:34px;height:34px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:opacity .2s;
+}
+.acu-send:hover{opacity:.85}
+.acu-send:disabled{opacity:.45;cursor:default}
+.acu-typing{
+  display:flex;align-items:center;gap:5px;
+  padding:10px 14px;min-height:36px;
+}
+.acu-typing span{
+  width:7px;height:7px;
+  background:rgba(255,255,255,.35);
+  border-radius:50%;
+  animation:acu-bounce .75s ease-in-out infinite;
+}
+.acu-typing span:nth-child(2){animation-delay:.15s}
+.acu-typing span:nth-child(3){animation-delay:.30s}
+@keyframes acu-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .55s ease,transform .55s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero-char-col{width:360px}
+}
+@media(max-width:780px){
+  .hero-content{flex-direction:column;align-items:center}
+  .hero-text-col{padding:40px 0 20px;align-items:center;text-align:center}
+  .hero-badge{align-self:center}
+  h1.hero-title,.hero-name,.hero-services,.hero-slogan,.hero-desc{text-align:center}
+  .hero-sep{margin-left:auto;margin-right:auto}
+  .hero-ctas{justify-content:center}
+  .hero-trust-chips{justify-content:center}
+  .hero-char-col{width:100%;max-width:300px;padding-bottom:0}
+  .hero-char-glow{width:240px;height:240px}
+}
+@media(max-width:480px){
+  .hero-char-col{max-width:240px}
+  .hero-name{font-size:2.4rem;letter-spacing:-1.5px}
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Course",
+      "name": "קורס AI מעשי לציבור החרדי",
+      "description": "קורס בינה מלאכותית מעשי לציבור החרדי. לומדים ChatGPT, Claude, Gemini, Custom GPTs וסוכני AI. 50% תרגול חי בכל שיעור. מותאם גם בלי רקע טכני.",
+      "provider": {"@type":"Person","name":"יוחנן שבדרון","url":"https://www.shwadron-ai.com/"},
+      "url": "https://www.shwadron-ai.com/",
+      "inLanguage": "he",
+      "courseMode": "online",
+      "educationalLevel": "Beginner",
+      "startDate": "2026-05-06",
+      "image": "https://www.shwadron-ai.com/yochanan.jpg"
+    },
+    {
+      "@type": "Person",
+      "name": "יוחנן שבדרון",
+      "url": "https://www.shwadron-ai.com/",
+      "image": "https://www.shwadron-ai.com/yochanan.jpg",
+      "jobTitle": "מדריך AI",
+      "knowsAbout": ["בינה מלאכותית","ChatGPT","Claude AI","Gemini","AI Agents","Custom GPTs"],
+      "sameAs": ["https://www.shwadron-ai.com/"]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://www.shwadron-ai.com/",
+      "name": "SHWADRON.AI",
+      "inLanguage": "he"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo"><img src="logo.svg" alt="שבדרון AI" width="140" height="56"/></a>
+  <a href="#register" class="nav-btn">הירשם עכשיו</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Circuit background -->
+  <svg class="hero-circuit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g stroke="rgba(0,99,237,0.07)" stroke-width="1.2" fill="none">
+      <path d="M160,180 L160,310 L320,310 L320,420"/>
+      <path d="M1080,140 L1080,270 L960,270 L960,410 L840,410"/>
+      <path d="M60,500 L200,500 L200,610"/>
+      <path d="M580,50 L580,170 L720,170 L720,280"/>
+      <path d="M400,680 L400,570 L540,570"/>
+      <path d="M1000,590 L1000,670 L1130,670"/>
+      <path d="M1240,360 L1090,360"/>
+      <path d="M300,80 L300,160 L440,160"/>
+    </g>
+    <g fill="rgba(46,222,191,0.28)">
+      <circle cx="160" cy="310" r="4"/><circle cx="320" cy="310" r="3"/><circle cx="320" cy="420" r="3"/>
+      <circle cx="1080" cy="270" r="4"/><circle cx="960" cy="270" r="3"/><circle cx="960" cy="410" r="3"/>
+      <circle cx="200" cy="500" r="4"/><circle cx="580" cy="170" r="3"/>
+      <circle cx="720" cy="170" r="4"/><circle cx="400" cy="570" r="3"/>
+      <circle cx="1000" cy="590" r="3"/><circle cx="300" cy="160" r="3"/>
+    </g>
+    <g fill="rgba(0,99,237,0.06)">
+      <circle cx="480" cy="340" r="2.5"/><circle cx="800" cy="110" r="2"/>
+      <circle cx="1160" cy="530" r="2.5"/><circle cx="240" cy="640" r="2"/>
+      <circle cx="680" cy="490" r="2"/><circle cx="1040" cy="190" r="2"/>
+      <circle cx="140" cy="430" r="1.8"/><circle cx="900" cy="350" r="2"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <!-- עמודת טקסט (ימין ב-RTL) -->
+    <div class="hero-text-col">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        קורס AI מעשי לציבור החרדי
+      </div>
+      <div class="hero-name">יוחנן שבדרון</div>
+      <div class="hero-services">AI, קורסים, הרצאות וליווי לעסקים</div>
+      <div class="hero-sep" aria-hidden="true"></div>
+      <p class="hero-desc">מותג שמנגיש בינה מלאכותית בצורה ברורה, פרקטית ומדויקת</p>
+      <h1 class="hero-title">
+        בינה מלאכותית לציבור החרדי,<br/>
+        <span class="accent">בצורה פשוטה ומעשית</span>
+      </h1>
+      <p class="hero-slogan">יוחנן שבדרון הופך אותך למאסטר</p>
+      <div class="hero-ctas">
+        <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
+        <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
+           target="_blank" rel="noopener" class="cta-wa"
+           aria-label="קבל פרטים על הקורס בוואטסאפ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+          קבל פרטים בוואטסאפ
+        </a>
+      </div>
+      <div class="hero-trust-chips">
+        <span class="htc">מותאם לציבור החרדי</span>
+        <span class="htc">הסבר בגובה העיניים</span>
+        <span class="htc">תרגול חי</span>
+        <span class="htc"><span dir="ltr">300+ </span>בוגרים</span>
+        <span class="htc">בלי רקע טכני</span>
+      </div>
+    </div>
+
+    <!-- עמודת דמותג (שמאל ב-RTL) -->
+    <div class="hero-char-col">
+      <div class="hero-char-glow"></div>
+      <img class="hero-character-img"
+           src="public/images/brand/yochanan-character.png"
+           alt="יוחנן שבדרון - מדריך AI לציבור החרדי"
+           width="420" height="600"/>
+    </div>
+  </div>
+
+  <!-- פס תחתון -->
+  <div class="hero-band" aria-hidden="true"></div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="cd-section">
+  <div class="cd-wrap">
+    <div class="cd-eyebrow">הקורס הבא מתחיל בעוד</div>
+    <div class="cd-timer">
+      <div class="cd-unit"><div class="cd-val" id="cd-d">00</div><div class="cd-lbl">ימים</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-h">00</div><div class="cd-lbl">שעות</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-m">00</div><div class="cd-lbl">דקות</div></div>
+      <div class="cd-colon">:</div>
+      <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
+    </div>
+    <div class="cd-detail">
+      <strong>יום רביעי, 6.5.2026 | 17:00</strong> · 4 מפגשים בימי רביעי · שעתיים כל מפגש
+    </div>
+  </div>
+</section>
+
+<!-- BRAND PHRASE -->
+<div class="brand-phrase">
+  <p class="brand-phrase-text">
+    <strong>AI בלי בלבול. בלי פחד.</strong>
+    הדרך הפשוטה והמעשית להיכנס לעולם הבינה המלאכותית, בלי רקע טכני ובלי להרגיש שזה לא בשבילך.
+  </p>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-val" data-count="300" data-suffix="+">300+</div>
+      <div class="trust-lbl">בוגרים שלמדו לעבוד<br/>עם AI בפועל</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-val" data-count="4">4</div>
+      <div class="trust-lbl">מפגשים חיים,<br/>קצרים וממוקדים</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-val" data-count="50" data-suffix="%">50%</div>
+      <div class="trust-lbl">תרגול חי ולא<br/>רק צפייה והסברים</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-val" data-count="7" data-suffix="+">7+</div>
+      <div class="trust-lbl">כלי AI מובילים<br/>לעבודה יומיומית</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-val" data-count="1">1</div>
+      <div class="trust-lbl">סוכן AI אישי<br/>שמותאם אליך</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-val">24/7</div>
+      <div class="trust-lbl">תמיכה<br/>בוואטסאפ</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="s-head c">
+    <div class="s-label">המצב בשטח</div>
+    <h2 class="s-title">העולם כבר עובד עם AI.<br/>השאלה היא אם גם <em>אתה</em>.</h2>
+    <p class="s-sub">אנשים סביבך כבר עובדים אחרת. ואלה שעוד לא, מרגישים את הפער.</p>
+  </div>
+  <div class="pain-layout">
+    <div class="reveal">
+      <div class="pain-col-title">מה אחרים כבר עושים עם AI</div>
+      <ul class="pain-list">
+        <li><span class="pain-check green">&#10003;</span>כותבים מיילים, הצעות מחיר ודוחות בדקות</li>
+        <li><span class="pain-check green">&#10003;</span>בונים מצגות מקצועיות בלי לשלם לסוכנות</li>
+        <li><span class="pain-check green">&#10003;</span>מנתחים מידע ומוצאים תובנות בלחיצה</li>
+        <li><span class="pain-check green">&#10003;</span>מייצרים תוכן שיווקי ברמה גבוהה</li>
+        <li><span class="pain-check green">&#10003;</span>עובדים עם סוכן AI שעוזר להם כל יום</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="pain-col-title">מה מונע ממך להתחיל</div>
+      <ul class="pain-list">
+        <li><span class="pain-check red">&#10007;</span>לא ברור מאיפה מתחילים ואיזה כלי בוחרים</li>
+        <li><span class="pain-check red">&#10007;</span>ניסית ChatGPT ולא יצא כלום שימושי</li>
+        <li><span class="pain-check red">&#10007;</span>מרגיש שהנושא טכני מדי בשבילך</li>
+        <li><span class="pain-check red">&#10007;</span>כל פעם שמתחילים, נתקעים מהר</li>
+        <li><span class="pain-check red">&#10007;</span>חושש שהשוק ישאיר אותך מאחור</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="sol-inner">
+    <div class="s-head">
+      <div class="s-label">הפתרון</div>
+      <h2 class="s-title">בדיוק בשביל זה<br/>נבנה <em>הקורס</em></h2>
+    </div>
+    <div class="sol-body reveal">
+      <p>
+        זה לא קורס שמסביר מה זה AI. הסברים כאלה יש ביוטיוב בחינם.
+        זה קורס שלוקח אותך ידיים על מקלדת, ומלמד אותך להשתמש בכלים האמיתיים בצורה שעובדת בפועל.
+      </p>
+      <p>
+        כל שיעור בנוי כך שאתה <strong>עושה בפועל</strong>, לא רק מקשיב.
+        יוצאים עם תוצרים אמיתיים. לא עם הרגשה של "הבנתי", אלא עם משהו בידיים שמשתמשים בו למחרת.
+      </p>
+      <div class="sol-points">
+        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>מתאים לכל רמה, גם בלי רקע טכני</div>
+        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>50% תרגול חי בכל מפגש</div>
+        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>הקלטות נשלחות תוך 24 שעות</div>
+        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>תמיכה אישית בוואטסאפ</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="s-head c">
+    <div class="s-label">מה יוצא לך</div>
+    <h2 class="s-title">מה שתקח<br/>מהקורס</h2>
+    <p class="s-sub">ארבעה נכסים מעשיים שמשנים את דרך העבודה שלך.</p>
+  </div>
+  <div class="ben-grid">
+    <div class="ben-card reveal">
+      <div class="ben-num">01</div>
+      <h3>סוכן AI אישי שמותאם לעבודה שלך</h3>
+      <p>תצא עם סוכן שמכיר את התחום שלך, כותב בסגנון שלך, ועוזר לך ביום יום בלי שתצטרך להסביר מחדש בכל פעם.</p>
+    </div>
+    <div class="ben-card reveal">
+      <div class="ben-num">02</div>
+      <h3>עבודה חכמה עם ChatGPT, Claude ו-Gemini</h3>
+      <p>תבין איזה כלי לבחור, מתי, ולמה. תפסיק לקבל תוצאות גנריות ותתחיל לקבל תוצאות שאפשר להשתמש בהן.</p>
+    </div>
+    <div class="ben-card reveal">
+      <div class="ben-num">03</div>
+      <h3>פרומפטים שימושיים למשימות יומיומיות</h3>
+      <p>תצא עם ספרייה של פרומפטים שעובדים, מותאמים לתחום שלך. כתיבה, מחקר, ניתוח, מייל, מצגת ועוד.</p>
+    </div>
+    <div class="ben-card reveal">
+      <div class="ben-num">04</div>
+      <h3>כלים ליצירת תוכן, מצגות ומחקר</h3>
+      <p>בנה מצגת מקצועית ב-20 דקות. ערוך מחקר מעמיק בלי לבזבז שעות. צור תוכן שיווקי ברמה גבוהה.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT HIGHLIGHT -->
+<section class="agent-section">
+  <div class="agent-inner">
+    <div>
+      <div class="agent-label">גולת הכותרת של הקורס</div>
+      <h2 class="agent-title">סוכן AI אישי משלך<br/><span>שמכיר אותך</span></h2>
+      <p class="agent-sub">
+        במהלך הקורס תבנה סוכן שמותאם לצרכים שלך. הוא לא רעיון באוויר, אלא נכס עבודה שימושי שיכול לעזור לך לכתוב, לתכנן, לסכם, לנסח ולהתקדם מהר יותר.
+      </p>
+      <ul class="agent-list">
+        <li>מגיב בסגנון שלך ובשפה שלך</li>
+        <li>מתאים לכל תחום וכל סוג עבודה</li>
+        <li>חוסך שעות של עבודה חוזרת</li>
+        <li>אפשר לשלוח אליו משימות כל בוקר</li>
+        <li>עוזר לכתוב מיילים, לתכנן ולסכם</li>
+      </ul>
+    </div>
+    <div class="agent-chat-ui">
+      <div class="acu-header">
+        <div class="acu-avatar">AI</div>
+        <div>
+          <div class="acu-name">הסוכן האישי שלי</div>
+          <div class="acu-status">
+            <span class="acu-status-dot"></span>
+            מחובר ומוכן לעבודה
+          </div>
+        </div>
+      </div>
+      <div class="acu-tabs">
+        <button class="acu-tab active">משרד</button>
+        <button class="acu-tab">עסק</button>
+        <button class="acu-tab">תוכן</button>
+        <button class="acu-tab">ניהול</button>
+        <button class="acu-tab">לימוד</button>
+      </div>
+      <div class="acu-messages">
+        <div class="acu-msg user">כתוב לי הצעת מחיר ללקוח חדש</div>
+        <div class="acu-msg ai">כמובן! שלח לי פרטי הלקוח ואכין הצעה מקצועית בסגנון המשרד שלך תוך דקות.</div>
+        <div class="acu-suggestions">
+          <button class="acu-sug">מייל ללקוח</button>
+          <button class="acu-sug">סיכום ישיבה</button>
+          <button class="acu-sug">דוח חודשי</button>
+        </div>
+      </div>
+      <div class="acu-input-row">
+        <input type="text" placeholder="שאל את הסוכן שלך..." id="acu-text"/>
+        <button class="acu-send" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+  <div class="s-head c">
+    <div class="s-label">כלי AI</div>
+    <h2 class="s-title">הכלים שתשלוט <em>בהם</em></h2>
+    <p class="s-sub">שליטה אמיתית בכלים שהעולם משתמש בהם עכשיו.</p>
+  </div>
+  <div class="tools-pills">
+    <div class="t-pill">ChatGPT</div>
+    <div class="t-pill">Claude AI</div>
+    <div class="t-pill">Gemini</div>
+    <div class="t-pill">Gamma</div>
+    <div class="t-pill">Custom GPTs</div>
+    <div class="t-pill">Google Gems</div>
+    <div class="t-pill">AI Agents</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-wrap">
+    <div class="reveal">
+      <div class="about-photo-frame">
+        <img class="about-photo-main"
+             src="yochanan.png"
+             alt="יוחנן שבדרון"
+             loading="lazy" width="340" height="420"/>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="about-label-dot">מי עומד מאחורי הקורס?</div>
+      <h2 class="about-main-name">יוחנן שבדרון</h2>
+      <div class="about-role-new">האיש שמחבר בין AI לשפה פשוטה</div>
+      <p class="about-body-text">
+        יוחנן מחבר בין חדשנות, פשטות ותוצאה. הוא מסביר בגובה העיניים, מתאים את הלימוד לציבור החרדי, ומתמקד במה שעובד בפועל: תרגול, תוצרים ושימושים אמיתיים לעבודה ולעסק.
+      </p>
+      <ul class="about-bullets">
+        <li>הסברים ברורים גם בלי רקע טכני</li>
+        <li>התמקדות במה שעובד בפועל</li>
+        <li>חיבור לכלים, משימות ותוצרים מהיום יום</li>
+      </ul>
+      <div class="about-final-slogan">יוחנן שבדרון הופך אותך למאסטר</div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum" id="curriculum">
+  <div class="s-head c">
+    <div class="s-label">תוכן הקורס</div>
+    <h2 class="s-title">מה <em>לומדים</em> בכל מפגש?</h2>
+    <p class="s-sub">4 מפגשים מעשיים. כל אחד בנוי על הקודם, ויוצאים ממנו עם תוצר.</p>
+  </div>
+  <div class="sessions">
+    <div class="session reveal">
+      <div class="session-header">
+        <div class="session-num">1</div>
+        <div class="session-title">היכרות עם עולם ה-AI</div>
+      </div>
+      <ul class="session-topics">
+        <li>איך AI עובד ולמה זה רלוונטי לך עכשיו</li>
+        <li>סיור בכלים המובילים: ChatGPT, Claude, Gemini</li>
+        <li>תרגיל ראשון חי, יוצאים עם משהו ביד</li>
+        <li>איפה AI כבר עוזר לאנשים בתחום שלך</li>
+      </ul>
+    </div>
+    <div class="session reveal">
+      <div class="session-header">
+        <div class="session-num">2</div>
+        <div class="session-title">פרומפטים וכלים מובילים</div>
+      </div>
+      <ul class="session-topics">
+        <li>7 עקרונות לפרומפט שעובד</li>
+        <li>טכניקות מתקדמות: Chain-of-Thought, Few-Shot ועוד</li>
+        <li>בניית ספריית פרומפטים אישית לתחום שלך</li>
+        <li>Gamma לבניית מצגות מקצועיות</li>
+      </ul>
+    </div>
+    <div class="session reveal">
+      <div class="session-header">
+        <div class="session-num">3</div>
+        <div class="session-title">סוכני AI ועבודה מעשית</div>
+      </div>
+      <ul class="session-topics">
+        <li>מה זה סוכן AI ואיך הוא עובד בפועל</li>
+        <li>בניית Custom GPT לתחום שלך</li>
+        <li>מחקר מעמיק עם AI בלי הזיות</li>
+        <li>אוטומציה פשוטה שחוסכת שעות</li>
+      </ul>
+    </div>
+    <div class="session reveal">
+      <div class="session-header">
+        <div class="session-num">4</div>
+        <div class="session-title">יישום אישי והטמעה</div>
+      </div>
+      <ul class="session-topics">
+        <li>בניית הסוכן האישי שלך מאפס</li>
+        <li>תרגיל חי עם אתגר מהעבודה האמיתית שלך</li>
+        <li>תוכנית עבודה: איך ממשיכים מכאן</li>
+        <li>Google Gems וכלים נוספים לסיום</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="s-head c">
+    <div class="s-label">ביקורות</div>
+    <h2 class="s-title">מה אומרים <em>הבוגרים</em>?</h2>
+    <p class="s-sub">אנשים רגילים שלא ידעו כלום על AI ועכשיו משתמשים בו כל יום.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="t-card reveal">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>כבר אחרי השיעור הראשון הבנתי איך להשתמש בזה בעבודה שלי. יצאתי עם סוכן שכותב לי מיילים ועונה ללקוחות, וחסכתי שעתיים ביום מהיום הראשון.</p>
+      <div class="t-author">
+        <div class="t-av av1">מ</div>
+        <div>
+          <div class="t-name">משה כ', בני ברק</div>
+          <div class="t-role">בעל עסק · הנהלת חשבונות</div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card reveal">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>הגעתי בלי רקע טכני, וההסבר היה ברור מאוד. סוף סוף הבנתי מה עושים עם הכלים האלה בפועל. אחרי השיעור הראשון כבר הפקתי מצגת מקצועית לוועדה.</p>
+      <div class="t-author">
+        <div class="t-av av2">מ</div>
+        <div>
+          <div class="t-name">מרים ל', ירושלים</div>
+          <div class="t-role">עובדת סוציאלית</div>
+        </div>
+      </div>
+    </div>
+    <div class="t-card reveal">
+      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p>מה שאהבתי זה שלא נשארנו בתיאוריה. תרגלנו ממש, וזה נתן לי ביטחון להשתמש בזה לבד. עכשיו אני יודע בדיוק איזה כלי לבחור ואיך לשלב AI בעבודה שלי.</p>
+      <div class="t-author">
+        <div class="t-av av3">א</div>
+        <div>
+          <div class="t-name">אברהם ש', מודיעין עילית</div>
+          <div class="t-role">מנהל פרויקטים</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP SOCIAL PROOF -->
+<section class="wa-proof-section">
+  <div class="s-head c">
+    <div class="s-label">הוכחות מהשטח</div>
+    <h2 class="s-title">תגובות אמיתיות ממשתתפים</h2>
+    <p class="s-sub">צילומי מסך מתוך הודעות שקיבלתי ממשתתפים, עם פרטים אישיים מטושטשים.</p>
+  </div>
+  <div class="wa-proof-grid">
+    <!--
+      TODO לפני פרסום:
+      יש להחליף את ה-placeholders בצילומי מסך אמיתיים לאחר טשטוש:
+      - שמות
+      - מספרי טלפון
+      - תמונות פרופיל
+      - כל פרט מזהה אחר
+
+      כיצד להוסיף תמונה:
+      <div class="wa-proof-card">
+        <img src="wa-screenshot-1.jpg"
+             alt="צילום מסך מטושטש של תגובת משתתף בקורס"
+             loading="lazy"
+             width="320" height="420"/>
+      </div>
+    -->
+    <div class="wa-proof-card">
+      <img src="assets/whatsapp-proofs/whatsapp-01-blurred.webp"
+           alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
+           loading="lazy" width="320" height="420"/>
+    </div>
+    <div class="wa-proof-card">
+      <img src="assets/whatsapp-proofs/whatsapp-02-blurred.webp"
+           alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
+           loading="lazy" width="320" height="420"/>
+    </div>
+    <div class="wa-proof-card">
+      <img src="assets/whatsapp-proofs/whatsapp-03-blurred.webp"
+           alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
+           loading="lazy" width="320" height="420"/>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<section class="urgency">
+  <div class="s-head c" style="margin-bottom:36px">
+    <div class="s-label">המחזור הקרוב</div>
+    <h2 class="s-title">פרטי <em>הקורס</em></h2>
+    <p class="s-sub">המחזור הקרוב נפתח ב-6.5.2026. נותרו מקומות מוגבלים.</p>
+  </div>
+  <div class="urgency-inner">
+    <div class="urg-card highlight reveal">
+      <div class="urg-val">5 מקומות</div>
+      <div class="urg-lbl">נותרו בלבד במחזור הקרוב</div>
+    </div>
+    <div class="urg-card reveal">
+      <div class="urg-val">6.5.2026</div>
+      <div class="urg-lbl">תאריך פתיחה · יום רביעי 17:00</div>
+    </div>
+    <div class="urg-card reveal">
+      <div class="urg-val">4 מפגשים</div>
+      <div class="urg-lbl">שעתיים כל מפגש, בזום</div>
+    </div>
+    <div class="urg-card reveal">
+      <div class="urg-val">680 &#8362;</div>
+      <div class="urg-lbl">מחיר מוקדם, במקום 800 &#8362;</div>
+    </div>
+  </div>
+  <div class="urgency-ctas">
+    <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
+    <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
+       target="_blank" rel="noopener" class="cta-wa"
+       aria-label="קבל פרטים על הקורס בוואטסאפ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+      קבל פרטים בוואטסאפ
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="s-head c">
+    <div class="s-label">שאלות נפוצות</div>
+    <h2 class="s-title">יש לך <em>שאלות</em>?</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-btn" aria-expanded="false">
+        <span class="faq-q">האם צריך ידע מוקדם בטכנולוגיה?</span>
+        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="faq-body">
+        <p class="faq-a">לא. הקורס מתאים גם למי שמתחיל מאפס, עם הסבר מסודר ותרגול חי. מגיעים כמו שאתה, ויוצאים עם יכולות אמיתיות.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" aria-expanded="false">
+        <span class="faq-q">האם זה מתאים לציבור החרדי?</span>
+        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="faq-body">
+        <p class="faq-a">כן. התוכן, הדוגמאות והסגנון מותאמים לציבור החרדי ולשימושים מעשיים בעבודה ובעסק. יוחנן מכיר את הציבור מבפנים ומסביר בשפה שלך.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" aria-expanded="false">
+        <span class="faq-q">מה יוצא לי בפועל?</span>
+        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="faq-body">
+        <p class="faq-a">תדע לעבוד עם כלי AI מובילים, לכתוב פרומפטים טובים יותר, לחסוך זמן, לבנות תוצרים, ולצאת עם סוכן AI אישי שמותאם לתחום שלך.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" aria-expanded="false">
+        <span class="faq-q">זה קורס טכני?</span>
+        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="faq-body">
+        <p class="faq-a">לא. לא נדרש ידע טכני. המטרה היא להנגיש את הכלים בצורה ברורה ומעשית, צעד אחר צעד.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" aria-expanded="false">
+        <span class="faq-q">האם המפגשים מוקלטים?</span>
+        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="faq-body">
+        <p class="faq-a">כן. כל מפגש מוקלט ונשלח אליך תוך 24 שעות. אם לא יכולת להגיע, צופה בהקלטה בנוחות ובלי לפספס כלום.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" aria-expanded="false">
+        <span class="faq-q">מה המחיר וכיצד משלמים?</span>
+        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="faq-body">
+        <p class="faq-a">המחיר המוקדם הוא <strong>680 &#8362;</strong> (במקום 800 &#8362;). לאחר ההרשמה יוחנן ייצור איתך קשר ישירות ויסדיר את התשלום בצורה הנוחה לך.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-btn" aria-expanded="false">
+        <span class="faq-q">איך נרשמים?</span>
+        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="faq-body">
+        <p class="faq-a">משאירים פרטים בטופס למטה או פונים בוואטסאפ. המקום נשמר לאחר אישור הרשמה ותשלום.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="register" id="register">
+  <div class="reg-inner">
+    <div class="s-label">הרשמה</div>
+    <h2 class="s-title">רוצה להיכנס<br/>למחזור <em>הקרוב</em>?</h2>
+    <p class="s-sub" style="margin:0 auto">השאר פרטים ונבדוק התאמה לקורס. המקום נשמר רק לאחר אישור הרשמה ותשלום.</p>
+    <div class="reg-price-block">
+      <span class="price-old">800 &#8362;</span>
+      <span class="price-now-lg">680 &#8362;</span>
+      <span class="price-badge">מחיר מוקדם · נגמר בקרוב</span>
+    </div>
+
+    <form class="form-box reveal" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
+      <input type="hidden" name="_next" value="https://yochanan11.github.io/shvadron-ai/thanks.html"/>
+      <input type="hidden" name="_captcha" value="false"/>
+      <input type="hidden" name="_template" value="table"/>
+      <input type="hidden" name="_autoresponse" value="שלום! תודה שנרשמת לקורס AI של יוחנן שבדרון.
+
+קיבלתי את הפרטים שלך ואחזור אליך תוך 24 שעות לאישור המקום וסידור התשלום.
+
+אם יש לך שאלה עד אז, כתוב לי בוואטסאפ: 052-7169921
+
+יוחנן שבדרון
+shwadron.ai"/>
+      <div class="f-row">
+        <div class="f-g">
+          <label for="f-first">שם פרטי *</label>
+          <input id="f-first" type="text" name="שם" placeholder="ישראל" required autocomplete="given-name"/>
+        </div>
+        <div class="f-g">
+          <label for="f-last">שם משפחה *</label>
+          <input id="f-last" type="text" name="משפחה" placeholder="ישראלי" required autocomplete="family-name"/>
+        </div>
+      </div>
+      <div class="f-g">
+        <label for="f-phone">טלפון *</label>
+        <input id="f-phone" type="tel" name="טלפון" placeholder="050-0000000" required autocomplete="tel"/>
+      </div>
+      <div class="f-g">
+        <label for="f-field">תחום עיסוק</label>
+        <select id="f-field" name="תחום">
+          <option value="">בחר תחום...</option>
+          <option>הנהלת חשבונות / כספים</option>
+          <option>עבודה סוציאלית</option>
+          <option>ניהול / מנהל</option>
+          <option>הנדסה / טכנולוגיה</option>
+          <option>חינוך / הוראה</option>
+          <option>בעל עסק</option>
+          <option>משפטים</option>
+          <option>אחר</option>
+        </select>
+      </div>
+      <button type="submit" class="f-submit">בדוק אם נשאר לי מקום</button>
+      <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
+         target="_blank" rel="noopener" class="f-wa-btn"
+         aria-label="שליחת הודעה בוואטסאפ לקבלת פרטים על הקורס">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+        קבל פרטים בוואטסאפ
+      </a>
+      <p class="f-note">
+        יוחנן יחזור אליך עם פרטים מסודרים ואישור מקום, אם עדיין נשאר מקום פנוי.<br/>
+        הפרטים שלך מאובטחים ולא יועברו לגורם שלישי.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="margin-bottom:14px;display:flex;justify-content:center">
+    <img src="icon-logo.png" alt="SHWADRON.AI" style="height:54px;width:auto" loading="lazy" width="120" height="54"/>
+  </div>
+  <p><strong>יוחנן שבדרון</strong>, מדריך AI לציבור החרדי</p>
+  <p class="ft-slogan">יוחנן שבדרון הופך אותך למאסטר</p>
+  <p style="margin-top:16px;font-size:.72rem;opacity:.35">&#169; 2026 יוחנן שבדרון · כל הזכויות שמורות</p>
+</footer>
+
+<!-- FAB -->
+<a href="#register" class="fab" aria-label="שמרו מקום בקורס AI">שמרו מקום עכשיו · מקומות מוגבלים</a>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA"
+   target="_blank" rel="noopener" class="wa-fab"
+   aria-label="שליחת הודעה בוואטסאפ לקבלת פרטים על הקורס">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="26" height="26" aria-hidden="true">
+    <path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/>
+  </svg>
+</a>
+
+<script>
+// Reveal on scroll
+var revealObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add('on');
+  });
+}, {threshold: 0.1});
+document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+// Countdown
+(function() {
+  var target = new Date('2026-05-06T17:00:00');
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    var diff = target - new Date();
+    if (diff <= 0) {
+      ['cd-d','cd-h','cd-m','cd-s'].forEach(function(id) {
+        document.getElementById(id).textContent = '00';
+      });
+      return;
+    }
+    document.getElementById('cd-d').textContent = pad(Math.floor(diff / 86400000));
+    document.getElementById('cd-h').textContent = pad(Math.floor(diff % 86400000 / 3600000));
+    document.getElementById('cd-m').textContent = pad(Math.floor(diff % 3600000 / 60000));
+    document.getElementById('cd-s').textContent = pad(Math.floor(diff % 60000 / 1000));
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+// Animated counters on scroll
+(function() {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('[data-count]');
+  if (!els.length) return;
+
+  function animateCount(el) {
+    var end = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var prefix = el.getAttribute('data-prefix') || '';
+    if (reduced) {
+      el.textContent = prefix + end + suffix;
+      return;
+    }
+    var duration = 1200;
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + Math.floor(eased * end) + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = prefix + end + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var countObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        countObs.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.5});
+
+  els.forEach(function(el) { countObs.observe(el); });
+})();
+
+// Hide FAB near register
+var fab = document.querySelector('.fab');
+var reg = document.querySelector('#register');
+window.addEventListener('scroll', function() {
+  var r = reg.getBoundingClientRect();
+  var show = r.top > window.innerHeight || r.bottom < 0;
+  fab.style.opacity = show ? '1' : '0';
+  fab.style.pointerEvents = show ? 'auto' : 'none';
+}, {passive: true});
+
+// FAQ accordion
+document.querySelectorAll('.faq-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(o) {
+      o.classList.remove('open');
+      o.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Agent Chat Demo
+(function() {
+  var input = document.getElementById('acu-text');
+  var sendBtn = document.querySelector('.acu-send');
+  var chat = document.querySelector('.acu-messages');
+  var tabs = document.querySelectorAll('.acu-tab');
+  if (!input || !sendBtn || !chat) return;
+
+  var currentTab = 'משרד';
+  var firstMessage = true;
+
+  var responses = {
+    'משרד': {
+      def: 'כמובן! שלח לי את הפרטים ואכין את זה בסגנון המשרד שלך תוך דקות.',
+      keys: {
+        'הצעת מחיר': 'כדי לכתוב הצעת מחיר מקצועית שלח לי: שם הלקוח, סוג השירות ומחיר מטרה. אחזיר לך הצעה ברמה שמשרדים גדולים גובים עליה כסף.',
+        'מייל': 'תן לי: נושא, שם הנמען ומה אתה רוצה להגיד. אכין מייל ברור ומקצועי בדקות.',
+        'סיכום ישיבה': 'שלח לי את הנקודות העיקריות שעלו בישיבה. אהפוך אותן לסיכום מסודר עם החלטות ומשימות.',
+        'דוח': 'שלח את הנתונים ואמר לי למי מיועד הדוח. אסדר הכל לדוח מקצועי שמוכן לשליחה.',
+        'חוזה': 'אני יכול לעזור לנסח סעיפים ולבדוק ניסוח. שלח את מה שיש ואגיד מה לשפר.'
+      }
+    },
+    'עסק': {
+      def: 'נשמח לעזור לעסק שלך לגדול עם AI. מה הצורך הדחוף ביותר שלך עכשיו?',
+      keys: {
+        'שיווק': 'שיווק עם AI זה כוח. שלח לי מה אתה מוכר ומי הקהל שלך, ואכין תוכן שיווקי שמדבר ישר ללב הלקוחות.',
+        'לקוח': 'ניהול לקוחות עם AI חוסך שעות. אפשר לבנות תסריטי שיחה, מיילים ממוקדים ומעקב. מה הצורך הספציפי שלך?',
+        'מכירות': 'אני יכול לכתוב לך סקריפט מכירה, לנתח התגדלויות נפוצות ולעזור לך לנסח הצעות שמשכנעות.',
+        'תכנית': 'בניית תכנית עסקית עם AI יוצאת מהממת. שלח לי את עיקרי הרעיון ואבנה לך מסגרת מקצועית.'
+      }
+    },
+    'תוכן': {
+      def: 'כתיבת תוכן עם AI זה קסם. מה תרצה לכתוב? פוסט, מאמר, פרסומת, תיאור מוצר?',
+      keys: {
+        'פוסט': 'לפוסט מדויק אני צריך: נושא, פלטפורמה, קהל יעד ומסר עיקרי. שלח ואוציא משהו שייקבל תגובות.',
+        'מאמר': 'שלח לי את הנושא ורמת העומק שאתה מחפש. אכין מבנה מלא עם כותרות ותת-נקודות.',
+        'תיאור': 'תיאורי מוצר עם AI ממירים הרבה יותר. שלח מה אתה מוכר ואכין תיאור שמדבר לקהל שלך.',
+        'כותרת': 'כותרת טובה זה 80% מהתוצאה. שלח לי את הנושא ואחזיר לך 5 כותרות שונות לבחור מהן.'
+      }
+    },
+    'ניהול': {
+      def: 'ניהול חכם עם AI חוסך זמן יקר. מה אתה רוצה לנהל יותר טוב?',
+      keys: {
+        'פרויקט': 'ניהול פרויקטים עם AI זה שינוי. שלח את מטרת הפרויקט ואבנה לך לוח זמנים, אבני דרך ורשימת משימות.',
+        'זמן': 'ספר לי מה עומס המשימות שלך ואעזור לך לתעדף ולבנות יום עבודה יעיל.',
+        'צוות': 'ניהול צוות עם AI כולל: סיכומי ישיבות, הקצאת משימות ומעקב. מה הצורך הספציפי שלך?',
+        'משימ': 'שלח לי רשימת המשימות שלך ואעזור לך לתעדף, לחלק ולהכין תכנית ביצוע.'
+      }
+    },
+    'לימוד': {
+      def: 'שאל אותי כל שאלה על AI ואסביר בפשטות ובבהירות, בלי מינוח טכני.',
+      keys: {
+        'מה זה': 'AI הוא מערכת שלמדה מכמויות עצומות של טקסט ויכולה להבין ולייצר שפה אנושית. בפרקטיקה, זה כלי שעוזר לך לכתוב, לנתח ולעבוד חכם יותר.',
+        'chatgpt': 'ChatGPT הוא הכלי הנפוץ ביותר, מצוין לכתיבה, סיכום ורעיונות. בקורס לומדים לא רק להשתמש בו אלא להפיק ממנו תוצאות אמיתיות.',
+        'claude': 'Claude מצטיין בניתוח, עבודה עם מסמכים ותשובות מדויקות. יש לו יתרונות ספציפיים שלומדים לנצל בקורס.',
+        'gemini': 'Gemini הוא ה-AI של גוגל, עם יכולות חיפוש וחיבור לשירותי גוגל. לומדים מתי לבחור כל כלי.',
+        'פרומפט': 'פרומפט הוא ההוראה שאתה נותן ל-AI. ההבדל בין פרומפט טוב לבינוני הוא ההבדל בין תוצאה שאפשר להשתמש בה לבין תוצאה גנרית.'
+      }
+    }
+  };
+
+  var sugMap = {
+    'משרד': ['מייל ללקוח', 'סיכום ישיבה', 'דוח חודשי'],
+    'עסק':  ['אסטרטגיית שיווק', 'ניתוח מתחרים', 'תכנית מכירות'],
+    'תוכן': ['פוסט לפייסבוק', 'תיאור מוצר', 'כותרת מושכת'],
+    'ניהול':['לוח זמנים', 'רשימת משימות', 'סיכום ישיבה'],
+    'לימוד':['מה זה ChatGPT?', 'איך לכתוב פרומפט?', 'מה זה Claude?']
+  };
+
+  function getResponse(msg) {
+    var data = responses[currentTab] || responses['משרד'];
+    var lower = msg.toLowerCase();
+    var keys = data.keys || {};
+    for (var k in keys) {
+      if (lower.indexOf(k.toLowerCase()) !== -1) return keys[k];
+    }
+    return data.def;
+  }
+
+  function addMsg(text, type) {
+    var el = document.createElement('div');
+    el.className = 'acu-msg ' + type;
+    el.textContent = text;
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function addTyping() {
+    var el = document.createElement('div');
+    el.className = 'acu-msg ai acu-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
+    return el;
+  }
+
+  function renderSuggestions(tab) {
+    var old = chat.querySelector('.acu-suggestions');
+    if (old) old.remove();
+    var sugs = sugMap[tab] || sugMap['משרד'];
+    var el = document.createElement('div');
+    el.className = 'acu-suggestions';
+    el.innerHTML = sugs.map(function(s) {
+      return '<button class="acu-sug">' + s + '</button>';
+    }).join('');
+    chat.appendChild(el);
+    el.querySelectorAll('.acu-sug').forEach(function(btn) {
+      btn.addEventListener('click', function() { send(this.textContent); });
+    });
+  }
+
+  function send(text) {
+    var msg = (text || input.value).trim();
+    if (!msg) return;
+    if (firstMessage) {
+      chat.querySelectorAll('.acu-msg, .acu-suggestions').forEach(function(el) { el.remove(); });
+      firstMessage = false;
+    }
+    addMsg(msg, 'user');
+    input.value = '';
+    input.disabled = true;
+    sendBtn.disabled = true;
+    var typing = addTyping();
+    setTimeout(function() {
+      typing.remove();
+      addMsg(getResponse(msg), 'ai');
+      renderSuggestions(currentTab);
+      input.disabled = false;
+      sendBtn.disabled = false;
+      input.focus();
+    }, 900 + Math.random() * 700);
+  }
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      this.classList.add('active');
+      currentTab = this.textContent.trim();
+      renderSuggestions(currentTab);
+    });
+  });
+
+  sendBtn.addEventListener('click', function() { send(); });
+  input.addEventListener('keydown', function(e) { if (e.key === 'Enter') send(); });
+
+  // activate initial suggestions
+  chat.querySelectorAll('.acu-sug').forEach(function(btn) {
+    btn.addEventListener('click', function() { send(this.textContent); });
+  });
+})();
+
+// Google Sheets + formsubmit form handling
+var GAS_URL = 'https://script.google.com/macros/s/AKfycbzG8op1dqWRqtC_OqpvH6oME2N1s7kLG_HW5BTu91y9p2lGt0xL_B180fFNckYMi_mS7w/exec';
+document.querySelector('.form-box').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('.f-submit');
+  btn.textContent = 'שולח...';
+  btn.disabled = true;
+  var fd = new FormData(form);
+  var params = new URLSearchParams();
+  fd.forEach(function(v, k) { params.append(k, v); });
+  if (GAS_URL && GAS_URL !== 'REPLACE_WITH_YOUR_GAS_URL') {
+    fetch(GAS_URL, {method: 'POST', mode: 'no-cors', body: params}).catch(function() {});
+  }
+  try {
+    await fetch('https://formsubmit.co/ajax/yochanansh818@gmail.com', {
+      method: 'POST', body: fd, headers: {'Accept': 'application/json'}
+    });
+  } catch(_) {}
+  window.location.href = 'https://yochanan11.github.io/shvadron-ai/thanks.html';
+});
+</script>
+</body>
+</html>
