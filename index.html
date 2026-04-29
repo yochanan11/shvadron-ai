@@ -108,14 +108,14 @@ nav{
 
 /* HERO */
 .hero{
-  min-height:100vh;
   display:flex;flex-direction:column;
-  background:#fff;
+  background:linear-gradient(160deg,#060e1e 0%,#0b1a30 40%,#0a1628 100%);
   position:relative;overflow:hidden;
-  padding-top:80px;
+  padding-top:64px;
 }
 .hero-circuit{
   position:absolute;inset:0;pointer-events:none;z-index:0;
+  opacity:.55;
 }
 .hero-content{
   flex:1;width:100%;max-width:1280px;
@@ -126,76 +126,84 @@ nav{
 .hero-text-col{
   flex:1;display:flex;flex-direction:column;
   justify-content:center;
-  padding:60px 0 80px;
+  padding:80px 0 56px;
   min-width:0;
 }
 .hero-char-col{
-  width:440px;flex-shrink:0;
+  width:460px;flex-shrink:0;
   position:relative;
-  display:flex;align-items:flex-end;justify-content:center;
+  margin-top:-64px;
+  align-self:stretch;
 }
 .hero-char-glow{
   position:absolute;
-  width:420px;height:420px;
-  background:radial-gradient(ellipse at center,rgba(0,99,237,.045) 0%,rgba(46,222,191,.03) 52%,transparent 74%);
+  width:500px;height:500px;
+  background:radial-gradient(ellipse at 45% 30%,rgba(0,99,237,.28) 0%,rgba(0,150,200,.1) 45%,transparent 70%);
   border-radius:50%;
-  top:50%;left:50%;
-  transform:translate(-50%,-30%);
+  top:0;left:50%;
+  transform:translateX(-50%);
   pointer-events:none;
+  z-index:1;
 }
 .hero-character-img{
-  position:relative;z-index:2;
-  width:100%;max-width:420px;
-  height:auto;display:block;
-  object-fit:contain;object-position:bottom center;
-  filter:drop-shadow(0 20px 48px rgba(0,99,237,.09));
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  width:100%;height:100%;
+  max-width:440px;
+  margin:0 auto;
+  object-fit:contain;
+  object-position:top center;
+  filter:drop-shadow(0 0 60px rgba(0,99,237,.22)) drop-shadow(0 20px 40px rgba(0,0,0,.4));
+  z-index:2;
+  -webkit-mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 90%);
+  mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 90%);
 }
-.hero-band{
-  height:10px;
-  background:linear-gradient(90deg,#0a1628 0%,var(--blue) 42%,var(--teal2) 100%);
-  flex-shrink:0;
-}
+.hero-band{display:none}
+
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(0,99,237,.07);
-  border:1px solid rgba(0,99,237,.18);
-  color:var(--blue);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.7);
   padding:6px 16px;border-radius:100px;
   font-size:.78rem;font-weight:700;
   margin-bottom:22px;align-self:flex-start;
+  backdrop-filter:blur(6px);
 }
 .hero-badge-dot{
-  width:6px;height:6px;background:var(--blue);
+  width:6px;height:6px;background:var(--teal2);
   border-radius:50%;flex-shrink:0;
   animation:dot-blink 1.8s ease-in-out infinite;
+  box-shadow:0 0 8px rgba(0,201,167,.6);
 }
 @keyframes dot-blink{0%,100%{opacity:1}50%{opacity:.25}}
 .hero-name{
-  font-size:clamp(2.75rem,6.5vw,5.8rem);
+  font-size:clamp(2rem,4.2vw,3.6rem);
   font-weight:900;line-height:1.0;
-  letter-spacing:0;color:var(--text);
-  margin-bottom:8px;
+  letter-spacing:0;color:#fff;
+  margin-bottom:6px;
   max-width:100%;
+  text-shadow:0 2px 40px rgba(0,99,237,.2);
 }
 .hero-course-title{
-  font-size:clamp(2.25rem,5.1vw,4.7rem);
+  font-size:clamp(1.7rem,3.6vw,3rem);
   font-weight:900;
-  color:var(--blue);
-  line-height:1.04;
+  color:#fff;
+  line-height:1.08;
   letter-spacing:0;
-  margin-bottom:10px;
+  margin-bottom:8px;
   text-wrap:balance;
   max-width:100%;
 }
 .hero-course-title span,.hero-subline span{display:inline}
 .hero-subline{
   display:block;
-  font-size:clamp(1.45rem,3vw,2.55rem);
+  font-size:clamp(1.1rem,2vw,1.7rem);
   font-weight:900;
-  line-height:1.16;
+  line-height:1.2;
   letter-spacing:0;
   margin-bottom:12px;
-  background:linear-gradient(130deg,var(--blue) 0%,var(--teal2) 100%);
+  background:linear-gradient(130deg,#4da6ff 0%,var(--teal2) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
   max-width:100%;
@@ -208,49 +216,51 @@ nav{
 }
 .hero-slogan{
   font-size:clamp(.92rem,1.5vw,1.12rem);font-weight:800;
-  color:var(--teal-text);
+  color:var(--teal2);
   margin-bottom:12px;letter-spacing:0;
+  text-shadow:0 0 20px rgba(0,201,167,.3);
 }
 .hero-desc{
   font-size:clamp(.98rem,1.35vw,1.14rem);
-  color:var(--muted);
+  color:rgba(255,255,255,.58);
   margin-bottom:26px;line-height:1.75;
-  max-width:660px;
+  max-width:600px;
   text-wrap:pretty;
 }
 .hero-trust-chips{display:flex;flex-wrap:wrap;gap:7px}
 .htc{
   display:inline-flex;align-items:center;gap:4px;
-  background:rgba(0,150,124,.06);
-  border:1px solid rgba(0,150,124,.14);
-  color:var(--teal-text);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.11);
+  color:rgba(255,255,255,.5);
   padding:5px 11px;border-radius:100px;
   font-size:.73rem;font-weight:600;
 }
-.htc::before{content:'✓ ';font-size:.62rem;font-weight:900}
+.htc::before{content:'✓ ';font-size:.62rem;font-weight:900;color:var(--teal2)}
 
 /* Shared CTAs */
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
 .cta-main{
-  background:var(--blue);
-  color:#fff;font-weight:800;font-size:1rem;
+  background:#fff;
+  color:var(--navy);font-weight:800;font-size:1rem;
   padding:16px 38px;border-radius:100px;
   text-decoration:none;
-  box-shadow:0 4px 20px rgba(0,99,237,.28);
+  box-shadow:0 4px 32px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.15);
   transition:all .25s;
 }
-.cta-main:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,99,237,.38)}
+.cta-main:hover{background:#f0f6ff;transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,0,0,.35)}
 .cta-wa{
   display:flex;align-items:center;gap:8px;
-  background:#fff;
-  border:1.5px solid var(--border);
-  color:var(--text2);
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.75);
   font-weight:600;font-size:.9rem;
   padding:15px 26px;border-radius:100px;
   text-decoration:none;
   transition:all .25s;
+  backdrop-filter:blur(6px);
 }
-.cta-wa:hover{border-color:rgba(37,211,102,.4);color:#128c3f;transform:translateY(-2px)}
+.cta-wa:hover{border-color:rgba(37,211,102,.5);color:#25D366;transform:translateY(-2px)}
 .price-old{color:var(--muted);text-decoration:line-through;font-size:.95rem}
 .price-now{font-size:2rem;font-weight:900;color:var(--text)}
 .price-badge{
@@ -263,35 +273,53 @@ nav{
 
 /* COUNTDOWN */
 .cd-section{
-  background:var(--navy);
-  padding:52px 6%;
+  background:#06101e;
+  padding:72px 6%;
   text-align:center;
 }
-.cd-wrap{max-width:680px;margin:0 auto}
+.cd-wrap{max-width:760px;margin:0 auto}
 .cd-eyebrow{
-  font-size:.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;
-  color:var(--teal);margin-bottom:20px;
+  font-size:.78rem;font-weight:800;letter-spacing:4px;text-transform:uppercase;
+  color:var(--teal2);margin-bottom:28px;
+  text-shadow:0 0 20px rgba(0,201,167,.4);
 }
 .cd-timer{
   display:flex;justify-content:center;align-items:flex-start;
-  gap:4px;direction:ltr;
+  gap:12px;direction:ltr;
 }
-.cd-unit{display:flex;flex-direction:column;align-items:center;min-width:88px}
+.cd-unit{
+  display:flex;flex-direction:column;align-items:center;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;
+  padding:20px 16px 14px;
+  min-width:100px;
+  backdrop-filter:blur(4px);
+}
 .cd-val{
-  font-size:3rem;font-weight:900;line-height:1;
+  font-size:4rem;font-weight:900;line-height:1;
   color:#fff;
+  text-shadow:0 0 40px rgba(0,99,237,.7), 0 0 80px rgba(0,99,237,.3);
+  letter-spacing:-2px;
 }
-.cd-lbl{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.06em}
-.cd-colon{font-size:2.6rem;font-weight:900;color:rgba(255,255,255,.18);line-height:1;padding-top:2px}
+.cd-lbl{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:10px;letter-spacing:.1em;text-transform:uppercase}
+.cd-colon{
+  font-size:3rem;font-weight:900;
+  color:rgba(0,201,167,.5);
+  line-height:1;padding-top:22px;
+  text-shadow:0 0 16px rgba(0,201,167,.4);
+}
 .cd-detail{
-  margin-top:24px;
-  font-size:.88rem;color:rgba(255,255,255,.45);
+  margin-top:32px;
+  font-size:.9rem;color:rgba(255,255,255,.4);
+  border-top:1px solid rgba(255,255,255,.07);
+  padding-top:24px;
 }
-.cd-detail strong{color:rgba(255,255,255,.75)}
+.cd-detail strong{color:rgba(255,255,255,.8)}
 @media(max-width:600px){
-  .cd-val{font-size:2.1rem}
-  .cd-unit{min-width:58px}
-  .cd-colon{font-size:1.8rem}
+  .cd-val{font-size:2.6rem}
+  .cd-unit{min-width:68px;padding:14px 10px 10px}
+  .cd-colon{font-size:2rem;padding-top:16px}
 }
 
 /* BRAND PHRASE */
@@ -457,6 +485,37 @@ h2.s-title em{
   .sol-body{padding:26px 22px}
 }
 
+/* FIT CHECK */
+.fit-check{
+  max-width:860px;margin:56px auto 0;
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.fit-col{
+  background:var(--bg2);
+  border-radius:16px;
+  padding:28px 26px;
+}
+.fit-col.yes{border-top:4px solid var(--teal2)}
+.fit-col.no{border-top:4px solid #e5e7eb}
+.fit-col-title{
+  font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:7px;
+}
+.fit-col.yes .fit-col-title{color:var(--teal2)}
+.fit-col.no .fit-col-title{color:var(--muted)}
+.fit-row{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:.84rem;color:var(--text2);line-height:1.55;
+  margin-bottom:9px;
+}
+.fit-row:last-child{margin-bottom:0}
+.fit-icon-yes{color:var(--teal2);font-size:.95rem;flex-shrink:0;margin-top:1px}
+.fit-icon-no{color:#d1d5db;font-size:.95rem;flex-shrink:0;margin-top:1px}
+@media(max-width:640px){
+  .fit-check{grid-template-columns:1fr}
+}
+
 /* BENEFITS */
 .benefits{background:var(--bg2)}
 .ben-grid{
@@ -487,7 +546,7 @@ h2.s-title em{
 /* AGENT */
 .agent-section{
   background:var(--navy);
-  padding:88px 6%;
+  padding:80px 6% 88px;
 }
 .agent-inner{
   max-width:980px;margin:0 auto;
@@ -589,22 +648,39 @@ h2.s-title em{
 /* TOOLS */
 .tools{background:var(--bg);padding:80px 6%}
 .tools-pills{
-  display:flex;flex-wrap:wrap;gap:10px;
-  justify-content:center;
-  max-width:740px;margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px;
+  max-width:860px;margin:0 auto;
 }
 .t-pill{
   background:var(--bg2);
   border:1.5px solid var(--border);
-  padding:10px 22px;border-radius:100px;
-  font-weight:700;font-size:.88rem;color:var(--text2);
+  border-bottom:3px solid var(--blue);
+  padding:18px 20px 16px;border-radius:14px;
   box-shadow:var(--shadow);
   transition:all .2s;cursor:default;
+  text-align:right;
 }
 .t-pill:hover{
-  border-color:rgba(0,99,237,.25);
-  color:var(--blue);
-  transform:translateY(-2px);
+  border-color:rgba(0,99,237,.35);
+  border-bottom-color:var(--teal2);
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(0,99,237,.12);
+}
+.t-pill-name{
+  font-weight:900;font-size:.95rem;color:var(--text);
+  margin-bottom:5px;
+  display:flex;align-items:center;gap:7px;
+}
+.t-pill-name::before{
+  content:'';
+  display:inline-block;width:7px;height:7px;
+  border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),var(--teal2));
+}
+.t-pill-desc{
+  font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:500;
 }
 
 /* ABOUT */
@@ -670,14 +746,14 @@ h2.s-title em{
 }
 
 /* CURRICULUM */
-.curriculum{background:var(--bg);padding:96px 6%}
+.curriculum{background:var(--bg2);padding:96px 6%}
 .sessions{
   display:grid;grid-template-columns:repeat(2,1fr);
   gap:14px;
   max-width:980px;margin:0 auto;
 }
 .session{
-  background:var(--bg2);
+  background:var(--bg);
   border:1px solid var(--border);
   border-radius:18px;
   padding:28px 24px;
@@ -715,7 +791,7 @@ h2.s-title em{
 @media(max-width:620px){.sessions{grid-template-columns:1fr}}
 
 /* TESTIMONIALS */
-.testi-section{background:var(--bg2)}
+.testi-section{background:var(--bg)}
 .testi-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:16px;max-width:980px;margin:0 auto;
@@ -807,7 +883,7 @@ h2.s-title em{
 
 /* URGENCY */
 .urgency{
-  background:var(--bg);
+  background:var(--bg2);
   padding:72px 6%;
 }
 .urgency-inner{
@@ -836,7 +912,7 @@ h2.s-title em{
 @media(max-width:580px){.urgency-inner{grid-template-columns:1fr}}
 
 /* FAQ */
-.faq-section{background:var(--bg2);padding:80px 6%}
+.faq-section{background:var(--bg);padding:80px 6%}
 .faq-grid{max-width:740px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 .faq-item{
   background:var(--bg2);
@@ -872,69 +948,121 @@ h2.s-title em{
 .faq-a{color:var(--muted);line-height:1.75;font-size:.88rem}
 
 /* REGISTER */
-.register{background:var(--bg);padding:96px 6%}
-.reg-inner{max-width:580px;margin:0 auto;text-align:center}
+.register{background:var(--bg2);padding:96px 6%}
+.reg-inner{max-width:1040px;margin:0 auto;text-align:center}
+
+/* ── כרטיס כהה עם שתי עמודות ── */
+.reg-card{
+  background:var(--navy);
+  border-radius:28px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  margin-top:40px;
+  box-shadow:0 28px 80px rgba(10,22,40,.32),0 0 0 1px rgba(255,255,255,.06);
+}
+
+/* עמודה ימנית: ערך ומה מקבלים (RTL = first in DOM) */
+.reg-col-value{
+  padding:52px 44px;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  text-align:right;
+  border-left:1px solid rgba(255,255,255,.08);
+}
+.reg-col-value .s-label{
+  color:var(--teal2);
+  background:rgba(0,201,167,.12);
+  border-color:rgba(0,201,167,.2);
+  margin-bottom:16px;
+}
+.reg-col-value .s-title{
+  color:#fff;margin-bottom:8px;
+}
+.reg-col-value .s-sub{
+  color:rgba(255,255,255,.5);margin-bottom:0;
+}
+
+/* עמודה שמאלית: טופס */
+.reg-col-form{
+  padding:52px 40px;
+  background:rgba(255,255,255,.03);
+  display:flex;flex-direction:column;
+  justify-content:center;
+}
 
 /* Decision stack */
 .decision-stack{
-  background:#fff;
-  border:1px solid rgba(0,99,237,.12);
-  border-right:4px solid var(--blue);
-  border-radius:16px;
-  padding:24px 28px;
   margin:28px 0 0;
   text-align:right;
 }
 .ds-title{
   font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--blue);margin-bottom:14px;
+  color:var(--teal2);margin-bottom:14px;
 }
 .ds-list{
-  list-style:none;display:flex;flex-direction:column;gap:10px;
+  list-style:none;display:flex;flex-direction:column;gap:12px;
 }
 .ds-list li{
   display:flex;align-items:flex-start;gap:10px;
-  font-size:.92rem;color:var(--text2);font-weight:600;line-height:1.5;
+  font-size:.92rem;color:rgba(255,255,255,.8);font-weight:600;line-height:1.5;
 }
-.ds-icon{
-  color:var(--teal2);font-size:.85rem;flex-shrink:0;margin-top:2px;
+.ds-icon{color:var(--teal2);font-size:.85rem;flex-shrink:0;margin-top:2px}
+
+/* Social proof on dark */
+.reg-social-proof{
+  margin:28px 0 0;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:16px 20px;
+  text-align:right;
 }
+.rsp-quote{
+  font-size:.86rem;font-weight:500;color:rgba(255,255,255,.65);
+  line-height:1.65;margin-bottom:8px;font-style:italic;
+}
+.rsp-name{
+  font-size:.74rem;font-weight:700;color:var(--teal2);letter-spacing:.02em;
+}
+
+/* Price block */
 .reg-price-block{
   display:flex;align-items:center;gap:12px;
-  justify-content:center;margin-top:18px;flex-wrap:wrap;
+  margin-top:28px;flex-wrap:wrap;
 }
-.price-now-lg{font-size:2.2rem;font-weight:900;color:var(--text)}
+.price-now-lg{font-size:2rem;font-weight:900;color:#fff}
+
+/* Form on dark card */
 .form-box{
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-radius:24px;padding:40px 36px;
+  background:transparent;
+  border:none;
+  border-radius:0;padding:0;
   text-align:right;
-  box-shadow:var(--shadow-lg);
-  margin-top:32px;
+  box-shadow:none;
+  margin-top:0;
 }
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-.f-g{margin-bottom:12px}
+.f-g{margin-bottom:14px}
 .f-g label{
   display:block;font-size:.78rem;font-weight:600;
-  color:var(--text2);margin-bottom:5px;
+  color:rgba(255,255,255,.6);margin-bottom:6px;
 }
 .f-g input,.f-g select{
   width:100%;
-  background:var(--bg2);
-  border:1.5px solid var(--border);
+  background:rgba(255,255,255,.07);
+  border:1.5px solid rgba(255,255,255,.14);
   border-radius:10px;
   padding:13px 14px;
   font-family:'Heebo',sans-serif;font-size:.95rem;
-  color:var(--text);direction:rtl;
+  color:#fff;direction:rtl;
   transition:border-color .2s,background .2s;
 }
-.f-g input::placeholder{color:#9ca3af}
-.f-g select option{background:#fff;color:var(--text)}
+.f-g input::placeholder{color:rgba(255,255,255,.3)}
+.f-g select option{background:#0a1628;color:#fff}
 .f-g input:focus,.f-g select:focus{
   outline:none;
-  border-color:var(--blue);
-  background:#fff;
-  box-shadow:0 0 0 3px rgba(0,99,237,.1);
+  border-color:var(--teal2);
+  background:rgba(255,255,255,.1);
+  box-shadow:0 0 0 3px rgba(0,201,167,.15);
 }
 .f-submit{
   width:100%;
@@ -943,46 +1071,37 @@ h2.s-title em{
   padding:17px;border-radius:100px;
   font-family:'Heebo',sans-serif;font-size:1rem;font-weight:800;
   cursor:pointer;
-  transition:all .25s;margin-top:6px;
+  transition:all .25s;margin-top:4px;
 }
-.f-submit:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,99,237,.32)}
+.f-submit:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,99,237,.45)}
 .f-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .f-wa-btn{
   display:flex;align-items:center;justify-content:center;gap:8px;
   width:100%;
-  background:#fff;
-  border:1.5px solid var(--border);
-  color:var(--text2);
-  padding:14px;border-radius:100px;
-  font-family:'Heebo',sans-serif;font-size:.92rem;font-weight:600;
+  background:rgba(255,255,255,.06);
+  border:1.5px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.7);
+  padding:13px;border-radius:100px;
+  font-family:'Heebo',sans-serif;font-size:.9rem;font-weight:600;
   cursor:pointer;text-decoration:none;
   transition:all .2s;margin-top:10px;
 }
-.f-wa-btn:hover{border-color:rgba(37,211,102,.4);color:#128c3f}
-.reg-social-proof{
-  max-width:540px;margin:28px auto 0;
-  background:rgba(0,99,237,.04);
-  border:1px solid rgba(0,99,237,.12);
-  border-radius:16px;padding:18px 22px;
-  text-align:center;
-}
-.rsp-quote{
-  font-size:.9rem;font-weight:500;color:var(--text2);
-  line-height:1.65;margin-bottom:8px;
-  font-style:italic;
-}
-.rsp-name{
-  font-size:.75rem;font-weight:700;color:var(--blue);
-  letter-spacing:.02em;
-}
+.f-wa-btn:hover{background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.3);color:#4ade80}
 .f-guarantee{
-  text-align:center;font-size:.78rem;color:var(--muted);
+  text-align:center;font-size:.76rem;color:rgba(255,255,255,.35);
   margin-top:14px;line-height:1.6;
 }
-.f-note{font-size:.74rem;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6}
+.f-note{font-size:.72rem;color:rgba(255,255,255,.28);margin-top:12px;text-align:center;line-height:1.6}
+
+/* Responsive */
+@media(max-width:860px){
+  .reg-card{grid-template-columns:1fr}
+  .reg-col-value{border-left:none;border-bottom:1px solid rgba(255,255,255,.08);padding:44px 36px}
+  .reg-col-form{padding:40px 36px}
+  .reg-price-block{justify-content:flex-start}
+}
 @media(max-width:560px){
-  .f-row{grid-template-columns:1fr}
-  .form-box{padding:28px 20px}
+  .reg-col-value,.reg-col-form{padding:36px 24px}
 }
 
 /* FOOTER */
@@ -1003,9 +1122,16 @@ footer strong{color:rgba(255,255,255,.82)}
   padding:14px 36px;border-radius:100px;
   text-decoration:none;white-space:nowrap;
   box-shadow:0 8px 28px rgba(10,22,40,.28);
-  transition:opacity .3s,transform .3s;
+  transition:background .3s,color .3s,box-shadow .3s,transform .3s;
 }
 .fab:hover{transform:translateX(-50%) translateY(-2px)}
+/* FAB on dark hero — flip to white */
+.fab--light{
+  background:#fff;
+  color:var(--navy);
+  box-shadow:0 8px 32px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12);
+}
+.fab--light:hover{transform:translateX(-50%) translateY(-2px)}
 @media(max-width:600px){.fab{width:88%;text-align:center;padding:14px 20px;font-size:.85rem}}
 
 /* WhatsApp FAB */
@@ -1189,7 +1315,7 @@ footer strong{color:rgba(255,255,255,.82)}
   .hero-sep{margin-left:auto;margin-right:auto}
   .hero-ctas{justify-content:center}
   .hero-trust-chips{justify-content:center}
-  .hero-char-col{width:100%;max-width:300px;padding-bottom:0}
+  .hero-char-col{width:100%;max-width:300px;height:300px;position:relative}
   .hero-char-glow{width:240px;height:240px}
 }
 @media(max-width:480px){
@@ -1233,17 +1359,14 @@ footer strong{color:rgba(255,255,255,.82)}
   background:linear-gradient(90deg,transparent,rgba(0,0,0,.12) 30%,rgba(0,0,0,.12) 70%,transparent);
   margin:0;border:none;
 }
-/* section transitions — smooth wave system */
+/* section transitions: smooth wave system */
 .wave-divider{
-  display:none;
+  display:block;
   line-height:0;
   margin:0;padding:0;
   overflow:hidden;
 }
 
-/* ─── HERO: darker text ──────────────────────────── */
-.hero-name{color:#000}
-.hero-course-title{color:#0052cc}
 </style>
 
 <script type="application/ld+json">
@@ -1304,7 +1427,7 @@ footer strong{color:rgba(255,255,255,.82)}
 <section class="hero">
   <!-- Circuit background -->
   <svg class="hero-circuit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g stroke="rgba(0,99,237,0.07)" stroke-width="1.2" fill="none">
+    <g stroke="rgba(0,99,237,0.18)" stroke-width="1.2" fill="none">
       <path d="M160,180 L160,310 L320,310 L320,420"/>
       <path d="M1080,140 L1080,270 L960,270 L960,410 L840,410"/>
       <path d="M60,500 L200,500 L200,610"/>
@@ -1314,7 +1437,7 @@ footer strong{color:rgba(255,255,255,.82)}
       <path d="M1240,360 L1090,360"/>
       <path d="M300,80 L300,160 L440,160"/>
     </g>
-    <g fill="rgba(46,222,191,0.28)">
+    <g fill="rgba(46,222,191,0.45)">
       <circle cx="160" cy="310" r="4"/><circle cx="320" cy="310" r="3"/><circle cx="320" cy="420" r="3"/>
       <circle cx="1080" cy="270" r="4"/><circle cx="960" cy="270" r="3"/><circle cx="960" cy="410" r="3"/>
       <circle cx="200" cy="500" r="4"/><circle cx="580" cy="170" r="3"/>
@@ -1336,12 +1459,12 @@ footer strong{color:rgba(255,255,255,.82)}
         <span class="hero-badge-dot"></span>
         קורס AI מעשי לציבור החרדי
       </div>
-      <div class="hero-name">יוחנן שבדרון</div>
-      <h1 class="hero-course-title">קורס AI <span>למתחילים</span></h1>
-      <div class="hero-subline">בצורה פשוטה, ברורה <span>ומעשית</span></div>
+      <div class="hero-name">שלוט ב-AI</div>
+      <h1 class="hero-course-title">קורס למתחילים: <span>בצורה פשוטה</span></h1>
+      <div class="hero-subline">ChatGPT, Claude, Gemini. <span>מותאם לחרדים</span></div>
       <div class="hero-sep" aria-hidden="true"></div>
-      <p class="hero-slogan">יוחנן שבדרון הופך אותך למאסטר</p>
-      <p class="hero-desc">ב-4 מפגשי זום מעשיים תלמד להשתמש ב-ChatGPT, Claude, Gemini וכלי AI נוספים כדי לחסוך זמן, לבנות תוצרים ולעבוד חכם יותר, גם בלי רקע טכני.</p>
+      <p class="hero-slogan">יוחנן הופך אותי למאסטר</p>
+      <p class="hero-desc">ב-4 מפגשי זום מעשיים תלמד להשתמש בכלי AI המובילים: לחסוך זמן, לבנות תוצרים ולעבוד חכם יותר. עם יוחנן שבדרון. גם בלי רקע טכני.</p>
       <div class="hero-ctas">
         <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
         <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
@@ -1354,9 +1477,9 @@ footer strong{color:rgba(255,255,255,.82)}
       <div class="hero-trust-chips">
         <span class="htc">מותאם לציבור החרדי</span>
         <span class="htc">הסבר בגובה העיניים</span>
-        <span class="htc">תרגול חי</span>
-        <span class="htc"><span dir="ltr">300+ </span>בוגרים</span>
         <span class="htc">בלי רקע טכני</span>
+        <span class="htc">קבוצת ליווי בקורס</span>
+        <span class="htc">הקלטות תוך 24 שעות</span>
       </div>
     </div>
 
@@ -1370,14 +1493,12 @@ footer strong{color:rgba(255,255,255,.82)}
     </div>
   </div>
 
-  <!-- פס תחתון -->
-  <div class="hero-band" aria-hidden="true"></div>
 </section>
 
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#f3f4f8" d="M0,30 C360,60 720,0 1080,30 C1260,45 1380,10 1440,30 L1440,60 L0,60 Z"/>
+<!-- wave: dark hero → gray -->
+<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
+    <path fill="#f3f4f8" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -1391,8 +1512,8 @@ footer strong{color:rgba(255,255,255,.82)}
 
 <!-- wave: gray → white -->
 <div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#fff" d="M0,30 C360,0 720,60 1080,30 C1260,15 1380,50 1440,30 L1440,60 L0,60 Z"/>
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1420,16 +1541,16 @@ footer strong{color:rgba(255,255,255,.82)}
       <div class="trust-lbl">סוכן AI אישי<br/>שמותאם אליך</div>
     </div>
     <div class="trust-item">
-      <div class="trust-val">24/7</div>
-      <div class="trust-lbl">תמיכה<br/>בוואטסאפ</div>
+      <div class="trust-val">קבוצה</div>
+      <div class="trust-lbl">ליווי לאורך<br/>כל הקורס</div>
     </div>
   </div>
 </div>
 
 <!-- wave: white → gray -->
 <div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#f3f4f8" d="M0,20 C240,55 480,0 720,30 C960,55 1200,5 1440,25 L1440,60 L0,60 Z"/>
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1464,10 +1585,45 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: gray → white -->
+<!-- wave: gray → white (pain → about) -->
 <div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#fff" d="M0,40 C240,10 480,58 720,28 C960,5 1200,50 1440,35 L1440,60 L0,60 Z"/>
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
+  </svg>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-wrap">
+    <div class="reveal">
+      <div class="about-photo-frame">
+        <img class="about-photo-main"
+             src="assets/public/yochanan-landing.jpg"
+             alt="יוחנן שבדרון"
+             loading="lazy" width="340" height="420"/>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="about-label-dot">מי עומד מאחורי הקורס?</div>
+      <h2 class="about-main-name">יוחנן שבדרון</h2>
+      <div class="about-role-new">האיש שמחבר בין AI לשפה פשוטה</div>
+      <p class="about-body-text">
+        יוחנן מחבר בין חדשנות, פשטות ותוצאה. הוא מסביר בגובה העיניים, מתאים את הלימוד לציבור החרדי, ומתמקד במה שעובד בפועל: תרגול, תוצרים ושימושים אמיתיים לעבודה ולעסק.
+      </p>
+      <ul class="about-bullets">
+        <li>הסברים ברורים גם בלי רקע טכני</li>
+        <li>התמקדות במה שעובד בפועל</li>
+        <li>חיבור לכלים, משימות ותוצרים מהיום יום</li>
+      </ul>
+      <div class="about-final-slogan">יוחנן הופך אותי למאסטר</div>
+    </div>
+  </div>
+</section>
+
+<!-- wave: white → gray (about → solution) -->
+<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1492,16 +1648,34 @@ footer strong{color:rgba(255,255,255,.82)}
         <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>מתאים לכל רמה, גם בלי רקע טכני</div>
         <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>50% תרגול חי בכל מפגש</div>
         <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>הקלטות נשלחות תוך 24 שעות</div>
-        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>תמיכה אישית בוואטסאפ</div>
+        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>קבוצת ליווי למשך הקורס</div>
       </div>
+    </div>
+  </div>
+
+  <!-- מי זה בשבילך -->
+  <div class="fit-check reveal">
+    <div class="fit-col yes">
+      <div class="fit-col-title">✓ זה בשבילך אם</div>
+      <div class="fit-row"><span class="fit-icon-yes">✓</span>אתה מתחיל ורוצה להבין AI בצורה פשוטה</div>
+      <div class="fit-row"><span class="fit-icon-yes">✓</span>אין לך רקע טכני, ולא אכפת לך</div>
+      <div class="fit-row"><span class="fit-icon-yes">✓</span>אתה רוצה לחסוך זמן ולעבוד חכם יותר</div>
+      <div class="fit-row"><span class="fit-icon-yes">✓</span>אתה מחפש הסבר בגובה העיניים, בעברית</div>
+      <div class="fit-row"><span class="fit-icon-yes">✓</span>הנושא מעניין אותך אבל עד היום לא ידעת מאיפה להתחיל</div>
+    </div>
+    <div class="fit-col no">
+      <div class="fit-col-title">✗ זה לא בשבילך אם</div>
+      <div class="fit-row"><span class="fit-icon-no">✗</span>אתה כבר מפתח AI ומחפש קורס הנדסי</div>
+      <div class="fit-row"><span class="fit-icon-no">✗</span>אתה מחפש ידע תיאורטי ולא יישומי</div>
+      <div class="fit-row"><span class="fit-icon-no">✗</span>אתה לא מוכן להתחייב לארבעה מפגשים</div>
     </div>
   </div>
 </section>
 
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#f3f4f8" d="M0,30 C480,65 960,0 1440,35 L1440,60 L0,60 Z"/>
+<!-- wave: gray → white -->
+<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1536,10 +1710,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: gray → navy -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:70px">
-    <path fill="#0a1628" d="M0,35 C240,70 480,0 720,35 C960,70 1200,0 1440,35 L1440,70 L0,70 Z"/>
+<!-- wave: white → dark -->
+<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
+    <path fill="#06101e" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -1562,10 +1736,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: navy inner divider (teal wave) -->
-<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="none" stroke="#00c9a7" stroke-width="2" d="M0,20 C240,5 480,35 720,20 C960,5 1200,35 1440,20"/>
+<!-- wave: dark → navy -->
+<div class="wave-divider" style="background:#06101e;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
+    <path fill="#0a1628" d="M0,25 C480,0 960,50 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -1625,8 +1799,8 @@ footer strong{color:rgba(255,255,255,.82)}
 
 <!-- wave: navy → gray -->
 <div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:70px">
-    <path fill="#f3f4f8" d="M0,35 C240,0 480,70 720,35 C960,0 1200,70 1440,35 L1440,70 L0,70 Z"/>
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
+    <path fill="#f3f4f8" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -1638,55 +1812,41 @@ footer strong{color:rgba(255,255,255,.82)}
     <p class="s-sub">שליטה אמיתית בכלים שהעולם משתמש בהם עכשיו.</p>
   </div>
   <div class="tools-pills">
-    <div class="t-pill">ChatGPT</div>
-    <div class="t-pill">Claude AI</div>
-    <div class="t-pill">Gemini</div>
-    <div class="t-pill">Gamma</div>
-    <div class="t-pill">Custom GPTs</div>
-    <div class="t-pill">Google Gems</div>
-    <div class="t-pill">AI Agents</div>
+    <div class="t-pill">
+      <div class="t-pill-name">ChatGPT</div>
+      <div class="t-pill-desc">הכלי הכי מוכר: לכתיבה, ניתוח ושיחה חכמה</div>
+    </div>
+    <div class="t-pill">
+      <div class="t-pill-name">Claude AI</div>
+      <div class="t-pill-desc">הכי מדויק לטקסטים ארוכים ולכתיבה איכותית</div>
+    </div>
+    <div class="t-pill">
+      <div class="t-pill-name">Gemini</div>
+      <div class="t-pill-desc">AI של Google, מחובר לאינטרנט בזמן אמת</div>
+    </div>
+    <div class="t-pill">
+      <div class="t-pill-name">Gamma</div>
+      <div class="t-pill-desc">הרעיון שלך למצגת מקצועית, תוך דקות</div>
+    </div>
+    <div class="t-pill">
+      <div class="t-pill-name">Custom GPTs</div>
+      <div class="t-pill-desc">בנה סוכן AI שמותאם בדיוק לתחום שלך</div>
+    </div>
+    <div class="t-pill">
+      <div class="t-pill-name">Google Gems</div>
+      <div class="t-pill-desc">מומחי AI מוכנים לכל משימה, בלחיצה</div>
+    </div>
+    <div class="t-pill">
+      <div class="t-pill-name">AI Agents</div>
+      <div class="t-pill-desc">AI שעובד בשבילך באופן עצמאי, רציף</div>
+    </div>
   </div>
 </section>
 
 <!-- wave: gray → white -->
 <div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#fff" d="M0,25 C360,58 720,5 1080,35 C1260,50 1380,15 1440,28 L1440,60 L0,60 Z"/>
-  </svg>
-</div>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-wrap">
-    <div class="reveal">
-      <div class="about-photo-frame">
-        <img class="about-photo-main"
-             src="assets/public/yochanan-landing.jpg"
-             alt="יוחנן שבדרון"
-             loading="lazy" width="340" height="420"/>
-      </div>
-    </div>
-    <div class="reveal">
-      <div class="about-label-dot">מי עומד מאחורי הקורס?</div>
-      <h2 class="about-main-name">יוחנן שבדרון</h2>
-      <div class="about-role-new">האיש שמחבר בין AI לשפה פשוטה</div>
-      <p class="about-body-text">
-        יוחנן מחבר בין חדשנות, פשטות ותוצאה. הוא מסביר בגובה העיניים, מתאים את הלימוד לציבור החרדי, ומתמקד במה שעובד בפועל: תרגול, תוצרים ושימושים אמיתיים לעבודה ולעסק.
-      </p>
-      <ul class="about-bullets">
-        <li>הסברים ברורים גם בלי רקע טכני</li>
-        <li>התמקדות במה שעובד בפועל</li>
-        <li>חיבור לכלים, משימות ותוצרים מהיום יום</li>
-      </ul>
-      <div class="about-final-slogan">יוחנן הופך אותי למאסטר</div>
-    </div>
-  </div>
-</section>
-
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#f3f4f8" d="M0,40 C360,10 720,55 1080,25 C1260,10 1380,45 1440,32 L1440,60 L0,60 Z"/>
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1749,10 +1909,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#fff" d="M0,20 C480,60 960,0 1440,30 L1440,60 L0,60 Z"/>
+<!-- wave: white → gray -->
+<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1821,10 +1981,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#f3f4f8" d="M0,35 C240,5 480,58 720,30 C960,5 1200,55 1440,22 L1440,60 L0,60 Z"/>
+<!-- wave: gray → white -->
+<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1864,10 +2024,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#fff" d="M0,28 C360,60 720,8 1080,38 C1260,55 1380,20 1440,30 L1440,60 L0,60 Z"/>
+<!-- wave: white → gray -->
+<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -1944,47 +2104,55 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
-    <path fill="#f3f4f8" d="M0,22 C480,62 960,5 1440,38 L1440,60 L0,60 Z"/>
+<!-- wave: gray → white -->
+<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
 <!-- REGISTER -->
 <section class="register" id="register">
   <div class="reg-inner">
+
     <div class="s-label">הרשמה</div>
     <h2 class="s-title">שמור את מקומך<br/>במחזור <em>הקרוב</em></h2>
     <p class="s-sub" style="margin:0 auto">מלא שם וטלפון, אחזור אליך תוך שעה עם כל הפרטים. אין התחייבות.</p>
 
-    <div class="decision-stack reveal">
-      <div class="ds-title">מה מחכה לך בצד השני</div>
-      <ul class="ds-list">
-        <li><span class="ds-icon">✦</span> 4 מפגשים חיים + הקלטות תוך 24 שעות</li>
-        <li><span class="ds-icon">✦</span> סוכן AI אישי שמותאם לתחום שלך</li>
-        <li><span class="ds-icon">✦</span> ספריית פרומפטים מוכנה לשימוש מיידי</li>
-        <li><span class="ds-icon">✦</span> תמיכה ישירה בוואטסאפ לאורך כל הקורס</li>
-        <li><span class="ds-icon">✦</span> יוחנן חוזר אליך אישית תוך שעה</li>
-      </ul>
-    </div>
+    <!-- כרטיס כהה: שתי עמודות -->
+    <div class="reg-card reveal">
 
-    <div class="reg-social-proof">
-      <div class="rsp-quote">"כבר אחרי השיעור הראשון הבנתי איך להשתמש בסוכן. יצאתי עם כלי עבודה שמשתמש בו כל יום."</div>
-      <div class="rsp-name">— משה ל׳, בני ברק · בעל עסק · הנהלת חשבונות</div>
-    </div>
-    <div class="reg-price-block">
-      <span class="price-old">800 &#8362;</span>
-      <span class="price-now-lg">680 &#8362;</span>
-      <span class="price-badge">מחיר מוקדם · נגמר בקרוב</span>
-    </div>
+      <!-- עמודה ימנית: ערך + מה מקבלים (RTL = מימין) -->
+      <div class="reg-col-value">
+        <div class="ds-title">מה מחכה לך בצד השני</div>
+        <ul class="ds-list">
+          <li><span class="ds-icon">✦</span> 4 מפגשים חיים + הקלטות תוך 24 שעות</li>
+          <li><span class="ds-icon">✦</span> סוכן AI אישי שמותאם לתחום שלך</li>
+          <li><span class="ds-icon">✦</span> ספריית פרומפטים מוכנה לשימוש מיידי</li>
+          <li><span class="ds-icon">✦</span> קבוצת ליווי משותפת למשך כל הקורס</li>
+          <li><span class="ds-icon">✦</span> יוחנן חוזר אליך אישית תוך שעה</li>
+        </ul>
 
-    <form class="form-box reveal" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
-      <input type="hidden" name="_next" value="https://yochanan11.github.io/shvadron-ai/thanks.html"/>
-      <input type="hidden" name="_captcha" value="false"/>
-      <input type="hidden" name="_template" value="table"/>
-      <input type="hidden" name="_autoresponse" value="שלום! תודה שנרשמת לקורס AI של יוחנן שבדרון.
+        <div class="reg-social-proof">
+          <div class="rsp-quote">"כבר אחרי השיעור הראשון הבנתי איך להשתמש בסוכן. יצאתי עם כלי עבודה שמשתמש בו כל יום."</div>
+          <div class="rsp-name">משה ל׳, בני ברק · בעל עסק · הנהלת חשבונות</div>
+        </div>
+
+        <div class="reg-price-block">
+          <span class="price-old">800 &#8362;</span>
+          <span class="price-now-lg">680 &#8362;</span>
+          <span class="price-badge">מחיר מוקדם · נגמר בקרוב</span>
+        </div>
+      </div>
+
+      <!-- עמודה שמאלית: טופס (RTL = משמאל) -->
+      <div class="reg-col-form">
+        <form class="form-box" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
+          <input type="hidden" name="_next" value="https://yochanan11.github.io/shvadron-ai/thanks.html"/>
+          <input type="hidden" name="_captcha" value="false"/>
+          <input type="hidden" name="_template" value="table"/>
+          <input type="hidden" name="_autoresponse" value="שלום! תודה שנרשמת לקורס AI של יוחנן שבדרון.
 
 קיבלתי את הפרטים שלך ואחזור אליך תוך 24 שעות לאישור המקום וסידור התשלום.
 
@@ -1992,27 +2160,30 @@ footer strong{color:rgba(255,255,255,.82)}
 
 יוחנן שבדרון
 shwadron.ai"/>
-      <div class="f-g">
-        <label for="f-first">שם פרטי *</label>
-        <input id="f-first" type="text" name="שם" placeholder="ישראל" required autocomplete="given-name"/>
+          <div class="f-g">
+            <label for="f-first">שם פרטי *</label>
+            <input id="f-first" type="text" name="שם" placeholder="ישראל" required autocomplete="given-name"/>
+          </div>
+          <div class="f-g">
+            <label for="f-phone">טלפון *</label>
+            <input id="f-phone" type="tel" name="טלפון" placeholder="050-0000000" required autocomplete="tel"/>
+          </div>
+          <button type="submit" class="f-submit">בדוק אם נשאר לי מקום</button>
+          <p class="f-guarantee">🔒 אין ספאם. אין התחייבות. יוחנן חוזר אליך אישית תוך שעה.</p>
+          <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
+             target="_blank" rel="noopener" class="f-wa-btn"
+             aria-label="שליחת הודעה בוואטסאפ לקבלת פרטים על הקורס">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+            קבל פרטים בוואטסאפ
+          </a>
+          <p class="f-note">
+            יוחנן יחזור אליך עם פרטים מסודרים ואישור מקום, אם עדיין נשאר מקום פנוי.<br/>
+            הפרטים שלך מאובטחים ולא יועברו לגורם שלישי.
+          </p>
+        </form>
       </div>
-      <div class="f-g">
-        <label for="f-phone">טלפון *</label>
-        <input id="f-phone" type="tel" name="טלפון" placeholder="050-0000000" required autocomplete="tel"/>
-      </div>
-      <button type="submit" class="f-submit">בדוק אם נשאר לי מקום</button>
-      <p class="f-guarantee">🔒 אין ספאם. אין התחייבות. יוחנן חוזר אליך אישית תוך שעה.</p>
-      <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
-         target="_blank" rel="noopener" class="f-wa-btn"
-         aria-label="שליחת הודעה בוואטסאפ לקבלת פרטים על הקורס">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
-        קבל פרטים בוואטסאפ
-      </a>
-      <p class="f-note">
-        יוחנן יחזור אליך עם פרטים מסודרים ואישור מקום, אם עדיין נשאר מקום פנוי.<br/>
-        הפרטים שלך מאובטחים ולא יועברו לגורם שלישי.
-      </p>
-    </form>
+
+    </div><!-- /reg-card -->
   </div>
 </section>
 
@@ -2061,6 +2232,25 @@ shwadron.ai"/>
   });
 })();
 
+// FAB: white button on dark sections, dark button on light sections
+(function(){
+  var fab = document.querySelector('.fab');
+  if(!fab) return;
+  var darkSections = document.querySelectorAll('.hero, .cd-section, .agent-section');
+  function updateFab(){
+    var fabRect = fab.getBoundingClientRect();
+    var fabMidY = fabRect.top + fabRect.height / 2;
+    var onDark = false;
+    darkSections.forEach(function(s){
+      var r = s.getBoundingClientRect();
+      if(fabMidY >= r.top && fabMidY <= r.bottom) onDark = true;
+    });
+    fab.classList.toggle('fab--light', onDark);
+  }
+  updateFab();
+  window.addEventListener('scroll', updateFab, {passive:true});
+})();
+
 // Reveal on scroll
 var revealObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
@@ -2071,7 +2261,7 @@ document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el
 
 // Countdown
 (function() {
-  var target = new Date('2026-05-06T17:00:00');
+  var target = new Date('2026-05-06T17:00:00+03:00');
   function pad(n) { return String(n).padStart(2, '0'); }
   function tick() {
     var diff = target - new Date();

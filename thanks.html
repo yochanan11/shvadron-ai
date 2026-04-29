@@ -3,234 +3,603 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>המקום שלך נשמר | shwadron.ai</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+<title>ברוך הבא! המקום שלך נשמר | SHWADRON.AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0a1628;
   --blue:#0063ed;
-  --teal:#00c9a7;
+  --blue2:#0f8eea;
+  --teal:#2edebf;
+  --teal2:#00c9a7;
+  --teal-text:#00967c;
+  --navy:#0a1628;
   --bg:#f3f4f8;
+  --bg2:#ffffff;
   --text:#0d0d0d;
+  --text2:#1f2937;
   --muted:#6b7280;
+  --border:rgba(0,0,0,.11);
+  --shadow:0 2px 16px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 40px rgba(0,0,0,.13);
 }
 html{scroll-behavior:smooth}
 body{
   font-family:'Heebo',sans-serif;
-  background:var(--navy);
-  color:#fff;
+  background:var(--bg2);
+  color:var(--text);
   direction:rtl;
-  min-height:100vh;
+  overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
 
-/* NAV */
+/* ─── NAV ─── */
 nav{
+  position:fixed;top:0;width:100%;z-index:200;
+  padding:0 6%;
   display:flex;justify-content:space-between;align-items:center;
-  padding:0 6%;height:64px;
   background:var(--navy);
+  height:64px;
   border-bottom:1px solid rgba(255,255,255,.07);
 }
-.logo img{height:42px;width:auto}
+.logo img{height:48px;width:auto;display:block}
+.nav-back{
+  color:rgba(255,255,255,.55);font-size:.875rem;font-weight:600;
+  text-decoration:none;
+  padding:7px 14px;border-radius:8px;
+  transition:color .2s,background .2s;
+  display:flex;align-items:center;gap:6px;
+}
+.nav-back:hover{color:#fff;background:rgba(255,255,255,.08)}
 
-/* WAVE TOP */
-.wave-top{
-  background:var(--navy);
-  margin-bottom:-2px;
+/* ─── HERO ─── */
+.hero{
+  min-height:82vh;
+  display:flex;flex-direction:column;
+  background:#fff;
+  position:relative;overflow:hidden;
+  padding-top:64px;
+}
+.hero-content{
+  flex:1;width:100%;max-width:1280px;
+  margin:0 auto;padding:0 6%;
+  display:flex;align-items:stretch;
+  position:relative;z-index:1;
 }
 
-/* MAIN */
-.thanks-wrap{
-  background:var(--bg);
-  padding:72px 6% 100px;
-  min-height:calc(100vh - 64px);
-}
-.thanks-inner{
-  max-width:560px;
-  margin:0 auto;
-  text-align:center;
+/* Text column (right in RTL) */
+.hero-text-col{
+  flex:1;display:flex;flex-direction:column;
+  justify-content:center;
+  padding:40px 0 48px;
+  min-width:0;
 }
 
-/* CHECK CIRCLE */
-.check-circle{
-  width:88px;height:88px;
-  background:linear-gradient(135deg,var(--teal),var(--blue));
-  border-radius:50%;
+/* Character column (left in RTL) */
+.hero-char-col{
+  width:440px;flex-shrink:0;
+  position:relative;
   display:flex;align-items:center;justify-content:center;
-  margin:0 auto 36px;
-  box-shadow:0 8px 32px rgba(0,99,237,.35),0 0 0 8px rgba(0,201,167,.12);
-  font-size:2.4rem;
-  animation:pop .5s cubic-bezier(.34,1.56,.64,1) both;
 }
-@keyframes pop{
-  from{transform:scale(0);opacity:0}
-  to{transform:scale(1);opacity:1}
+.hero-char-glow{
+  position:absolute;
+  width:440px;height:440px;
+  background:radial-gradient(ellipse at center,rgba(0,99,237,.05) 0%,rgba(46,222,191,.035) 52%,transparent 74%);
+  border-radius:50%;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.hero-character-img{
+  position:relative;z-index:2;
+  width:100%;max-width:430px;
+  height:auto;display:block;
+  object-fit:contain;object-position:center center;
+  filter:drop-shadow(0 20px 48px rgba(0,99,237,.09));
 }
 
-/* HEADLINE */
-.thanks-title{
-  font-size:clamp(2rem,4vw,2.8rem);
-  font-weight:900;letter-spacing:-.06em;
-  color:var(--text);
-  margin-bottom:12px;
-  line-height:1.15;
+/* ─── CHECK CIRCLE ─── */
+.check-circle{
+  width:60px;height:60px;
+  background:linear-gradient(135deg,var(--teal2),var(--blue));
+  border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  margin-bottom:14px;
+  box-shadow:0 8px 32px rgba(0,99,237,.28),0 0 0 6px rgba(0,201,167,.1);
+  font-size:1.7rem;color:#fff;
+  flex-shrink:0;
+  animation:pop .55s cubic-bezier(.34,1.56,.64,1) both;
 }
-.thanks-title em{
-  font-style:normal;
-  background:linear-gradient(90deg,var(--blue),var(--teal));
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+
+/* ─── AGENT LABEL BADGE ─── */
+.agent-label{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#0063ed 0%,#00c9a7 100%);
+  color:#fff;
+  font-size:.78rem;font-weight:900;
+  letter-spacing:.13em;text-transform:uppercase;
+  padding:10px 22px 10px 18px;
+  border-radius:100px;
+  box-shadow:0 0 0 1.5px rgba(255,255,255,.18),0 6px 32px rgba(0,99,237,.55),0 2px 14px rgba(0,201,167,.35);
+  transform:rotate(-1.5deg);
+  transform-origin:right center;
+  width:fit-content;
+  margin-bottom:20px;
+  cursor:default;
+  user-select:none;
+  position:relative;
+  overflow:hidden;
+}
+.agent-label::before{
+  content:'';
+  position:absolute;top:0;left:-100%;
+  width:55%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.32),transparent);
+  transform:skewX(-18deg);
+  animation:al-shine 3.2s ease-in-out infinite 0.8s;
+}
+.agent-label::after{content:'✦';font-size:.9rem;line-height:1;order:-1}
+@keyframes al-shine{0%,60%{left:-100%}100%{left:200%}}
+
+/* ─── HERO TEXT ─── */
+.hero-title{
+  font-size:clamp(2.8rem,6.5vw,5.4rem);
+  font-weight:900;line-height:1.0;
+  color:#000;
+  margin-bottom:6px;
+}
+.hero-subline{
+  display:block;
+  font-size:clamp(1.45rem,3vw,2.5rem);
+  font-weight:900;
+  line-height:1.16;
+  margin-bottom:10px;
+  background:linear-gradient(130deg,var(--blue) 0%,var(--teal2) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
 }
-.thanks-sub{
-  font-size:1.05rem;color:var(--muted);
-  line-height:1.8;margin-bottom:36px;
+.hero-sep{
+  width:56px;height:3px;
+  background:linear-gradient(90deg,var(--teal2),var(--blue));
+  border-radius:2px;
+  margin-bottom:10px;
 }
-.thanks-sub strong{color:var(--text)}
+.hero-slogan{
+  font-size:clamp(.92rem,1.5vw,1.1rem);font-weight:800;
+  color:var(--teal-text);
+  margin-bottom:10px;
+}
+.hero-desc{
+  font-size:clamp(.98rem,1.35vw,1.12rem);
+  color:var(--muted);
+  margin-bottom:24px;line-height:1.8;
+  max-width:600px;
+}
+.hero-desc strong{color:var(--text2);font-weight:800}
 
-/* GIFT BOX */
-.gift-box{
-  background:#fff;
-  border:1.5px solid rgba(0,201,167,.35);
-  border-right:4px solid var(--teal);
-  border-radius:16px;
-  padding:24px 28px;
-  margin-bottom:36px;
-  text-align:right;
-  box-shadow:0 4px 20px rgba(0,201,167,.1);
-}
-.gift-box-title{
-  font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--teal);margin-bottom:10px;
-  display:flex;align-items:center;gap:7px;
-}
-.gift-box-title::before{content:'🎁';font-size:.95rem}
-.gift-box-text{
-  font-size:.97rem;color:var(--text);line-height:1.7;font-weight:600;
-  margin-bottom:6px;
-}
-.gift-box-note{
-  font-size:.82rem;color:var(--muted);line-height:1.6;
-}
-
-/* CTAs */
-.ctas{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+/* ─── CTA WHATSAPP ─── */
 .cta-wa{
-  display:flex;align-items:center;justify-content:center;gap:10px;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
   background:#25d366;
   color:#fff;font-weight:800;font-size:1rem;
-  padding:16px 28px;border-radius:100px;
+  padding:16px 32px;border-radius:100px;
   text-decoration:none;
-  box-shadow:0 4px 20px rgba(37,211,102,.3);
-  transition:all .2s;
+  box-shadow:0 4px 24px rgba(37,211,102,.32);
+  transition:all .22s;
+  margin-bottom:18px;
+  width:fit-content;
 }
-.cta-wa:hover{background:#1da851;transform:translateY(-2px)}
-.cta-share{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  background:#fff;
-  border:1.5px solid rgba(0,0,0,.1);
-  color:var(--text);font-weight:700;font-size:.9rem;
-  padding:14px 28px;border-radius:100px;
-  text-decoration:none;cursor:pointer;
-  transition:all .2s;
-}
-.cta-share:hover{border-color:rgba(0,99,237,.3);color:var(--blue)}
-.cta-back{
-  display:inline-block;
-  color:var(--muted);font-size:.85rem;font-weight:600;
-  text-decoration:none;
-  padding:8px 16px;border-radius:8px;
-  transition:color .2s;
-}
-.cta-back:hover{color:var(--text)}
+.cta-wa:hover{background:#1da851;transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,.4)}
 
-/* SLOGAN */
-.thanks-slogan{
-  margin-top:40px;
-  font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.25);
+/* Trust chips */
+.hero-trust-chips{display:flex;flex-wrap:wrap;gap:7px}
+.htc{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(0,150,124,.06);
+  border:1px solid rgba(0,150,124,.14);
+  color:var(--teal-text);
+  padding:5px 11px;border-radius:100px;
+  font-size:.73rem;font-weight:600;
+}
+.htc::before{content:'✓ ';font-size:.62rem;font-weight:900}
+
+/* Hero gradient band */
+.hero-band{
+  height:6px;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    var(--navy) 10%,
+    var(--blue) 42%,
+    var(--teal2) 88%,
+    transparent 100%
+  );
+  flex-shrink:0;
+  margin:0 6%;
+  border-radius:100px;
+}
+
+/* ─── WAVE ─── */
+.wave{line-height:0;margin:0;padding:0;overflow:hidden;display:block}
+
+/* ─── NEXT STEPS ─── */
+.next-steps{background:var(--bg);padding:88px 6%}
+.ns-inner{max-width:780px;margin:0 auto}
+
+.s-label{
+  display:inline-block;
+  font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-text);
+  background:rgba(0,150,124,.08);
+  border:1px solid rgba(0,150,124,.15);
+  padding:5px 14px;border-radius:100px;
+  margin-bottom:18px;
+}
+.s-title{
+  font-size:clamp(1.7rem,3.5vw,2.5rem);
+  font-weight:900;line-height:1.2;
+  letter-spacing:-.04em;
+  color:var(--text);
+  margin-bottom:10px;
+}
+.s-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--blue),var(--teal2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.s-sub{
+  font-size:1rem;color:var(--muted);line-height:1.75;
+  margin-bottom:52px;max-width:520px;
+}
+
+/* Timeline */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-step{
+  display:flex;align-items:flex-start;gap:20px;
+  padding-bottom:40px;
+}
+.tl-step:last-child{padding-bottom:0}
+.tl-left{
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;
+}
+.tl-num{
+  width:46px;height:46px;
+  background:linear-gradient(135deg,var(--blue),var(--teal2));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.05rem;font-weight:900;color:#fff;
+  flex-shrink:0;
+  box-shadow:0 4px 18px rgba(0,99,237,.28);
+}
+.tl-line{
+  width:2px;flex:1;min-height:28px;
+  background:linear-gradient(to bottom,rgba(0,99,237,.22),transparent);
+  margin-top:4px;
+}
+.tl-step:last-child .tl-line{display:none}
+.tl-content{padding-top:8px}
+.tl-time{
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal-text);margin-bottom:5px;
+}
+.tl-title{
+  font-size:1.08rem;font-weight:800;color:var(--text);
+  margin-bottom:7px;
+}
+.tl-desc{
+  font-size:.88rem;color:var(--muted);line-height:1.7;
+}
+
+/* ─── GIFT SECTION ─── */
+.gift-section{background:var(--bg2);padding:72px 6%}
+.gift-inner{max-width:640px;margin:0 auto}
+
+.gift-card{
+  background:#fff;
+  border:1.5px solid rgba(0,201,167,.28);
+  border-right:5px solid var(--teal2);
+  border-radius:20px;
+  padding:36px 32px;
+  box-shadow:0 8px 40px rgba(0,201,167,.1),0 2px 12px rgba(0,0,0,.06);
+}
+.gift-emoji{font-size:2.6rem;margin-bottom:14px;display:block}
+.gift-label{
+  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--teal-text);margin-bottom:10px;
+}
+.gift-title{
+  font-size:1.38rem;font-weight:900;color:var(--text);
+  margin-bottom:12px;line-height:1.3;
+}
+.gift-body{
+  font-size:.94rem;color:var(--muted);line-height:1.8;
+  margin-bottom:22px;
+}
+.gift-body strong{color:var(--text2)}
+.gift-note{
+  display:flex;align-items:flex-start;gap:9px;
+  font-size:.8rem;color:var(--muted);
+  background:rgba(0,150,124,.05);
+  border:1px solid rgba(0,150,124,.12);
+  padding:12px 14px;border-radius:10px;
+  line-height:1.55;
+}
+.gift-note-icon{font-size:.95rem;flex-shrink:0;margin-top:1px}
+
+/* ─── SHARE SECTION (navy) ─── */
+.share-section{
+  background:var(--navy);
+  padding:72px 6% 56px;
   text-align:center;
+}
+.share-inner{max-width:560px;margin:0 auto}
+
+.share-label{
+  display:inline-block;
+  font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal2);
+  background:rgba(0,201,167,.1);
+  border:1px solid rgba(0,201,167,.2);
+  padding:5px 14px;border-radius:100px;
+  margin-bottom:20px;
+}
+.share-title{
+  font-size:clamp(1.5rem,3vw,2.1rem);
+  font-weight:900;color:#fff;
+  margin-bottom:12px;line-height:1.3;
+  letter-spacing:-.04em;
+}
+.share-title em{font-style:normal;color:var(--teal2)}
+.share-sub{
+  font-size:.96rem;color:rgba(255,255,255,.5);
+  line-height:1.8;margin-bottom:40px;
+  max-width:440px;margin-left:auto;margin-right:auto;
+}
+.share-btns{display:flex;flex-direction:column;gap:12px;align-items:center}
+
+.btn-share{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,255,255,.15);
+  color:#fff;font-weight:700;font-size:.95rem;
+  padding:15px 34px;border-radius:100px;
+  text-decoration:none;
+  transition:all .2s;
+  width:fit-content;
+}
+.btn-share:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.28);transform:translateY(-2px)}
+
+.slogan-strip{
+  margin-top:48px;
+  font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.18);
   padding-top:24px;
   border-top:1px solid rgba(255,255,255,.07);
 }
 
-/* FOOTER WAVE */
-.wave-bottom{background:var(--bg);margin-top:-2px}
-.thanks-footer{
+/* ─── FOOTER ─── */
+footer{
   background:var(--navy);
-  padding:24px 6%;
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:20px 6%;
   text-align:center;
 }
-.thanks-footer p{font-size:.78rem;color:rgba(255,255,255,.28)}
+footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
 
-@media(max-width:600px){
-  .thanks-wrap{padding:48px 6% 72px}
-  .thanks-title{font-size:1.8rem}
-  .gift-box{padding:20px}
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero-char-col{width:320px}
+  .hero-character-img{max-width:320px}
+}
+@media(max-width:680px){
+  .hero-content{flex-direction:column-reverse;align-items:center}
+  .hero-char-col{
+    width:100%;max-width:220px;
+    padding-top:40px;
+  }
+  .hero-text-col{
+    padding:28px 0 48px;
+    align-items:center;text-align:center;
+  }
+  .hero-title{text-align:center}
+  .hero-subline{text-align:center}
+  .hero-sep{margin-left:auto;margin-right:auto}
+  .hero-slogan{text-align:center}
+  .hero-desc{text-align:center}
+  .hero-trust-chips{justify-content:center}
+  .agent-label{margin-bottom:20px}
+  .check-circle{margin-left:auto;margin-right:auto}
+  .cta-wa{width:100%;justify-content:center}
+  .ns-inner{text-align:right}
+}
+@media(max-width:480px){
+  .gift-card{padding:24px 18px}
+  .next-steps{padding:60px 6%}
+  .gift-section{padding:56px 6%}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">
     <img src="assets/public/logo.svg" alt="שבדרון AI" width="140" height="48"/>
   </a>
-  <a href="index.html" style="font-size:.85rem;color:rgba(255,255,255,.55);text-decoration:none;font-weight:600">← חזרה לאתר</a>
+  <a href="index.html" class="nav-back">← חזרה לאתר</a>
 </nav>
 
-<!-- wave: navy → gray -->
-<div class="wave-top">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+
+    <!-- עמודת טקסט (ימין ב-RTL) -->
+    <div class="hero-text-col">
+
+      <!-- Badge sticker -->
+      <div class="agent-label" aria-hidden="true">המקום שלך נשמר</div>
+
+      <!-- כותרת ראשית -->
+      <div class="hero-title">ברוך הבא<br/>למשפחה.</div>
+      <span class="hero-subline">עשית את הצעד הנכון</span>
+
+      <div class="hero-sep" aria-hidden="true"></div>
+      <p class="hero-slogan">יוחנן הופך אותי למאסטר</p>
+
+      <p class="hero-desc">
+        <strong>יוחנן חוזר אליך תוך שעה</strong> עם אישור המקום וכל הפרטים על הקורס.<br/>
+        בינתיים, בדוק את תיבת הדואר. שלחתי לך שיעור מוקלט של 10 דקות, בחינם.
+      </p>
+
+      <!-- CTA ראשי -->
+      <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1"
+         target="_blank" rel="noopener" class="cta-wa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+        כתוב ישירות ליוחנן בוואטסאפ
+      </a>
+
+      <!-- Trust chips -->
+      <div class="hero-trust-chips">
+        <span class="htc">מקומך שמור</span>
+        <span class="htc">שיעור מוקלט בחינם</span>
+        <span class="htc">יוחנן חוזר תוך שעה</span>
+      </div>
+
+    </div><!-- /hero-text-col -->
+
+    <!-- עמודת דמות (שמאל ב-RTL) -->
+    <div class="hero-char-col">
+      <div class="hero-char-glow"></div>
+      <img class="hero-character-img"
+           src="assets/public/images/brand/yochanan-character.png"
+           alt="יוחנן שבדרון, מדריך AI לציבור החרדי"
+           width="430" height="620"
+           loading="eager"/>
+    </div>
+
+  </div><!-- /hero-content -->
+
+  <!-- רצועת צבע תחתית -->
+  <div class="hero-band"></div>
+</section>
+
+<!-- wave: white → gray -->
+<div class="wave" style="background:#fff;margin-bottom:-2px">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
     <path fill="#f3f4f8" d="M0,30 C360,60 720,5 1080,35 C1260,48 1380,15 1440,30 L1440,60 L0,60 Z"/>
   </svg>
 </div>
 
-<div class="thanks-wrap">
-  <div class="thanks-inner">
+<!-- NEXT STEPS -->
+<section class="next-steps">
+  <div class="ns-inner">
+    <div class="s-label">מה קורה עכשיו?</div>
+    <h2 class="s-title">שלושה צעדים<br/><em>שכבר קורים</em></h2>
+    <p class="s-sub">גם אם נראה שלא קרה כלום, הגלגלים כבר מסתובבים.</p>
 
-    <div class="check-circle" aria-hidden="true">✓</div>
+    <div class="timeline">
 
-    <h1 class="thanks-title">המקום שלך <em>נשמר.</em></h1>
-    <p class="thanks-sub">
-      יוחנן חוזר אליך <strong>תוך שעה</strong> עם כל הפרטים ואישור המקום.<br/>
-      עשית את הצעד הנכון. זה ה-AI שמדבר בשפה שלך.
-    </p>
+      <div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-num">1</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-time">עכשיו · מיידי</div>
+          <div class="tl-title">שיעור מוקלט נשלח לתיבת הדואר שלך</div>
+          <div class="tl-desc">10 דקות שיכניסו אותך לעולם ה-AI, חינם, בלי להמתין לשיחה. אם לא מצאת, בדוק בתיקיית הספאם.</div>
+        </div>
+      </div>
 
-    <div class="gift-box">
-      <div class="gift-box-title">מתנה ממני אליך</div>
-      <div class="gift-box-text">שלחתי לך עכשיו שיעור מוקלט של 10 דקות — בחינם.</div>
-      <div class="gift-box-note">בדוק את תיבת הדואר הנכנס. אם לא מצאת — בדוק גם בתיקיית הספאם.</div>
-    </div>
+      <div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-num">2</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-time">תוך שעה</div>
+          <div class="tl-title">יוחנן חוזר אליך אישית</div>
+          <div class="tl-desc">תקבל אישור מקום, תאריך המפגש הראשון וכל מה שצריך לדעת לפני שמתחילים.</div>
+        </div>
+      </div>
 
-    <div class="ctas">
-      <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1"
-         target="_blank" rel="noopener" class="cta-wa">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="white"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
-        כתוב לי ישירות בוואטסאפ
-      </a>
+      <div class="tl-step">
+        <div class="tl-left">
+          <div class="tl-num">3</div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-time">מפגש ראשון</div>
+          <div class="tl-title">מתחילים ויוצאים עם תוצר ביד</div>
+          <div class="tl-desc">כל מפגש בנוי כך שאתה עושה בפועל, לא רק מקשיב. מפגש ראשון: היכרות עם ChatGPT, Claude, Gemini. יוצאים עם תוצר.</div>
+        </div>
+      </div>
 
-      <a href="https://wa.me/?text=%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20AI%20%D7%A9%D7%9C%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%20%D7%A9%D7%91%D7%93%D7%A8%D7%95%D7%9F.%20%D7%A0%D7%A8%D7%90%D7%94%20%D7%9C%D7%99%20%D7%A9%D7%92%D7%9D%20%D7%90%D7%AA%D7%94%20%D7%A6%D7%A8%D7%99%D7%9A%20%D7%90%D7%AA%20%D7%96%D7%94%3A%20https%3A%2F%2Fshwadron-ai.com"
-         target="_blank" rel="noopener" class="cta-share">
-        📤 שלח לחבר שצריך את זה
-      </a>
-
-      <a href="index.html" class="cta-back">חזרה לאתר</a>
-    </div>
-
+    </div><!-- /timeline -->
   </div>
+</section>
+
+<!-- wave: gray → white -->
+<div class="wave" style="background:#f3f4f8;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
+    <path fill="#fff" d="M0,22 C480,62 960,5 1440,38 L1440,60 L0,60 Z"/>
+  </svg>
 </div>
 
-<!-- wave: gray → navy -->
-<div class="wave-bottom">
+<!-- GIFT -->
+<section class="gift-section">
+  <div class="gift-inner">
+    <div class="gift-card">
+      <span class="gift-emoji">🎁</span>
+      <div class="gift-label">מתנה ממני אליך</div>
+      <div class="gift-title">שיעור מוקלט של 10 דקות, בחינם</div>
+      <p class="gift-body">
+        רצה להתחיל עוד לפני שמדברים? שלחתי לך שיעור שיכניס אותך לעולם ה-AI מהמקום הנכון.
+        <strong>לא תיאוריה. תרגול אמיתי שמשנה את הדרך שאתה עובד.</strong>
+        פתח את תיבת הדואר שלך עכשיו.
+      </p>
+      <div class="gift-note">
+        <span class="gift-note-icon">💡</span>
+        לא מצאת את המייל? בדוק בתיקיית הספאם או הקידומים, זה כנראה שם. חפש "שבדרון".
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- wave: white → navy -->
+<div class="wave" style="background:#fff;margin-bottom:-2px">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
     <path fill="#0a1628" d="M0,30 C360,0 720,55 1080,25 C1260,10 1380,45 1440,28 L1440,60 L0,60 Z"/>
   </svg>
 </div>
 
-<div class="thanks-footer">
+<!-- SHARE -->
+<section class="share-section">
+  <div class="share-inner">
+    <div class="share-label">שתף</div>
+    <h2 class="share-title">מכיר מישהו שגם הוא<br/>צריך את <em>זה?</em></h2>
+    <p class="share-sub">כל אחד בסביבה שמרגיש שה-AI עובר עליו מגיע לדעת שיש קורס שמדבר את השפה שלו.</p>
+
+    <div class="share-btns">
+      <a href="https://wa.me/?text=%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20AI%20%D7%A9%D7%9C%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%20%D7%A9%D7%91%D7%93%D7%A8%D7%95%D7%9F.%20%D7%A0%D7%A8%D7%90%D7%94%20%D7%9C%D7%99%20%D7%A9%D7%92%D7%9D%20%D7%90%D7%AA%D7%94%20%D7%A6%D7%A8%D7%99%D7%9A%20%D7%90%D7%AA%20%D7%96%D7%94%3A%20https%3A%2F%2Fshwadron-ai.com"
+         target="_blank" rel="noopener" class="btn-share">
+        📤 שלח לחבר שצריך את זה
+      </a>
+      <a href="index.html" class="btn-back" style="color:rgba(255,255,255,.35);font-size:.82rem;font-weight:600;text-decoration:none;transition:color .2s;padding:8px 0"
+         onmouseover="this.style.color='rgba(255,255,255,.65)'"
+         onmouseout="this.style.color='rgba(255,255,255,.35)'">
+        ← חזרה לאתר
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
   <p>יוחנן שבדרון · AI לציבור החרדי · &copy; 2026</p>
-</div>
+</footer>
 
 </body>
 </html>
