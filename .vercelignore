@@ -15,21 +15,38 @@ REQUIREMENTS.md
 extract-branding.mjs
 extract-course.mjs
 
-public
+/public
 
-ChatGPT Image Apr 27, 2026, 12_27_19 PM.png
-GPT.png
-WhatsApp Image 2026-04-13 at 23.06.37.jpeg
-yochanan.png
-yochanan.jpg
-yochanan-landing.jpg
-logo.png
-logo.svg
-icon-logo.png
-icon.svg
-__לוגו.svg
-אייקון לוגו.png
-אייקון.svg
-לוגו.png
-עיצוב ללא שם.svg
-צילום מסך 2026-04-22 003421.png
+/ChatGPT Image Apr 27, 2026, 12_27_19 PM.png
+/GPT.png
+/WhatsApp Image 2026-04-13 at 23.06.37.jpeg
+/yochanan.png
+/yochanan.jpg
+/yochanan-landing.jpg
+/logo.png
+/logo.svg
+/icon-logo.png
+/icon.svg
+/__לוגו.svg
+/אייקון לוגו.png
+/אייקון.svg
+/לוגו.png
+/עיצוב ללא שם.svg
+/צילום מסך 2026-04-22 003421.png
+
+/assets/public/ChatGPT Image Apr 27, 2026, 12_27_19 PM.png
+/assets/public/GPT.png
+/assets/public/WhatsApp Image 2026-04-13 at 23.06.37.jpeg
+/assets/public/assets/assets
+/assets/public/assets/whatsapp-proofs/.gitkeep
+/assets/public/index.html
+/assets/public/logo.png
+/assets/public/videos
+/assets/public/yochanan.jpg
+/assets/public/yochanan.png
+/assets/public/__לוגו.svg
+/assets/public/אייקון לוגו.png
+/assets/public/אייקון.svg
+/assets/public/לוגו.png
+/assets/public/עיצוב ללא שם.svg
+/assets/public/צילום מסך 2026-04-22 003421.png
