@@ -3,28 +3,234 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>תודה! | shwadron.ai</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet"/>
+<title>המקום שלך נשמר | shwadron.ai</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Heebo',sans-serif;background:#060d1f;color:#fff;direction:rtl;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px}
-.box{max-width:500px}
-.check{width:80px;height:80px;background:linear-gradient(135deg,#2edebf,#0f8eea);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 32px;font-size:2.5rem}
-h1{font-size:2.2rem;font-weight:900;margin-bottom:16px}
-h1 span{background:linear-gradient(135deg,#2edebf,#0f8eea);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-p{color:rgba(255,255,255,.6);font-size:1.05rem;line-height:1.8;margin-bottom:32px}
-a{display:inline-block;background:linear-gradient(135deg,#2edebf,#0f8eea);color:#060d1f;padding:14px 40px;border-radius:100px;font-weight:800;text-decoration:none;font-size:1rem}
+:root{
+  --navy:#0a1628;
+  --blue:#0063ed;
+  --teal:#00c9a7;
+  --bg:#f3f4f8;
+  --text:#0d0d0d;
+  --muted:#6b7280;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Heebo',sans-serif;
+  background:var(--navy);
+  color:#fff;
+  direction:rtl;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* NAV */
+nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 6%;height:64px;
+  background:var(--navy);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.logo img{height:42px;width:auto}
+
+/* WAVE TOP */
+.wave-top{
+  background:var(--navy);
+  margin-bottom:-2px;
+}
+
+/* MAIN */
+.thanks-wrap{
+  background:var(--bg);
+  padding:72px 6% 100px;
+  min-height:calc(100vh - 64px);
+}
+.thanks-inner{
+  max-width:560px;
+  margin:0 auto;
+  text-align:center;
+}
+
+/* CHECK CIRCLE */
+.check-circle{
+  width:88px;height:88px;
+  background:linear-gradient(135deg,var(--teal),var(--blue));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 36px;
+  box-shadow:0 8px 32px rgba(0,99,237,.35),0 0 0 8px rgba(0,201,167,.12);
+  font-size:2.4rem;
+  animation:pop .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes pop{
+  from{transform:scale(0);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+/* HEADLINE */
+.thanks-title{
+  font-size:clamp(2rem,4vw,2.8rem);
+  font-weight:900;letter-spacing:-.06em;
+  color:var(--text);
+  margin-bottom:12px;
+  line-height:1.15;
+}
+.thanks-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--blue),var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.thanks-sub{
+  font-size:1.05rem;color:var(--muted);
+  line-height:1.8;margin-bottom:36px;
+}
+.thanks-sub strong{color:var(--text)}
+
+/* GIFT BOX */
+.gift-box{
+  background:#fff;
+  border:1.5px solid rgba(0,201,167,.35);
+  border-right:4px solid var(--teal);
+  border-radius:16px;
+  padding:24px 28px;
+  margin-bottom:36px;
+  text-align:right;
+  box-shadow:0 4px 20px rgba(0,201,167,.1);
+}
+.gift-box-title{
+  font-size:.75rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:10px;
+  display:flex;align-items:center;gap:7px;
+}
+.gift-box-title::before{content:'🎁';font-size:.95rem}
+.gift-box-text{
+  font-size:.97rem;color:var(--text);line-height:1.7;font-weight:600;
+  margin-bottom:6px;
+}
+.gift-box-note{
+  font-size:.82rem;color:var(--muted);line-height:1.6;
+}
+
+/* CTAs */
+.ctas{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.cta-wa{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:#25d366;
+  color:#fff;font-weight:800;font-size:1rem;
+  padding:16px 28px;border-radius:100px;
+  text-decoration:none;
+  box-shadow:0 4px 20px rgba(37,211,102,.3);
+  transition:all .2s;
+}
+.cta-wa:hover{background:#1da851;transform:translateY(-2px)}
+.cta-share{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:#fff;
+  border:1.5px solid rgba(0,0,0,.1);
+  color:var(--text);font-weight:700;font-size:.9rem;
+  padding:14px 28px;border-radius:100px;
+  text-decoration:none;cursor:pointer;
+  transition:all .2s;
+}
+.cta-share:hover{border-color:rgba(0,99,237,.3);color:var(--blue)}
+.cta-back{
+  display:inline-block;
+  color:var(--muted);font-size:.85rem;font-weight:600;
+  text-decoration:none;
+  padding:8px 16px;border-radius:8px;
+  transition:color .2s;
+}
+.cta-back:hover{color:var(--text)}
+
+/* SLOGAN */
+.thanks-slogan{
+  margin-top:40px;
+  font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.25);
+  text-align:center;
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+/* FOOTER WAVE */
+.wave-bottom{background:var(--bg);margin-top:-2px}
+.thanks-footer{
+  background:var(--navy);
+  padding:24px 6%;
+  text-align:center;
+}
+.thanks-footer p{font-size:.78rem;color:rgba(255,255,255,.28)}
+
+@media(max-width:600px){
+  .thanks-wrap{padding:48px 6% 72px}
+  .thanks-title{font-size:1.8rem}
+  .gift-box{padding:20px}
+}
 </style>
 </head>
 <body>
-<div class="box">
-  <div class="check">✓</div>
-  <h1>קיבלתי <span>תודה!</span></h1>
-  <p>הפרטים שלך הגיעו אלי. אחזור אליך תוך 24 שעות עם כל המידע על הקורס.</p>
-  <p style="background:rgba(46,222,191,0.1);border:1px solid rgba(46,222,191,0.3);border-radius:12px;padding:16px 20px;margin-bottom:24px;color:rgba(255,255,255,0.85);font-size:0.95rem">
-    🎁 <strong>שים לב!</strong> שלחתי לך עכשיו מייל עם <strong>שיעור מוקלט מתנה של 10 דקות</strong>.<br/>בדוק את תיבת הדואר הנכנס (ואם לא מצאת – גם בספאם).
-  </p>
-  <a href="index.html">חזרה לאתר</a>
+
+<nav>
+  <a href="index.html" class="logo">
+    <img src="assets/public/logo.svg" alt="שבדרון AI" width="140" height="48"/>
+  </a>
+  <a href="index.html" style="font-size:.85rem;color:rgba(255,255,255,.55);text-decoration:none;font-weight:600">← חזרה לאתר</a>
+</nav>
+
+<!-- wave: navy → gray -->
+<div class="wave-top">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
+    <path fill="#f3f4f8" d="M0,30 C360,60 720,5 1080,35 C1260,48 1380,15 1440,30 L1440,60 L0,60 Z"/>
+  </svg>
 </div>
+
+<div class="thanks-wrap">
+  <div class="thanks-inner">
+
+    <div class="check-circle" aria-hidden="true">✓</div>
+
+    <h1 class="thanks-title">המקום שלך <em>נשמר.</em></h1>
+    <p class="thanks-sub">
+      יוחנן חוזר אליך <strong>תוך שעה</strong> עם כל הפרטים ואישור המקום.<br/>
+      עשית את הצעד הנכון. זה ה-AI שמדבר בשפה שלך.
+    </p>
+
+    <div class="gift-box">
+      <div class="gift-box-title">מתנה ממני אליך</div>
+      <div class="gift-box-text">שלחתי לך עכשיו שיעור מוקלט של 10 דקות — בחינם.</div>
+      <div class="gift-box-note">בדוק את תיבת הדואר הנכנס. אם לא מצאת — בדוק גם בתיקיית הספאם.</div>
+    </div>
+
+    <div class="ctas">
+      <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1"
+         target="_blank" rel="noopener" class="cta-wa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="white"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+        כתוב לי ישירות בוואטסאפ
+      </a>
+
+      <a href="https://wa.me/?text=%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20AI%20%D7%A9%D7%9C%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%20%D7%A9%D7%91%D7%93%D7%A8%D7%95%D7%9F.%20%D7%A0%D7%A8%D7%90%D7%94%20%D7%9C%D7%99%20%D7%A9%D7%92%D7%9D%20%D7%90%D7%AA%D7%94%20%D7%A6%D7%A8%D7%99%D7%9A%20%D7%90%D7%AA%20%D7%96%D7%94%3A%20https%3A%2F%2Fshwadron-ai.com"
+         target="_blank" rel="noopener" class="cta-share">
+        📤 שלח לחבר שצריך את זה
+      </a>
+
+      <a href="index.html" class="cta-back">חזרה לאתר</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- wave: gray → navy -->
+<div class="wave-bottom">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
+    <path fill="#0a1628" d="M0,30 C360,0 720,55 1080,25 C1260,10 1380,45 1440,28 L1440,60 L0,60 Z"/>
+  </svg>
+</div>
+
+<div class="thanks-footer">
+  <p>יוחנן שבדרון · AI לציבור החרדי · &copy; 2026</p>
+</div>
+
 </body>
 </html>
