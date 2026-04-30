@@ -1487,6 +1487,9 @@ footer strong{color:rgba(255,255,255,.82)}
     line-height:1;
   }
   .hero-ctas .cta-wa{
+    display:grid;
+    place-items:center;
+    position:relative;
     flex:0 0 56px;
     width:56px;
     min-height:56px;
@@ -1499,8 +1502,19 @@ footer strong{color:rgba(255,255,255,.82)}
     border-color:#25D366;
     border-radius:50%;
     box-shadow:0 12px 26px rgba(37,211,102,.3);
+    line-height:0;
   }
-  .hero-ctas .cta-wa svg{width:24px;height:24px;fill:#fff;display:block}
+  .hero-ctas .cta-wa svg{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:24px;
+    height:24px;
+    fill:#fff;
+    display:block;
+    margin:0;
+    transform:translate(-50%,-50%);
+  }
   .hero-ctas .cta-wa svg path{fill:#fff}
   .cta-main{font-size:.88rem}
   .cta-wa{font-size:.82rem}
@@ -1515,14 +1529,19 @@ footer strong{color:rgba(255,255,255,.82)}
   .hero-trust-chips{justify-content:center;gap:7px;margin-bottom:0}
   .hero-trust-chips .htc:nth-child(n+4){display:none}
   .htc{padding:5px 12px;font-size:.68rem;line-height:1.25}
-  .hero-char-col{max-width:238px;height:198px;margin-top:-10px}
+  .hero-char-col{max-width:286px;height:240px;margin-top:-4px}
   .hero-character-img{
-    max-width:238px;
+    top:18px;
+    bottom:auto;
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+    max-width:286px;
     object-position:top center;
     -webkit-mask-image:linear-gradient(to bottom,black 0%,black 72%,transparent 100%);
     mask-image:linear-gradient(to bottom,black 0%,black 72%,transparent 100%);
   }
-  .hero-char-glow{width:194px;height:194px;top:2%}
+  .hero-char-glow{width:234px;height:234px;top:14px}
   .closing-dark + div svg{height:34px !important}
 }
 @media(max-width:480px){
@@ -1532,9 +1551,9 @@ footer strong{color:rgba(255,255,255,.82)}
   .hero-ctas{gap:8px}
   .hero-ctas .cta-main{min-height:52px;height:52px;padding:9px 10px}
   .hero-ctas .cta-wa{flex-basis:52px;width:52px;min-height:52px;height:52px}
-  .hero-char-col{max-width:220px;height:176px;margin-top:-12px}
-  .hero-character-img{max-width:220px}
-  .hero-char-glow{width:174px;height:174px;top:1%}
+  .hero-char-col{max-width:268px;height:220px;margin-top:-4px}
+  .hero-character-img{max-width:268px}
+  .hero-char-glow{width:212px;height:212px;top:14px}
   .closing-dark + div svg{height:28px !important}
 }
 
