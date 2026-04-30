@@ -3,27 +3,60 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>קורס AI לציבור החרדי | לימוד AI לחרדים עם יוחנן שבדרון</title>
-<meta name="description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. לימוד AI לחרדים בלי רקע טכני, כולל ChatGPT, Claude, Gemini, תרגול חי וכלים מעשיים לעבודה."/>
+<title>קורס AI לציבור החרדי | AI בפועל עם יוחנן שבדרון</title>
+<meta name="description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. 4 מפגשים, תרגול חי, תוצאות ביד. ChatGPT, Claude, Gemini וסוכן AI אישי, בפועל, לא בתיאוריה. גם בלי רקע טכני."/>
 <meta name="keywords" content="קורס AI, קורס בינה מלאכותית, קורס ChatGPT, ללמוד AI בעברית, קורס AI לעסקים, שבדרון AI, יוחנן שבדרון, AI לעבודה, כלי AI, Claude, Gemini, Custom GPTs, AI לציבור החרדי"/>
 <meta name="author" content="יוחנן שבדרון"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://www.shwadron-ai.com/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.shwadron-ai.com/"/>
-<meta property="og:title" content="קורס AI לציבור החרדי | לימוד AI לחרדים עם יוחנן שבדרון"/>
-<meta property="og:description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. לימוד AI לחרדים בלי רקע טכני, כולל ChatGPT, Claude, Gemini, תרגול חי וכלים מעשיים לעבודה."/>
+<meta property="og:title" content="קורס AI לציבור החרדי | AI בפועל עם יוחנן שבדרון"/>
+<meta property="og:description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. 4 מפגשים, תרגול חי, תוצאות ביד. ChatGPT, Claude, Gemini וסוכן AI אישי, בפועל, לא בתיאוריה."/>
 <meta property="og:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
 <meta property="og:locale" content="he_IL"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="קורס AI לציבור החרדי | לימוד AI לחרדים עם יוחנן שבדרון"/>
-<meta name="twitter:description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. לימוד AI לחרדים בלי רקע טכני, כולל ChatGPT, Claude, Gemini."/>
+<meta name="twitter:title" content="קורס AI לציבור החרדי | AI בפועל עם יוחנן שבדרון"/>
+<meta name="twitter:description" content="קורס AI מעשי לציבור החרדי עם יוחנן שבדרון. 4 מפגשים, תרגול חי, תוצאות ביד. בלי רקע טכני."/>
 <meta name="twitter:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
+/* ── ACCESSIBILITY ─────────────────────────────── */
+/* Skip link */
+.skip-link{
+  position:absolute;top:-120%;right:50%;transform:translateX(50%);
+  background:var(--blue);color:#fff;
+  padding:10px 24px;border-radius:0 0 10px 10px;
+  font-weight:800;font-size:.95rem;text-decoration:none;
+  z-index:9999;transition:top .2s;
+  white-space:nowrap;
+}
+.skip-link:focus{top:0}
+
+/* Focus indicator — visible for keyboard users */
+:focus-visible{
+  outline:3px solid #4da6ff;
+  outline-offset:3px;
+  border-radius:4px;
+}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid #4da6ff;
+  outline-offset:3px;
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+}
 :root{
   --blue:#0063ed;
   --blue2:#0f8eea;
@@ -115,7 +148,7 @@ nav{
 }
 .hero-circuit{
   position:absolute;inset:0;pointer-events:none;z-index:0;
-  opacity:.55;
+  opacity:.18;
 }
 .hero-content{
   flex:1;width:100%;max-width:1280px;
@@ -126,13 +159,13 @@ nav{
 .hero-text-col{
   flex:1;display:flex;flex-direction:column;
   justify-content:center;
-  padding:80px 0 56px;
+  padding:96px 0 72px;
   min-width:0;
 }
 .hero-char-col{
-  width:460px;flex-shrink:0;
+  width:400px;flex-shrink:0;
   position:relative;
-  margin-top:-64px;
+  margin-top:-40px;
   align-self:stretch;
 }
 .hero-char-glow{
@@ -162,12 +195,12 @@ nav{
 
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.14);
-  color:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.6);
   padding:6px 16px;border-radius:100px;
-  font-size:.78rem;font-weight:700;
-  margin-bottom:22px;align-self:flex-start;
+  font-size:.76rem;font-weight:700;
+  margin-bottom:28px;align-self:flex-start;
   backdrop-filter:blur(6px);
 }
 .hero-badge-dot{
@@ -178,68 +211,46 @@ nav{
 }
 @keyframes dot-blink{0%,100%{opacity:1}50%{opacity:.25}}
 .hero-name{
-  font-size:clamp(2rem,4.2vw,3.6rem);
-  font-weight:900;line-height:1.0;
-  letter-spacing:0;color:#fff;
-  margin-bottom:6px;
-  max-width:100%;
-  text-shadow:0 2px 40px rgba(0,99,237,.2);
-}
-.hero-course-title{
-  font-size:clamp(1.7rem,3.6vw,3rem);
-  font-weight:900;
-  color:#fff;
-  line-height:1.08;
-  letter-spacing:0;
-  margin-bottom:8px;
-  text-wrap:balance;
-  max-width:100%;
-}
-.hero-course-title span,.hero-subline span{display:inline}
-.hero-subline{
-  display:block;
-  font-size:clamp(1.1rem,2vw,1.7rem);
-  font-weight:900;
-  line-height:1.2;
-  letter-spacing:0;
-  margin-bottom:12px;
-  background:linear-gradient(130deg,#4da6ff 0%,var(--teal2) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-  max-width:100%;
-}
-.hero-sep{
-  width:56px;height:3px;
-  background:linear-gradient(90deg,var(--teal2),var(--blue));
-  border-radius:2px;
-  margin-bottom:12px;
-}
-.hero-slogan{
-  font-size:clamp(.92rem,1.5vw,1.12rem);font-weight:800;
-  color:var(--teal2);
-  margin-bottom:12px;letter-spacing:0;
-  text-shadow:0 0 20px rgba(0,201,167,.3);
+  font-size:clamp(2.2rem,4vw,3.6rem);
+  font-weight:900;line-height:1.05;
+  letter-spacing:-.01em;color:#fff;
+  margin-bottom:20px;
+  max-width:560px;
+  text-shadow:0 2px 40px rgba(0,99,237,.18);
 }
 .hero-desc{
-  font-size:clamp(.98rem,1.35vw,1.14rem);
-  color:rgba(255,255,255,.58);
-  margin-bottom:26px;line-height:1.75;
-  max-width:600px;
+  font-size:clamp(.96rem,1.3vw,1.08rem);
+  color:rgba(255,255,255,.65);
+  margin-bottom:36px;line-height:1.75;
+  max-width:500px;
   text-wrap:pretty;
 }
-.hero-trust-chips{display:flex;flex-wrap:wrap;gap:7px}
+.hero-micro{
+  font-size:.82rem;
+  color:rgba(255,255,255,.52);
+  margin-bottom:24px;
+  letter-spacing:.01em;
+  font-weight:500;
+}
+.hero-trust-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
 .htc{
   display:inline-flex;align-items:center;gap:4px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.11);
-  color:rgba(255,255,255,.5);
-  padding:5px 11px;border-radius:100px;
-  font-size:.73rem;font-weight:600;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.13);
+  color:rgba(255,255,255,.72);
+  padding:5px 12px;border-radius:100px;
+  font-size:.71rem;font-weight:600;
 }
-.htc::before{content:'✓ ';font-size:.62rem;font-weight:900;color:var(--teal2)}
+.htc::before{content:'✓ ';font-size:.6rem;font-weight:900;color:var(--teal2)}
+.hero-tools-row{
+  font-size:.67rem;
+  color:rgba(255,255,255,.22);
+  letter-spacing:.1em;
+  margin-top:4px;
+}
 
 /* Shared CTAs */
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
 .cta-main{
   background:#fff;
   color:var(--navy);font-weight:800;font-size:1rem;
@@ -302,7 +313,7 @@ nav{
   text-shadow:0 0 40px rgba(0,99,237,.7), 0 0 80px rgba(0,99,237,.3);
   letter-spacing:-2px;
 }
-.cd-lbl{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:10px;letter-spacing:.1em;text-transform:uppercase}
+.cd-lbl{font-size:.7rem;color:rgba(255,255,255,.72);margin-top:10px;letter-spacing:.1em;text-transform:uppercase}
 .cd-colon{
   font-size:3rem;font-weight:900;
   color:rgba(0,201,167,.5);
@@ -311,11 +322,11 @@ nav{
 }
 .cd-detail{
   margin-top:32px;
-  font-size:.9rem;color:rgba(255,255,255,.4);
-  border-top:1px solid rgba(255,255,255,.07);
+  font-size:.9rem;color:rgba(255,255,255,.7);
+  border-top:1px solid rgba(255,255,255,.1);
   padding-top:24px;
 }
-.cd-detail strong{color:rgba(255,255,255,.8)}
+.cd-detail strong{color:#fff}
 @media(max-width:600px){
   .cd-val{font-size:2.6rem}
   .cd-unit{min-width:68px;padding:14px 10px 10px}
@@ -408,43 +419,59 @@ h2.s-title em{
 .s-head.c .s-sub{margin:0 auto}
 
 /* PAIN */
-.pain{background:var(--bg)}
+.pain{background:var(--bg);padding:96px 6%}
 .pain-layout{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:40px;
-  max-width:960px;margin:0 auto;
-  align-items:start;
+  gap:20px;
+  max-width:1060px;margin:0 auto;
+  align-items:stretch;
 }
+.pain-panel{
+  background:#fff;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 8px 40px rgba(0,0,0,.07);
+}
+.pain-panel-header{
+  padding:22px 28px;
+  display:flex;align-items:center;gap:14px;
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.pain-panel.good .pain-panel-header{background:rgba(0,201,167,.07)}
+.pain-panel.bad  .pain-panel-header{background:rgba(220,38,38,.05)}
+.pain-panel-icon{
+  width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;font-weight:900;
+}
+.pain-panel.good .pain-panel-icon{background:rgba(0,201,167,.2);color:#00897b}
+.pain-panel.bad  .pain-panel-icon{background:rgba(220,38,38,.15);color:var(--urgent)}
 .pain-col-title{
-  font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--muted);margin-bottom:16px;padding-bottom:12px;
-  border-bottom:1px solid var(--border);
+  font-size:.88rem;font-weight:800;color:var(--text);letter-spacing:0;
 }
 .pain-list{
-  display:flex;flex-direction:column;gap:10px;
+  padding:20px;
+  display:flex;flex-direction:column;gap:8px;
   list-style:none;
 }
 .pain-list li{
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:.9rem;color:var(--text2);line-height:1.6;
-  padding:13px 16px;
-  background:var(--bg);
-  border:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+  font-size:.92rem;font-weight:500;color:var(--text2);line-height:1.5;
+  padding:14px 18px;
   border-radius:12px;
 }
+.pain-panel.good .pain-list li{background:rgba(0,201,167,.05)}
+.pain-panel.bad  .pain-list li{background:rgba(220,38,38,.04)}
 .pain-check{
-  flex-shrink:0;
-  width:20px;height:20px;
-  border-radius:50%;
+  flex-shrink:0;width:28px;height:28px;border-radius:8px;
   display:flex;align-items:center;justify-content:center;
-  font-size:.68rem;font-weight:700;
-  margin-top:1px;
+  font-size:.82rem;font-weight:900;
 }
-.pain-check.green{background:rgba(0,150,124,.12);color:var(--teal-text)}
-.pain-check.red{background:rgba(220,38,38,.1);color:var(--urgent)}
+.pain-check.green{background:rgba(0,201,167,.18);color:#00897b}
+.pain-check.red{background:rgba(220,38,38,.15);color:var(--urgent)}
 @media(max-width:720px){
-  .pain-layout{grid-template-columns:1fr;gap:28px}
+  .pain-layout{grid-template-columns:1fr;gap:16px}
 }
 
 /* SOLUTION */
@@ -838,19 +865,80 @@ h2.s-title em{
 }
 .wa-proof-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  max-width:980px;margin:0 auto;
+  grid-template-columns:minmax(0,1.08fr) minmax(280px,.82fr);
+  grid-template-areas:
+    "feature mid"
+    "feature small";
+  gap:14px;
+  max-width:820px;margin:0 auto;
+  align-items:start;
+  position:relative;
+  padding:20px;
+  border-radius:26px;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.9), rgba(241,247,252,.92)),
+    radial-gradient(circle at 18% 18%, rgba(0,99,237,.12), transparent 28%),
+    radial-gradient(circle at 84% 78%, rgba(0,201,167,.15), transparent 34%);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 18px 52px rgba(10,22,40,.08);
+}
+.wa-proof-grid::before{
+  content:'';
+  position:absolute;
+  inset:12px;
+  border-radius:22px;
+  background-image:
+    linear-gradient(rgba(10,22,40,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10,22,40,.035) 1px, transparent 1px);
+  background-size:28px 28px;
+  mask-image:linear-gradient(135deg, rgba(0,0,0,.5), transparent 68%);
+  pointer-events:none;
 }
 .wa-proof-card{
-  background:var(--bg2);
-  border:1px solid var(--border);
-  border-radius:18px;
+  position:relative;
+  background:#f8fafc;
+  border:1px solid rgba(10,22,40,.1);
+  border-radius:22px;
   overflow:hidden;
-  box-shadow:var(--shadow);
+  padding:8px;
+  box-shadow:0 12px 28px rgba(10,22,40,.12);
+  z-index:1;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.wa-proof-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 36px rgba(10,22,40,.15);
+}
+.wa-proof-feature{
+  grid-area:feature;
+  padding:9px;
+  transform:rotate(-.45deg);
+}
+.wa-proof-mid{
+  grid-area:mid;
+  transform:rotate(.75deg);
+}
+.wa-proof-small{
+  grid-area:small;
+  align-self:end;
+  transform:rotate(-.65deg);
+}
+.wa-proof-feature:hover,.wa-proof-mid:hover,.wa-proof-small:hover{
+  transform:translateY(-3px) rotate(0);
+}
+.wa-proof-card::before{
+  content:'';
+  position:absolute;
+  inset:8px;
+  border-radius:16px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.75);
+  pointer-events:none;
 }
 .wa-proof-card img{
-  width:100%;height:auto;display:block;
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:16px;
 }
 .wa-proof-placeholder{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -872,13 +960,27 @@ h2.s-title em{
   margin-bottom:12px;
 }
 @media(max-width:820px){
-  .wa-proof-grid{grid-template-columns:repeat(2,1fr)}
+  .wa-proof-grid{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "feature"
+      "mid"
+      "small";
+    max-width:460px;
+  }
+  .wa-proof-feature,.wa-proof-mid,.wa-proof-small{
+    transform:none;
+  }
 }
 @media(max-width:540px){
   .wa-proof-grid{
     grid-template-columns:1fr;
-    max-width:360px;
+    max-width:330px;
+    padding:12px;
+    border-radius:20px;
   }
+  .wa-proof-card{padding:7px;border-radius:18px}
+  .wa-proof-card img{border-radius:13px}
 }
 
 /* URGENCY */
@@ -1122,7 +1224,8 @@ footer strong{color:rgba(255,255,255,.82)}
   padding:14px 36px;border-radius:100px;
   text-decoration:none;white-space:nowrap;
   box-shadow:0 8px 28px rgba(10,22,40,.28);
-  transition:background .3s,color .3s,box-shadow .3s,transform .3s;
+  transition:background .3s,color .3s,box-shadow .3s,transform .3s,opacity .3s;
+  opacity:0;
 }
 .fab:hover{transform:translateX(-50%) translateY(-2px)}
 /* FAB on dark hero — flip to white */
@@ -1299,11 +1402,11 @@ footer strong{color:rgba(255,255,255,.82)}
   .hero-char-col{width:360px}
 }
 @media(max-width:780px){
-  nav{padding:0 5%}
-  nav .logo{position:absolute;right:5%;top:50%;transform:translateY(-50%);display:block}
+  nav{padding:0 5%;justify-content:space-between}
+  nav .logo{position:static;transform:none}
   .logo img{content:url("assets/public/icon-logo.png");width:42px;height:auto;max-width:42px;object-fit:contain}
   .hero-content{flex-direction:column;align-items:center}
-  .hero-text-col{width:100%;max-width:330px;padding:28px 0 18px;align-items:center;text-align:center}
+  .hero-text-col{width:100%;max-width:340px;padding:28px 0 8px;align-items:center;text-align:center}
   .hero-badge{align-self:center}
   .hero-name,.hero-course-title,.hero-subline,.hero-slogan,.hero-desc{text-align:center}
   .hero-name{font-size:2.08rem}
@@ -1315,11 +1418,22 @@ footer strong{color:rgba(255,255,255,.82)}
   .hero-sep{margin-left:auto;margin-right:auto}
   .hero-ctas{justify-content:center}
   .hero-trust-chips{justify-content:center}
-  .hero-char-col{width:100%;max-width:300px;height:300px;position:relative}
-  .hero-char-glow{width:240px;height:240px}
+  /* character: full-width centered block below text */
+  .hero-char-col{
+    width:100%;max-width:320px;height:320px;
+    position:relative;margin-top:0;align-self:center;
+  }
+  .hero-character-img{
+    position:absolute;top:0;left:0;right:0;bottom:0;
+    width:100%;height:100%;
+    object-position:top center;
+    -webkit-mask-image:linear-gradient(to bottom,black 0%,black 70%,transparent 100%);
+    mask-image:linear-gradient(to bottom,black 0%,black 70%,transparent 100%);
+  }
+  .hero-char-glow{width:260px;height:260px;top:10%;left:50%;transform:translateX(-50%)}
 }
 @media(max-width:480px){
-  .hero-char-col{max-width:240px}
+  .hero-char-col{max-width:260px;height:260px}
   .hero-content{padding:0 5%}
   .hero-text-col{max-width:300px}
   .hero-badge{margin-bottom:14px}
@@ -1367,6 +1481,120 @@ footer strong{color:rgba(255,255,255,.82)}
   overflow:hidden;
 }
 
+/* SECTION MID-CTA */
+.sec-cta-wrap{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.sec-cta{
+  background:var(--blue);color:#fff;font-weight:800;font-size:.95rem;
+  padding:14px 32px;border-radius:100px;text-decoration:none;
+  transition:all .2s;display:inline-flex;align-items:center;gap:7px;
+}
+.sec-cta:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,99,237,.3)}
+.sec-cta-ghost{
+  display:inline-flex;align-items:center;gap:7px;
+  background:transparent;border:1.5px solid rgba(0,99,237,.35);
+  color:var(--blue);font-weight:600;font-size:.88rem;
+  padding:13px 24px;border-radius:100px;text-decoration:none;
+  transition:all .2s;
+}
+.sec-cta-ghost:hover{border-color:var(--blue);background:rgba(0,99,237,.05)}
+
+/* ASSET CHIPS */
+.asset-chips{
+  display:flex;flex-wrap:wrap;gap:10px;
+  margin-top:28px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.asset-chip{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:10px 16px;
+  font-size:.83rem;font-weight:600;color:rgba(255,255,255,.8);
+}
+.asset-chip-icon{color:var(--teal);font-size:.9rem;flex-shrink:0}
+
+/* SESSION OUTCOME */
+.session-outcome{
+  display:flex;align-items:center;gap:6px;
+  margin-top:14px;padding-top:12px;
+  border-top:1px solid var(--border);
+  font-size:.79rem;font-weight:700;color:var(--teal-text);
+  line-height:1.4;
+}
+.session-outcome::before{content:'→';font-weight:900;flex-shrink:0}
+
+/* INSTRUCTOR COMPACT */
+.instructor-compact{
+  width:min(100%,980px);margin:36px auto 0;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-right:4px solid var(--blue);
+  border-radius:18px;
+  padding:28px 36px;
+  display:flex;align-items:flex-start;gap:24px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.ic-photo{
+  width:104px;height:104px;border-radius:22px;
+  overflow:hidden;flex-shrink:0;
+  background:linear-gradient(160deg,#d4e6f8 0%,#c2d8f2 100%);
+  display:flex;align-items:flex-end;justify-content:center;
+  box-shadow:0 14px 28px rgba(10,22,40,.16), 0 2px 8px rgba(0,99,237,.08);
+}
+.ic-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center}
+.ic-body{flex:1;min-width:0}
+.ic-body h3{font-size:1rem;font-weight:900;color:var(--text);margin-bottom:2px}
+.ic-role{font-size:.78rem;color:var(--blue);font-weight:700;margin-bottom:10px}
+.ic-body p{font-size:.86rem;color:var(--muted);line-height:1.75}
+.ic-creds{
+  display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;
+}
+.ic-cred{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(0,99,237,.07);
+  border:1px solid rgba(0,99,237,.15);
+  color:var(--blue);
+  padding:4px 11px;border-radius:100px;
+  font-size:.74rem;font-weight:700;
+}
+@media(max-width:640px){
+  .instructor-compact{gap:14px;padding:20px 16px;align-items:flex-start}
+  .ic-photo{width:92px;height:92px;border-radius:20px}
+  .ic-body{text-align:right}
+  .ic-creds{justify-content:flex-start}
+  .ic-cred{white-space:normal;text-align:right}
+}
+
+/* CLOSING SECTION */
+.closing{background:var(--bg2);padding:0}
+.closing-dark{
+  background:var(--navy);
+  padding:72px 6% 80px;
+  text-align:center;
+}
+.close-meta{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:12px;max-width:820px;margin:36px auto 0;
+}
+.close-meta-card{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:20px 28px;
+  text-align:center;min-width:150px;
+}
+.close-meta-card.red{border-color:rgba(220,38,38,.3);background:rgba(220,38,38,.05)}
+.close-meta-val{font-size:1.45rem;font-weight:900;color:#fff;line-height:1}
+.close-meta-card.red .close-meta-val{color:#f87171}
+.close-meta-lbl{font-size:.73rem;color:rgba(255,255,255,.48);margin-top:6px}
+.closing-light{padding:64px 6%}
+.closing-light-inner{max-width:1040px;margin:0 auto}
+.closing-wa-label{
+  text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:20px;
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -1406,24 +1634,27 @@ footer strong{color:rgba(255,255,255,.82)}
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="logo"><img src="assets/public/logo.svg" alt="שבדרון AI" width="140" height="48"/></a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#outcomes">מה תלמד</a></li>
     <li><a href="#curriculum">הקורס</a></li>
-    <li><a href="#tools-section">כלים</a></li>
-    <li><a href="#about">אודות</a></li>
-    <li><a href="#faq-section">שאלות</a></li>
+    <li><a href="#register">שאלות</a></li>
   </ul>
   <div class="nav-btn-wrap">
     <a href="#register" class="nav-btn">הירשם עכשיו</a>
   </div>
-  <button class="nav-hamburger" id="navHamburger" aria-label="תפריט">
+  <button class="nav-hamburger" id="navHamburger" aria-label="פתח תפריט ניווט" aria-controls="navLinks" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
+<main id="main-content">
+
+<!-- ═══════════ 1. HERO ═══════════ -->
 <section class="hero">
   <!-- Circuit background -->
   <svg class="hero-circuit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -1453,37 +1684,34 @@ footer strong{color:rgba(255,255,255,.82)}
   </svg>
 
   <div class="hero-content">
-    <!-- עמודת טקסט (ימין ב-RTL) -->
     <div class="hero-text-col">
       <div class="hero-badge">
         <span class="hero-badge-dot"></span>
         קורס AI מעשי לציבור החרדי
       </div>
-      <div class="hero-name">שלוט ב-AI</div>
-      <h1 class="hero-course-title">קורס למתחילים: <span>בצורה פשוטה</span></h1>
-      <div class="hero-subline">ChatGPT, Claude, Gemini. <span>מותאם לחרדים</span></div>
-      <div class="hero-sep" aria-hidden="true"></div>
-      <p class="hero-slogan">יוחנן הופך אותי למאסטר</p>
-      <p class="hero-desc">ב-4 מפגשי זום מעשיים תלמד להשתמש בכלי AI המובילים: לחסוך זמן, לבנות תוצרים ולעבוד חכם יותר. עם יוחנן שבדרון. גם בלי רקע טכני.</p>
+
+      <h1 class="hero-name">תתחיל לעבוד עם AI באמת</h1>
+
+      <p class="hero-desc">קורס מעשי בזום, 4 מפגשים חיים עם תרגול אמיתי, הקלטות, ליווי וסוכן AI אישי שמותאם לתחום שלך.</p>
+
       <div class="hero-ctas">
         <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
         <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
-           target="_blank" rel="noopener" class="cta-wa"
-           aria-label="קבל פרטים על הקורס בוואטסאפ">
+           target="_blank" rel="noopener" class="cta-wa" aria-label="קבל פרטים על הקורס בוואטסאפ">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
           קבל פרטים בוואטסאפ
         </a>
       </div>
+
+      <p class="hero-micro">השארת פרטים לא מחייבת | מספר המקומות מוגבל</p>
+
       <div class="hero-trust-chips">
-        <span class="htc">מותאם לציבור החרדי</span>
-        <span class="htc">הסבר בגובה העיניים</span>
-        <span class="htc">בלי רקע טכני</span>
-        <span class="htc">קבוצת ליווי בקורס</span>
-        <span class="htc">הקלטות תוך 24 שעות</span>
+        <span class="htc">4 מפגשי זום חיים</span>
+        <span class="htc">תרגול מעשי</span>
+        <span class="htc">סוכן AI אישי</span>
+        <span class="htc">ללא רקע טכני</span>
       </div>
     </div>
-
-    <!-- עמודת דמותג (שמאל ב-RTL) -->
     <div class="hero-char-col">
       <div class="hero-char-glow"></div>
       <img class="hero-character-img"
@@ -1495,54 +1723,39 @@ footer strong{color:rgba(255,255,255,.82)}
 
 </section>
 
-<!-- wave: dark hero → gray -->
+<!-- wave: dark hero → white -->
 <div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#f3f4f8" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#fff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
-<!-- BRAND PHRASE -->
-<div class="brand-phrase">
-  <p class="brand-phrase-text">
-    <strong>AI בלי בלבול. בלי פחד.</strong>
-    הדרך הפשוטה והמעשית להיכנס לעולם הבינה המלאכותית, בלי רקע טכני ובלי להרגיש שזה לא בשבילך.
-  </p>
-</div>
-
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
-
-<!-- TRUST BAR -->
+<!-- ═══════════ 2. TRUST BAR ═══════════ -->
 <div class="trust-bar">
   <div class="trust-inner">
     <div class="trust-item">
       <div class="trust-val" data-count="300" data-suffix="+">300+</div>
-      <div class="trust-lbl">בוגרים שלמדו לעבוד<br/>עם AI בפועל</div>
+      <div class="trust-lbl">בוגרים שכבר<br/>עובדים עם AI</div>
     </div>
     <div class="trust-item">
       <div class="trust-val" data-count="4">4</div>
-      <div class="trust-lbl">מפגשים חיים,<br/>קצרים וממוקדים</div>
+      <div class="trust-lbl">מפגשי זום חיים<br/>וממוקדים</div>
     </div>
     <div class="trust-item">
       <div class="trust-val" data-count="50" data-suffix="%">50%</div>
-      <div class="trust-lbl">תרגול חי ולא<br/>רק צפייה והסברים</div>
+      <div class="trust-lbl">תרגול מעשי<br/>בכל מפגש</div>
     </div>
     <div class="trust-item">
-      <div class="trust-val" data-count="7" data-suffix="+">7+</div>
-      <div class="trust-lbl">כלי AI מובילים<br/>לעבודה יומיומית</div>
+      <div class="trust-val">24h</div>
+      <div class="trust-lbl">הקלטות וחומרים<br/>אחרי כל שיעור</div>
     </div>
     <div class="trust-item">
-      <div class="trust-val" data-count="1">1</div>
-      <div class="trust-lbl">סוכן AI אישי<br/>שמותאם אליך</div>
+      <div class="trust-val">1</div>
+      <div class="trust-lbl">סוכן AI אישי<br/>שיוצאים איתו</div>
     </div>
     <div class="trust-item">
-      <div class="trust-val">קבוצה</div>
-      <div class="trust-lbl">ליווי לאורך<br/>כל הקורס</div>
+      <div class="trust-val">0</div>
+      <div class="trust-lbl">רקע טכני<br/>נדרש</div>
     </div>
   </div>
 </div>
@@ -1554,106 +1767,61 @@ footer strong{color:rgba(255,255,255,.82)}
   </svg>
 </div>
 
-<!-- PAIN -->
-<section class="pain">
+<!-- ═══════════ 3. הבעיה ═══════════ -->
+<section class="pain" id="problem">
   <div class="s-head c">
     <div class="s-label">המצב בשטח</div>
-    <h2 class="s-title">העולם כבר עובד עם AI.<br/>השאלה היא אם גם <em>אתה</em>.</h2>
-    <p class="s-sub">אנשים סביבך כבר עובדים אחרת. ואלה שמחכים נשארים מאחור.</p>
+    <h2 class="s-title">בזמן שאתה מחכה,<br/>האחר כבר <em>קדם אותך</em></h2>
+    <p class="s-sub">AI כבר חוסך שעות לאנשים בתחום שלך. השאלה היא רק: מתי תתחיל גם אתה.</p>
   </div>
   <div class="pain-layout">
-    <div class="reveal">
-      <div class="pain-col-title">מה אחרים כבר עושים עם AI</div>
-      <ul class="pain-list">
-        <li><span class="pain-check green">&#10003;</span>כותבים מיילים, הצעות מחיר ודוחות בדקות</li>
-        <li><span class="pain-check green">&#10003;</span>בונים מצגות מקצועיות בלי לשלם לסוכנות</li>
-        <li><span class="pain-check green">&#10003;</span>מנתחים מידע ומוצאים תובנות בלחיצה</li>
-        <li><span class="pain-check green">&#10003;</span>מייצרים תוכן שיווקי ברמה גבוהה</li>
-        <li><span class="pain-check green">&#10003;</span>עובדים עם סוכן AI שעוזר להם כל יום</li>
-      </ul>
-    </div>
-    <div class="reveal">
-      <div class="pain-col-title">מה מונע ממך להתחיל</div>
-      <ul class="pain-list">
-        <li><span class="pain-check red">&#10007;</span>לא ברור מאיפה מתחילים ואיזה כלי בוחרים</li>
-        <li><span class="pain-check red">&#10007;</span>ניסית ChatGPT ולא יצא כלום שימושי</li>
-        <li><span class="pain-check red">&#10007;</span>מרגיש שהנושא טכני מדי בשבילך</li>
-        <li><span class="pain-check red">&#10007;</span>כל פעם שמתחילים, נתקעים מהר</li>
-        <li><span class="pain-check red">&#10007;</span>חושש שתישאר מאחור בפרנסה בגלל AI</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- wave: gray → white (pain → about) -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-wrap">
-    <div class="reveal">
-      <div class="about-photo-frame">
-        <img class="about-photo-main"
-             src="assets/public/yochanan-landing.jpg"
-             alt="יוחנן שבדרון"
-             loading="lazy" width="340" height="420"/>
+    <div class="pain-panel good reveal">
+      <div class="pain-panel-header">
+        <div class="pain-panel-icon">✓</div>
+        <div class="pain-col-title">מה אחרים כבר עושים עם AI</div>
       </div>
-    </div>
-    <div class="reveal">
-      <div class="about-label-dot">מי עומד מאחורי הקורס?</div>
-      <h2 class="about-main-name">יוחנן שבדרון</h2>
-      <div class="about-role-new">האיש שמחבר בין AI לשפה פשוטה</div>
-      <p class="about-body-text">
-        יוחנן מחבר בין חדשנות, פשטות ותוצאה. הוא מסביר בגובה העיניים, מתאים את הלימוד לציבור החרדי, ומתמקד במה שעובד בפועל: תרגול, תוצרים ושימושים אמיתיים לעבודה ולעסק.
-      </p>
-      <ul class="about-bullets">
-        <li>הסברים ברורים גם בלי רקע טכני</li>
-        <li>התמקדות במה שעובד בפועל</li>
-        <li>חיבור לכלים, משימות ותוצרים מהיום יום</li>
+      <ul class="pain-list">
+        <li><span class="pain-check green" aria-hidden="true">✓</span>כותבים מיילים, הצעות ומסמכים בדקות</li>
+        <li><span class="pain-check green" aria-hidden="true">✓</span>מייצרים מצגות מקצועיות בבית, בלי עיצוב</li>
+        <li><span class="pain-check green" aria-hidden="true">✓</span>מנתחים מידע ומוצאים תובנות בלחיצה</li>
+        <li><span class="pain-check green" aria-hidden="true">✓</span>עובדים עם סוכן AI שעוזר להם כל בוקר</li>
       </ul>
-      <div class="about-final-slogan">יוחנן הופך אותי למאסטר</div>
+    </div>
+    <div class="pain-panel bad reveal">
+      <div class="pain-panel-header">
+        <div class="pain-panel-icon">✕</div>
+        <div class="pain-col-title">מה מונע ממך להתחיל</div>
+      </div>
+      <ul class="pain-list">
+        <li><span class="pain-check red" aria-hidden="true">✕</span>פתחת ChatGPT, לא ידעת מה לכתוב, סגרת</li>
+        <li><span class="pain-check red" aria-hidden="true">✕</span>קיבלת תשובות כלליות שאי אפשר להשתמש בהן</li>
+        <li><span class="pain-check red" aria-hidden="true">✕</span>הרגשת שזה טכני מדי, לא בשבילך</li>
+        <li><span class="pain-check red" aria-hidden="true">✕</span>לא ברור מאיפה מתחילים ואיזה כלי בוחרים</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- wave: white → gray (about → solution) -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
-
-<!-- SOLUTION -->
-<section class="solution">
+<!-- ═══════════ 4. הפתרון + למי מתאים ═══════════ -->
+<section class="solution" id="fit">
   <div class="sol-inner">
     <div class="s-head">
       <div class="s-label">הפתרון</div>
-      <h2 class="s-title">בדיוק בשביל זה<br/>נבנה <em>הקורס</em></h2>
+      <h2 class="s-title">למי הקורס <em>מתאים</em>?</h2>
     </div>
     <div class="sol-body reveal">
       <p>
         זה לא קורס שמסביר מה זה AI. הסברים כאלה יש ביוטיוב בחינם.
-        זה קורס שלוקח אותך ידיים על מקלדת, ומלמד אותך להשתמש בכלים האמיתיים בצורה שעובדת בפועל.
-        הכלים נבחרו לשימוש יומיומי רגיל. תוכן הקורס מותאם לצרכים ולערכים של הציבור החרדי.
+        זה קורס שלוקח אותך ידיים על מקלדת, ומלמד אותך להשתמש בכלים בצורה שעובדת בפועל,
+        כי הכלים נבחרו לשימוש יומיומי ממוקד, והתוכן מותאם לציבור החרדי.
       </p>
       <p>
         כל שיעור בנוי כך שאתה <strong>עושה בפועל</strong>, לא רק מקשיב.
-        יוצאים עם תוצרים אמיתיים. לא עם הרגשה של "הבנתי", אלא עם משהו בידיים שמשתמשים בו למחרת.
+        יוצאים עם תוצרים אמיתיים, לא עם "הבנתי", אלא עם משהו שמשתמשים בו למחרת.
       </p>
-      <div class="sol-points">
-        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>מתאים לכל רמה, גם בלי רקע טכני</div>
-        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>50% תרגול חי בכל מפגש</div>
-        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>הקלטות נשלחות תוך 24 שעות</div>
-        <div class="sol-pt"><div class="sol-pt-icon">&#10003;</div>קבוצת ליווי למשך הקורס</div>
-      </div>
     </div>
   </div>
 
-  <!-- מי זה בשבילך -->
   <div class="fit-check reveal">
     <div class="fit-col yes">
       <div class="fit-col-title">✓ זה בשבילך אם</div>
@@ -1664,11 +1832,20 @@ footer strong{color:rgba(255,255,255,.82)}
       <div class="fit-row"><span class="fit-icon-yes">✓</span>הנושא מעניין אותך אבל עד היום לא ידעת מאיפה להתחיל</div>
     </div>
     <div class="fit-col no">
-      <div class="fit-col-title">✗ זה לא בשבילך אם</div>
-      <div class="fit-row"><span class="fit-icon-no">✗</span>אתה כבר מפתח AI ומחפש קורס הנדסי</div>
-      <div class="fit-row"><span class="fit-icon-no">✗</span>אתה מחפש ידע תיאורטי ולא יישומי</div>
-      <div class="fit-row"><span class="fit-icon-no">✗</span>אתה לא מוכן להתחייב לארבעה מפגשים</div>
+      <div class="fit-col-title" style="color:var(--muted)">למי זה פחות מתאים</div>
+      <div class="fit-row"><span class="fit-icon-no">✗</span>מפתח AI שמחפש קורס הנדסי מעמיק</div>
+      <div class="fit-row"><span class="fit-icon-no">✗</span>מחפש ידע תיאורטי בלי יישום</div>
+      <div class="fit-row"><span class="fit-icon-no">✗</span>לא מוכן להתחייב לארבעה מפגשים</div>
     </div>
+  </div>
+
+  <div class="sec-cta-wrap">
+    <a href="#register" class="sec-cta">בדוק אם נשאר מקום</a>
+    <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
+       target="_blank" rel="noopener" class="sec-cta-ghost" aria-label="שאל שאלה בוואטסאפ">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+      שאל שאלה בוואטסאפ
+    </a>
   </div>
 </section>
 
@@ -1679,86 +1856,102 @@ footer strong{color:rgba(255,255,255,.82)}
   </svg>
 </div>
 
-<!-- BENEFITS -->
-<section class="benefits">
+<!-- ═══════════ 5. מה תדע לעשות ═══════════ -->
+<section class="benefits" id="outcomes">
   <div class="s-head c">
-    <div class="s-label">מה שנשאר אתך</div>
-    <h2 class="s-title">ארבעה נכסים שישנו<br/>את <em>דרך העבודה שלך</em></h2>
-    <p class="s-sub">ארבעה נכסים מעשיים שמשנים את דרך העבודה שלך.</p>
+    <div class="s-label">תוצאות מעשיות</div>
+    <h2 class="s-title">מה <em>תדע לעשות</em> בפועל?</h2>
+    <p class="s-sub">לא ידע, יכולות שמשתמשים בהן מהיום הראשון אחרי הקורס.</p>
   </div>
   <div class="ben-grid">
     <div class="ben-card reveal">
-      <div class="ben-num">01</div>
-      <h3>סוכן AI אישי שמותאם לעבודה שלך</h3>
-      <p>תצא עם סוכן שמכיר את התחום שלך, כותב בסגנון שלך, ועוזר לך ביום יום בלי שתצטרך להסביר מחדש בכל פעם.</p>
+      <div class="ben-num">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8l10 6 10-6"/></svg>
+      </div>
+      <h3>לכתוב מיילים ומסמכים מקצועיים</h3>
+      <p>תגיד ל-AI מה אתה צריך, ותקבל טיוטה מוכנה לשלוח. מיילים, הצעות מחיר, מכתבים רשמיים.</p>
     </div>
     <div class="ben-card reveal">
-      <div class="ben-num">02</div>
-      <h3>עבודה חכמה עם ChatGPT, Claude ו-Gemini</h3>
-      <p>תבין איזה כלי לבחור, מתי, ולמה. תפסיק לקבל תוצאות גנריות ותתחיל לקבל תוצאות שאפשר להשתמש בהן.</p>
+      <div class="ben-num">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+      </div>
+      <h3>לסכם ישיבות ומסמכים ארוכים</h3>
+      <p>40 עמוד מסמך? בתוך דקה יש לך ניתוח, נקודות מפתח ומסקנות מעשיות.</p>
     </div>
     <div class="ben-card reveal">
-      <div class="ben-num">03</div>
-      <h3>פרומפטים שימושיים למשימות יומיומיות</h3>
-      <p>תצא עם ספרייה של פרומפטים שעובדים, מותאמים לתחום שלך. כתיבה, מחקר, ניתוח, מייל, מצגת ועוד.</p>
+      <div class="ben-num">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 17h18M8 21h8"/><path d="M8 10l3 3 5-5"/></svg>
+      </div>
+      <h3>לבנות מצגות מקצועיות</h3>
+      <p>מרעיון למצגת מוכנה ב-20 דקות. בלי מעצב. בלי שעות עבודה. בלי ידע טכני.</p>
     </div>
     <div class="ben-card reveal">
-      <div class="ben-num">04</div>
-      <h3>כלים ליצירת תוכן, מצגות ומחקר</h3>
-      <p>בנה מצגת מקצועית ב-20 דקות. ערוך מחקר מעמיק בלי לבזבז שעות. צור תוכן שיווקי ברמה גבוהה.</p>
+      <div class="ben-num">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h8M8 14h5"/></svg>
+      </div>
+      <h3>לכתוב פרומפטים שמביאים תוצאות</h3>
+      <p>תפסיק לקבל תשובות גנריות. תלמד לנסח בקשות שמביאות תוצאות שאפשר להשתמש בהן.</p>
+    </div>
+    <div class="ben-card reveal">
+      <div class="ben-num">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>ליצור תוכן שיווקי ממוקד</h3>
+      <p>פוסטים, תיאורים, קמפיינים: AI כותב את הטיוטה, אתה מוסיף את הסגנון שלך.</p>
+    </div>
+    <div class="ben-card reveal">
+      <div class="ben-num">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+      </div>
+      <h3>לחקור ולנתח מידע במהירות</h3>
+      <p>מחקר שלוקח שעות, הופך לדקות. השוואות, סיכומים, ניתוחים, בלי לבזבז זמן.</p>
+    </div>
+  </div>
+
+  <div style="max-width:860px;margin:28px auto 0;text-align:center">
+    <div style="font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">הכלים שתשלוט בהם</div>
+    <div class="tools-pills" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
+      <div class="t-pill"><div class="t-pill-name">ChatGPT</div><div class="t-pill-desc">כתיבה, שיחה וניתוח</div></div>
+      <div class="t-pill"><div class="t-pill-name">Claude AI</div><div class="t-pill-desc">טקסטים ארוכים ומדויקים</div></div>
+      <div class="t-pill"><div class="t-pill-name">Gemini</div><div class="t-pill-desc">מחובר לגוגל ולאינטרנט</div></div>
+      <div class="t-pill"><div class="t-pill-name">Gamma</div><div class="t-pill-desc">מצגות מקצועיות בדקות</div></div>
+      <div class="t-pill"><div class="t-pill-name">Custom GPTs</div><div class="t-pill-desc">סוכן מותאם לתחום שלך</div></div>
     </div>
   </div>
 </section>
 
-<!-- wave: white → dark -->
+<!-- wave: white → dark (agent) -->
 <div class="wave-divider" style="background:#fff;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#06101e" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#0a1628" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
-<!-- COUNTDOWN -->
-<section class="cd-section">
-  <div class="cd-wrap">
-    <div class="cd-eyebrow">הקורס הבא מתחיל בעוד</div>
-    <div class="cd-timer">
-      <div class="cd-unit"><div class="cd-val" id="cd-d">00</div><div class="cd-lbl">ימים</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-h">00</div><div class="cd-lbl">שעות</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-m">00</div><div class="cd-lbl">דקות</div></div>
-      <div class="cd-colon">:</div>
-      <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
-    </div>
-    <div class="cd-detail">
-      <strong>יום רביעי, 6.5.2026 | 17:00</strong> · 4 מפגשים בימי רביעי · שעתיים כל מפגש
-    </div>
-  </div>
-</section>
-
-<!-- wave: dark → navy -->
-<div class="wave-divider" style="background:#06101e;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#0a1628" d="M0,25 C480,0 960,50 1440,25 L1440,50 L0,50 Z"/>
-  </svg>
-</div>
-
-<!-- AGENT HIGHLIGHT -->
-<section class="agent-section">
+<!-- ═══════════ 6. סוכן AI אישי ═══════════ -->
+<section class="agent-section" id="agent">
   <div class="agent-inner">
     <div>
       <div class="agent-label">גולת הכותרת של הקורס</div>
-      <h2 class="agent-title">סוכן AI אישי משלך<br/><span>שמכיר אותך</span></h2>
+      <h2 class="agent-title">לא יוצאים רק עם ידע.<br/><span>יוצאים עם נכסים שעובדים.</span></h2>
       <p class="agent-sub">
-        במהלך הקורס תבנה סוכן שמותאם לצרכים שלך. הוא לא רעיון באוויר, אלא נכס עבודה שימושי שיכול לעזור לך לכתוב, לתכנן, לסכם, לנסח ולהתקדם מהר יותר.
+        סוכן AI אישי שמותאם לתחום שלך. פרומפטים שעובדים. דרך עבודה יומיומית. תוצרים שמשתמשים בהם למחרת.
+        לא רעיון. לא הדגמה. נכסי עבודה אמיתיים שיוצאים איתם הביתה.
       </p>
       <ul class="agent-list">
-        <li>מגיב בסגנון שלך ובשפה שלך</li>
-        <li>מתאים לכל תחום וכל סוג עבודה</li>
-        <li>חוסך שעות של עבודה חוזרת</li>
-        <li>אפשר לשלוח אליו משימות כל בוקר</li>
-        <li>עוזר לכתוב מיילים, לתכנן ולסכם</li>
+        <li>סוכן שמכיר את התחום שלך וכותב בסגנון שלך</li>
+        <li>ספריית פרומפטים מותאמת למשימות שלך</li>
+        <li>חוסך שעות של עבודה חוזרת, בלי ידע טכני</li>
+        <li>מוכן לשימוש מיידי, כבר ביום שאחרי</li>
       </ul>
+      <div class="asset-chips">
+        <div class="asset-chip"><span class="asset-chip-icon">✦</span> סוכן AI אישי</div>
+        <div class="asset-chip"><span class="asset-chip-icon">✦</span> ספריית פרומפטים</div>
+        <div class="asset-chip"><span class="asset-chip-icon">✦</span> דרך עבודה מסודרת</div>
+        <div class="asset-chip"><span class="asset-chip-icon">✦</span> הקלטות וחומרים</div>
+      </div>
+      <div style="margin-top:28px">
+        <a href="#register" class="cta-main" style="display:inline-block">בדוק אם נשאר מקום</a>
+      </div>
     </div>
     <div class="agent-chat-ui">
       <div class="acu-header">
@@ -1797,65 +1990,19 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: navy → gray -->
+<!-- wave: agent dark → white -->
 <div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#f3f4f8" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#fff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
-<!-- TOOLS -->
-<section class="tools" id="tools-section">
-  <div class="s-head c">
-    <div class="s-label">כלי AI</div>
-    <h2 class="s-title">הכלים שתשלוט <em>בהם</em></h2>
-    <p class="s-sub">שליטה אמיתית בכלים שהעולם משתמש בהם עכשיו.</p>
-  </div>
-  <div class="tools-pills">
-    <div class="t-pill">
-      <div class="t-pill-name">ChatGPT</div>
-      <div class="t-pill-desc">הכלי הכי מוכר: לכתיבה, ניתוח ושיחה חכמה</div>
-    </div>
-    <div class="t-pill">
-      <div class="t-pill-name">Claude AI</div>
-      <div class="t-pill-desc">הכי מדויק לטקסטים ארוכים ולכתיבה איכותית</div>
-    </div>
-    <div class="t-pill">
-      <div class="t-pill-name">Gemini</div>
-      <div class="t-pill-desc">AI של Google, מחובר לאינטרנט בזמן אמת</div>
-    </div>
-    <div class="t-pill">
-      <div class="t-pill-name">Gamma</div>
-      <div class="t-pill-desc">הרעיון שלך למצגת מקצועית, תוך דקות</div>
-    </div>
-    <div class="t-pill">
-      <div class="t-pill-name">Custom GPTs</div>
-      <div class="t-pill-desc">בנה סוכן AI שמותאם בדיוק לתחום שלך</div>
-    </div>
-    <div class="t-pill">
-      <div class="t-pill-name">Google Gems</div>
-      <div class="t-pill-desc">מומחי AI מוכנים לכל משימה, בלחיצה</div>
-    </div>
-    <div class="t-pill">
-      <div class="t-pill-name">AI Agents</div>
-      <div class="t-pill-desc">AI שעובד בשבילך באופן עצמאי, רציף</div>
-    </div>
-  </div>
-</section>
-
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
-
-<!-- CURRICULUM -->
+<!-- ═══════════ 7. הקורס + המרצה ═══════════ -->
 <section class="curriculum" id="curriculum">
   <div class="s-head c">
     <div class="s-label">תוכן הקורס</div>
-    <h2 class="s-title">מה <em>לומדים</em> בכל מפגש?</h2>
-    <p class="s-sub">4 מפגשים מעשיים. כל אחד בנוי על הקודם, ויוצאים ממנו עם תוצר.</p>
+    <h2 class="s-title">4 מפגשים. <em>מה עושים</em> בכל אחד?</h2>
+    <p class="s-sub">כל מפגש בנוי על הקודם. ויוצאים ממנו עם תוצר ביד.</p>
   </div>
   <div class="sessions">
     <div class="session reveal">
@@ -1865,22 +2012,22 @@ footer strong{color:rgba(255,255,255,.82)}
       </div>
       <ul class="session-topics">
         <li>איך AI עובד ולמה זה רלוונטי לך עכשיו</li>
-        <li>סיור בכלים המובילים: ChatGPT, Claude, Gemini</li>
+        <li>סיור בכלים: ChatGPT, Claude, Gemini ומה ההבדל ביניהם</li>
         <li>תרגיל ראשון חי, יוצאים עם משהו ביד</li>
-        <li>איפה AI כבר עוזר לאנשים בתחום שלך</li>
       </ul>
+      <div class="session-outcome">יוצאים עם: הרגשת שליטה בסיסית בכלים</div>
     </div>
     <div class="session reveal">
       <div class="session-header">
         <div class="session-num">2</div>
-        <div class="session-title">פרומפטים וכלים מובילים</div>
+        <div class="session-title">פרומפטים שמביאים תוצאות</div>
       </div>
       <ul class="session-topics">
         <li>7 עקרונות לכתיבת בקשה שמקבלת תשובה מדויקת</li>
-        <li>שיטות שמשנות את התוצאה לגמרי, פשוטות יותר ממה שנשמע</li>
         <li>בניית אוסף הוראות אישי שחוסך זמן כל יום</li>
-        <li>יצירת מצגות מקצועיות בעשרים דקות בלי עיצוב</li>
+        <li>יצירת מצגת מקצועית ב-20 דקות בלי עיצוב</li>
       </ul>
+      <div class="session-outcome">יוצאים עם: ספריית פרומפטים אישית</div>
     </div>
     <div class="session reveal">
       <div class="session-header">
@@ -1888,11 +2035,11 @@ footer strong{color:rgba(255,255,255,.82)}
         <div class="session-title">סוכני AI ועבודה מעשית</div>
       </div>
       <ul class="session-topics">
-        <li>מה זה סוכן AI ואיך הוא עובד בפועל בעבודה שלך</li>
-        <li>בניית עוזר אישי חכם שמכיר את התחום שלך</li>
-        <li>איך לקבל מידע מהימן ומדויק בלי לבזבז זמן</li>
-        <li>חיסכון של שעות חוזרות, בלי ידע טכני</li>
+        <li>מה זה סוכן AI ואיך הוא עובד בפועל</li>
+        <li>בניית עוזר חכם שמכיר את התחום שלך</li>
+        <li>קבלת מידע מהימן ומדויק בלי בזבוז זמן</li>
       </ul>
+      <div class="session-outcome">יוצאים עם: סוכן AI ראשוני פעיל</div>
     </div>
     <div class="session reveal">
       <div class="session-header">
@@ -1902,291 +2049,217 @@ footer strong{color:rgba(255,255,255,.82)}
       <ul class="session-topics">
         <li>בניית הסוכן האישי שלך מאפס, ביחד בשיעור</li>
         <li>תרגיל חי עם אתגר מהעבודה האמיתית שלך</li>
-        <li>תוכנית עבודה: איך ממשיכים ומתקדמים מכאן</li>
-        <li>כלים ייעודיים לפרודוקטיביות, לפי התחום שלך</li>
+        <li>תוכנית המשך: איך ממשיכים ומתקדמים מכאן</li>
       </ul>
+      <div class="session-outcome">יוצאים עם: סוכן AI מוגמר ודרך עבודה</div>
+    </div>
+  </div>
+
+  <div class="instructor-compact reveal">
+    <div class="ic-photo">
+      <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון" width="104" height="104" loading="lazy" decoding="async"/>
+    </div>
+    <div class="ic-body">
+      <h3>יוחנן שבדרון</h3>
+      <div class="ic-role">מרצה ומדריך AI לציבור החרדי</div>
+      <p>בוגר מדעי המחשב עם ניסיון בפיתוח וניתוח נתונים, ושנים בעולם החינוך וההוראה. יוחנן מחבר בין עומק טכנולוגי ליכולת הנגשה נדירה. המטרה אחת: לא רק להבין AI, אלא לדעת להשתמש בו באמת.</p>
+      <div class="ic-creds">
+        <span class="ic-cred">בוגר מדעי המחשב</span>
+        <span class="ic-cred">ניסיון בפיתוח וניתוח נתונים</span>
+        <span class="ic-cred">מסביר בגובה העיניים</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- wave: white → gray -->
+<!-- wave: white → dark (closing) -->
 <div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:56px">
+    <path fill="#06101e" d="M0,28 C360,56 1080,0 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 </div>
 
-<!-- TESTIMONIALS + WA PROOF merged -->
-<section class="testi-section">
-  <div class="s-head c">
-    <div class="s-label">מה שהבוגרים אומרים</div>
-    <h2 class="s-title">הם לא ידעו כלום על AI.<br/>עכשיו זה <em>הכלי הכי חשוב</em> בעבודתם</h2>
-    <p class="s-sub">אנשים רגילים, בלי רקע טכני, שיצאו עם כלים שעובדים מהיום הראשון.</p>
-  </div>
-  <div class="testi-grid">
-    <div class="t-card reveal">
-      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p>כבר אחרי השיעור הראשון הבנתי איך להשתמש בזה בעבודה שלי. יצאתי עם סוכן שכותב לי מיילים ועונה ללקוחות, וחסכתי שעתיים ביום מהיום הראשון.</p>
-      <div class="t-author">
-        <div class="t-av av1">מ</div>
-        <div>
-          <div class="t-name">משה כ', בני ברק</div>
-          <div class="t-role">בעל עסק · הנהלת חשבונות</div>
-        </div>
+<!-- ═══════════ 8. סגירה ═══════════ -->
+<section class="closing" id="register">
+
+  <!-- Countdown + meta -->
+  <div class="closing-dark">
+    <div class="cd-wrap">
+      <div class="cd-eyebrow">הקורס מתחיל בעוד</div>
+      <div class="cd-timer" role="timer" aria-label="ספירה לאחור לפתיחת הקורס" aria-live="off">
+        <div class="cd-unit"><div class="cd-val" id="cd-d" aria-label="ימים">00</div><div class="cd-lbl" aria-hidden="true">ימים</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-unit"><div class="cd-val" id="cd-h">00</div><div class="cd-lbl">שעות</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-unit"><div class="cd-val" id="cd-m">00</div><div class="cd-lbl">דקות</div></div>
+        <div class="cd-colon">:</div>
+        <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
       </div>
     </div>
-    <div class="t-card reveal">
-      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p>הגעתי בלי רקע טכני, וההסבר היה ברור מאוד. סוף סוף הבנתי מה עושים עם הכלים האלה בפועל. אחרי השיעור הראשון כבר הפקתי מצגת מקצועית לוועדה.</p>
-      <div class="t-author">
-        <div class="t-av av2">מ</div>
-        <div>
-          <div class="t-name">מרים ל', ירושלים</div>
-          <div class="t-role">עובדת סוציאלית</div>
-        </div>
+    <div class="close-meta">
+      <div class="close-meta-card red">
+        <div class="close-meta-val">5 מקומות</div>
+        <div class="close-meta-lbl">נותרו בלבד</div>
       </div>
-    </div>
-    <div class="t-card reveal">
-      <div class="t-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p>מה שאהבתי זה שלא נשארנו בתיאוריה. תרגלנו ממש, וזה נתן לי ביטחון להשתמש בזה לבד. עכשיו אני יודע בדיוק איזה כלי לבחור ואיך לשלב AI בעבודה שלי.</p>
-      <div class="t-author">
-        <div class="t-av av3">א</div>
-        <div>
-          <div class="t-name">אברהם ש', מודיעין עילית</div>
-          <div class="t-role">מנהל פרויקטים</div>
-        </div>
+      <div class="close-meta-card">
+        <div class="close-meta-val">6.5.2026</div>
+        <div class="close-meta-lbl">פתיחה, יום רביעי 17:00</div>
+      </div>
+      <div class="close-meta-card">
+        <div class="close-meta-val">680 &#8362;</div>
+        <div class="close-meta-lbl">מחיר מוקדם, במקום 800 &#8362;</div>
+      </div>
+      <div class="close-meta-card">
+        <div class="close-meta-val">4</div>
+        <div class="close-meta-lbl">מפגשים חיים, שעתיים כל אחד</div>
       </div>
     </div>
   </div>
 
-  <div class="wa-proof-divider">
-    <span>ישירות מהוואטסאפ</span>
+  <!-- wave dark → light -->
+  <div style="background:#06101e;line-height:0;display:block;margin-top:-1px">
+    <svg viewBox="0 0 1440 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:64px">
+      <path fill="#ffffff" d="M0,32 C360,64 1080,8 1440,32 L1440,64 L0,64 Z"/>
+    </svg>
   </div>
-  <div class="wa-proof-grid">
-    <div class="wa-proof-card">
-      <img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp"
-           alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
-           loading="lazy" width="320" height="420"/>
-    </div>
-    <div class="wa-proof-card">
-      <img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp"
-           alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
-           loading="lazy" width="320" height="420"/>
-    </div>
-    <div class="wa-proof-card">
-      <img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp"
-           alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
-           loading="lazy" width="320" height="420"/>
-    </div>
-  </div>
-</section>
 
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
+  <div class="closing-light">
+    <div class="closing-light-inner">
 
-<!-- URGENCY -->
-<section class="urgency">
-  <div class="s-head c" style="margin-bottom:36px">
-    <div class="s-label">המחזור הקרוב</div>
-    <h2 class="s-title">המקומות <em>אוזלים</em>.<br/>אל תישאר בחוץ</h2>
-    <p class="s-sub">המחזור הקרוב נפתח ב-6.5.2026. כשהמקומות מלאים הדף נסגר.</p>
-  </div>
-  <div class="urgency-inner">
-    <div class="urg-card highlight reveal">
-      <div class="urg-val">5 מקומות</div>
-      <div class="urg-lbl">נותרו בלבד במחזור הקרוב</div>
-    </div>
-    <div class="urg-card reveal">
-      <div class="urg-val">6.5.2026</div>
-      <div class="urg-lbl">תאריך פתיחה · יום רביעי 17:00</div>
-    </div>
-    <div class="urg-card reveal">
-      <div class="urg-val">4 מפגשים</div>
-      <div class="urg-lbl">שעתיים כל מפגש, בזום</div>
-    </div>
-    <div class="urg-card reveal">
-      <div class="urg-val">680 &#8362;</div>
-      <div class="urg-lbl">מחיר מוקדם, במקום 800 &#8362;</div>
-    </div>
-  </div>
-  <div class="urgency-ctas">
-    <a href="#register" class="cta-main">בדוק אם נשאר מקום</a>
-    <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
-       target="_blank" rel="noopener" class="cta-wa"
-       aria-label="קבל פרטים על הקורס בוואטסאפ">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
-      קבל פרטים בוואטסאפ
-    </a>
-  </div>
-</section>
-
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
-
-<!-- FAQ -->
-<section class="faq-section" id="faq-section">
-  <div class="s-head c">
-    <div class="s-label">שאלות נפוצות</div>
-    <h2 class="s-title">לפני שאתה מחליט.<br/><em>כאן התשובות.</em></h2>
-  </div>
-  <div class="faq-grid">
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span class="faq-q">האם צריך ידע מוקדם בטכנולוגיה?</span>
-        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-      </button>
-      <div class="faq-body">
-        <p class="faq-a">לא. הקורס מתאים גם למי שמתחיל מאפס, עם הסבר מסודר ותרגול חי. מגיעים כמו שאתה, ויוצאים עם יכולות אמיתיות.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span class="faq-q">האם זה מתאים לציבור החרדי?</span>
-        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-      </button>
-      <div class="faq-body">
-        <p class="faq-a">כן. התוכן, הדוגמאות והסגנון מותאמים לציבור החרדי ולשימושים מעשיים בעבודה ובעסק. יוחנן מכיר את הציבור מבפנים ומסביר בשפה שלך.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span class="faq-q">מה יוצא לי בפועל?</span>
-        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-      </button>
-      <div class="faq-body">
-        <p class="faq-a">תדע לעבוד עם כלי AI מובילים, לכתוב פרומפטים טובים יותר, לחסוך זמן, לבנות תוצרים, ולצאת עם סוכן AI אישי שמותאם לתחום שלך.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span class="faq-q">זה קורס טכני?</span>
-        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-      </button>
-      <div class="faq-body">
-        <p class="faq-a">לא. לא נדרש ידע טכני. המטרה היא להנגיש את הכלים בצורה ברורה ומעשית, צעד אחר צעד.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span class="faq-q">האם המפגשים מוקלטים?</span>
-        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-      </button>
-      <div class="faq-body">
-        <p class="faq-a">כן. כל מפגש מוקלט ונשלח אליך תוך 24 שעות. אם לא יכולת להגיע, צופה בהקלטה בנוחות ובלי לפספס כלום.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span class="faq-q">מה המחיר וכיצד משלמים?</span>
-        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-      </button>
-      <div class="faq-body">
-        <p class="faq-a">המחיר המוקדם הוא <strong>680 &#8362;</strong> (במקום 800 &#8362;). לאחר ההרשמה יוחנן ייצור איתך קשר ישירות ויסדיר את התשלום בצורה הנוחה לך.</p>
-      </div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-btn" aria-expanded="false">
-        <span class="faq-q">איך נרשמים?</span>
-        <span class="faq-arrow" aria-hidden="true">&#9660;</span>
-      </button>
-      <div class="faq-body">
-        <p class="faq-a">משאירים פרטים בטופס למטה או פונים בוואטסאפ. המקום נשמר לאחר אישור הרשמה ותשלום.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
-
-<!-- REGISTER -->
-<section class="register" id="register">
-  <div class="reg-inner">
-
-    <div class="s-label">הרשמה</div>
-    <h2 class="s-title">שמור את מקומך<br/>במחזור <em>הקרוב</em></h2>
-    <p class="s-sub" style="margin:0 auto">מלא שם וטלפון, אחזור אליך תוך שעה עם כל הפרטים. אין התחייבות.</p>
-
-    <!-- כרטיס כהה: שתי עמודות -->
-    <div class="reg-card reveal">
-
-      <!-- עמודה ימנית: ערך + מה מקבלים (RTL = מימין) -->
-      <div class="reg-col-value">
-        <div class="ds-title">מה מחכה לך בצד השני</div>
-        <ul class="ds-list">
-          <li><span class="ds-icon">✦</span> 4 מפגשים חיים + הקלטות תוך 24 שעות</li>
-          <li><span class="ds-icon">✦</span> סוכן AI אישי שמותאם לתחום שלך</li>
-          <li><span class="ds-icon">✦</span> ספריית פרומפטים מוכנה לשימוש מיידי</li>
-          <li><span class="ds-icon">✦</span> קבוצת ליווי משותפת למשך כל הקורס</li>
-          <li><span class="ds-icon">✦</span> יוחנן חוזר אליך אישית תוך שעה</li>
-        </ul>
-
-        <div class="reg-social-proof">
-          <div class="rsp-quote">"כבר אחרי השיעור הראשון הבנתי איך להשתמש בסוכן. יצאתי עם כלי עבודה שמשתמש בו כל יום."</div>
-          <div class="rsp-name">משה ל׳, בני ברק · בעל עסק · הנהלת חשבונות</div>
-        </div>
-
-        <div class="reg-price-block">
-          <span class="price-old">800 &#8362;</span>
-          <span class="price-now-lg">680 &#8362;</span>
-          <span class="price-badge">מחיר מוקדם · נגמר בקרוב</span>
-        </div>
-      </div>
-
-      <!-- עמודה שמאלית: טופס (RTL = משמאל) -->
-      <div class="reg-col-form">
-        <form class="form-box" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
-          <input type="hidden" name="_next" value="https://yochanan11.github.io/shvadron-ai/thanks.html"/>
-          <input type="hidden" name="_captcha" value="false"/>
-          <input type="hidden" name="_template" value="table"/>
-          <input type="hidden" name="_autoresponse" value="שלום! תודה שנרשמת לקורס AI של יוחנן שבדרון.
-
-קיבלתי את הפרטים שלך ואחזור אליך תוך 24 שעות לאישור המקום וסידור התשלום.
-
-אם יש לך שאלה עד אז, כתוב לי בוואטסאפ: 052-7169921
-
-יוחנן שבדרון
-shwadron.ai"/>
-          <div class="f-g">
-            <label for="f-first">שם פרטי *</label>
-            <input id="f-first" type="text" name="שם" placeholder="ישראל" required autocomplete="given-name"/>
+      <!-- WA proof -->
+      <div style="margin-bottom:56px">
+        <div class="closing-wa-label">ישירות מהוואטסאפ</div>
+        <div class="wa-proof-grid">
+          <div class="wa-proof-card wa-proof-feature">
+            <img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp"
+                 alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
+                 loading="lazy" width="1206" height="1143"/>
           </div>
-          <div class="f-g">
-            <label for="f-phone">טלפון *</label>
-            <input id="f-phone" type="tel" name="טלפון" placeholder="050-0000000" required autocomplete="tel"/>
+          <div class="wa-proof-card wa-proof-mid">
+            <img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp"
+                 alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
+                 loading="lazy" width="1206" height="788"/>
           </div>
-          <button type="submit" class="f-submit">בדוק אם נשאר לי מקום</button>
-          <p class="f-guarantee">🔒 אין ספאם. אין התחייבות. יוחנן חוזר אליך אישית תוך שעה.</p>
-          <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
-             target="_blank" rel="noopener" class="f-wa-btn"
-             aria-label="שליחת הודעה בוואטסאפ לקבלת פרטים על הקורס">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
-            קבל פרטים בוואטסאפ
-          </a>
-          <p class="f-note">
-            יוחנן יחזור אליך עם פרטים מסודרים ואישור מקום, אם עדיין נשאר מקום פנוי.<br/>
-            הפרטים שלך מאובטחים ולא יועברו לגורם שלישי.
-          </p>
-        </form>
+          <div class="wa-proof-card wa-proof-small">
+            <img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp"
+                 alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
+                 loading="lazy" width="1206" height="502"/>
+          </div>
+        </div>
       </div>
 
-    </div><!-- /reg-card -->
+      <!-- FAQ -->
+      <div class="s-head c" id="faq-section" style="margin-bottom:32px">
+        <div class="s-label">שאלות נפוצות</div>
+        <h2 class="s-title">לפני שאתה מחליט.<br/><em>כאן התשובות.</em></h2>
+      </div>
+      <div class="faq-grid" role="list" style="max-width:740px;margin:0 auto">
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq-body-1">
+            <span class="faq-q">האם צריך ידע מוקדם בטכנולוגיה?</span>
+            <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+          </button>
+          <div class="faq-body" id="faq-body-1" role="region">
+            <p class="faq-a">לא. הקורס מתאים גם למי שמתחיל מאפס, עם הסבר מסודר ותרגול חי. מגיעים כמו שאתה, ויוצאים עם יכולות אמיתיות.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq-body-2">
+            <span class="faq-q">האם זה מתאים לציבור החרדי?</span>
+            <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+          </button>
+          <div class="faq-body" id="faq-body-2" role="region">
+            <p class="faq-a">כן. התוכן, הדוגמאות והסגנון מותאמים לציבור החרדי. יוחנן מכיר את הציבור מבפנים ומסביר בשפה שלך.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq-body-3">
+            <span class="faq-q">מה יוצא לי בפועל?</span>
+            <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+          </button>
+          <div class="faq-body" id="faq-body-3" role="region">
+            <p class="faq-a">תדע לעבוד עם כלי AI מובילים, לכתוב פרומפטים שמביאים תוצאות, לחסוך זמן, ולצאת עם סוכן AI אישי שמותאם לתחום שלך.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq-body-4">
+            <span class="faq-q">האם המפגשים מוקלטים?</span>
+            <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+          </button>
+          <div class="faq-body" id="faq-body-4" role="region">
+            <p class="faq-a">כן. כל מפגש מוקלט ונשלח אליך תוך 24 שעות. אם לא יכולת להגיע, צופה בהקלטה בנוחות ובלי לפספס כלום.</p>
+          </div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <button class="faq-btn" aria-expanded="false" aria-controls="faq-body-5">
+            <span class="faq-q">מה המחיר וכיצד משלמים?</span>
+            <span class="faq-arrow" aria-hidden="true">&#9660;</span>
+          </button>
+          <div class="faq-body" id="faq-body-5" role="region">
+            <p class="faq-a">המחיר המוקדם הוא <strong>680 &#8362;</strong> (במקום 800 &#8362;). לאחר ההרשמה יוחנן ייצור איתך קשר ישירות ויסדיר את התשלום בצורה הנוחה לך.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration -->
+      <div style="margin-top:64px;text-align:center">
+        <div class="s-label" style="justify-content:center">הרשמה</div>
+        <h2 class="s-title" style="margin-bottom:8px">מוכן לצאת עם AI<br/>שעובד <em>בפועל</em>?</h2>
+        <p style="color:var(--muted);font-size:1rem;margin-bottom:0">מלא שם וטלפון. יוחנן חוזר אליך אישית תוך שעה. אין התחייבות.</p>
+      </div>
+
+      <div class="reg-card reveal" style="margin-top:40px">
+        <div class="reg-col-value">
+          <div class="ds-title">מה מחכה לך בצד השני</div>
+          <ul class="ds-list">
+            <li><span class="ds-icon">✦</span> 4 מפגשים חיים וקלטות תוך 24 שעות</li>
+            <li><span class="ds-icon">✦</span> סוכן AI אישי שמותאם לתחום שלך</li>
+            <li><span class="ds-icon">✦</span> ספריית פרומפטים מוכנה לשימוש מיידי</li>
+            <li><span class="ds-icon">✦</span> קבוצת ליווי לאורך כל הקורס</li>
+            <li><span class="ds-icon">✦</span> יוחנן חוזר אליך אישית תוך שעה</li>
+          </ul>
+          <div class="reg-price-block">
+            <span class="price-old">800 &#8362;</span>
+            <span class="price-now-lg">680 &#8362;</span>
+            <span class="price-badge">מחיר מוקדם, נגמר בקרוב</span>
+          </div>
+        </div>
+        <div class="reg-col-form">
+          <form class="form-box" action="https://formsubmit.co/yochanansh818@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="הרשמה חדשה מהאתר shwadron.ai"/>
+            <input type="hidden" name="_next" value="https://yochanan11.github.io/shvadron-ai/thanks.html"/>
+            <input type="hidden" name="_captcha" value="false"/>
+            <input type="hidden" name="_template" value="table"/>
+            <input type="hidden" name="_autoresponse" value="שלום! תודה שנרשמת לקורס AI של יוחנן שבדרון. קיבלתי את הפרטים שלך ואחזור אליך תוך שעה לאישור המקום. אם יש לך שאלה, כתוב לי בוואטסאפ: 052-7169921. יוחנן שבדרון, shwadron.ai"/>
+            <div class="f-g">
+              <label for="f-first">שם פרטי *</label>
+              <input id="f-first" type="text" name="שם" placeholder="ישראל" required autocomplete="given-name"/>
+            </div>
+            <div class="f-g">
+              <label for="f-phone">טלפון *</label>
+              <input id="f-phone" type="tel" name="טלפון" placeholder="050-0000000" required autocomplete="tel"/>
+            </div>
+            <button type="submit" class="f-submit">בדוק אם נשאר לי מקום</button>
+            <p class="f-guarantee">&#128274; אין ספאם. אין התחייבות. יוחנן חוזר אליך תוך שעה.</p>
+            <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
+               target="_blank" rel="noopener" class="f-wa-btn" aria-label="שליחת הודעה בוואטסאפ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 32 32" fill="#25D366" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
+              קבל פרטים בוואטסאפ
+            </a>
+            <p class="f-note">הפרטים שלך מאובטחים ולא יועברו לגורם שלישי.</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
   </div>
+
+<!-- /closing-light-inner and closing-light already closed above -->
 </section>
 
+
+
+</main>
 <!-- FOOTER -->
 <footer>
   <div style="margin-bottom:14px;display:flex;justify-content:center">
@@ -2195,6 +2268,11 @@ shwadron.ai"/>
   <p><strong>יוחנן שבדרון</strong>, מדריך AI לציבור החרדי</p>
   <p class="ft-slogan">SHWADRON.AI · AI לציבור החרדי</p>
   <p style="margin-top:16px;font-size:.72rem;opacity:.35">&#169; 2026 יוחנן שבדרון · כל הזכויות שמורות</p>
+  <!-- הצהרת נגישות — נסתר ויזואלית, נגיש לקוראי מסך -->
+  <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0" role="note" aria-label="הצהרת נגישות">
+    אתר זה נבנה לפי עקרונות WCAG 2.1 ברמה AA ומאפשר ניווט מלא במקלדת, קורא מסך ותאימות מובייל.
+    לדיווח על בעיית נגישות: yochanansh818@gmail.com
+  </div>
 </footer>
 
 <!-- FAB -->
@@ -2204,7 +2282,7 @@ shwadron.ai"/>
 <div class="wa-tooltip" id="waTooltip">💬 יש שאלה? יוחנן עונה עכשיו</div>
 
 <!-- WhatsApp FAB -->
-<a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%92%D7%9D%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%99%D7%95%D7%AA%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8%20%D7%91%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA"
+<a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1"
    target="_blank" rel="noopener" class="wa-fab"
    aria-label="שליחת הודעה בוואטסאפ לקבלת פרטים על הקורס" id="waFab">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="white" width="27" height="27" aria-hidden="true">
@@ -2236,19 +2314,39 @@ shwadron.ai"/>
 (function(){
   var fab = document.querySelector('.fab');
   if(!fab) return;
-  var darkSections = document.querySelectorAll('.hero, .cd-section, .agent-section');
+  function isDarkColor(color){
+    var m = color && color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([.\d]+))?\)/);
+    if(!m || (m[4] !== undefined && parseFloat(m[4]) === 0)) return false;
+    var r = parseInt(m[1], 10);
+    var g = parseInt(m[2], 10);
+    var b = parseInt(m[3], 10);
+    return ((r * 299 + g * 587 + b * 114) / 1000) < 130;
+  }
+  function isDarkBehindFab(){
+    var rect = fab.getBoundingClientRect();
+    var x = rect.left + rect.width / 2;
+    var y = rect.top + rect.height / 2;
+    var stack = document.elementsFromPoint ? document.elementsFromPoint(x, y) : [];
+    for(var i = 0; i < stack.length; i++){
+      var el = stack[i];
+      if(el === fab || fab.contains(el)) continue;
+      while(el && el !== document.documentElement){
+        if(el !== fab){
+          var bg = window.getComputedStyle(el).backgroundColor;
+          if(isDarkColor(bg)) return true;
+          if(bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') return false;
+        }
+        el = el.parentElement;
+      }
+    }
+    return false;
+  }
   function updateFab(){
-    var fabRect = fab.getBoundingClientRect();
-    var fabMidY = fabRect.top + fabRect.height / 2;
-    var onDark = false;
-    darkSections.forEach(function(s){
-      var r = s.getBoundingClientRect();
-      if(fabMidY >= r.top && fabMidY <= r.bottom) onDark = true;
-    });
-    fab.classList.toggle('fab--light', onDark);
+    fab.classList.toggle('fab--light', isDarkBehindFab());
   }
   updateFab();
   window.addEventListener('scroll', updateFab, {passive:true});
+  window.addEventListener('resize', updateFab);
 })();
 
 // Reveal on scroll
@@ -2339,13 +2437,17 @@ document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el
 
 // Hide FAB near register
 var fab = document.querySelector('.fab');
+var hero = document.querySelector('.hero');
 var reg = document.querySelector('#register');
-window.addEventListener('scroll', function() {
+function updateFabVisibility() {
+  var heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
   var r = reg.getBoundingClientRect();
-  var show = r.top > window.innerHeight || r.bottom < 0;
+  var show = heroBottom <= 0 && (r.top > window.innerHeight || r.bottom < 0);
   fab.style.opacity = show ? '1' : '0';
   fab.style.pointerEvents = show ? 'auto' : 'none';
-}, {passive: true});
+}
+updateFabVisibility();
+window.addEventListener('scroll', updateFabVisibility, {passive: true});
 
 // FAQ accordion
 document.querySelectorAll('.faq-btn').forEach(function(btn) {
