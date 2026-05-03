@@ -1,11 +1,3 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/chat", "dest": "server.js" },
-    { "src": "/(.*\\.(png|jpg|jpeg|svg|webp|ico|css|js|woff2?|ttf|gif|mp4|txt|xml))", "dest": "/$1" },
-    { "src": "/(.*)", "dest": "/$1" }
-  ]
+  "version": 2
 }
