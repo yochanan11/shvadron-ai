@@ -21,7 +21,11 @@
 <meta name="twitter:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" href="assets/public/images/brand/yochanan-character.webp" as="image"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap"/></noscript>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
@@ -1945,10 +1949,14 @@ footer strong{color:rgba(255,255,255,.82)}
     </div>
     <div class="hero-char-col">
       <div class="hero-char-glow"></div>
-      <img class="hero-character-img"
-           src="assets/public/images/brand/yochanan-character.png"
-           alt="יוחנן שבדרון - מדריך AI לציבור החרדי"
-           width="420" height="600"/>
+      <picture>
+        <source srcset="assets/public/images/brand/yochanan-character.webp" type="image/webp"/>
+        <img class="hero-character-img"
+             src="assets/public/images/brand/yochanan-character.png"
+             alt="יוחנן שבדרון - מדריך AI לציבור החרדי"
+             width="420" height="600"
+             fetchpriority="high" decoding="async"/>
+      </picture>
     </div>
   </div>
 
@@ -2295,7 +2303,10 @@ footer strong{color:rgba(255,255,255,.82)}
 
   <div class="instructor-compact reveal">
     <div class="ic-photo">
-      <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון" width="104" height="104" loading="lazy" decoding="async"/>
+      <picture>
+        <source srcset="assets/public/yochanan-card.webp" type="image/webp"/>
+        <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון" width="104" height="104" loading="lazy" decoding="async"/>
+      </picture>
     </div>
     <div class="ic-body">
       <h3>יוחנן שבדרון</h3>
