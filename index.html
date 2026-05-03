@@ -516,37 +516,86 @@ h2.s-title em{
 
 /* FIT CHECK */
 .fit-check{
-  max-width:860px;margin:56px auto 0;
-  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  max-width:880px;margin:52px auto 0;
+  display:grid;grid-template-columns:58fr 42fr;gap:18px;
 }
 .fit-col{
-  background:var(--bg2);
-  border-radius:16px;
-  padding:28px 26px;
+  border-radius:20px;
+  padding:32px 28px;
+  position:relative;overflow:hidden;
 }
-.fit-col.yes{border-top:4px solid var(--teal2)}
-.fit-col.no{border-top:4px solid #e5e7eb}
+.fit-col.yes{
+  background:linear-gradient(150deg,#edfdf8 0%,#f6fffe 60%,#ffffff 100%);
+  border:1.5px solid rgba(0,201,167,.28);
+  box-shadow:0 8px 36px rgba(0,201,167,.12),0 2px 8px rgba(0,0,0,.05);
+}
+.fit-col.yes::before{
+  content:'';position:absolute;top:-40px;left:-40px;
+  width:160px;height:160px;
+  background:radial-gradient(circle,rgba(0,201,167,.14) 0%,transparent 70%);
+  pointer-events:none;
+}
+.fit-col.no{
+  background:#fafafa;
+  border:1.5px solid #e5e7eb;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
 .fit-col-title{
-  font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase;
-  margin-bottom:16px;
-  display:flex;align-items:center;gap:7px;
+  font-size:.72rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
+  margin-bottom:18px;padding-bottom:14px;
+  display:flex;align-items:center;gap:8px;
 }
-.fit-col.yes .fit-col-title{color:var(--teal2)}
-.fit-col.no .fit-col-title{color:var(--muted)}
+.fit-col.yes .fit-col-title{
+  color:var(--teal-text);
+  border-bottom:1.5px solid rgba(0,201,167,.2);
+}
+.fit-col.no .fit-col-title{
+  color:var(--muted);
+  border-bottom:1.5px solid #ebebeb;
+}
+.fit-col-title{
+  opacity:0;transform:translateY(8px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.fit-check.on .fit-col-title{opacity:1;transform:translateY(0)}
+.fit-check.on .fit-col.yes .fit-col-title{transition-delay:.02s}
+.fit-check.on .fit-col.no  .fit-col-title{transition-delay:.06s}
 .fit-row{
-  display:flex;align-items:flex-start;gap:9px;
-  font-size:.84rem;color:var(--text2);line-height:1.55;
-  margin-bottom:9px;
+  display:flex;align-items:center;gap:10px;
+  font-size:.86rem;color:var(--text2);line-height:1.5;
+  margin-bottom:8px;
+  padding:10px 13px;
+  border-radius:11px;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .36s ease,transform .36s ease;
 }
+.fit-check.on .fit-row{opacity:1;transform:translateY(0)}
+.fit-col.yes .fit-row{background:rgba(0,201,167,.07)}
+.fit-col.no  .fit-row{background:rgba(0,0,0,.033)}
 .fit-row:last-child{margin-bottom:0}
-.fit-icon-yes{color:var(--teal2);font-size:.95rem;flex-shrink:0;margin-top:1px}
-.fit-icon-no{color:#d1d5db;font-size:.95rem;flex-shrink:0;margin-top:1px}
+.fit-check.on .fit-col .fit-row:nth-child(2){transition-delay:.10s}
+.fit-check.on .fit-col .fit-row:nth-child(3){transition-delay:.20s}
+.fit-check.on .fit-col .fit-row:nth-child(4){transition-delay:.30s}
+.fit-check.on .fit-col .fit-row:nth-child(5){transition-delay:.40s}
+.fit-check.on .fit-col .fit-row:nth-child(6){transition-delay:.50s}
+.fit-icon-yes{
+  width:22px;height:22px;min-width:22px;
+  background:rgba(0,201,167,.2);color:#00897b;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:900;flex-shrink:0;
+}
+.fit-icon-no{
+  width:22px;height:22px;min-width:22px;
+  background:rgba(107,114,128,.13);color:#9ca3af;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.68rem;font-weight:900;flex-shrink:0;
+}
 @media(max-width:640px){
   .fit-check{grid-template-columns:1fr}
 }
 
 /* BENEFITS */
-.benefits{background:var(--bg2)}
+.benefits{background:var(--bg)}
 .ben-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -1399,6 +1448,75 @@ footer strong{color:rgba(255,255,255,.82)}
   .reveal{opacity:1;transform:none;transition:none}
 }
 
+/* ── HERO ENTRANCE ──────────────────────── */
+@keyframes hFd{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes hFu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes hSc{from{opacity:0;transform:scale(.93) translateY(14px)}to{opacity:1;transform:none}}
+.hero-badge{animation:hFd .45s ease both .2s}
+.hero-name{animation:hFu .5s ease both .34s}
+.hero-course-title{animation:hFu .52s ease both .44s}
+.hero-subline{animation:hFu .46s ease both .52s}
+.hero-slogan{animation:hFu .42s ease both .55s}
+.hero-desc,.hero-desc-mobile{animation:hFu .46s ease both .57s}
+.hero-micro,.hero-micro-mobile{animation:hFu .4s ease both .61s}
+.hero-trust-chips{animation:hFu .42s ease both .65s}
+.hero-ctas{animation:hFu .5s ease both .7s}
+.hero-char-col{animation:hSc .68s ease both .24s}
+
+/* ── TRUST BAR STAGGER ── */
+.trust-item{opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
+.trust-inner.on .trust-item{opacity:1;transform:none}
+.trust-inner.on .trust-item:nth-child(1){transition-delay:.05s}
+.trust-inner.on .trust-item:nth-child(2){transition-delay:.12s}
+.trust-inner.on .trust-item:nth-child(3){transition-delay:.19s}
+.trust-inner.on .trust-item:nth-child(4){transition-delay:.26s}
+.trust-inner.on .trust-item:nth-child(5){transition-delay:.33s}
+.trust-inner.on .trust-item:nth-child(6){transition-delay:.40s}
+
+/* ── SECTION HEADERS ── */
+.s-label{opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease}
+.s-title{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;transition-delay:.12s}
+.s-sub{opacity:0;transform:translateY(10px);transition:opacity .44s ease,transform .44s ease;transition-delay:.24s}
+.s-head.on .s-label,.s-head.on .s-title,.s-head.on .s-sub{opacity:1;transform:none}
+
+/* ── AGENT SECTION ── */
+.agent-label{opacity:0;transform:translateY(10px);transition:opacity .4s ease,transform .4s ease}
+.agent-title{opacity:0;transform:translateY(16px);transition:opacity .52s ease,transform .52s ease;transition-delay:.13s}
+.agent-sub{opacity:0;transform:translateY(12px);transition:opacity .47s ease,transform .47s ease;transition-delay:.25s}
+.agent-list{opacity:0;transform:translateY(12px);transition:opacity .44s ease,transform .44s ease;transition-delay:.37s}
+.asset-chips{opacity:0;transform:translateY(12px);transition:opacity .42s ease,transform .42s ease;transition-delay:.49s}
+.agent-col.on .agent-label,.agent-col.on .agent-title,.agent-col.on .agent-sub,
+.agent-col.on .agent-list,.agent-col.on .asset-chips{opacity:1;transform:none}
+.agent-chat-ui{opacity:0;transform:translateY(24px) scale(.97);transition:opacity .6s ease,transform .6s ease;transition-delay:.32s}
+.agent-section.on .agent-chat-ui{opacity:1;transform:none}
+
+/* ── FAQ STAGGER ── */
+.faq-item{opacity:0;transform:translateY(12px);transition:opacity .43s ease,transform .43s ease}
+.faq-grid.on .faq-item{opacity:1;transform:none}
+.faq-grid.on .faq-item:nth-child(1){transition-delay:.05s}
+.faq-grid.on .faq-item:nth-child(2){transition-delay:.12s}
+.faq-grid.on .faq-item:nth-child(3){transition-delay:.19s}
+.faq-grid.on .faq-item:nth-child(4){transition-delay:.26s}
+.faq-grid.on .faq-item:nth-child(5){transition-delay:.33s}
+
+/* ── REGISTER META CARDS ── */
+.close-meta-card{opacity:0;transform:translateY(14px);transition:opacity .43s ease,transform .43s ease}
+.close-meta.on .close-meta-card{opacity:1;transform:none}
+.close-meta.on .close-meta-card:nth-child(1){transition-delay:.05s}
+.close-meta.on .close-meta-card:nth-child(2){transition-delay:.12s}
+.close-meta.on .close-meta-card:nth-child(3){transition-delay:.19s}
+.close-meta.on .close-meta-card:nth-child(4){transition-delay:.26s}
+
+/* ── REDUCED MOTION FALLBACK ── */
+@media(prefers-reduced-motion:reduce){
+  .hero-badge,.hero-name,.hero-course-title,.hero-subline,.hero-slogan,
+  .hero-desc,.hero-desc-mobile,.hero-micro,.hero-micro-mobile,
+  .hero-trust-chips,.hero-ctas,.hero-char-col{animation:none;opacity:1}
+  .trust-item,.s-label,.s-title,.s-sub,
+  .agent-label,.agent-title,.agent-sub,.agent-list,.asset-chips,.agent-chat-ui,
+  .faq-item,.close-meta-card{opacity:1;transform:none;transition:none}
+}
+
 /* RESPONSIVE */
 @media(max-width:960px){
   .hero-char-col{width:360px}
@@ -1845,7 +1963,7 @@ footer strong{color:rgba(255,255,255,.82)}
 
 <!-- ═══════════ 2. TRUST BAR ═══════════ -->
 <div class="trust-bar">
-  <div class="trust-inner">
+  <div class="trust-inner sr">
     <div class="trust-item">
       <div class="trust-val" data-count="300" data-suffix="+">300+</div>
       <div class="trust-lbl">בוגרים שכבר<br/>עובדים עם AI</div>
@@ -1882,7 +2000,7 @@ footer strong{color:rgba(255,255,255,.82)}
 
 <!-- ═══════════ 3. הבעיה ═══════════ -->
 <section class="pain" id="problem">
-  <div class="s-head c">
+  <div class="s-head c sr">
     <div class="s-label">המצב בשטח</div>
     <h2 class="s-title">בזמן שאתה מחכה,<br/>האחר כבר <em>קדם אותך</em></h2>
     <p class="s-sub">AI כבר חוסך שעות לאנשים בתחום שלך. השאלה היא רק: מתי תתחיל גם אתה.</p>
@@ -1925,7 +2043,7 @@ footer strong{color:rgba(255,255,255,.82)}
 <!-- ═══════════ 4. הפתרון + למי מתאים ═══════════ -->
 <section class="solution" id="fit">
   <div class="sol-inner">
-    <div class="s-head">
+    <div class="s-head sr">
       <div class="s-label">הפתרון</div>
       <h2 class="s-title">למי הקורס <em>מתאים</em>?</h2>
     </div>
@@ -1969,9 +2087,16 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
+<!-- wave: white → gray -->
+<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+  </svg>
+</div>
+
 <!-- ═══════════ 5. מה תדע לעשות ═══════════ -->
 <section class="benefits" id="outcomes">
-  <div class="s-head c">
+  <div class="s-head c sr">
     <div class="s-label">תוצאות מעשיות</div>
     <h2 class="s-title">מה <em>תדע לעשות</em> בפועל?</h2>
     <p class="s-sub">לא ידע, יכולות שמשתמשים בהן מהיום הראשון אחרי הקורס.</p>
@@ -2033,17 +2158,17 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: white → dark (agent) -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+<!-- wave: gray → dark (agent) -->
+<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
     <path fill="#0a1628" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
 <!-- ═══════════ 6. סוכן AI אישי ═══════════ -->
-<section class="agent-section" id="agent">
+<section class="agent-section sr" id="agent">
   <div class="agent-inner">
-    <div>
+    <div class="agent-col sr">
       <div class="agent-label">גולת הכותרת של הקורס</div>
       <h2 class="agent-title">לא יוצאים רק עם ידע.<br/><span>יוצאים עם נכסים שעובדים.</span></h2>
       <p class="agent-sub">
@@ -2112,7 +2237,7 @@ footer strong{color:rgba(255,255,255,.82)}
 
 <!-- ═══════════ 7. הקורס + המרצה ═══════════ -->
 <section class="curriculum" id="curriculum">
-  <div class="s-head c">
+  <div class="s-head c sr">
     <div class="s-label">תוכן הקורס</div>
     <h2 class="s-title">4 מפגשים. <em>מה עושים</em> בכל אחד?</h2>
     <p class="s-sub">כל מפגש בנוי על הקודם. ויוצאים ממנו עם תוצר ביד.</p>
@@ -2209,7 +2334,7 @@ footer strong{color:rgba(255,255,255,.82)}
         <div class="cd-unit"><div class="cd-val" id="cd-s">00</div><div class="cd-lbl">שניות</div></div>
       </div>
     </div>
-    <div class="close-meta">
+    <div class="close-meta sr">
       <div class="close-meta-card red">
         <div class="close-meta-val">5 מקומות</div>
         <div class="close-meta-lbl">נותרו בלבד</div>
@@ -2262,11 +2387,11 @@ footer strong{color:rgba(255,255,255,.82)}
       </div>
 
       <!-- FAQ -->
-      <div class="s-head c" id="faq-section" style="margin-bottom:32px">
+      <div class="s-head c sr" id="faq-section" style="margin-bottom:32px">
         <div class="s-label">שאלות נפוצות</div>
         <h2 class="s-title">לפני שאתה מחליט.<br/><em>כאן התשובות.</em></h2>
       </div>
-      <div class="faq-grid" role="list" style="max-width:740px;margin:0 auto">
+      <div class="faq-grid sr" role="list" style="max-width:740px;margin:0 auto">
         <div class="faq-item" role="listitem">
           <button class="faq-btn" aria-expanded="false" aria-controls="faq-body-1">
             <span class="faq-q">האם צריך ידע מוקדם בטכנולוגיה?</span>
@@ -2443,13 +2568,27 @@ footer strong{color:rgba(255,255,255,.82)}
   window.addEventListener('resize', updateFab);
 })();
 
-// Reveal on scroll
+// Reveal on scroll — fires only when element enters clearly from below
 var revealObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
-    if (e.isIntersecting) e.target.classList.add('on');
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      revealObs.unobserve(e.target);
+    }
   });
-}, {threshold: 0.1});
+}, {threshold: 0.18, rootMargin: '0px 0px -80px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+// Stagger-parent observer — fires only when container scrolls into view
+var srObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      srObs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.18, rootMargin: '0px 0px -80px 0px'});
+document.querySelectorAll('.sr').forEach(function(el) { srObs.observe(el); });
 
 // Countdown
 (function() {
