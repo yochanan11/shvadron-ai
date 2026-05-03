@@ -477,7 +477,7 @@ h2.s-title em{
 }
 
 /* SOLUTION */
-.solution{background:var(--bg)}
+.solution{background:var(--bg2)}
 .sol-inner{max-width:860px;margin:0 auto}
 .sol-body{
   background:var(--bg2);
@@ -1915,6 +1915,13 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
+<!-- wave: gray → white -->
+<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+    <path fill="#fff" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+  </svg>
+</div>
+
 <!-- ═══════════ 4. הפתרון + למי מתאים ═══════════ -->
 <section class="solution" id="fit">
   <div class="sol-inner">
@@ -1961,13 +1968,6 @@ footer strong{color:rgba(255,255,255,.82)}
     </a>
   </div>
 </section>
-
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#fff" d="M0,20 C480,0 960,40 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
 
 <!-- ═══════════ 5. מה תדע לעשות ═══════════ -->
 <section class="benefits" id="outcomes">
@@ -2427,35 +2427,16 @@ footer strong{color:rgba(255,255,255,.82)}
 (function(){
   var fab = document.querySelector('.fab');
   if(!fab) return;
-  function isDarkColor(color){
-    var m = color && color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([.\d]+))?\)/);
-    if(!m || (m[4] !== undefined && parseFloat(m[4]) === 0)) return false;
-    var r = parseInt(m[1], 10);
-    var g = parseInt(m[2], 10);
-    var b = parseInt(m[3], 10);
-    return ((r * 299 + g * 587 + b * 114) / 1000) < 130;
-  }
-  function isDarkBehindFab(){
-    var rect = fab.getBoundingClientRect();
-    var x = rect.left + rect.width / 2;
-    var y = rect.top + rect.height / 2;
-    var stack = document.elementsFromPoint ? document.elementsFromPoint(x, y) : [];
-    for(var i = 0; i < stack.length; i++){
-      var el = stack[i];
-      if(el === fab || fab.contains(el)) continue;
-      while(el && el !== document.documentElement){
-        if(el !== fab){
-          var bg = window.getComputedStyle(el).backgroundColor;
-          if(isDarkColor(bg)) return true;
-          if(bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)') return false;
-        }
-        el = el.parentElement;
-      }
-    }
-    return false;
-  }
+  var darkSections = ['.agent-section'];
   function updateFab(){
-    fab.classList.toggle('fab--light', isDarkBehindFab());
+    var fabY = window.innerHeight - 40;
+    var dark = darkSections.some(function(sel){
+      var el = document.querySelector(sel);
+      if(!el) return false;
+      var r = el.getBoundingClientRect();
+      return r.top <= fabY && r.bottom >= fabY;
+    });
+    fab.classList.toggle('fab--light', dark);
   }
   updateFab();
   window.addEventListener('scroll', updateFab, {passive:true});
