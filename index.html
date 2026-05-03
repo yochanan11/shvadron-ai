@@ -1375,7 +1375,11 @@ footer strong{color:rgba(255,255,255,.82)}
 .acu-messages{
   padding:14px 14px 10px;
   display:flex;flex-direction:column;gap:9px;
+  max-height:240px;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.1) transparent;
 }
+.acu-messages::-webkit-scrollbar{width:4px}
+.acu-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:4px}
 .acu-msg{
   padding:9px 13px;border-radius:13px;
   font-size:.81rem;line-height:1.55;max-width:88%;
@@ -1431,6 +1435,19 @@ footer strong{color:rgba(255,255,255,.82)}
 }
 .acu-send:hover{opacity:.85}
 .acu-send:disabled{opacity:.45;cursor:default}
+.acu-cta{
+  background:linear-gradient(135deg,rgba(0,99,237,.18),rgba(46,222,191,.12));
+  border:1px solid rgba(46,222,191,.25);
+  border-radius:13px;padding:12px 14px;text-align:center;
+}
+.acu-cta p{font-size:.78rem;color:rgba(255,255,255,.7);margin:0 0 8px}
+.acu-cta a{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--blue),var(--teal2));
+  color:#fff;font-size:.78rem;font-weight:700;
+  padding:7px 16px;border-radius:8px;text-decoration:none;
+  font-family:'Heebo',sans-serif;
+}
 .acu-typing{
   display:flex;align-items:center;gap:5px;
   padding:10px 14px;min-height:36px;
@@ -2210,22 +2227,7 @@ footer strong{color:rgba(255,255,255,.82)}
           </div>
         </div>
       </div>
-      <div class="acu-tabs">
-        <button class="acu-tab active">משרד</button>
-        <button class="acu-tab">עסק</button>
-        <button class="acu-tab">תוכן</button>
-        <button class="acu-tab">ניהול</button>
-        <button class="acu-tab">לימוד</button>
-      </div>
-      <div class="acu-messages">
-        <div class="acu-msg user">כתוב לי הצעת מחיר ללקוח חדש</div>
-        <div class="acu-msg ai">כמובן! שלח לי פרטי הלקוח ואכין הצעה מקצועית בסגנון המשרד שלך תוך דקות.</div>
-        <div class="acu-suggestions">
-          <button class="acu-sug">מייל ללקוח</button>
-          <button class="acu-sug">סיכום ישיבה</button>
-          <button class="acu-sug">דוח חודשי</button>
-        </div>
-      </div>
+      <div class="acu-messages"></div>
       <div class="acu-input-row">
         <input type="text" placeholder="שאל את הסוכן שלך..." id="acu-text"/>
         <button class="acu-send" aria-hidden="true">
@@ -2727,84 +2729,17 @@ document.querySelectorAll('.faq-btn').forEach(function(btn) {
   });
 });
 
-// Agent Chat Demo
+// Agent Chat
 (function() {
   var input = document.getElementById('acu-text');
   var sendBtn = document.querySelector('.acu-send');
   var chat = document.querySelector('.acu-messages');
-  var tabs = document.querySelectorAll('.acu-tab');
   if (!input || !sendBtn || !chat) return;
 
-  var currentTab = 'משרד';
-  var firstMessage = true;
-
-  var responses = {
-    'משרד': {
-      def: 'כמובן! שלח לי את הפרטים ואכין את זה בסגנון המשרד שלך תוך דקות.',
-      keys: {
-        'הצעת מחיר': 'כדי לכתוב הצעת מחיר מקצועית שלח לי: שם הלקוח, סוג השירות ומחיר מטרה. אחזיר לך הצעה ברמה שמשרדים גדולים גובים עליה כסף.',
-        'מייל': 'תן לי: נושא, שם הנמען ומה אתה רוצה להגיד. אכין מייל ברור ומקצועי בדקות.',
-        'סיכום ישיבה': 'שלח לי את הנקודות העיקריות שעלו בישיבה. אהפוך אותן לסיכום מסודר עם החלטות ומשימות.',
-        'דוח': 'שלח את הנתונים ואמר לי למי מיועד הדוח. אסדר הכל לדוח מקצועי שמוכן לשליחה.',
-        'חוזה': 'אני יכול לעזור לנסח סעיפים ולבדוק ניסוח. שלח את מה שיש ואגיד מה לשפר.'
-      }
-    },
-    'עסק': {
-      def: 'נשמח לעזור לעסק שלך לגדול עם AI. מה הצורך הדחוף ביותר שלך עכשיו?',
-      keys: {
-        'שיווק': 'שיווק עם AI זה כוח. שלח לי מה אתה מוכר ומי הקהל שלך, ואכין תוכן שיווקי שמדבר ישר ללב הלקוחות.',
-        'לקוח': 'ניהול לקוחות עם AI חוסך שעות. אפשר לבנות תסריטי שיחה, מיילים ממוקדים ומעקב. מה הצורך הספציפי שלך?',
-        'מכירות': 'אני יכול לכתוב לך סקריפט מכירה, לנתח התגדלויות נפוצות ולעזור לך לנסח הצעות שמשכנעות.',
-        'תכנית': 'בניית תכנית עסקית עם AI יוצאת מהממת. שלח לי את עיקרי הרעיון ואבנה לך מסגרת מקצועית.'
-      }
-    },
-    'תוכן': {
-      def: 'כתיבת תוכן עם AI זה קסם. מה תרצה לכתוב? פוסט, מאמר, פרסומת, תיאור מוצר?',
-      keys: {
-        'פוסט': 'לפוסט מדויק אני צריך: נושא, פלטפורמה, קהל יעד ומסר עיקרי. שלח ואוציא משהו שייקבל תגובות.',
-        'מאמר': 'שלח לי את הנושא ורמת העומק שאתה מחפש. אכין מבנה מלא עם כותרות ותת-נקודות.',
-        'תיאור': 'תיאורי מוצר עם AI ממירים הרבה יותר. שלח מה אתה מוכר ואכין תיאור שמדבר לקהל שלך.',
-        'כותרת': 'כותרת טובה זה 80% מהתוצאה. שלח לי את הנושא ואחזיר לך 5 כותרות שונות לבחור מהן.'
-      }
-    },
-    'ניהול': {
-      def: 'ניהול חכם עם AI חוסך זמן יקר. מה אתה רוצה לנהל יותר טוב?',
-      keys: {
-        'פרויקט': 'ניהול פרויקטים עם AI זה שינוי. שלח את מטרת הפרויקט ואבנה לך לוח זמנים, אבני דרך ורשימת משימות.',
-        'זמן': 'ספר לי מה עומס המשימות שלך ואעזור לך לתעדף ולבנות יום עבודה יעיל.',
-        'צוות': 'ניהול צוות עם AI כולל: סיכומי ישיבות, הקצאת משימות ומעקב. מה הצורך הספציפי שלך?',
-        'משימ': 'שלח לי רשימת המשימות שלך ואעזור לך לתעדף, לחלק ולהכין תכנית ביצוע.'
-      }
-    },
-    'לימוד': {
-      def: 'שאל אותי כל שאלה על AI ואסביר בפשטות ובבהירות, בלי מינוח טכני.',
-      keys: {
-        'מה זה': 'AI הוא מערכת שלמדה מכמויות עצומות של טקסט ויכולה להבין ולייצר שפה אנושית. בפרקטיקה, זה כלי שעוזר לך לכתוב, לנתח ולעבוד חכם יותר.',
-        'chatgpt': 'ChatGPT הוא הכלי הנפוץ ביותר, מצוין לכתיבה, סיכום ורעיונות. בקורס לומדים לא רק להשתמש בו אלא להפיק ממנו תוצאות אמיתיות.',
-        'claude': 'Claude מצטיין בניתוח, עבודה עם מסמכים ותשובות מדויקות. יש לו יתרונות ספציפיים שלומדים לנצל בקורס.',
-        'gemini': 'Gemini הוא ה-AI של גוגל, עם יכולות חיפוש וחיבור לשירותי גוגל. לומדים מתי לבחור כל כלי.',
-        'פרומפט': 'פרומפט הוא ההוראה שאתה נותן ל-AI. ההבדל בין פרומפט טוב לבינוני הוא ההבדל בין תוצאה שאפשר להשתמש בה לבין תוצאה גנרית.'
-      }
-    }
-  };
-
-  var sugMap = {
-    'משרד': ['מייל ללקוח', 'סיכום ישיבה', 'דוח חודשי'],
-    'עסק':  ['אסטרטגיית שיווק', 'ניתוח מתחרים', 'תכנית מכירות'],
-    'תוכן': ['פוסט לפייסבוק', 'תיאור מוצר', 'כותרת מושכת'],
-    'ניהול':['לוח זמנים', 'רשימת משימות', 'סיכום ישיבה'],
-    'לימוד':['מה זה ChatGPT?', 'איך לכתוב פרומפט?', 'מה זה Claude?']
-  };
-
-  function getResponse(msg) {
-    var data = responses[currentTab] || responses['משרד'];
-    var lower = msg.toLowerCase();
-    var keys = data.keys || {};
-    for (var k in keys) {
-      if (lower.indexOf(k.toLowerCase()) !== -1) return keys[k];
-    }
-    return data.def;
-  }
+  var chatHistory = [];
+  var greeted = false;
+  var userMsgCount = 0;
+  var MAX_MSGS = 5;
 
   function addMsg(text, type) {
     var el = document.createElement('div');
@@ -2823,59 +2758,80 @@ document.querySelectorAll('.faq-btn').forEach(function(btn) {
     return el;
   }
 
-  function renderSuggestions(tab) {
-    var old = chat.querySelector('.acu-suggestions');
-    if (old) old.remove();
-    var sugs = sugMap[tab] || sugMap['משרד'];
-    var el = document.createElement('div');
-    el.className = 'acu-suggestions';
-    el.innerHTML = sugs.map(function(s) {
-      return '<button class="acu-sug">' + s + '</button>';
-    }).join('');
-    chat.appendChild(el);
-    el.querySelectorAll('.acu-sug').forEach(function(btn) {
-      btn.addEventListener('click', function() { send(this.textContent); });
+  function showGreeting() {
+    if (greeted) return;
+    greeted = true;
+    var typing = addTyping();
+    setTimeout(function() {
+      typing.remove();
+      var greeting = 'שלום! יש לך שאלה על הקורס, או שאתה רוצה להבין אם זה בשבילך?\n\nספר לי — מה הדבר שלוקח לך הכי הרבה זמן בעבודה עכשיו?';
+      addMsg(greeting, 'ai');
+      chatHistory.push({ role: 'assistant', content: greeting });
+    }, 1200);
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        showGreeting();
+        observer.disconnect();
+      }
     });
+  }, { threshold: 0.4 });
+  observer.observe(chat.closest('.agent-chat-ui') || chat);
+
+  function showCTA() {
+    input.disabled = true;
+    sendBtn.disabled = true;
+    input.placeholder = 'הגעת למגבלת השיחה בדמו';
+    var el = document.createElement('div');
+    el.className = 'acu-cta';
+    el.innerHTML = '<p>ראית רק חלק קטן ממה שסוכן כזה יכול לעשות בשבילך.</p><a href="#register">אני רוצה סוכן כזה לעצמי &rarr;</a>';
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
   }
 
   function send(text) {
     var msg = (text || input.value).trim();
-    if (!msg) return;
-    if (firstMessage) {
-      chat.querySelectorAll('.acu-msg, .acu-suggestions').forEach(function(el) { el.remove(); });
-      firstMessage = false;
-    }
+    if (!msg || userMsgCount >= MAX_MSGS) return;
+    showGreeting();
+    userMsgCount++;
     addMsg(msg, 'user');
     input.value = '';
     input.disabled = true;
     sendBtn.disabled = true;
     var typing = addTyping();
-    setTimeout(function() {
+
+    fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: msg, history: chatHistory, msgCount: userMsgCount })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      chatHistory.push({ role: 'user', content: msg });
+      var reply = data.reply || data.error || 'שגיאה בחיבור';
+      chatHistory.push({ role: 'assistant', content: reply });
       typing.remove();
-      addMsg(getResponse(msg), 'ai');
-      renderSuggestions(currentTab);
+      addMsg(reply, 'ai');
+      if (userMsgCount >= MAX_MSGS) {
+        showCTA();
+      } else {
+        input.disabled = false;
+        sendBtn.disabled = false;
+        input.focus();
+      }
+    })
+    .catch(function() {
+      typing.remove();
+      addMsg('שגיאה בחיבור לשרת. נסה שוב.', 'ai');
       input.disabled = false;
       sendBtn.disabled = false;
-      input.focus();
-    }, 900 + Math.random() * 700);
-  }
-
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      tabs.forEach(function(t) { t.classList.remove('active'); });
-      this.classList.add('active');
-      currentTab = this.textContent.trim();
-      renderSuggestions(currentTab);
     });
-  });
+  }
 
   sendBtn.addEventListener('click', function() { send(); });
   input.addEventListener('keydown', function(e) { if (e.key === 'Enter') send(); });
-
-  // activate initial suggestions
-  chat.querySelectorAll('.acu-sug').forEach(function(btn) {
-    btn.addEventListener('click', function() { send(this.textContent); });
-  });
 })();
 
 // Google Sheets + formsubmit form handling
