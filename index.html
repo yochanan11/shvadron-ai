@@ -2349,7 +2349,7 @@ footer strong{color:rgba(255,255,255,.82)}
     </div>
     <div class="close-meta sr">
       <div class="close-meta-card red">
-        <div class="close-meta-val">5 מקומות</div>
+        <div class="close-meta-val">2 מקומות</div>
         <div class="close-meta-lbl">נותרו בלבד</div>
       </div>
       <div class="close-meta-card">
@@ -2607,12 +2607,13 @@ document.querySelectorAll('.sr').forEach(function(el) { srObs.observe(el); });
 (function() {
   var target = new Date('2026-05-06T17:00:00+03:00');
   function pad(n) { return String(n).padStart(2, '0'); }
+  var timer;
   function tick() {
     var diff = target - new Date();
     if (diff <= 0) {
-      ['cd-d','cd-h','cd-m','cd-s'].forEach(function(id) {
-        document.getElementById(id).textContent = '00';
-      });
+      var section = document.querySelector('.closing-dark');
+      if (section) section.style.display = 'none';
+      clearInterval(timer);
       return;
     }
     document.getElementById('cd-d').textContent = pad(Math.floor(diff / 86400000));
@@ -2621,7 +2622,7 @@ document.querySelectorAll('.sr').forEach(function(el) { srObs.observe(el); });
     document.getElementById('cd-s').textContent = pad(Math.floor(diff % 60000 / 1000));
   }
   tick();
-  setInterval(tick, 1000);
+  timer = setInterval(tick, 1000);
 })();
 
 // Animated counters on scroll
