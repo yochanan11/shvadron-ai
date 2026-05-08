@@ -2611,8 +2611,10 @@ document.querySelectorAll('.sr').forEach(function(el) { srObs.observe(el); });
   function tick() {
     var diff = target - new Date();
     if (diff <= 0) {
-      var section = document.querySelector('.closing-dark');
-      if (section) section.style.display = 'none';
+      var wrap = document.querySelector('.cd-wrap');
+      if (wrap) {
+        wrap.innerHTML = '<div style="text-align:center;padding:8px 0"><div style="font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:10px">המחזור התחיל</div><div style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.7">נא לעקוב להתחלת מחזור חדש<br>לפרטים <a href="https://wa.me/972527169921" target="_blank" style="color:#2edebf;font-weight:700;text-decoration:none">צרו קשר בוואטסאפ</a></div></div>';
+      }
       clearInterval(timer);
       return;
     }
