@@ -1894,7 +1894,7 @@ footer strong{color:rgba(255,255,255,.82)}
       "inLanguage": "he",
       "courseMode": "online",
       "educationalLevel": "Beginner",
-      "startDate": "2026-05-06",
+      "startDate": "2026-05-18",
       "image": "https://www.shwadron-ai.com/yochanan.jpg"
     },
     {
@@ -2674,12 +2674,15 @@ document.querySelectorAll('.sr').forEach(function(el) { srObs.observe(el); });
 (function() {
   var target = new Date('2026-05-18T19:30:00+03:00');
   function pad(n) { return String(n).padStart(2, '0'); }
+  var timer;
   function tick() {
     var diff = target - new Date();
     if (diff <= 0) {
-      ['cd-d','cd-h','cd-m','cd-s'].forEach(function(id) {
-        document.getElementById(id).textContent = '00';
-      });
+      var wrap = document.querySelector('.cd-wrap');
+      if (wrap) {
+        wrap.innerHTML = '<div style="text-align:center;padding:8px 0"><div style="font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:10px">המחזור התחיל</div><div style="font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.7">נא לעקוב להתחלת מחזור חדש<br>לפרטים <a href="https://wa.me/972527169921" target="_blank" style="color:#2edebf;font-weight:700;text-decoration:none">צרו קשר בוואטסאפ</a></div></div>';
+      }
+      clearInterval(timer);
       return;
     }
     document.getElementById('cd-d').textContent = pad(Math.floor(diff / 86400000));
@@ -2688,7 +2691,7 @@ document.querySelectorAll('.sr').forEach(function(el) { srObs.observe(el); });
     document.getElementById('cd-s').textContent = pad(Math.floor(diff % 60000 / 1000));
   }
   tick();
-  setInterval(tick, 1000);
+  timer = setInterval(tick, 1000);
 })();
 
 // Animated counters on scroll
