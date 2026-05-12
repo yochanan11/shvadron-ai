@@ -1868,7 +1868,9 @@ footer strong{color:rgba(255,255,255,.82)}
 /* Solution gets a subtle tint so it's visually distinct from adjacent white sections */
 section.solution.sec-light{background:#eef2fa !important}
 /* Closing-light gets a light gray so WA proof and FAQ don't blend */
-.closing-light{background:#f5f7fa !important;padding:64px 6%}
+.closing-light{padding:64px 6%}
+.closing-wa{background:#f5f7fa !important}
+.closing-faq-section{background:#ffffff !important}
 
 /* Typography */
 .sec-light .s-label{color:var(--blue)}
@@ -2560,11 +2562,11 @@ section.solution.sec-light{background:#eef2fa !important}
     </svg>
   </div>
 
-  <div class="closing-light">
+  <div class="closing-light closing-wa">
     <div class="closing-light-inner">
 
       <!-- WA proof -->
-      <div style="margin-bottom:56px">
+      <div>
         <div class="closing-wa-label">ישירות מהוואטסאפ</div>
         <div class="wa-proof-grid">
           <div class="wa-proof-card wa-proof-feature">
@@ -2584,6 +2586,19 @@ section.solution.sec-light{background:#eef2fa !important}
           </div>
         </div>
       </div>
+
+    </div>
+  </div>
+
+  <!-- wave: closing-wa (#f5f7fa) → closing-faq (#ffffff) -->
+  <div class="wave-divider" style="background:#f5f7fa;margin-bottom:-2px">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
+      <path fill="#ffffff" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+    </svg>
+  </div>
+
+  <div class="closing-light closing-faq-section">
+    <div class="closing-light-inner">
 
       <!-- FAQ -->
       <div class="s-head c sr" id="faq-section" style="margin-bottom:32px">
@@ -2615,7 +2630,7 @@ section.solution.sec-light{background:#eef2fa !important}
             <span class="faq-arrow" aria-hidden="true">&#9660;</span>
           </button>
           <div class="faq-body" id="faq-body-3" role="region">
-            <p class="faq-a">זו בדיוק הסיבה שאתה צריך AI. 4 מפגשים של שעתיים, וה-ROI הוא שעות שחוסכים כל שבוע, לנצח. מי שאין לו זמן, הוא מי שהכי יצא נשכר מהקורס הזה.</p>
+            <p class="faq-a">הפוך. אם אתה מרגיש שאין לך שעתיים פנויות בשבוע, אתה בדיוק הבנאדם שחייב להיות על הרכבת הזו.<br/><br/>חוסר זמן הוא לא גזירת גורל, הוא תוצאה של עבודה בשיטות של אתמול. אנחנו נשקיע 4 מפגשים ממוקדים כדי שמהיום שאחרי, יום עבודה של 9 שעות יתכווץ ל-5.<br/><br/>מי שאין לו זמן הוא זה שהכי זקוק לסוכן AI שיעבוד במקומו.</p>
           </div>
         </div>
         <div class="faq-item" role="listitem">
