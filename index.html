@@ -1865,6 +1865,10 @@ footer strong{color:rgba(255,255,255,.82)}
 
 /* ═══════════ LIGHT SECTION THEME (Zebra) ═══════════ */
 .sec-light{background:#ffffff !important}
+/* Solution gets a subtle tint so it's visually distinct from adjacent white sections */
+section.solution.sec-light{background:#eef2fa !important}
+/* Closing-light gets a light gray so WA proof and FAQ don't blend */
+.closing-light{background:#f5f7fa !important;padding:64px 6%}
 
 /* Typography */
 .sec-light .s-label{color:var(--blue)}
@@ -1950,7 +1954,6 @@ footer strong{color:rgba(255,255,255,.82)}
 .sec-light .ic-cred{background:rgba(0,99,237,.07);border-color:rgba(0,99,237,.15);color:var(--blue)}
 
 /* Closing-light (WA proof + FAQ + form) */
-.closing-light{background:#ffffff}
 .closing-light .s-label{color:var(--blue)}
 .closing-light h2.s-title{color:#0a0f1e}
 .closing-light h2.s-title em{
@@ -1972,7 +1975,7 @@ footer strong{color:rgba(255,255,255,.82)}
   box-shadow:0 8px 24px rgba(0,0,0,.09);
 }
 .closing-light .wa-proof-card::before{box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-.closing-light .faq-item{background:#f5f8ff;border-color:rgba(0,0,0,.08)}
+.closing-light .faq-item{background:#ffffff;border-color:rgba(0,0,0,.08)}
 .closing-light .faq-item.open{border-color:rgba(0,201,167,.3);box-shadow:0 0 24px rgba(0,201,167,.07)}
 .closing-light .faq-q{color:#0a0f1e}
 .closing-light .faq-arrow{background:#fff;border-color:rgba(0,0,0,.1);color:#9ca3af}
@@ -1999,7 +2002,6 @@ footer strong{color:rgba(255,255,255,.82)}
 .close-meta-val{font-size:1.45rem;font-weight:900;color:#fff;line-height:1}
 .close-meta-card.red .close-meta-val{color:#f87171}
 .close-meta-lbl{font-size:.73rem;color:rgba(255,255,255,.48);margin-top:6px}
-.closing-light{background:#ffffff;padding:64px 6%}
 .closing-light-inner{max-width:1040px;margin:0 auto}
 .closing-wa-label{
   text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.12em;
@@ -2220,7 +2222,7 @@ footer strong{color:rgba(255,255,255,.82)}
 <!-- wave: pain (dark) → solution (light) -->
 <div class="wave-divider" style="background:#0d1424;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#ffffff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#eef2fa" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -2547,10 +2549,10 @@ footer strong{color:rgba(255,255,255,.82)}
     </div>
   </div>
 
-  <!-- wave closing-dark → closing-light (white) -->
+  <!-- wave closing-dark → closing-light -->
   <div style="background:#0a0f1e;line-height:0;display:block;margin-top:-1px;margin-bottom:-2px">
     <svg viewBox="0 0 1440 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:64px">
-      <path fill="#ffffff" d="M0,32 C360,64 1080,8 1440,32 L1440,68 L0,68 Z"/>
+      <path fill="#f5f7fa" d="M0,32 C360,64 1080,8 1440,32 L1440,68 L0,68 Z"/>
     </svg>
   </div>
 
