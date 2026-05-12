@@ -41,7 +41,7 @@
 }
 .skip-link:focus{top:0}
 
-/* Focus indicator — visible for keyboard users */
+/* Focus indicator - visible for keyboard users */
 :focus-visible{
   outline:3px solid #4da6ff;
   outline-offset:3px;
@@ -433,27 +433,99 @@ h2.s-title em{
   gap:20px;
   max-width:1060px;margin:0 auto;
   align-items:stretch;
+  position:relative;
 }
 .pain-panel{
-  background:var(--bg2);
+  background:rgba(17,26,43,.72);
+  border:1px solid rgba(255,255,255,.08);
   border-radius:24px;
   overflow:hidden;
-  box-shadow:var(--shadow-lg);
+  box-shadow:var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.04);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  position:relative;
+  isolation:isolate;
+}
+.pain-panel.good{
+  overflow:visible;
+  background:linear-gradient(180deg,rgba(3,33,42,.82),rgba(7,23,36,.78));
+  border-color:rgba(30,224,203,.22);
+  box-shadow:
+    0 30px 90px rgba(1,12,24,.42),
+    0 0 54px rgba(30,224,203,.16),
+    0 0 0 1px rgba(30,224,203,.08),
+    inset 0 1px 0 rgba(255,255,255,.08);
+}
+.pain-panel.good::before{
+  content:'';
+  position:absolute;
+  inset:-62px -56px -54px -56px;
+  border-radius:42px;
+  background:
+    radial-gradient(ellipse at 55% 50%,rgba(35,240,210,.34),rgba(0,201,167,.14) 36%,transparent 70%);
+  filter:blur(18px);
+  opacity:.95;
+  z-index:-1;
+  pointer-events:none;
+}
+.pain-panel.bad{
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(150,42,56,.28),transparent 60%),
+    radial-gradient(ellipse at 50% 100%,rgba(110,30,44,.18),transparent 62%),
+    linear-gradient(180deg,rgba(40,22,34,.76),rgba(24,18,29,.68));
+  border-color:rgba(178,62,78,.34);
+  box-shadow:
+    0 26px 76px rgba(5,10,20,.32),
+    0 0 44px rgba(150,42,56,.12),
+    0 0 0 1px rgba(178,62,78,.08),
+    inset 0 1px 0 rgba(255,255,255,.045),
+    inset 0 0 82px rgba(118,30,45,.22);
+  filter:saturate(.82);
+}
+.pain-panel.bad::before{
+  content:'';
+  position:absolute;
+  inset:1px;
+  border-radius:23px;
+  border:1px solid rgba(255,150,164,.055);
+  pointer-events:none;
+  z-index:1;
 }
 .pain-panel-header{
   padding:22px 28px;
   display:flex;align-items:center;gap:14px;
   border-bottom:1px solid rgba(255,255,255,.06);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
 }
-.pain-panel.good .pain-panel-header{background:rgba(0,201,167,.07)}
-.pain-panel.bad  .pain-panel-header{background:rgba(220,38,38,.05)}
+.pain-panel.good .pain-panel-header{
+  background:rgba(0,201,167,.12);
+  border-color:rgba(30,224,203,.12);
+  border-radius:24px 24px 0 0;
+}
+.pain-panel.bad  .pain-panel-header{
+  background:linear-gradient(180deg,rgba(112,32,47,.28),rgba(42,22,34,.16));
+  border-color:rgba(174,58,74,.22);
+  border-radius:24px 24px 0 0;
+}
 .pain-panel-icon{
   width:38px;height:38px;border-radius:10px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   font-size:1rem;font-weight:900;
 }
-.pain-panel.good .pain-panel-icon{background:rgba(0,201,167,.2);color:#00897b}
-.pain-panel.bad  .pain-panel-icon{background:rgba(220,38,38,.15);color:var(--urgent)}
+.pain-panel.good .pain-panel-icon{
+  background:rgba(0,201,167,.18);
+  color:#23f0d2;
+  text-shadow:0 0 14px rgba(35,240,210,.95);
+  box-shadow:0 0 24px rgba(0,201,167,.28), inset 0 0 12px rgba(255,255,255,.08);
+}
+.pain-panel.bad  .pain-panel-icon{
+  background:rgba(128,38,54,.34);
+  color:#d45a6b;
+  border:1px solid rgba(195,72,90,.24);
+  text-shadow:0 0 12px rgba(212,90,107,.45);
+  box-shadow:0 0 18px rgba(150,42,56,.14), inset 0 0 14px rgba(20,8,14,.28);
+}
 .pain-col-title{
   font-size:.88rem;font-weight:800;color:var(--text);letter-spacing:0;
 }
@@ -467,18 +539,46 @@ h2.s-title em{
   font-size:.92rem;font-weight:500;color:var(--text2);line-height:1.5;
   padding:14px 18px;
   border-radius:12px;
+  border:1px solid rgba(255,255,255,.055);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
 }
-.pain-panel.good .pain-list li{background:rgba(0,201,167,.05)}
-.pain-panel.bad  .pain-list li{background:rgba(220,38,38,.04)}
+.pain-panel.good .pain-list li{
+  background:rgba(2,27,38,.58);
+  border-color:rgba(30,224,203,.09);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+}
+.pain-panel.bad  .pain-list li{
+  background:
+    linear-gradient(180deg,rgba(58,24,36,.56),rgba(30,19,30,.46));
+  border-color:rgba(174,58,74,.24);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.026),
+    inset 0 -18px 40px rgba(130,32,48,.2),
+    0 10px 26px rgba(5,10,20,.12),
+    0 0 0 1px rgba(255,150,164,.025);
+}
 .pain-check{
   flex-shrink:0;width:28px;height:28px;border-radius:8px;
   display:flex;align-items:center;justify-content:center;
   font-size:.82rem;font-weight:900;
 }
-.pain-check.green{background:rgba(0,201,167,.18);color:#00897b}
-.pain-check.red{background:rgba(220,38,38,.15);color:var(--urgent)}
+.pain-check.green{
+  background:rgba(0,201,167,.18);
+  color:#23f0d2;
+  text-shadow:0 0 12px rgba(35,240,210,.9);
+  box-shadow:0 0 18px rgba(0,201,167,.22), inset 0 0 10px rgba(255,255,255,.08);
+}
+.pain-check.red{
+  background:rgba(128,38,54,.34);
+  color:#d45a6b;
+  border:1px solid rgba(195,72,90,.24);
+  text-shadow:0 0 12px rgba(212,90,107,.45);
+  box-shadow:0 0 18px rgba(150,42,56,.14), inset 0 0 14px rgba(20,8,14,.28);
+}
 @media(max-width:720px){
   .pain-layout{grid-template-columns:1fr;gap:16px}
+  .pain-panel.good::before{inset:-34px -22px -30px -22px}
 }
 
 /* SOLUTION */
@@ -2121,7 +2221,7 @@ section.solution.sec-light{background:#eef2fa !important}
 
       <div class="hero-trust-chips">
         <span class="htc">4 מפגשים · כל יום שני</span>
-        <span class="htc">19:30–21:30</span>
+        <span class="htc">19:30-21:30</span>
         <span class="htc">יוצאים עם סוכן AI אישי</span>
         <span class="htc">ללא רקע טכני</span>
       </div>
@@ -2157,7 +2257,7 @@ section.solution.sec-light{background:#eef2fa !important}
     </div>
     <div class="trust-item">
       <div class="trust-val" data-count="4">4</div>
-      <div class="trust-lbl">כל יום שני<br/>19:30–21:30</div>
+      <div class="trust-lbl">כל יום שני<br/>19:30-21:30</div>
     </div>
     <div class="trust-item">
       <div class="trust-val" data-count="50" data-suffix="%">50%</div>
@@ -2195,26 +2295,26 @@ section.solution.sec-light{background:#eef2fa !important}
   <div class="pain-layout">
     <div class="pain-panel good reveal">
       <div class="pain-panel-header">
-        <div class="pain-panel-icon">✓</div>
+        <div class="pain-panel-icon">✦</div>
         <div class="pain-col-title">מה השבדרונאי כבר עושה</div>
       </div>
       <ul class="pain-list">
-        <li><span class="pain-check green" aria-hidden="true">✓</span>מסיים את כל המיילים של השבוע בבוקר אחד</li>
-        <li><span class="pain-check green" aria-hidden="true">✓</span>בונה מצגת מקצועית ב-20 דקות בדיוק</li>
-        <li><span class="pain-check green" aria-hidden="true">✓</span>שולח הצעות מחיר שנכתבות ב-AI ונסגרות ביחס גבוה</li>
-        <li><span class="pain-check green" aria-hidden="true">✓</span>עובד עם סוכן AI שמכיר אותו ומייצג אותו, 24/7</li>
+        <li><span class="pain-check green" aria-hidden="true">✦</span>מסיים את כל המיילים של השבוע בבוקר אחד</li>
+        <li><span class="pain-check green" aria-hidden="true">✦</span>בונה מצגת מקצועית ב-20 דקות בדיוק</li>
+        <li><span class="pain-check green" aria-hidden="true">✦</span>שולח הצעות מחיר שנכתבות ב-AI ונסגרות ביחס גבוה</li>
+        <li><span class="pain-check green" aria-hidden="true">✦</span>עובד עם סוכן AI שמכיר אותו ומייצג אותו, 24/7</li>
       </ul>
     </div>
     <div class="pain-panel bad reveal">
       <div class="pain-panel-header">
-        <div class="pain-panel-icon">✕</div>
-        <div class="pain-col-title">מה מונע ממך לעלות על הרכבת</div>
+        <div class="pain-panel-icon">✦</div>
+        <div class="pain-col-title">מה קורה לך היום</div>
       </div>
       <ul class="pain-list">
-        <li><span class="pain-check red" aria-hidden="true">✕</span>פתחת ChatGPT פעם אחת, לא ידעת מה לכתוב, סגרת</li>
-        <li><span class="pain-check red" aria-hidden="true">✕</span>קיבלת תשובות כלליות וגנריות שאי אפשר להשתמש בהן</li>
-        <li><span class="pain-check red" aria-hidden="true">✕</span>אינטרנט מסונן? חשבת שזה לא בשבילך</li>
-        <li><span class="pain-check red" aria-hidden="true">✕</span>אין לך זמן ללמוד. בדיוק הסיבה שאתה צריך AI</li>
+        <li><span class="pain-check red" aria-hidden="true">✦</span>טובע בערימות של מיילים ועונה באיחור.</li>
+        <li><span class="pain-check red" aria-hidden="true">✦</span>שורף שעות על עיצוב מצגת ויוצא עם תוצאה בינונית.</li>
+        <li><span class="pain-check red" aria-hidden="true">✦</span>מתלבט שעות על ניסוח הצעת מחיר - ומאבד את הלקוח.</li>
+        <li><span class="pain-check red" aria-hidden="true">✦</span>עובד לבד בשיטות של פעם, ועושה הכל ידנית.</li>
       </ul>
     </div>
   </div>
@@ -2421,25 +2521,25 @@ section.solution.sec-light{background:#eef2fa !important}
       <div class="sched-num">מפגש 1</div>
       <div class="sched-date">18.5.2026</div>
       <div class="sched-day">יום שני</div>
-      <div class="sched-time">19:30–21:30</div>
+      <div class="sched-time">19:30-21:30</div>
     </div>
     <div class="sched-item">
       <div class="sched-num">מפגש 2</div>
       <div class="sched-date">25.5.2026</div>
       <div class="sched-day">יום שני</div>
-      <div class="sched-time">19:30–21:30</div>
+      <div class="sched-time">19:30-21:30</div>
     </div>
     <div class="sched-item">
       <div class="sched-num">מפגש 3</div>
       <div class="sched-date">1.6.2026</div>
       <div class="sched-day">יום שני</div>
-      <div class="sched-time">19:30–21:30</div>
+      <div class="sched-time">19:30-21:30</div>
     </div>
     <div class="sched-item">
       <div class="sched-num">מפגש 4</div>
       <div class="sched-date">8.6.2026</div>
       <div class="sched-day">יום שני</div>
-      <div class="sched-time">19:30–21:30</div>
+      <div class="sched-time">19:30-21:30</div>
     </div>
   </div>
 
@@ -2486,7 +2586,7 @@ section.solution.sec-light{background:#eef2fa !important}
         <div class="session-title">המאסטרינג: לעבוד על אוטומט</div>
       </div>
       <ul class="session-topics">
-        <li>בניית מערכת אוטומציה אישית שעובדת בשבילך, גם כשאתה לא</li>
+        <li>בניית צוות סוכנים אישית שעובדת בשבילך.</li>
         <li>תרגיל חי עם אתגר אמיתי מהעבודה שלך, עם יוחנן בזמן אמת</li>
         <li>ארגז הכלים האליטי של השבדרונאי: כל מה שצריך כדי להישאר קדימה לבד</li>
       </ul>
@@ -2549,7 +2649,7 @@ section.solution.sec-light{background:#eef2fa !important}
       </div>
       <div class="close-meta-card">
         <div class="close-meta-val">4</div>
-        <div class="close-meta-lbl">מפגשים, פעם בשבוע, 19:30–21:30</div>
+        <div class="close-meta-lbl">מפגשים, פעם בשבוע, 19:30-21:30</div>
       </div>
     </div>
   </div>
@@ -2729,7 +2829,7 @@ section.solution.sec-light{background:#eef2fa !important}
   <p><strong>יוחנן שבדרון</strong>, מדריך AI לציבור החרדי</p>
   <p class="ft-slogan">SHWADRON.AI · AI לציבור החרדי</p>
   <p style="margin-top:16px;font-size:.72rem;opacity:.35">&#169; 2026 יוחנן שבדרון · כל הזכויות שמורות</p>
-  <!-- הצהרת נגישות — נסתר ויזואלית, נגיש לקוראי מסך -->
+  <!-- הצהרת נגישות - נסתר ויזואלית, נגיש לקוראי מסך -->
   <div style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0" role="note" aria-label="הצהרת נגישות">
     אתר זה נבנה לפי עקרונות WCAG 2.1 ברמה AA ומאפשר ניווט מלא במקלדת, קורא מסך ותאימות מובייל.
     לדיווח על בעיית נגישות: yochanansh818@gmail.com
@@ -2791,7 +2891,7 @@ section.solution.sec-light{background:#eef2fa !important}
   window.addEventListener('resize', updateFab);
 })();
 
-// Reveal on scroll — fires only when element enters clearly from below
+// Reveal on scroll - fires only when element enters clearly from below
 var revealObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) {
@@ -2802,7 +2902,7 @@ var revealObs = new IntersectionObserver(function(entries) {
 }, {threshold: 0.18, rootMargin: '0px 0px -80px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
 
-// Stagger-parent observer — fires only when container scrolls into view
+// Stagger-parent observer - fires only when container scrolls into view
 var srObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) {
