@@ -66,10 +66,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   --blue2:#0f8eea;
   --teal:#2edebf;
   --teal2:#00c9a7;
+  --teal-bright:#00F0FF;
   --teal-text:#2edebf;
-  --navy:#060e1e;
-  --bg:#0d1b2e;
-  --bg2:#0a1628;
+  --navy:#0a0f1e;
+  --bg:#0d1424;
+  --bg2:#080c18;
   --card:rgba(255,255,255,.05);
   --text:#f0f4ff;
   --text2:rgba(255,255,255,.82);
@@ -174,8 +175,8 @@ nav{
 }
 .hero-char-glow{
   position:absolute;
-  width:500px;height:500px;
-  background:radial-gradient(ellipse at 45% 30%,rgba(0,99,237,.28) 0%,rgba(0,150,200,.1) 45%,transparent 70%);
+  width:560px;height:560px;
+  background:radial-gradient(ellipse at 50% 35%,rgba(0,240,255,.22) 0%,rgba(0,99,237,.16) 40%,transparent 72%);
   border-radius:50%;
   top:0;left:50%;
   transform:translateX(-50%);
@@ -190,7 +191,7 @@ nav{
   margin:0 auto;
   object-fit:contain;
   object-position:top center;
-  filter:drop-shadow(0 0 60px rgba(0,99,237,.22)) drop-shadow(0 20px 40px rgba(0,0,0,.4));
+  filter:drop-shadow(0 0 50px rgba(0,240,255,.18)) drop-shadow(0 0 24px rgba(0,99,237,.2)) drop-shadow(0 20px 40px rgba(0,0,0,.4));
   z-index:2;
   -webkit-mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 90%);
   mask-image:linear-gradient(to bottom,black 0%,black 60%,transparent 90%);
@@ -258,14 +259,14 @@ nav{
 /* Shared CTAs */
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
 .cta-main{
-  background:#fff;
-  color:var(--navy);font-weight:800;font-size:1rem;
+  background:var(--teal-bright);
+  color:#0a0f1e;font-weight:900;font-size:1rem;
   padding:16px 38px;border-radius:100px;
   text-decoration:none;
-  box-shadow:0 4px 32px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.15);
+  box-shadow:0 4px 32px rgba(0,240,255,.4),0 0 0 1px rgba(0,240,255,.3);
   transition:all .25s;
 }
-.cta-main:hover{background:#f0f6ff;transform:translateY(-2px);box-shadow:0 8px 40px rgba(0,0,0,.35)}
+.cta-main:hover{background:#33f5ff;transform:translateY(-2px);box-shadow:0 8px 44px rgba(0,240,255,.55),0 0 0 1px rgba(0,240,255,.45)}
 .cta-wa{
   display:flex;align-items:center;gap:8px;
   background:rgba(255,255,255,.08);
@@ -1851,11 +1852,131 @@ footer strong{color:rgba(255,255,255,.82)}
 }
 
 /* GLOW EFFECTS */
-.cta-main:hover{background:#f0f6ff;transform:translateY(-2px);box-shadow:0 8px 40px rgba(46,222,191,.3),0 0 0 1px rgba(46,222,191,.2)}
-.ben-card:hover{transform:translateY(-4px);box-shadow:0 8px 40px rgba(46,222,191,.15),0 0 0 1px rgba(46,222,191,.1)}
-.faq-item.open{border-color:rgba(46,222,191,.22);box-shadow:0 0 24px rgba(46,222,191,.07)}
-.sec-cta:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,222,191,.25),0 0 0 1px rgba(46,222,191,.15)}
-.f-submit:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(46,222,191,.25)}
+.ben-card:hover{transform:translateY(-4px);box-shadow:0 8px 40px rgba(0,240,255,.12),0 0 0 1px rgba(0,240,255,.1)}
+.faq-item.open{border-color:rgba(0,201,167,.28);box-shadow:0 0 24px rgba(0,201,167,.07)}
+.sec-cta:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,240,255,.25),0 0 0 1px rgba(0,240,255,.15)}
+.f-submit:hover{background:var(--teal-bright);color:#0a0f1e;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,240,255,.4)}
+
+/* AGENT CARD GLOW */
+.agent-chat-ui,.agent-card-visual{
+  border-color:rgba(0,240,255,.28) !important;
+  box-shadow:0 0 0 1.5px rgba(0,240,255,.28),0 0 48px rgba(0,240,255,.1),0 8px 32px rgba(0,0,0,.3) !important;
+}
+
+/* ═══════════ LIGHT SECTION THEME (Zebra) ═══════════ */
+.sec-light{background:#ffffff !important}
+
+/* Typography */
+.sec-light .s-label{color:var(--blue)}
+.sec-light h2.s-title{color:#0a0f1e}
+.sec-light h2.s-title em{
+  background:linear-gradient(90deg,var(--blue),var(--teal2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.sec-light .s-sub{color:#4b5563}
+.sec-light .s-eyebrow{color:var(--blue)}
+
+/* Benefits cards */
+.sec-light .ben-card{
+  background:#f5f8ff;
+  border:1px solid rgba(0,0,0,.07);
+  border-top:3px solid var(--teal2);
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.sec-light .ben-card:hover{box-shadow:0 8px 32px rgba(0,201,167,.15),0 0 0 1px rgba(0,201,167,.12)}
+.sec-light .ben-num{color:var(--teal2)}
+.sec-light .ben-card h3{color:#0a0f1e}
+.sec-light .ben-card p{color:#6b7280}
+
+/* Tool pills */
+.sec-light .t-pill{
+  background:#ffffff;
+  border:1.5px solid rgba(0,0,0,.08);
+  border-bottom:3px solid var(--blue);
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.sec-light .t-pill:hover{border-color:rgba(0,99,237,.25);border-bottom-color:var(--teal2);box-shadow:0 4px 16px rgba(0,99,237,.1)}
+.sec-light .t-pill-name{color:#0a0f1e}
+.sec-light .t-pill-desc{color:#6b7280}
+.sec-light [style*="color:var(--muted)"]{color:#9ca3af !important}
+
+/* Solution body */
+.sec-light .sol-body{
+  background:#f5f8ff;
+  border:1px solid rgba(0,0,0,.08);
+  border-right:4px solid var(--teal2);
+}
+.sec-light .sol-body p{color:#374151}
+.sec-light .sol-body strong{color:#0a0f1e}
+.sec-light .sol-pt{color:#374151}
+
+/* Fit check */
+.sec-light .fit-col.yes{
+  background:rgba(0,201,167,.06);
+  border:1.5px solid rgba(0,201,167,.22);
+}
+.sec-light .fit-col.no{
+  background:#f5f7fa;
+  border:1.5px solid rgba(0,0,0,.09);
+}
+.sec-light .fit-col.no .fit-col-title{color:#9ca3af;border-bottom:1.5px solid rgba(0,0,0,.08)}
+.sec-light .fit-row{color:#374151;background:transparent}
+.sec-light .fit-col.yes .fit-row{background:rgba(0,201,167,.05)}
+.sec-light .fit-col.no .fit-row{background:rgba(0,0,0,.025)}
+
+/* Sessions / Curriculum */
+.sec-light .session{
+  background:#f5f8ff;
+  border:1px solid rgba(0,0,0,.07);
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+}
+.sec-light .session:hover{box-shadow:0 6px 24px rgba(0,99,237,.1)}
+.sec-light .session-num{background:#0a0f1e;color:#fff}
+.sec-light .session-title{color:#0a0f1e}
+.sec-light .session-topics li{color:#4b5563}
+.sec-light .session-outcome{color:var(--teal2);border-top-color:rgba(0,0,0,.08)}
+
+/* Schedule strip keeps its dark look */
+.sec-light .schedule-strip{background:var(--navy)}
+
+/* Instructor compact */
+.sec-light .instructor-compact{
+  background:#f5f8ff;
+  border:1px solid rgba(0,0,0,.07);
+  border-right:4px solid var(--blue);
+}
+.sec-light .ic-body h3{color:#0a0f1e}
+.sec-light .ic-body p{color:#4b5563}
+.sec-light .ic-cred{background:rgba(0,99,237,.07);border-color:rgba(0,99,237,.15);color:var(--blue)}
+
+/* Closing-light (WA proof + FAQ + form) */
+.closing-light{background:#ffffff}
+.closing-light .s-label{color:var(--blue)}
+.closing-light h2.s-title{color:#0a0f1e}
+.closing-light h2.s-title em{
+  background:linear-gradient(90deg,var(--blue),var(--teal2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.closing-light .closing-wa-label{color:#9ca3af}
+.closing-light .wa-proof-grid{
+  background:rgba(0,0,0,.02);
+  border:1px solid rgba(0,0,0,.06);
+  box-shadow:0 12px 40px rgba(0,0,0,.06);
+}
+.closing-light .wa-proof-grid::before{
+  background-image:linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.03) 1px,transparent 1px);
+}
+.closing-light .wa-proof-card{
+  background:#fff;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 8px 24px rgba(0,0,0,.09);
+}
+.closing-light .wa-proof-card::before{box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.closing-light .faq-item{background:#f5f8ff;border-color:rgba(0,0,0,.08)}
+.closing-light .faq-item.open{border-color:rgba(0,201,167,.3);box-shadow:0 0 24px rgba(0,201,167,.07)}
+.closing-light .faq-q{color:#0a0f1e}
+.closing-light .faq-arrow{background:#fff;border-color:rgba(0,0,0,.1);color:#9ca3af}
+.closing-light .faq-a{color:#374151}
 
 /* CLOSING SECTION */
 .closing{background:var(--bg2);padding:0}
@@ -2096,15 +2217,15 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: pain → solution -->
-<div class="wave-divider" style="background:#0d1b2e;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#0a1628" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+<!-- wave: pain (dark) → solution (light) -->
+<div class="wave-divider" style="background:#0d1424;margin-bottom:-2px">
+  <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
+    <path fill="#ffffff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
 <!-- ═══════════ 4. הפתרון + למי מתאים ═══════════ -->
-<section class="solution" id="fit">
+<section class="solution sec-light" id="fit">
   <div class="sol-inner">
     <div class="s-head sr">
       <div class="s-label">קיצור הדרך</div>
@@ -2150,15 +2271,11 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: solution → benefits -->
-<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
-  <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#0d1b2e" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
-  </svg>
-</div>
+<!-- wave: solution (light) → benefits (light) — hidden -->
+<div style="background:#ffffff;height:1px;overflow:hidden"></div>
 
 <!-- ═══════════ 5. מה תדע לעשות ═══════════ -->
-<section class="benefits" id="outcomes">
+<section class="benefits sec-light" id="outcomes">
   <div class="s-head c sr">
     <div class="s-label">תוצאות מעשיות</div>
     <h2 class="s-title">מה <em>תדע לעשות</em> בפועל?</h2>
@@ -2222,10 +2339,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: tools → agent -->
-<div class="wave-divider" style="background:#0d1b2e;margin-bottom:-2px">
+<!-- wave: benefits (light) → agent (dark) -->
+<div class="wave-divider" style="background:#ffffff;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#060e1e" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#0a0f1e" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -2277,15 +2394,15 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: agent → curriculum -->
-<div class="wave-divider" style="background:#060e1e;margin-bottom:-2px">
+<!-- wave: agent (dark) → curriculum (light) -->
+<div class="wave-divider" style="background:#0a0f1e;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#0a1628" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#ffffff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
 <!-- ═══════════ 7. הקורס + המרצה ═══════════ -->
-<section class="curriculum" id="curriculum">
+<section class="curriculum sec-light" id="curriculum">
   <div class="s-head c sr">
     <div class="s-label">המסלול</div>
     <h2 class="s-title">4 מפגשים. 4 שדרוגים. <em>שבדרונאי.</em></h2>
@@ -2323,7 +2440,7 @@ footer strong{color:rgba(255,255,255,.82)}
     <div class="session reveal">
       <div class="session-header">
         <div class="session-num">1</div>
-        <div class="session-title">שבירת תקרת הזכוכית</div>
+        <div class="session-title">שוברים את תקרת הזכוכית</div>
       </div>
       <ul class="session-topics">
         <li>היכרות מעמיקה עם הכלים: ChatGPT, Claude, Gemini, NotebookLM, ובחירת הנשק הנכון</li>
@@ -2335,7 +2452,7 @@ footer strong{color:rgba(255,255,255,.82)}
     <div class="session reveal">
       <div class="session-header">
         <div class="session-num">2</div>
-        <div class="session-title">קוד האדון</div>
+        <div class="session-title">קוד המאסטרים</div>
       </div>
       <ul class="session-topics">
         <li>7 עקרונות פרומפטינג שהופכים תשובות גנריות לתוצאות שמשתמשים בהן</li>
@@ -2347,7 +2464,7 @@ footer strong{color:rgba(255,255,255,.82)}
     <div class="session reveal">
       <div class="session-header">
         <div class="session-num">3</div>
-        <div class="session-title">בניית מעוז הכוח הדיגיטלי שלך</div>
+        <div class="session-title">המוח הכפול: בונים את הסוכן האישי שלך</div>
       </div>
       <ul class="session-topics">
         <li>מה זה סוכן AI ואיך הוא שונה מכל מה שהכרת</li>
@@ -2359,7 +2476,7 @@ footer strong{color:rgba(255,255,255,.82)}
     <div class="session reveal">
       <div class="session-header">
         <div class="session-num">4</div>
-        <div class="session-title">סטנדרט השבדרונאי</div>
+        <div class="session-title">המאסטרינג: לעבוד על אוטומט</div>
       </div>
       <ul class="session-topics">
         <li>בניית מערכת אוטומציה אישית שעובדת בשבילך, גם כשאתה לא</li>
@@ -2380,7 +2497,7 @@ footer strong{color:rgba(255,255,255,.82)}
     <div class="ic-body">
       <h3>יוחנן שבדרון</h3>
       <div class="ic-role">בוגר מדעי המחשב · מביא את ה"מסלול המהיר" לציבור החרדי</div>
-      <p>בוגר מדעי המחשב שמכיר את המנוע מבפנים, ויודע בדיוק מה לחתוך כשמלמדים בני אדם. הוא חי את המציאות החרדית מבפנים, מבין את האינטרנט המסונן, ומדבר בשפה שלך: תכל'ס, תוצאות, אפס תיאוריה. יוחנן הוא הגשר היחיד בין AI שמשנה עולמות לבין העבודה שלך, עכשיו.</p>
+      <p>יוחנן בוגר מדעי המחשב, מכיר את הטכנולוגיה מהשורש. והוא חי את המציאות החרדית מבפנים. שניהם יחד יוצרים דבר שלא מוצאים בשום מקום אחר: מי שמבין את ה-AI לעומק, מסביר אותו בשפה שלך, ומתאים אותו לעבודה הספציפית שלך. לא פרופסור. לא יוטיובר. המדריך שמביא אותך לתוצאה.</p>
       <div class="ic-creds">
         <span class="ic-cred">בוגר מדעי המחשב</span>
         <span class="ic-cred">מומחה הנגשה טכנולוגית</span>
@@ -2390,10 +2507,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: curriculum → closing -->
-<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
+<!-- wave: curriculum (light) → closing (dark) -->
+<div class="wave-divider" style="background:#ffffff;margin-bottom:-2px">
   <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:56px">
-    <path fill="#060e1e" d="M0,28 C360,56 1080,0 1440,28 L1440,56 L0,56 Z"/>
+    <path fill="#0a0f1e" d="M0,28 C360,56 1080,0 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 </div>
 
@@ -2430,10 +2547,10 @@ footer strong{color:rgba(255,255,255,.82)}
     </div>
   </div>
 
-  <!-- wave closing-dark → closing-light -->
-  <div style="background:#060e1e;line-height:0;display:block;margin-top:-1px;margin-bottom:-2px">
+  <!-- wave closing-dark → closing-light (white) -->
+  <div style="background:#0a0f1e;line-height:0;display:block;margin-top:-1px;margin-bottom:-2px">
     <svg viewBox="0 0 1440 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:64px">
-      <path fill="#0d1b2e" d="M0,32 C360,64 1080,8 1440,32 L1440,68 L0,68 Z"/>
+      <path fill="#ffffff" d="M0,32 C360,64 1080,8 1440,32 L1440,68 L0,68 Z"/>
     </svg>
   </div>
 
@@ -2501,7 +2618,7 @@ footer strong{color:rgba(255,255,255,.82)}
             <span class="faq-arrow" aria-hidden="true">&#9660;</span>
           </button>
           <div class="faq-body" id="faq-body-4" role="region">
-            <p class="faq-a">ביוטיוב תצפה. פה תבנה. ב-YouTube יש אלפי סרטונים שמסבירים מה זה AI, ואף אחד מהם לא ייצא איתך עם סוכן אישי שמותאם לתחום שלך. בקורס הזה יוצאים עם מערכת שלמה: פרומפטים מותאמים, סוכן שבנית ביחד עם יוחנן, ודרך עבודה שמשנה כבר ביום הראשון. יוטיוב נותן ידע. שבדרון נותן כוח.</p>
+            <p class="faq-a">ביוטיוב יש רעש. כאן יש מערכת. אחרי 50 סרטונים על AI עדיין לא תדע מאיפה להתחיל, כי YouTube נותן מידע, לא תוצר. בקורס הזה יוצאים עם דברים ביד: סוכן AI שבנית בעצמך, ספריית פרומפטים מותאמת לתחום שלך, ודרך עבודה שמשנה כבר ביום שאחרי. לא קורס. מערכת. לא ידע. כוח אמיתי.</p>
           </div>
         </div>
         <div class="faq-item" role="listitem">
@@ -2528,7 +2645,7 @@ footer strong{color:rgba(255,255,255,.82)}
       <div style="margin-top:64px;text-align:center">
         <div class="s-label" style="justify-content:center">הרשמה</div>
         <h2 class="s-title" style="margin-bottom:8px">מוכן לעלות על הרכבת<br/>שכולם <em>כבר עליה</em>?</h2>
-        <p style="color:var(--muted);font-size:1rem;margin-bottom:0">מלא שם וטלפון. יוחנן חוזר אליך <strong>אישית תוך שעה</strong>. אין ספאם, אין התחייבות.</p>
+        <p style="color:#6b7280;font-size:1rem;margin-bottom:0">מלא שם וטלפון. יוחנן חוזר אליך <strong style="color:#0a0f1e">אישית תוך שעה</strong>. אין ספאם, אין התחייבות.</p>
       </div>
 
       <div class="reg-card reveal" style="margin-top:40px">
