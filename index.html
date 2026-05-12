@@ -1933,47 +1933,75 @@ footer strong{color:rgba(255,255,255,.82)}
 }
 .session-outcome::before{content:'→';font-weight:900;flex-shrink:0}
 
-/* INSTRUCTOR COMPACT */
+/* INSTRUCTOR CARD — ARCHITECT EDITION */
 .instructor-compact{
-  width:min(100%,980px);margin:36px auto 0;
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-right:4px solid var(--blue);
-  border-radius:18px;
-  padding:28px 36px;
-  display:flex;align-items:flex-start;gap:24px;
-  box-shadow:var(--shadow);
+  width:min(100%,980px);margin:48px auto 0;
+  background:#fff;
+  border-radius:24px;
   overflow:hidden;
+  box-shadow:0 6px 40px rgba(0,0,0,.10),0 1px 4px rgba(0,0,0,.06);
+  display:grid;
+  grid-template-columns:260px 1fr;
+  isolation:isolate;
 }
 .ic-photo{
-  width:104px;height:104px;border-radius:22px;
-  overflow:hidden;flex-shrink:0;
-  background:linear-gradient(160deg,#0d1b2e 0%,#0a1628 100%);
+  background:linear-gradient(170deg,#0b1930 0%,#091422 100%);
   display:flex;align-items:flex-end;justify-content:center;
-  box-shadow:0 14px 28px rgba(0,0,0,.3), 0 2px 8px rgba(0,99,237,.12);
+  min-height:340px;overflow:hidden;position:relative;
 }
-.ic-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center}
-.ic-body{flex:1;min-width:0}
-.ic-body h3{font-size:1rem;font-weight:900;color:var(--text);margin-bottom:2px}
-.ic-role{font-size:.78rem;color:var(--blue);font-weight:700;margin-bottom:10px}
-.ic-body p{font-size:.86rem;color:var(--muted);line-height:1.75}
-.ic-creds{
-  display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;
+.ic-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(0,99,237,.14),transparent 55%);
+  pointer-events:none;
 }
+.ic-photo img{
+  width:100%;height:100%;display:block;
+  object-fit:cover;object-position:center top;
+}
+.ic-body{
+  padding:36px 40px;
+  display:flex;flex-direction:column;justify-content:center;
+  min-width:0;
+}
+/* Desktop/mobile copy switching */
+.ic-name-mobile,.ic-role-mobile,.ic-bio-mobile{display:none}
+.ic-name-desktop,.ic-role-desktop,.ic-bio-desktop{display:block}
+/* Name */
+.ic-name{
+  font-size:clamp(1.3rem,2.2vw,1.75rem);font-weight:900;
+  color:#0a0f1e;line-height:1.1;margin-bottom:6px;
+  letter-spacing:-.04em;
+}
+.ic-name .ic-name-sep{color:var(--blue);font-weight:400;margin:0 6px;opacity:.6}
+.ic-role{font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:14px;letter-spacing:.01em}
+.ic-divider{
+  width:44px;height:2px;margin-bottom:16px;
+  background:linear-gradient(90deg,var(--blue),var(--teal2));
+  border-radius:2px;
+}
+.ic-body p{font-size:.88rem;color:#4b5563;line-height:1.88;margin-bottom:20px}
+.ic-creds{display:flex;flex-wrap:wrap;gap:7px}
 .ic-cred{
-  display:inline-flex;align-items:center;gap:5px;
+  display:inline-flex;align-items:center;
   background:rgba(0,99,237,.07);
   border:1px solid rgba(0,99,237,.15);
   color:var(--blue);
-  padding:4px 11px;border-radius:100px;
-  font-size:.74rem;font-weight:700;
+  padding:5px 13px;border-radius:100px;
+  font-size:.73rem;font-weight:700;
 }
-@media(max-width:640px){
-  .instructor-compact{gap:14px;padding:20px 16px;align-items:flex-start}
-  .ic-photo{width:92px;height:92px;border-radius:20px}
-  .ic-body{text-align:right}
-  .ic-creds{justify-content:flex-start}
-  .ic-cred{white-space:normal;text-align:right}
+@media(max-width:680px){
+  .instructor-compact{grid-template-columns:1fr}
+  .ic-photo{
+    min-height:0;height:240px;
+    border-radius:0;
+  }
+  .ic-photo img{object-position:center 15%}
+  .ic-body{padding:28px 22px;text-align:center}
+  .ic-divider{margin-left:auto;margin-right:auto}
+  .ic-creds{justify-content:center}
+  /* swap copy */
+  .ic-name-desktop,.ic-role-desktop,.ic-bio-desktop{display:none}
+  .ic-name-mobile,.ic-role-mobile,.ic-bio-mobile{display:block}
 }
 
 /* GLOW EFFECTS */
@@ -2071,15 +2099,11 @@ section.solution.sec-light{background:#eef2fa !important}
 /* Schedule strip keeps its dark look */
 .sec-light .schedule-strip{background:var(--navy)}
 
-/* Instructor compact */
+/* Instructor card on light bg — already white, just refine shadow */
 .sec-light .instructor-compact{
-  background:#f5f8ff;
-  border:1px solid rgba(0,0,0,.07);
-  border-right:4px solid var(--blue);
+  background:#fff;
+  box-shadow:0 4px 32px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.05);
 }
-.sec-light .ic-body h3{color:#0a0f1e}
-.sec-light .ic-body p{color:#4b5563}
-.sec-light .ic-cred{background:rgba(0,99,237,.07);border-color:rgba(0,99,237,.15);color:var(--blue)}
 
 /* Closing-light (WA proof + FAQ + form) */
 .closing-light .s-label{color:var(--blue)}
@@ -2632,21 +2656,45 @@ section.solution.sec-light{background:#eef2fa !important}
   </div>
 
   <div class="instructor-compact reveal">
+
+    <!-- Portrait column -->
     <div class="ic-photo">
       <picture>
         <source srcset="assets/public/yochanan-card.webp" type="image/webp"/>
-        <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון" width="104" height="104" loading="lazy" decoding="async"/>
+        <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון, בוגר מדעי המחשב ומומחה AI" loading="lazy" decoding="async"/>
       </picture>
     </div>
+
+    <!-- Content column -->
     <div class="ic-body">
-      <h3>יוחנן שבדרון</h3>
-      <div class="ic-role">בוגר מדעי המחשב · המסלול המהיר מקוד לתוצאה</div>
-      <p>רוב מי שמלמד AI לא מבין איך AI עובד. יוחנן כן. עם תואר במדעי המחשב וניסיון מעשי בפיתוח ובניתוח נתונים, הוא לא מסביר כלים, הוא בונה נכסים. כל לקוח שעובר איתו מסיים עם סוכן AI מותאם אישית שמכיר את העסק, את הסגנון ואת הצרכים. זו לא הדגמה. זו תשתית עסקית שנבנית פעם אחת ועובדת כל יום.</p>
+
+      <!-- Desktop header -->
+      <div class="ic-name-desktop">
+        <div class="ic-name">יוחנן שבדרון<span class="ic-name-sep">|</span>בוגר מדעי המחשב</div>
+      </div>
+      <!-- Mobile header -->
+      <div class="ic-name-mobile">
+        <div class="ic-name">יוחנן שבדרון<br/>מהקוד לשורה התחתונה</div>
+      </div>
+
+      <!-- Desktop sub-role -->
+      <div class="ic-role ic-role-desktop">המסלול המהיר מקוד לתוצאות עסקיות</div>
+      <!-- Mobile sub-role -->
+      <div class="ic-role ic-role-mobile">בוגר מדעי המחשב · בונה סוכני AI לעסקים</div>
+
+      <div class="ic-divider" aria-hidden="true"></div>
+
+      <!-- Desktop bio -->
+      <p class="ic-bio-desktop">רוב מי שמלמד AI לא מבין איך המנוע עובד. יוחנן כן. עם תואר במדעי המחשב וניסיון מעשי בפיתוח, הוא לא רק מראה לכם כלים, הוא בונה לכם נכסים. כל משתתף עוזב את הקורס עם סוכן AI מותאם אישית שמכיר את העסק, את הסגנון ואת הצרכים שלו. זו לא הדרכה, זו תשתית עסקית שעובדת עבורך כל יום.</p>
+      <!-- Mobile bio -->
+      <p class="ic-bio-mobile">להפסיק לנחש, להתחיל לנהל. יוחנן מזקק ידע עמוק במדעי המחשב לכדי סוכן AI אישי שעובד בשבילך 24/7. זו תשתית עסקית חכמה שנבנית עבורך פעם אחת.</p>
+
       <div class="ic-creds">
         <span class="ic-cred">פיתוח וניתוח נתונים</span>
         <span class="ic-cred">הנגשה טכנולוגית</span>
         <span class="ic-cred">תכל'ס עסקי</span>
       </div>
+
     </div>
   </div>
 </section>
