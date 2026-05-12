@@ -1111,13 +1111,14 @@ h2.s-title em{
 }
 .faq-btn{
   width:100%;text-align:right;
+  direction:rtl;
   background:none;border:none;
   padding:22px 24px;
   cursor:pointer;
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   font-family:'Heebo',sans-serif;
 }
-.faq-q{font-weight:800;font-size:.95rem;color:var(--text)}
+.faq-q{font-weight:800;font-size:.95rem;color:var(--text);text-align:right;direction:rtl;flex:1}
 .faq-arrow{
   flex-shrink:0;
   width:22px;height:22px;
@@ -1132,9 +1133,10 @@ h2.s-title em{
 .faq-body{
   display:none;
   padding:0 24px 20px;
+  direction:rtl;
 }
 .faq-item.open .faq-body{display:block}
-.faq-a{color:var(--muted);line-height:1.75;font-size:.88rem}
+.faq-a{color:var(--muted);line-height:1.75;font-size:.88rem;text-align:right;direction:rtl;display:block}
 
 /* REGISTER */
 .register{background:var(--bg2);padding:96px 6%}
