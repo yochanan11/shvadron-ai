@@ -66,7 +66,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   --blue2:#0f8eea;
   --teal:#2edebf;
   --teal2:#00c9a7;
-  --teal-bright:#00F0FF;
+  --teal-bright:#2edebf;
   --teal-text:#2edebf;
   --navy:#0a0f1e;
   --bg:#0d1424;
@@ -120,7 +120,7 @@ nav{
   transition:background .2s;
   white-space:nowrap;
 }
-.nav-btn:hover{background:#33f5ff}
+.nav-btn:hover{background:#4ae8cc}
 /* hamburger */
 .nav-hamburger{
   display:none;flex-direction:column;gap:5px;cursor:pointer;
@@ -263,10 +263,10 @@ nav{
   color:#0a0f1e;font-weight:900;font-size:1rem;
   padding:16px 38px;border-radius:100px;
   text-decoration:none;
-  box-shadow:0 4px 32px rgba(0,240,255,.4),0 0 0 1px rgba(0,240,255,.3);
+  box-shadow:0 4px 32px rgba(46,222,191,.4),0 0 0 1px rgba(46,222,191,.3);
   transition:all .25s;
 }
-.cta-main:hover{background:#33f5ff;transform:translateY(-2px);box-shadow:0 8px 44px rgba(0,240,255,.55),0 0 0 1px rgba(0,240,255,.45)}
+.cta-main:hover{background:#4ae8cc;transform:translateY(-2px);box-shadow:0 8px 44px rgba(46,222,191,.55),0 0 0 1px rgba(46,222,191,.45)}
 .cta-wa{
   display:flex;align-items:center;gap:8px;
   background:rgba(255,255,255,.08);
@@ -1255,14 +1255,14 @@ h2.s-title em{
 }
 .f-submit{
   width:100%;
-  background:var(--blue);
-  color:#fff;border:none;
+  background:#2edebf;
+  color:#0a0f1e;border:none;
   padding:17px;border-radius:100px;
   font-family:'Heebo',sans-serif;font-size:1rem;font-weight:800;
   cursor:pointer;
   transition:all .25s;margin-top:4px;
 }
-.f-submit:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,99,237,.45)}
+.f-submit:hover{background:#4ae8cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(46,222,191,.45)}
 .f-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
 .f-wa-btn{
   display:flex;align-items:center;justify-content:center;gap:8px;
@@ -1306,22 +1306,21 @@ footer strong{color:rgba(255,255,255,.82)}
 .fab{
   position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
   z-index:300;
-  background:var(--navy);
-  color:#fff;font-weight:800;font-size:.9rem;
+  background:#2edebf;
+  color:#0a0f1e;font-weight:800;font-size:.9rem;
   padding:14px 36px;border-radius:100px;
   text-decoration:none;white-space:nowrap;
-  box-shadow:0 8px 28px rgba(10,22,40,.28);
+  box-shadow:0 8px 28px rgba(46,222,191,.35);
   transition:background .3s,color .3s,box-shadow .3s,transform .3s,opacity .3s;
   opacity:0;
 }
-.fab:hover{transform:translateX(-50%) translateY(-2px)}
-/* FAB on dark hero — flip to white */
+.fab:hover{background:#4ae8cc;transform:translateX(-50%) translateY(-2px)}
 .fab--light{
-  background:#fff;
-  color:var(--navy);
-  box-shadow:0 8px 32px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.12);
+  background:#2edebf;
+  color:#0a0f1e;
+  box-shadow:0 8px 32px rgba(46,222,191,.4);
 }
-.fab--light:hover{transform:translateX(-50%) translateY(-2px)}
+.fab--light:hover{background:#4ae8cc;transform:translateX(-50%) translateY(-2px)}
 @media(max-width:600px){.fab{width:88%;text-align:center;padding:14px 20px;font-size:.85rem}}
 
 /* WhatsApp FAB */
@@ -1855,7 +1854,7 @@ footer strong{color:rgba(255,255,255,.82)}
 .ben-card:hover{transform:translateY(-4px);box-shadow:0 8px 40px rgba(0,240,255,.12),0 0 0 1px rgba(0,240,255,.1)}
 .faq-item.open{border-color:rgba(0,201,167,.28);box-shadow:0 0 24px rgba(0,201,167,.07)}
 .sec-cta:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,240,255,.25),0 0 0 1px rgba(0,240,255,.15)}
-.f-submit:hover{background:var(--teal-bright);color:#0a0f1e;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,240,255,.4)}
+.f-submit:hover{background:#4ae8cc;color:#0a0f1e;transform:translateY(-2px);box-shadow:0 8px 28px rgba(46,222,191,.4)}
 
 /* AGENT CARD GLOW */
 .agent-chat-ui,.agent-card-visual{
