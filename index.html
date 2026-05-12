@@ -66,18 +66,18 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   --blue2:#0f8eea;
   --teal:#2edebf;
   --teal2:#00c9a7;
-  --teal-text:#00967c;
-  --navy:#0a1628;
-  --bg:#f3f4f8;
-  --bg2:#ffffff;
-  --card:#ffffff;
-  --text:#0d0d0d;
-  --text2:#1f2937;
-  --muted:#6b7280;
-  --border:rgba(0,0,0,.11);
-  --shadow:0 2px 16px rgba(0,0,0,.08);
-  --shadow-lg:0 8px 40px rgba(0,0,0,.13);
-  --urgent:#dc2626;
+  --teal-text:#2edebf;
+  --navy:#060e1e;
+  --bg:#0d1b2e;
+  --bg2:#0a1628;
+  --card:rgba(255,255,255,.05);
+  --text:#f0f4ff;
+  --text2:rgba(255,255,255,.82);
+  --muted:rgba(255,255,255,.45);
+  --border:rgba(255,255,255,.09);
+  --shadow:0 2px 20px rgba(0,0,0,.4);
+  --shadow-lg:0 8px 48px rgba(0,0,0,.5);
+  --urgent:#f87171;
 }
 html{scroll-behavior:smooth}
 body{
@@ -399,7 +399,7 @@ section{padding:96px 6%}
 h2.s-title{
   font-size:clamp(1.9rem,3.5vw,3rem);
   font-weight:900;line-height:1.15;letter-spacing:-.06em;
-  color:#000;margin-bottom:14px;
+  color:var(--text);margin-bottom:14px;
 }
 h2.s-title em{
   font-style:normal;
@@ -434,15 +434,15 @@ h2.s-title em{
   align-items:stretch;
 }
 .pain-panel{
-  background:#fff;
+  background:var(--bg2);
   border-radius:24px;
   overflow:hidden;
-  box-shadow:0 8px 40px rgba(0,0,0,.07);
+  box-shadow:var(--shadow-lg);
 }
 .pain-panel-header{
   padding:22px 28px;
   display:flex;align-items:center;gap:14px;
-  border-bottom:1px solid rgba(0,0,0,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 .pain-panel.good .pain-panel-header{background:rgba(0,201,167,.07)}
 .pain-panel.bad  .pain-panel-header{background:rgba(220,38,38,.05)}
@@ -529,9 +529,9 @@ h2.s-title em{
   position:relative;overflow:hidden;
 }
 .fit-col.yes{
-  background:linear-gradient(150deg,#edfdf8 0%,#f6fffe 60%,#ffffff 100%);
-  border:1.5px solid rgba(0,201,167,.28);
-  box-shadow:0 8px 36px rgba(0,201,167,.12),0 2px 8px rgba(0,0,0,.05);
+  background:rgba(0,201,167,.06);
+  border:1.5px solid rgba(0,201,167,.22);
+  box-shadow:0 8px 36px rgba(0,201,167,.1),0 2px 8px rgba(0,0,0,.2);
 }
 .fit-col.yes::before{
   content:'';position:absolute;top:-40px;left:-40px;
@@ -540,9 +540,9 @@ h2.s-title em{
   pointer-events:none;
 }
 .fit-col.no{
-  background:#fafafa;
-  border:1.5px solid #e5e7eb;
-  box-shadow:0 2px 10px rgba(0,0,0,.04);
+  background:var(--bg);
+  border:1.5px solid var(--border);
+  box-shadow:var(--shadow);
 }
 .fit-col-title{
   font-size:.72rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase;
@@ -555,7 +555,7 @@ h2.s-title em{
 }
 .fit-col.no .fit-col-title{
   color:var(--muted);
-  border-bottom:1.5px solid #ebebeb;
+  border-bottom:1.5px solid var(--border);
 }
 .fit-col-title{
   opacity:0;transform:translateY(8px);
@@ -773,7 +773,7 @@ h2.s-title em{
   max-width:1000px;margin:0 auto;
 }
 .about-photo-frame{
-  background:linear-gradient(160deg,#edf3fb 0%,#e2ecf8 100%);
+  background:linear-gradient(160deg,#0d1b2e 0%,#0a1628 100%);
   border-radius:28px;overflow:hidden;
   display:flex;align-items:flex-end;justify-content:center;
   min-height:380px;
@@ -794,7 +794,7 @@ h2.s-title em{
 .about-main-name{
   font-size:clamp(2rem,3.8vw,3rem);
   font-weight:900;line-height:1.08;
-  letter-spacing:-.06em;color:#000;
+  letter-spacing:-.06em;color:var(--text);
   margin-bottom:8px;
 }
 .about-role-new{
@@ -962,12 +962,9 @@ h2.s-title em{
   position:relative;
   padding:20px;
   border-radius:26px;
-  background:
-    linear-gradient(135deg, rgba(255,255,255,.9), rgba(241,247,252,.92)),
-    radial-gradient(circle at 18% 18%, rgba(0,99,237,.12), transparent 28%),
-    radial-gradient(circle at 84% 78%, rgba(0,201,167,.15), transparent 34%);
-  border:1px solid rgba(0,0,0,.06);
-  box-shadow:0 18px 52px rgba(10,22,40,.08);
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:0 18px 52px rgba(0,0,0,.35);
 }
 .wa-proof-grid::before{
   content:'';
@@ -975,16 +972,16 @@ h2.s-title em{
   inset:12px;
   border-radius:22px;
   background-image:
-    linear-gradient(rgba(10,22,40,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10,22,40,.035) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
   background-size:28px 28px;
   mask-image:linear-gradient(135deg, rgba(0,0,0,.5), transparent 68%);
   pointer-events:none;
 }
 .wa-proof-card{
   position:relative;
-  background:#f8fafc;
-  border:1px solid rgba(10,22,40,.1);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.09);
   border-radius:22px;
   overflow:hidden;
   padding:8px;
@@ -1825,9 +1822,9 @@ footer strong{color:rgba(255,255,255,.82)}
 .ic-photo{
   width:104px;height:104px;border-radius:22px;
   overflow:hidden;flex-shrink:0;
-  background:linear-gradient(160deg,#d4e6f8 0%,#c2d8f2 100%);
+  background:linear-gradient(160deg,#0d1b2e 0%,#0a1628 100%);
   display:flex;align-items:flex-end;justify-content:center;
-  box-shadow:0 14px 28px rgba(10,22,40,.16), 0 2px 8px rgba(0,99,237,.08);
+  box-shadow:0 14px 28px rgba(0,0,0,.3), 0 2px 8px rgba(0,99,237,.12);
 }
 .ic-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center}
 .ic-body{flex:1;min-width:0}
@@ -1853,6 +1850,13 @@ footer strong{color:rgba(255,255,255,.82)}
   .ic-cred{white-space:normal;text-align:right}
 }
 
+/* GLOW EFFECTS */
+.cta-main:hover{background:#f0f6ff;transform:translateY(-2px);box-shadow:0 8px 40px rgba(46,222,191,.3),0 0 0 1px rgba(46,222,191,.2)}
+.ben-card:hover{transform:translateY(-4px);box-shadow:0 8px 40px rgba(46,222,191,.15),0 0 0 1px rgba(46,222,191,.1)}
+.faq-item.open{border-color:rgba(46,222,191,.22);box-shadow:0 0 24px rgba(46,222,191,.07)}
+.sec-cta:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 24px rgba(46,222,191,.25),0 0 0 1px rgba(46,222,191,.15)}
+.f-submit:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 8px 28px rgba(46,222,191,.25)}
+
 /* CLOSING SECTION */
 .closing{background:var(--bg2);padding:0}
 .closing-dark{
@@ -1874,7 +1878,7 @@ footer strong{color:rgba(255,255,255,.82)}
 .close-meta-val{font-size:1.45rem;font-weight:900;color:#fff;line-height:1}
 .close-meta-card.red .close-meta-val{color:#f87171}
 .close-meta-lbl{font-size:.73rem;color:rgba(255,255,255,.48);margin-top:6px}
-.closing-light{background:#fff;padding:64px 6%}
+.closing-light{background:var(--bg);padding:64px 6%}
 .closing-light-inner{max-width:1040px;margin:0 auto}
 .closing-wa-label{
   text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.12em;
@@ -2013,10 +2017,10 @@ footer strong{color:rgba(255,255,255,.82)}
 
 </section>
 
-<!-- wave: dark hero → white -->
-<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
+<!-- wave: hero → trust bar -->
+<div class="wave-divider" style="background:#0d1b2e;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#fff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#0a1628" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -2050,10 +2054,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </div>
 
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+<!-- wave: trust bar → pain -->
+<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
   <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+    <path fill="#0d1b2e" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -2092,10 +2096,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: gray → white -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
+<!-- wave: pain → solution -->
+<div class="wave-divider" style="background:#0d1b2e;margin-bottom:-2px">
   <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#fff" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+    <path fill="#0a1628" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -2146,10 +2150,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: white → gray -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+<!-- wave: solution → benefits -->
+<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
   <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
-    <path fill="#f3f4f8" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
+    <path fill="#0d1b2e" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
 </div>
 
@@ -2218,10 +2222,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: gray → dark (agent) -->
-<div class="wave-divider" style="background:#f3f4f8;margin-bottom:-2px">
+<!-- wave: tools → agent -->
+<div class="wave-divider" style="background:#0d1b2e;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#0a1628" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#060e1e" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -2273,10 +2277,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: agent dark → white -->
-<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
+<!-- wave: agent → curriculum -->
+<div class="wave-divider" style="background:#060e1e;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#fff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#0a1628" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -2386,10 +2390,10 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </section>
 
-<!-- wave: white → dark (closing) -->
-<div class="wave-divider" style="background:#fff;margin-bottom:-2px">
+<!-- wave: curriculum → closing -->
+<div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
   <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:56px">
-    <path fill="#06101e" d="M0,28 C360,56 1080,0 1440,28 L1440,56 L0,56 Z"/>
+    <path fill="#060e1e" d="M0,28 C360,56 1080,0 1440,28 L1440,56 L0,56 Z"/>
   </svg>
 </div>
 
@@ -2426,10 +2430,10 @@ footer strong{color:rgba(255,255,255,.82)}
     </div>
   </div>
 
-  <!-- wave dark → light -->
-  <div style="background:#06101e;line-height:0;display:block;margin-top:-1px;margin-bottom:-2px">
+  <!-- wave closing-dark → closing-light -->
+  <div style="background:#060e1e;line-height:0;display:block;margin-top:-1px;margin-bottom:-2px">
     <svg viewBox="0 0 1440 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:64px">
-      <path fill="#ffffff" d="M0,32 C360,64 1080,8 1440,32 L1440,68 L0,68 Z"/>
+      <path fill="#0d1b2e" d="M0,32 C360,64 1080,8 1440,32 L1440,68 L0,68 Z"/>
     </svg>
   </div>
 
