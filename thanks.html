@@ -292,41 +292,68 @@ nav{
   font-size:.88rem;color:var(--muted);line-height:1.7;
 }
 
-/* ─── GIFT SECTION ─── */
-.gift-section{background:var(--bg2);padding:72px 6%}
-.gift-inner{max-width:640px;margin:0 auto}
-
-.gift-card{
-  background:#fff;
-  border:1.5px solid rgba(0,201,167,.28);
-  border-right:5px solid var(--teal2);
-  border-radius:20px;
-  padding:36px 32px;
-  box-shadow:0 8px 40px rgba(0,201,167,.1),0 2px 12px rgba(0,0,0,.06);
+/* ─── PAYMENT BLOCK ─── */
+.payment-section{background:var(--bg2);padding:72px 6%}
+.pay-inner{max-width:680px;margin:0 auto}
+.pay-card{
+  background:var(--navy);
+  border-radius:24px;
+  padding:40px;
+  border:1.5px solid rgba(46,222,191,.28);
+  box-shadow:0 0 72px rgba(46,222,191,.13),0 24px 64px rgba(0,0,0,.28);
+  position:relative;overflow:hidden;
 }
-.gift-emoji{font-size:2.6rem;margin-bottom:14px;display:block}
-.gift-label{
-  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--teal-text);margin-bottom:10px;
+.pay-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--teal2),var(--blue));
 }
-.gift-title{
-  font-size:1.38rem;font-weight:900;color:var(--text);
+.pay-urgency{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(248,113,113,.1);
+  border:1px solid rgba(248,113,113,.28);
+  border-radius:100px;padding:6px 16px;
+  font-size:.72rem;font-weight:800;letter-spacing:.08em;
+  color:#f87171;margin-bottom:20px;
+}
+.pay-urgency-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#f87171;
+  animation:blink 1s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.pay-title{
+  font-size:clamp(1.25rem,2.4vw,1.75rem);
+  font-weight:900;color:#fff;
   margin-bottom:12px;line-height:1.3;
 }
-.gift-body{
-  font-size:.94rem;color:var(--muted);line-height:1.8;
-  margin-bottom:22px;
+.pay-text{
+  font-size:.95rem;color:rgba(255,255,255,.62);
+  line-height:1.8;margin-bottom:24px;
 }
-.gift-body strong{color:var(--text2)}
-.gift-note{
-  display:flex;align-items:flex-start;gap:9px;
-  font-size:.8rem;color:var(--muted);
-  background:rgba(0,150,124,.05);
-  border:1px solid rgba(0,150,124,.12);
-  padding:12px 14px;border-radius:10px;
-  line-height:1.55;
+.pay-text strong{color:rgba(255,255,255,.92)}
+.pay-timer-row{
+  display:flex;align-items:center;gap:12px;
+  background:rgba(248,113,113,.08);
+  border:1px solid rgba(248,113,113,.18);
+  border-radius:12px;padding:13px 18px;
+  margin-bottom:28px;
+  font-size:.85rem;color:rgba(255,255,255,.5);
 }
-.gift-note-icon{font-size:.95rem;flex-shrink:0;margin-top:1px}
+.pay-timer-clock{
+  font-size:1.25rem;font-weight:900;color:#f87171;
+  font-variant-numeric:tabular-nums;letter-spacing:.04em;
+}
+.btn-pay{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:#2edebf;color:#0a0f1e;
+  font-size:1.06rem;font-weight:900;
+  padding:18px 32px;border-radius:100px;
+  text-decoration:none;
+  box-shadow:0 4px 32px rgba(46,222,191,.45);
+  transition:all .22s;width:100%;
+  letter-spacing:-.01em;
+}
+.btn-pay:hover{background:#4ae8cc;transform:translateY(-2px);box-shadow:0 8px 44px rgba(46,222,191,.55)}
 
 /* ─── SHARE SECTION (navy) ─── */
 .share-section{
@@ -415,9 +442,9 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
   .ns-inner{text-align:right}
 }
 @media(max-width:480px){
-  .gift-card{padding:24px 18px}
+  .pay-card{padding:24px 18px}
   .next-steps{padding:60px 6%}
-  .gift-section{padding:56px 6%}
+  .payment-section{padding:56px 6%}
 }
 </style>
 </head>
@@ -439,31 +466,30 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
     <div class="hero-text-col">
 
       <!-- Badge sticker -->
-      <div class="agent-label" aria-hidden="true">המקום שלך בסבב הקרוב נשמר</div>
+      <div class="agent-label" aria-hidden="true">הפרטים נקלטו בהצלחה</div>
 
       <!-- כותרת ראשית -->
-      <div class="hero-title">עלית על הרכבת.</div>
-      <span class="hero-subline">עשית את הצעד הכי חכם לעסק שלך השנה.</span>
+      <div class="hero-title">עלית על הרציף.</div>
+      <span class="hero-subline">עכשיו נשאר רק לתפוס מקום בקרון הראשון.</span>
 
       <div class="hero-sep" aria-hidden="true"></div>
 
       <p class="hero-desc">
-        המקום שלך בסבב הקרוב נשמר.<br/>
-        בזמן שכולם עדיין מדברים על AI, אתה כבר בדרך להפוך למאסטר.
+        בזמן שכולם רק מדברים על AI, אתה כבר בדרך להפוך למאסטר.<br/>
+        כדי להבטיח את מקומך בסבב הקרוב ולשמור על מחיר ההשקה, <strong>עליך להשלים את ההרשמה כעת.</strong>
       </p>
 
-      <!-- CTA ראשי -->
-      <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1"
-         target="_blank" rel="noopener" class="cta-wa">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32" fill="white" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
-        דבר איתי ישירות בוואטסאפ
+      <!-- CTA ראשי - תשלום -->
+      <a href="#payment" class="cta-wa" style="background:#2edebf;color:#0a0f1e;box-shadow:0 4px 28px rgba(46,222,191,.45)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        אני רוצה לסגור מקום בקורס עכשיו
       </a>
 
       <!-- Trust chips -->
       <div class="hero-trust-chips">
-        <span class="htc">מקומך שמור</span>
-        <span class="htc">קשר אישי עם יוחנן</span>
-        <span class="htc">18.05 · המפגש הראשון</span>
+        <span class="htc">מחיר השקה · מוגבל בזמן</span>
+        <span class="htc">קבוצה קטנה · ליווי אישי</span>
+        <span class="htc">18.05 · יוצאים לדרך</span>
       </div>
 
     </div><!-- /hero-text-col -->
@@ -484,19 +510,52 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
   <div class="hero-band"></div>
 </section>
 
-<!-- wave: white → gray -->
+<!-- wave: white → white (seamless into payment block) -->
 <div class="wave" style="background:#fff;margin-bottom:-2px">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px">
     <path fill="#f3f4f8" d="M0,30 C360,60 720,5 1080,35 C1260,48 1380,15 1440,30 L1440,60 L0,60 Z"/>
   </svg>
 </div>
 
+<!-- PAYMENT BLOCK -->
+<section class="payment-section" id="payment">
+  <div class="pay-inner">
+    <div class="pay-card">
+      <div class="pay-urgency">
+        <span class="pay-urgency-dot"></span>
+        ההרשמה המוקדמת עומדת להסתיים
+      </div>
+      <div class="pay-title">הבטח את מקומך ברכבת</div>
+      <p class="pay-text">
+        הקבוצה קטנה במיוחד כדי לאפשר ליווי אישי בבניית סוכן ה-AI שלך.<br/>
+        <strong>המקום שלך נשמר זמנית ל-30 הדקות הקרובות בלבד.</strong>
+      </p>
+      <div class="pay-timer-row">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>זמן שנותר לשמירת המחיר:</span>
+        <span class="pay-timer-clock" id="pay-timer">30:00</span>
+      </div>
+      <!-- TODO: החלף את href בלינק לדף התשלום שלך -->
+      <a href="#" class="btn-pay" id="btn-pay-main">
+        אני רוצה לסגור מקום בקורס עכשיו &nbsp;›&zwj;›
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- wave: gray → gray (seamless into next-steps) -->
+<div class="wave" style="background:#f3f4f8;margin-bottom:0">
+  <svg viewBox="0 0 1440 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:30px">
+    <path fill="#f3f4f8" d="M0,0 L1440,0 L1440,30 L0,30 Z"/>
+  </svg>
+</div>
+
 <!-- NEXT STEPS -->
 <section class="next-steps">
   <div class="ns-inner">
-    <div class="s-label">מה קורה עכשיו</div>
-    <h2 class="s-title">שלושה צעדים.<br/><em>כולם כבר בתנועה.</em></h2>
-    <p class="s-sub">הגלגלים כבר מסתובבים. הנה בדיוק מה שקורה מהרגע הזה.</p>
+    <div class="s-label">מה קורה אחרי התשלום</div>
+    <h2 class="s-title">שלושה צעדים.<br/><em>הרכבת לא מחכה.</em></h2>
+    <p class="s-sub">מרגע שהסדרת את הרישום — הכל קורה מהר.</p>
 
     <div class="timeline">
 
@@ -506,9 +565,9 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
           <div class="tl-line"></div>
         </div>
         <div class="tl-content">
-          <div class="tl-time">עכשיו · מיידי</div>
-          <div class="tl-title">אישור מיידי</div>
-          <div class="tl-desc">המקום שלך שוריין במערכת. תקבל אישור ראשוני למייל בדקות הקרובות — לא מצאת? בדוק בספאם.</div>
+          <div class="tl-time">מיידי · אחרי תשלום</div>
+          <div class="tl-title">אישור תשלום</div>
+          <div class="tl-desc">מיד לאחר הסדרת הרישום, תקבל מייל אישור רשמי עם כל פרטי ההתחברות.</div>
         </div>
       </div>
 
@@ -520,7 +579,7 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
         <div class="tl-content">
           <div class="tl-time">בקרוב · אישי</div>
           <div class="tl-title">קשר אישי</div>
-          <div class="tl-desc">יוחנן יחזור אליך אישית בוואטסאפ או בשיחה כדי לסגור פרטים טכניים ולוודא שהסוכן שנבנה בקורס יותאם בול לצרכים שלך.</div>
+          <div class="tl-desc">יוחנן יחזור אליך באופן אישי לוודא שהכנו עבורך את התשתית המתאימה לבניית הסוכן האישי שלך.</div>
         </div>
       </div>
 
@@ -532,7 +591,7 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
         <div class="tl-content">
           <div class="tl-time">18.05 · ב' סיוון</div>
           <div class="tl-title">יוצאים לדרך</div>
-          <div class="tl-desc">המפגש הראשון מתקיים ב-18.05. תכין את המקלדת — אנחנו הולכים לשנות את כל מה שחשבת על עבודה חכמה.</div>
+          <div class="tl-desc">נפגשים ב-18.05 בזום. תתכונן לעבוד פחות ולהספיק הרבה יותר.</div>
         </div>
       </div>
 
@@ -550,8 +609,8 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
 <!-- SHARE -->
 <section class="share-section">
   <div class="share-inner">
-    <div class="share-label">מנהיגות</div>
-    <h2 class="share-title">אל תשאיר את החברים שלך<br/><em>על הרציף.</em></h2>
+    <div class="share-label">לא רק שדרוג — מנהיגות</div>
+    <h2 class="share-title">אל תשאיר את הקולגות שלך<br/><em>מאחור.</em></h2>
     <p class="share-sub">מכיר מישהו שהעסק שלו חייב שדרוג טכנולוגי? שלח לו את הלינק לקורס.</p>
 
     <div class="share-btns">
@@ -559,9 +618,20 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
          target="_blank" rel="noopener" class="btn-share">
         📤 שלח לחבר — אל תשאיר אותו על הרציף
       </a>
-      <a href="index.html" class="btn-back" style="color:rgba(255,255,255,.35);font-size:.82rem;font-weight:600;text-decoration:none;transition:color .2s;padding:8px 0"
-         onmouseover="this.style.color='rgba(255,255,255,.65)'"
-         onmouseout="this.style.color='rgba(255,255,255,.35)'">
+
+      <!-- Reassurance -->
+      <p style="color:rgba(255,255,255,.38);font-size:.85rem;line-height:1.7;margin-top:8px;max-width:380px;text-align:center">
+        יש לך שאלה? מעדיף לשלם טלפונית או בהעברה?<br/>
+        <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A1%D7%92%D7%95%D7%A8%20%D7%AA%D7%A9%D7%9C%D7%95%D7%9D"
+           target="_blank" rel="noopener"
+           style="color:#2edebf;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(46,222,191,.35)">
+          לחץ כאן לדבר איתי ישירות בוואטסאפ
+        </a>
+      </p>
+
+      <a href="index.html" style="color:rgba(255,255,255,.25);font-size:.78rem;font-weight:600;text-decoration:none;padding:8px 0;margin-top:4px"
+         onmouseover="this.style.color='rgba(255,255,255,.5)'"
+         onmouseout="this.style.color='rgba(255,255,255,.25)'">
         ← חזרה לאתר
       </a>
     </div>
@@ -573,5 +643,34 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
   <p>יוחנן שבדרון · AI לציבור החרדי · &copy; 2026</p>
 </footer>
 
+<script>
+// 30-minute countdown timer
+(function(){
+  var KEY = 'pay_timer_end';
+  var stored = sessionStorage.getItem(KEY);
+  var end = stored ? parseInt(stored, 10) : Date.now() + 30 * 60 * 1000;
+  if (!stored) sessionStorage.setItem(KEY, end);
+  var el = document.getElementById('pay-timer');
+  if (!el) return;
+  function tick() {
+    var left = Math.max(0, end - Date.now());
+    var m = Math.floor(left / 60000);
+    var s = Math.floor((left % 60000) / 1000);
+    el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+    if (left > 0) { requestAnimationFrame(tick); }
+    else { el.textContent = '00:00'; }
+  }
+  requestAnimationFrame(tick);
+})();
+
+// Hero CTA scrolls to payment block
+var heroBtn = document.querySelector('a[href="#payment"]');
+if (heroBtn) {
+  heroBtn.addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById('payment').scrollIntoView({behavior:'smooth'});
+  });
+}
+</script>
 </body>
 </html>
