@@ -358,7 +358,7 @@ nav{
 
 /* TRUST BAR */
 .trust-bar{
-  background:var(--bg2);
+  background:#ffffff;
   padding:0 6%;
 }
 .trust-inner{
@@ -369,18 +369,18 @@ nav{
 .trust-item{
   display:flex;flex-direction:column;align-items:center;
   padding:28px 32px;
-  border-left:1px solid var(--border);
+  border-left:1px solid rgba(0,0,0,.08);
   text-align:center;
   min-width:150px;
 }
 .trust-item:last-child{border-left:none}
 .trust-val{
-  font-size:1.8rem;font-weight:900;color:var(--text);line-height:1;
+  font-size:1.8rem;font-weight:900;color:#0a0f1e;line-height:1;
   min-width:3.5ch;display:inline-block;
 }
-.trust-lbl{font-size:.76rem;color:var(--muted);margin-top:6px;line-height:1.4}
+.trust-lbl{font-size:.76rem;color:#6b7280;margin-top:6px;line-height:1.4}
 @media(max-width:720px){
-  .trust-item{min-width:45%;padding:18px 12px;border-left:none;border-bottom:1px solid var(--border)}
+  .trust-item{min-width:45%;padding:18px 12px;border-left:none;border-bottom:1px solid rgba(0,0,0,.07)}
   .trust-item:nth-last-child(-n+2){border-bottom:none}
 }
 
@@ -2138,10 +2138,10 @@ footer strong{color:rgba(255,255,255,.82)}
 
 </section>
 
-<!-- wave: hero → trust bar -->
+<!-- wave: hero (dark) → trust bar (white) -->
 <div class="wave-divider" style="background:#0a1628;margin-bottom:-2px">
   <svg viewBox="0 0 1440 50" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:50px">
-    <path fill="#080c18" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
+    <path fill="#ffffff" d="M0,25 C480,50 960,0 1440,25 L1440,50 L0,50 Z"/>
   </svg>
 </div>
 
@@ -2175,8 +2175,8 @@ footer strong{color:rgba(255,255,255,.82)}
   </div>
 </div>
 
-<!-- wave: trust bar → pain -->
-<div class="wave-divider" style="background:#080c18;margin-bottom:-2px">
+<!-- wave: trust bar (white) → pain (dark) -->
+<div class="wave-divider" style="background:#ffffff;margin-bottom:-2px">
   <svg viewBox="0 0 1440 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:40px">
     <path fill="#0d1424" d="M0,20 C480,40 960,0 1440,20 L1440,40 L0,40 Z"/>
   </svg>
