@@ -1196,6 +1196,61 @@ h2.s-title em{
   .wa-proof-card img{border-radius:13px}
 }
 
+/* WA TEXT TESTIMONIALS */
+.wa-text-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  max-width:820px;margin:24px auto 0;
+}
+@media(max-width:600px){
+  .wa-text-grid{grid-template-columns:1fr}
+}
+.wa-text-card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+  position:relative;
+  font-family:'Heebo',sans-serif;
+}
+.wa-text-card-header{
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:12px;
+  border-bottom:1px solid #f0f0f0;
+  margin-bottom:14px;
+}
+.wa-text-avatar{
+  width:40px;height:40px;border-radius:50%;
+  background:linear-gradient(135deg,#25d366,#128c7e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;color:#fff;font-weight:800;
+}
+.wa-text-sender{font-weight:700;font-size:.82rem;color:#111}
+.wa-text-platform{font-size:.72rem;color:#888}
+.wa-text-bubble{
+  background:#dcf8c6;
+  border-radius:16px 4px 16px 16px;
+  padding:12px 14px;
+  font-size:.87rem;color:#111;line-height:1.7;
+  position:relative;
+  white-space:pre-line;
+}
+.wa-text-bubble::before{
+  content:'';
+  position:absolute;
+  top:0;right:-7px;
+  width:0;height:0;
+  border-left:8px solid #dcf8c6;
+  border-top:8px solid transparent;
+}
+.wa-text-time{
+  text-align:left;font-size:.7rem;color:#888;
+  margin-top:6px;
+  display:flex;align-items:center;justify-content:flex-end;gap:4px;
+}
+.wa-text-time svg{color:#4fc3f7}
+
 /* URGENCY */
 .urgency{
   background:var(--bg2);
@@ -2767,6 +2822,55 @@ section.solution.sec-light{background:#eef2fa !important}
             <img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp"
                  alt="תגובת משתתף בקורס AI - פרטים מטושטשים"
                  loading="lazy" width="1206" height="502"/>
+          </div>
+        </div>
+
+        <!-- Text testimonials -->
+        <div class="wa-text-grid">
+          <div class="wa-text-card">
+            <div class="wa-text-card-header">
+              <div class="wa-text-avatar">מ</div>
+              <div>
+                <div class="wa-text-sender">משתתף בקורס</div>
+                <div class="wa-text-platform">WhatsApp · מחזור קודם</div>
+              </div>
+            </div>
+            <div class="wa-text-bubble">אחד הדברים הכי חזקים שלקחתי מהקורס זה לא רק <strong>להכיר עוד כלי</strong>.
+
+זה בעיקר להבין איך לגשת נכון ל-AI.
+
+פתאום משימות שהייתי נמרח עליהן הרבה זמן, נהיו הרבה יותר קצרות וברורות. ניסוחים, רעיונות, סדר בדברים, הכנה לפגישות - הכל עובד לי היום אחרת.
+
+אבל האמת, החלק הכי משמעותי היה <strong>שינוי החשיבה</strong>.
+
+הבנתי ש-AI זה לא קסם ולא משחק. זה כלי עבודה רציני, וכשיודעים לדבר איתו נכון - הוא פשוט חוסך המון זמן ופותח כיוונים שלא חשבתי עליהם קודם.
+
+ממש שמח שעשיתי את זה.</div>
+            <div class="wa-text-time">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.03 5.99L7.5 15.52l-3.53-3.53-1.41 1.41 4.94 4.95 10.94-10.94-1.41-1.42z"/><path d="M21.03 5.99L11.5 15.52l-1.77-1.77-1.41 1.41 3.18 3.18 10.94-10.94-1.41-1.41z"/></svg>
+              20:11
+            </div>
+          </div>
+
+          <div class="wa-text-card">
+            <div class="wa-text-card-header">
+              <div class="wa-text-avatar">מ</div>
+              <div>
+                <div class="wa-text-sender">משתתף בקורס</div>
+                <div class="wa-text-platform">WhatsApp · מחזור ראשון</div>
+              </div>
+            </div>
+            <div class="wa-text-bubble">אני מאחד המחזורים הראשונים שלך ואני כבר משתמש עם הטיפים שלמדנו בקורס — <strong>תקשיב זה הזיה, איפה הייתי עד היום?!</strong>
+
+אני רואה את החברים שלי מתוסכלים מהכלי בינה מלאכותית ואני צוחק עליהם 😄
+
+<strong>כבר יש לי מעל 20 סוכנים</strong> ואני מרגיש שהעבודה שלי התקצרה בשעתיים.
+
+יוחנן ממליץ לכולם לבוא לקורס שלך — וכבר שלחתי כמה בהצלחה!</div>
+            <div class="wa-text-time">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.03 5.99L7.5 15.52l-3.53-3.53-1.41 1.41 4.94 4.95 10.94-10.94-1.41-1.42z"/><path d="M21.03 5.99L11.5 15.52l-1.77-1.77-1.41 1.41 3.18 3.18 10.94-10.94-1.41-1.41z"/></svg>
+              20:15
+            </div>
           </div>
         </div>
       </div>
