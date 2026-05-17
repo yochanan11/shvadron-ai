@@ -857,9 +857,12 @@ h2.s-title em{
 .tools{background:var(--bg);padding:80px 6%}
 .tools-pills{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:14px;
   max-width:860px;margin:0 auto;
+}
+@media(max-width:600px){
+  .tools-pills{grid-template-columns:repeat(2,1fr)}
 }
 .t-pill{
   background:var(--bg2);
@@ -2493,7 +2496,7 @@ section.solution.sec-light{background:#eef2fa !important}
 
   <div style="max-width:860px;margin:28px auto 0;text-align:center">
     <div style="font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:14px">הכלים שתשלוט בהם</div>
-    <div class="tools-pills" style="grid-template-columns:repeat(3,1fr)">
+    <div class="tools-pills">
       <div class="t-pill"><div class="t-pill-name">ChatGPT</div><div class="t-pill-desc">כתיבה, שיחה וניתוח</div></div>
       <div class="t-pill"><div class="t-pill-name">Claude AI</div><div class="t-pill-desc">טקסטים ארוכים ומדויקים</div></div>
       <div class="t-pill"><div class="t-pill-name">Gemini</div><div class="t-pill-desc">מחובר לגוגל ולאינטרנט</div></div>
