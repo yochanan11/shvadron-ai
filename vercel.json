@@ -3,6 +3,9 @@
   "functions": {
     "api/chat.js": { "memory": 256, "maxDuration": 15 }
   },
+  "redirects": [
+    { "source": "/mortgage-advisors", "destination": "https://mashcn.vercel.app", "permanent": false }
+  ],
   "rewrites": [
     { "source": "/api/chat", "destination": "/api/chat" },
     { "source": "/(.*)", "destination": "/$1" }
