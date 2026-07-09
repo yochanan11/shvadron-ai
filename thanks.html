@@ -9,18 +9,18 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --blue:#0063ed;
-  --blue2:#0f8eea;
-  --teal:#2edebf;
-  --teal2:#00c9a7;
-  --teal-text:#00967c;
-  --navy:#0a1628;
-  --bg:#f3f4f8;
+  --blue:#123F8A;
+  --blue2:#1c56b0;
+  --teal:#20C4B6;
+  --teal2:#5AE6DA;
+  --teal-text:#0E8C82;
+  --navy:#082A63;
+  --bg:#F7F9FC;
   --bg2:#ffffff;
-  --text:#0d0d0d;
-  --text2:#1f2937;
-  --muted:#6b7280;
-  --border:rgba(0,0,0,.11);
+  --text:#1E2A44;
+  --text2:#1E2A44;
+  --muted:#5b6b86;
+  --border:#E7EEF7;
   --shadow:0 2px 16px rgba(0,0,0,.08);
   --shadow-lg:0 8px 40px rgba(0,0,0,.13);
 }
@@ -476,7 +476,7 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
 
       <p class="hero-desc">
         בזמן שכולם רק מדברים על AI, אתה כבר בדרך להפוך למאסטר.<br/>
-        כדי להבטיח את מקומך בסבב הקרוב ולשמור על מחיר ההשקה, <strong>עליך להשלים את ההרשמה כעת.</strong>
+        כדי להבטיח את מקומך במחזור הקרוב, <strong>אפשר להשלים את ההרשמה כאן.</strong>
       </p>
 
       <!-- CTA ראשי - תשלום -->
@@ -487,9 +487,9 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
 
       <!-- Trust chips -->
       <div class="hero-trust-chips">
-        <span class="htc">מחיר השקה · מוגבל בזמן</span>
+        <span class="htc">מחזור לפני בין הזמנים</span>
         <span class="htc">קבוצה קטנה · ליווי אישי</span>
-        <span class="htc">15.06 · יוצאים לדרך</span>
+        <span class="htc">14/07 · יוצאים לדרך</span>
       </div>
 
     </div><!-- /hero-text-col -->
@@ -514,22 +514,13 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
 <section class="payment-section" id="payment">
   <div class="pay-inner">
     <div class="pay-card">
-      <div class="pay-urgency">
-        <span class="pay-urgency-dot"></span>
-        ההרשמה המוקדמת עומדת להסתיים
-      </div>
-      <div class="pay-title">הבטח את מקומך ברכבת</div>
+      <div class="pay-title">להשלמת ההרשמה למחזור</div>
       <p class="pay-text">
-        הקבוצה קטנה במיוחד כדי לאפשר ליווי אישי בבניית סוכן ה-AI שלך.<br/>
-        <strong>המקום שלך נשמר זמנית ל-30 הדקות הקרובות בלבד.</strong>
+        הקבוצה קטנה במיוחד, כדי לאפשר ליווי אישי בבניית דרך העבודה שלך עם AI.<br/>
+        <strong>אפשר להסדיר את התשלום כאן ולשמור את המקום.</strong>
       </p>
-      <div class="pay-timer-row">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        <span>זמן שנותר לשמירת המחיר:</span>
-        <span class="pay-timer-clock" id="pay-timer">30:00</span>
-      </div>
       <a href="https://mrng.to/ozeqRIIij1" target="_blank" rel="noopener" class="btn-pay" id="btn-pay-main">
-        אני רוצה לסגור מקום בקורס עכשיו &nbsp;›&zwj;›
+        אני רוצה להצטרף למחזור &nbsp;›&zwj;›
       </a>
     </div>
   </div>
@@ -574,9 +565,9 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
           <div class="tl-line"></div>
         </div>
         <div class="tl-content">
-          <div class="tl-time">15.06 · ל' סיון</div>
+          <div class="tl-time">14/07 · לפני בין הזמנים</div>
           <div class="tl-title">יוצאים לדרך</div>
-          <div class="tl-desc">נפגשים ב-15.06 בזום. תתכונן לעבוד פחות ולהספיק הרבה יותר.</div>
+          <div class="tl-desc">נפגשים ב-14/07 בזום. תתכונן לעבוד פחות ולהספיק הרבה יותר.</div>
         </div>
       </div>
 
@@ -628,26 +619,5 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
   <p>יוחנן שבדרון · AI לציבור החרדי · &copy; 2026</p>
 </footer>
 
-<script>
-// 30-minute countdown timer
-(function(){
-  var KEY = 'pay_timer_end';
-  var stored = sessionStorage.getItem(KEY);
-  var end = stored ? parseInt(stored, 10) : Date.now() + 30 * 60 * 1000;
-  if (!stored) sessionStorage.setItem(KEY, end);
-  var el = document.getElementById('pay-timer');
-  if (!el) return;
-  function tick() {
-    var left = Math.max(0, end - Date.now());
-    var m = Math.floor(left / 60000);
-    var s = Math.floor((left % 60000) / 1000);
-    el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-    if (left > 0) { requestAnimationFrame(tick); }
-    else { el.textContent = '00:00'; }
-  }
-  requestAnimationFrame(tick);
-})();
-
-</script>
 </body>
 </html>
