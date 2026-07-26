@@ -213,10 +213,13 @@ footer .fc{font-size:.82rem}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-grid{display:flex;flex-direction:column;text-align:center}
+  .hero-text{display:contents}
+  .hero-head{order:1}
+  .hero-media{order:2;max-width:270px;margin:16px auto 4px}
+  .hero-body{order:3}
   .hero .cta-wrap,.hero-chips{align-items:center;justify-content:center}
   .hero-lead{margin-inline:auto}
-  .hero-media{order:-1;max-width:270px;margin:0 auto}
   .benefits,.bonuses{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:620px){
@@ -247,19 +250,23 @@ footer .fc{font-size:.82rem}
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="hero-badge"><i></i>קורס AI מוקלט · גישה מיידית</div>
-      <h1>לומדים AI <span class="teal">בקצב שלכם</span>,<br/>בלי להתחייב לשעות קבועות.</h1>
-      <p class="hero-lead">גישה מיידית לכל הקורס. צופים מתי שנוח, עוצרים, מריצים אחורה, ומתחילים לעבוד עם AI כבר היום.</p>
-      <div class="cta-wrap">
-        <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          רוכשים עכשיו ומתחילים
-        </a>
-        <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח · גישה מיידית לאחר הרכישה</span>
+    <div class="hero-text">
+      <div class="hero-head">
+        <div class="hero-badge"><i></i>קורס AI מוקלט · גישה מיידית</div>
+        <h1>לומדים AI <span class="teal">בקצב שלכם</span>,<br/>בלי להתחייב לשעות קבועות.</h1>
       </div>
-      <div class="hero-chips">
-        <span>גישה מיידית</span><span>צפייה ללא הגבלה</span><span>מתאים למתחילים</span>
+      <div class="hero-body">
+        <p class="hero-lead">גישה מיידית לכל הקורס. צופים מתי שנוח, עוצרים, מריצים אחורה, ומתחילים לעבוד עם AI כבר היום.</p>
+        <div class="cta-wrap">
+          <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            רוכשים עכשיו ומתחילים
+          </a>
+          <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח · גישה מיידית לאחר הרכישה</span>
+        </div>
+        <div class="hero-chips">
+          <span>גישה מיידית</span><span>צפייה ללא הגבלה</span><span>מתאים למתחילים</span>
+        </div>
       </div>
     </div>
     <div class="hero-media">
