@@ -1,0 +1,89 @@
+<!--
+  ┌───────────────────────────────────────────────────────────────┐
+  │  תבנית מייל ל-Make  (מודול Email > Send an Email, שדה Content = HTML)  │
+  │                                                                 │
+  │  איך משתמשים:                                                   │
+  │  1. העתק את כל הקוד שמתחת להערה הזו.                             │
+  │  2. ב-Make, במודול שליחת המייל, הדבק ב-Content (במצב HTML).      │
+  │  3. החלף כל placeholder בשדה המתאים מהוובהוק:                    │
+  │       {{שם_מלא}}  →  שדה "שם_מלא"                                │
+  │       {{טלפון}}   →  שדה "טלפון"                                 │
+  │       {{מייל}}    →  שדה "מייל"                                  │
+  │       {{מוצר}}    →  שדה "מוצר"                                  │
+  │     (ב-Make מוחקים את הטקסט {{...}} וגוררים לשם את המשתנה)        │
+  │  4. Subject מוצע:  רכישה חדשה, קורס AI מוקלט                     │
+  └───────────────────────────────────────────────────────────────┘
+-->
+<div style="margin:0;padding:0;background:#f6f9fc;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f6f9fc;padding:24px 12px;font-family:Arial,Helvetica,sans-serif;direction:rtl;">
+  <tr>
+    <td align="center">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e1e9f4;">
+
+        <!-- Header -->
+        <tr>
+          <td align="right" style="background:#082A63;padding:20px 28px;">
+            <span style="font-size:20px;font-weight:bold;color:#ffffff;letter-spacing:.5px;">SHWADRON<span style="color:#5AE6DA;">.AI</span></span>
+          </td>
+        </tr>
+
+        <!-- Title -->
+        <tr>
+          <td align="right" style="padding:28px 28px 6px;">
+            <span style="display:inline-block;background:#eaf2fb;color:#0e8c82;font-size:12px;font-weight:bold;letter-spacing:1px;padding:6px 13px;border-radius:100px;">רכישה חדשה</span>
+            <div style="margin:16px 0 4px;font-size:22px;font-weight:bold;color:#0f2140;">פרטים לפתיחת גישה לקורס</div>
+            <div style="font-size:15px;color:#5a6b85;line-height:1.6;">לקוח חדש רכש את הקורס והשאיר פרטים. יש לפתוח לו גישה ולשלוח את הקישור.</div>
+          </td>
+        </tr>
+
+        <!-- Details card -->
+        <tr>
+          <td style="padding:20px 28px 6px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #e1e9f4;border-radius:12px;">
+              <tr>
+                <td align="right" style="padding:15px 18px;border-bottom:1px solid #eef3f9;">
+                  <div style="font-size:13px;color:#5a6b85;margin-bottom:3px;">שם מלא</div>
+                  <div style="font-size:18px;font-weight:bold;color:#0f2140;">{{שם_מלא}}</div>
+                </td>
+              </tr>
+              <tr>
+                <td align="right" style="padding:15px 18px;border-bottom:1px solid #eef3f9;">
+                  <div style="font-size:13px;color:#5a6b85;margin-bottom:3px;">טלפון</div>
+                  <a href="tel:{{טלפון}}" style="font-size:18px;font-weight:bold;color:#123f8a;text-decoration:none;">{{טלפון}}</a>
+                </td>
+              </tr>
+              <tr>
+                <td align="right" style="padding:15px 18px;border-bottom:1px solid #eef3f9;">
+                  <div style="font-size:13px;color:#5a6b85;margin-bottom:3px;">כתובת מייל</div>
+                  <a href="mailto:{{מייל}}" style="font-size:18px;font-weight:bold;color:#123f8a;text-decoration:none;">{{מייל}}</a>
+                </td>
+              </tr>
+              <tr>
+                <td align="right" style="padding:15px 18px;">
+                  <div style="font-size:13px;color:#5a6b85;margin-bottom:3px;">מוצר</div>
+                  <div style="font-size:18px;font-weight:bold;color:#0f2140;">{{מוצר}}</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- CTA -->
+        <tr>
+          <td align="center" style="padding:22px 28px 30px;">
+            <a href="mailto:{{מייל}}" style="display:inline-block;background:#123f8a;color:#ffffff;font-size:16px;font-weight:bold;text-decoration:none;padding:14px 30px;border-radius:12px;">שליחת גישה ללקוח במייל</a>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td align="center" style="background:#071f4d;padding:16px 28px;">
+            <span style="font-size:12px;color:rgba(255,255,255,.6);">SHWADRON.AI · הודעה אוטומטית מהאתר</span>
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+</div>
