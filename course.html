@@ -101,7 +101,7 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .hero-chips{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:22px}
 .hero-chips span{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.9rem;color:var(--text)}
 .hero-chips span::before{content:"✓";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(32,196,182,.18);color:var(--teal-ink);font-size:.7rem;font-weight:900}
-.hero-media{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border);background:#000;aspect-ratio:16/10}
+.hero-media{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border);background:#000;aspect-ratio:9/16;width:100%;max-width:300px;margin-inline:auto}
 .hero-media video{width:100%;height:100%;object-fit:cover;display:block}
 .hero-media .play-tag{position:absolute;bottom:14px;right:14px;background:rgba(8,42,99,.82);color:#fff;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:100px;backdrop-filter:blur(4px);pointer-events:none}
 
@@ -142,9 +142,8 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .proof-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;max-width:960px;margin:0 auto;align-items:center}
 .proof-video{border-radius:22px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border);background:#000;aspect-ratio:16/10}
 .proof-video video{width:100%;height:100%;object-fit:cover}
-.proof-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.proof-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:0 auto;align-items:start}
 .proof-imgs img{width:100%;border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow-sm)}
-.proof-imgs img:first-child{grid-column:1/-1}
 
 /* BONUS */
 .bonuses{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -216,13 +215,15 @@ footer .fc{font-size:.82rem}
   .hero-grid{grid-template-columns:1fr;text-align:center}
   .hero .cta-wrap,.hero-chips{align-items:center;justify-content:center}
   .hero-lead{margin-inline:auto}
-  .hero-media{order:-1;max-width:520px;margin:0 auto}
+  .hero-media{order:-1;max-width:270px;margin:0 auto}
   .benefits,.bonuses{grid-template-columns:repeat(2,1fr)}
-  .proof-wrap{grid-template-columns:1fr}
+  .proof-imgs{grid-template-columns:repeat(3,1fr);max-width:640px}
 }
 @media(max-width:620px){
   .hdr .buy{display:none}
   .benefits,.lessons,.fit,.bonuses{grid-template-columns:1fr}
+  .proof-imgs{grid-template-columns:1fr;max-width:340px}
+  .hero-media{max-width:240px}
   .buy{width:100%}
   .hero .cta-wrap .buy{width:100%;max-width:360px}
   .guarantee{flex-direction:column;text-align:center;gap:14px}
@@ -262,9 +263,7 @@ footer .fc{font-size:.82rem}
       </div>
     </div>
     <div class="hero-media">
-      <!-- PLACEHOLDER poster uses existing brand image; video is the existing course preview -->
-      <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="none" playsinline></video>
-      <span class="play-tag">הצצה לקורס</span>
+      <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="metadata" playsinline></video>
     </div>
   </div>
 </section>
@@ -328,16 +327,11 @@ footer .fc{font-size:.82rem}
 <!-- ===== PROOF (video + real screenshots) ===== -->
 <section class="section soft">
   <div class="container">
-    <div class="head sr"><div class="eyebrow">מהשטח</div><h2 class="title">מה אומרים מי שכבר למדו.</h2><p class="sub">הצצה לקורס, ותגובות אמיתיות מהשטח. הפרטים המזהים טושטשו.</p></div>
-    <div class="proof-wrap reveal">
-      <div class="proof-video">
-        <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="none" playsinline></video>
-      </div>
-      <div class="proof-imgs">
-        <img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="1143"/>
-        <img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="788"/>
-        <img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="502"/>
-      </div>
+    <div class="head sr"><div class="eyebrow">מהשטח</div><h2 class="title">מה אומרים מי שכבר למדו.</h2><p class="sub">תגובות אמיתיות מהשטח. הפרטים המזהים טושטשו.</p></div>
+    <div class="proof-imgs reveal">
+      <img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="1143"/>
+      <img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="788"/>
+      <img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="502"/>
     </div>
   </div>
 </section>
