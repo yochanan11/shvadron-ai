@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>תודה על הרכישה! נפתח לך גישה לקורס | SHWADRON.AI</title>
+<link rel="icon" type="image/png" href="assets/public/icon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#082A63; --deep:#071F4D; --blue:#123F8A; --blue2:#1c56b0;
+  --teal:#20C4B6; --teal-bright:#5AE6DA; --teal-ink:#0E8C82;
+  --bg:#ffffff; --soft:#F6F9FC; --tint:#EAF2FB; --border:#E1E9F4;
+  --text:#0F2140; --muted:#5A6B85;
+  --shadow-lg:0 26px 70px rgba(10,40,90,.16);
+}
+html{scroll-behavior:smooth}
+body{font-family:Heebo,system-ui,Arial,sans-serif;color:var(--text);direction:rtl;min-height:100vh;
+  background:radial-gradient(760px 440px at 80% 10%,rgba(32,196,182,.14),transparent 62%),radial-gradient(760px 500px at 6% 90%,rgba(18,63,138,.1),transparent 60%),linear-gradient(180deg,#fff,var(--soft));
+  display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.6}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--teal-bright);outline-offset:3px;border-radius:6px}
+
+header{height:64px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);background:rgba(246,249,252,.9)}
+header img{height:38px;width:auto}
+
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 20px}
+.card{width:100%;max-width:520px;background:#fff;border:1px solid var(--border);border-radius:26px;box-shadow:var(--shadow-lg);padding:clamp(28px,5vw,44px);text-align:center}
+.check{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-bright));display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(32,196,182,.35);animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+.check svg{width:34px;height:34px;color:#06304f}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:900;letter-spacing:-.02em;line-height:1.2}
+.lead{margin-top:12px;color:var(--muted);font-size:1.05rem;line-height:1.7}
+.lead b{color:var(--text)}
+
+form{margin-top:26px;text-align:right;display:flex;flex-direction:column;gap:14px}
+.field label{display:block;font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.field input{width:100%;font-family:inherit;font-size:1.02rem;padding:14px 15px;border-radius:13px;border:1.5px solid var(--border);background:var(--soft);color:var(--text);transition:border-color .2s,background .2s;direction:rtl}
+.field input:focus{outline:none;border-color:var(--blue);background:#fff}
+.field input::placeholder{color:#aab4c4}
+.submit{margin-top:6px;min-height:56px;border:none;cursor:pointer;border-radius:16px;font-family:inherit;font-weight:900;font-size:1.08rem;
+  background:linear-gradient(120deg,var(--teal),var(--teal-bright));color:#06304f;box-shadow:0 16px 34px rgba(32,196,182,.3);transition:transform .2s,box-shadow .2s}
+.submit:hover{transform:translateY(-2px);box-shadow:0 22px 44px rgba(32,196,182,.4)}
+.submit:disabled{opacity:.7;cursor:default;transform:none}
+.note{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:.9rem}
+.note svg{width:16px;height:16px}
+
+.success{display:none}
+.success .check{background:linear-gradient(135deg,var(--blue),var(--teal))}
+.success .check svg{color:#fff}
+body.done .form-state{display:none}
+body.done .success{display:block}
+
+footer{text-align:center;padding:22px;color:var(--muted);font-size:.82rem}
+@media(max-width:480px){.card{padding:26px 20px}}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="assets/public/logo.png" alt="SHWADRON.AI" width="190" height="38"/>
+</header>
+
+<main>
+  <div class="card">
+
+    <!-- FORM STATE -->
+    <div class="form-state">
+      <div class="check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h1>תודה על הרכישה!</h1>
+      <p class="lead">עוד שלב קטן ואתם בפנים.<br/>מלאו את הפרטים <b>ונפתח לכם גישה לקורס</b> וכל החומרים.</p>
+
+      <form id="access-form" novalidate>
+        <div class="field">
+          <label for="f-name">שם מלא</label>
+          <input id="f-name" name="שם_מלא" type="text" placeholder="ישראל ישראלי" required autocomplete="name"/>
+        </div>
+        <div class="field">
+          <label for="f-phone">טלפון</label>
+          <input id="f-phone" name="טלפון" type="tel" placeholder="050-0000000" required autocomplete="tel" inputmode="tel"/>
+        </div>
+        <div class="field">
+          <label for="f-email">כתובת מייל</label>
+          <input id="f-email" name="מייל" type="email" placeholder="israel@example.com" required autocomplete="email" inputmode="email"/>
+        </div>
+        <button type="submit" class="submit" id="submit-btn">שליחה ופתיחת גישה</button>
+        <div class="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          הפרטים נשלחים אלינו בלבד לצורך פתיחת הגישה
+        </div>
+      </form>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="success" role="status" aria-live="polite">
+      <div class="check" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h1>קיבלנו את הפרטים!</h1>
+      <p class="lead">תודה. נפתח לכם גישה לקורס ונשלח את הקישור בהקדם.<br/>אפשר לסגור את החלון.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>© 2026 SHWADRON.AI · כל הזכויות שמורות</footer>
+
+<script>
+// Recorded-course access form: sends details to the existing Make webhook,
+// then shows the success state so the buyer knows we received it.
+document.getElementById('access-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var form = e.target;
+  if(!form.checkValidity()){ form.reportValidity(); return; }
+  var btn = document.getElementById('submit-btn');
+  btn.textContent = 'שולח...';
+  btn.disabled = true;
+  var fd = new FormData(form);
+  var data = { מוצר: 'קורס AI מוקלט' };
+  fd.forEach(function(v,k){ data[k] = v; });
+  try{
+    await fetch('https://hook.us2.make.com/psjd7do40epacy6laf4zsr1191nr9ldo', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+  }catch(_){}
+  document.body.classList.add('done');
+  window.scrollTo(0,0);
+});
+</script>
+</body>
+</html>
