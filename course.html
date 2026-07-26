@@ -144,10 +144,10 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 
 /* PROOF */
 .proof-carousel{position:relative;max-width:980px;margin:0 auto;padding:0 46px}
-.pc-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 10px;scrollbar-width:none;-ms-overflow-style:none}
+.pc-track{display:flex;align-items:center;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:10px 2px 16px;scrollbar-width:none;-ms-overflow-style:none}
 .pc-track::-webkit-scrollbar{display:none}
-.pc-slide{flex:0 0 auto;width:clamp(240px,74vw,300px);height:clamp(360px,58vh,440px);scroll-snap-align:center;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.pc-slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px}
+.pc-slide{flex:0 0 auto;width:clamp(230px,74vw,272px);scroll-snap-align:center}
+.pc-slide img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff}
 .pc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--blue);font-size:1.6rem;line-height:1;font-weight:900;cursor:pointer;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s,color .2s}
 .pc-arrow:hover{background:var(--blue);color:#fff;transform:translateY(-50%) scale(1.08)}
 .pc-prev{right:0}.pc-next{left:0}
