@@ -491,17 +491,17 @@ footer .fc{font-size:.82rem}
 <script>
 // Single conversion goal: point every buy button to the checkout URL.
 // PLACEHOLDER: replace with the real checkout (סליקה) URL.
-var CHECKOUT_URL = "https://mrng.to/IIJExLH9xt";
-document.querySelectorAll('[data-buy]').forEach(function(a){
-  if(CHECKOUT_URL && CHECKOUT_URL.indexOf('REPLACE') === -1){ a.href = CHECKOUT_URL; }
-});
-
-// Launch price: 285 ILS until 02.08.2026, then the site price rises automatically to 385
-// and the "launch price" note disappears. No manual update needed.
+// Launch window until 02.08.2026: price 285 + launch checkout link.
+// After the date: price rises to 385 automatically, the checkout link switches to the
+// 385 payment page, and the launch-price note disappears. No manual update needed.
 (function(){
+  var CHECKOUT_LAUNCH = "https://mrng.to/IIJExLH9xt"; // 285 ILS
+  var CHECKOUT_REGULAR = "https://mrng.to/zoeR82jDpx"; // 385 ILS
   var LAUNCH_END = new Date('2026-08-02T23:59:59+03:00').getTime();
   var afterLaunch = Date.now() > LAUNCH_END;
+  var checkout = afterLaunch ? CHECKOUT_REGULAR : CHECKOUT_LAUNCH;
   var price = afterLaunch ? '385' : '285';
+  document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = checkout; });
   document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = price + ' ₪'; });
   if(afterLaunch){ document.querySelectorAll('.js-launch').forEach(function(el){ el.style.display = 'none'; }); }
 })();
