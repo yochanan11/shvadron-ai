@@ -110,6 +110,16 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .launch time{font-weight:900;color:var(--blue);direction:ltr}
 .launch-sub{margin-top:8px;color:var(--muted);font-size:.88rem;font-weight:600}
 .launch-sub b{color:var(--text);font-weight:800}
+.coupon{margin-top:16px}
+.coupon-toggle{background:none;border:none;color:var(--blue);font-weight:800;font-size:.92rem;cursor:pointer;text-decoration:underline;font-family:inherit;padding:4px}
+.coupon-form{margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.coupon-form input{font-family:inherit;font-size:1rem;padding:11px 14px;border-radius:12px;border:1.5px solid var(--border);background:var(--soft);color:var(--text);direction:rtl;min-width:150px}
+.coupon-form input:focus{outline:none;border-color:var(--blue);background:#fff}
+.coupon-form button{font-family:inherit;font-weight:800;min-height:44px;padding:0 20px;border-radius:12px;border:none;background:var(--blue);color:#fff;cursor:pointer}
+.coupon-form button:disabled{opacity:.6;cursor:default}
+.coupon-msg{width:100%;font-size:.9rem;font-weight:700;margin-top:8px}
+.coupon-msg.ok{color:var(--teal-ink)}
+.coupon-msg.err{color:#c0392b}
 .hero-media{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border);background:#000;aspect-ratio:9/16;width:100%;max-width:300px;margin-inline:auto}
 .hero-media video{width:100%;height:100%;object-fit:cover;display:block}
 .hero-media .play-tag{position:absolute;bottom:14px;right:14px;background:rgba(8,42,99,.82);color:#fff;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:100px;backdrop-filter:blur(4px);pointer-events:none}
@@ -427,6 +437,14 @@ footer .fc{font-size:.82rem}
         אני רוצה להתחיל ללמוד עכשיו
       </a>
       <div class="cta-wrap" style="margin-top:14px"><span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח בכרטיס אשראי</span></div>
+      <div class="coupon js-coupon" style="display:none">
+        <button type="button" class="coupon-toggle" id="couponToggle">יש לך קוד קופון?</button>
+        <div class="coupon-form" id="couponForm" hidden>
+          <input type="text" id="couponInput" placeholder="הזינו קוד קופון" autocomplete="off" aria-label="קוד קופון"/>
+          <button type="button" id="couponApply">הפעלה</button>
+          <div class="coupon-msg" id="couponMsg" aria-live="polite"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -504,6 +522,30 @@ footer .fc{font-size:.82rem}
   document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = checkout; });
   document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = price + ' ₪'; });
   if(afterLaunch){ document.querySelectorAll('.js-launch').forEach(function(el){ el.style.display = 'none'; }); }
+
+  // Coupon: after the launch date, a valid coupon brings the price back to 285 (and the 285 checkout link).
+  var COUPON_CODE = "PLACEHOLDER285"; // <-- set the real coupon code here
+  if(afterLaunch){
+    var wrap=document.querySelector('.js-coupon');
+    if(wrap){
+      wrap.style.display='';
+      var toggle=document.getElementById('couponToggle'), form=document.getElementById('couponForm');
+      var input=document.getElementById('couponInput'), applyBtn=document.getElementById('couponApply'), msg=document.getElementById('couponMsg');
+      toggle.addEventListener('click',function(){ form.hidden=!form.hidden; if(!form.hidden){ input.focus(); } });
+      function apply(){
+        if((input.value||'').trim().toLowerCase()===COUPON_CODE.toLowerCase()){
+          document.querySelectorAll('.js-price').forEach(function(el){ el.textContent='285 ₪'; });
+          document.querySelectorAll('[data-buy]').forEach(function(a){ a.href=CHECKOUT_LAUNCH; });
+          msg.textContent='הקופון הופעל. המחיר עודכן ל-285 ₪.'; msg.className='coupon-msg ok';
+          input.disabled=true; applyBtn.disabled=true; toggle.style.display='none';
+        } else {
+          msg.textContent='קוד קופון לא תקין.'; msg.className='coupon-msg err';
+        }
+      }
+      applyBtn.addEventListener('click',apply);
+      input.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); apply(); } });
+    }
+  }
 })();
 
 // Reveal on scroll
