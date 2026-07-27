@@ -269,9 +269,8 @@ footer .fc{font-size:.82rem}
       </div>
       <div class="hero-body">
         <p class="hero-lead">אותם השיעורים שנלמדים בקורס החי, עכשיו לצפייה בקצב שלכם.</p>
-        <div class="hero-price"><s>950 ₪</s><b>285 ₪</b><span>בלבד · תשלום חד פעמי</span></div>
-        <div class="launch">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
-        <div class="launch-sub">לאחר התאריך המחיר עולה ל<b>385 ₪</b></div>
+        <div class="hero-price"><s>950 ₪</s><b class="js-price">285 ₪</b><span>בלבד · תשלום חד פעמי</span></div>
+        <div class="launch js-launch">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
         <div class="cta-wrap">
           <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -414,10 +413,9 @@ footer .fc{font-size:.82rem}
     <div class="price-card reveal">
       <div class="price-eyebrow">גישה דיגיטלית לקורס · גישה מיידית</div>
       <div class="price-compare">במקום <s>950 ₪</s> מחיר הקורס החי</div>
-      <div class="price-now"><b>285 ₪</b><span>+ מע״מ · תשלום חד פעמי</span></div>
+      <div class="price-now"><b class="js-price">285 ₪</b><span>+ מע״מ · תשלום חד פעמי</span></div>
       <div class="price-note">גישה מלאה לכל ארבעת השיעורים, בקצב שלכם.</div>
-      <div class="launch" style="margin:2px auto 6px">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
-      <div class="launch-sub" style="margin-bottom:18px">לאחר התאריך המחיר עולה ל<b>385 ₪</b></div>
+      <div class="launch js-launch" style="margin:2px auto 18px">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
       <ul class="price-incl">
         <li>כל 4 שיעורי הקורס, גישה מיידית</li>
         <li>צפייה ללא הגבלה מכל מכשיר</li>
@@ -486,7 +484,7 @@ footer .fc{font-size:.82rem}
 
 <!-- ===== STICKY MOBILE BUY BAR ===== -->
 <div class="stickybar" id="stickybar">
-  <div class="sb-price"><b>285 ₪</b><s>950 ₪</s></div>
+  <div class="sb-price"><b class="js-price">285 ₪</b><s>950 ₪</s></div>
   <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">להתחיל ללמוד</a>
 </div>
 
@@ -497,6 +495,16 @@ var CHECKOUT_URL = "https://mrng.to/IIJExLH9xt";
 document.querySelectorAll('[data-buy]').forEach(function(a){
   if(CHECKOUT_URL && CHECKOUT_URL.indexOf('REPLACE') === -1){ a.href = CHECKOUT_URL; }
 });
+
+// Launch price: 285 ILS until 02.08.2026, then the site price rises automatically to 385
+// and the "launch price" note disappears. No manual update needed.
+(function(){
+  var LAUNCH_END = new Date('2026-08-02T23:59:59+03:00').getTime();
+  var afterLaunch = Date.now() > LAUNCH_END;
+  var price = afterLaunch ? '385' : '285';
+  document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = price + ' ₪'; });
+  if(afterLaunch){ document.querySelectorAll('.js-launch').forEach(function(el){ el.style.display = 'none'; }); }
+})();
 
 // Reveal on scroll
 function obs(){return new IntersectionObserver(function(e,o){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');o.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -50px 0px'})}
