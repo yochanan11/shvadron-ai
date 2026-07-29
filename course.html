@@ -21,6 +21,36 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'"/>
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap"/></noscript>
 
+<!-- ═══════════ ANALYTICS ═══════════
+     כדי להפעיל מדידה, מלאו את שני המזהים כאן (וזה המקום היחיד שצריך לגעת בו):
+       GA4_ID     = "G-XXXXXXXXXX"  ← Google Analytics 4
+       CLARITY_ID = "xxxxxxxxxx"    ← Microsoft Clarity (Heatmap)
+     כל עוד הם ריקים, שום סקריפט חיצוני לא נטען ואין שגיאות.
+-->
+<script>
+window.SHW_ANALYTICS = { GA4_ID: "", CLARITY_ID: "" };
+(function(){
+  var cfg = window.SHW_ANALYTICS;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ window.dataLayer.push(arguments); };
+  if (cfg.GA4_ID) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + cfg.GA4_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', cfg.GA4_ID);
+  }
+  if (cfg.CLARITY_ID) {
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", cfg.CLARITY_ID);
+  }
+})();
+</script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -284,13 +314,13 @@ footer .fc{font-size:.82rem}
       </div>
     </div>
     <div class="hero-media">
-      <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="metadata" playsinline></video>
+      <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="none" playsinline></video>
     </div>
   </div>
 </section>
 
 <!-- ===== BENEFITS ===== -->
-<section class="section">
+<section class="section" id="benefits">
   <div class="container">
     <div class="head sr"><div class="eyebrow">למה הקורס הזה</div><h2 class="title">כל מה שצריך כדי להתחיל, <em>בלי מחסומים.</em></h2></div>
     <div class="benefits sr">
@@ -306,7 +336,7 @@ footer .fc{font-size:.82rem}
 </section>
 
 <!-- ===== WHAT YOU LEARN ===== -->
-<section class="section soft">
+<section class="section soft" id="lessons">
   <div class="container">
     <div class="head sr"><div class="eyebrow">מה לומדים</div><h2 class="title">ארבעה שיעורים מלאים. <em>כל אחד תוצר ביד.</em></h2><p class="sub">כל תוכן הקורס, בגרסת הצפייה. צופים בקצב שלכם ומיישמים כבר תוך כדי.</p></div>
     <div class="lessons sr">
@@ -346,7 +376,7 @@ footer .fc{font-size:.82rem}
 </section>
 
 <!-- ===== WHY THE PRICE DIFFERS ===== -->
-<section class="section">
+<section class="section" id="why-price">
   <div class="container">
     <div class="head sr"><div class="eyebrow">שאלה שכדאי לשאול</div><h2 class="title">למה המחיר כאן נמוך יותר?</h2><p class="sub">אותו ידע בדיוק. ההבדל הוא במבנה הלמידה, לא באיכות התוכן.</p></div>
     <div class="fit sr">
@@ -516,6 +546,39 @@ footer .fc{font-size:.82rem}
   document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = checkout; });
   document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = price + ' ₪'; });
   if(afterLaunch){ document.querySelectorAll('.js-launch').forEach(function(el){ el.style.display = 'none'; }); }
+  window.SHW_PRICE = Number(price);
+})();
+
+// ─── Conversion tracking: which CTA gets clicked, and the move to checkout ───
+(function(){
+  function where(el){
+    if(el.closest('header')) return 'header';
+    if(el.closest('.stickybar')) return 'sticky_mobile';
+    if(el.closest('.hero')) return 'hero';
+    if(el.closest('.price-card')) return 'price_card';
+    if(el.closest('.final')) return 'final_cta';
+    var s = el.closest('section');
+    return (s && s.id) ? s.id : 'other';
+  }
+  var value = window.SHW_PRICE || 285;
+  var item = { item_id:'course-digital', item_name:'גישה דיגיטלית לקורס AI', price:value, quantity:1 };
+  document.querySelectorAll('[data-buy]').forEach(function(a){
+    a.addEventListener('click', function(){
+      var loc = where(a);
+      gtag('event','click_buy_course',{ cta_location: loc, value: value, currency:'ILS' });
+      gtag('event','begin_checkout',{ currency:'ILS', value: value, items:[item] });
+    });
+  });
+  // How far people actually read before leaving
+  var marks = [25,50,75,100], seen = {};
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(h <= 0) return;
+    var pct = (window.scrollY / h) * 100;
+    marks.forEach(function(m){
+      if(pct >= m && !seen[m]){ seen[m] = 1; gtag('event','scroll_depth',{ percent_scrolled: m }); }
+    });
+  }, {passive:true});
 })();
 
 // Reveal on scroll
