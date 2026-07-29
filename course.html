@@ -144,6 +144,24 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .hero-media video{width:100%;height:100%;object-fit:cover;display:block}
 .hero-media .play-tag{position:absolute;bottom:14px;right:14px;background:rgba(8,42,99,.82);color:#fff;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:100px;backdrop-filter:blur(4px);pointer-events:none}
 
+/* OUTCOMES */
+.outcomes{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto}
+.outcome{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px 24px;box-shadow:var(--shadow-sm)}
+.outcome:last-child:nth-child(odd){grid-column:1/-1}
+.oc-check{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-bright));color:#06304f;display:grid;place-items:center;font-weight:900;font-size:.9rem;margin-top:2px}
+.outcome h3{font-size:1.08rem;font-weight:800;margin-bottom:5px;line-height:1.4}
+.outcome p{color:var(--muted);font-size:.96rem;line-height:1.6}
+
+/* TRUST STRIP */
+.trustbar{background:var(--navy);color:#fff;padding:clamp(30px,4vw,44px) 0}
+.tb-nums{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;max-width:820px;margin:0 auto}
+.tb-nums b{display:block;font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:900;color:var(--teal-bright);line-height:1}
+.tb-nums span{display:block;margin-top:7px;font-size:.86rem;color:rgba(255,255,255,.7);font-weight:600}
+.tb-orgs{margin-top:30px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14);text-align:center}
+.tb-orgs p{font-size:.9rem;color:rgba(255,255,255,.62);margin-bottom:14px;font-weight:600}
+.tb-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px}
+.tb-logos span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:9px 18px;font-weight:800;font-size:.95rem;color:#fff}
+
 /* BENEFITS */
 .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .benefit{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
@@ -262,10 +280,12 @@ footer .fc{font-size:.82rem}
   .hero .cta-wrap,.hero-chips,.hero-price{align-items:center;justify-content:center}
   .hero-lead{margin-inline:auto}
   .benefits,.bonuses{grid-template-columns:repeat(2,1fr)}
+  .tb-nums{grid-template-columns:repeat(2,1fr);gap:24px 16px}
 }
 @media(max-width:620px){
   .hdr .buy{display:none}
-  .benefits,.lessons,.fit,.bonuses{grid-template-columns:1fr}
+  .benefits,.lessons,.fit,.bonuses,.outcomes{grid-template-columns:1fr}
+  .tb-logos span{font-size:.88rem;padding:8px 14px}
   .proof-carousel{padding:0 40px}
   .pc-arrow{width:40px;height:40px;font-size:1.4rem}
   .hero-media{max-width:240px}
@@ -295,10 +315,10 @@ footer .fc{font-size:.82rem}
     <div class="hero-text">
       <div class="hero-head">
         <div class="hero-badge"><i></i>לראשונה · גישה דיגיטלית לקורס</div>
-        <h1>גישה דיגיטלית לקורס <span class="teal">ה-AI המלא</span>.</h1>
+        <h1>למדו לעבוד נכון עם <span class="teal">AI</span>,<br/>בזמן שלכם ובקצב שלכם.</h1>
       </div>
       <div class="hero-body">
-        <p class="hero-lead">אותם השיעורים שנלמדים בקורס החי, עכשיו לצפייה בקצב שלכם.</p>
+        <p class="hero-lead">גישה דיגיטלית ל-4 שיעורי הקורס המלא. 8 שעות של תוכן מעשי, אותם השיעורים שנלמדים בקורס החי.</p>
         <div class="hero-price"><s>950 ₪</s><b class="js-price">285 ₪</b><span>בלבד · תשלום חד פעמי</span></div>
         <div class="launch js-launch">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
         <div class="cta-wrap">
@@ -320,6 +340,24 @@ footer .fc{font-size:.82rem}
 </section>
 
 <!-- ===== BENEFITS ===== -->
+<!-- ===== TRUST STRIP ===== -->
+<section class="trustbar">
+  <div class="container">
+    <div class="tb-nums sr">
+      <div><b>8</b><span>שעות תוכן</span></div>
+      <div><b>4</b><span>שיעורים מלאים</span></div>
+      <div><b>מיידית</b><span>גישה לאחר הרכישה</span></div>
+      <div><b>ללא הגבלה</b><span>צפייה חוזרת</span></div>
+    </div>
+    <div class="tb-orgs reveal">
+      <p>יוחנן העביר הרצאות והדרכות AI בארגונים ובמוסדות, בהם:</p>
+      <div class="tb-logos">
+        <span>כיוון</span><span>המבשר</span><span>חוצות ירושלים</span><span>דרשו</span><span>ועוד</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="benefits">
   <div class="container">
     <div class="head sr"><div class="eyebrow">למה הקורס הזה</div><h2 class="title">כל מה שצריך כדי להתחיל, <em>בלי מחסומים.</em></h2></div>
@@ -344,6 +382,21 @@ footer .fc{font-size:.82rem}
       <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>2</b>שיעור שני</div><span class="lesson-time">שיעור מלא</span></div><h3>קוד המאסטרים</h3><p>עקרונות פרומפטינג שמביאים תוצאה, בניית ספריית פרומפטים אישית, ומרעיון למצגת מקצועית.</p></div>
       <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>3</b>שיעור שלישי</div><span class="lesson-time">שיעור מלא</span></div><h3>המוח הכפול: הסוכן האישי שלכם</h3><p>בונים סוכן AI אישי שמכיר את התחום שלכם, כותב בסגנון שלכם, ועובד בשבילכם.</p></div>
       <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>4</b>שיעור רביעי</div><span class="lesson-time">שיעור מלא</span></div><h3>המאסטרינג: לעבוד על אוטומט</h3><p>תהליכי עבודה וצוות סוכנים שעובד בשבילכם, וארגז הכלים המלא כדי להישאר קדימה.</p></div>
+    </div>
+    <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה להתחיל ללמוד</a></div>
+  </div>
+</section>
+
+<!-- ===== OUTCOMES: what you'll be able to do ===== -->
+<section class="section" id="outcomes">
+  <div class="container">
+    <div class="head sr"><div class="eyebrow">התוצאה</div><h2 class="title">מה תדעו לעשות <em>בסיום הקורס</em>.</h2><p class="sub">לא רק מה לומדים, אלא מה תדעו לעשות בפועל כבר למחרת.</p></div>
+    <div class="outcomes sr">
+      <div class="outcome"><span class="oc-check">✓</span><div><h3>לכתוב פרומפטים שמייצרים תוצאות מדויקות</h3><p>להפסיק לקבל תשובות גנריות, ולהגיע לתוצר שאפשר להשתמש בו מיד.</p></div></div>
+      <div class="outcome"><span class="oc-check">✓</span><div><h3>להשתמש ב-AI בעבודה היומיומית</h3><p>מיילים, ניסוחים, מענה ללקוחות ומשימות חוזרות, בשבריר מהזמן.</p></div></div>
+      <div class="outcome"><span class="oc-check">✓</span><div><h3>להכין מצגות וסיכומים</h3><p>מרעיון גולמי למצגת או מסמך מסודר, מהר ובאיכות מקצועית.</p></div></div>
+      <div class="outcome"><span class="oc-check">✓</span><div><h3>ליצור תוכן במהירות</h3><p>תוכן שיווקי, פוסטים וחומרים כתובים, בלי להתחיל מדף ריק.</p></div></div>
+      <div class="outcome"><span class="oc-check">✓</span><div><h3>לבנות סוכן AI בסיסי</h3><p>עוזר אישי שמכיר את התחום שלכם ועובד בשבילכם, גם כשאתם עסוקים.</p></div></div>
     </div>
     <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה להתחיל ללמוד</a></div>
   </div>
@@ -442,13 +495,15 @@ footer .fc{font-size:.82rem}
     <div class="head sr"><div class="eyebrow">הצטרפות</div><h2 class="title">מחיר אחד. גישה מלאה.</h2></div>
     <div class="price-card reveal">
       <div class="price-eyebrow">גישה דיגיטלית לקורס · גישה מיידית</div>
+      <p class="js-launch" style="color:var(--muted);font-size:1rem;line-height:1.7;max-width:400px;margin:0 auto 18px">זו ההשקה הראשונה של גרסת הצפייה, ולכן פתחנו אותה במחיר מיוחד.</p>
       <div class="price-compare">במקום <s>950 ₪</s> מחיר הקורס החי</div>
       <div class="price-now"><b class="js-price">285 ₪</b><span>+ מע״מ · תשלום חד פעמי</span></div>
-      <div class="price-note">גישה מלאה לכל ארבעת השיעורים, בקצב שלכם.</div>
-      <div class="launch js-launch" style="margin:2px auto 18px">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
+      <div class="price-note">גישה מלאה לכל ארבעת השיעורים, 8 שעות תוכן.</div>
+      <div class="launch js-launch" style="margin:2px auto 6px">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
+      <p class="js-launch" style="color:var(--muted);font-size:.88rem;font-weight:600;margin-bottom:18px">לאחר תקופת ההשקה המחיר יתעדכן.</p>
       <ul class="price-incl">
-        <li>כל 4 שיעורי הקורס, גישה מיידית</li>
-        <li>צפייה ללא הגבלה מכל מכשיר</li>
+        <li>4 שיעורים מלאים, 8 שעות תוכן</li>
+        <li>גישה מיידית וצפייה ללא הגבלה</li>
         <li>חומרי עזר וספריית פרומפטים</li>
         <li>עדכונים עתידיים ללא תשלום</li>
       </ul>
@@ -483,7 +538,10 @@ footer .fc{font-size:.82rem}
       <details><summary>איך מקבלים גישה אחרי הרכישה?</summary><p>מיד לאחר התשלום מקבלים גישה לכל השיעורים ומתחילים ללמוד תוך דקות.</p></details>
       <details><summary>אפשר לצפות מהטלפון?</summary><p>בהחלט. הקורס נצפה מכל מכשיר, מחשב, טאבלט או טלפון, בכל מקום.</p></details>
       <details><summary>צריך ידע קודם או רקע טכני?</summary><p>לא. הקורס בנוי מאפס, בגובה העיניים. אם אתם יודעים לגלוש באינטרנט, אתם מוכנים.</p></details>
-      <details><summary>כמה זמן אורך הקורס?</summary><p>ארבעה שיעורים מלאים. אפשר לצפות בהם ברצף או בפריסה נוחה, לגמרי בקצב שלכם.</p></details>
+      <details><summary>כמה זמן אורך הקורס?</summary><p>ארבעה שיעורים מלאים, בסך הכל כ-8 שעות תוכן. אפשר לצפות בהם ברצף או בפריסה נוחה, לגמרי בקצב שלכם.</p></details>
+      <details><summary>מה ההבדל בין זה לקורס החי?</summary><p>התוכן זהה, אלה אותם ארבעת השיעורים. ההבדל הוא במבנה: בקורס החי יש מפגשים בזמן אמת, שאלות ותשובות וליווי אישי, ולכן מחירו 950 ₪. בגרסה הדיגיטלית הלמידה עצמאית, ולכן המחיר נמוך יותר.</p></details>
+      <details><summary>למי הקורס מתאים?</summary><p>לבעלי עסקים, עצמאים, עובדי משרד, אנשי חינוך ומתחילים בלי רקע טכני. לכל מי שרוצה לעבוד חכם יותר עם AI.</p></details>
+      <details><summary>האם יש עדכונים?</summary><p>כן. כשמתווסף תוכן או מתעדכנים כלים, אתם מקבלים את העדכונים בלי תשלום נוסף.</p></details>
     </div>
   </div>
 </section>
