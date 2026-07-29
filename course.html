@@ -121,13 +121,13 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 
 /* HERO */
 .hero{background:radial-gradient(760px 440px at 78% 20%,rgba(32,196,182,.16),transparent 64%),radial-gradient(900px 600px at 6% 90%,rgba(18,63,138,.1),transparent 62%),linear-gradient(180deg,#fff,var(--soft));padding:clamp(40px,6vw,72px) 0 clamp(52px,7vw,80px);overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,52px);align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(24px,3vw,40px);align-items:center}
 .hero-badge{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow-sm);border-radius:100px;padding:8px 16px;font-weight:700;font-size:.85rem;color:var(--text);margin-bottom:20px}
 .hero-badge i{width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(32,196,182,.18)}
-.hero h1{font-size:clamp(2.3rem,5.2vw,3.7rem);line-height:1.06;font-weight:900;letter-spacing:-.02em}
+.hero h1{font-size:clamp(1.95rem,3.6vw,2.65rem);line-height:1.16;font-weight:900;letter-spacing:-.02em;text-wrap:balance}
 .hero h1 .teal{color:var(--teal-ink)}
-.hero-lead{margin-top:20px;color:var(--muted);font-size:clamp(1.06rem,1.8vw,1.28rem);line-height:1.7;max-width:520px}
-.hero .cta-wrap{align-items:flex-start;margin-top:28px}
+.hero-lead{margin-top:16px;color:var(--muted);font-size:clamp(1.04rem,1.6vw,1.18rem);line-height:1.65;max-width:560px}
+.hero .cta-wrap{align-items:flex-start;margin-top:18px}
 .hero-chips{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:22px}
 .hero-chips span{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.9rem;color:var(--text)}
 .hero-chips span::before{content:"✓";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(32,196,182,.18);color:var(--teal-ink);font-size:.7rem;font-weight:900}
@@ -143,6 +143,27 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .hero-media{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--border);background:#000;aspect-ratio:9/16;width:100%;max-width:300px;margin-inline:auto}
 .hero-media video{width:100%;height:100%;object-fit:cover;display:block}
 .hero-media .play-tag{position:absolute;bottom:14px;right:14px;background:rgba(8,42,99,.82);color:#fff;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:100px;backdrop-filter:blur(4px);pointer-events:none}
+
+/* HERO TRUST + MINI SOCIAL PROOF */
+.hero-trustline{display:flex;align-items:flex-start;gap:8px;margin-top:12px;background:rgba(32,196,182,.09);border:1px solid rgba(32,196,182,.26);border-radius:12px;padding:9px 14px;font-size:.9rem;color:var(--text);font-weight:600;line-height:1.45;max-width:520px}
+.hero-trustline span{flex-shrink:0}
+.assure{display:flex;flex-wrap:wrap;gap:7px 16px;margin-top:14px}
+.assure span{display:inline-flex;align-items:center;gap:7px;font-size:.9rem;font-weight:700;color:var(--text)}
+.assure span::before{content:"✓";display:grid;place-items:center;width:19px;height:19px;border-radius:50%;background:rgba(32,196,182,.2);color:var(--teal-ink);font-size:.68rem;font-weight:900}
+.minitest{margin-top:18px;display:flex;flex-direction:column;gap:10px;max-width:300px;margin-inline:auto}
+.minitest-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow-sm)}
+.minitest-stars{color:#f5b301;font-size:.85rem;letter-spacing:1px;line-height:1}
+.minitest-card p{margin-top:6px;font-size:.92rem;line-height:1.55;color:var(--text);font-weight:600}
+
+/* MINI FAQ */
+.minifaq{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.minifaq details{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.minifaq details[open]{border-color:rgba(32,196,182,.5)}
+.minifaq summary{cursor:pointer;list-style:none;padding:15px 18px;font-weight:800;font-size:.98rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.minifaq summary::-webkit-details-marker{display:none}
+.minifaq summary::after{content:"▼";color:var(--blue);font-size:.7rem;transition:transform .3s}
+.minifaq details[open] summary::after{transform:rotate(180deg)}
+.minifaq p{padding:0 18px 16px;color:var(--muted);font-size:.94rem;line-height:1.7}
 
 /* OUTCOMES */
 .outcomes{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto}
@@ -275,8 +296,23 @@ footer .fc{font-size:.82rem}
   .hero-grid{display:flex;flex-direction:column;text-align:center}
   .hero-text{display:contents}
   .hero-head{order:1}
-  .hero-media{order:2;max-width:270px;margin:16px auto 4px}
-  .hero-body{order:3}
+  /* Mobile hero order: headline > video > price > CTA > everything else,
+     so the primary CTA stays as close to the fold as possible. */
+  .hero-visual,.hero-body{display:contents}
+  .hero{padding-top:18px;padding-bottom:34px}
+  .hero-badge{margin-bottom:12px}
+  .hero-head{order:1}
+  .hero-media{order:2;max-width:none;width:auto;height:clamp(240px,32vh,290px);aspect-ratio:9/16;margin:12px auto 8px}
+  .hero .launch{margin-top:6px}
+  .hero-price{order:3;margin-top:4px}
+  .hero .launch{order:4}
+  .hero .cta-wrap{order:5;margin-top:14px}
+  .hero-lead{order:6;margin-top:18px}
+  .hero-trustline{order:7}
+  .assure{order:8}
+  .hero-chips{order:9}
+  .minitest{order:10;margin-top:20px;max-width:340px}
+  .hero-trustline,.assure{margin-inline:auto;justify-content:center;text-align:right}
   .hero .cta-wrap,.hero-chips,.hero-price{align-items:center;justify-content:center}
   .hero-lead{margin-inline:auto}
   .benefits,.bonuses{grid-template-columns:repeat(2,1fr)}
@@ -284,7 +320,7 @@ footer .fc{font-size:.82rem}
 }
 @media(max-width:620px){
   .hdr .buy{display:none}
-  .benefits,.lessons,.fit,.bonuses,.outcomes{grid-template-columns:1fr}
+  .benefits,.lessons,.fit,.bonuses,.outcomes,.minifaq{grid-template-columns:1fr}
   .tb-logos span{font-size:.88rem;padding:8px 14px}
   .proof-carousel{padding:0 40px}
   .pc-arrow{width:40px;height:40px;font-size:1.4rem}
@@ -315,26 +351,53 @@ footer .fc{font-size:.82rem}
     <div class="hero-text">
       <div class="hero-head">
         <div class="hero-badge"><i></i>לראשונה · גישה דיגיטלית לקורס</div>
-        <h1>למדו לעבוד נכון עם <span class="teal">AI</span>,<br/>בזמן שלכם ובקצב שלכם.</h1>
+        <h1>למדו לעבוד עם <span class="teal">AI</span> בצורה מסודרת,<br/>ולחסוך שעות עבודה בכל שבוע.</h1>
       </div>
       <div class="hero-body">
         <p class="hero-lead">גישה דיגיטלית ל-4 שיעורי הקורס המלא. 8 שעות של תוכן מעשי, אותם השיעורים שנלמדים בקורס החי.</p>
         <div class="hero-price"><s>950 ₪</s><b class="js-price">285 ₪</b><span>בלבד · תשלום חד פעמי</span></div>
         <div class="launch js-launch">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
+        <p class="hero-trustline"><span>⭐</span> מבוסס על הקורס החי שבו השתתפו בעלי עסקים, אנשי מקצוע ועובדי משרדים.</p>
+        <div class="assure">
+          <span>גישה מיידית</span><span>צפייה מכל מכשיר</span><span>תשלום מאובטח</span>
+        </div>
         <div class="cta-wrap">
           <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             אני רוצה להתחיל ללמוד עכשיו
           </a>
-          <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח · גישה מיידית לאחר הרכישה</span>
         </div>
         <div class="hero-chips">
-          <span>גישה מיידית</span><span>צפייה מכל מכשיר</span><span>ללא ידע קודם</span><span>לומדים בקצב אישי</span>
+          <span>ללא ידע קודם</span><span>לומדים בקצב אישי</span>
         </div>
       </div>
     </div>
-    <div class="hero-media">
-      <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="none" playsinline></video>
+    <div class="hero-visual">
+      <div class="hero-media">
+        <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="none" playsinline></video>
+      </div>
+      <div class="minitest">
+        <div class="minitest-card">
+          <div class="minitest-stars">★★★★★</div>
+          <p>"כבר היום אני משתמש בכלים שנתת. זה שווה כל שקל."</p>
+        </div>
+        <div class="minitest-card">
+          <div class="minitest-stars">★★★★★</div>
+          <p>"מפגש מקצועי, מרתק ועשיר בידע, עם העברת תוכן מדויקת."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MINI FAQ (right under the first CTA) ===== -->
+<section class="section" style="padding-top:clamp(34px,4vw,46px);padding-bottom:clamp(34px,4vw,46px)">
+  <div class="container">
+    <div class="minifaq">
+      <details><summary>צריך ניסיון קודם?</summary><p>לא. הקורס בנוי מאפס ובגובה העיניים. אם אתם יודעים לגלוש באינטרנט, אתם מוכנים.</p></details>
+      <details><summary>לכמה זמן יש גישה?</summary><p>גישה מלאה לכל ארבעת השיעורים, וצפייה חוזרת ללא הגבלה, בקצב שלכם.</p></details>
+      <details><summary>מה ההבדל מהקורס החי?</summary><p>התוכן זהה, אותם ארבעת השיעורים. בקורס החי יש מפגשים בזמן אמת וליווי, ולכן הוא 950 ₪. כאן הלמידה עצמאית, ולכן המחיר נמוך יותר.</p></details>
+      <details><summary>איך מקבלים גישה אחרי הרכישה?</summary><p>מיד לאחר התשלום ממלאים פרטים קצרים ומקבלים את הגישה לכל השיעורים.</p></details>
     </div>
   </div>
 </section>
