@@ -5,28 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
 <title>עלית על הרציף. המקום שלך נשמר | SHWADRON.AI</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+/* Legacy names remapped onto the Shwadron.AI design system.
+   Every value now resolves to a token from assets/css/shwadron-ds.css. */
 :root{
-  --blue:#123F8A;
-  --blue2:#1c56b0;
-  --teal:#20C4B6;
-  --teal2:#5AE6DA;
-  --teal-text:#0E8C82;
-  --navy:#082A63;
-  --bg:#F7F9FC;
-  --bg2:#ffffff;
-  --text:#1E2A44;
-  --text2:#1E2A44;
-  --muted:#5b6b86;
-  --border:#E7EEF7;
-  --shadow:0 2px 16px rgba(0,0,0,.08);
-  --shadow-lg:0 8px 40px rgba(0,0,0,.13);
+  --blue:var(--color-primary);
+  --blue2:var(--color-primary-hover);
+  --teal:var(--color-accent);
+  --teal2:var(--turquoise-400);
+  --teal-text:var(--turquoise-700);
+  --navy:var(--color-surface-inverse);
+  --bg:var(--color-surface-sunken);
+  --bg2:var(--color-surface);
+  --text:var(--color-ink);
+  --text2:var(--color-ink);
+  --muted:var(--color-ink-soft);
+  --border:var(--color-border);
+  --shadow:0 8px 24px rgba(10,26,51,.10);
+  --shadow-lg:0 20px 48px rgba(10,26,51,.14);
 }
 html{scroll-behavior:smooth}
 body{
-  font-family:'Heebo',sans-serif;
+  font-family:var(--font-sans);
   background:var(--bg2);
   color:var(--text);
   direction:rtl;
@@ -446,6 +448,91 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
   .next-steps{padding:60px 6%}
   .payment-section{padding:56px 6%}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   DESIGN SYSTEM LAYER - Shwadron.AI
+   Presentation only. No copy, order, link or behaviour is
+   touched below (the payment link and its timer stay as-is).
+   ═══════════════════════════════════════════════════════════ */
+
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+
+/* ── Nav ── */
+nav{background:var(--color-surface-inverse);border-bottom:1px solid rgba(255,255,255,.15)}
+.logo img{filter:brightness(0) invert(1)}
+.nav-back{border-radius:var(--radius-pill);font-size:var(--fs-sm);font-weight:var(--fw-medium);
+  color:rgba(255,255,255,.85);transition:background var(--dur-fast) var(--ease-standard)}
+.nav-back:hover{background:rgba(255,255,255,.08);color:var(--white)}
+
+/* ── Surfaces: flat only, no gradients or textures ── */
+.hero-char-glow{display:none}
+.hero-character-img{filter:none}
+.check-circle{background:var(--color-accent);color:var(--color-ink);box-shadow:none;animation:none}
+.hero-band,.hero-sep{background:var(--color-accent)}
+.agent-label{background:var(--color-primary);color:var(--white);box-shadow:none;transform:none;
+  border-radius:var(--radius-pill);font-size:var(--fs-xs);font-weight:var(--fw-semibold);letter-spacing:var(--ls-wide)}
+.agent-label::before{display:none}
+.tl-num{background:var(--color-primary);color:var(--white);box-shadow:none;font-weight:var(--fw-black)}
+.tl-line{background:var(--color-border)}
+.pay-card{background:var(--color-surface-inverse);border:1px solid rgba(255,255,255,.15);
+  border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
+.pay-card::before{display:none}
+
+/* ── Gradient text replaced with solid brand colour ── */
+.hero-subline,.s-title em{background:none;-webkit-background-clip:initial;background-clip:initial;
+  -webkit-text-fill-color:initial;color:var(--color-primary)}
+
+/* ── Typography ── */
+.hero-title{font-size:clamp(var(--fs-2xl),6.5vw,var(--fs-4xl));font-weight:var(--fw-black);
+  line-height:var(--lh-tight);letter-spacing:var(--ls-tight);color:var(--color-ink)}
+.hero-subline{font-size:clamp(var(--fs-lg),3vw,var(--fs-2xl));font-weight:var(--fw-black);line-height:var(--lh-snug)}
+.hero-desc{font-size:var(--fs-base);line-height:var(--lh-relaxed)}
+.hero-desc strong{font-weight:var(--fw-bold)}
+.hero-slogan{font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--turquoise-700)}
+.s-title{font-size:clamp(var(--fs-xl),3.5vw,var(--fs-2xl));font-weight:var(--fw-black);
+  line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
+.s-sub{font-size:var(--fs-base);line-height:var(--lh-relaxed)}
+.tl-title{font-size:var(--fs-base);font-weight:var(--fw-bold)}
+.tl-desc{font-size:var(--fs-sm);line-height:var(--lh-normal)}
+.tl-time,.s-label,.share-label,.pay-urgency,.slogan-strip{font-size:var(--fs-xs);
+  font-weight:var(--fw-semibold);letter-spacing:var(--ls-wide)}
+.pay-title,.share-title{font-weight:var(--fw-black);line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
+.pay-text,.share-sub{font-size:var(--fs-sm);line-height:var(--lh-relaxed)}
+
+/* ── Badges and pills ── */
+.s-label,.share-label{border-radius:var(--radius-pill);background:var(--color-accent-tint);
+  border:1px solid var(--color-border);color:var(--turquoise-700)}
+.share-label{background:rgba(46,222,191,.12);border-color:rgba(46,222,191,.28);color:var(--turquoise-400)}
+.htc{border-radius:var(--radius-pill);background:var(--color-accent-tint);
+  border:1px solid var(--color-border);color:var(--turquoise-700);font-size:var(--fs-xs);font-weight:var(--fw-medium)}
+.pay-urgency{border-radius:var(--radius-pill);background:rgba(224,82,46,.12);
+  border:1px solid rgba(224,82,46,.3);color:#f0917a}
+.pay-urgency-dot{background:var(--color-danger)}
+.pay-timer-row{border-radius:var(--radius-md);background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);font-size:var(--fs-sm)}
+.pay-timer-clock{font-weight:var(--fw-black);color:#f0917a}
+
+/* ── Buttons: pill, solid fill, hover = one step darker ── */
+.btn-pay{border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-ink);
+  font-size:var(--fs-base);font-weight:var(--fw-semibold);box-shadow:none;
+  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.btn-pay:hover{background:var(--color-accent-hover);transform:none;box-shadow:none}
+.btn-pay:active{background:var(--turquoise-700);transform:scale(.97)}
+.cta-wa{border-radius:var(--radius-pill);font-size:var(--fs-base);font-weight:var(--fw-semibold);box-shadow:none;
+  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.cta-wa:hover{background:#1da851;transform:none;box-shadow:none}
+.cta-wa:active{transform:scale(.97)}
+.btn-share{border-radius:var(--radius-pill);border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.08);font-size:var(--fs-sm);font-weight:var(--fw-semibold);
+  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.btn-share:hover{background:rgba(255,255,255,.14);transform:none}
+.btn-share:active{transform:scale(.97)}
+
+/* ── Footer ── */
+.share-section,footer{background:var(--color-surface-inverse)}
+footer{border-top:1px solid rgba(255,255,255,.15)}
+footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
+.slogan-strip{border-top:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.45)}
 </style>
 </head>
 <body>

@@ -5,25 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
 <title>תודה רבה! ברוך הבא לקורס | SHWADRON.AI</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+/* Legacy names remapped onto the Shwadron.AI design system.
+   Every value now resolves to a token from assets/css/shwadron-ds.css. */
 :root{
-  --blue:#123F8A;
-  --blue2:#1c56b0;
-  --teal:#20C4B6;
-  --teal2:#5AE6DA;
-  --teal-text:#0E8C82;
-  --navy:#082A63;
-  --bg:#F7F9FC;
-  --bg2:#ffffff;
-  --text:#1E2A44;
-  --text2:#1E2A44;
-  --muted:#5b6b86;
+  --blue:var(--color-primary);
+  --blue2:var(--color-primary-hover);
+  --teal:var(--color-accent);
+  --teal2:var(--turquoise-400);
+  --teal-text:var(--turquoise-700);
+  --navy:var(--color-surface-inverse);
+  --bg:var(--color-surface-sunken);
+  --bg2:var(--color-surface);
+  --text:var(--color-ink);
+  --text2:var(--color-ink);
+  --muted:var(--color-ink-soft);
 }
 html{scroll-behavior:smooth}
 body{
-  font-family:'Heebo',sans-serif;
+  font-family:var(--font-sans);
   background:var(--bg2);
   color:var(--text);
   direction:rtl;
@@ -252,6 +254,70 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
   .check-circle{width:72px;height:72px}
   .info-section{padding:56px 6%}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   DESIGN SYSTEM LAYER - Shwadron.AI
+   Presentation only. No copy, order, link or behaviour is
+   touched below.
+   ═══════════════════════════════════════════════════════════ */
+
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+
+/* ── Nav ── */
+nav{background:var(--color-surface-inverse);border-bottom:1px solid rgba(255,255,255,.15)}
+.logo img{filter:brightness(0) invert(1)}
+.nav-back{border-radius:var(--radius-pill);font-size:var(--fs-sm);font-weight:var(--fw-medium);
+  color:rgba(255,255,255,.85);transition:background var(--dur-fast) var(--ease-standard)}
+.nav-back:hover{background:rgba(255,255,255,.08);color:var(--white)}
+
+/* ── Surfaces: flat only, no gradients or textures ── */
+.hero{background:var(--color-surface-inverse)}
+.hero::before,.hero::after{display:none}
+.check-circle{background:var(--color-accent);box-shadow:none;animation:none}
+.check-circle svg{animation:none}
+.check-circle svg path{stroke:#0a1a33}
+.badge{background:var(--color-primary);color:var(--white);box-shadow:none;
+  border-radius:var(--radius-pill);font-size:var(--fs-xs);font-weight:var(--fw-semibold);letter-spacing:var(--ls-wide)}
+.badge::before{display:none}
+.sep-band{background:var(--color-accent)}
+
+/* ── Gradient text replaced with solid brand colour ── */
+.hero-subline,.info-title em{background:none;-webkit-background-clip:initial;background-clip:initial;
+  -webkit-text-fill-color:initial}
+.hero-subline{color:var(--turquoise-400)}
+.info-title em{color:var(--color-primary)}
+
+/* ── Typography ── */
+.hero-title{font-size:clamp(var(--fs-2xl),6vw,var(--fs-4xl));font-weight:var(--fw-black);
+  line-height:var(--lh-tight);letter-spacing:var(--ls-tight)}
+.hero-subline{font-size:clamp(var(--fs-md),2.8vw,var(--fs-xl));font-weight:var(--fw-bold);line-height:var(--lh-snug)}
+.hero-desc{font-size:var(--fs-base);line-height:var(--lh-relaxed);color:rgba(255,255,255,.8)}
+.hero-desc strong{color:var(--white);font-weight:var(--fw-bold)}
+.hero-note{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
+.info-title{font-size:clamp(var(--fs-xl),3.2vw,var(--fs-2xl));font-weight:var(--fw-black);
+  line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
+.info-sub{font-size:var(--fs-base);line-height:var(--lh-relaxed)}
+.info-label{border-radius:var(--radius-pill);background:var(--color-accent-tint);
+  border:1px solid var(--color-border);color:var(--turquoise-700);
+  font-size:var(--fs-xs);font-weight:var(--fw-semibold);letter-spacing:var(--ls-wide)}
+
+/* ── Cards ── */
+.info-card{border-radius:var(--radius-lg);border:1px solid var(--color-border);box-shadow:var(--shadow-sm)}
+.info-card h3{font-size:var(--fs-base);font-weight:var(--fw-bold)}
+.info-card p{font-size:var(--fs-sm);line-height:var(--lh-normal)}
+.card-icon{border-radius:var(--radius-md)}
+.card-icon.blue{background:var(--color-primary-tint)}
+.card-icon.teal,.card-icon.green{background:var(--color-accent-tint)}
+
+/* ── Button: pill, solid fill, hover = one step darker ── */
+.cta-wa{border-radius:var(--radius-pill);font-size:var(--fs-base);font-weight:var(--fw-semibold);box-shadow:none;
+  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.cta-wa:hover{background:#1da851;transform:none;box-shadow:none}
+.cta-wa:active{transform:scale(.97)}
+
+/* ── Footer ── */
+footer{background:var(--color-surface-inverse);border-top:1px solid rgba(255,255,255,.15)}
+footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
 </style>
 </head>
 <body>

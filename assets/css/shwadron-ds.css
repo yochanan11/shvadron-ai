@@ -1,0 +1,54 @@
+/* ============================================================
+   Shwadron.AI - Design System layer
+   Tokens copied verbatim from design-system/tokens.css.
+   Values must not be rounded or re-derived. Presentation only:
+   this file never changes copy, structure, links or behaviour.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root{
+/* Color - blue (primary) */
+--blue-50:#eaf3ff;--blue-100:#cfe4ff;--blue-300:#7bacfb;--blue-500:#2f7bf6;--blue-600:#0063ed;--blue-700:#0050bd;--blue-800:#043c8c;--blue-900:#0a1a33;
+/* Color - turquoise (accent) */
+--turquoise-50:#e8fbf7;--turquoise-200:#a6f0e0;--turquoise-400:#5ce6c8;--turquoise-500:#2edebf;--turquoise-600:#1fb99a;--turquoise-700:#158e78;
+/* Color - neutrals (ice gray derived) */
+--gray-50:#f7f8f8;--gray-100:#e6e7e8;--gray-200:#d4d6d8;--gray-300:#b7bac0;--gray-400:#8d9299;--gray-500:#6b7078;--gray-600:#4c5058;--gray-700:#33363d;--gray-800:#202329;--gray-900:#12141a;
+--white:#ffffff;
+/* Semantic aliases */
+--color-primary:var(--blue-600);--color-primary-hover:var(--blue-700);--color-primary-active:var(--blue-800);--color-primary-tint:var(--blue-50);
+--color-accent:var(--turquoise-500);--color-accent-hover:var(--turquoise-600);--color-accent-tint:var(--turquoise-50);
+--color-ink:var(--blue-900);--color-ink-soft:var(--gray-600);--color-ink-faint:var(--gray-400);
+--color-surface:var(--white);--color-surface-sunken:var(--gray-50);--color-surface-raised:var(--white);--color-surface-inverse:var(--blue-900);
+--color-border:var(--gray-200);--color-border-strong:var(--gray-300);
+--color-success:#1fb98a;--color-warning:#e0a72e;--color-danger:#e0522e;--color-info:var(--blue-600);
+/* Typography */
+--font-sans:'Rubik',-apple-system,'Segoe UI',sans-serif;
+--font-display:'Rubik',-apple-system,'Segoe UI',sans-serif;
+--fs-xs:.8125rem;--fs-sm:.9375rem;--fs-base:1.0625rem;--fs-md:1.1875rem;--fs-lg:1.375rem;--fs-xl:1.75rem;--fs-2xl:2.25rem;--fs-3xl:3rem;--fs-4xl:3.75rem;
+--lh-tight:1.1;--lh-snug:1.3;--lh-normal:1.55;--lh-relaxed:1.75;
+--fw-regular:400;--fw-medium:500;--fw-semibold:600;--fw-bold:700;--fw-black:800;
+--ls-tight:-0.01em;--ls-wide:0.04em;
+/* Spacing (4px base scale) */
+--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;--space-32:128px;
+--container-max:1180px;
+/* Radius & shadow & motion */
+--radius-sm:8px;--radius-md:14px;--radius-lg:22px;--radius-pill:999px;
+--shadow-sm:0 1px 3px rgba(10,26,51,.06),0 1px 2px rgba(10,26,51,.08);
+--shadow-md:0 8px 24px rgba(10,26,51,.10);
+--shadow-lg:0 20px 48px rgba(10,26,51,.14);
+--shadow-focus:0 0 0 3px var(--turquoise-200);
+--ease-standard:cubic-bezier(.4,0,.2,1);
+--dur-fast:120ms;--dur-normal:200ms;
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font-sans);color:var(--color-ink);line-height:var(--lh-normal)}
+::selection{background:var(--color-primary);color:var(--white)}
+
+/* Focus: soft turquoise halo, never a hard outline (design-system.md → Motion) */
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}

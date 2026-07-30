@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap"/>
+<link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
 
 <!-- ═══════════ ANALYTICS ═══════════
      חשוב: המזהים כאן חייבים להיות זהים לאלה שב-course.html.
@@ -56,19 +56,22 @@ window.SHW_ANALYTICS = { GA4_ID: "G-CCPB1QRS42", CLARITY_ID: "xu2vu3u1d0" };
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+/* Legacy names remapped onto the Shwadron.AI design system.
+   Every value now resolves to a token from assets/css/shwadron-ds.css. */
 :root{
-  --navy:#082A63; --deep:#071F4D; --blue:#123F8A; --blue2:#1c56b0;
-  --teal:#20C4B6; --teal-bright:#5AE6DA; --teal-ink:#0E8C82;
-  --bg:#ffffff; --soft:#F6F9FC; --tint:#EAF2FB; --border:#E1E9F4;
-  --text:#0F2140; --muted:#5A6B85;
-  --shadow-lg:0 26px 70px rgba(10,40,90,.16);
+  --navy:var(--color-surface-inverse); --deep:var(--color-surface-inverse);
+  --blue:var(--color-primary); --blue2:var(--color-primary-hover);
+  --teal:var(--color-accent); --teal-bright:var(--turquoise-400); --teal-ink:var(--turquoise-700);
+  --bg:var(--color-surface); --soft:var(--color-surface-sunken); --tint:var(--color-primary-tint); --border:var(--color-border);
+  --text:var(--color-ink); --muted:var(--color-ink-soft);
+  --shadow-lg:0 20px 48px rgba(10,26,51,.14);
 }
 html{scroll-behavior:smooth}
-body{font-family:Heebo,system-ui,Arial,sans-serif;color:var(--text);direction:rtl;min-height:100vh;
-  background:radial-gradient(760px 440px at 80% 10%,rgba(32,196,182,.14),transparent 62%),radial-gradient(760px 500px at 6% 90%,rgba(18,63,138,.1),transparent 60%),linear-gradient(180deg,#fff,var(--soft));
-  display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.6}
+body{font-family:var(--font-sans);color:var(--text);direction:rtl;min-height:100vh;
+  background:var(--color-surface-sunken);
+  display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:var(--lh-normal)}
 img{display:block;max-width:100%}
-:focus-visible{outline:3px solid var(--teal-bright);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
 
 header{height:64px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);background:rgba(246,249,252,.9)}
 header img{height:38px;width:auto}
@@ -102,6 +105,47 @@ body.done .success{display:block}
 
 footer{text-align:center;padding:22px;color:var(--muted);font-size:.82rem}
 @media(max-width:480px){.card{padding:26px 20px}}
+
+/* ═══════════════════════════════════════════════════════════
+   DESIGN SYSTEM LAYER - Shwadron.AI
+   Presentation only. The form, its fields, names, validation
+   and submit handler are untouched. Styling only.
+   ═══════════════════════════════════════════════════════════ */
+
+header{background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--color-border)}
+
+/* ── Card ── */
+.card{border-radius:var(--radius-lg);border-color:var(--color-border);box-shadow:var(--shadow-lg)}
+.check{background:var(--color-accent);box-shadow:none}
+.check svg{color:var(--color-ink)}
+.success .check{background:var(--color-primary)}
+.success .check svg{color:var(--white)}
+
+/* ── Typography ── */
+h1{font-size:clamp(var(--fs-xl),4vw,var(--fs-2xl));font-weight:var(--fw-black);
+  line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
+.lead{margin-top:var(--space-3);font-size:var(--fs-base);line-height:var(--lh-relaxed)}
+.lead b{font-weight:var(--fw-bold)}
+.note{font-size:var(--fs-sm);font-weight:var(--fw-medium)}
+footer{font-size:var(--fs-xs)}
+
+/* ── Input: label / field / helper, per components.md ── */
+form{gap:var(--space-4)}
+.field label{font-size:var(--fs-xs);font-weight:var(--fw-medium);color:var(--color-ink-soft);margin-bottom:var(--space-2)}
+.field input{font-size:var(--fs-sm);padding:12px 16px;border-radius:var(--radius-sm);
+  border:1px solid var(--color-border-strong);background:var(--color-surface);color:var(--color-ink);
+  transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
+.field input:focus{outline:none;border-color:var(--color-primary);box-shadow:var(--shadow-focus);background:var(--color-surface)}
+.field input::placeholder{color:var(--color-ink-faint)}
+
+/* ── Submit: accent pill, hover one step darker ── */
+.submit{border-radius:var(--radius-pill);font-weight:var(--fw-semibold);font-size:var(--fs-base);
+  background:var(--color-accent);color:var(--color-ink);box-shadow:none;
+  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
+.submit:hover{background:var(--color-accent-hover);transform:none;box-shadow:none}
+.submit:active{background:var(--turquoise-700);transform:scale(.97)}
+.submit:disabled{opacity:.5;cursor:not-allowed;background:var(--color-accent);transform:none}
 </style>
 </head>
 <body>
