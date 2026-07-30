@@ -197,7 +197,7 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .loss-lines p b{color:var(--teal-bright);font-weight:800}
 
 /* MINI FAQ */
-.minifaq{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.minifaq{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .minifaq details{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden}
 .minifaq details[open]{border-color:rgba(32,196,182,.5)}
 .minifaq summary{cursor:pointer;list-style:none;padding:15px 18px;font-weight:800;font-size:.98rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
@@ -341,18 +341,17 @@ footer .fc{font-size:.82rem}
   .hero{padding-top:18px;padding-bottom:34px}
   .hero-badge{order:1;margin-bottom:12px}
   .hero h1{order:2}
-  .hero-media{order:3;max-width:none;width:auto;height:clamp(240px,32vh,290px);aspect-ratio:9/16;margin:12px auto 8px}
+  .hero-lead{order:3;margin-top:12px}
+  .hero-media{order:7;max-width:none;width:auto;height:clamp(240px,32vh,290px);aspect-ratio:9/16;margin:20px auto 8px}
   .hero .urgency{margin-top:8px;font-size:.9rem;padding:10px 14px}
   .hero-pain{margin-inline:auto;font-size:1rem}
   .hero-price{order:4;margin-top:4px}
   .hero .urgency{order:5;margin-inline:auto}
   .hero .cta-wrap{order:6;margin-top:14px}
-  .hero-pain{order:7;margin-top:18px}
-  .hero-lead{order:8;margin-top:12px}
-  .hero-trustline{order:9}
-  .assure{order:10}
-  .hero-chips{order:11}
-  .minitest{order:12;margin-top:20px;max-width:340px}
+  .hero-trustline{order:8}
+  .assure{order:9}
+  .hero-chips{order:10}
+  .minitest{order:11;margin-top:18px;max-width:340px}
   .hero-trustline,.assure{margin-inline:auto;justify-content:center;text-align:right}
   .hero .cta-wrap,.hero-chips,.hero-price{align-items:center;justify-content:center}
   .hero-lead{margin-inline:auto}
@@ -400,11 +399,10 @@ footer .fc{font-size:.82rem}
     <div class="hero-text">
       <div class="hero-head">
         <div class="hero-badge"><i></i>לראשונה · גישה דיגיטלית לקורס</div>
-        <h1>הפסיקו לשחק עם AI.<br/>התחילו לעבוד איתו <span class="teal">בצורה מקצועית</span>.</h1>
-        <p class="hero-pain">רוב האנשים מקבלים תשובות יפות מ-AI, אבל לא באמת יודעים להשתמש בו כדי לחסוך זמן ולשפר את העבודה.</p>
+        <h1>למדו להשתמש ב-AI כדי לעבוד <span class="teal">מהר יותר</span>, לחסוך זמן ולהפסיק להתחיל כל משימה מחדש.</h1>
       </div>
       <div class="hero-body">
-        <p class="hero-lead">גישה דיגיטלית ל-4 שיעורי הקורס המלא. 8 שעות תוכן מעשי.</p>
+        <p class="hero-lead">4 שיעורים מעשיים, ללא צורך בידע קודם, לצפייה בקצב שלכם.</p>
         <div class="hero-price"><s>950 ₪</s><b class="js-price">285 ₪</b><span class="save-badge js-launch">חיסכון 70%</span></div>
         <div class="urgency js-launch">⏳ מחיר ההשקה מסתיים ב-<time datetime="2026-08-02">02.08</time>, אחר כך המחיר <b>עולה</b>.</div>
         <p class="hero-trustline"><span>⭐</span> מבוסס על הקורס החי שבו השתתפו בעלי עסקים, אנשי מקצוע ועובדי משרדים.</p>
@@ -444,50 +442,10 @@ footer .fc{font-size:.82rem}
 <section class="section" style="padding-top:clamp(34px,4vw,46px);padding-bottom:clamp(34px,4vw,46px)">
   <div class="container">
     <div class="minifaq">
-      <details><summary>צריך ניסיון קודם?</summary><p>לא. הקורס בנוי מאפס ובגובה העיניים. אם אתם יודעים לגלוש באינטרנט, אתם מוכנים.</p></details>
-      <details><summary>לכמה זמן יש גישה?</summary><p>גישה מלאה לכל ארבעת השיעורים, וצפייה חוזרת ללא הגבלה, בקצב שלכם.</p></details>
-      <details><summary>מה ההבדל מהקורס החי?</summary><p>התוכן זהה, אותם ארבעת השיעורים. בקורס החי יש מפגשים בזמן אמת וליווי, ולכן הוא 950 ₪. כאן הלמידה עצמאית, ולכן המחיר נמוך יותר.</p></details>
-      <details><summary>איך מקבלים גישה אחרי הרכישה?</summary><p>מיד לאחר התשלום ממלאים פרטים קצרים ומקבלים את הגישה לכל השיעורים.</p></details>
+      <details><summary>צריך ידע קודם?</summary><p>לא. הקורס בנוי מאפס ובגובה העיניים.</p></details>
+      <details><summary>כמה זמן יש גישה?</summary><p>ללא הגבלה. צופים שוב ושוב, בקצב שלכם.</p></details>
+      <details><summary>מתי מקבלים גישה?</summary><p>מיד לאחר הרכישה.</p></details>
     </div>
-  </div>
-</section>
-
-<!-- ===== BENEFITS ===== -->
-<!-- ===== WHY NOW ===== -->
-<section class="section soft" id="why-now">
-  <div class="container">
-    <div class="head center sr"><div class="eyebrow">העיתוי</div><h2 class="title">למה דווקא עכשיו?</h2></div>
-    <div class="whynow sr">
-      <div class="wn"><div class="i">🚀</div><h3>AI מתקדם מהר</h3><p>הכלים משתנים כל חודש. מי שמתחיל היום נמצא בפנים, לא רודף מאחור.</p></div>
-      <div class="wn"><div class="i">⏱️</div><h3>כל חודש שעובר עולה זמן</h3><p>מי שלומד היום חוסך מאות שעות עבודה בהמשך הדרך.</p></div>
-      <div class="wn"><div class="i">📈</div><h3>הפער רק גדל</h3><p>מי שממשיך לדחות מוצא את עצמו מאחור מול מי שכבר עובד אחרת.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== BEFORE / AFTER ===== -->
-<section class="section" id="before-after">
-  <div class="container">
-    <div class="head center sr"><div class="eyebrow">התוצאה בפועל</div><h2 class="title">לפני הקורס, ואחרי.</h2></div>
-    <div class="ba-head sr"><span>לפני</span><span></span><span>אחרי</span></div>
-    <div class="ba sr">
-      <div class="ba-row">
-        <div class="ba-cell ba-before"><span class="m">✕</span>שעה להכין מצגת</div>
-        <div class="ba-arrow">←</div>
-        <div class="ba-cell ba-after"><span class="m">✓</span>10 דקות</div>
-      </div>
-      <div class="ba-row">
-        <div class="ba-cell ba-before"><span class="m">✕</span>40 דקות לכתוב מייל מורכב</div>
-        <div class="ba-arrow">←</div>
-        <div class="ba-cell ba-after"><span class="m">✓</span>5 דקות</div>
-      </div>
-      <div class="ba-row">
-        <div class="ba-cell ba-before"><span class="m">✕</span>להתחיל כל משימה מחדש</div>
-        <div class="ba-arrow">←</div>
-        <div class="ba-cell ba-after"><span class="m">✓</span>תבניות וסוכני AI שעובדים בשבילכם</div>
-      </div>
-    </div>
-    <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה לחסוך שעות עבודה</a></div>
   </div>
 </section>
 
@@ -509,50 +467,14 @@ footer .fc{font-size:.82rem}
   </div>
 </section>
 
-<!-- ===== WHO AM I ===== -->
-<section class="section" id="who-am-i">
+<!-- ===== QUICK BENEFITS (3) ===== -->
+<section class="section" id="benefits">
   <div class="container">
-    <div class="who">
-      <div class="who-photo reveal">
-        <picture>
-          <source srcset="assets/public/yochanan-card.webp" type="image/webp"/>
-          <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון, מרצה ומטמיע AI" loading="lazy" decoding="async" width="720" height="720"/>
-        </picture>
-      </div>
-      <div class="who-body reveal">
-        <div class="eyebrow">מי אני</div>
-        <h2>יוחנן שבדרון</h2>
-        <div class="who-role">מייסד SHWADRON.AI · בוגר מדעי המחשב עם התמחות ב-AI</div>
-        <ul class="who-list">
-          <li>מרצה בתחום ה-AI</li>
-          <li>מלווה עסקים ובעלי מקצוע</li>
-          <li>מעביר סדנאות והדרכות</li>
-          <li>מטמיע AI בארגונים ובמוסדות</li>
-          <li>מלמד בגובה העיניים, בלי מילים גדולות</li>
-        </ul>
-        <div class="about-trust">
-          <span>מאות תלמידים</span>
-          <span>עשרות הרצאות</span>
-          <span>בעלי עסקים מכל התחומים</span>
-        </div>
-        <a class="buy blue" data-buy href="https://mrng.to/IIJExLH9xt" style="margin-top:20px">אני רוצה ללמוד ממנו</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section soft" id="benefits">
-  <div class="container">
-    <div class="head sr"><div class="eyebrow">למה הקורס הזה</div><h2 class="title">כל מה שצריך כדי להתחיל, <em>בלי מחסומים.</em></h2></div>
     <div class="benefits sr">
-      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div><h3>גישה מיידית</h3><p>מקבלים גישה לכל הקורס מיד לאחר הרכישה. מתחילים תוך דקות.</p></div>
-      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3>צפייה ללא הגבלה</h3><p>צופים מתי שנוח, עוצרים ומריצים אחורה, חוזרים על שיעור כמה שצריך.</p></div>
-      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div><h3>מתאים למתחילים</h3><p>מוסבר בגובה העיניים, בעברית פשוטה, בלי מונחים מפחידים.</p></div>
-      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c0 1 .3 1.8.8 2.5A4 4 0 0 0 8 16a4 4 0 0 0 8 0 4 4 0 0 0-.8-6.5c.5-.7.8-1.5.8-2.5a4 4 0 0 0-4-4Z"/></svg></div><h3>לא צריך ידע קודם</h3><p>אין צורך ברקע טכני. אם אתם יודעים לגלוש באינטרנט, אתם מוכנים.</p></div>
-      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M11 18h2"/></svg></div><h3>לומדים מכל מכשיר</h3><p>מחשב, טאבלט או טלפון. הקורס איתכם בכל מקום ובכל זמן.</p></div>
-      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v13H3z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div><h3>שימושים אמיתיים</h3><p>דוגמאות מעשיות לעבודה ולעסק, לא תיאוריה. מיישמים כבר תוך כדי.</p></div>
+      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c0 1 .3 1.8.8 2.5A4 4 0 0 0 8 16a4 4 0 0 0 8 0 4 4 0 0 0-.8-6.5c.5-.7.8-1.5.8-2.5a4 4 0 0 0-4-4Z"/></svg></div><h3>מתחילים ללא ידע קודם</h3><p>מוסבר בגובה העיניים, בעברית פשוטה, בלי מונחים מפחידים.</p></div>
+      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></div><h3>לומדים בקצב אישי</h3><p>צופים מתי שנוח, עוצרים ומריצים אחורה, בלי להתחייב לשעות קבועות.</p></div>
+      <div class="benefit"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div><h3>גישה מיידית וצפייה חוזרת</h3><p>מקבלים גישה מיד לאחר הרכישה, מכל מכשיר, ללא הגבלה.</p></div>
     </div>
-    <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה להתחיל ללמוד</a><span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח</span></div>
   </div>
 </section>
 
@@ -611,30 +533,14 @@ footer .fc{font-size:.82rem}
   </div>
 </section>
 
-<!-- ===== WHY THE PRICE DIFFERS ===== -->
+<!-- ===== WHY THE PRICE DIFFERS (short) ===== -->
 <section class="section" id="why-price">
   <div class="container">
-    <div class="head sr"><div class="eyebrow">שאלה שכדאי לשאול</div><h2 class="title">למה המחיר כאן נמוך יותר?</h2><p class="sub">אותו ידע בדיוק. ההבדל הוא במבנה הלמידה, לא באיכות התוכן.</p></div>
-    <div class="fit sr">
-      <div class="fit-card fit-no">
-        <h3>הקורס החי · 950 ₪</h3>
-        <ul>
-          <li><span class="fit-mark">✓</span>מפגשים בזמן אמת</li>
-          <li><span class="fit-mark">✓</span>שאלות ותשובות במהלך המפגש</li>
-          <li><span class="fit-mark">✓</span>ליווי אישי לאורך הדרך</li>
-        </ul>
-      </div>
-      <div class="fit-card fit-yes">
-        <h3>הגרסה הדיגיטלית · 285 ₪</h3>
-        <ul>
-          <li><span class="fit-mark">✓</span>כל תוכן הקורס, אותם השיעורים בדיוק</li>
-          <li><span class="fit-mark">✓</span>צפייה בקצב שלכם, מתי שנוח</li>
-          <li><span class="fit-mark">✓</span>במחיר מיוחד, כי הלמידה עצמאית</li>
-        </ul>
-      </div>
+    <div class="head center sr">
+      <div class="eyebrow">שאלה שכדאי לשאול</div>
+      <h2 class="title">למה המחיר נמוך יותר מהקורס החי?</h2>
+      <p class="sub">בקורס החי יש מפגשים בזמן אמת, שאלות וליווי אישי. בגרסה הדיגיטלית מקבלים את אותם ארבעת השיעורים לצפייה עצמאית, ולכן המחיר הוא <b style="color:var(--blue)">285 ₪</b> במקום 950 ₪.</p>
     </div>
-    <p style="text-align:center;max-width:640px;margin:26px auto 0;color:var(--muted);font-size:1.06rem;line-height:1.7">המחיר הנמוך משקף את מבנה הלמידה העצמאית, לא פשרה על התוכן. מקבלים בדיוק את אותו הידע שנלמד בקורס החי.</p>
-    <div class="cta-wrap" style="margin-top:24px"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה להתחיל ללמוד</a></div>
   </div>
 </section>
 
@@ -668,20 +574,6 @@ footer .fc{font-size:.82rem}
       <div class="bonus"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-8M12 8V4M5 12H3m18 0h-2M7 7 5 5m14 2 2-2"/><circle cx="12" cy="12" r="3"/></svg></div><h3>גישה לעדכונים</h3><p>הקורס מתעדכן, ואתם מקבלים את התוספות.</p></div>
       <div class="bonus"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/></svg></div><h3>חומרי עזר</h3><p>קבצים ותבניות מוכנות שמקצרים לכם את הדרך.</p></div>
       <div class="bonus"><div class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><h3>ספריית פרומפטים</h3><p>פרומפטים מוכנים לשימוש יומיומי בעבודה ובעסק.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== LOSS: what happens if you don't ===== -->
-<section class="section loss">
-  <div class="container">
-    <div class="sr">
-      <h2>מה קורה אם לא לומדים AI?</h2>
-      <div class="loss-lines">
-        <p>העבודה לא תהיה פשוטה יותר מעצמה.</p>
-        <p>מי שישתמש נכון ב-AI <b>יספיק יותר בפחות זמן</b>, ומי שלא, ימשיך לעבוד קשה על אותן משימות.</p>
-        <p>הפער הזה לא נשאר קבוע. <b>הוא רק הולך וגדל.</b></p>
-      </div>
     </div>
   </div>
 </section>
