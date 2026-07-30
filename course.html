@@ -144,6 +144,13 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .hero-media video{width:100%;height:100%;object-fit:cover;display:block}
 .hero-media .play-tag{position:absolute;bottom:14px;right:14px;background:rgba(8,42,99,.82);color:#fff;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:100px;backdrop-filter:blur(4px);pointer-events:none}
 
+/* PAIN + SAVINGS + URGENCY */
+.hero-pain{margin-top:14px;font-size:clamp(1rem,1.5vw,1.12rem);line-height:1.6;color:var(--muted);max-width:540px}
+.save-badge{display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:#06304f;font-weight:900;font-size:.86rem;padding:6px 13px;border-radius:100px;margin-inline-start:4px;white-space:nowrap}
+.urgency{display:inline-flex;align-items:center;gap:9px;margin-top:12px;background:#fff6e6;border:1.5px solid #f0b849;border-radius:14px;padding:11px 18px;font-weight:800;font-size:.98rem;color:#8a5a00;line-height:1.4}
+.urgency time{font-weight:900;color:#6b4400;direction:ltr}
+.urgency b{color:#6b4400}
+
 /* HERO TRUST + MINI SOCIAL PROOF */
 .hero-trustline{display:flex;align-items:flex-start;gap:8px;margin-top:12px;background:rgba(32,196,182,.09);border:1px solid rgba(32,196,182,.26);border-radius:12px;padding:9px 14px;font-size:.9rem;color:var(--text);font-weight:600;line-height:1.45;max-width:520px}
 .hero-trustline span{flex-shrink:0}
@@ -154,6 +161,40 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .minitest-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow-sm)}
 .minitest-stars{color:#f5b301;font-size:.85rem;letter-spacing:1px;line-height:1}
 .minitest-card p{margin-top:6px;font-size:.92rem;line-height:1.55;color:var(--text);font-weight:600}
+
+/* WHY NOW */
+.whynow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:0 auto}
+.wn{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 24px;text-align:center;box-shadow:var(--shadow-sm)}
+.wn .i{font-size:1.8rem;line-height:1;margin-bottom:12px}
+.wn h3{font-size:1.08rem;font-weight:800;margin-bottom:6px}
+.wn p{color:var(--muted);font-size:.95rem;line-height:1.6}
+
+/* BEFORE / AFTER */
+.ba{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.ba-row{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch}
+.ba-cell{border-radius:16px;padding:18px 20px;display:flex;align-items:center;gap:11px;font-weight:700;font-size:1rem;line-height:1.4}
+.ba-before{background:#fdf0f0;border:1px solid #f3d0d0;color:#8a4040}
+.ba-after{background:#eefaf7;border:1px solid rgba(32,196,182,.35);color:#0b5f58}
+.ba-cell .m{flex-shrink:0;font-weight:900;font-size:1.05rem}
+.ba-arrow{display:grid;place-items:center;color:var(--blue);font-size:1.3rem;font-weight:900}
+.ba-head{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;max-width:800px;margin:0 auto 4px}
+.ba-head span{font-weight:900;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center}
+
+/* WHO AM I */
+.who{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,4vw,48px);align-items:center;max-width:960px;margin:0 auto}
+.who-photo img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:24px;box-shadow:var(--shadow-lg)}
+.who-body h2{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:900;line-height:1.2;margin-bottom:8px}
+.who-role{color:var(--teal-ink);font-weight:800;margin-bottom:16px}
+.who-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.who-list li{display:flex;gap:10px;align-items:flex-start;font-size:1.02rem;color:var(--text);font-weight:600}
+.who-list li::before{content:"✓";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:rgba(32,196,182,.18);color:var(--teal-ink);font-weight:900;font-size:.72rem;flex-shrink:0;margin-top:2px}
+
+/* LOSS */
+.loss{background:var(--navy);color:#fff;text-align:center}
+.loss h2{font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:900;line-height:1.25;max-width:700px;margin:0 auto}
+.loss-lines{max-width:640px;margin:26px auto 0;display:flex;flex-direction:column;gap:14px}
+.loss-lines p{color:rgba(255,255,255,.82);font-size:clamp(1.02rem,1.8vw,1.16rem);line-height:1.6}
+.loss-lines p b{color:var(--teal-bright);font-weight:800}
 
 /* MINI FAQ */
 .minifaq{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -294,33 +335,41 @@ footer .fc{font-size:.82rem}
 /* RESPONSIVE */
 @media(max-width:900px){
   .hero-grid{display:flex;flex-direction:column;text-align:center}
-  .hero-text{display:contents}
-  .hero-head{order:1}
-  /* Mobile hero order: headline > video > price > CTA > everything else,
-     so the primary CTA stays as close to the fold as possible. */
-  .hero-visual,.hero-body{display:contents}
+  /* Mobile hero order: badge > headline > video > price > urgency > CTA,
+     then the supporting copy. Keeps the primary CTA above the fold. */
+  .hero-text,.hero-visual,.hero-body,.hero-head{display:contents}
   .hero{padding-top:18px;padding-bottom:34px}
-  .hero-badge{margin-bottom:12px}
-  .hero-head{order:1}
-  .hero-media{order:2;max-width:none;width:auto;height:clamp(240px,32vh,290px);aspect-ratio:9/16;margin:12px auto 8px}
-  .hero .launch{margin-top:6px}
-  .hero-price{order:3;margin-top:4px}
-  .hero .launch{order:4}
-  .hero .cta-wrap{order:5;margin-top:14px}
-  .hero-lead{order:6;margin-top:18px}
-  .hero-trustline{order:7}
-  .assure{order:8}
-  .hero-chips{order:9}
-  .minitest{order:10;margin-top:20px;max-width:340px}
+  .hero-badge{order:1;margin-bottom:12px}
+  .hero h1{order:2}
+  .hero-media{order:3;max-width:none;width:auto;height:clamp(240px,32vh,290px);aspect-ratio:9/16;margin:12px auto 8px}
+  .hero .urgency{margin-top:8px;font-size:.9rem;padding:10px 14px}
+  .hero-pain{margin-inline:auto;font-size:1rem}
+  .hero-price{order:4;margin-top:4px}
+  .hero .urgency{order:5;margin-inline:auto}
+  .hero .cta-wrap{order:6;margin-top:14px}
+  .hero-pain{order:7;margin-top:18px}
+  .hero-lead{order:8;margin-top:12px}
+  .hero-trustline{order:9}
+  .assure{order:10}
+  .hero-chips{order:11}
+  .minitest{order:12;margin-top:20px;max-width:340px}
   .hero-trustline,.assure{margin-inline:auto;justify-content:center;text-align:right}
   .hero .cta-wrap,.hero-chips,.hero-price{align-items:center;justify-content:center}
   .hero-lead{margin-inline:auto}
   .benefits,.bonuses{grid-template-columns:repeat(2,1fr)}
   .tb-nums{grid-template-columns:repeat(2,1fr);gap:24px 16px}
+  .who{grid-template-columns:1fr;text-align:center}
+  .who-photo{max-width:280px;margin:0 auto}
+  .who-list{text-align:right;max-width:340px;margin-inline:auto}
+  .about-trust{justify-content:center}
 }
 @media(max-width:620px){
   .hdr .buy{display:none}
-  .benefits,.lessons,.fit,.bonuses,.outcomes,.minifaq{grid-template-columns:1fr}
+  .benefits,.lessons,.fit,.bonuses,.outcomes,.minifaq,.whynow{grid-template-columns:1fr}
+  .ba-row,.ba-head{grid-template-columns:1fr;gap:6px}
+  .ba-arrow{transform:rotate(-90deg);font-size:1.1rem}
+  .ba-head{display:none}
+  .ba{gap:18px}
   .tb-logos span{font-size:.88rem;padding:8px 14px}
   .proof-carousel{padding:0 40px}
   .pc-arrow{width:40px;height:40px;font-size:1.4rem}
@@ -351,12 +400,13 @@ footer .fc{font-size:.82rem}
     <div class="hero-text">
       <div class="hero-head">
         <div class="hero-badge"><i></i>לראשונה · גישה דיגיטלית לקורס</div>
-        <h1>למדו לעבוד עם <span class="teal">AI</span> בצורה מסודרת,<br/>ולחסוך שעות עבודה בכל שבוע.</h1>
+        <h1>הפסיקו לשחק עם AI.<br/>התחילו לעבוד איתו <span class="teal">בצורה מקצועית</span>.</h1>
+        <p class="hero-pain">רוב האנשים מקבלים תשובות יפות מ-AI, אבל לא באמת יודעים להשתמש בו כדי לחסוך זמן ולשפר את העבודה.</p>
       </div>
       <div class="hero-body">
-        <p class="hero-lead">גישה דיגיטלית ל-4 שיעורי הקורס המלא. 8 שעות של תוכן מעשי, אותם השיעורים שנלמדים בקורס החי.</p>
-        <div class="hero-price"><s>950 ₪</s><b class="js-price">285 ₪</b><span>בלבד · תשלום חד פעמי</span></div>
-        <div class="launch js-launch">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
+        <p class="hero-lead">גישה דיגיטלית ל-4 שיעורי הקורס המלא. 8 שעות תוכן מעשי.</p>
+        <div class="hero-price"><s>950 ₪</s><b class="js-price">285 ₪</b><span class="save-badge js-launch">חיסכון 70%</span></div>
+        <div class="urgency js-launch">⏳ מחיר ההשקה מסתיים ב-<time datetime="2026-08-02">02.08</time>, אחר כך המחיר <b>עולה</b>.</div>
         <p class="hero-trustline"><span>⭐</span> מבוסס על הקורס החי שבו השתתפו בעלי עסקים, אנשי מקצוע ועובדי משרדים.</p>
         <div class="assure">
           <span>גישה מיידית</span><span>צפייה מכל מכשיר</span><span>תשלום מאובטח</span>
@@ -403,6 +453,44 @@ footer .fc{font-size:.82rem}
 </section>
 
 <!-- ===== BENEFITS ===== -->
+<!-- ===== WHY NOW ===== -->
+<section class="section soft" id="why-now">
+  <div class="container">
+    <div class="head center sr"><div class="eyebrow">העיתוי</div><h2 class="title">למה דווקא עכשיו?</h2></div>
+    <div class="whynow sr">
+      <div class="wn"><div class="i">🚀</div><h3>AI מתקדם מהר</h3><p>הכלים משתנים כל חודש. מי שמתחיל היום נמצא בפנים, לא רודף מאחור.</p></div>
+      <div class="wn"><div class="i">⏱️</div><h3>כל חודש שעובר עולה זמן</h3><p>מי שלומד היום חוסך מאות שעות עבודה בהמשך הדרך.</p></div>
+      <div class="wn"><div class="i">📈</div><h3>הפער רק גדל</h3><p>מי שממשיך לדחות מוצא את עצמו מאחור מול מי שכבר עובד אחרת.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BEFORE / AFTER ===== -->
+<section class="section" id="before-after">
+  <div class="container">
+    <div class="head center sr"><div class="eyebrow">התוצאה בפועל</div><h2 class="title">לפני הקורס, ואחרי.</h2></div>
+    <div class="ba-head sr"><span>לפני</span><span></span><span>אחרי</span></div>
+    <div class="ba sr">
+      <div class="ba-row">
+        <div class="ba-cell ba-before"><span class="m">✕</span>שעה להכין מצגת</div>
+        <div class="ba-arrow">←</div>
+        <div class="ba-cell ba-after"><span class="m">✓</span>10 דקות</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell ba-before"><span class="m">✕</span>40 דקות לכתוב מייל מורכב</div>
+        <div class="ba-arrow">←</div>
+        <div class="ba-cell ba-after"><span class="m">✓</span>5 דקות</div>
+      </div>
+      <div class="ba-row">
+        <div class="ba-cell ba-before"><span class="m">✕</span>להתחיל כל משימה מחדש</div>
+        <div class="ba-arrow">←</div>
+        <div class="ba-cell ba-after"><span class="m">✓</span>תבניות וסוכני AI שעובדים בשבילכם</div>
+      </div>
+    </div>
+    <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה לחסוך שעות עבודה</a></div>
+  </div>
+</section>
+
 <!-- ===== TRUST STRIP ===== -->
 <section class="trustbar">
   <div class="container">
@@ -421,7 +509,39 @@ footer .fc{font-size:.82rem}
   </div>
 </section>
 
-<section class="section" id="benefits">
+<!-- ===== WHO AM I ===== -->
+<section class="section" id="who-am-i">
+  <div class="container">
+    <div class="who">
+      <div class="who-photo reveal">
+        <picture>
+          <source srcset="assets/public/yochanan-card.webp" type="image/webp"/>
+          <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון, מרצה ומטמיע AI" loading="lazy" decoding="async" width="720" height="720"/>
+        </picture>
+      </div>
+      <div class="who-body reveal">
+        <div class="eyebrow">מי אני</div>
+        <h2>יוחנן שבדרון</h2>
+        <div class="who-role">מייסד SHWADRON.AI · בוגר מדעי המחשב עם התמחות ב-AI</div>
+        <ul class="who-list">
+          <li>מרצה בתחום ה-AI</li>
+          <li>מלווה עסקים ובעלי מקצוע</li>
+          <li>מעביר סדנאות והדרכות</li>
+          <li>מטמיע AI בארגונים ובמוסדות</li>
+          <li>מלמד בגובה העיניים, בלי מילים גדולות</li>
+        </ul>
+        <div class="about-trust">
+          <span>מאות תלמידים</span>
+          <span>עשרות הרצאות</span>
+          <span>בעלי עסקים מכל התחומים</span>
+        </div>
+        <a class="buy blue" data-buy href="https://mrng.to/IIJExLH9xt" style="margin-top:20px">אני רוצה ללמוד ממנו</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="benefits">
   <div class="container">
     <div class="head sr"><div class="eyebrow">למה הקורס הזה</div><h2 class="title">כל מה שצריך כדי להתחיל, <em>בלי מחסומים.</em></h2></div>
     <div class="benefits sr">
@@ -552,6 +672,20 @@ footer .fc{font-size:.82rem}
   </div>
 </section>
 
+<!-- ===== LOSS: what happens if you don't ===== -->
+<section class="section loss">
+  <div class="container">
+    <div class="sr">
+      <h2>מה קורה אם לא לומדים AI?</h2>
+      <div class="loss-lines">
+        <p>העבודה לא תהיה פשוטה יותר מעצמה.</p>
+        <p>מי שישתמש נכון ב-AI <b>יספיק יותר בפחות זמן</b>, ומי שלא, ימשיך לעבוד קשה על אותן משימות.</p>
+        <p>הפער הזה לא נשאר קבוע. <b>הוא רק הולך וגדל.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== PRICE ===== -->
 <section class="section soft" id="buy">
   <div class="container">
@@ -559,16 +693,17 @@ footer .fc{font-size:.82rem}
     <div class="price-card reveal">
       <div class="price-eyebrow">גישה דיגיטלית לקורס · גישה מיידית</div>
       <p class="js-launch" style="color:var(--muted);font-size:1rem;line-height:1.7;max-width:400px;margin:0 auto 18px">זו ההשקה הראשונה של גרסת הצפייה, ולכן פתחנו אותה במחיר מיוחד.</p>
-      <div class="price-compare">במקום <s>950 ₪</s> מחיר הקורס החי</div>
+      <div class="price-compare">מחיר הקורס החי <s>950 ₪</s></div>
       <div class="price-now"><b class="js-price">285 ₪</b><span>+ מע״מ · תשלום חד פעמי</span></div>
-      <div class="price-note">גישה מלאה לכל ארבעת השיעורים, 8 שעות תוכן.</div>
-      <div class="launch js-launch" style="margin:2px auto 6px">מחיר השקה, בתוקף עד <time datetime="2026-08-02">02.08.2026</time></div>
-      <p class="js-launch" style="color:var(--muted);font-size:.88rem;font-weight:600;margin-bottom:18px">לאחר תקופת ההשקה המחיר יתעדכן.</p>
+      <div class="js-launch" style="margin-bottom:12px"><span class="save-badge" style="font-size:.95rem;padding:8px 18px">חיסכון של 70%</span></div>
+      <div class="urgency js-launch" style="margin:0 auto 18px">⏳ מחיר ההשקה מסתיים ב-<time datetime="2026-08-02">02.08</time>, אחר כך המחיר <b>עולה</b>.</div>
       <ul class="price-incl">
         <li>4 שיעורים מלאים, 8 שעות תוכן</li>
-        <li>גישה מיידית וצפייה ללא הגבלה</li>
+        <li>גישה מיידית, מכל מכשיר</li>
+        <li>צפייה חוזרת ללא הגבלה</li>
         <li>חומרי עזר וספריית פרומפטים</li>
         <li>עדכונים עתידיים ללא תשלום</li>
+        <li>תמיכה במקרה של בעיית התחברות</li>
       </ul>
       <a class="buy blue" data-buy href="https://mrng.to/IIJExLH9xt">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -614,12 +749,12 @@ footer .fc{font-size:.82rem}
   <div class="container">
     <div class="sr">
       <h2>בעוד חודש אתם יכולים להיות במקום אחר לגמרי.</h2>
-      <p>אפשר להמשיך לדחות, או להתחיל ללמוד כבר היום.</p>
+      <p>אפשר להמשיך לדחות, או להתחיל לעבוד עם AI כבר היום.</p>
     </div>
     <div class="cta-wrap reveal">
       <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        כן, אני רוצה להצטרף
+        אני רוצה לחסוך שעות עבודה בכל שבוע
       </a>
       <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח · גישה מיידית</span>
     </div>
