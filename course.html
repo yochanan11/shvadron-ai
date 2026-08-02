@@ -19,38 +19,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
+<link rel="stylesheet" href="assets/css/site-legal.css"/>
+<link rel="stylesheet" href="assets/css/forms-a11y.css"/>
+<link rel="stylesheet" href="assets/css/consent.css"/>
 
 <!-- ═══════════ ANALYTICS ═══════════
-     כדי להפעיל מדידה, מלאו את שני המזהים כאן (וזה המקום היחיד שצריך לגעת בו):
-       GA4_ID     = "G-XXXXXXXXXX"  ← Google Analytics 4
-       CLARITY_ID = "xxxxxxxxxx"    ← Microsoft Clarity (Heatmap)
-     כל עוד הם ריקים, שום סקריפט חיצוני לא נטען ואין שגיאות.
+     המזהים של GA4 ו-Clarity מוגדרים בתוך assets/js/consent.js, וזה המקום
+     היחיד שצריך לגעת בו. הסקריפטים נטענים אך ורק אחרי שהגולש אישר את
+     קטגוריית "סטטיסטיקה" בהודעת העוגיות. ללא אישור, שום סקריפט מעקב
+     לא יורד לדפדפן. הפונקציה gtag קיימת תמיד כ-no-op, כך שקריאות
+     לאירועים בעמודים לא זורקות שגיאה לפני מתן ההסכמה.
 -->
-<script>
-window.SHW_ANALYTICS = { GA4_ID: "G-CCPB1QRS42", CLARITY_ID: "xu2vu3u1d0" };
-(function(){
-  var cfg = window.SHW_ANALYTICS;
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function(){ window.dataLayer.push(arguments); };
-  if (cfg.GA4_ID) {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + cfg.GA4_ID;
-    document.head.appendChild(s);
-    gtag('js', new Date());
-    gtag('config', cfg.GA4_ID);
-  }
-  if (cfg.CLARITY_ID) {
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", cfg.CLARITY_ID);
-  }
-})();
-</script>
+<script src="assets/js/consent.js"></script>
 
-<script type="application/ld+json">
+<script type="application/ld+json" id="course-ld">
 {
   "@context": "https://schema.org",
   "@type": "Course",
@@ -60,7 +42,20 @@ window.SHW_ANALYTICS = { GA4_ID: "G-CCPB1QRS42", CLARITY_ID: "xu2vu3u1d0" };
   "inLanguage": "he",
   "educationalLevel": "Beginner",
   "hasCourseInstance": {"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT2H"},
-  "offers": {"@type":"Offer","price":"285","priceCurrency":"ILS","availability":"https://schema.org/InStock","url":"https://www.shwadron-ai.com/course.html"},
+  "offers": {
+    "@type":"Offer",
+    "price":"336.30",
+    "priceCurrency":"ILS",
+    "availability":"https://schema.org/InStock",
+    "url":"https://www.shwadron-ai.com/course.html",
+    "priceSpecification":{
+      "@type":"PriceSpecification",
+      "price":"285",
+      "priceCurrency":"ILS",
+      "valueAddedTaxIncluded":false,
+      "description":"285 ₪ לפני מע״מ. סה״כ לתשלום 336.30 ₪ כולל מע״מ 18%."
+    }
+  },
   "image": "https://www.shwadron-ai.com/yochanan.jpg"
 }
 </script>
@@ -129,6 +124,9 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .hero h1{font-size:clamp(1.95rem,3.6vw,2.65rem);line-height:1.16;font-weight:900;letter-spacing:-.02em;text-wrap:balance}
 .hero h1 .teal{color:var(--teal-ink)}
 .hero-lead{margin-top:16px;color:var(--muted);font-size:clamp(1.04rem,1.6vw,1.18rem);line-height:1.65;max-width:560px}
+/* שורת "למי זה מתאים": עונה על שאלת ההתאמה בתוך המסך הראשון */
+.hero-who{margin-top:10px;font-weight:800;font-size:clamp(.95rem,1.5vw,1.05rem);
+  color:var(--text);line-height:1.5;max-width:560px}
 .hero .cta-wrap{align-items:flex-start;margin-top:18px}
 .hero-chips{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:22px}
 .hero-chips span{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:.9rem;color:var(--text)}
@@ -263,8 +261,13 @@ header{position:sticky;top:0;z-index:80;height:64px;background:rgba(246,249,252,
 .proof-carousel{position:relative;max-width:980px;margin:0 auto;padding:0 46px}
 .pc-track{display:flex;align-items:center;gap:18px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:10px 2px 16px;scrollbar-width:none;-ms-overflow-style:none}
 .pc-track::-webkit-scrollbar{display:none}
-.pc-slide{flex:0 0 auto;width:clamp(230px,74vw,272px);scroll-snap-align:center}
+.pc-slide{flex:0 0 auto;width:clamp(230px,74vw,272px);scroll-snap-align:center;margin:0;
+  display:flex;flex-direction:column;align-self:stretch}
 .pc-slide img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff}
+/* Live text of each screenshot: readable by a screen reader, zoomable
+   without blurring, and selectable. The image stays as the visual proof. */
+.pc-cap{margin-top:12px;font-size:.88rem;line-height:1.65;color:var(--text);text-align:start}
+.pc-name{display:block;margin-top:6px;font-weight:800;font-size:.82rem;color:var(--muted)}
 .pc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--border);background:#fff;color:var(--blue);font-size:1.6rem;line-height:1;font-weight:900;cursor:pointer;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s,color .2s}
 .pc-arrow:hover{background:var(--blue);color:#fff;transform:translateY(-50%) scale(1.08)}
 .pc-prev{right:0}.pc-next{left:0}
@@ -340,22 +343,25 @@ footer .fc{font-size:.82rem}
   /* Mobile hero order: badge > headline > video > price > urgency > CTA,
      then the supporting copy. Keeps the primary CTA above the fold. */
   .hero-text,.hero-visual,.hero-body,.hero-head{display:contents}
-  .hero{padding-top:18px;padding-bottom:34px}
-  .hero-badge{order:1;margin-bottom:12px}
+  .hero{padding-top:10px;padding-bottom:34px}
+  /* כל ילד ישיר חייב order מפורש. ילד בלי order מקבל 0 וקופץ לראש
+     הרשימה, לפני התגית והכותרת. */
+  .hero-badge{order:1;margin-bottom:8px}
   .hero h1{order:2}
-  .hero-lead{order:3;margin-top:12px}
-  .hero-media{order:7;max-width:none;width:auto;height:clamp(240px,32vh,290px);aspect-ratio:9/16;margin:20px auto 8px}
-  .hero .urgency{margin-top:8px;font-size:.9rem;padding:10px 14px}
+  /* דחיסה מבוקרת כדי לשמור את ה-CTA הראשי בתוך המסך הראשון */
+  .hero-lead{order:3;margin-top:10px;font-size:1rem;line-height:1.55}
+  .hero-who{order:4;margin-inline:auto;margin-top:8px;font-size:.95rem}
+  .hero-price{order:5;margin-top:6px}
+  .hero-total{order:6;margin-inline:auto;margin-top:2px;font-size:.86rem}
+  .hero .urgency{order:7;margin-inline:auto;margin-top:6px;font-size:.82rem;padding:7px 11px;line-height:1.4}
+  .hero .cta-wrap{order:8;margin-top:10px}
+  .hero-media{order:9;max-width:none;width:auto;height:clamp(240px,32vh,290px);aspect-ratio:9/16;margin:20px auto 8px}
+  .hero-trustline{order:10}
+  .assure{order:11}
+  .minitest{order:12;margin-top:18px;max-width:340px}
   .hero-pain{margin-inline:auto;font-size:1rem}
-  .hero-price{order:4;margin-top:4px}
-  .hero .urgency{order:5;margin-inline:auto}
-  .hero .cta-wrap{order:6;margin-top:14px}
-  .hero-trustline{order:8}
-  .assure{order:9}
-  .hero-chips{order:10}
-  .minitest{order:11;margin-top:18px;max-width:340px}
   .hero-trustline,.assure{margin-inline:auto;justify-content:center;text-align:right}
-  .hero .cta-wrap,.hero-chips,.hero-price{align-items:center;justify-content:center}
+  .hero .cta-wrap,.hero-price{align-items:center;justify-content:center}
   .hero-lead{margin-inline:auto}
   .benefits,.bonuses{grid-template-columns:repeat(2,1fr)}
   .tb-nums{grid-template-columns:repeat(2,1fr);gap:24px 16px}
@@ -390,7 +396,99 @@ footer .fc{font-size:.82rem}
    ═══════════════════════════════════════════════════════════ */
 
 /* ── Focus: soft turquoise halo, not a hard outline ── */
-:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+/* ── METHOD / הבידול ──
+   משתמש רק בטוקנים ובצבעים הקיימים של המותג. */
+.method-problem{max-width:640px;margin:0 auto clamp(28px,4vw,40px);text-align:center;
+  font-size:clamp(1rem,1.9vw,1.12rem);line-height:1.75;color:var(--muted)}
+.method-problem b{color:var(--text);font-weight:900}
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1020px;margin:0 auto}
+.method-card{position:relative;background:#fff;border:1px solid var(--border);border-radius:20px;
+  padding:clamp(22px,2.6vw,28px);box-shadow:var(--shadow)}
+.method-num{display:block;font-size:.82rem;font-weight:900;letter-spacing:.14em;
+  color:#0f6b58;margin-bottom:10px}
+.method-card h3{font-size:1.08rem;font-weight:900;line-height:1.35;margin-bottom:8px;color:var(--text)}
+.method-card h3 em{font-style:normal;color:var(--blue);display:block}
+.method-card p{font-size:.95rem;line-height:1.7;color:var(--muted)}
+.method-close{max-width:680px;margin:clamp(28px,4vw,38px) auto 0;text-align:center;
+  font-size:clamp(1.05rem,2.2vw,1.3rem);font-weight:900;line-height:1.6;color:var(--text)}
+.method-close span{color:var(--blue)}
+@media(max-width:900px){.method-grid{grid-template-columns:1fr;max-width:520px}}
+
+/* ── VAT presentation ──
+   The headline figure is the pre-VAT price, so the amount actually charged
+   must sit next to it everywhere it appears. */
+.vat-note{font-size:.95rem;font-weight:700;color:var(--muted);align-self:center}
+.hero-total{margin-top:6px;font-size:.95rem;color:var(--muted)}
+.hero-total b{color:var(--text);font-weight:900}
+.price-total-line{display:block;margin-top:8px;font-size:.95rem;color:var(--muted)}
+.price-total-line b{color:var(--text);font-weight:900;font-size:1.1rem}
+.sb-vat{font-size:.78rem;color:var(--muted);display:block;line-height:1.35}
+
+/* Visually hidden but read aloud: the star glyphs alone convey nothing */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Honest note under a video that has no captions yet */
+.video-note{margin-top:12px;font-size:.84rem;line-height:1.6;color:var(--muted);
+  background:var(--soft);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.video-note a{color:var(--blue2);text-decoration:underline;text-underline-offset:3px}
+
+/* ── Pre-purchase disclosure ──
+   Kept deliberately short on the sales page: the headline facts plus a clear
+   route into the full terms, which is what the visitor confirms having read. */
+.pd-box{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--border);
+  border-radius:22px;padding:clamp(22px,3.4vw,32px);box-shadow:var(--shadow-lg);text-align:start}
+.pd-h{font-size:1.05rem;font-weight:900;margin:22px 0 12px}
+/* הצדקת המחיר, שהייתה קודם סקשן נפרד מעל כרטיס המחיר */
+.pd-why{font-size:.98rem;line-height:1.7;color:var(--muted);margin-bottom:18px;
+  padding-bottom:16px;border-bottom:1px solid var(--border)}
+.pd-badges{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px}
+.pd-deadline{font-size:.86rem;font-weight:700;color:#8a4b00;background:#fdf3e0;
+  border:1px solid #f0d9ae;border-radius:100px;padding:6px 14px}
+.pd-list{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:9px}
+.pd-list li{position:relative;padding-inline-start:26px;font-size:.96rem;line-height:1.65}
+.pd-list li::before{content:"✓";position:absolute;inset-inline-start:0;top:0;
+  color:#0f6b58;font-weight:900}
+.pd-price{background:var(--soft);border:1px solid var(--border);border-radius:14px;
+  padding:14px 18px;margin-bottom:16px}
+.pd-price-lbl{display:block;font-size:.78rem;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.pd-price-table{width:100%;border-collapse:collapse;margin-top:6px}
+.pd-price-table th,.pd-price-table td{padding:5px 0;text-align:start;font-size:.95rem;font-weight:400}
+.pd-price-table td{text-align:end;font-variant-numeric:tabular-nums}
+.pd-price-table .pd-price-total th,.pd-price-table .pd-price-total td{
+  border-top:2px solid var(--border);padding-top:9px;font-weight:900;font-size:1.25rem}
+.pd-vat{display:block;font-size:.85rem;color:var(--muted);margin-top:8px;line-height:1.55}
+.pd-cancel{font-size:.9rem;line-height:1.7;color:var(--muted);margin-bottom:18px}
+.pd-cancel b{color:var(--text)}
+.pd-cancel a,.pd-readmore{color:var(--blue2)}
+.pd-cancel a{text-decoration:underline;text-underline-offset:3px;font-weight:700}
+
+/* The "read the full terms" route: a real link, sized like a card so it is
+   impossible to miss immediately above the consent tick. */
+.pd-readmore{display:flex;gap:12px;align-items:flex-start;
+  background:var(--tint);border:2px solid var(--blue);border-radius:14px;
+  padding:14px 16px;text-decoration:none;transition:background .2s}
+.pd-readmore:hover{background:#dbe9ff}
+.pd-readmore svg{width:22px;height:22px;flex:0 0 auto;margin-top:2px;color:var(--blue)}
+.pd-readmore span{font-size:.9rem;line-height:1.65;color:var(--text)}
+.pd-readmore b{display:block;font-size:1rem;color:var(--blue2);
+  text-decoration:underline;text-underline-offset:3px;margin-bottom:2px}
+.pd-readmore em{display:block;font-style:normal;font-size:.82rem;color:var(--muted);margin-top:3px}
+
+.pd-consent{margin-top:22px;padding-top:20px;border-top:2px solid var(--border)}
+.pd-consent .check-row{font-size:.98rem}
+/* Scoped to the consent text only. A bare `.pd-consent a` also repainted the
+   buy button's label, dropping it to 4.27:1 on the turquoise fill. */
+.pd-consent .check-row a{color:var(--blue2);text-decoration:underline;text-underline-offset:3px;font-weight:700}
+/* Buy buttons stay visible while blocked, but announce themselves as disabled */
+.buy[aria-disabled="true"]{opacity:.55;cursor:not-allowed}
+
+/* Two-tone focus ring: stays visible on white, navy AND turquoise backgrounds. */
+:focus-visible{outline:3px solid var(--blue-900);outline-offset:2px;
+  box-shadow:0 0 0 6px var(--turquoise-400);border-radius:var(--radius-sm)}
+.navy :focus-visible,footer :focus-visible,.stickybar :focus-visible{
+  outline-color:#fff;box-shadow:0 0 0 6px var(--blue-600)}
 
 /* ── Typography scale ── */
 .title{font-size:clamp(var(--fs-xl),4vw,var(--fs-2xl));font-weight:var(--fw-black);line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
@@ -505,58 +603,102 @@ footer .fc{font-size:var(--fs-xs)}
   .pc-arrow{width:44px;height:44px}
   .benefit h3,.lesson h3,.outcome h3,.wn h3,.bonus h3{font-size:var(--fs-base)}
 }
+
+/* ══════════ CONTRAST CORRECTIONS ══════════════════════════════════
+   Must stay last: the design-system layer above re-colours these, and
+   each one measured below the WCAG 2.2 AA threshold of 4.5:1 against
+   its real painted background. Measured ratios are noted per line. */
+.minitest-stars{color:#8a6200}                              /* was #e0a72e on white, 2.16:1 */
+.method-num{color:#0f6b58}                                  /* teal-ink at 13px fails AA on white */
+.lesson-time{color:#0f6b58;background:rgba(32,196,182,.14)} /* was #158e78 on #e8fbf7, 3.78:1 */
+.price-eyebrow{color:#0f6b58}                               /* was #158e78 on white, 4.06:1 */
+.fit-no .fit-mark{background:#d3dbe6;color:#3f4b5c}         /* was #8d9299 on #d4d6d8, 2.15:1 */
+.final .secure,.final .secure svg{color:rgba(255,255,255,.88)} /* was #4c5058 on navy, 2.15:1 */
+.wa-group-btn{background:#075e54;color:#fff;display:inline-flex;align-items:center;gap:8px;
+  font-weight:800;padding:12px 26px;border-radius:100px;font-size:.95rem;text-decoration:none}
+.foot-wa{margin-bottom:22px}
+
+/* ── תיקוני מובייל ──
+   חייבים להיות אחרי שכבת הדיזיין-סיסטם שלמעלה, שמגדירה מחדש
+   .hero h1 עם אותה ספציפיות ולכן גוברת לפי סדר המקור. */
+@media(max-width:900px){
+  /* כותרת גרסה ב' ארוכה יותר ורצה ל-5 שורות במובייל. גובה שורה צפוף
+     יותר מחזיר את ה-CTA הראשי אל תוך המסך הראשון. */
+  .hero h1{line-height:1.16}
+  /* 24x24 הוא מינימום גודל מטרה לפי WCAG 2.2 AA (SC 2.5.8) */
+  .check-row input[type="checkbox"]{width:24px;height:24px}
+}
 </style>
 </head>
 <body>
 
+<a href="#main" class="skip">דילוג לתוכן המרכזי</a>
+
 <!-- ===== HEADER (logo + buy only, no nav that leaves the page) ===== -->
 <header>
   <div class="hdr">
-    <a href="#" class="logo" aria-label="SHWADRON.AI"><img src="assets/public/logo.png" alt="SHWADRON.AI" width="190" height="38"/></a>
+    <a href="index.html" class="logo"><img src="assets/public/logo.png" alt="SHWADRON.AI, חזרה לדף הבית" width="190" height="38"/></a>
     <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">להתחיל ללמוד</a>
   </div>
 </header>
 
-<main>
+<main id="main">
 
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-text">
       <div class="hero-head">
-        <div class="hero-badge"><i></i>לראשונה · גישה דיגיטלית לקורס</div>
-        <h1>למדו להשתמש ב-AI כדי לעבוד <span class="teal">מהר יותר</span>, לחסוך זמן ולהפסיק להתחיל כל משימה מחדש.</h1>
+        <div class="hero-badge"><i></i>לראשונה · גרסת הצפייה של הקורס</div>
+        <h1>להפסיק להשתמש ב-AI <span class="teal">רק כדי לקבל תשובות</span>.<br/>להתחיל לעבוד איתו כמו עם עוזר שמכיר את העבודה שלכם.</h1>
       </div>
       <div class="hero-body">
-        <p class="hero-lead">4 שיעורים מעשיים, ללא צורך בידע קודם, לצפייה בקצב שלכם.</p>
-        <div class="hero-price"><s>950 ₪</s><b class="js-price">285 ₪</b><span class="save-badge js-launch">חיסכון 70%</span></div>
-        <div class="urgency js-launch">⏳ מחיר ההשקה מסתיים ב-<time datetime="2026-08-02">02.08</time>, אחר כך המחיר <b>עולה</b>.</div>
-        <p class="hero-trustline"><span>⭐</span> מבוסס על הקורס החי שבו השתתפו בעלי עסקים, אנשי מקצוע ועובדי משרדים.</p>
-        <div class="assure">
-          <span>גישה מיידית</span><span>צפייה מכל מכשיר</span><span>תשלום מאובטח</span>
-        </div>
+        <p class="hero-lead">ארבעה שיעורים מוקלטים שמלמדים שיטת עבודה מסודרת עם AI. לא מתחילים מכלי, מתחילים ממשימה. בלי רקע טכני.</p>
+        <p class="hero-who">לבעלי עסקים, עצמאים, עובדי משרד ואנשי חינוך.</p>
+        <div class="hero-price"><s class="js-compare">950 ₪</s><b class="js-price">285 ₪</b><span class="vat-note">+ מע״מ</span><span class="save-badge js-save js-launch">חיסכון 70%</span></div>
+        <p class="hero-total">סה״כ לתשלום <b class="js-price-total">336.30 ₪</b> כולל מע״מ</p>
+        <div class="urgency js-launch">⏳ מחיר ההשקה מסתיים ב-<time class="js-deadline" datetime="2026-08-02">02.08</time>, אחר כך המחיר <b>עולה</b>.</div>
+        <p class="hero-trustline"><span>⭐</span> מבוסס על הקורס החי, ועל הרצאות והדרכות AI שיוחנן העביר בארגונים ובמוסדות.</p>
         <div class="cta-wrap">
           <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            אני רוצה להתחיל ללמוד עכשיו
+            לרכישת הקורס וקבלת גישה מיידית
           </a>
         </div>
-        <div class="hero-chips">
-          <span>ללא ידע קודם</span><span>לומדים בקצב אישי</span>
+        <div class="assure">
+          <span>גישה מיידית</span><span>צפייה ללא הגבלה</span><span>תשלום מאובטח</span>
         </div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-media">
-        <video src="assets/public/videos/course-preview.mp4" poster="assets/public/yochanan-landing.jpg" controls preload="none" playsinline></video>
+        <!-- נגן נגיש: פקדי הדפדפן המקוריים (ניתנים להפעלה במקלדת, עם שמות
+             נגישים מובנים), ללא ניגון אוטומטי וללא קול אוטומטי.
+             כתוביות: כשקובץ ה-VTT יהיה מוכן, יש להסיר את ההערה משורת ה-track
+             ולמחוק את הודעת "אין כתוביות" שמתחת לנגן. -->
+        <video src="assets/public/videos/course-preview.mp4"
+               poster="assets/public/yochanan-landing.jpg"
+               controls preload="none" playsinline
+               aria-label="סרטון תצוגה מקדימה של קורס ה-AI, עם יוחנן שבדרון">
+          <!-- <track kind="captions" src="assets/public/videos/course-preview.he.vtt" srclang="he" label="עברית" default/> -->
+          <p>הדפדפן שלכם אינו תומך בהצגת וידאו.
+             <a href="https://wa.me/972527169921">כתבו לנו בוואטסאפ</a> ונשלח לכם את התוכן בדרך אחרת.</p>
+        </video>
+        <p class="video-note">
+          <strong>לסרטון זה עדיין אין כתוביות.</strong>
+          זו מגבלת נגישות ידועה שאנחנו פועלים לתקן.
+          עד אז, <a href="https://wa.me/972527169921">פנו אלינו בוואטסאפ</a>
+          ונשלח תמלול או חלופה טקסטואלית ללא עלות.
+          פרטים ב<a href="accessibility.html">הצהרת הנגישות</a>.
+        </p>
       </div>
       <div class="minitest">
         <div class="minitest-card">
-          <div class="minitest-stars">★★★★★</div>
+          <div class="minitest-stars"><span aria-hidden="true">★★★★★</span><span class="sr-only">דירוג 5 מתוך 5 כוכבים</span></div>
           <p>"כבר היום אני משתמש בכלים שנתת. זה שווה כל שקל."</p>
         </div>
         <div class="minitest-card">
-          <div class="minitest-stars">★★★★★</div>
+          <div class="minitest-stars"><span aria-hidden="true">★★★★★</span><span class="sr-only">דירוג 5 מתוך 5 כוכבים</span></div>
           <p>"מפגש מקצועי, מרתק ועשיר בידע, עם העברת תוכן מדויקת."</p>
         </div>
       </div>
@@ -564,26 +706,13 @@ footer .fc{font-size:var(--fs-xs)}
   </div>
 </section>
 
-<!-- ===== MINI FAQ (right under the first CTA) ===== -->
-<section class="section" style="padding-top:clamp(34px,4vw,46px);padding-bottom:clamp(34px,4vw,46px)">
-  <div class="container">
-    <div class="minifaq">
-      <details><summary>צריך ידע קודם?</summary><p>לא. הקורס בנוי מאפס ובגובה העיניים.</p></details>
-      <details><summary>כמה זמן יש גישה?</summary><p>ללא הגבלה. צופים שוב ושוב, בקצב שלכם.</p></details>
-      <details><summary>מתי מקבלים גישה?</summary><p>מיד לאחר הרכישה.</p></details>
-    </div>
-  </div>
-</section>
+<!-- ה-MINI FAQ שהיה כאן הוסר: שלוש השאלות שלו חזרו מילה במילה ב-FAQ הראשי. -->
 
 <!-- ===== TRUST STRIP ===== -->
 <section class="trustbar">
   <div class="container">
-    <div class="tb-nums sr">
-      <div><b>8</b><span>שעות תוכן</span></div>
-      <div><b>4</b><span>שיעורים מלאים</span></div>
-      <div><b>מיידית</b><span>גישה לאחר הרכישה</span></div>
-      <div><b>ללא הגבלה</b><span>צפייה חוזרת</span></div>
-    </div>
+    <!-- ארבעת המספרים שהיו כאן (8 שעות, 4 שיעורים, גישה מיידית, ללא הגבלה)
+         הוסרו: כולם מופיעים בהירו ובבלוק הרכישה. נשארה הוכחת הסמכות. -->
     <div class="tb-orgs reveal">
       <p>יוחנן העביר הרצאות והדרכות AI בארגונים ובמוסדות, בהם:</p>
       <div class="tb-logos">
@@ -596,14 +725,13 @@ footer .fc{font-size:var(--fs-xs)}
 <!-- ===== WHAT YOU LEARN ===== -->
 <section class="section soft" id="lessons">
   <div class="container">
-    <div class="head sr"><div class="eyebrow">מה לומדים</div><h2 class="title">ארבעה שיעורים מלאים. <em>כל אחד תוצר ביד.</em></h2><p class="sub">כל תוכן הקורס, בגרסת הצפייה. צופים בקצב שלכם ומיישמים כבר תוך כדי.</p></div>
+    <div class="head sr"><div class="eyebrow">מה לומדים</div><h2 class="title">ארבעה שיעורים. <em>כל אחד תוצר ביד.</em></h2><p class="sub">כל שיעור מתחיל ממשימה אמיתית ונגמר במשהו שאפשר להשתמש בו.</p></div>
     <div class="lessons sr">
-      <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>1</b>שיעור ראשון</div><span class="lesson-time">שיעור מלא</span></div><h3>שוברים את תקרת הזכוכית</h3><p>היכרות עם הכלים המובילים (ChatGPT, Claude, Gemini, NotebookLM), ואיך בוחרים את הכלי הנכון לכל משימה.</p></div>
+      <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>1</b>שיעור ראשון</div><span class="lesson-time">שיעור מלא</span></div><h3>שוברים את תקרת הזכוכית</h3><p>מתחילים ממשימה אמיתית מהעבודה שלכם, ומשם בוחרים את הכלי שמתאים לה. היכרות מעשית עם ChatGPT, Claude, Gemini ו-NotebookLM דרך שימוש, לא דרך תפריטים.</p></div>
       <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>2</b>שיעור שני</div><span class="lesson-time">שיעור מלא</span></div><h3>קוד המאסטרים</h3><p>עקרונות פרומפטינג שמביאים תוצאה, בניית ספריית פרומפטים אישית, ומרעיון למצגת מקצועית.</p></div>
       <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>3</b>שיעור שלישי</div><span class="lesson-time">שיעור מלא</span></div><h3>המוח הכפול: הסוכן האישי שלכם</h3><p>בונים סוכן AI אישי שמכיר את התחום שלכם, כותב בסגנון שלכם, ועובד בשבילכם.</p></div>
       <div class="lesson"><div class="lesson-top"><div class="lesson-num"><b>4</b>שיעור רביעי</div><span class="lesson-time">שיעור מלא</span></div><h3>המאסטרינג: לעבוד על אוטומט</h3><p>תהליכי עבודה וצוות סוכנים שעובד בשבילכם, וארגז הכלים המלא כדי להישאר קדימה.</p></div>
     </div>
-    <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה להתחיל ללמוד</a></div>
   </div>
 </section>
 
@@ -622,26 +750,92 @@ footer .fc{font-size:var(--fs-xs)}
   </div>
 </section>
 
+<!-- ===== METHOD / הבידול =====
+     הסקשן שמסביר למה זה לא עוד רשימת כלים. נושא את ארבעת המסרים
+     המרכזיים של השיטה: AI כמו עובד חדש, לא מתחילים מכלי אלא ממשימה,
+     קלט ופלט, ואל תחליט שום דבר לבד. -->
+<section class="section method" id="method">
+  <div class="container">
+    <div class="head sr">
+      <div class="eyebrow">השיטה</div>
+      <h2 class="title">AI הוא לא קסם. <em>הוא כמו עובד חדש.</em></h2>
+      <p class="sub">עובד חדש לא מתחיל לעבוד לבד ביום הראשון. הוא צריך לדעת מה המשימה, לקבל את החומרים הנכונים, ולהבין מה נחשב תוצר טוב. עם AI זה בדיוק אותו דבר.</p>
+    </div>
+
+    <p class="method-problem sr">רוב האנשים פותחים צ׳אט, שואלים שאלה, מקבלים תשובה בינונית ומסיקים שזה לא בשבילם.<br/><b>הבעיה היא לא הכלי. הבעיה היא שאין שיטה.</b></p>
+
+    <div class="method-grid sr">
+      <div class="method-card">
+        <span class="method-num" aria-hidden="true">01</span>
+        <h3>לא מתחילים מכלי. מתחילים ממשימה.</h3>
+        <p>השאלה היא לא מה ChatGPT יודע לעשות, אלא מה אתם צריכים שייצא לכם היום. הכלי נבחר אחרי שהמשימה ברורה, ולא לפני.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num" aria-hidden="true">02</span>
+        <h3>קלט ופלט</h3>
+        <p>תוצר טוב מתחיל בקלט טוב. ההקשר, הדוגמאות והכיוון שתכניסו פנימה הם שיקבעו מה יצא. זו לא שאלה ותשובה, זה תהליך.</p>
+      </div>
+      <div class="method-card">
+        <span class="method-num" aria-hidden="true">03</span>
+        <h3>מה שאומרים ל-AI: <em>״אל תחליט שום דבר לבד״</em></h3>
+        <p>בדיוק כמו שמנחים עובד חדש. שלא יניח הנחות, שלא ימציא פרטים, ושישאל ויוודא איתכם לפני שהוא מבצע. ההנחיה הזו לבדה מוציאה מהמשחק את רוב התשובות שנשמעות טוב אבל לא נכונות.</p>
+      </div>
+    </div>
+
+    <p class="method-close sr">זה ההבדל בין <span>״ניסיתי AI״</span> לבין <span>״אני עובד עם AI״</span>.</p>
+  </div>
+</section>
+
 <!-- ===== PROOF (video + real screenshots) ===== -->
 <section class="section soft">
   <div class="container">
     <div class="head sr"><div class="eyebrow">מהשטח</div><h2 class="title">מה אומרים מי שכבר למדו.</h2><p class="sub">תגובות אמיתיות מהשטח. הפרטים המזהים טושטשו.</p></div>
     <div class="proof-carousel reveal">
       <button class="pc-arrow pc-prev" id="pcPrev" aria-label="הקודם">&#8250;</button>
+      <!-- הצילומים הם תמונות של טקסט. הטקסט מובא גם כטקסט חי מתחת לכל צילום,
+           כדי שקורא מסך יוכל להקריא אותו וכדי שניתן יהיה להגדיל אותו בלי טשטוש.
+           ה-alt של כל תמונה מתאר את מהותה, והתוכן עצמו הוא הטקסט החי. -->
       <div class="pc-track" id="pcTrack">
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-07-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="736" height="1600"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-09-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="736" height="1432"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-04-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="944" height="1600"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-06-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1132" height="1330"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="1143"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-05-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1152" height="777"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="788"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-08-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="667"/></div>
-        <div class="pc-slide"><img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp" alt="תגובת תלמיד בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="502"/></div>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-07-blurred.webp" alt="צילום מסך של סטורי באינסטגרם עם המלצה על הקורס. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="736" height="1600"/>
+          <figcaption class="pc-cap">״מדובר בלא פחות מהאיש והאגדה יוחנן שבדרון, המומחה מספר אחת ב-AI במגזר. אני אישית למדתי אצל כמה לפניו, ואני ממליץ רק עליו בפה מלא, כי פשוט אין כמוהו.״</figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-09-blurred.webp" alt="צילום מסך של הודעת וואטסאפ מבעל עסק, פרטים מזהים מטושטשים. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="736" height="1432"/>
+          <figcaption class="pc-cap">״הבאתי אותך לסדרת הרצאות בעסק ולתהליך הטמעה. בהתחלה חשבתי שזה פשוט יגרום להם לעבוד פחות, אבל בפועל קרה משהו הרבה יותר משמעותי: הם התחילו להספיק כמעט פי שניים בפחות זמן, העבודה הפכה למסודרת ומהירה יותר, וההכנסות בעסק הוכפלו.״ <span class="pc-name">חיים, בעל עסק</span></figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-04-blurred.webp" alt="צילום מסך של הודעת וואטסאפ מבוגר הקורס, פרטים מזהים מטושטשים. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="944" height="1600"/>
+          <figcaption class="pc-cap">״אחד הדברים הכי חזקים שלקחתי מהקורס זה לא רק להכיר עוד כלי, אלא להבין איך לגשת נכון ל-AI. פתאום משימות שהייתי נמרח עליהן הרבה זמן נהיו קצרות וברורות. אבל החלק הכי משמעותי היה שינוי החשיבה.״</figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-06-blurred.webp" alt="צילום מסך של הודעת וואטסאפ על בניית סוכן AI, פרטים מזהים מטושטשים. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="1132" height="1330"/>
+          <figcaption class="pc-cap">״ישבתי היום כמה שעות ובניתי סוכן מטורף, סוכן של מבקר פרסומות. זו הייתה השקעה של כמה שעות, אבל הוא הולך לחסוך לי שעות ולדייק לי מודעות בצורה גאונית.״</figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp" alt="צילום מסך של הודעת וואטסאפ מתומר בצלאל. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="1206" height="1143"/>
+          <figcaption class="pc-cap">״מורה שיודע להנגיש טכנולוגיה מורכבת בבהירות ובסבלנות.״ <span class="pc-name">תומר בצלאל, ביתר</span></figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-05-blurred.webp" alt="צילום מסך של הודעת וואטסאפ על בניית אתרים בעזרת AI, פרטים מזהים מטושטשים. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="1152" height="777"/>
+          <figcaption class="pc-cap">״חייב לשתף אותך: הצלחתי להקים עם GPT כמה אתרים מטורפים שהורידו ממני חצי מהעבודה שלי. הייתי בהלם בעצמי עד כמה אפשר להגיע עם זה, והכל עם הכללים שלמדנו.״</figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp" alt="צילום מסך של הודעת וואטסאפ ממשתתף עם ניסיון קודם ב-AI, פרטים מזהים מטושטשים. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="1206" height="788"/>
+          <figcaption class="pc-cap">״גם עם ניסיון קודם ב-AI, יצאתי מהמפגש עם ידע חדש ומעמיק.״</figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-08-blurred.webp" alt="צילום מסך של הודעת וואטסאפ על שימוש ב-NotebookLM, פרטים מזהים מטושטשים. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="1206" height="667"/>
+          <figcaption class="pc-cap">״אני מסיים עכשיו קורס, והמדריך סיכם את החומר שנלמד. השתמשתי בנוטבוק כפי שהדרכת, ותוצאות מדהימות. החברה היו בהלם.״</figcaption>
+        </figure>
+        <figure class="pc-slide">
+          <img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp" alt="צילום מסך של הודעת וואטסאפ ממשתתף שיישם את הכלים באותו יום, פרטים מזהים מטושטשים. התוכן מובא כטקסט מתחת לתמונה." loading="lazy" width="1206" height="502"/>
+          <figcaption class="pc-cap">״כבר באותו יום התחלתי להשתמש בכלים שקיבלתי בקורס.״</figcaption>
+        </figure>
       </div>
       <button class="pc-arrow pc-next" id="pcNext" aria-label="הבא">&#8249;</button>
     </div>
-    <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">אני רוצה להתחיל ללמוד</a></div>
+    <div class="cta-wrap"><a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">גם אני רוצה להתחיל</a></div>
   </div>
 </section>
 
@@ -671,121 +865,293 @@ footer .fc{font-size:var(--fs-xs)}
   </div>
 </section>
 
-<!-- ===== WHY THE PRICE DIFFERS (short) ===== -->
-<section class="section" id="why-price">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">שאלה שכדאי לשאול</div>
-      <h2 class="title">למה המחיר נמוך יותר מהקורס החי?</h2>
-      <p class="sub">בקורס החי יש מפגשים בזמן אמת, שאלות וליווי אישי. בגרסה הדיגיטלית מקבלים את אותם ארבעת השיעורים לצפייה עצמאית, ולכן המחיר הוא <b style="color:var(--blue)">285 ₪</b> במקום 950 ₪.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PRICE ===== -->
-<section class="section soft" id="buy">
-  <div class="container">
-    <div class="head sr"><div class="eyebrow">הצטרפות</div><h2 class="title">מחיר אחד. גישה מלאה.</h2></div>
-    <div class="price-card reveal">
-      <div class="price-eyebrow">גישה דיגיטלית לקורס · גישה מיידית</div>
-      <p class="js-launch" style="color:var(--muted);font-size:1rem;line-height:1.7;max-width:400px;margin:0 auto 18px">זו ההשקה הראשונה של גרסת הצפייה, ולכן פתחנו אותה במחיר מיוחד.</p>
-      <div class="price-compare">מחיר הקורס החי <s>950 ₪</s></div>
-      <div class="price-now"><b class="js-price">285 ₪</b><span>+ מע״מ · תשלום חד פעמי</span></div>
-      <div class="js-launch" style="margin-bottom:12px"><span class="save-badge" style="font-size:.95rem;padding:8px 18px">חיסכון של 70%</span></div>
-      <div class="urgency js-launch" style="margin:0 auto 18px">⏳ מחיר ההשקה מסתיים ב-<time datetime="2026-08-02">02.08</time>, אחר כך המחיר <b>עולה</b>.</div>
-      <ul class="price-incl">
-        <li>4 שיעורים מלאים, 8 שעות תוכן</li>
-        <li>גישה מיידית, מכל מכשיר</li>
-        <li>צפייה חוזרת ללא הגבלה</li>
-        <li>חומרי עזר וספריית פרומפטים</li>
-        <li>עדכונים עתידיים ללא תשלום</li>
-        <li>תמיכה במקרה של בעיית התחברות</li>
-      </ul>
-      <a class="buy blue" data-buy href="https://mrng.to/IIJExLH9xt">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        אני רוצה להתחיל ללמוד עכשיו
-      </a>
-      <div class="cta-wrap" style="margin-top:14px"><span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח בכרטיס אשראי</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
+<!-- ===== FAQ =====
+     קוצר מתשע שאלות לחמש. השאלות שהוסרו (גישה, צפייה מהטלפון, ידע קודם,
+     אורך הקורס, למי מתאים) נענות כבר בהירו, בסקשן ההתאמה ובבלוק הרכישה.
+     נשארו רק התנגדויות אמיתיות שלא מטופלות במקום אחר. -->
 <section class="section soft">
   <div class="container">
-    <div class="head sr"><div class="eyebrow">שאלות נפוצות</div><h2 class="title">כל מה שחשוב לדעת.</h2></div>
+    <div class="head sr"><div class="eyebrow">שאלות נפוצות</div><h2 class="title">לפני שמחליטים.</h2></div>
     <div class="faq">
-      <details open><summary>לכמה זמן יש לי גישה?</summary><p>מקבלים גישה מלאה לכל ארבעת השיעורים, וצופים בהם שוב ושוב בקצב שלכם, מתי שנוח.</p></details>
-      <details><summary>איך מקבלים גישה אחרי הרכישה?</summary><p>מיד לאחר התשלום מקבלים גישה לכל השיעורים ומתחילים ללמוד תוך דקות.</p></details>
-      <details><summary>אפשר לצפות מהטלפון?</summary><p>בהחלט. הקורס נצפה מכל מכשיר, מחשב, טאבלט או טלפון, בכל מקום.</p></details>
-      <details><summary>צריך ידע קודם או רקע טכני?</summary><p>לא. הקורס בנוי מאפס, בגובה העיניים. אם אתם יודעים לגלוש באינטרנט, אתם מוכנים.</p></details>
-      <details><summary>כמה זמן אורך הקורס?</summary><p>ארבעה שיעורים מלאים, בסך הכל כ-8 שעות תוכן. אפשר לצפות בהם ברצף או בפריסה נוחה, לגמרי בקצב שלכם.</p></details>
-      <details><summary>מה ההבדל בין זה לקורס החי?</summary><p>התוכן זהה, אלה אותם ארבעת השיעורים. ההבדל הוא במבנה: בקורס החי יש מפגשים בזמן אמת, שאלות ותשובות וליווי אישי, ולכן מחירו 950 ₪. בגרסה הדיגיטלית הלמידה עצמאית, ולכן המחיר נמוך יותר.</p></details>
-      <details><summary>למי הקורס מתאים?</summary><p>לבעלי עסקים, עצמאים, עובדי משרד, אנשי חינוך ומתחילים בלי רקע טכני. לכל מי שרוצה לעבוד חכם יותר עם AI.</p></details>
-      <details><summary>האם יש עדכונים?</summary><p>כן. כשמתווסף תוכן או מתעדכנים כלים, אתם מקבלים את העדכונים בלי תשלום נוסף.</p></details>
+      <details open><summary>כבר ניסיתי ChatGPT ולא התרשמתי. למה שיהיה אחרת?</summary><p>כי רוב הניסיונות נעצרים בשאלה ותשובה. הקורס מלמד תהליך עבודה: איך נותנים הקשר, איך מכוונים, ואיך מגיעים לתוצר שאפשר להשתמש בו. זה בדיוק ההבדל בין להתרשם לבין לעבוד.</p></details>
+      <details><summary>מה ההבדל בין זה לקורס החי?</summary><p>התוכן זהה, אלה אותם ארבעה שיעורים. בקורס החי יש מפגשים בזמן אמת, שאלות ותשובות וליווי אישי, ולכן מחירו <span class="js-compare">950 ₪</span> + מע״מ. כאן הלמידה עצמאית, ולכן המחיר נמוך יותר.</p></details>
+      <details><summary>המחיר כולל מע״מ?</summary><p>המחיר הנקוב הוא <b><span class="js-price">285 ₪</span></b> ועליו מתווסף מע״מ בשיעור <span class="js-vat-rate">18%</span>. הסכום שייגבה בפועל בכרטיס האשראי הוא <b><span class="js-price-total">336.30 ₪</span></b>. אין תוספות נוספות מעבר לכך.</p></details>
+      <details><summary>צריך לשלם על הכלים עצמם?</summary><p>לכלים שנלמדים בקורס יש גרסאות חינמיות שאפשר להתחיל ולעבוד איתן. לחלק מהיכולות המתקדמות קיימים מנויים בתשלום של אותם ספקים. הקורס אינו כולל מנויים, וההחלטה אם לשדרג נשארת שלכם.</p></details>
+      <details><summary>ואם זה לא יתאים לי?</summary><p>אפשר לבטל תוך 14 ימים ולקבל החזר מלא, כל עוד לא נצפה יותר משיעור אחד מלא. הפרטים המלאים ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p></details>
     </div>
   </div>
 </section>
 
-<!-- ===== FINAL CTA ===== -->
-<section class="section final">
+<!-- ===== PRE-PURCHASE DISCLOSURE =====
+     גילוי מלא של פרטי העסקה לפני התשלום, כנדרש בחוק הגנת הצרכן.
+     הסליקה מתבצעת אצל ספק חיצוני, ולכן הגילוי ותיבת האישור חייבים
+     להופיע כאן, לפני היציאה מהאתר. -->
+<section class="section soft" id="buy" aria-labelledby="pd-title">
   <div class="container">
-    <div class="sr">
-      <h2>בעוד חודש אתם יכולים להיות במקום אחר לגמרי.</h2>
-      <p>אפשר להמשיך לדחות, או להתחיל לעבוד עם AI כבר היום.</p>
+    <div class="head sr">
+      <div class="eyebrow">הצטרפות</div>
+      <h2 class="title" id="pd-title">מחיר אחד. <em>גישה מלאה.</em></h2>
+      <p class="sub">כל מה שצריך לדעת לפני התשלום, בלי אותיות קטנות.</p>
     </div>
-    <div class="cta-wrap reveal">
-      <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        אני רוצה לחסוך שעות עבודה בכל שבוע
+
+    <div class="pd-box reveal" id="purchase-details">
+
+      <!-- הצדקת המחיר, שהייתה קודם סקשן נפרד -->
+      <p class="pd-why">זו גרסת הצפייה של הקורס החי. אותם ארבעה שיעורים, אותו תוכן.
+        מה שאין כאן: מפגשים בזמן אמת, שאלות וליווי אישי. בשביל זה המחיר נמוך יותר.</p>
+
+      <div class="pd-price">
+        <span class="pd-price-lbl">פירוט המחיר</span>
+        <table class="pd-price-table">
+          <tbody>
+            <tr><th scope="row">מחיר הקורס החי</th><td><s class="js-compare">950 ₪</s></td></tr>
+            <tr><th scope="row">מחיר גרסת הצפייה</th><td class="js-price">285 ₪</td></tr>
+            <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">51.30 ₪</td></tr>
+            <tr class="pd-price-total"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">336.30 ₪</td></tr>
+          </tbody>
+        </table>
+        <div class="pd-badges js-launch">
+          <span class="save-badge js-save">חיסכון 70%</span>
+          <span class="pd-deadline">⏳ מחיר ההשקה מסתיים ב-<time class="js-deadline" datetime="2026-08-02">02.08</time></span>
+        </div>
+        <span class="pd-vat">זהו הסכום שייגבה בפועל בכרטיס האשראי. תשלום אחד, ללא דמי טיפול וללא תוספות.</span>
+      </div>
+
+      <h3 class="pd-h">מה כלול</h3>
+      <ul class="pd-list">
+        <li><b>4 שיעורים מוקלטים</b>, כ-8 שעות תוכן. אין מפגשים חיים.</li>
+        <li><b>גישה מיידית</b> מכל מכשיר, צפייה חוזרת ללא הגבלת זמן.</li>
+        <li><b>חומרי עזר וספריית פרומפטים</b> מוכנה לשימוש.</li>
+        <li><b>עדכוני תוכן עתידיים</b>, ללא תשלום נוסף.</li>
+        <li><b>תמיכה</b> בבעיות התחברות וגישה.</li>
+      </ul>
+
+      <p class="pd-cancel">
+        <b>ביטול:</b> תוך 14 ימים מהרכישה בהחזר מלא, כל עוד לא נצפה יותר משיעור אחד מלא.
+        <a href="cancellation.html">לפרטים ולשליחת בקשת ביטול</a>.
+      </p>
+
+      <!-- הפניה לקריאת פרטי העסקה המלאים, לפני האישור -->
+      <a class="pd-readmore" href="terms.html#product" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11a2 2 0 0 1 2 2v14H6a2 2 0 0 1-2-2z"/><path d="M8 8h6M8 12h6"/></svg>
+        <span>
+          <b>לקריאת פרטי העסקה המלאים</b>
+          שם הקורס, מה כלול ומה לא, תנאי תשלום, מועד קבלת הגישה, תנאי ביטול והחזר ופרטי העוסק.
+          <em>נפתח בלשונית חדשה, כדי שלא תאבדו את המקום כאן.</em>
+        </span>
       </a>
-      <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח · גישה מיידית</span>
+
+      <div class="pd-consent">
+        <label class="check-row" for="terms-accept">
+          <input type="checkbox" id="terms-accept" aria-describedby="terms-accept-err"/>
+          <span>קראתי ואני מאשר את <a href="terms.html" target="_blank" rel="noopener">תקנון האתר ותנאי הרכישה</a> ואת <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</span>
+        </label>
+        <strong class="field-error" id="terms-accept-err" role="alert"></strong>
+
+        <label class="check-row" for="marketing-accept">
+          <input type="checkbox" id="marketing-accept"/>
+          <span>אני מאשר לקבל עדכונים, הטבות ותוכן מקצועי בדוא״ל ובאמצעי קשר דיגיטליים. ניתן להסיר את ההסכמה בכל עת. <b>לא חובה, ואינו תנאי לרכישה.</b></span>
+        </label>
+
+        <div class="cta-wrap" style="margin-top:22px">
+          <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            למעבר לתשלום מאובטח
+          </a>
+          <span class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>תשלום מאובטח · גישה מיידית</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== TIPS GROUP ===== -->
-<section class="section soft" style="text-align:center">
-  <div class="container">
-    <div style="max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:24px;padding:clamp(28px,4vw,42px);box-shadow:var(--shadow)">
-      <div style="font-size:2.2rem;line-height:1">💬</div>
-      <h2 class="title" style="font-size:clamp(1.5rem,3.4vw,2.05rem);margin-top:8px">קבוצת הטיפים בוואטסאפ</h2>
-      <p class="sub" style="margin-top:10px;margin-inline:auto">מצטרפים בחינם, ומקבלים טיפים שוטפים, עדכונים וטריקים על AI, ישירות לוואטסאפ.</p>
-      <a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;margin-top:24px;background:#25d366;color:#fff;font-weight:900;padding:16px 34px;border-radius:16px;font-size:1.1rem;text-decoration:none;box-shadow:0 14px 30px rgba(37,211,102,.32)">💬 להצטרפות לקבוצת הטיפים</a>
-    </div>
-  </div>
-</section>
+<!-- סקשן ה-FINAL CTA הוסר: ה-CTA שלו נשא הבטחה לא מוכחת
+     ("לחסוך שעות עבודה בכל שבוע"), והבלוק שמעליו הוא כבר נקודת ההחלטה.
+     קבוצת הטיפים בוואטסאפ הועברה לפוטר, כדי לא להציע חלופה חינמית
+     בדיוק ברגע שמבקשים תשלום. -->
 
 </main>
 
 <footer>
   <img src="assets/public/logo.png" alt="SHWADRON.AI"/>
+  <!-- קבוצת הטיפים: הועברה לכאן מסקשן שלם באמצע הדף. -->
+  <p class="foot-wa">
+    <a class="wa-group-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">💬 קבוצת הטיפים בוואטסאפ (נפתח בחלון חדש)</a>
+  </p>
+  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
+    <h2>מסמכים משפטיים</h2>
+    <ul>
+      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
+      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
+      <li><a href="accessibility.html">הצהרת נגישות</a></li>
+      <li><a href="cancellation.html">ביטול עסקה</a></li>
+      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
+    </ul>
+  </nav>
+  <div class="foot-business">
+    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
+    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972527169921">052-716-9921</a></p>
+  </div>
   <div class="fc">© 2026 SHWADRON.AI · כל הזכויות שמורות</div>
 </footer>
 
 <!-- ===== STICKY MOBILE BUY BAR ===== -->
 <div class="stickybar" id="stickybar">
-  <div class="sb-price"><b class="js-price">285 ₪</b><s>950 ₪</s></div>
+  <div class="sb-price"><b class="js-price">285 ₪</b><span class="sb-vat">+ מע״מ · סה״כ <span class="js-price-total">336.30 ₪</span></span></div>
   <a class="buy" data-buy href="https://mrng.to/IIJExLH9xt">להתחיל ללמוד</a>
 </div>
 
 <script>
 // Single conversion goal: point every buy button to the checkout URL.
-// PLACEHOLDER: replace with the real checkout (סליקה) URL.
 // Launch window until 02.08.2026: price 285 + launch checkout link.
 // After the date: price rises to 385 automatically, the checkout link switches to the
 // 385 payment page, and the launch-price note disappears. No manual update needed.
+//
+// מחירים: המחיר הנקוב הוא לפני מע״מ, והמע״מ מתווסף עליו.
+// כל מקום באתר שמציג מחיר נגזר מהמשתנים כאן, כדי שלא ייווצר פער בין
+// מספרים שונים בעמוד. שינוי שיעור המע״מ נעשה בשורה אחת.
+//   .js-price       → המחיר לפני מע״מ, לדוגמה "285 ₪"
+//   .js-price-vat   → סכום המע״מ בלבד, לדוגמה "51.30 ₪"
+//   .js-price-total → הסכום הסופי לתשלום, לדוגמה "336.30 ₪"
 (function(){
-  var CHECKOUT_LAUNCH = "https://mrng.to/IIJExLH9xt"; // 285 ILS
-  var CHECKOUT_REGULAR = "https://mrng.to/zoeR82jDpx"; // 385 ILS
-  var LAUNCH_END = new Date('2026-08-02T23:59:59+03:00').getTime();
-  var afterLaunch = Date.now() > LAUNCH_END;
-  var checkout = afterLaunch ? CHECKOUT_REGULAR : CHECKOUT_LAUNCH;
-  var price = afterLaunch ? '385' : '285';
+  // ── מקום אחד לשינוי מחירים ותאריכים ─────────────────────────────
+  // כל מספר שמוצג בעמוד נגזר מכאן: המחיר, המע״מ, הסכום הסופי,
+  // אחוז החיסכון ותאריך סיום ההשקה. אין אחוז או תאריך מוקלד בעמוד.
+  var COMPARE_PRICE = 950;   // מחיר הקורס החי, לפני מע״מ
+  var LAUNCH_PRICE  = 285;   // מחיר ההשקה, לפני מע״מ
+  var REGULAR_PRICE = 385;   // המחיר אחרי ההשקה, לפני מע״מ
+  var LAUNCH_END    = '2026-08-02T23:59:59+03:00';
+  var VAT_RATE      = 0.18;
+  var CHECKOUT_LAUNCH  = "https://mrng.to/IIJExLH9xt"; // 285 + מע״מ
+  var CHECKOUT_REGULAR = "https://mrng.to/zoeR82jDpx"; // 385 + מע״מ
+  // ────────────────────────────────────────────────────────────────
+
+  var endTs       = new Date(LAUNCH_END).getTime();
+  var afterLaunch = Date.now() > endTs;
+  var checkout    = afterLaunch ? CHECKOUT_REGULAR : CHECKOUT_LAUNCH;
+  var priceEx     = afterLaunch ? REGULAR_PRICE : LAUNCH_PRICE;
+  var vat         = Math.round(priceEx * VAT_RATE * 100) / 100;
+  var total       = Math.round(priceEx * (1 + VAT_RATE) * 100) / 100;
+
+  // אחוז החיסכון מחושב ולא מוקלד, אחרת אחרי עליית המחיר היה נשאר
+  // כתוב "חיסכון 70%" בזמן שבפועל מדובר ב-59%.
+  var savePct = Math.round((1 - priceEx / COMPARE_PRICE) * 100);
+
+  // Whole shekels stay whole; agorot are shown to two places (336.30, not 336.3)
+  function ils(n){ return (n % 1 === 0 ? String(n) : n.toFixed(2)) + ' ₪'; }
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  var end = new Date(endTs);
+  var endShort = pad(end.getDate()) + '.' + pad(end.getMonth() + 1);
+  var endIso   = end.getFullYear() + '-' + pad(end.getMonth()+1) + '-' + pad(end.getDate());
+
   document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = checkout; });
-  document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = price + ' ₪'; });
+  document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(priceEx); });
+  document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(vat); });
+  document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(total); });
+  document.querySelectorAll('.js-compare').forEach(function(el){ el.textContent = ils(COMPARE_PRICE); });
+  document.querySelectorAll('.js-save').forEach(function(el){ el.textContent = 'חיסכון ' + savePct + '%'; });
+  document.querySelectorAll('.js-vat-rate').forEach(function(el){ el.textContent = (VAT_RATE * 100) + '%'; });
+  document.querySelectorAll('.js-deadline').forEach(function(el){
+    el.textContent = endShort;
+    if (el.tagName === 'TIME') el.setAttribute('datetime', endIso);
+  });
+
+  // אחרי סיום ההשקה נעלמים רק רכיבי הדחיפות. מחיר ההשוואה ואחוז
+  // החיסכון נשארים ומתעדכנים למספרים הנכונים.
   if(afterLaunch){ document.querySelectorAll('.js-launch').forEach(function(el){ el.style.display = 'none'; }); }
-  window.SHW_PRICE = Number(price);
+
+  // הנתונים המובנים לגוגל נגזרים מאותו מקור, אחרת אחרי סיום מבצע ההשקה
+  // יוצג בתוצאות החיפוש מחיר שאינו בתוקף.
+  try {
+    var ld = document.getElementById('course-ld');
+    if (ld) {
+      var data = JSON.parse(ld.textContent);
+      data.offers.price = total.toFixed(2);
+      data.offers.priceSpecification.price = String(priceEx);
+      data.offers.priceSpecification.description =
+        priceEx + ' ₪ לפני מע״מ. סה״כ לתשלום ' + total.toFixed(2) + ' ₪ כולל מע״מ ' + (VAT_RATE*100) + '%.';
+      ld.textContent = JSON.stringify(data);
+    }
+  } catch(e){}
+
+  window.SHW_PRICE_EX = priceEx;
+  window.SHW_PRICE = total;   // אירועי מדידה נרשמים לפי הסכום שנגבה בפועל
+})();
+
+// ─── Terms gate ───────────────────────────────────────────────────────────
+// Checkout happens off-site at the payment provider, so the disclosure and the
+// consent tick have to be enforced here, before the visitor leaves the page.
+// Every buy button routes through this check. Until the box is ticked a click
+// scrolls to the disclosure, focuses the checkbox and explains what is missing,
+// instead of silently doing nothing.
+(function(){
+  var TERMS_VERSION = '2026-08-01';
+  // תיעוד משפטי בלבד: אישור התקנון לפני המעבר לסליקה.
+  // זהו webhook נפרד מזה של ההרשמות, כדי שהתיעוד המשפטי יישמר בנפרד.
+  var CONSENT_HOOK  = 'https://hook.us2.make.com/2bo6jlu7s5ju5wmjdcd75728up9o5nrh';
+
+  var box     = document.getElementById('terms-accept');
+  var err     = document.getElementById('terms-accept-err');
+  var mkt     = document.getElementById('marketing-accept');
+  var buttons = document.querySelectorAll('[data-buy]');
+
+  if(!box) return;
+
+  function sync(){
+    var ok = box.checked;
+    buttons.forEach(function(b){
+      if(ok){ b.removeAttribute('aria-disabled'); }
+      else  { b.setAttribute('aria-disabled','true'); }
+    });
+    if(ok) err.textContent = '';
+  }
+  box.addEventListener('change', sync);
+  sync();
+
+  // Records which version of the terms was accepted, when, and against which
+  // checkout attempt, so the acceptance can be evidenced later.
+  function logConsent(){
+    var txid = 'shw-consent-' + Date.now() + '-' + Math.floor(Math.random()*10000);
+    var payload = {
+      סוג_פנייה:      'אישור תקנון לפני רכישה',
+      גרסת_תקנון:     TERMS_VERSION,
+      מזהה_אישור:     txid,
+      תאריך_ושעה:     new Date().toISOString(),
+      אזור_זמן:       Intl.DateTimeFormat().resolvedOptions().timeZone,
+      מוצר:           'גישה דיגיטלית לקורס AI',
+      מחיר:           window.SHW_PRICE,
+      אישור_תקנון:    'כן',
+      דיוור_שיווקי:   (mkt && mkt.checked) ? 'כן' : 'לא',
+      עמוד:           location.pathname
+    };
+    try{ sessionStorage.setItem('shw_terms_txid', txid); }catch(e){}
+    // keepalive lets the request finish after the page navigates to checkout.
+    try{
+      fetch(CONSENT_HOOK, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload),
+        keepalive:true
+      }).catch(function(){});
+    }catch(e){}
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('[data-buy]');
+    if(!btn) return;
+
+    if(!box.checked){
+      e.preventDefault();
+      err.textContent = 'כדי להמשיך לתשלום יש לאשר את התקנון, תנאי הרכישה ומדיניות הפרטיות.';
+      document.getElementById('purchase-details')
+              .scrollIntoView({ behavior:'smooth', block:'center' });
+      // Focus after the smooth scroll settles, so the ring is visible on arrival.
+      setTimeout(function(){ box.focus(); }, 420);
+      return;
+    }
+    logConsent();
+  });
 })();
 
 // ─── Conversion tracking: which CTA gets clicked, and the move to checkout ───

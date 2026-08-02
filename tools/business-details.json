@@ -1,0 +1,16 @@
+{
+  "_comment": "פרטי העסק. אחרי עדכון כאן, הריצו: node tools/fill-business-details.mjs",
+  "_comment2": "השדות שעדיין ריקים יישארו מסומנים בצהוב באתר עד שימולאו.",
+
+  "legalName": "יוחנן שבדרון",
+  "businessNumber": "203223078",
+  "address": "yochanan@shwadron-ai.com",
+  "email": "yochanan@shwadron-ai.com",
+  "accessibilityEmail": "yochanan@shwadron-ai.com",
+  "accessibilityOfficer": "יוחנן שבדרון",
+  "contactPhone": "052-818-9921",
+  "serviceHours": "",
+  "jurisdiction": "",
+  "captionsTargetDate": "",
+  "screenReaderTestTargetDate": ""
+}

@@ -25,6 +25,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" href="assets/public/images/brand/hero-calendar-character.webp" as="image"/>
 <link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
+<link rel="stylesheet" href="assets/css/consent.css"/>
+<!-- הודעת עוגיות. אין באתר זה סקריפטי מעקב שנטענים ללא הסכמה. -->
+<script src="assets/js/consent.js" defer></script>
 
 <script type="application/ld+json">
 {
@@ -275,7 +278,25 @@ footer img{height:46px;width:auto;margin:0 auto 14px}
 .foot-links{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin-bottom:22px}
 .foot-links a{color:rgba(255,255,255,.72);font-weight:600;font-size:.92rem;transition:color .2s}
 .foot-links a:hover{color:var(--teal-bright)}
-.foot-copy{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:.82rem;color:rgba(255,255,255,.45)}
+/* .45 opacity on navy resolves to ~4.4:1 and fails AA for body text; .72 gives ~9.4:1 */
+.foot-copy{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:.82rem;color:rgba(255,255,255,.72)}
+
+/* The page-level `nav{position:fixed;background:rgba(255,255,255,.9)}` rule
+   also matches these footer <nav> elements, which pinned them to the top of
+   the viewport as white bars with white text. Reset every property it sets. */
+footer nav{position:static;inset:auto;z-index:auto;height:auto;
+  background:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+  border-bottom:0;box-shadow:none;display:block}
+
+/* Legal links: underlined so they are identifiable without relying on colour */
+.foot-legal-nav{margin:0 auto 24px;max-width:900px}
+.foot-legal-nav h2{font-size:.82rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:.04em}
+.foot-legal-nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:12px 24px;padding:0;margin:0}
+.foot-legal-nav a{color:#fff;font-weight:600;font-size:.92rem;text-decoration:underline;text-underline-offset:3px}
+.foot-legal-nav a:hover{color:var(--teal-bright)}
+.foot-business{max-width:900px;margin:0 auto 20px;font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.78)}
+.foot-business a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.todo{background:#ffe9a8;color:#5a4300;font-weight:700;padding:1px 8px;border-radius:8px;border:1px dashed #b58900}
 
 /* ── WA FAB ── */
 .wa{position:fixed;left:22px;bottom:22px;z-index:70;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;box-shadow:0 12px 32px rgba(37,211,102,.4);opacity:0;pointer-events:none;transition:transform .25s,opacity .3s}
@@ -360,7 +381,12 @@ footer img{height:46px;width:auto;margin:0 auto 14px}
    ═══════════════════════════════════════════════════════════ */
 
 /* ── Focus: soft turquoise halo, not a hard outline ── */
-:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+/* Two-tone focus ring: stays visible on white, navy AND turquoise backgrounds.
+   The plain --shadow-focus halo was invisible on the teal sections. */
+:focus-visible{outline:3px solid var(--blue-900);outline-offset:2px;
+  box-shadow:0 0 0 6px var(--turquoise-400);border-radius:var(--radius-sm)}
+.navy :focus-visible,footer :focus-visible,nav.scrolled :focus-visible{
+  outline-color:#fff;box-shadow:0 0 0 6px var(--blue-600)}
 
 /* ── Typography scale ── */
 .title{font-size:clamp(var(--fs-xl),4vw,var(--fs-3xl));font-weight:var(--fw-black);line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
@@ -481,6 +507,17 @@ footer img{filter:brightness(0) invert(1)}
   .card p,.step p{font-size:var(--fs-xs)}
   .wa{left:auto;inset-inline-end:20px}
 }
+
+/* ══════════ CONTRAST CORRECTIONS ══════════════════════════════════
+   Must stay last: the design-system layer above re-colours these.
+   --teal-ink (#158e78) is fine for large text but falls below the
+   WCAG 2.2 AA 4.5:1 threshold at the small sizes used here.
+   #0f6b58 is the same hue, darkened until it passes. */
+.eyebrow{color:#0f6b58}                                   /* was 3.82:1 on #f7f8f8 */
+.join-eyebrow{color:#0f6b58}                              /* was 4.06:1 on white */
+.compare-col.after h3 i{color:#0f6b58}                    /* was 3.57:1 on #dbf6f3 */
+.compare-col.after .compare-list li::before{color:#0f6b58}
+.dark .eyebrow{color:var(--teal-bright)}                  /* keep the light variant on navy */
 </style>
 </head>
 <body>
@@ -797,12 +834,26 @@ footer img{filter:brightness(0) invert(1)}
 <!-- FOOTER -->
 <footer>
   <img src="assets/public/images/brand/shwadron-logo.png" alt="SHWADRON.AI"/>
-  <div class="foot-links">
+  <nav class="foot-links" aria-label="ניווט בתוך העמוד">
     <a href="#change">מה משתנה</a>
     <a href="#how">איך זה עובד</a>
     <a href="#details">פרטי המחזור</a>
     <a href="#faq">שאלות</a>
     <a href="#join">הצטרפות</a>
+  </nav>
+  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
+    <h2>מסמכים משפטיים</h2>
+    <ul>
+      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
+      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
+      <li><a href="accessibility.html">הצהרת נגישות</a></li>
+      <li><a href="cancellation.html">ביטול עסקה</a></li>
+      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
+    </ul>
+  </nav>
+  <div class="foot-business">
+    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
+    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972527169921">052-716-9921</a></p>
   </div>
   <div class="foot-copy">© 2026 SHWADRON.AI · AI לציבור החרדי · כל הזכויות שמורות</div>
 </footer>

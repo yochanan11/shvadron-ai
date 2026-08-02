@@ -5,51 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
 <title>תודה על הרכישה! נפתח לך גישה לקורס | SHWADRON.AI</title>
+<meta name="description" content="הרכישה הושלמה. מלאו שם, טלפון ודוא״ל ונפתח לכם גישה מיידית לכל שיעורי הקורס ולחומרים הנלווים."/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
+<link rel="stylesheet" href="assets/css/site-legal.css"/>
+<link rel="stylesheet" href="assets/css/forms-a11y.css"/>
+<link rel="stylesheet" href="assets/css/consent.css"/>
 
 <!-- ═══════════ ANALYTICS ═══════════
-     חשוב: המזהים כאן חייבים להיות זהים לאלה שב-course.html.
+     המזהים מוגדרים במקום אחד בלבד: assets/js/consent.js.
+     GA4 ו-Clarity נטענים רק לאחר אישור קטגוריית "סטטיסטיקה".
 -->
+<script src="assets/js/consent.js"></script>
 <script>
-window.SHW_ANALYTICS = { GA4_ID: "G-CCPB1QRS42", CLARITY_ID: "xu2vu3u1d0" };
+// אירוע רכישה: נשלח פעם אחת בלבד לכל רוכש, ורק אם ניתנה הסכמה לסטטיסטיקה.
+// מזהה העסקה נשמר מקומית גם ללא הסכמה, כדי שרענון עמוד לא ייספר כמכירה נוספת.
 (function(){
-  var cfg = window.SHW_ANALYTICS;
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function(){ window.dataLayer.push(arguments); };
-  if (cfg.GA4_ID) {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + cfg.GA4_ID;
-    document.head.appendChild(s);
-    gtag('js', new Date());
-    gtag('config', cfg.GA4_ID);
-  }
-  if (cfg.CLARITY_ID) {
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", cfg.CLARITY_ID);
-  }
-
-  // purchase: fires once per buyer. A page refresh will not count a second sale.
   try {
     var KEY = 'shw_purchase_sent';
-    if (!localStorage.getItem(KEY)) {
-      var afterLaunch = Date.now() > new Date('2026-08-02T23:59:59+03:00').getTime();
-      var value = afterLaunch ? 385 : 285;
-      var txid = 'shw-' + Date.now() + '-' + Math.floor(Math.random()*10000);
+    if (localStorage.getItem(KEY)) return;
+    var afterLaunch = Date.now() > new Date('2026-08-02T23:59:59+03:00').getTime();
+    var value = afterLaunch ? 385 : 285;
+    var txid = 'shw-' + Date.now() + '-' + Math.floor(Math.random()*10000);
+    localStorage.setItem(KEY, txid);
+    window.SHW.consent.onGrant('statistics', function(){
       gtag('event','purchase',{
         transaction_id: txid,
         value: value,
         currency: 'ILS',
         items: [{ item_id:'course-digital', item_name:'גישה דיגיטלית לקורס AI', price:value, quantity:1 }]
       });
-      localStorage.setItem(KEY, txid);
-    }
+    });
   } catch(e){}
 })();
 </script>
@@ -150,11 +138,13 @@ form{gap:var(--space-4)}
 </head>
 <body>
 
+<a href="#main" class="skip">דילוג לתוכן המרכזי</a>
+
 <header>
   <img src="assets/public/logo.png" alt="SHWADRON.AI" width="190" height="38"/>
 </header>
 
-<main>
+<main id="main">
   <div class="card">
 
     <!-- FORM STATE -->
@@ -165,23 +155,55 @@ form{gap:var(--space-4)}
       <h1>תודה על הרכישה!</h1>
       <p class="lead">עוד שלב קטן ואתם בפנים.<br/>מלאו את הפרטים <b>ונפתח לכם גישה לקורס</b> וכל החומרים.</p>
 
+      <div class="error-summary" id="error-summary" role="alert" hidden tabindex="-1">
+        <h2>יש לתקן את הפרטים הבאים</h2>
+        <ul id="error-list"></ul>
+      </div>
+
       <form id="access-form" novalidate>
         <div class="field">
-          <label for="f-name">שם מלא</label>
-          <input id="f-name" name="שם_מלא" type="text" placeholder="ישראל ישראלי" required autocomplete="name"/>
+          <label for="f-name">שם מלא <span class="req" aria-hidden="true">*</span>
+            <span class="hint">שדה חובה.</span></label>
+          <input id="f-name" name="שם_מלא" type="text" placeholder="ישראל ישראלי" required
+                 autocomplete="name" aria-required="true" aria-describedby="f-name-err"/>
+          <strong class="field-error" id="f-name-err"></strong>
         </div>
         <div class="field">
-          <label for="f-phone">טלפון</label>
-          <input id="f-phone" name="טלפון" type="tel" placeholder="050-0000000" required autocomplete="tel" inputmode="tel"/>
+          <label for="f-phone">טלפון <span class="req" aria-hidden="true">*</span>
+            <span class="hint">שדה חובה. 10 ספרות, לדוגמה 0501234567.</span></label>
+          <input id="f-phone" name="טלפון" type="tel" placeholder="050-0000000" required
+                 autocomplete="tel" inputmode="tel" aria-required="true" aria-describedby="f-phone-err"/>
+          <strong class="field-error" id="f-phone-err"></strong>
         </div>
         <div class="field">
-          <label for="f-email">כתובת מייל</label>
-          <input id="f-email" name="מייל" type="email" placeholder="israel@example.com" required autocomplete="email" inputmode="email"/>
+          <label for="f-email">כתובת מייל <span class="req" aria-hidden="true">*</span>
+            <span class="hint">שדה חובה. לכתובת הזו יישלח קישור הגישה לקורס.</span></label>
+          <input id="f-email" name="מייל" type="email" placeholder="israel@example.com" required
+                 autocomplete="email" inputmode="email" aria-required="true" aria-describedby="f-email-err"/>
+          <strong class="field-error" id="f-email-err"></strong>
         </div>
+
+        <!-- הסכמה לדיוור שיווקי: נפרדת, לא מסומנת מראש, ואינה תנאי לפתיחת הגישה -->
+        <label class="check-row" for="f-marketing">
+          <input type="checkbox" id="f-marketing" name="דיוור_שיווקי" value="כן"/>
+          <span>אני מאשר לקבל עדכונים, הטבות ותוכן מקצועי בדוא״ל ובאמצעי קשר דיגיטליים.
+            ניתן להסיר את ההסכמה בכל עת. <b>לא חובה, ולא משפיע על פתיחת הגישה.</b></span>
+        </label>
+
         <button type="submit" class="submit" id="submit-btn">שליחה ופתיחת גישה</button>
-        <div class="note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-          הפרטים נשלחים אלינו בלבד לצורך פתיחת הגישה
+
+        <div class="privacy-note">
+          <h3>מה קורה עם הפרטים שמסרתם</h3>
+          <ul>
+            <li><strong>מי אוסף:</strong> יוחנן שבדרון, בעל העסק SHWADRON.AI.</li>
+            <li><strong>לשם מה:</strong> פתיחת הגישה לקורס, שליחת קישורי הצפייה והחומרים, ומתן תמיכה.</li>
+            <li><strong>האם חובה:</strong> שם, טלפון ודוא״ל נדרשים כדי לפתוח את הגישה. בלעדיהם לא נוכל לעשות זאת.
+              אישור הדיוור השיווקי הוא רשות מלאה.</li>
+            <li><strong>איפה נשמר:</strong> במערכת האוטומציה Make ובמערכת החשבוניות Morning.</li>
+            <li><strong>למי עשוי להימסר:</strong> לספקים אלה בלבד, לצורך אספקת השירות, ולרשויות המס כחלק מהתיעוד החשבונאי.</li>
+            <li><strong>עיון ותיקון:</strong> אפשר לבקש לעיין במידע, לתקן או למחוק אותו בפנייה אלינו.
+              פירוט מלא ב<a href="privacy.html">מדיניות הפרטיות</a>.</li>
+          </ul>
         </div>
       </form>
     </div>
@@ -197,37 +219,130 @@ form{gap:var(--space-4)}
 
     <div style="margin-top:24px;padding-top:20px;border-top:1px solid #E1E9F4">
       <p style="color:#5A6B85;font-size:.95rem;margin-bottom:12px">רוצים טיפים שוטפים על AI? הצטרפו לקבוצה שלנו:</p>
-      <a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:800;padding:12px 24px;border-radius:100px;font-size:1rem;text-decoration:none">💬 קבוצת הטיפים בוואטסאפ</a>
+      <a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#075e54;color:#fff;font-weight:800;padding:12px 24px;border-radius:100px;font-size:1rem;text-decoration:none">💬 קבוצת הטיפים בוואטסאפ</a>
     </div>
 
   </div>
 </main>
 
-<footer>© 2026 SHWADRON.AI · כל הזכויות שמורות</footer>
+<!-- הפוטר בעמוד הזה בהיר, ולכן וריאנט הטקסט הכהה. בלעדיו הקישורים
+     המשפטיים נצבעים בלבן על רקע בהיר ונעלמים. -->
+<footer class="site-footer--light">
+  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
+    <h2>מסמכים משפטיים</h2>
+    <ul>
+      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
+      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
+      <li><a href="accessibility.html">הצהרת נגישות</a></li>
+      <li><a href="cancellation.html">ביטול עסקה</a></li>
+      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
+    </ul>
+  </nav>
+  <div class="foot-business">
+    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
+    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972527169921">052-716-9921</a></p>
+  </div>
+  <p>© 2026 SHWADRON.AI · כל הזכויות שמורות</p>
+</footer>
 
 <script>
 // Recorded-course access form: sends details to the existing Make webhook,
 // then shows the success state so the buyer knows we received it.
-document.getElementById('access-form').addEventListener('submit', async function(e){
-  e.preventDefault();
-  var form = e.target;
-  if(!form.checkValidity()){ form.reportValidity(); return; }
-  var btn = document.getElementById('submit-btn');
-  btn.textContent = 'שולח...';
-  btn.disabled = true;
-  var fd = new FormData(form);
-  var data = { מוצר: 'קורס AI מוקלט' };
-  fd.forEach(function(v,k){ data[k] = v; });
-  try{
-    await fetch('https://hook.us2.make.com/psjd7do40epacy6laf4zsr1191nr9ldo', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(data)
+//
+// Validation is hand-rolled rather than left to reportValidity() so that each
+// error gets a Hebrew message, an inline location AND an entry in a summary at
+// the top of the form that takes focus. The native bubble is not reliably
+// announced by screen readers and disappears on the next keystroke.
+(function(){
+  var form    = document.getElementById('access-form');
+  var summary = document.getElementById('error-summary');
+  var list    = document.getElementById('error-list');
+  var btn     = document.getElementById('submit-btn');
+
+  var RULES = [
+    { id:'f-name',  label:'שם מלא',
+      test:function(v){ return v.trim().length >= 2; },
+      msg:'יש להזין שם מלא, לפחות שני תווים.' },
+    { id:'f-phone', label:'טלפון',
+      test:function(v){ return /^0\d{1,2}-?\d{7}$/.test(v.replace(/[\s()]/g,'')); },
+      msg:'יש להזין מספר טלפון ישראלי תקין, לדוגמה 0501234567.' },
+    { id:'f-email', label:'כתובת מייל',
+      test:function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
+      msg:'יש להזין כתובת דוא״ל תקינה, בפורמט name@example.com.' }
+  ];
+
+  function clearError(rule){
+    var elm = document.getElementById(rule.id);
+    elm.removeAttribute('aria-invalid');
+    document.getElementById(rule.id + '-err').textContent = '';
+  }
+  function setError(rule){
+    var elm = document.getElementById(rule.id);
+    elm.setAttribute('aria-invalid','true');
+    document.getElementById(rule.id + '-err').textContent = rule.msg;
+  }
+
+  RULES.forEach(function(rule){
+    var elm = document.getElementById(rule.id);
+    elm.addEventListener('blur', function(){
+      if(elm.getAttribute('aria-invalid') === 'true' && rule.test(elm.value)) clearError(rule);
     });
-  }catch(_){}
-  document.body.classList.add('done');
-  window.scrollTo(0,0);
-});
+  });
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    var failed = [];
+    RULES.forEach(function(rule){
+      var elm = document.getElementById(rule.id);
+      if(rule.test(elm.value)){ clearError(rule); } else { setError(rule); failed.push(rule); }
+    });
+
+    if(failed.length){
+      list.innerHTML = '';
+      failed.forEach(function(rule){
+        var li = document.createElement('li');
+        var a  = document.createElement('a');
+        a.href = '#' + rule.id;
+        a.textContent = rule.label + ': ' + rule.msg;
+        a.addEventListener('click', function(ev){
+          ev.preventDefault();
+          document.getElementById(rule.id).focus();
+        });
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      summary.hidden = false;
+      summary.focus();
+      return;
+    }
+
+    summary.hidden = true;
+    btn.textContent = 'שולח...';
+    btn.disabled = true;
+
+    var data = { מוצר: 'קורס AI מוקלט' };
+    new FormData(form).forEach(function(v,k){ data[k] = v; });
+    // The marketing checkbox is absent from FormData when unticked; record the
+    // refusal explicitly so the CRM never treats "missing" as "opted in".
+    data['דיוור_שיווקי'] = document.getElementById('f-marketing').checked ? 'כן' : 'לא';
+    data['תאריך_שליחה']  = new Date().toISOString();
+
+    try{
+      // הרשמות לקורס הדיגיטלי: ה-webhook התפעולי הקיים, לפתיחת הגישה.
+      await fetch('https://hook.us2.make.com/psjd7do40epacy6laf4zsr1191nr9ldo', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+    }catch(_){}
+
+    document.body.classList.add('done');
+    window.scrollTo(0,0);
+    var ok = document.querySelector('.success h1');
+    if(ok){ ok.setAttribute('tabindex','-1'); ok.focus(); }
+  });
+})();
 </script>
 </body>
 </html>

@@ -1,0 +1,92 @@
+/* ============================================================
+   Shwadron.AI - site-wide legal furniture
+   The skip link, the legal footer block and the "needs filling in"
+   marker, shared by every marketing / transactional page so the
+   markup does not have to be duplicated per file.
+   ============================================================ */
+
+/* ── Skip link ─────────────────────────────────────────────
+   Only applied where the page does not already define .skip. */
+.skip{
+  position:absolute;
+  inset-inline:0;
+  margin-inline:auto;
+  width:fit-content;
+  top:-200%;
+  z-index:999;
+  background:var(--blue-900,#0a1a33);
+  color:#fff;
+  font-weight:800;
+  padding:12px 24px;
+  border-radius:0 0 14px 14px;
+  text-decoration:none;
+  transition:top .2s;
+}
+.skip:focus{top:0}
+
+/* ── Legal footer ──────────────────────────────────────────
+   Links are underlined so they remain identifiable without colour. */
+
+/* Several pages style the site header with a bare `nav{position:fixed;...}`
+   selector, which also matches a <nav> placed inside the footer and pins it
+   to the top of the viewport. Neutralise every property those rules set. */
+footer nav{position:static;inset:auto;z-index:auto;height:auto;
+  background:none;backdrop-filter:none;-webkit-backdrop-filter:none;
+  border-bottom:0;box-shadow:none;display:block;padding:0}
+
+.foot-legal-nav{margin:0 auto 24px;max-width:900px}
+.foot-legal-nav h2{
+  font-size:.82rem;
+  font-weight:800;
+  color:#fff;
+  margin-bottom:10px;
+  letter-spacing:.04em;
+}
+.foot-legal-nav ul{
+  list-style:none;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px 24px;
+  padding:0;
+  margin:0;
+}
+.foot-legal-nav a{
+  color:#fff;
+  font-weight:600;
+  font-size:.92rem;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.foot-legal-nav a:hover{color:var(--turquoise-400,#5ce6c8)}
+
+.foot-business{
+  max-width:900px;
+  margin:0 auto 20px;
+  font-size:.85rem;
+  line-height:1.7;
+  color:rgba(255,255,255,.78);
+}
+.foot-business p{margin-bottom:4px}
+.foot-business a{color:#fff;text-decoration:underline;text-underline-offset:3px}
+
+/* On light footers, flip the legal block to dark ink.
+   Uses :where() on the wrapper so these stay easy to override, but the
+   colour itself must win over the white defaults above. */
+footer.site-footer--light .foot-legal-nav h2,
+footer.site-footer--light .foot-legal-nav a,
+footer.site-footer--light .foot-business a{color:var(--blue-900,#0a1a33)}
+footer.site-footer--light .foot-legal-nav a:hover,
+footer.site-footer--light .foot-business a:hover{color:var(--blue-700,#0050bd)}
+footer.site-footer--light .foot-business{color:var(--gray-600,#4c5058)}
+
+/* ── Placeholder marker ────────────────────────────────────
+   Deliberately loud: these must never reach production unnoticed. */
+.todo{
+  background:#ffe9a8;
+  color:#5a4300;
+  font-weight:700;
+  padding:1px 8px;
+  border-radius:8px;
+  border:1px dashed #b58900;
+}

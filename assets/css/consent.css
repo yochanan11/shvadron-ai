@@ -1,0 +1,153 @@
+/* ============================================================
+   Shwadron.AI - Cookie consent banner + settings dialog
+   Loaded on every page. Written with literal fallbacks so it
+   renders correctly even on a page that has not linked the
+   design-system tokens.
+   ============================================================ */
+
+.shw-cookie-banner{
+  position:fixed;
+  inset-inline:0;
+  bottom:0;
+  z-index:9998;
+  background:var(--blue-900,#0a1a33);
+  color:#fff;
+  border-top:4px solid var(--turquoise-500,#2edebf);
+  box-shadow:0 -8px 32px rgba(10,26,51,.35);
+  font-family:var(--font-sans,'Rubik',-apple-system,'Segoe UI',sans-serif);
+  font-size:.95rem;
+  line-height:1.6;
+  padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));
+}
+.shw-cookie-inner{max-width:1180px;margin-inline:auto}
+.shw-cookie-banner h2{
+  font-size:1.1rem;
+  font-weight:800;
+  margin:0 0 8px;
+  color:#fff;
+}
+.shw-cookie-banner h2:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:3px;
+  box-shadow:none;
+}
+.shw-cookie-banner p{
+  margin:0 0 16px;
+  color:#cfe4ff;
+  max-width:90ch;
+}
+.shw-cookie-actions{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
+
+.shw-ck-btn{
+  font-family:inherit;
+  font-size:.95rem;
+  font-weight:700;
+  border-radius:999px;
+  padding:12px 24px;
+  cursor:pointer;
+  border:2px solid transparent;
+  text-decoration:none;
+  display:inline-block;
+  line-height:1.2;
+  transition:background .2s,color .2s;
+}
+.shw-ck-primary{background:var(--turquoise-500,#2edebf);color:#0a1a33;border-color:var(--turquoise-500,#2edebf)}
+.shw-ck-primary:hover{background:var(--turquoise-400,#5ce6c8);border-color:var(--turquoise-400,#5ce6c8)}
+.shw-ck-secondary{background:transparent;color:#fff;border-color:#fff}
+.shw-ck-secondary:hover{background:#fff;color:#0a1a33}
+.shw-ck-link{
+  background:none;
+  border-color:transparent;
+  color:#fff;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  padding:12px 8px;
+}
+.shw-ck-link:hover{color:var(--turquoise-400,#5ce6c8)}
+
+/* Focus indicator that survives the navy background */
+.shw-cookie-banner .shw-ck-btn:focus-visible,
+.shw-cookie-dialog .shw-ck-btn:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:2px;
+  box-shadow:0 0 0 6px var(--blue-600,#0063ed);
+}
+
+/* ── Settings dialog ───────────────────────────────────────── */
+.shw-cookie-dialog{
+  border:0;
+  border-radius:16px;
+  padding:0;
+  max-width:640px;
+  width:calc(100% - 32px);
+  color:var(--blue-900,#0a1a33);
+  background:#fff;
+  box-shadow:0 20px 48px rgba(10,26,51,.3);
+  font-family:var(--font-sans,'Rubik',-apple-system,'Segoe UI',sans-serif);
+}
+.shw-cookie-dialog::backdrop{background:rgba(10,26,51,.62)}
+.shw-ck-form{padding:28px;direction:rtl;text-align:start}
+.shw-cookie-dialog h2{font-size:1.4rem;font-weight:800;margin:0 0 8px}
+.shw-ck-intro{font-size:.95rem;color:#4c5058;margin:0 0 20px;line-height:1.6}
+
+.shw-ck-group{
+  border:1px solid #d4d6d8;
+  border-radius:12px;
+  padding:14px 16px;
+  margin:0 0 14px;
+}
+.shw-ck-group legend{
+  font-weight:800;
+  font-size:.95rem;
+  padding-inline:8px;
+}
+.shw-ck-row{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  cursor:pointer;
+  line-height:1.5;
+}
+.shw-ck-row input[type="checkbox"]{
+  flex:0 0 auto;
+  width:22px;
+  height:22px;
+  margin-top:2px;
+  accent-color:var(--blue-600,#0063ed);
+  cursor:pointer;
+}
+.shw-ck-row input[disabled]{cursor:not-allowed;opacity:.7}
+.shw-ck-row b{display:block;font-size:.95rem}
+.shw-ck-desc{display:block;font-size:.85rem;color:#4c5058;margin-top:2px}
+
+.shw-ck-dlg-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+  padding-top:18px;
+  border-top:1px solid #e6e7e8;
+}
+.shw-ck-dlg-actions .shw-ck-primary{background:var(--blue-600,#0063ed);color:#fff;border-color:var(--blue-600,#0063ed)}
+.shw-ck-dlg-actions .shw-ck-primary:hover{background:var(--blue-700,#0050bd);border-color:var(--blue-700,#0050bd)}
+.shw-ck-dlg-actions .shw-ck-secondary{background:#fff;color:var(--blue-900,#0a1a33);border-color:#b7bac0}
+.shw-ck-dlg-actions .shw-ck-secondary:hover{background:#eaf3ff;border-color:var(--blue-600,#0063ed)}
+.shw-ck-dlg-actions .shw-ck-link{color:var(--blue-700,#0050bd)}
+.shw-ck-dlg-actions .shw-ck-btn:focus-visible{
+  outline:3px solid var(--blue-900,#0a1a33);
+  outline-offset:2px;
+  box-shadow:0 0 0 6px var(--turquoise-400,#5ce6c8);
+}
+.shw-ck-row input:focus-visible{
+  outline:3px solid var(--blue-900,#0a1a33);
+  outline-offset:3px;
+  box-shadow:none;
+}
+
+@media(max-width:560px){
+  .shw-cookie-actions .shw-ck-btn{flex:1 1 100%;text-align:center}
+  .shw-ck-dlg-actions .shw-ck-btn{flex:1 1 100%;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .shw-ck-btn{transition:none}
+}

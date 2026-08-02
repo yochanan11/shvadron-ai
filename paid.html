@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
 <title>תודה רבה! ברוך הבא לקורס | SHWADRON.AI</title>
+<meta name="description" content="ההרשמה לקורס אושרה. כל העדכונים, הפרטים הלוגיסטיים וקישור הזום יגיעו לקבוצת הוואטסאפ של הקורס."/>
 <link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
+<link rel="stylesheet" href="assets/css/site-legal.css"/>
+<link rel="stylesheet" href="assets/css/consent.css"/>
+<script src="assets/js/consent.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 /* Legacy names remapped onto the Shwadron.AI design system.
@@ -261,7 +265,10 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
    touched below.
    ═══════════════════════════════════════════════════════════ */
 
-:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+/* Two-tone focus ring: stays visible on white, navy AND turquoise backgrounds. */
+:focus-visible{outline:3px solid var(--blue-900);outline-offset:2px;
+  box-shadow:0 0 0 6px var(--turquoise-400);border-radius:var(--radius-sm)}
+.navy :focus-visible,footer :focus-visible{outline-color:#fff;box-shadow:0 0 0 6px var(--blue-600)}
 
 /* ── Nav ── */
 nav{background:var(--color-surface-inverse);border-bottom:1px solid rgba(255,255,255,.15)}
@@ -318,17 +325,29 @@ nav{background:var(--color-surface-inverse);border-bottom:1px solid rgba(255,255
 /* ── Footer ── */
 footer{background:var(--color-surface-inverse);border-top:1px solid rgba(255,255,255,.15)}
 footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
+
+/* ══════════ CONTRAST CORRECTIONS ══════════════════════════════════
+   Must stay last: the design-system layer above re-colours these. */
+.cta-wa{background:#075e54}        /* white on #25d366 was 1.98:1 */
+.cta-wa:hover{background:#0a7d6f}
+.info-label{color:#0f6b58;background:rgba(0,150,124,.10)}  /* was #158e78 on #e8fbf7, 3.78:1 */
+.hero-note{color:rgba(255,255,255,.75)}                    /* was .28 alpha on navy */
+footer p{color:rgba(255,255,255,.72)}
 </style>
 </head>
 <body>
 
+<a href="#main" class="skip">דילוג לתוכן המרכזי</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="ניווט ראשי">
   <a href="index.html" class="logo">
-    <img src="assets/public/logo.svg" alt="שבדרון AI" width="140" height="48"/>
+    <img src="assets/public/logo.svg" alt="שבדרון AI, חזרה לדף הבית" width="140" height="48"/>
   </a>
   <a href="index.html" class="nav-back">← חזרה לאתר</a>
 </nav>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero">
@@ -402,9 +421,25 @@ footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
-  <p style="margin-bottom:16px"><a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:800;padding:11px 22px;border-radius:100px;font-size:.95rem;text-decoration:none">💬 הצטרפו לקבוצת הטיפים בוואטסאפ</a></p>
+  <p style="margin-bottom:16px"><a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#075e54;color:#fff;font-weight:800;padding:11px 22px;border-radius:100px;font-size:.95rem;text-decoration:none">💬 הצטרפו לקבוצת הטיפים בוואטסאפ</a></p>
+  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
+    <h2>מסמכים משפטיים</h2>
+    <ul>
+      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
+      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
+      <li><a href="accessibility.html">הצהרת נגישות</a></li>
+      <li><a href="cancellation.html">ביטול עסקה</a></li>
+      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
+    </ul>
+  </nav>
+  <div class="foot-business">
+    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
+    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972527169921">052-716-9921</a></p>
+  </div>
   <p>© 2026 יוחנן שבדרון · SHWADRON.AI · כל הזכויות שמורות</p>
 </footer>
 

@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
 <title>עלית על הרציף. המקום שלך נשמר | SHWADRON.AI</title>
+<meta name="description" content="קיבלנו את הפרטים שלך. יוחנן חוזר אליך תוך שעה עם כל הפרטים על הקורס, ובינתיים אפשר לכתוב ישירות בוואטסאפ."/>
 <link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
+<link rel="stylesheet" href="assets/css/site-legal.css"/>
+<link rel="stylesheet" href="assets/css/consent.css"/>
+<script src="assets/js/consent.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 /* Legacy names remapped onto the Shwadron.AI design system.
@@ -455,7 +459,16 @@ footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
    touched below (the payment link and its timer stay as-is).
    ═══════════════════════════════════════════════════════════ */
 
-:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+/* "חזרה לאתר": ניגודיות AA על רקע כהה, מסומן בקו תחתון ולא בצבע בלבד,
+   ומגיב גם לפוקוס מקלדת ולא רק למעבר עכבר. */
+.back-link{color:rgba(255,255,255,.78);font-size:.82rem;font-weight:600;padding:8px 0;margin-top:4px;
+  text-decoration:underline;text-underline-offset:3px;display:inline-block}
+.back-link:hover,.back-link:focus-visible{color:#fff}
+
+/* Two-tone focus ring: stays visible on white, navy AND turquoise backgrounds. */
+:focus-visible{outline:3px solid var(--blue-900);outline-offset:2px;
+  box-shadow:0 0 0 6px var(--turquoise-400);border-radius:var(--radius-sm)}
+.navy :focus-visible,footer :focus-visible{outline-color:#fff;box-shadow:0 0 0 6px var(--blue-600)}
 
 /* ── Nav ── */
 nav{background:var(--color-surface-inverse);border-bottom:1px solid rgba(255,255,255,.15)}
@@ -533,17 +546,32 @@ nav{background:var(--color-surface-inverse);border-bottom:1px solid rgba(255,255
 footer{border-top:1px solid rgba(255,255,255,.15)}
 footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
 .slogan-strip{border-top:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.45)}
+
+/* ══════════ CONTRAST CORRECTIONS ══════════════════════════════════
+   Must stay last: the design-system layer above re-colours these.
+   Each measured below the WCAG 2.2 AA 4.5:1 threshold for body text. */
+.htc{color:#0f6b58;background:rgba(0,150,124,.10)}   /* was #158e78 on #e8fbf7, 3.78:1 */
+.tl-time{color:#0f6b58}                              /* was #158e78 on #f7f8f8, 3.82:1 */
+.s-label,.hero-slogan{color:#0f6b58}
+.pay-text,.pay-card p{color:rgba(255,255,255,.82)}   /* was .38 alpha on navy, 3.52:1 */
+.slogan-strip{color:rgba(255,255,255,.72)}           /* was .45 alpha on navy */
+.cta-wa{background:#075e54}                          /* white on #25d366 was 1.98:1 */
+.cta-wa:hover{background:#0a7d6f}
 </style>
 </head>
 <body>
 
+<a href="#main" class="skip">דילוג לתוכן המרכזי</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="ניווט ראשי">
   <a href="index.html" class="logo">
-    <img src="assets/public/logo.svg" alt="שבדרון AI" width="140" height="48"/>
+    <img src="assets/public/logo.svg" alt="שבדרון AI, חזרה לדף הבית" width="140" height="48"/>
   </a>
   <a href="index.html" class="nav-back">← חזרה לאתר</a>
 </nav>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero">
@@ -555,8 +583,8 @@ footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
       <!-- Badge sticker -->
       <div class="agent-label" aria-hidden="true">הפרטים נקלטו בהצלחה</div>
 
-      <!-- כותרת ראשית -->
-      <div class="hero-title">עלית על הרציף.</div>
+      <!-- כותרת ראשית: h1 אמיתי, לא div, כדי שקורא מסך יזהה את כותרת העמוד -->
+      <h1 class="hero-title">עלית על הרציף.</h1>
       <span class="hero-subline">עכשיו נשאר רק לתפוס מקום בקרון הראשון.</span>
 
       <div class="hero-sep" aria-hidden="true"></div>
@@ -683,7 +711,7 @@ footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
       </a>
 
       <!-- Reassurance -->
-      <p style="color:rgba(255,255,255,.38);font-size:.85rem;line-height:1.7;margin-top:8px;max-width:380px;text-align:center">
+      <p style="color:rgba(255,255,255,.82);font-size:.85rem;line-height:1.7;margin-top:8px;max-width:380px;text-align:center">
         יש לך שאלה? מעדיף לשלם טלפונית או בהעברה?<br/>
         <a href="https://wa.me/972527169921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A1%D7%92%D7%95%D7%A8%20%D7%AA%D7%A9%D7%9C%D7%95%D7%9D"
            target="_blank" rel="noopener"
@@ -692,18 +720,32 @@ footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
         </a>
       </p>
 
-      <a href="index.html" style="color:rgba(255,255,255,.25);font-size:.78rem;font-weight:600;text-decoration:none;padding:8px 0;margin-top:4px"
-         onmouseover="this.style.color='rgba(255,255,255,.5)'"
-         onmouseout="this.style.color='rgba(255,255,255,.25)'">
-        ← חזרה לאתר
-      </a>
+      <!-- היה קישור שמשנה צבע רק במעבר עכבר, בניגודיות של כ-1.9:1.
+           עכשיו: ניגודיות תקינה, קו תחתון, ומצב hover שחל גם על פוקוס מקלדת. -->
+      <a href="index.html" class="back-link">← חזרה לאתר</a>
     </div>
 
   </div>
 </section>
 
+</main>
+
 <footer>
-  <p style="margin-bottom:16px"><a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-weight:800;padding:11px 22px;border-radius:100px;font-size:.95rem;text-decoration:none">💬 הצטרפו לקבוצת הטיפים בוואטסאפ</a></p>
+  <p style="margin-bottom:16px"><a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#075e54;color:#fff;font-weight:800;padding:11px 22px;border-radius:100px;font-size:.95rem;text-decoration:none">💬 הצטרפו לקבוצת הטיפים בוואטסאפ</a></p>
+  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
+    <h2>מסמכים משפטיים</h2>
+    <ul>
+      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
+      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
+      <li><a href="accessibility.html">הצהרת נגישות</a></li>
+      <li><a href="cancellation.html">ביטול עסקה</a></li>
+      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
+    </ul>
+  </nav>
+  <div class="foot-business">
+    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
+    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972527169921">052-716-9921</a></p>
+  </div>
   <p>יוחנן שבדרון · AI לציבור החרדי · &copy; 2026</p>
 </footer>
 

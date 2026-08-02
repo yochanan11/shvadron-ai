@@ -1,0 +1,104 @@
+/* ============================================================
+   Shwadron.AI - accessible form furniture
+   Required markers, hints, inline errors, the error summary,
+   consent checkbox rows and the privacy notice. Shared by every
+   page that carries a form.
+   ============================================================ */
+
+.field .req{color:#a8320f;font-weight:700}
+.field .hint{
+  display:block;
+  font-weight:400;
+  font-size:.875rem;
+  color:var(--gray-600,#4c5058);
+  margin-top:2px;
+  line-height:1.5;
+}
+
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"],
+.field select[aria-invalid="true"]{
+  border-color:#a8320f;
+  border-width:2px;
+}
+
+/* Inline error. Rendered in <strong> so the text carries weight
+   as well as colour: never colour alone. */
+.field-error{
+  display:block;
+  color:#a8320f;
+  font-weight:700;
+  font-size:.875rem;
+  margin-top:6px;
+  line-height:1.5;
+  text-align:start;
+}
+.field-error:empty{display:none}
+
+/* Error summary: focused after a failed submit so a screen reader
+   announces every problem at once and each entry links to its field. */
+.error-summary{
+  border:3px solid #a8320f;
+  background:#fdf0ec;
+  border-radius:14px;
+  padding:18px 22px;
+  margin-bottom:22px;
+  text-align:start;
+}
+.error-summary[hidden]{display:none}
+.error-summary:focus-visible{outline:3px solid #a8320f;outline-offset:3px}
+.error-summary h2{
+  font-size:1.05rem;
+  color:#8a2a0d;
+  margin:0 0 10px;
+  font-weight:800;
+}
+.error-summary ul{margin:0;padding-inline-start:20px}
+.error-summary li{margin-bottom:6px}
+.error-summary a{color:#8a2a0d;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* Consent rows. The label wraps the control, so the whole row is a
+   hit target and no separate for/id wiring can drift out of sync. */
+.check-row{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:18px 0;
+  cursor:pointer;
+  line-height:1.6;
+  text-align:start;
+  font-size:.95rem;
+}
+/* 24x24 is the WCAG 2.2 AA minimum target size (SC 2.5.8); 22px missed it. */
+.check-row input[type="checkbox"]{
+  flex:0 0 auto;
+  width:24px;
+  height:24px;
+  margin-top:1px;
+  accent-color:var(--blue-600,#0063ed);
+  cursor:pointer;
+}
+.check-row span{font-weight:400}
+
+/* Privacy notice printed under every form */
+.privacy-note{
+  border:1px solid var(--gray-200,#d4d6d8);
+  background:var(--gray-50,#f7f8f8);
+  border-radius:10px;
+  padding:16px 20px;
+  font-size:.875rem;
+  line-height:1.65;
+  color:var(--gray-600,#4c5058);
+  margin-top:20px;
+  text-align:start;
+}
+.privacy-note h3{
+  font-size:.9rem;
+  color:var(--blue-900,#0a1a33);
+  margin:0 0 8px;
+  font-weight:800;
+}
+.privacy-note ul{margin:0 0 8px;padding-inline-start:20px}
+.privacy-note li{margin-bottom:5px}
+.privacy-note p:last-child{margin-bottom:0}
+.privacy-note a{color:var(--blue-700,#0050bd);text-decoration:underline;text-underline-offset:3px}
