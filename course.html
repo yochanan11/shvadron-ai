@@ -1019,11 +1019,13 @@ footer .fc{font-size:var(--fs-xs)}
   // אחוז החיסכון ותאריך סיום ההשקה. אין אחוז או תאריך מוקלד בעמוד.
   var COMPARE_PRICE = 950;   // מחיר הקורס החי, לפני מע״מ
   var LAUNCH_PRICE  = 285;   // מחיר ההשקה, לפני מע״מ
-  var REGULAR_PRICE = 385;   // המחיר אחרי ההשקה, לפני מע״מ
+  var REGULAR_PRICE = 485;   // המחיר אחרי ההשקה, לפני מע״מ
   var LAUNCH_END    = '2026-08-02T23:59:59+03:00';
   var VAT_RATE      = 0.18;
-  var CHECKOUT_LAUNCH  = "https://mrng.to/IIJExLH9xt"; // 285 + מע״מ
-  var CHECKOUT_REGULAR = "https://mrng.to/zoeR82jDpx"; // 385 + מע״מ
+  // שני עמודי סליקה נפרדים ב-Morning. אומת שכל אחד גובה בדיוק את הסכום
+  // שהאתר מציג. בכל שינוי מחיר כאן, יש לוודא גם את עמוד הסליקה המתאים.
+  var CHECKOUT_LAUNCH  = "https://mrng.to/IIJExLH9xt"; // 285 + מע״מ = 336.30 ₪
+  var CHECKOUT_REGULAR = "https://mrng.to/zoeR82jDpx"; // 485 + מע״מ = 572.30 ₪
   // ────────────────────────────────────────────────────────────────
 
   var endTs       = new Date(LAUNCH_END).getTime();
