@@ -1003,9 +1003,9 @@ footer .fc{font-size:var(--fs-xs)}
 
 <script>
 // Single conversion goal: point every buy button to the checkout URL.
-// Launch window until 02.08.2026: price 285 + launch checkout link.
-// After the date: price rises to 385 automatically, the checkout link switches to the
-// 385 payment page, and the launch-price note disappears. No manual update needed.
+// Launch window until the date in LAUNCH_END: price 285 + launch checkout link.
+// After the date: price rises to 485 automatically, the checkout link switches to the
+// 485 payment page, and the launch-price note disappears. No manual update needed.
 //
 // מחירים: המחיר הנקוב הוא לפני מע״מ, והמע״מ מתווסף עליו.
 // כל מקום באתר שמציג מחיר נגזר מהמשתנים כאן, כדי שלא ייווצר פער בין
@@ -1020,7 +1020,7 @@ footer .fc{font-size:var(--fs-xs)}
   var COMPARE_PRICE = 950;   // מחיר הקורס החי, לפני מע״מ
   var LAUNCH_PRICE  = 285;   // מחיר ההשקה, לפני מע״מ
   var REGULAR_PRICE = 485;   // המחיר אחרי ההשקה, לפני מע״מ
-  var LAUNCH_END    = '2026-08-02T23:59:59+03:00';
+  var LAUNCH_END    = '2026-08-10T23:59:59+03:00';
   var VAT_RATE      = 0.18;
   // שני עמודי סליקה נפרדים ב-Morning. אומת שכל אחד גובה בדיוק את הסכום
   // שהאתר מציג. בכל שינוי מחיר כאן, יש לוודא גם את עמוד הסליקה המתאים.
