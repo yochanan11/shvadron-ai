@@ -693,12 +693,12 @@ footer .fc{font-size:var(--fs-xs)}
                aria-label="סרטון תצוגה מקדימה של קורס ה-AI, עם יוחנן שבדרון">
           <!-- <track kind="captions" src="assets/public/videos/course-preview.he.vtt" srclang="he" label="עברית" default/> -->
           <p>הדפדפן שלכם אינו תומך בהצגת וידאו.
-             <a href="https://wa.me/972527169921">כתבו לנו בוואטסאפ</a> ונשלח לכם את התוכן בדרך אחרת.</p>
+             <a href="https://wa.me/972528189921">כתבו לנו בוואטסאפ</a> ונשלח לכם את התוכן בדרך אחרת.</p>
         </video>
         <p class="video-note">
           <strong>לסרטון זה עדיין אין כתוביות.</strong>
           זו מגבלת נגישות ידועה שאנחנו פועלים לתקן.
-          עד אז, <a href="https://wa.me/972527169921">פנו אלינו בוואטסאפ</a>
+          עד אז, <a href="https://wa.me/972528189921">פנו אלינו בוואטסאפ</a>
           ונשלח תמלול או חלופה טקסטואלית ללא עלות.
           פרטים ב<a href="accessibility.html">הצהרת הנגישות</a>.
         </p>
@@ -996,7 +996,7 @@ footer .fc{font-size:var(--fs-xs)}
   <img src="assets/public/logo.png" alt="SHWADRON.AI"/>
   <!-- קבוצת הטיפים: הועברה לכאן מסקשן שלם באמצע הדף. -->
   <p class="foot-wa">
-    <a class="wa-group-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">💬 קבוצת הטיפים בוואטסאפ (נפתח בחלון חדש)</a>
+    <a class="wa-group-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">💬 קבוצת הטיפים בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
   </p>
   <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
     <h2>מסמכים משפטיים</h2>
@@ -1010,7 +1010,7 @@ footer .fc{font-size:var(--fs-xs)}
   </nav>
   <div class="foot-business">
     <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
-    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972527169921">052-716-9921</a></p>
+    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972528189921">052-818-9921</a></p>
   </div>
   <div class="fc">© 2026 SHWADRON.AI · כל הזכויות שמורות</div>
 </footer>
@@ -1023,68 +1023,48 @@ footer .fc{font-size:var(--fs-xs)}
 
 <script>
 // Single conversion goal: point every buy button to the checkout URL.
-// Launch window until the date in LAUNCH_END: price 285 + launch checkout link.
-// After the date: price rises to 485 automatically, the checkout link switches to the
-// 485 payment page, and the launch-price note disappears. No manual update needed.
+// אין יותר מחיר השקה זמני — המחיר קבוע וישיר תמיד: 485 + מע״מ.
 //
 // מחירים: המחיר הנקוב הוא לפני מע״מ, והמע״מ מתווסף עליו.
 // כל מקום באתר שמציג מחיר נגזר מהמשתנים כאן, כדי שלא ייווצר פער בין
 // מספרים שונים בעמוד. שינוי שיעור המע״מ נעשה בשורה אחת.
-//   .js-price       → המחיר לפני מע״מ, לדוגמה "285 ₪"
-//   .js-price-vat   → סכום המע״מ בלבד, לדוגמה "51.30 ₪"
-//   .js-price-total → הסכום הסופי לתשלום, לדוגמה "336.30 ₪"
+//   .js-price       → המחיר לפני מע״מ, לדוגמה "485 ₪"
+//   .js-price-vat   → סכום המע״מ בלבד, לדוגמה "87.30 ₪"
+//   .js-price-total → הסכום הסופי לתשלום, לדוגמה "572.30 ₪"
 (function(){
-  // ── מקום אחד לשינוי מחירים ותאריכים ─────────────────────────────
-  // כל מספר שמוצג בעמוד נגזר מכאן: המחיר, המע״מ, הסכום הסופי,
-  // אחוז החיסכון ותאריך סיום ההשקה. אין אחוז או תאריך מוקלד בעמוד.
+  // ── מקום אחד לשינוי מחירים ─────────────────────────────
   var COMPARE_PRICE = 950;   // מחיר הקורס החי, לפני מע״מ
-  var LAUNCH_PRICE  = 285;   // מחיר ההשקה, לפני מע״מ
-  var REGULAR_PRICE = 485;   // המחיר אחרי ההשקה, לפני מע״מ
-  var LAUNCH_END    = '2026-08-10T23:59:59+03:00';
+  var PRICE         = 485;   // המחיר הקבוע, לפני מע״מ
   var VAT_RATE      = 0.18;
-  // שני עמודי סליקה נפרדים ב-Morning. אומת שכל אחד גובה בדיוק את הסכום
-  // שהאתר מציג. בכל שינוי מחיר כאן, יש לוודא גם את עמוד הסליקה המתאים.
-  var CHECKOUT_LAUNCH  = "https://mrng.to/IIJExLH9xt"; // 285 + מע״מ = 336.30 ₪
-  var CHECKOUT_REGULAR = "https://mrng.to/zoeR82jDpx"; // 485 + מע״מ = 572.30 ₪
+  // קישור הסליקה חייב לגבות בדיוק את הסכום שהאתר מציג. בכל שינוי מחיר
+  // כאן, יש לוודא גם את עמוד הסליקה המתאים.
+  var CHECKOUT = "https://mrng.to/zoeR82jDpx"; // 485 + מע״מ = 572.30 ₪
   // ────────────────────────────────────────────────────────────────
 
-  var endTs       = new Date(LAUNCH_END).getTime();
-  var afterLaunch = Date.now() > endTs;
-  var checkout    = afterLaunch ? CHECKOUT_REGULAR : CHECKOUT_LAUNCH;
-  var priceEx     = afterLaunch ? REGULAR_PRICE : LAUNCH_PRICE;
-  var vat         = Math.round(priceEx * VAT_RATE * 100) / 100;
-  var total       = Math.round(priceEx * (1 + VAT_RATE) * 100) / 100;
+  var priceEx = PRICE;
+  var vat     = Math.round(priceEx * VAT_RATE * 100) / 100;
+  var total   = Math.round(priceEx * (1 + VAT_RATE) * 100) / 100;
 
-  // אחוז החיסכון מחושב ולא מוקלד, אחרת אחרי עליית המחיר היה נשאר
-  // כתוב "חיסכון 70%" בזמן שבפועל מדובר ב-59%.
+  // אחוז החיסכון מחושב ולא מוקלד, אחרת אחרי שינוי מחיר היה נשאר
+  // כתוב אחוז חיסכון שגוי.
   var savePct = Math.round((1 - priceEx / COMPARE_PRICE) * 100);
 
-  // Whole shekels stay whole; agorot are shown to two places (336.30, not 336.3)
+  // Whole shekels stay whole; agorot are shown to two places (572.30, not 572.3)
   function ils(n){ return (n % 1 === 0 ? String(n) : n.toFixed(2)) + ' ₪'; }
-  function pad(n){ return (n < 10 ? '0' : '') + n; }
 
-  var end = new Date(endTs);
-  var endShort = pad(end.getDate()) + '.' + pad(end.getMonth() + 1);
-  var endIso   = end.getFullYear() + '-' + pad(end.getMonth()+1) + '-' + pad(end.getDate());
-
-  document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = checkout; });
+  document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = CHECKOUT; });
   document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(priceEx); });
   document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(vat); });
   document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(total); });
   document.querySelectorAll('.js-compare').forEach(function(el){ el.textContent = ils(COMPARE_PRICE); });
   document.querySelectorAll('.js-save').forEach(function(el){ el.textContent = 'חיסכון ' + savePct + '%'; });
   document.querySelectorAll('.js-vat-rate').forEach(function(el){ el.textContent = (VAT_RATE * 100) + '%'; });
-  document.querySelectorAll('.js-deadline').forEach(function(el){
-    el.textContent = endShort;
-    if (el.tagName === 'TIME') el.setAttribute('datetime', endIso);
-  });
 
-  // אחרי סיום ההשקה נעלמים רק רכיבי הדחיפות. מחיר ההשוואה ואחוז
-  // החיסכון נשארים ומתעדכנים למספרים הנכונים.
-  if(afterLaunch){ document.querySelectorAll('.js-launch').forEach(function(el){ el.style.display = 'none'; }); }
+  // אין יותר חלון השקה, אז רכיבי הדחיפות (הבאדג׳ים והספירה לאחור) תמיד מוסתרים.
+  document.querySelectorAll('.js-launch').forEach(function(el){ el.style.display = 'none'; });
 
-  // הנתונים המובנים לגוגל נגזרים מאותו מקור, אחרת אחרי סיום מבצע ההשקה
-  // יוצג בתוצאות החיפוש מחיר שאינו בתוקף.
+  // הנתונים המובנים לגוגל נגזרים מאותו מקור, כדי שלא יוצג בתוצאות
+  // החיפוש מחיר שאינו בתוקף.
   try {
     var ld = document.getElementById('course-ld');
     if (ld) {

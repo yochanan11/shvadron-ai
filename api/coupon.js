@@ -65,8 +65,12 @@ module.exports = async (req, res) => {
     : Number(coupon.value);
   price = Math.max(0, Math.round(price * 100) / 100);
 
-  const vat   = Math.round(price * VAT_RATE * 100) / 100;
-  const total = Math.round(price * (1 + VAT_RATE) * 100) / 100;
+  // הסכום הסופי מעוגל כלפי מעלה ל-10 אגורות הקרובות (אין מטבע של אגורה
+  // בודדת בישראל), וה-מע״מ המוצג מחושב אחורה מהסכום המעוגל כדי שהשורות
+  // בטבלה יסתכמו בדיוק לסה״כ. חשוב: קישור התשלום שמוזן לקופון בדף
+  // הניהול חייב לגבות בדיוק את הסכום המעוגל הזה, לא את הסכום הגולמי.
+  const total = Math.ceil(price * (1 + VAT_RATE) * 10) / 10;
+  const vat   = Math.round((total - price) * 100) / 100;
 
   res.json({
     valid: true,
