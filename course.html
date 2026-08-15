@@ -459,6 +459,17 @@ footer .fc{font-size:.82rem}
 .pd-price-table .pd-price-total th,.pd-price-table .pd-price-total td{
   border-top:2px solid var(--border);padding-top:9px;font-weight:900;font-size:1.25rem}
 .pd-vat{display:block;font-size:.85rem;color:var(--muted);margin-top:8px;line-height:1.55}
+.pd-coupon{margin-bottom:18px}
+.pd-coupon-lbl{display:block;font-size:.88rem;font-weight:700;margin-bottom:6px}
+.pd-coupon-row{display:flex;gap:8px}
+.pd-coupon-input{flex:1;min-width:0;padding:11px 14px;border:1px solid var(--border);
+  border-radius:10px;font-family:inherit;font-size:.95rem}
+.pd-coupon-btn{flex:0 0 auto;padding:0 18px;border:none;border-radius:10px;
+  background:var(--blue);color:#fff;font-weight:800;font-size:.92rem;cursor:pointer}
+.pd-coupon-btn:disabled{opacity:.6;cursor:default}
+.pd-coupon-msg{margin-top:8px;font-size:.86rem;font-weight:700;min-height:1.2em}
+.pd-coupon-msg.ok{color:#0a7a4a}
+.pd-coupon-msg.err{color:#b3261e}
 .pd-cancel{font-size:.9rem;line-height:1.7;color:var(--muted);margin-bottom:18px}
 .pd-cancel b{color:var(--text)}
 .pd-cancel a,.pd-readmore{color:var(--blue2)}
@@ -917,6 +928,15 @@ footer .fc{font-size:var(--fs-xs)}
         <span class="pd-vat">זהו הסכום שייגבה בפועל בכרטיס האשראי. תשלום אחד, ללא דמי טיפול וללא תוספות.</span>
       </div>
 
+      <div class="pd-coupon" id="coupon-box">
+        <label for="coupon-input" class="pd-coupon-lbl">יש לך קוד קופון?</label>
+        <div class="pd-coupon-row">
+          <input type="text" id="coupon-input" class="pd-coupon-input" placeholder="קוד קופון" autocomplete="off"/>
+          <button type="button" id="coupon-apply" class="pd-coupon-btn">החל קופון</button>
+        </div>
+        <p class="pd-coupon-msg" id="coupon-msg" role="status" aria-live="polite"></p>
+      </div>
+
       <h3 class="pd-h">מה כלול</h3>
       <ul class="pd-list">
         <li><b>4 שיעורים מוקלטים</b>, כ-8 שעות תוכן. אין מפגשים חיים.</li>
@@ -1186,6 +1206,60 @@ footer .fc{font-size:var(--fs-xs)}
       if(pct >= m && !seen[m]){ seen[m] = 1; gtag('event','scroll_depth',{ percent_scrolled: m }); }
     });
   }, {passive:true});
+})();
+
+// ─── Coupon: validated server-side in /api/coupon, never trust the client ───
+(function(){
+  var box   = document.getElementById('coupon-box');
+  var input = document.getElementById('coupon-input');
+  var btn   = document.getElementById('coupon-apply');
+  var msg   = document.getElementById('coupon-msg');
+  if(!box) return;
+
+  function ils(n){ return (n % 1 === 0 ? String(n) : n.toFixed(2)) + ' ₪'; }
+
+  function setMsg(text, ok){
+    msg.textContent = text;
+    msg.className = 'pd-coupon-msg ' + (ok ? 'ok' : 'err');
+  }
+
+  function apply(){
+    var code = input.value.trim();
+    if(!code){ setMsg('יש להזין קוד קופון.', false); return; }
+    btn.disabled = true;
+    setMsg('בודק קופון…', true);
+    fetch('/api/coupon', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ code: code, page: 'course-digital' })
+    })
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        if(!data.valid){
+          var text = data.error === 'not-active-yet'
+            ? 'הקופון ייכנס לתוקף רק אחרי סיום מבצע ההשקה.'
+            : 'קוד קופון לא תקף.';
+          setMsg(text, false);
+          btn.disabled = false;
+          return;
+        }
+        document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(data.price); });
+        document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(data.vat); });
+        document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(data.total); });
+        document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = data.checkoutUrl; });
+        window.SHW_PRICE_EX = data.price;
+        window.SHW_PRICE = data.total;
+        setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.price) + ' + מע״מ.', true);
+        input.disabled = true;
+      })
+      .catch(function(){
+        setMsg('שגיאה בבדיקת הקופון, נסו שוב.', false);
+        btn.disabled = false;
+      });
+  }
+
+  btn.addEventListener('click', apply);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); apply(); } });
 })();
 
 // Reveal on scroll

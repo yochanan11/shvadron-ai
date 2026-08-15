@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>ניהול קודי קופון | SHWADRON.AI</title>
+<style>
+  :root{--blue:#123f8a;--teal:#20c4b6;--border:#e2e6ee;--muted:#667;--bg:#f6f8fb}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+    background:var(--bg);color:#141824;padding:28px 16px 60px}
+  .wrap{max-width:900px;margin:0 auto}
+  h1{font-size:1.3rem;margin:0 0 6px}
+  p.sub{color:var(--muted);font-size:.92rem;margin:0 0 22px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px}
+  label{display:block;font-size:.88rem;font-weight:700;margin-bottom:6px}
+  input[type=password]{width:100%;padding:11px 13px;border:1px solid var(--border);
+    border-radius:10px;font-family:inherit;font-size:.95rem}
+  .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  button{border:none;border-radius:10px;padding:11px 20px;font-weight:800;font-size:.92rem;
+    cursor:pointer;font-family:inherit}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-ghost{background:#eef1f6;color:#141824}
+  .btn-danger{background:#fdeceb;color:#b3261e;padding:8px 12px}
+  button:disabled{opacity:.6;cursor:default}
+  .msg{margin-top:12px;font-size:.88rem;font-weight:700;min-height:1.2em}
+  .msg.ok{color:#0a7a4a}
+  .msg.err{color:#b3261e}
+  #gate,#panel{display:none}
+  .hint{font-size:.82rem;color:var(--muted);margin-top:8px;line-height:1.6}
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  th{font-size:.76rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);
+    text-align:start;padding:0 8px 8px;font-weight:800}
+  td{padding:4px 4px}
+  td input,td select{width:100%;padding:8px 9px;border:1px solid var(--border);
+    border-radius:8px;font-family:inherit;font-size:.88rem}
+  td.num{max-width:90px}
+  .tbl-wrap{overflow-x:auto}
+  .empty{color:var(--muted);font-size:.9rem;padding:16px 4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>ניהול קודי קופון</h1>
+  <p class="sub">כל שורה היא קופון: קוד, סוג הנחה (מחיר קבוע או אחוזים), הערך, לאיזה עמוד הוא חל, וקישור התשלום התואם ב-Morning.</p>
+
+  <div class="card" id="gate">
+    <label for="pw">סיסמת ניהול</label>
+    <input type="password" id="pw" autocomplete="off"/>
+    <div class="row"><button class="btn-primary" id="pw-submit">כניסה</button></div>
+    <p class="msg err" id="gate-msg"></p>
+  </div>
+
+  <div class="card" id="panel">
+    <div class="tbl-wrap">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th>קוד קופון</th>
+            <th>סוג הנחה</th>
+            <th>ערך</th>
+            <th>עמוד</th>
+            <th>קישור תשלום (Morning)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <p class="empty" id="empty-msg" style="display:none">אין קופונים עדיין. לחצו "קופון חדש" כדי להוסיף.</p>
+    </div>
+    <div class="row">
+      <button class="btn-ghost" id="add-row">+ קופון חדש</button>
+      <button class="btn-primary" id="save">שמירה</button>
+      <button class="btn-ghost" id="reload">רענון מהשרת</button>
+    </div>
+    <p class="msg" id="panel-msg"></p>
+    <p class="hint">
+      <b>סוג "מחיר קבוע"</b>: הערך הוא המחיר לפני מע״מ, למשל 285.<br/>
+      <b>סוג "אחוזים"</b>: הערך הוא אחוז ההנחה ממחיר המחירון, למשל 20 = 20% הנחה.<br/>
+      <b>עמוד</b>: מזהה העמוד שבו הקופון תקף, למשל <code>course-digital</code> עבור course.html. אם ריק, הקופון לא יעבוד באף עמוד.<br/>
+      <b>קישור תשלום</b>: חובה. חייב להיות קישור סליקה קיים ב-Morning שגובה בדיוק את הסכום הזה (כולל מע״מ) — אחרת הלקוח יראה מחיר אחד ויחויב בסכום אחר.<br/>
+      שמירה מחליפה את כל הרשימה. השינוי חי מיד, בלי דיפלוי.
+    </p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var gate    = document.getElementById('gate');
+  var panel   = document.getElementById('panel');
+  var pwInput = document.getElementById('pw');
+  var pwBtn   = document.getElementById('pw-submit');
+  var gateMsg = document.getElementById('gate-msg');
+  var tbody   = document.getElementById('tbody');
+  var emptyMsg = document.getElementById('empty-msg');
+  var addBtn  = document.getElementById('add-row');
+  var saveBtn = document.getElementById('save');
+  var reloadBtn = document.getElementById('reload');
+  var panelMsg = document.getElementById('panel-msg');
+
+  function storageGet(){ try { return sessionStorage.getItem('shw_admin_pw') || ''; } catch(e){ return ''; } }
+  function storageSet(v){ try { sessionStorage.setItem('shw_admin_pw', v); } catch(e){} }
+  function storageClear(){ try { sessionStorage.removeItem('shw_admin_pw'); } catch(e){} }
+
+  var password = storageGet();
+
+  function setPanelMsg(text, ok){
+    panelMsg.textContent = text;
+    panelMsg.className = 'msg ' + (ok ? 'ok' : 'err');
+  }
+
+  function errorText(err){
+    if(err === 'unauthorized') return 'סיסמה שגויה.';
+    if(err === 'admin-not-configured') return 'סיסמת הניהול (ADMIN_PASSWORD) עוד לא הוגדרה בסביבת השרת.';
+    if(err === 'kv-not-configured') return 'מסד הנתונים (Vercel KV) עוד לא מחובר לפרויקט.';
+    return 'שגיאה: ' + (err || 'לא ידועה');
+  }
+
+  function addRow(coupon){
+    coupon = coupon || { code:'', type:'fixed', value:'', page:'course-digital', checkoutUrl:'' };
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td><input class="f-code" value="" placeholder="LAUNCH285"/></td>' +
+      '<td><select class="f-type"><option value="fixed">מחיר קבוע</option><option value="percent">אחוזים</option></select></td>' +
+      '<td class="num"><input class="f-value" type="number" step="0.01" placeholder="285"/></td>' +
+      '<td><input class="f-page" placeholder="course-digital"/></td>' +
+      '<td><input class="f-url" placeholder="https://mrng.to/..."/></td>' +
+      '<td><button type="button" class="btn-danger f-del">מחיקה</button></td>';
+    tr.querySelector('.f-code').value = coupon.code || '';
+    tr.querySelector('.f-type').value = coupon.type === 'percent' ? 'percent' : 'fixed';
+    tr.querySelector('.f-value').value = coupon.value != null ? coupon.value : '';
+    tr.querySelector('.f-page').value = coupon.page || '';
+    tr.querySelector('.f-url').value = coupon.checkoutUrl || '';
+    tr.querySelector('.f-del').addEventListener('click', function(){ tr.remove(); toggleEmpty(); });
+    tbody.appendChild(tr);
+    toggleEmpty();
+  }
+
+  function toggleEmpty(){
+    emptyMsg.style.display = tbody.children.length ? 'none' : 'block';
+  }
+
+  function readRows(){
+    return Array.prototype.map.call(tbody.querySelectorAll('tr'), function(tr){
+      return {
+        code: tr.querySelector('.f-code').value.trim(),
+        type: tr.querySelector('.f-type').value,
+        value: Number(tr.querySelector('.f-value').value),
+        page: tr.querySelector('.f-page').value.trim(),
+        checkoutUrl: tr.querySelector('.f-url').value.trim()
+      };
+    }).filter(function(c){ return c.code; });
+  }
+
+  function loadCoupons(){
+    setPanelMsg('טוען…', true);
+    fetch('/api/admin-coupons', { headers: { 'X-Admin-Password': password } })
+      .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+      .then(function(r){
+        if(!r.ok){
+          if(r.data.error === 'unauthorized'){ showGate('סיסמה שגויה.'); return; }
+          setPanelMsg(errorText(r.data.error), false);
+          return;
+        }
+        tbody.innerHTML = '';
+        (r.data.codes || []).forEach(addRow);
+        toggleEmpty();
+        setPanelMsg('נטען מהשרת.', true);
+      })
+      .catch(function(){ setPanelMsg('שגיאת רשת בטעינה.', false); });
+  }
+
+  function saveCoupons(){
+    var codes = readRows();
+    var bad = codes.find(function(c){ return !c.checkoutUrl || !c.page || !c.value || isNaN(c.value); });
+    if(bad){
+      setPanelMsg('לכל קופון חייבים להיות: קוד, ערך, עמוד וקישור תשלום.', false);
+      return;
+    }
+    saveBtn.disabled = true;
+    setPanelMsg('שומר…', true);
+    fetch('/api/admin-coupons', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Admin-Password': password },
+      body: JSON.stringify({ codes: codes })
+    })
+      .then(function(res){ return res.json().then(function(data){ return { ok: res.ok, data: data }; }); })
+      .then(function(r){
+        saveBtn.disabled = false;
+        if(!r.ok){
+          if(r.data.error === 'unauthorized'){ showGate('סיסמה שגויה.'); return; }
+          setPanelMsg(errorText(r.data.error), false);
+          return;
+        }
+        setPanelMsg('נשמר. ' + r.data.codes.length + ' קופונים פעילים.', true);
+      })
+      .catch(function(){ saveBtn.disabled = false; setPanelMsg('שגיאת רשת בשמירה.', false); });
+  }
+
+  function showPanel(){
+    gate.style.display = 'none';
+    panel.style.display = 'block';
+    loadCoupons();
+  }
+
+  function showGate(msg){
+    storageClear();
+    password = '';
+    panel.style.display = 'none';
+    gate.style.display = 'block';
+    gateMsg.textContent = msg || '';
+    pwInput.focus();
+  }
+
+  pwBtn.addEventListener('click', function(){
+    password = pwInput.value;
+    if(!password){ gateMsg.textContent = 'יש להזין סיסמה.'; return; }
+    storageSet(password);
+    showPanel();
+  });
+  pwInput.addEventListener('keydown', function(e){ if(e.key === 'Enter') pwBtn.click(); });
+  addBtn.addEventListener('click', function(){ addRow(); });
+  saveBtn.addEventListener('click', saveCoupons);
+  reloadBtn.addEventListener('click', loadCoupons);
+
+  if(password){ showPanel(); } else { gate.style.display = 'block'; }
+})();
+</script>
+</body>
+</html>
