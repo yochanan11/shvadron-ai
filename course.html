@@ -138,8 +138,8 @@ a:hover{color:var(--teal-ink)}
   background:radial-gradient(closest-side,rgba(0,99,237,.34),rgba(0,99,237,0))}
 .hero .glow-t{position:absolute;top:120px;right:560px;width:560px;height:520px;pointer-events:none;
   background:radial-gradient(closest-side,rgba(46,222,191,.14),rgba(46,222,191,0))}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;align-items:end}
-.hero-copy{display:flex;flex-direction:column;gap:clamp(12px,2.3vh,30px);padding-bottom:clamp(16px,4.4vh,72px)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:auto auto;justify-content:center;gap:clamp(36px,4.4vw,72px);align-items:end}
+.hero-copy{display:flex;flex-direction:column;gap:clamp(12px,2.3vh,30px);padding-bottom:clamp(16px,4.4vh,72px);max-width:560px}
 .eyebrow{display:flex;align-items:center;gap:12px;font-size:.94rem;font-weight:700;letter-spacing:.12em;color:var(--blue)}
 .eyebrow::before{content:"";width:34px;height:2px;background:currentColor}
 .eyebrow.teal{color:var(--teal)}
@@ -150,7 +150,7 @@ a:hover{color:var(--teal-ink)}
 .hero-price b{font-size:1.06rem;font-weight:700}
 .hero-price span{font-weight:400;color:var(--on-dark-3)}
 .hero-price small{font-size:.88rem;color:var(--on-dark-3)}
-.hero-portrait{position:relative;height:clamp(240px,52vh,548px);aspect-ratio:3/4;width:auto;margin-inline:auto;margin-bottom:clamp(38px,5vh,56px)}
+.hero-portrait{position:relative;height:clamp(240px,52vh,548px);aspect-ratio:3/4;width:auto;margin-bottom:clamp(38px,5vh,56px)}
 
 .hero-portrait .plate{position:absolute;inset:0;background:var(--deep-2);border-radius:3px}
 .hero-portrait img{position:absolute;inset:0;z-index:1;width:100%;height:100%;
