@@ -9,8 +9,8 @@
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap"/>
 <link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
-<link rel="stylesheet" href="assets/css/site-legal.css"/>
 <link rel="stylesheet" href="assets/css/forms-a11y.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
 
@@ -43,206 +43,341 @@
 </script>
 
 <style>
+/* ═══════════════════════════════════════════════════════════
+   עמוד התודה של הקורס הדיגיטלי.
+   אותה שפה חזותית של course.html: נייבי 0a1a33, טורקיז 2edebf,
+   כחול 0063ed, Heebo לכותרות ו-Assistant לטקסט, פינה של 3px.
+   ═══════════════════════════════════════════════════════════ */
 *{margin:0;padding:0;box-sizing:border-box}
-/* Legacy names remapped onto the Shwadron.AI design system.
-   Every value now resolves to a token from assets/css/shwadron-ds.css. */
 :root{
-  --navy:var(--color-surface-inverse); --deep:var(--color-surface-inverse);
-  --blue:var(--color-primary); --blue2:var(--color-primary-hover);
-  --teal:var(--color-accent); --teal-bright:var(--turquoise-400); --teal-ink:var(--turquoise-700);
-  --bg:var(--color-surface); --soft:var(--color-surface-sunken); --tint:var(--color-primary-tint); --border:var(--color-border);
-  --text:var(--color-ink); --muted:var(--color-ink-soft);
-  --shadow-lg:0 20px 48px rgba(10,26,51,.14);
+  --navy:#0a1a33; --navy-2:#0f2141; --teal:#2edebf; --blue:#0063ed;
+  --paper:#eff1f4; --white:#fff; --line:#d3d9e1; --muted:#5a6b85; --faint:#9aa6b8; --on-navy:#d3dceb; --on-navy-soft:#8fa2bf;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font-sans);color:var(--text);direction:rtl;min-height:100vh;
-  background:var(--color-surface-sunken);
-  display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:var(--lh-normal)}
+body{font-family:'Assistant',var(--font-sans),system-ui,sans-serif;color:var(--navy);background:var(--paper);
+  direction:rtl;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.6}
 img{display:block;max-width:100%}
-:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-sm)}
+h1,h2,h3,.num,.btn{font-family:'Heebo',var(--font-sans),system-ui,sans-serif}
+main{flex:1}
+.wrap{max-width:1180px;margin:0 auto}
 
-header{height:64px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);background:rgba(246,249,252,.9)}
-header img{height:38px;width:auto}
+/* ── כותרת עליונה ── */
+.top{background:var(--navy);padding:20px 72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.top img{height:38px;width:auto}
+.top-meta{display:flex;align-items:center;gap:28px;font-size:1rem;font-weight:600;color:var(--on-navy)}
+.top-meta a{color:var(--on-navy);text-decoration:none}
+.top-meta a:hover{color:#fff}
+.tag{display:flex;align-items:center;gap:9px;color:var(--teal)}
+.dot{display:block;width:8px;height:8px;border-radius:3px;background:var(--teal)}
 
-main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 20px}
-.card{width:100%;max-width:520px;background:#fff;border:1px solid var(--border);border-radius:26px;box-shadow:var(--shadow-lg);padding:clamp(28px,5vw,44px);text-align:center}
-.check{width:66px;height:66px;margin:0 auto 18px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--teal-bright));display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(32,196,182,.35);animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
-.check svg{width:34px;height:34px;color:#06304f}
-@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-h1{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:900;letter-spacing:-.02em;line-height:1.2}
-.lead{margin-top:12px;color:var(--muted);font-size:1.05rem;line-height:1.7}
-.lead b{color:var(--text)}
+/* ── פס פתיחה כהה ── */
+.hero{background:var(--navy);padding:92px 72px 100px;color:#fff}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.eyebrow .mark{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:3px;background:var(--teal);flex:none}
+.eyebrow .mark svg{width:18px;height:18px}
+.eyebrow span{font-family:'Heebo',sans-serif;font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--teal)}
+.hero h1{font-size:clamp(3.6rem,8vw,7rem);font-weight:900;line-height:.95;letter-spacing:-.02em;color:#fff}
+.hero h1 .dotend{color:var(--teal)}
+.hero-sub{display:flex;align-items:flex-end;gap:40px;margin-top:32px}
+.rule{flex:none;width:88px;height:4px;border-radius:3px;background:var(--teal);margin-bottom:14px}
+.hero-sub p{max-width:700px;font-size:1.4rem;line-height:1.55;color:var(--on-navy);text-wrap:pretty}
 
-form{margin-top:26px;text-align:right;display:flex;flex-direction:column;gap:14px}
-.field label{display:block;font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:6px}
-.field input{width:100%;font-family:inherit;font-size:1.02rem;padding:14px 15px;border-radius:13px;border:1.5px solid var(--border);background:var(--soft);color:var(--text);transition:border-color .2s,background .2s;direction:rtl}
-.field input:focus{outline:none;border-color:var(--blue);background:#fff}
-.field input::placeholder{color:#aab4c4}
-.submit{margin-top:6px;min-height:56px;border:none;cursor:pointer;border-radius:16px;font-family:inherit;font-weight:900;font-size:1.08rem;
-  background:linear-gradient(120deg,var(--teal),var(--teal-bright));color:#06304f;box-shadow:0 16px 34px rgba(32,196,182,.3);transition:transform .2s,box-shadow .2s}
-.submit:hover{transform:translateY(-2px);box-shadow:0 22px 44px rgba(32,196,182,.4)}
-.submit:disabled{opacity:.7;cursor:default;transform:none}
-.note{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:.9rem}
-.note svg{width:16px;height:16px}
+/* ── גוף העמוד ── */
+.body-grid{padding:96px 72px 100px}
+.body-grid .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:start}
+.card{background:var(--white);border-radius:3px;box-shadow:rgba(10,26,51,.14) 0 30px 60px -34px;padding:44px 40px 40px}
+.card h2{font-size:2rem;font-weight:900;line-height:1.2;margin-bottom:6px}
+.card .lead{font-size:1.06rem;color:var(--muted);margin-bottom:32px}
 
+form{display:flex;flex-direction:column;gap:22px;text-align:right}
+.field label{display:block;font-family:'Heebo',sans-serif;font-size:.94rem;font-weight:700;color:var(--navy);margin-bottom:7px}
+.field .req{color:var(--blue)}
+.field input{width:100%;font-family:inherit;font-size:1rem;padding:13px 14px;border:.8px solid var(--line);border-radius:3px;
+  background:var(--white);color:var(--navy);transition:border-color .12s cubic-bezier(.4,0,.2,1),box-shadow .12s cubic-bezier(.4,0,.2,1)}
+.field input:focus{outline:none;border-color:var(--blue)}
+.field input::placeholder{color:var(--faint)}
+.check-row{margin:2px 0 0;font-size:.95rem;color:var(--muted)}
+.check-row b{color:var(--navy);font-weight:700}
+.btn{margin-top:6px;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:62px;
+  border:none;border-radius:3px;cursor:pointer;background:var(--teal);color:var(--navy);font-size:1.19rem;font-weight:800;
+  transition:background .12s cubic-bezier(.4,0,.2,1)}
+.btn:hover{background:#1fb99a}
+.btn:disabled{opacity:.55;cursor:default}
+.btn .arrow{font-size:1.3rem}
+.form-note{text-align:center;font-size:.9rem;color:var(--muted)}
+
+.side{display:flex;flex-direction:column;gap:36px}
+.side h3{font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--muted);margin-bottom:24px}
+.steps{display:flex;flex-direction:column;gap:24px}
+.step{display:flex;gap:20px;align-items:flex-start}
+.step .num{flex:none;font-size:2.5rem;font-weight:900;line-height:1;color:var(--blue)}
+.step h4{font-family:'Heebo',sans-serif;font-size:1.31rem;font-weight:800;color:var(--navy)}
+.step p{margin-top:4px;font-size:1.06rem;color:var(--muted)}
+
+.wa-box{background:var(--navy-2);border-radius:3px;padding:32px 30px;color:#fff}
+.wa-box .t{font-family:'Heebo',sans-serif;font-size:1.88rem;font-weight:900;line-height:1.15}
+.wa-box p{margin:12px 0 22px;font-size:1.06rem;color:var(--on-navy-soft)}
+.wa-btn{display:inline-flex;align-items:center;gap:11px;background:var(--teal);color:var(--navy);border-radius:3px;
+  font-family:'Heebo',sans-serif;font-size:1.06rem;font-weight:800;padding:15px 26px;text-decoration:none;
+  transition:background .12s cubic-bezier(.4,0,.2,1)}
+.wa-btn:hover{background:#1fb99a}
+.wa-btn svg{width:19px;height:19px;flex:none}
+
+/* ── גילוי הפרטים ── */
+.disclosure{background:var(--white);padding:72px 72px 76px}
+.disclosure h3{font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--muted);margin-bottom:26px}
+.disclosure ul{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 44px}
+.disclosure li{font-size:1rem;line-height:1.7;color:var(--muted)}
+.disclosure li b{color:var(--navy);font-weight:700}
+.disclosure a{color:var(--blue);text-underline-offset:3px}
+
+/* ── מסך האישור ── */
 .success{display:none}
-.success .check{background:linear-gradient(135deg,var(--blue),var(--teal))}
-.success .check svg{color:#fff}
+.success .hero .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:center}
+.done-card{background:var(--white);border-radius:3px;box-shadow:rgba(0,0,0,.6) 0 40px 80px -40px;padding:44px 40px 40px;color:var(--navy)}
+.done-card .k{font-family:'Heebo',sans-serif;font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--muted)}
+.done-card .mail{margin-top:12px;padding-bottom:24px;border-bottom:.8px solid var(--line);
+  font-family:'Heebo',sans-serif;font-size:1.63rem;font-weight:800;direction:ltr;text-align:right;word-break:break-all}
+.done-list{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:16px}
+.done-list li{display:flex;gap:12px;align-items:flex-start;font-size:1.06rem;line-height:1.65;color:var(--muted)}
+.done-list li::before{content:"";flex:none;width:8px;height:8px;border-radius:3px;background:var(--teal);margin-top:10px}
+.done-wa{margin-top:30px;padding-top:26px;border-top:.8px solid var(--line)}
+.done-wa .t{font-family:'Heebo',sans-serif;font-size:1.19rem;font-weight:800;margin-bottom:16px}
 body.done .form-state{display:none}
 body.done .success{display:block}
 
-footer{text-align:center;padding:22px;color:var(--muted);font-size:.82rem}
-@media(max-width:480px){.card{padding:26px 20px}}
+/* ── פוטר ── */
+.foot{background:var(--navy-2);padding:56px 72px;color:var(--on-navy-soft)}
+.foot .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;flex-wrap:wrap}
+.foot nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:1rem;font-weight:600}
+.foot a{color:var(--teal);text-decoration:none}
+.foot a:hover{color:#fff}
+.foot-biz{text-align:left;display:flex;flex-direction:column;gap:6px;font-size:.94rem}
+.foot-biz .strong{color:#fff;font-weight:700}
 
-/* ═══════════════════════════════════════════════════════════
-   DESIGN SYSTEM LAYER - Shwadron.AI
-   Presentation only. The form, its fields, names, validation
-   and submit handler are untouched. Styling only.
-   ═══════════════════════════════════════════════════════════ */
+.skip{position:absolute;right:-9999px;top:0;background:var(--teal);color:var(--navy);padding:12px 18px;font-weight:800;z-index:99}
+.skip:focus{right:12px;top:12px}
 
-header{background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--color-border)}
-
-/* ── Card ── */
-.card{border-radius:var(--radius-lg);border-color:var(--color-border);box-shadow:var(--shadow-lg)}
-.check{background:var(--color-accent);box-shadow:none}
-.check svg{color:var(--color-ink)}
-.success .check{background:var(--color-primary)}
-.success .check svg{color:var(--white)}
-
-/* ── Typography ── */
-h1{font-size:clamp(var(--fs-xl),4vw,var(--fs-2xl));font-weight:var(--fw-black);
-  line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
-.lead{margin-top:var(--space-3);font-size:var(--fs-base);line-height:var(--lh-relaxed)}
-.lead b{font-weight:var(--fw-bold)}
-.note{font-size:var(--fs-sm);font-weight:var(--fw-medium)}
-footer{font-size:var(--fs-xs)}
-
-/* ── Input: label / field / helper, per components.md ── */
-form{gap:var(--space-4)}
-.field label{font-size:var(--fs-xs);font-weight:var(--fw-medium);color:var(--color-ink-soft);margin-bottom:var(--space-2)}
-.field input{font-size:var(--fs-sm);padding:12px 16px;border-radius:var(--radius-sm);
-  border:1px solid var(--color-border-strong);background:var(--color-surface);color:var(--color-ink);
-  transition:border-color var(--dur-fast) var(--ease-standard),box-shadow var(--dur-fast) var(--ease-standard)}
-.field input:focus{outline:none;border-color:var(--color-primary);box-shadow:var(--shadow-focus);background:var(--color-surface)}
-.field input::placeholder{color:var(--color-ink-faint)}
-
-/* ── Submit: accent pill, hover one step darker ── */
-.submit{border-radius:var(--radius-pill);font-weight:var(--fw-semibold);font-size:var(--fs-base);
-  background:var(--color-accent);color:var(--color-ink);box-shadow:none;
-  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
-.submit:hover{background:var(--color-accent-hover);transform:none;box-shadow:none}
-.submit:active{background:var(--turquoise-700);transform:scale(.97)}
-.submit:disabled{opacity:.5;cursor:not-allowed;background:var(--color-accent);transform:none}
+/* ── רספונסיבי ── */
+@media(max-width:1000px){
+  .top,.hero,.body-grid,.disclosure,.foot{padding-left:28px;padding-right:28px}
+  .body-grid .wrap,.success .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .disclosure ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:640px){
+  .top{padding:14px 20px}
+  .top img{height:30px}
+  .top .tag{display:none}
+  .hero{padding:44px 20px 48px}
+  .hero h1{font-size:4rem}
+  .hero-sub{display:block;margin-top:22px}
+  .rule{width:72px;margin:0 0 18px}
+  .hero-sub p{font-size:1.13rem}
+  .body-grid{padding:28px 16px 32px}
+  .card{padding:28px 20px 26px}
+  .card h2{font-size:1.56rem}
+  .disclosure{padding:34px 20px 36px}
+  .disclosure ul{grid-template-columns:1fr}
+  .foot{padding:28px 20px 32px}
+  .foot .wrap{flex-direction:column;gap:16px}
+  .foot-biz{text-align:right}
+  .done-card{padding:28px 20px 26px}
+}
 </style>
 </head>
 <body>
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<header>
-  <img src="assets/public/logo.png" alt="SHWADRON.AI" width="190" height="38"/>
+<header class="top">
+  <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="190" height="38"/>
+  <div class="top-meta">
+    <a href="https://wa.me/972528189921">052-818-9921</a>
+    <span class="tag"><span class="dot" aria-hidden="true"></span>קורס AI דיגיטלי</span>
+  </div>
 </header>
 
 <main id="main">
-  <div class="card">
 
-    <!-- FORM STATE -->
-    <div class="form-state">
-      <div class="check" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  <!-- FORM STATE -->
+  <div class="form-state">
+
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">
+          <span class="mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span>התשלום התקבל בהצלחה</span>
+        </div>
+        <h1>תודה<span class="dotend">.</span></h1>
+        <div class="hero-sub">
+          <div class="rule" aria-hidden="true"></div>
+          <p>עוד שלב קצר ואתם בפנים. מלאו את הפרטים ונפתח לכם גישה מלאה לכל שיעורי הקורס ולחומרים הנלווים.</p>
+        </div>
       </div>
-      <h1>תודה על הרכישה!</h1>
-      <p class="lead">עוד שלב קטן ואתם בפנים.<br/>מלאו את הפרטים <b>ונפתח לכם גישה לקורס</b> וכל החומרים.</p>
+    </section>
 
-      <div class="error-summary" id="error-summary" role="alert" hidden tabindex="-1">
-        <h2>יש לתקן את הפרטים הבאים</h2>
-        <ul id="error-list"></ul>
+    <section class="body-grid">
+      <div class="wrap">
+
+        <div class="card">
+          <h2>פרטים לפתיחת הגישה</h2>
+          <p class="lead">קישור הצפייה יישלח לכתובת המייל שתזינו כאן.</p>
+
+          <div class="error-summary" id="error-summary" role="alert" hidden tabindex="-1">
+            <h2>יש לתקן את הפרטים הבאים</h2>
+            <ul id="error-list"></ul>
+          </div>
+
+          <form id="access-form" novalidate>
+            <div class="field">
+              <label for="f-name">שם מלא <span class="req" aria-hidden="true">*</span>
+                <span class="hint">שדה חובה.</span></label>
+              <input id="f-name" name="שם_מלא" type="text" placeholder="ישראל ישראלי" required
+                     autocomplete="name" aria-required="true" aria-describedby="f-name-err"/>
+              <strong class="field-error" id="f-name-err"></strong>
+            </div>
+            <div class="field">
+              <label for="f-phone">טלפון <span class="req" aria-hidden="true">*</span>
+                <span class="hint">שדה חובה. 10 ספרות, לדוגמה 0501234567.</span></label>
+              <input id="f-phone" name="טלפון" type="tel" placeholder="050-0000000" required
+                     autocomplete="tel" inputmode="tel" aria-required="true" aria-describedby="f-phone-err"/>
+              <strong class="field-error" id="f-phone-err"></strong>
+            </div>
+            <div class="field">
+              <label for="f-email">כתובת מייל <span class="req" aria-hidden="true">*</span>
+                <span class="hint">שדה חובה. לכתובת הזו יישלח קישור הגישה לקורס.</span></label>
+              <input id="f-email" name="מייל" type="email" placeholder="israel@example.com" required
+                     autocomplete="email" inputmode="email" aria-required="true" aria-describedby="f-email-err"/>
+              <strong class="field-error" id="f-email-err"></strong>
+            </div>
+
+            <!-- הסכמה לדיוור שיווקי: נפרדת, לא מסומנת מראש, ואינה תנאי לפתיחת הגישה -->
+            <label class="check-row" for="f-marketing">
+              <input type="checkbox" id="f-marketing" name="דיוור_שיווקי" value="כן"/>
+              <span>אני מאשר לקבל עדכונים, הטבות ותוכן מקצועי בדוא״ל ובאמצעי קשר דיגיטליים.
+                ניתן להסיר את ההסכמה בכל עת. <b>לא חובה, ולא משפיע על פתיחת הגישה.</b></span>
+            </label>
+
+            <button type="submit" class="btn" id="submit-btn">שליחה ופתיחת גישה <span class="arrow" aria-hidden="true">←</span></button>
+            <p class="form-note">הפרטים נשמרים אצלנו בלבד, לצורך פתיחת הגישה ושליחת החומרים.</p>
+          </form>
+        </div>
+
+        <div class="side">
+          <div>
+            <h3>מה קורה עכשיו</h3>
+            <div class="steps">
+              <div class="step">
+                <span class="num" aria-hidden="true">01</span>
+                <div>
+                  <h4>מילוי הפרטים</h4>
+                  <p>שם, טלפון וכתובת מייל. פחות מדקה.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="num" aria-hidden="true">02</span>
+                <div>
+                  <h4>פתיחת הגישה</h4>
+                  <p>אנחנו פותחים לכם את הגישה לכל שיעורי הקורס.</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="num" aria-hidden="true">03</span>
+                <div>
+                  <h4>הקישור במייל</h4>
+                  <p>קישור הצפייה והחומרים הנלווים נשלחים אליכם למייל.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="wa-box">
+            <div class="t">בינתיים, בואו לקבוצה</div>
+            <p>טיפים שוטפים על AI, כלים חדשים ותשובות לשאלות, בקבוצת הוואטסאפ שלנו.</p>
+            <a class="wa-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.6 9.1c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.7l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.2c.3.1.5.1.6 0l.5-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4v.6c-.1.5-.7 1-1.2 1.1a6.6 6.6 0 0 1-5-2.3 7.6 7.6 0 0 1-2-3.6c-.1-.9.1-1.5.4-1.9Z"/></svg>
+              לקבוצת הטיפים בוואטסאפ
+            </a>
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <form id="access-form" novalidate>
-        <div class="field">
-          <label for="f-name">שם מלא <span class="req" aria-hidden="true">*</span>
-            <span class="hint">שדה חובה.</span></label>
-          <input id="f-name" name="שם_מלא" type="text" placeholder="ישראל ישראלי" required
-                 autocomplete="name" aria-required="true" aria-describedby="f-name-err"/>
-          <strong class="field-error" id="f-name-err"></strong>
-        </div>
-        <div class="field">
-          <label for="f-phone">טלפון <span class="req" aria-hidden="true">*</span>
-            <span class="hint">שדה חובה. 10 ספרות, לדוגמה 0501234567.</span></label>
-          <input id="f-phone" name="טלפון" type="tel" placeholder="050-0000000" required
-                 autocomplete="tel" inputmode="tel" aria-required="true" aria-describedby="f-phone-err"/>
-          <strong class="field-error" id="f-phone-err"></strong>
-        </div>
-        <div class="field">
-          <label for="f-email">כתובת מייל <span class="req" aria-hidden="true">*</span>
-            <span class="hint">שדה חובה. לכתובת הזו יישלח קישור הגישה לקורס.</span></label>
-          <input id="f-email" name="מייל" type="email" placeholder="israel@example.com" required
-                 autocomplete="email" inputmode="email" aria-required="true" aria-describedby="f-email-err"/>
-          <strong class="field-error" id="f-email-err"></strong>
-        </div>
-
-        <!-- הסכמה לדיוור שיווקי: נפרדת, לא מסומנת מראש, ואינה תנאי לפתיחת הגישה -->
-        <label class="check-row" for="f-marketing">
-          <input type="checkbox" id="f-marketing" name="דיוור_שיווקי" value="כן"/>
-          <span>אני מאשר לקבל עדכונים, הטבות ותוכן מקצועי בדוא״ל ובאמצעי קשר דיגיטליים.
-            ניתן להסיר את ההסכמה בכל עת. <b>לא חובה, ולא משפיע על פתיחת הגישה.</b></span>
-        </label>
-
-        <button type="submit" class="submit" id="submit-btn">שליחה ופתיחת גישה</button>
-
-        <div class="privacy-note">
-          <h3>מה קורה עם הפרטים שמסרתם</h3>
-          <ul>
-            <li><strong>מי אוסף:</strong> יוחנן שבדרון, בעל העסק SHWADRON.AI.</li>
-            <li><strong>לשם מה:</strong> פתיחת הגישה לקורס, שליחת קישורי הצפייה והחומרים, ומתן תמיכה.</li>
-            <li><strong>האם חובה:</strong> שם, טלפון ודוא״ל נדרשים כדי לפתוח את הגישה. בלעדיהם לא נוכל לעשות זאת.
-              אישור הדיוור השיווקי הוא רשות מלאה.</li>
-            <li><strong>איפה נשמר:</strong> במערכת האוטומציה Make ובמערכת החשבוניות Morning.</li>
-            <li><strong>למי עשוי להימסר:</strong> לספקים אלה בלבד, לצורך אספקת השירות, ולרשויות המס כחלק מהתיעוד החשבונאי.</li>
-            <li><strong>עיון ותיקון:</strong> אפשר לבקש לעיין במידע, לתקן או למחוק אותו בפנייה אלינו.
-              פירוט מלא ב<a href="privacy.html">מדיניות הפרטיות</a>.</li>
-          </ul>
-        </div>
-      </form>
-    </div>
-
-    <!-- SUCCESS STATE -->
-    <div class="success" role="status" aria-live="polite">
-      <div class="check" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+    <section class="disclosure">
+      <div class="wrap">
+        <h3>מה קורה עם הפרטים שמסרתם</h3>
+        <ul>
+          <li><b>מי אוסף.</b> יוחנן שבדרון, בעל העסק SHWADRON.AI.</li>
+          <li><b>לשם מה.</b> פתיחת הגישה לקורס, שליחת קישורי הצפייה והחומרים, ומתן תמיכה.</li>
+          <li><b>האם חובה.</b> שם, טלפון ודוא״ל נדרשים כדי לפתוח את הגישה. בלעדיהם לא נוכל לעשות זאת. אישור הדיוור השיווקי הוא רשות מלאה.</li>
+          <li><b>איפה נשמר.</b> במערכת האוטומציה Make ובמערכת החשבוניות Morning.</li>
+          <li><b>למי עשוי להימסר.</b> לספקים אלה בלבד, לצורך אספקת השירות, ולרשויות המס כחלק מהתיעוד החשבונאי.</li>
+          <li><b>עיון ותיקון.</b> אפשר לבקש לעיין במידע, לתקן או למחוק אותו בפנייה אלינו. פירוט מלא ב<a href="privacy.html">מדיניות הפרטיות</a>.</li>
+        </ul>
       </div>
-      <h1>קיבלנו את הפרטים!</h1>
-      <p class="lead">תודה. נפתח לכם גישה לקורס ונשלח את הקישור בהקדם.<br/>אפשר לסגור את החלון.</p>
-    </div>
-
-    <div style="margin-top:24px;padding-top:20px;border-top:1px solid #E1E9F4">
-      <p style="color:#5A6B85;font-size:.95rem;margin-bottom:12px">רוצים טיפים שוטפים על AI? הצטרפו לקבוצה שלנו:</p>
-      <a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#075e54;color:#fff;font-weight:800;padding:12px 24px;border-radius:100px;font-size:1rem;text-decoration:none">💬 קבוצת הטיפים בוואטסאפ</a>
-    </div>
+    </section>
 
   </div>
+
+  <!-- SUCCESS STATE -->
+  <div class="success" role="status" aria-live="polite">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <div class="eyebrow">
+            <span class="mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span>הפרטים נקלטו</span>
+          </div>
+          <h1>קיבלנו<span class="dotend">.</span></h1>
+          <div class="hero-sub">
+            <div class="rule" aria-hidden="true"></div>
+            <p>אנחנו פותחים לכם את הגישה לקורס ושולחים את קישור הצפייה למייל. אפשר לסגור את החלון.</p>
+          </div>
+        </div>
+
+        <div class="done-card">
+          <div class="k">הקישור נשלח אל</div>
+          <div class="mail" id="done-email">המייל שהזנתם</div>
+          <ul class="done-list">
+            <li>לא רואים את המייל בתיבה. שווה לבדוק גם בקידומי מכירות ובספאם.</li>
+            <li>משהו לא הסתדר. כתבו לנו בוואטסאפ ל־052-818-9921 ונטפל בזה.</li>
+          </ul>
+          <div class="done-wa">
+            <div class="t">בינתיים, בואו לקבוצת הטיפים</div>
+            <a class="wa-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.6 9.1c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.7l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.2c.3.1.5.1.6 0l.5-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4v.6c-.1.5-.7 1-1.2 1.1a6.6 6.6 0 0 1-5-2.3 7.6 7.6 0 0 1-2-3.6c-.1-.9.1-1.5.4-1.9Z"/></svg>
+              לקבוצת הוואטסאפ
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
 </main>
 
-<!-- הפוטר בעמוד הזה בהיר, ולכן וריאנט הטקסט הכהה. בלעדיו הקישורים
-     המשפטיים נצבעים בלבן על רקע בהיר ונעלמים. -->
-<footer class="site-footer--light">
-  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
-    <h2>מסמכים משפטיים</h2>
-    <ul>
-      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
-      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
-      <li><a href="accessibility.html">הצהרת נגישות</a></li>
-      <li><a href="cancellation.html">ביטול עסקה</a></li>
-      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
-    </ul>
-  </nav>
-  <div class="foot-business">
-    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
-    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972528189921">052-818-9921</a></p>
+<footer class="foot">
+  <div class="wrap">
+    <nav aria-label="מסמכים משפטיים">
+      <ul>
+        <li><a href="terms.html">תקנון ותנאי רכישה</a></li>
+        <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
+        <li><a href="accessibility.html">הצהרת נגישות</a></li>
+        <li><a href="cancellation.html">ביטול עסקה</a></li>
+        <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
+      </ul>
+    </nav>
+    <div class="foot-biz">
+      <div class="strong">יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></div>
+      <div>yochanan@shwadron-ai.com</div>
+      <div>© 2026 SHWADRON.AI · כל הזכויות שמורות</div>
+    </div>
   </div>
-  <p>© 2026 SHWADRON.AI · כל הזכויות שמורות</p>
 </footer>
 
 <script>
@@ -336,6 +471,11 @@ form{gap:var(--space-4)}
         body: JSON.stringify(data)
       });
     }catch(_){}
+
+    // מסך האישור מציג את הכתובת שאליה נשלח הקישור, כדי שטעות הקלדה תתגלה מיד.
+    var mail = document.getElementById('done-email');
+    var typed = document.getElementById('f-email').value.trim();
+    if(mail && typed){ mail.textContent = typed; }
 
     document.body.classList.add('done');
     window.scrollTo(0,0);
