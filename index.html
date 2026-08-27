@@ -3,890 +3,949 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>עוד לפני בין הזמנים, אתה שולט ב-AI | קורס SHWADRON.AI</title>
-<meta name="description" content="מחזור מיוחד לפני בין הזמנים: שלושה מפגשי זום שבהם לומדים לעבוד נכון עם AI ולבנות דרך עבודה שנשארת. מתחילים 14/07 בשעות 19:30-21:30. מותאם לציבור החרדי, גם בלי רקע טכני."/>
-<meta name="keywords" content="קורס AI, AI לציבור החרדי, לעבוד עם AI, לפני בין הזמנים, יוחנן שבדרון, ChatGPT, Claude, Gemini, קורס בינה מלאכותית בעברית"/>
-<meta name="author" content="יוחנן שבדרון"/>
+<title>מחזור AI חי בזום | SHWADRON.AI</title>
+<meta name="description" content="מחזור חי של ארבעה מפגשי זום שבהם לומדים לעבוד נכון עם AI ובונים דרך עבודה שנשארת. מותאם לציבור החרדי, גם בלי רקע טכני. ההרשמה למחזור הקרוב פתוחה."/>
+<meta name="keywords" content="קורס AI, AI לציבור החרדי, לעבוד עם AI, מחזור חי, יוחנן שבדרון, ChatGPT, Claude, Gemini, קורס בינה מלאכותית בעברית"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://www.shwadron-ai.com/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.shwadron-ai.com/"/>
-<meta property="og:title" content="עוד לפני בין הזמנים, אתה שולט ב-AI | SHWADRON.AI"/>
-<meta property="og:description" content="מחזור קצר לפני בין הזמנים. לומדים לעבוד נכון עם AI ובונים דרך עבודה שנשארת. מתחילים 14/07 בשעות 19:30-21:30. מותאם לציבור החרדי."/>
+<meta property="og:title" content="מחזור AI חי בזום | SHWADRON.AI"/>
+<meta property="og:description" content="ארבעה מפגשי זום חיים, הקלטות מלאות וקבוצת ליווי. לומדים לעבוד נכון עם AI, גם בלי רקע טכני."/>
 <meta property="og:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
 <meta property="og:locale" content="he_IL"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="עוד לפני בין הזמנים, אתה שולט ב-AI"/>
-<meta name="twitter:description" content="שלושה מפגשים ללמוד לעבוד נכון עם AI. מתחילים 14/07 בשעות 19:30-21:30. מותאם לציבור החרדי."/>
-<meta name="twitter:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="preload" href="assets/public/images/brand/hero-calendar-character.webp" as="image"/>
 <link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
+<link rel="stylesheet" href="assets/css/site-legal.css"/>
+<link rel="stylesheet" href="assets/css/forms-a11y.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
-<!-- הודעת עוגיות. אין באתר זה סקריפטי מעקב שנטענים ללא הסכמה. -->
-<script src="assets/js/consent.js" defer></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap"/>
 
-<script type="application/ld+json">
+<!-- ═══════════ ANALYTICS ═══════════
+     המזהים של GA4 ו-Clarity מוגדרים בתוך assets/js/consent.js, וזה המקום
+     היחיד שצריך לגעת בו. הסקריפטים נטענים אך ורק אחרי שהגולש אישר את
+     קטגוריית "סטטיסטיקה" בהודעת העוגיות.
+-->
+<script src="assets/js/consent.js"></script>
+
+<script type="application/ld+json" id="course-ld">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Course",
-      "name": "קורס AI מעשי לציבור החרדי",
-      "description": "מחזור קצר לפני בין הזמנים. לומדים לעבוד נכון עם AI ובונים דרך עבודה שנשארת. שלושה מפגשי זום, מותאם גם בלי רקע טכני.",
-      "provider": {"@type":"Person","name":"יוחנן שבדרון","url":"https://www.shwadron-ai.com/"},
-      "url": "https://www.shwadron-ai.com/",
-      "inLanguage": "he",
-      "educationalLevel": "Beginner",
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "online",
-        "location": {"@type":"VirtualLocation","url":"https://www.shwadron-ai.com/"},
-        "startDate": "2026-07-14T20:30:00+03:00",
-        "endDate": "2026-07-19T22:00:00+03:00"
-      },
-      "offers": {"@type":"Offer","price":"1000","priceCurrency":"ILS","url":"https://www.shwadron-ai.com/#join","availability":"https://schema.org/LimitedAvailability"},
-      "image": "https://www.shwadron-ai.com/yochanan.jpg"
-    },
-    {"@type":"Person","name":"יוחנן שבדרון","url":"https://www.shwadron-ai.com/","image":"https://www.shwadron-ai.com/yochanan.jpg","jobTitle":"מדריך AI, בוגר מדעי המחשב","knowsAbout":["בינה מלאכותית","ChatGPT","Claude AI","Gemini","AI Agents"]},
-    {"@type":"WebSite","url":"https://www.shwadron-ai.com/","name":"SHWADRON.AI","inLanguage":"he"}
-  ]
+  "@type": "Course",
+  "name": "מחזור AI חי בזום",
+  "description": "מחזור חי של ארבעה מפגשי זום שבהם לומדים לעבוד נכון עם AI ובונים דרך עבודה שנשארת. מותאם גם למי שאין לו רקע טכני.",
+  "provider": {"@type":"Person","name":"יוחנן שבדרון","url":"https://www.shwadron-ai.com/"},
+  "inLanguage": "he",
+  "educationalLevel": "Beginner",
+  "hasCourseInstance": {"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT8H"},
+  "offers": {
+    "@type":"Offer",
+    "price":"1180.00",
+    "priceCurrency":"ILS",
+    "availability":"https://schema.org/InStock",
+    "url":"https://www.shwadron-ai.com/",
+    "priceSpecification":{
+      "@type":"PriceSpecification",
+      "price":"1000",
+      "priceCurrency":"ILS",
+      "valueAddedTaxIncluded":false,
+      "description":"1000 ₪ לפני מע״מ. סה״כ לתשלום 1180 ₪ כולל מע״מ 18%."
+    }
+  },
+  "image": "https://www.shwadron-ai.com/yochanan.jpg"
 }
 </script>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
-/* ── TOKENS ── legacy names remapped onto the Shwadron.AI design system.
-   Every value now resolves to a token from assets/css/shwadron-ds.css. */
+/* ============================================================
+   SHWADRON.AI — דף הקורס הדיגיטלי
+   מיושם אחד לאחד מקובץ העיצוב design-proposal/Main.dc.html.
+   ============================================================ */
 :root{
-  --navy:var(--color-surface-inverse); --deep:var(--color-surface-inverse);
-  --blue:var(--color-primary); --blue2:var(--color-primary-hover);
-  --teal:var(--color-accent); --teal-bright:var(--turquoise-400); --teal-ink:var(--turquoise-700);
-  --bg:var(--color-surface); --soft:var(--color-surface-sunken); --tint:var(--color-primary-tint);
-  --text:var(--color-ink); --muted:var(--color-ink-soft); --border:var(--color-border);
-  --shadow-sm:0 1px 3px rgba(10,26,51,.06),0 1px 2px rgba(10,26,51,.08);
-  --shadow:0 8px 24px rgba(10,26,51,.10);
-  --shadow-lg:0 20px 48px rgba(10,26,51,.14);
-  --radius:var(--radius-lg); --max:var(--container-max);
+  --ink:#0a1a33;          /* כחול הדיו של הלוגו, הרקע הכהה הראשי */
+  --night:#0f2141;        /* מקטע כהה משני */
+  --deep-2:#132a4d;
+  --line-dark:#1e3358;
+  --line-dark-2:#16294a;
+  --blue:#0063ed;         /* כחול הלוגו */
+  --blue-on-dark:#2f7bf6;
+  --teal:#2edebf;         /* טורקיז הלוגו, לפעולה בלבד */
+  --teal-ink:#12b394;
+  --paper:#fff;
+  --ice:#eff1f4;
+  --line:#dde1e7;
+  --line-2:#e2e6ec;
+  --text:#0a1a33;
+  --muted:#4c5765;
+  --faint:#9aa4b3;
+  --on-dark:#a8b8d0;
+  --on-dark-2:#c2cddd;
+  --on-dark-3:#8fa2bf;
+  --pad:72px;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--font-sans);color:var(--text);background:var(--bg);direction:rtl;overflow-x:hidden;line-height:var(--lh-normal);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:'Assistant',-apple-system,'Segoe UI',sans-serif;background:var(--ice);color:var(--text);direction:rtl;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{text-decoration:none;color:inherit}
+a:hover{color:var(--teal-ink)}
 ::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:3px}
+.skip{position:absolute;right:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 20px;z-index:200;font-weight:700}
+.skip:focus{right:12px;top:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.h{font-family:'Heebo',-apple-system,'Segoe UI',sans-serif}
+.wrap{padding-right:var(--pad);padding-left:var(--pad)}
 
-/* ── A11Y ── */
-.skip{position:absolute;top:-120%;right:50%;transform:translateX(50%);background:var(--blue);color:#fff;padding:10px 22px;border-radius:0 0 12px 12px;font-weight:800;z-index:999;transition:top .2s}
-.skip:focus{top:0}
-:focus-visible{outline:3px solid var(--teal-bright);outline-offset:3px;border-radius:6px}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal,.sr>*{opacity:1!important;transform:none!important}}
+.grain{position:relative;overflow:hidden}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+.grain>*{position:relative;z-index:1}
+.ghost{color:#6f8cb8}
 
-/* ── LAYOUT ── */
-.container{max-width:var(--max);margin:0 auto;padding:0 24px}
-.section{padding:clamp(64px,8.5vw,104px) 0}
-.section.soft{background:var(--soft)}
-.section.dark{background:linear-gradient(158deg,var(--deep),var(--blue));color:#fff}
-.head{max-width:760px;margin:0 0 clamp(34px,4.5vw,54px)}
-.head.center{margin-inline:auto;text-align:center}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--teal-ink);font-weight:900;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
-.eyebrow::before{content:"";width:22px;height:2px;background:var(--teal);border-radius:2px}
-.dark .eyebrow{color:var(--teal-bright)}
-.dark .eyebrow::before{background:var(--teal-bright)}
-.title{font-size:clamp(1.9rem,4vw,3rem);line-height:1.16;font-weight:900;letter-spacing:-.02em}
-.title em{font-style:normal;color:var(--blue)}
-.dark .title em{color:var(--teal-bright)}
-.sub{margin-top:15px;color:var(--muted);font-size:clamp(1.04rem,1.7vw,1.2rem);line-height:1.75}
-.dark .sub{color:rgba(255,255,255,.8)}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.rise-2{animation:rise .8s cubic-bezier(.2,.7,.2,1) .1s both}
+.rise-3{animation:rise .8s cubic-bezier(.2,.7,.2,1) .2s both}
+.rise-4{animation:rise .8s cubic-bezier(.2,.7,.2,1) .3s both}
 
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 32px;border-radius:16px;font-family:inherit;font-weight:900;font-size:1.04rem;border:none;cursor:pointer;transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s,background .22s}
-.btn-primary{background:linear-gradient(120deg,var(--teal),var(--teal-bright));color:#06304f;box-shadow:0 16px 34px rgba(32,196,182,.3)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 46px rgba(32,196,182,.4)}
-.btn-blue{background:var(--blue);color:#fff;box-shadow:0 14px 32px rgba(18,63,138,.28)}
-.btn-blue:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(18,63,138,.36)}
-.btn-ghost{background:transparent;color:#fff;border:1.6px solid rgba(255,255,255,.34)}
-.btn-ghost:hover{transform:translateY(-3px);border-color:#fff;background:rgba(255,255,255,.07)}
-.btn-lg{min-height:62px;padding:0 40px;font-size:1.12rem}
+/* כותרת עליונה */
+.site-header{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:40px;
+  padding:20px var(--pad);background:var(--ink);color:#fff;border-bottom:1px solid var(--line-dark-2)}
+.site-header .logo img{height:38px;width:auto;filter:brightness(0) invert(1)}
+.nav{display:flex;align-items:center;gap:34px;font-size:1rem;font-weight:600;color:#d3dceb}
+.nav a:hover{color:var(--teal)}
+.hdr-side{display:flex;align-items:center;gap:18px}
+.hdr-tel{font-size:.94rem;color:var(--on-dark-3);font-weight:600}
 
-/* ── NAV ── */
-nav{position:fixed;inset:0 0 auto;z-index:80;height:66px;background:rgba(246,249,252,.86);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(225,233,244,.9);transition:box-shadow .3s}
-nav.scrolled{box-shadow:0 4px 22px rgba(10,40,90,.08)}
-.nav-inner{height:100%;max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-.logo img{height:40px;width:auto;max-width:210px;object-fit:contain}
-.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
-.nav-links a{display:block;padding:8px 14px;border-radius:10px;color:var(--muted);font-weight:700;font-size:.93rem;transition:color .2s,background .2s}
-.nav-links a:hover{background:#fff;color:var(--blue)}
-.nav-links .join{background:var(--blue);color:#fff;font-weight:800;padding:10px 22px}
-.nav-links .join:hover{background:var(--blue2)}
-.menu{display:none;background:none;border:0;color:var(--blue);cursor:pointer;padding:8px;flex-direction:column;gap:5px}
-.menu span{width:24px;height:2.4px;background:var(--blue);border-radius:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;cursor:pointer;
+  background:var(--teal);color:var(--ink);border-radius:3px;font-family:'Heebo',sans-serif;font-weight:800}
+.btn:hover{background:#25c7ab;color:var(--ink)}
+.btn-sm{padding:13px 26px;font-size:1rem;font-weight:700}
+.btn-lg{padding:20px 40px;font-size:1.19rem;box-shadow:0 18px 40px -18px rgba(46,222,191,.7)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--night);color:#fff}
+.btn[aria-disabled="true"]{opacity:.75}
 
-/* ── HERO ── */
-.hero{position:relative;overflow:hidden;color:#fff;padding:clamp(96px,12vh,120px) 0 clamp(18px,3vh,40px);
-  background:radial-gradient(760px 460px at 30% 40%,rgba(32,196,182,.2),transparent 66%),
-             radial-gradient(960px 640px at 8% 60%,rgba(28,86,176,.28),transparent 66%),
-             linear-gradient(156deg,var(--deep) 0%,var(--navy) 50%,var(--blue) 100%)}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(90,230,218,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(90,230,218,.07) 1px,transparent 1px);background-size:200px 200px;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 78%);opacity:.6}
-.hero-grid{position:relative;z-index:2;max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;min-height:calc(100vh - 120px)}
-.hero-copy{padding-bottom:clamp(40px,7vh,90px);min-width:0}
-.badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px;margin-bottom:24px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);border-radius:999px;font-weight:800;font-size:.86rem;color:#eaf7ff}
-.badge i{width:9px;height:9px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 0 5px rgba(90,230,218,.2);animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-size:clamp(2.5rem,5.6vw,4.3rem);line-height:1.03;font-weight:900;letter-spacing:-.02em;text-wrap:balance}
-.hero h1 .teal{color:var(--teal-bright)}
-.hero-copy>p{margin-top:22px;max-width:500px;color:rgba(255,255,255,.85);font-weight:600;font-size:clamp(1.06rem,1.7vw,1.3rem);line-height:1.6}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
-.checks{display:flex;gap:9px 18px;flex-wrap:wrap;margin-top:24px;max-width:540px}
-.checks span{display:inline-flex;gap:8px;align-items:center;color:#eaf7ff;font-weight:700;font-size:.9rem}
-.checks span::before{content:"✓";display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:rgba(90,230,218,.2);color:var(--teal-bright);font-size:.7rem;font-weight:900}
-.hero-visual{position:relative;display:flex;align-items:flex-end;justify-content:center;min-width:0}
-.hero-visual::after{content:"";position:absolute;left:14%;right:12%;bottom:6%;height:5%;background:radial-gradient(closest-side,rgba(3,15,40,.5),transparent);filter:blur(6px);z-index:1}
-.hero-img{position:relative;z-index:2;width:auto;height:auto;max-width:100%;max-height:min(78vh,660px);object-fit:contain;filter:drop-shadow(0 30px 46px rgba(0,0,0,.34))}
+/* HERO */
+.hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:clamp(18px,3.2vh,64px) var(--pad) clamp(30px,3.4vh,40px)}
+.hero .glow-b{position:absolute;top:-180px;right:120px;width:720px;height:620px;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(0,99,237,.34),rgba(0,99,237,0))}
+.hero .glow-t{position:absolute;top:120px;right:560px;width:560px;height:520px;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(46,222,191,.14),rgba(46,222,191,0))}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:auto auto;justify-content:center;gap:clamp(36px,4.4vw,72px);align-items:end}
+.hero-copy{display:flex;flex-direction:column;gap:clamp(12px,2.3vh,30px);padding-bottom:clamp(16px,4.4vh,72px);max-width:560px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:.94rem;font-weight:700;letter-spacing:.12em;color:var(--blue)}
+.eyebrow::before{content:"";width:34px;height:2px;background:currentColor}
+.eyebrow.teal{color:var(--teal)}
+.hero-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:clamp(2.6rem,min(6vw,9.2vh),6.63rem);line-height:.88;letter-spacing:-.04em}
+.hero-lead{font-size:clamp(1rem,1.85vh,1.31rem);line-height:1.6;color:var(--on-dark-2);max-width:520px}
+.hero-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero-price{display:flex;flex-direction:column;gap:3px}
+.hero-price b{font-size:1.06rem;font-weight:700}
+.hero-price span{font-weight:400;color:var(--on-dark-3)}
+.hero-price small{font-size:.88rem;color:var(--on-dark-3)}
+.hero-portrait{position:relative;height:clamp(240px,52vh,548px);aspect-ratio:3/4;width:auto;margin-bottom:clamp(38px,5vh,56px)}
 
-/* ── STRIP ── */
-.strip{background:var(--navy);color:#fff;padding:clamp(30px,4vw,42px) 0}
-.strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
-.strip strong{display:block;color:var(--teal-bright);font-size:clamp(1.5rem,3.4vw,2.1rem);line-height:1;font-weight:900}
-.strip span{display:block;margin-top:8px;color:rgba(255,255,255,.7);font-weight:600;font-size:.9rem;line-height:1.4}
+.hero-portrait .plate{position:absolute;inset:0;background:var(--deep-2);border-radius:3px}
+.hero-portrait img{position:absolute;inset:0;z-index:1;width:100%;height:100%;
+  object-fit:cover;object-position:center top;border-radius:3px}
+.hero-portrait .fade{position:absolute;inset:0;z-index:2;border-radius:3px;pointer-events:none;
+  background:linear-gradient(to top,rgba(10,26,51,.88),rgba(10,26,51,.55) 12%,rgba(10,26,51,0) 30%)}
 
-/* ── CARDS ── */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:30px 28px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s}
-.card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(32,196,182,.5)}
-.card-ico{width:54px;height:54px;border-radius:15px;display:flex;align-items:center;justify-content:center;background:var(--tint);color:var(--blue);margin-bottom:18px}
-.card-ico svg{width:27px;height:27px}
-.card h3{font-size:1.24rem;font-weight:800;margin-bottom:8px}
-.card p{color:var(--muted);font-size:1rem;line-height:1.7}
-.mbr{display:none}
+.hero-portrait .chip{position:absolute;z-index:0;left:-26px;bottom:-26px;width:96px;height:96px;background:var(--teal);border-radius:3px}
+.hero-portrait figcaption{position:absolute;z-index:3;right:24px;bottom:22px;display:flex;flex-direction:column;gap:2px}
+.hero-portrait figcaption b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.38rem;color:#fff}
+.hero-portrait figcaption span{font-size:.88rem;color:var(--on-dark)}
 
-/* ── ABOUT ── */
-.about{display:grid;grid-template-columns:.82fr 1.18fr;grid-template-areas:"photo head" "photo body";column-gap:clamp(28px,4vw,56px);row-gap:12px;align-items:center;max-width:1000px;margin:0 auto}
-.about-head{grid-area:head}
-.about-photo{grid-area:photo;position:relative}
-.about-photo img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:24px;box-shadow:var(--shadow-lg)}
-.about-tag{position:absolute;bottom:-14px;right:16px;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);border-radius:12px;padding:9px 16px;font-weight:800;font-size:.82rem;color:var(--blue);display:inline-flex;gap:8px;align-items:center}
-.about-tag::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--teal)}
-.about-body{grid-area:body}
-.about-body p{color:var(--muted);font-size:1.04rem;line-height:1.8;margin-bottom:14px}
-.about-emph{font-size:1.2rem;font-weight:800;color:var(--text);margin:4px 0 20px}
-.about-emph em{font-style:normal;color:var(--blue)}
-.about-trust{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
-.about-trust span{background:var(--tint);border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-weight:700;font-size:.86rem;color:var(--blue)}
+/* רצועה נעה */
+.marquee{background:var(--teal);color:var(--ink);overflow:hidden;padding:20px 0}
+.marquee-track{display:flex;width:200%;animation:mq 26s linear infinite;
+  font-family:'Heebo',sans-serif;font-weight:800;font-size:1.06rem;letter-spacing:.02em;white-space:nowrap}
+.marquee-track>div{display:flex;align-items:center;gap:28px;padding-left:28px}
+.marquee-track i{font-style:normal;opacity:.45}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(50%)}}
 
-/* ── COMPARE / PILLS ── */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
-.compare-col{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px 26px;box-shadow:var(--shadow-sm)}
-.compare-col.after{border-color:rgba(32,196,182,.5);background:linear-gradient(160deg,#fff,var(--tint))}
-.compare-col h3{font-size:1.08rem;font-weight:900;margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.compare-col h3 i{flex-shrink:0;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:.95rem}
-.compare-col.before h3 i{background:#FCEEEE;color:#C0392B}
-.compare-col.after h3 i{background:rgba(32,196,182,.16);color:var(--teal-ink)}
-.compare-list{display:flex;flex-direction:column;gap:12px;list-style:none}
-.compare-list li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:.97rem;line-height:1.6}
-.compare-col.before .compare-list li::before{content:"✕";color:#C0392B;font-weight:900;flex-shrink:0}
-.compare-col.after .compare-list li::before{content:"✓";color:var(--teal-ink);font-weight:900;flex-shrink:0}
-.pill-lead{text-align:center;color:var(--muted);font-weight:700;margin-bottom:14px}
-.pill-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:820px;margin:0 auto}
-.pill{background:var(--tint);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-weight:700;font-size:.88rem;color:var(--blue)}
+/* רצועת מספרים */
+.stats{background:var(--ink);color:#fff;padding:0 var(--pad) 8px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line-dark-2);border:1px solid var(--line-dark-2);border-top:none}
+.stat{background:var(--ink);padding:34px 30px;display:flex;flex-direction:column;gap:6px}
+.stat b{font-family:'Heebo',sans-serif;font-weight:900;font-size:3.25rem;line-height:1;letter-spacing:-.03em}
+.stat b.teal{color:var(--teal)}
+.stat span{font-size:.94rem;color:var(--on-dark-3)}
 
-/* ── STEPS ── */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius);padding:30px 28px;transition:transform .3s,background .3s}
-.step:hover{transform:translateY(-5px);background:rgba(255,255,255,.09)}
-.step .n{display:grid;place-items:center;width:52px;height:52px;border-radius:15px;background:linear-gradient(135deg,var(--teal),var(--teal-bright));color:var(--deep);font-size:1.4rem;font-weight:900;margin-bottom:16px}
-.step .date{color:var(--teal-bright);font-weight:800;font-size:.85rem;margin-bottom:6px;direction:rtl}
-.step h3{font-size:1.2rem;font-weight:800;margin-bottom:8px}
-.step p{color:rgba(255,255,255,.76);font-size:.98rem;line-height:1.65}
-.step-note{max-width:640px;margin:34px auto 0;text-align:center;font-size:1.08rem;font-weight:800;color:#fff}
-.step-note em{font-style:normal;color:var(--teal-bright)}
+/* השיטה */
+.method{padding:110px var(--pad) 96px;background:var(--ice)}
+.method-intro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:start}
+.sec-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:4.88rem;line-height:.92;letter-spacing:-.035em}
+.sec-title em{font-style:normal;color:var(--faint)}
+.method-intro p{font-size:1.31rem;line-height:1.65;color:#37404d}
+.method-intro>div:last-child{display:flex;flex-direction:column;gap:20px;padding-top:12px}
+.method-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;margin-top:72px;background:var(--line)}
+.m-card{background:var(--ice);padding:44px 40px;display:flex;flex-direction:column;gap:16px;border-top:3px solid var(--line)}
+.m-card:first-child{border-top-color:var(--blue)}
+.m-card b{font-family:'Heebo',sans-serif;font-weight:900;font-size:3.75rem;line-height:1;color:var(--blue)}
+.m-card h3{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.63rem;line-height:1.2}
+.m-card p{font-size:1.06rem;line-height:1.65;color:var(--muted)}
 
-/* ── GET ── */
-.get{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.get-item{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px 22px;box-shadow:var(--shadow-sm)}
-.get-item .i{flex-shrink:0;width:42px;height:42px;border-radius:12px;background:var(--tint);color:var(--blue);display:flex;align-items:center;justify-content:center}
-.get-item .i svg{width:22px;height:22px}
-.get-item b{font-weight:800;font-size:1.04rem}
+/* שיעורים */
+.lessons{background:var(--night);color:#fff;padding:104px var(--pad)}
+.lessons-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:56px}
+.lessons-head p{font-size:1.19rem;line-height:1.6;color:var(--on-dark);max-width:380px;padding-bottom:10px}
+.lesson{display:grid;grid-template-columns:110px 1fr 1.15fr 40px;gap:40px;align-items:center;padding:34px 0;border-top:1px solid var(--line-dark)}
+.lesson:last-child{border-bottom:1px solid var(--line-dark)}
+.lesson b{font-family:'Heebo',sans-serif;font-weight:900;font-size:2.88rem;line-height:1;color:var(--teal)}
+.lesson h3{font-family:'Heebo',sans-serif;font-weight:800;font-size:2rem;line-height:1.15}
+.lesson p{font-size:1.13rem;line-height:1.65;color:var(--on-dark)}
+.lesson svg{width:26px;height:26px;color:#40598a}
 
-/* ── AUDIENCE ── */
-.aud{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.aud-item{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 20px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s}
-.aud-item:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:rgba(32,196,182,.5)}
-.aud-item .i{width:50px;height:50px;margin:0 auto 12px;border-radius:50%;background:var(--tint);color:var(--blue);display:flex;align-items:center;justify-content:center}
-.aud-item .i svg{width:25px;height:25px}
-.aud-item h3{font-size:1.08rem;font-weight:800}
-.aud-wide{grid-column:1/-1;background:linear-gradient(120deg,var(--tint),#fff)}
-.aud-wide h3{color:var(--blue);font-size:1.18rem}
+/* התוצאה */
+.outcomes{padding:104px var(--pad);background:var(--ice)}
+.out-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line);margin-top:56px}
+.out-cell{background:var(--paper);padding:40px 36px;display:flex;flex-direction:column;gap:12px}
+.out-cell svg{width:26px;height:26px;color:var(--teal-ink)}
+.out-cell h3{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.38rem}
+.out-cell p{font-size:1rem;line-height:1.6;color:var(--muted)}
+.out-cta{background:var(--teal);padding:40px 36px;display:flex;flex-direction:column;justify-content:center;gap:16px;color:var(--ink)}
+.out-cta p{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.88rem;line-height:1.12}
+.out-cta a{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.06rem;color:var(--ink)}
+.out-cta a:hover{color:var(--ink);text-decoration:underline}
 
-/* ── PROOF ── */
-.proof-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;max-width:900px;margin:0 auto;align-items:start}
-.proof-card img{width:100%;height:auto;border-radius:18px;border:1px solid var(--border);box-shadow:var(--shadow)}
-.proof-stack{display:flex;flex-direction:column;gap:18px}
-.proof-cap{font-weight:800;font-size:.98rem;color:var(--blue);margin-bottom:10px}
-.proof-credit{margin-top:10px;color:var(--muted);font-weight:700;font-size:.88rem}
+/* מהשטח */
+.proof{background:var(--paper);padding:100px var(--pad)}
+.proof .sec-title{margin-bottom:48px}
+.proof .eyebrow{margin-bottom:20px}
+.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.quote{background:var(--ice);padding:36px 32px;border-radius:3px;border-bottom:3px solid var(--blue);
+  display:flex;flex-direction:column;gap:20px}
+.quote p{font-size:1.19rem;line-height:1.6}
+.quote cite{font-style:normal;font-size:.94rem;font-weight:700;color:var(--muted)}
+.orgs{display:flex;align-items:center;gap:40px;margin-top:64px;padding-top:36px;border-top:1px solid var(--line-2);flex-wrap:wrap}
+.orgs>p{font-size:1rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.orgs ul{list-style:none;display:flex;align-items:center;gap:44px;flex-wrap:wrap;
+  font-family:'Heebo',sans-serif;font-weight:800;font-size:1.5rem;color:#a7b0bd}
+.orgs li:last-child{font-size:1.06rem;font-weight:600}
 
-/* ── DETAILS ── */
-.details{max-width:720px;margin:0 auto;background:#fff;border-radius:26px;padding:clamp(26px,4vw,38px);box-shadow:var(--shadow);border:1px solid var(--border)}
-.d-row{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:15px 0;border-bottom:1px dashed var(--border)}
-.d-row:last-of-type{border-bottom:0}
-.d-row .k{color:var(--muted);font-weight:700}
-.d-row .v{font-weight:900;font-size:1.06rem}
-.d-row .v.price{color:var(--blue);font-size:1.3rem}
-.d-dates{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:22px}
-.d-date{background:var(--soft);border:1px solid var(--border);border-radius:14px;padding:12px 20px;text-align:center;min-width:150px}
-.d-date b{display:block;color:var(--blue);font-size:1.12rem;font-weight:900;direction:ltr}
-.d-date span{font-size:.8rem;color:var(--muted)}
-
-/* ── FAQ ── */
-.faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-.faq details{background:#fff;border:1px solid var(--border);border-radius:16px;padding:0;overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.faq details[open]{border-color:rgba(32,196,182,.55);box-shadow:var(--shadow-sm)}
-.faq summary{cursor:pointer;list-style:none;padding:20px 24px;font-weight:800;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+/* שאלות נפוצות */
+.faq{background:var(--ice);padding:104px var(--pad)}
+.faq-grid{display:grid;grid-template-columns:.85fr 1.3fr;gap:64px;align-items:start}
+.faq-side{display:flex;flex-direction:column;gap:18px}
+.faq-side .sec-title{font-size:4.5rem}
+.faq-side>p{font-size:1.13rem;line-height:1.65;color:var(--muted);max-width:320px}
+.faq-side a{color:var(--blue);text-decoration:underline}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;cursor:pointer;list-style:none;
+  padding:28px 0;font-family:'Heebo',sans-serif;font-weight:800;font-size:1.56rem;line-height:1.25}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"▼";color:var(--blue);font-size:.8rem;transition:transform .3s}
-.faq details[open] summary::after{transform:rotate(180deg)}
-.faq p{padding:0 24px 22px;color:var(--muted);line-height:1.8}
+.faq summary::after{content:"";flex-shrink:0;width:26px;height:26px;
+  background:linear-gradient(var(--text),var(--text)) center/16px 2.2px no-repeat,
+             linear-gradient(var(--text),var(--text)) center/2.2px 16px no-repeat}
+.faq details[open] summary{color:var(--blue)}
+.faq details[open] summary::after{background:linear-gradient(var(--blue),var(--blue)) center/16px 2.2px no-repeat}
+.faq details>p{padding:0 20px 28px 0;border-right:3px solid var(--blue);
+  font-size:1.13rem;line-height:1.7;color:var(--muted);max-width:660px}
+.faq details>p a{color:var(--blue);text-decoration:underline}
 
-/* ── JOIN ── */
-.join{background:radial-gradient(820px 460px at 50% -8%,rgba(32,196,182,.24),transparent 62%),linear-gradient(158deg,var(--deep),var(--blue));color:#fff;text-align:center}
-.join .title{color:#fff;margin-inline:auto}
-.join .sub{margin-inline:auto}
-.join-card{background:#fff;color:var(--text);border-radius:28px;box-shadow:var(--shadow-lg);max-width:520px;margin:36px auto 0;padding:clamp(28px,4vw,42px)}
-.join-eyebrow{color:var(--teal-ink);font-weight:900;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
-.join-rows{display:flex;flex-direction:column;gap:0;max-width:360px;margin:0 auto 22px}
-.join-rows .d-row{padding:13px 0}
-.join-price{margin:6px 0 22px}
-.join-price b{font-size:2.6rem;font-weight:900;color:var(--blue);line-height:1}
-.join-price span{color:var(--muted);font-weight:700}
-.join-card .btn{width:100%}
-.btn-full{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.32);cursor:default;font-weight:900}
-.hero-next{margin-top:16px;color:rgba(255,255,255,.82);font-weight:600}
-.hero-next a{color:var(--teal-bright);font-weight:800;border-bottom:1px solid rgba(90,230,218,.4)}
-.closed-badge{display:inline-block;background:var(--tint);color:var(--blue);border:1px solid var(--border);border-radius:100px;padding:12px 28px;font-size:1.5rem;font-weight:900;margin:4px 0 14px}
-.closed-sub{color:var(--muted);font-size:1.05rem;line-height:1.7;margin-bottom:22px}
-.join-secure{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-weight:600;font-size:.9rem}
-.join-secure svg{width:16px;height:16px}
-.join-alt{margin-top:22px;color:rgba(255,255,255,.72)}
-.join-alt a{color:var(--teal-bright);font-weight:800;border-bottom:1px solid rgba(90,230,218,.4)}
+/* בלוק הרכישה */
+.buy-sec{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:104px var(--pad)}
+.buy-sec .glow{position:absolute;bottom:-220px;left:40px;width:700px;height:620px;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(46,222,191,.14),rgba(46,222,191,0))}
+.buy-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+.buy-grid>*{min-width:0}
+.buy-left{display:flex;flex-direction:column;gap:28px}
+.buy-left>p{font-size:1.19rem;line-height:1.65;color:var(--on-dark);max-width:480px}
+.incl{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:8px}
+.incl li{display:flex;align-items:center;gap:12px;font-size:1.06rem;color:#d3dceb}
+.incl svg{width:20px;height:20px;flex-shrink:0;color:var(--teal)}
+.price-card{background:var(--paper);color:var(--text);border-radius:3px;padding:44px 40px;
+  display:flex;flex-direction:column;gap:24px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.price-card>.lbl{font-size:.94rem;font-weight:700;letter-spacing:.1em;color:var(--blue)}
+.price-table{width:100%;border-collapse:collapse}
+.price-table th{text-align:right;font-weight:400;color:var(--muted);font-size:1.06rem;padding:14px 0;border-bottom:1px solid var(--line-2)}
+.price-table td{text-align:left;font-weight:700;font-size:1.06rem;padding:14px 0;border-bottom:1px solid var(--line-2);overflow-wrap:anywhere}
+.price-table s{color:var(--faint);font-weight:600}
+.price-table .tot th{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.31rem;color:var(--text);border-bottom:none;padding-top:22px}
+.price-table .tot td{font-family:'Heebo',sans-serif;font-weight:900;font-size:2.75rem;letter-spacing:-.02em;border-bottom:none;padding-top:22px}
+.pd-vat{font-size:.94rem;line-height:1.6;color:var(--muted)}
+.secure{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.88rem;color:#8a8781}
 
-/* ── FOOTER ── */
-footer{background:var(--deep);color:rgba(255,255,255,.72);padding:52px 24px 32px;text-align:center}
-footer img{height:46px;width:auto;margin:0 auto 14px}
-.foot-links{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;margin-bottom:22px}
-.foot-links a{color:rgba(255,255,255,.72);font-weight:600;font-size:.92rem;transition:color .2s}
-.foot-links a:hover{color:var(--teal-bright)}
-/* .45 opacity on navy resolves to ~4.4:1 and fails AA for body text; .72 gives ~9.4:1 */
-.foot-copy{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:.82rem;color:rgba(255,255,255,.72)}
+/* קופון */
+.pd-coupon{background:var(--ice);border-radius:3px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.pd-coupon-lbl{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:700}
+.pd-coupon-lbl svg{width:19px;height:19px;color:var(--teal-ink)}
+.pd-coupon-row{display:flex;align-items:stretch;gap:8px}
+.pd-coupon-input{flex-grow:1;min-width:0;background:var(--paper);border:1px solid #d3d9e1;border-radius:3px;
+  padding:13px 14px;font-family:inherit;font-size:1rem;color:var(--text)}
+.pd-coupon-input::placeholder{color:var(--faint)}
+.pd-coupon-input:disabled{background:var(--line-2);color:var(--muted)}
+.pd-coupon-btn{background:#0a1a33;color:#fff;border:none;border-radius:3px;cursor:pointer;
+  font-family:'Heebo',sans-serif;font-weight:800;font-size:.94rem;padding:13px 22px;white-space:nowrap}
+.pd-coupon-btn:hover{background:var(--night)}
+.pd-coupon-btn:disabled{opacity:.6;cursor:default}
+.pd-coupon-msg{font-size:.88rem;font-weight:600}
+.pd-coupon-msg:empty{display:none}
+.pd-coupon-msg.ok{color:var(--teal-ink)}
+.pd-coupon-msg.err{color:#c0563a}
 
-/* The page-level `nav{position:fixed;background:rgba(255,255,255,.9)}` rule
-   also matches these footer <nav> elements, which pinned them to the top of
-   the viewport as white bars with white text. Reset every property it sets. */
-footer nav{position:static;inset:auto;z-index:auto;height:auto;
-  background:none;backdrop-filter:none;-webkit-backdrop-filter:none;
-  border-bottom:0;box-shadow:none;display:block}
+/* אישור התקנון, נדרש בחוק לפני מעבר לסליקה */
+.consent{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line-2);padding-top:20px}
+.check-row{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;line-height:1.55;color:var(--muted);cursor:pointer}
+.check-row input{flex-shrink:0;margin-top:3px;width:18px;height:18px;accent-color:var(--blue)}
+.check-row a{color:var(--blue);text-decoration:underline}
+.field-error{display:block;color:#c0563a;font-size:.88rem;font-weight:700}
+.field-error:empty{display:none}
+.terms-link{font-size:.88rem;color:var(--blue);text-decoration:underline}
 
-/* Legal links: underlined so they are identifiable without relying on colour */
-.foot-legal-nav{margin:0 auto 24px;max-width:900px}
-.foot-legal-nav h2{font-size:.82rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:.04em}
-.foot-legal-nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:12px 24px;padding:0;margin:0}
-.foot-legal-nav a{color:#fff;font-weight:600;font-size:.92rem;text-decoration:underline;text-underline-offset:3px}
-.foot-legal-nav a:hover{color:var(--teal-bright)}
-.foot-business{max-width:900px;margin:0 auto 20px;font-size:.85rem;line-height:1.7;color:rgba(255,255,255,.78)}
-.foot-business a{color:#fff;text-decoration:underline;text-underline-offset:3px}
-.todo{background:#ffe9a8;color:#5a4300;font-weight:700;padding:1px 8px;border-radius:8px;border:1px dashed #b58900}
+/* פוטר */
+.site-footer{background:var(--night);color:var(--on-dark-3);padding:56px var(--pad);
+  display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;border-top:1px solid var(--line-dark)}
+.site-footer img{height:34px;width:auto;filter:brightness(0) invert(1)}
+.site-footer nav ul{list-style:none;display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-size:.94rem}
+.site-footer nav a{color:var(--on-dark-3)}
+.site-footer nav a:hover{color:var(--teal)}
+.site-footer .biz{font-size:.94rem}
 
-/* ── WA FAB ── */
-.wa{position:fixed;left:22px;bottom:22px;z-index:70;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;box-shadow:0 12px 32px rgba(37,211,102,.4);opacity:0;pointer-events:none;transition:transform .25s,opacity .3s}
-.wa:hover{transform:scale(1.08)}
-.wa svg{width:31px;height:31px}
-.wa-tip{position:fixed;left:92px;bottom:34px;z-index:70;background:var(--deep);color:#fff;padding:11px 17px;border-radius:12px;font-weight:600;font-size:.9rem;box-shadow:var(--shadow);opacity:0;transform:translateX(-8px);pointer-events:none;transition:opacity .35s,transform .35s;white-space:nowrap}
-.wa-tip.show{opacity:1;transform:translateX(0)}
-.wa-tip::after{content:"";position:absolute;bottom:14px;right:-6px;width:12px;height:12px;background:var(--deep);transform:rotate(45deg)}
+/* רצועת רכישה קבועה במובייל */
+.stickybar{position:fixed;bottom:0;right:0;left:0;z-index:90;display:none;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--paper);border-top:1px solid var(--line);padding:12px 16px;
+  box-shadow:0 -12px 30px -18px rgba(10,26,51,.35);transform:translateY(110%);transition:transform .25s ease}
+.stickybar.show{transform:none}
+.sb-price{display:flex;flex-direction:column;gap:2px}
+.sb-price b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.13rem}
+.sb-vat{font-size:.75rem;color:var(--muted)}
 
-/* ── REVEAL ── */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
-.reveal.on{opacity:1;transform:none}
-.sr>*{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.3,1),transform .6s cubic-bezier(.2,.7,.3,1)}
-.sr.on>*{opacity:1;transform:none}
-.sr.on>*:nth-child(2){transition-delay:.07s}.sr.on>*:nth-child(3){transition-delay:.14s}
-.sr.on>*:nth-child(4){transition-delay:.21s}.sr.on>*:nth-child(5){transition-delay:.28s}.sr.on>*:nth-child(6){transition-delay:.35s}
-
-/* ── RESPONSIVE ── */
-@media(max-width:940px){
-  .hero{padding:clamp(84px,11vh,110px) 0 32px}
-  .hero-grid{grid-template-columns:1fr;text-align:center;gap:4px;min-height:auto}
-  .hero-copy{padding-bottom:8px;order:2}
-  .hero-copy>p,.checks{margin-inline:auto}
-  .hero-actions,.checks{justify-content:center}
-  .hero-visual{order:1}
-  .hero-img{width:100%;max-height:min(44vh,380px);object-fit:contain;margin:10px auto 14px}
-  .hero-visual::after{display:none}
-  .cards,.steps,.get,.aud{grid-template-columns:repeat(2,1fr)}
-  .strip-grid{grid-template-columns:repeat(2,1fr);gap:26px 16px}
-  .proof-grid{grid-template-columns:1fr}
-  .compare{grid-template-columns:1fr}
-  .about{grid-template-columns:1fr;grid-template-areas:"head" "photo" "body";row-gap:18px;text-align:center}
-  .about-photo{max-width:300px;margin:0 auto}
-  .about-trust{justify-content:center}
+/* ─── רספונסיביות ─── */
+@media(max-width:1180px){
+  :root{--pad:40px}
+  .sec-title{font-size:3.6rem}
+  .faq-side .sec-title{font-size:3.4rem}
 }
-@media(max-width:640px){
-  nav{height:64px}
-  .menu{display:flex}
-  .nav-links{position:fixed;top:64px;right:0;left:0;background:#fff;flex-direction:column;gap:0;padding:8px 20px 16px;border-bottom:1px solid var(--border);display:none;box-shadow:var(--shadow)}
-  .nav-links.open{display:flex}
-  .nav-links a{padding:13px 6px}
-  .nav-links .join{margin-top:6px;text-align:center}
-  .hero{padding:80px 0 40px}
-  .hero-grid{padding:0 20px}
-  .hero-copy{padding-bottom:0}
-  .badge{margin-bottom:14px;font-size:.8rem;padding:8px 15px}
-  .hero h1{font-size:clamp(2.55rem,11vw,3.3rem);line-height:.98;letter-spacing:-.02em}
-  .hero-img{width:100%;max-height:clamp(250px,38vh,300px);object-fit:contain;margin:14px auto 18px}
-  .hero-copy>p{font-size:1.02rem;margin-top:14px;max-width:340px}
-  .hero-actions{margin-top:18px;flex-direction:column;align-items:center;gap:10px}
-  .hero-actions .btn-primary{width:100%;max-width:340px;min-height:54px}
-  .hero-actions .btn-ghost{display:none}
-  .checks{margin-top:16px;gap:6px 12px;max-width:340px}
-  .checks span{font-size:.8rem}
-  .mbr{display:inline}
-  .cards,.steps,.get,.aud,.strip-grid{grid-template-columns:repeat(2,1fr);gap:14px}
-  .card,.step{padding:20px 16px}
-  .card h3,.step h3{font-size:1.02rem}
-  .card p,.step p{font-size:.86rem}
-  .card-ico{width:44px;height:44px;margin-bottom:12px}
-  .card-ico svg{width:22px;height:22px}
-  .step .n{width:42px;height:42px;font-size:1.15rem;margin-bottom:10px}
-  .get-item{padding:14px 14px;gap:10px}
-  .get-item b{font-size:.9rem}
-  .get-item .i{width:36px;height:36px}
-  .get-item .i svg{width:19px;height:19px}
-  .aud-item{padding:18px 12px}
-  .aud-item h3{font-size:.96rem}
-  .aud-wide{grid-column:1/-1}
-  .btn{width:100%}
-  .wa-tip{display:none}
-  .wa{left:20px;bottom:24px;width:52px;height:52px}
-  .wa svg{width:28px;height:28px}
-  .d-row{flex-direction:row}
+@media(max-width:1000px){
+  .hero-grid,.method-intro,.faq-grid,.buy-grid{grid-template-columns:1fr;gap:36px}
+  .hero-copy{padding-bottom:12px}
+  .hero .glow-t{display:none}
+  .hero-portrait{height:460px}
+  .method-cards,.out-grid,.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lesson{grid-template-columns:80px 1fr;gap:16px 24px}
+  .lesson p{grid-column:1/-1}
+  .lesson svg{display:none}
+  .lessons-head{flex-direction:column;align-items:flex-start;gap:18px}
 }
-
+@media(max-width:720px){
+  :root{--pad:18px}
+  body{padding-bottom:84px}
+  .nav,.hdr-tel,.site-header .btn{display:none}
+  .stickybar{display:flex}
+  .hero{padding-top:36px}
+  .hero-title{font-size:3rem;line-height:.92}
+  .hero-lead{font-size:1.06rem}
+  .hero-portrait{height:auto;width:100%;max-width:320px;aspect-ratio:3/4;margin-inline:auto}
+  .hero-portrait .chip{display:none}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{width:100%}
+  .hero-price{text-align:center}
+  .sec-title,.faq-side .sec-title{font-size:2.38rem;line-height:.96}
+  .method,.lessons,.outcomes,.proof,.faq,.buy-sec{padding-top:48px;padding-bottom:48px}
+  .method-cards,.out-grid,.quotes{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .method-cards{margin-top:32px}
+  .m-card,.out-cell,.out-cta,.stat,.quote{padding:26px 22px}
+  .m-card b{font-size:2.13rem}
+  .lesson{grid-template-columns:1fr;gap:10px;padding:22px 0}
+  .lesson b{font-size:1.63rem}
+  .lesson h3{font-size:1.31rem}
+  .faq summary{font-size:1.19rem;padding:20px 0}
+  .faq details>p{font-size:.94rem;padding-left:0;padding-right:14px}
+  .price-card{padding:26px 22px}
+  .price-table .tot td{font-size:2rem}
+  .site-footer{flex-direction:column;align-items:flex-start;gap:22px}
+  .marquee-track{font-size:.88rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .marquee-track{animation:none;width:auto}
+}
+</style>
+<style>
 /* ═══════════════════════════════════════════════════════════
-   DESIGN SYSTEM LAYER - Shwadron.AI
-   Presentation only. No copy, order, link, form or behaviour
-   is touched below. Rules are last in the cascade so they win
-   over the legacy declarations above.
+   תוספות ייחודיות לדף המחזור החי, מעל שפת העיצוב של course.html.
    ═══════════════════════════════════════════════════════════ */
 
-/* ── Focus: soft turquoise halo, not a hard outline ── */
-/* Two-tone focus ring: stays visible on white, navy AND turquoise backgrounds.
-   The plain --shadow-focus halo was invisible on the teal sections. */
-:focus-visible{outline:3px solid var(--blue-900);outline-offset:2px;
-  box-shadow:0 0 0 6px var(--turquoise-400);border-radius:var(--radius-sm)}
-.navy :focus-visible,footer :focus-visible,nav.scrolled :focus-visible{
-  outline-color:#fff;box-shadow:0 0 0 6px var(--blue-600)}
+/* חשיפה בגלילה */
+.js .sr{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .sr.on{opacity:1;transform:none}
+.sr-2{transition-delay:.08s}
+.sr-3{transition-delay:.16s}
+.sr-4{transition-delay:.24s}
 
-/* ── Typography scale ── */
-.title{font-size:clamp(var(--fs-xl),4vw,var(--fs-3xl));font-weight:var(--fw-black);line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
-.sub{margin-top:var(--space-4);font-size:clamp(var(--fs-base),1.7vw,var(--fs-md));line-height:var(--lh-relaxed)}
-.eyebrow{font-size:var(--fs-xs);font-weight:var(--fw-semibold);letter-spacing:var(--ls-wide);margin-bottom:var(--space-3)}
-.hero h1{font-size:clamp(var(--fs-2xl),5.6vw,var(--fs-4xl));font-weight:var(--fw-black);line-height:var(--lh-tight)}
-.hero-copy>p{font-size:clamp(var(--fs-base),1.7vw,var(--fs-md));font-weight:var(--fw-regular);line-height:var(--lh-normal)}
-.card h3,.step h3,.aud-item h3,.get-item b{font-size:var(--fs-lg);font-weight:var(--fw-bold);line-height:var(--lh-snug)}
-.card p,.step p{font-size:var(--fs-sm);line-height:var(--lh-normal)}
-.strip strong,.join-price b,.d-row .v.price{font-weight:var(--fw-black)}
-.faq summary{font-size:var(--fs-base);font-weight:var(--fw-semibold)}
-.faq p{font-size:var(--fs-sm);line-height:var(--lh-relaxed)}
-.about-emph,.step-note,.d-row .v{font-weight:var(--fw-bold)}
-.checks span,.pill,.about-trust span,.nav-links a{font-weight:var(--fw-medium)}
+/* הנפשות רקע */
+@keyframes glowPulse{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes ctaPulse{0%,100%{box-shadow:0 18px 40px -18px rgba(46,222,191,.7)}50%{box-shadow:0 22px 54px -16px rgba(46,222,191,.95)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero .glow-b,.hero .glow-t,.buy-sec .glow{animation:glowPulse 7s ease-in-out infinite}
+.hero-portrait{animation:floaty 7s ease-in-out infinite}
+.btn-lg:not(.btn-dark){animation:ctaPulse 3.2s ease-in-out infinite}
+.eyebrow::before{transform-origin:right center;animation:barGrow .7s cubic-bezier(.2,.7,.2,1) .2s both}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:currentColor;animation:blink 1.8s ease-in-out infinite}
 
-/* ── Buttons: pill, solid fill, hover = one step darker ── */
-.btn{border-radius:var(--radius-pill);font-weight:var(--fw-semibold);font-size:var(--fs-base);
-  padding:0 30px;min-height:56px;
-  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
-.btn-lg{min-height:60px;padding:0 34px}
-.btn-primary{background:var(--color-accent);color:var(--color-ink);box-shadow:none}
-.btn-primary:hover{background:var(--color-accent-hover);transform:none;box-shadow:none}
-.btn-primary:active{background:var(--turquoise-700);transform:scale(.97)}
-.btn-blue{background:var(--color-primary);color:var(--white);box-shadow:none}
-.btn-blue:hover{background:var(--color-primary-hover);transform:none;box-shadow:none}
-.btn-blue:active{background:var(--color-primary-active);transform:scale(.97)}
-.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.34)}
-.btn-ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.34);transform:none}
-.btn-full{background:rgba(255,255,255,.1);color:var(--white);border:1px solid rgba(255,255,255,.28);font-weight:var(--fw-semibold)}
-.nav-links .join{border-radius:var(--radius-pill);font-weight:var(--fw-semibold);background:var(--color-primary)}
-.nav-links .join:hover{background:var(--color-primary-hover)}
+/* תאריך המפגש בתוך שורת השיעור */
+.lesson .when{display:block;font-size:.94rem;font-weight:700;color:var(--on-dark-3);margin-bottom:8px}
 
-/* ── Nav: white 90% + blur, hairline bottom border ── */
-nav{height:66px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--color-border);transition:box-shadow var(--dur-normal) var(--ease-standard)}
-nav.scrolled{box-shadow:var(--shadow-sm)}
-.nav-links a{border-radius:var(--radius-pill);font-size:var(--fs-sm);color:var(--color-ink-soft);
-  transition:color var(--dur-fast) var(--ease-standard),background var(--dur-fast) var(--ease-standard)}
-.nav-links a:hover{background:var(--color-primary-tint);color:var(--color-primary)}
-.menu span{background:var(--color-primary)}
-.skip{inset-inline:0;margin-inline:auto;width:fit-content;transform:none;
-  background:var(--color-primary);border-radius:0 0 var(--radius-sm) var(--radius-sm);font-weight:var(--fw-semibold)}
+/* לפני ואחרי */
+.shift{padding:104px var(--pad);background:var(--ice)}
+.shift .sec-title{margin-bottom:48px}
+.cmp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--line)}
+.cmp-col{background:var(--paper);padding:40px 36px;display:flex;flex-direction:column;gap:20px}
+.cmp-col.after{border-top:3px solid var(--teal)}
+.cmp-col h3{display:flex;align-items:center;gap:12px;font-family:'Heebo',sans-serif;font-weight:800;font-size:1.38rem;color:var(--muted)}
+.cmp-col.after h3{color:var(--text)}
+.cmp-col h3 i{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:3px;
+  background:#e6e9ee;color:#7c8798;font-style:normal;font-size:1rem}
+.cmp-col.after h3 i{background:var(--teal);color:var(--ink)}
+.cmp-col ul{list-style:none;display:flex;flex-direction:column;gap:14px;font-size:1.06rem;line-height:1.6;color:var(--muted)}
+.cmp-col.after ul{color:var(--text)}
+.pill-lead{margin:40px 0 20px;font-size:1.19rem;font-weight:700}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pills span{padding:10px 20px;border-radius:3px;background:var(--paper);border:1px solid var(--line);font-size:1rem;color:var(--muted)}
 
-/* ── Surfaces: flat only, no gradients or textures ── */
-.hero{background:var(--color-surface-inverse)}
-.hero::before{display:none}
-.hero-visual::after{display:none}
-.hero-img{filter:none}
-.section.dark,.join{background:var(--color-surface-inverse)}
-.strip{background:var(--color-surface-inverse)}
-.aud-wide{background:var(--color-primary-tint)}
-.compare-col.after{background:var(--color-surface)}
+/* טבלת פרטי המחזור */
+.dtl{display:flex;flex-direction:column;background:var(--ice);border-radius:3px;margin-top:8px}
+.dtl div{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.dtl div:last-child{border-bottom:none}
+.dtl span{font-size:1rem;color:var(--muted)}
+.dtl b{font-size:1rem;font-weight:700}
+.dtl b.price{color:var(--blue)}
 
-/* ── Cards: hairline neutral border, shadow-only hover ── */
-.card,.aud-item,.get-item,.compare-col,.details,.join-card,.d-date,.proof-card img{
-  border-color:var(--color-border);border-radius:var(--radius-lg)}
-.card,.aud-item,.get-item,.compare-col{box-shadow:var(--shadow-sm);
-  transition:box-shadow var(--dur-normal) var(--ease-standard),transform var(--dur-normal) var(--ease-standard)}
-.card:hover,.aud-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--color-border)}
-.card-ico,.get-item .i{border-radius:var(--radius-md);background:var(--color-primary-tint);color:var(--color-primary)}
-.aud-item .i{background:var(--color-primary-tint);color:var(--color-primary)}
-.details{box-shadow:var(--shadow-md)}
-.join-card{border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)}
-.step{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-lg);
-  transition:background var(--dur-normal) var(--ease-standard),transform var(--dur-normal) var(--ease-standard)}
-.step:hover{transform:translateY(-2px);background:rgba(255,255,255,.09)}
-.step .n{background:var(--color-accent);color:var(--color-ink);border-radius:var(--radius-md);font-weight:var(--fw-black)}
+/* מסגרת הפורטרט בהירו, כמו בדף הקורס */
+.hero-portrait .chip{background:var(--teal)}
 
-/* ── FAQ: border stays neutral when open ── */
-.faq details{border-radius:var(--radius-md);border-color:var(--color-border);
-  transition:box-shadow var(--dur-normal) var(--ease-standard)}
-.faq details[open]{border-color:var(--color-border);box-shadow:var(--shadow-sm)}
-.faq summary::after{color:var(--color-primary)}
-
-/* ── Badges, pills, tags ── */
-.badge{border-radius:var(--radius-pill);font-size:var(--fs-xs);font-weight:var(--fw-semibold);
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);color:var(--white)}
-.badge i{background:var(--color-accent);box-shadow:0 0 0 5px rgba(46,222,191,.2)}
-.pill,.about-trust span{border-radius:var(--radius-pill);font-size:var(--fs-xs);
-  background:var(--color-primary-tint);border:1px solid var(--color-border);color:var(--color-primary)}
-.closed-badge{border-radius:var(--radius-pill);background:var(--color-primary-tint);
-  border:1px solid var(--color-border);color:var(--color-primary);font-weight:var(--fw-black)}
-.about-tag{border-radius:var(--radius-sm);border-color:var(--color-border);box-shadow:var(--shadow-sm);
-  font-size:var(--fs-xs);font-weight:var(--fw-semibold);color:var(--color-primary);
-  right:auto;inset-inline-start:16px}
-.about-tag::before{background:var(--color-accent)}
-.checks span::before,.compare-col.after .compare-list li::before{color:var(--turquoise-700)}
-.checks span::before{background:rgba(46,222,191,.2);color:var(--turquoise-400)}
-.d-date{border-radius:var(--radius-md)}
-
-/* ── Footer: navy band, inverted logo ── */
-footer{background:var(--color-surface-inverse)}
-footer img{filter:brightness(0) invert(1)}
-.foot-links a{color:rgba(255,255,255,.85);font-size:var(--fs-sm);
-  transition:color var(--dur-fast) var(--ease-standard)}
-.foot-links a:hover{color:var(--turquoise-400)}
-.foot-copy{border-top:1px solid rgba(255,255,255,.15);font-size:var(--fs-xs)}
-
-/* ── WhatsApp launcher: logical inset so it mirrors correctly ── */
-.wa{left:auto;inset-inline-end:22px;transition:transform var(--dur-fast) var(--ease-standard),opacity var(--dur-normal) var(--ease-standard)}
-.wa:hover{transform:scale(1.04)}
-.wa-tip{left:auto;inset-inline-end:92px;background:var(--color-ink);border-radius:var(--radius-sm);
-  font-size:var(--fs-xs);box-shadow:var(--shadow-md)}
-.wa-tip::after{right:auto;inset-inline-start:-6px;background:var(--color-ink)}
-
-/* ── Motion: calm and short ── */
-.reveal{transition:opacity var(--dur-normal) var(--ease-standard),transform var(--dur-normal) var(--ease-standard)}
-.sr>*{transition:opacity var(--dur-normal) var(--ease-standard),transform var(--dur-normal) var(--ease-standard)}
-
-/* ── Mobile ── */
-@media(max-width:640px){
-  .nav-links{inset-inline:0;background:var(--color-surface);border-bottom:1px solid var(--color-border);box-shadow:var(--shadow-md)}
-  .btn,.hero-actions .btn-primary{min-height:48px}
-  /* 44x44 minimum tap target (rtl-and-responsive.md) */
-  .menu{width:44px;height:44px;justify-content:center;align-items:center;padding:0}
-  .card,.step{padding:var(--space-5) var(--space-4)}
-  .card h3,.step h3,.aud-item h3,.get-item b{font-size:var(--fs-base)}
-  .card p,.step p{font-size:var(--fs-xs)}
-  .wa{left:auto;inset-inline-end:20px}
+@media(max-width:1000px){
+  .cmp{grid-template-columns:1fr}
 }
-
-/* ══════════ CONTRAST CORRECTIONS ══════════════════════════════════
-   Must stay last: the design-system layer above re-colours these.
-   --teal-ink (#158e78) is fine for large text but falls below the
-   WCAG 2.2 AA 4.5:1 threshold at the small sizes used here.
-   #0f6b58 is the same hue, darkened until it passes. */
-.eyebrow{color:#0f6b58}                                   /* was 3.82:1 on #f7f8f8 */
-.join-eyebrow{color:#0f6b58}                              /* was 4.06:1 on white */
-.compare-col.after h3 i{color:#0f6b58}                    /* was 3.57:1 on #dbf6f3 */
-.compare-col.after .compare-list li::before{color:#0f6b58}
-.dark .eyebrow{color:var(--teal-bright)}                  /* keep the light variant on navy */
+@media(max-width:720px){
+  .shift{padding-top:48px;padding-bottom:48px}
+  .cmp-col{padding:26px 22px}
+  .pill-lead{font-size:1.06rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero .glow-b,.hero .glow-t,.buy-sec .glow,.hero-portrait,.btn-lg,.eyebrow::before,.live-dot{animation:none}
+  .js .sr{opacity:1;transform:none;transition:none}
+}
 </style>
-</head>
 <body>
+<script>document.documentElement.className += ' js';</script>
 
-<a href="#main" class="skip">דלג לתוכן הראשי</a>
+<a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-inner">
-    <a href="#" class="logo" aria-label="SHWADRON.AI"><img src="assets/public/images/brand/shwadron-logo.png" alt="SHWADRON.AI" width="210" height="40"/></a>
-    <button class="menu" id="menu" aria-label="פתיחת תפריט" aria-controls="navLinks" aria-expanded="false"><span></span><span></span><span></span></button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#change">מה משתנה</a></li>
-      <li><a href="#about">המרצה</a></li>
-      <li><a href="#how">איך זה עובד</a></li>
-      <li><a href="#who">למי מתאים</a></li>
-      <li><a href="#details">פרטי המחזור</a></li>
-      <li><a href="#faq">שאלות</a></li>
-      <li><a class="join" href="#join">המחזור הבא</a></li>
-      <li><a class="join" href="course.html">גרסה דיגיטלית</a></li>
-    </ul>
+<header class="site-header">
+  <a href="index.html" class="logo"><img src="assets/public/logo.png" alt="SHWADRON.AI, חזרה לדף הבית" width="190" height="38"/></a>
+  <nav class="nav" aria-label="ניווט בעמוד">
+    <a href="#method">השיטה</a>
+    <a href="#lessons">המפגשים</a>
+    <a href="#proof">מהשטח</a>
+    <a href="#faq">שאלות</a>
+    <a href="course.html">גרסה דיגיטלית</a>
+  </nav>
+  <div class="hdr-side">
+    <a class="hdr-tel" href="https://wa.me/972528189921">052-818-9921</a>
+    <a class="btn btn-sm" data-join href="#buy">להרשמה למחזור</a>
   </div>
-</nav>
+</header>
 
 <main id="main">
 
-<!-- HERO -->
-<section class="hero">
+<!-- ===== HERO ===== -->
+<section class="hero grain">
+  <div class="glow-b" aria-hidden="true"></div>
+  <div class="glow-t" aria-hidden="true"></div>
   <div class="hero-grid">
     <div class="hero-copy">
-      <div class="badge"><i></i>מחזור מיוחד לפני בין הזמנים</div>
-      <h1>עוד לפני<br class="mbr"/> <span class="teal">בין הזמנים</span>,<br/>אתה שולט ב-AI.</h1>
-      <p>שלושה מפגשים ממוקדים שהופכים משימה שלוקחת שעה לתהליך ברור, מהיר ומדויק שעובד איתך גם אחרי שהקורס נגמר.</p>
-      <div class="hero-actions">
-        <span class="btn btn-full">המחזור מלא</span>
-        <a class="btn btn-ghost" href="#change">מה לומדים</a>
+      <p class="eyebrow teal rise"><span class="live-dot" aria-hidden="true"></span> המחזור הקרוב · ההרשמה פתוחה</p>
+      <h1 class="hero-title rise-2">ארבעה מפגשים.<br/><span class="ghost">ואתה כבר</span><br/>עובד עם AI.</h1>
+      <p class="hero-lead rise-3">מחזור חי בזום שהופך משימה שלוקחת שעה לתהליך ברור וקצר, ומשאיר לך דרך עבודה שנשארת גם אחרי שהמחזור נגמר. בלי רקע טכני.</p>
+      <div class="hero-cta rise-4">
+        <a class="btn btn-lg" data-join href="#buy">להרשמה למחזור</a>
+        <p class="hero-price">
+          <b><span class="js-price">1000 ₪</span> <span>+ מע״מ</span></b>
+          <small>סה״כ <span class="js-price-total">1180 ₪</span> כולל מע״מ</small>
+        </p>
       </div>
-      <p class="hero-next">נפגש במחזור הבא. <a href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%AA%D7%A2%D7%93%D7%9B%D7%9F%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%94%D7%91%D7%90" target="_blank" rel="noopener">עדכנו אותי כשנפתח</a></p>
-      <p class="hero-next">לא רוצים לחכות? <a href="course.html">גרסה דיגיטלית של הקורס זמינה עכשיו</a></p>
-      <div class="checks">
-        <span>מתחילים 14/07</span><span>19:30-21:30</span><span>Zoom</span><span>הקלטות מלאות</span><span>קבוצת ליווי</span><span>1000 ₪ + מע״מ</span>
-      </div>
+      <p class="hero-lead rise-4" style="font-size:1rem">התאריכים המדויקים יגיעו בהמשך · 19:30-21:30 · Zoom, גם באינטרנט מסונן · מקומות מוגבלים</p>
     </div>
-    <div class="hero-visual">
-      <picture>
-        <source srcset="assets/public/images/brand/hero-calendar-character.webp" type="image/webp"/>
-        <img class="hero-img" src="assets/public/images/brand/hero-calendar-character.png"
-             alt="יוחנן שבדרון נשען על לוח שנה עם תאריך פתיחת המחזור 14/07, לפני בין הזמנים"
-             width="980" height="1225" fetchpriority="high" decoding="async"/>
-      </picture>
+    <figure class="hero-portrait rise-2">
+      <div class="plate" aria-hidden="true"></div>
+      <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון" width="900" height="1350"/>
+      <div class="fade" aria-hidden="true"></div>
+      <div class="chip" aria-hidden="true"></div>
+      <figcaption><b>יוחנן שבדרון</b><span>בוגר מדעי המחשב · התמחות ב-AI</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== רצועה נעה ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div><span>4 מפגשי זום חיים</span><i>/</i><span>הקלטות מלאות</span><i>/</i><span>קבוצת ליווי בוואטסאפ</span><i>/</i><span>ללא רקע טכני</span><i>/</i><span>עובד באינטרנט מסונן</span><i>/</i><span>הגישה נשארת</span><i>/</i></div>
+    <div><span>4 מפגשי זום חיים</span><i>/</i><span>הקלטות מלאות</span><i>/</i><span>קבוצת ליווי בוואטסאפ</span><i>/</i><span>ללא רקע טכני</span><i>/</i><span>עובד באינטרנט מסונן</span><i>/</i><span>הגישה נשארת</span><i>/</i></div>
+  </div>
+</div>
+
+<!-- ===== רצועת מספרים ===== -->
+<section class="stats" aria-label="המחזור במספרים">
+  <div class="stats-grid">
+    <div class="stat"><b>4</b><span>מפגשים חיים בזום</span></div>
+    <div class="stat"><b>2</b><span>שעות בכל מפגש</span></div>
+    <div class="stat"><b>100%</b><span>מוקלט ונשאר איתך</span></div>
+    <div class="stat"><b class="teal">0</b><span>ידע טכני נדרש</span></div>
+  </div>
+</section>
+
+<!-- ===== השיטה ===== -->
+<section class="method" id="method">
+  <div class="method-intro">
+    <h2 class="sec-title sr">לא לומדים להשתמש.<br/><em>לומדים לעבוד איתו.</em></h2>
+    <div class="sr sr-2">
+      <p>שימוש ב-AI זה לשאול שאלה ולקוות לתוצאה. עבודה איתו זה לפרק את המשימה, לספק את המידע הנכון, לבדוק את התוצר ולהפוך את זה לתהליך שחוזר על עצמו.</p>
+      <p>במחזור החי אתה עושה את זה מול המסך, בזמן אמת, עם משימות שמגיעות מיום העבודה שלך ועם מי שיענה לך על השאלה ברגע שהיא עולה.</p>
+    </div>
+  </div>
+  <div class="method-cards">
+    <div class="m-card sr">
+      <b>01</b>
+      <h3>מתחילים ממשימה, לא מכלי</h3>
+      <p>השאלה היא לא מה ChatGPT יודע לעשות, אלא מה אתה צריך שייצא לך היום. הכלי נבחר אחרי שהמשימה ברורה.</p>
+    </div>
+    <div class="m-card sr sr-2">
+      <b>02</b>
+      <h3>קלט טוב, פלט טוב</h3>
+      <p>ההקשר, הדוגמאות והכיוון שתכניס פנימה הם שיקבעו מה יצא. זו לא שאלה ותשובה, זה תהליך.</p>
+    </div>
+    <div class="m-card sr sr-3">
+      <b>03</b>
+      <h3>אל תחליט שום דבר לבד</h3>
+      <p>שלא יניח הנחות, שלא ימציא פרטים, ושיוודא איתך לפני שהוא מבצע. ההנחיה הזו לבדה מוציאה מהמשחק את רוב התשובות שנשמעות טוב ואינן נכונות.</p>
     </div>
   </div>
 </section>
 
-<!-- STRIP -->
-<section class="strip">
-  <div class="container">
-    <div class="strip-grid sr">
-      <div><strong>3</strong><span>מפגשי זום<br/>19:30-21:30</span></div>
-      <div><strong>14/07</strong><span>פתיחת המחזור<br/>לפני בין הזמנים</span></div>
-      <div><strong>100%</strong><span>מוקלט<br/>ונשאר איתך</span></div>
-      <div><strong>1000 ₪</strong><span>בתוספת מע״מ<br/>לכל המחזור</span></div>
+<!-- ===== המפגשים ===== -->
+<section class="lessons grain" id="lessons">
+  <div class="lessons-head">
+    <h2 class="sec-title sr">ארבעה מפגשים.<br/><span class="ghost">כל אחד תוצר ביד.</span></h2>
+    <p class="sr sr-2">כל מפגש הוא שעתיים בזום, עם תרגול חי. התאריכים המדויקים יגיעו בהמשך, ומי שמפספס מקבל את ההקלטה.</p>
+  </div>
+  <div class="lesson sr">
+    <b>01</b>
+    <div>
+      <span class="when">מפגש 1 · תאריך יעודכן</span>
+      <h3>שוברים את תקרת הזכוכית</h3>
+    </div>
+    <p>מתחילים ממשימה אמיתית מהעבודה שלך, ומשם בוחרים את הכלי שמתאים לה. היכרות מעשית עם ChatGPT, Claude, Gemini ו-NotebookLM דרך שימוש, לא דרך תפריטים.</p>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+  </div>
+  <div class="lesson sr">
+    <b>02</b>
+    <div>
+      <span class="when">מפגש 2 · תאריך יעודכן</span>
+      <h3>קוד המאסטרים</h3>
+    </div>
+    <p>עקרונות פרומפטינג שמביאים תוצאה, בניית ספריית פרומפטים אישית, ומרעיון למצגת מקצועית.</p>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+  </div>
+  <div class="lesson sr">
+    <b>03</b>
+    <div>
+      <span class="when">מפגש 3 · תאריך יעודכן</span>
+      <h3>המוח הכפול: הסוכן האישי שלך</h3>
+    </div>
+    <p>בונים סוכן AI אישי שמכיר את התחום שלך, כותב בסגנון שלך, ועובד בשבילך.</p>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+  </div>
+  <div class="lesson sr">
+    <b>04</b>
+    <div>
+      <span class="when">מפגש 4 · תאריך יעודכן</span>
+      <h3>המאסטרינג: לעבוד על אוטומט</h3>
+    </div>
+    <p>תהליכי עבודה וצוות סוכנים שעובד בשבילך, וארגז הכלים המלא כדי להישאר קדימה.</p>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ===== הפער ===== -->
+<section class="shift" id="shift">
+  <p class="eyebrow sr">הפער</p>
+  <h2 class="sec-title sr">מה משתנה אצלך בפועל.</h2>
+  <div class="cmp">
+    <div class="cmp-col sr">
+      <h3><i aria-hidden="true">✕</i>לפני המחזור</h3>
+      <ul>
+        <li>כותב בקשה קצרה ומקבל תשובה שלא מתאימה</li>
+        <li>מתחיל סבב ארוך של תיקונים</li>
+        <li>כל משימה מתחילה מחדש, כאילו זו הפעם הראשונה</li>
+        <li>לא ברור באיזה כלי לבחור ולמה</li>
+        <li>מבזבז זמן בניסוי וטעייה, וחושש לסמוך על התוצאה</li>
+      </ul>
+    </div>
+    <div class="cmp-col after sr sr-2">
+      <h3><i aria-hidden="true">✓</i>אחרי המחזור</h3>
+      <ul>
+        <li>יודע לפרק את המשימה לפני שפונה לכלי</li>
+        <li>מוביל את הכלי שלב אחר שלב עד לתוצאה</li>
+        <li>בונה שיטת עבודה שחוזרת על עצמה בכל משימה דומה</li>
+        <li>יודע לבחור את הכלי המתאים למשימה</li>
+        <li>יוצר סוכן קבוע למשימות שחוזרות על עצמן</li>
+      </ul>
+    </div>
+  </div>
+  <p class="pill-lead sr">כבר במהלך המחזור תעביר ל-AI משימות כמו:</p>
+  <div class="pills sr sr-2">
+    <span>ניסוח מייל מקצועי</span>
+    <span>כתיבת הצעת מחיר</span>
+    <span>סיכום פגישה</span>
+    <span>ניתוח קובץ Excel</span>
+    <span>בניית מצגת</span>
+    <span>יצירת תוכן שיווקי</span>
+    <span>ארגון מידע ממסמך ארוך</span>
+    <span>סוכן למשימה חוזרת</span>
+  </div>
+</section>
+
+<!-- ===== מה כלול ===== -->
+<section class="outcomes" id="get">
+  <p class="eyebrow sr">מה מקבלים</p>
+  <h2 class="sec-title sr">הכל כלול <em>במחזור.</em></h2>
+  <div class="out-grid">
+    <div class="out-cell sr">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 9l5-3v12l-5-3"/></svg>
+      <h3>4 מפגשי זום חיים</h3>
+      <p>שעתיים כל מפגש, 19:30-21:30, עם זמן לשאלות ותרגול מול המסך.</p>
+    </div>
+    <div class="out-cell sr sr-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg>
+      <h3>הקלטות מלאות</h3>
+      <p>כל מפגש מוקלט ונשלח אחריו. הגישה נשארת גם אחרי סיום המחזור.</p>
+    </div>
+    <div class="out-cell sr sr-3">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6"/></svg>
+      <h3>קבוצת ליווי</h3>
+      <p>קבוצת וואטסאפ של המחזור, לשאלות בין המפגשים ואחריהם.</p>
+    </div>
+    <div class="out-cell sr">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/></svg>
+      <h3>כל חומרי הקורס</h3>
+      <p>דפי עבודה, דוגמאות וספריית פרומפטים מוכנה לשימוש חוזר.</p>
+    </div>
+    <div class="out-cell sr sr-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      <h3>תרגול מעשי</h3>
+      <p>עובדים על משימות אמיתיות שאתה מביא מיום העבודה שלך.</p>
+    </div>
+    <div class="out-cta sr sr-3">
+      <p>מקומות מוגבלים, כדי שיהיה זמן לכולם.</p>
+      <a data-join href="#buy">לשריין את המקום שלך ←</a>
     </div>
   </div>
 </section>
 
-<!-- WHY NOW -->
-<section class="section soft" id="why">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">למה עכשיו</div>
-      <h2 class="title">רוב האנשים ידחו את זה <em>לאחרי בין הזמנים.</em></h2>
-      <p class="sub">רוב האנשים אומרים שילמדו AI כשיהיה להם זמן. בפועל, בין הזמנים נגמר, העומס והמשימות חוזרים, והלימוד נדחה שוב. המחזור הזה נבנה כדי שבתוך שבוע וחצי, לפני שהשגרה חוזרת, הלימוד כבר יהיה מאחוריך ודרך העבודה החדשה תישאר איתך הרבה אחריו.</p>
+<!-- ===== מהשטח ===== -->
+<section class="proof" id="proof">
+  <p class="eyebrow sr">מהשטח</p>
+  <h2 class="sec-title sr">מה אומרים מי שכבר למדו.</h2>
+  <div class="quotes">
+    <figure class="quote sr">
+      <p>״הבאתי אותך לסדרת הרצאות בעסק ולתהליך הטמעה. הם התחילו להספיק כמעט פי שניים בפחות זמן, העבודה הפכה למסודרת ומהירה יותר, וההכנסות בעסק הוכפלו.״</p>
+      <figcaption><cite>חיים · בעל עסק</cite></figcaption>
+    </figure>
+    <figure class="quote sr sr-2">
+      <p>״אחד הדברים הכי חזקים שלקחתי מהקורס זה לא רק להכיר עוד כלי, אלא להבין איך לגשת נכון ל-AI. משימות שהייתי נמרח עליהן הרבה זמן נהיו קצרות וברורות.״</p>
+      <figcaption><cite>בוגר הקורס</cite></figcaption>
+    </figure>
+    <figure class="quote sr sr-3">
+      <p>״מורה שיודע להנגיש טכנולוגיה מורכבת בבהירות ובסבלנות.״</p>
+      <figcaption><cite>תומר בצלאל · ביתר</cite></figcaption>
+    </figure>
+  </div>
+  <div class="orgs">
+    <p>העביר הרצאות והדרכות AI בארגונים ובמוסדות, בהם:</p>
+    <ul>
+      <li>כיוון</li><li>המבשר</li><li>חוצות ירושלים</li><li>דרשו</li><li>ועוד</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== שאלות נפוצות ===== -->
+<section class="faq" id="faq">
+  <div class="faq-grid">
+    <div class="faq-side">
+      <p class="eyebrow">פרטי המחזור</p>
+      <h2 class="sec-title">לפני<br/><em>שנרשמים.</em></h2>
+      <div class="dtl">
+        <div><span>מתחילים</span><b>יעודכן בהמשך</b></div>
+        <div><span>מפגשים</span><b>4 מפגשים</b></div>
+        <div><span>שעות</span><b>19:30-21:30</b></div>
+        <div><span>איפה</span><b>Zoom, גם באינטרנט מסונן</b></div>
+        <div><span>עלות</span><b class="price"><span class="js-price">1000 ₪</span> + מע״מ</b></div>
+      </div>
+      <p>לא מצאת את התשובה? כתוב בוואטסאפ ל<a href="https://wa.me/972528189921">052-818-9921</a> ותקבל מענה אישי.</p>
+    </div>
+    <div class="faq-list">
+      <details open>
+        <summary>צריך ידע קודם?</summary>
+        <p>לא. המחזור בנוי מאפס, בגובה העיניים. אם אתה יודע להשתמש בוואטסאפ, אתה מוכן ללמוד לעבוד נכון עם AI.</p>
+      </details>
+      <details>
+        <summary>מה קורה אם אני מפספס מפגש?</summary>
+        <p>כל המפגשים מוקלטים ונשארים איתך. אפשר להשלים בקצב שלך, ולשאול בקבוצת הליווי בוואטסאפ.</p>
+      </details>
+      <details>
+        <summary>יש לי אינטרנט מסונן. הכלים יעבדו?</summary>
+        <p>כן. הכלים שנלמדים נגישים דרך אינטרנט מסונן, והמפגשים עצמם מתקיימים בזום.</p>
+      </details>
+      <details>
+        <summary>המחזור כולל בניית סוכן?</summary>
+        <p>כן. במפגש השלישי בונים סוכן AI אישי, ובמפגש הרביעי הופכים אותו לתהליך עבודה קבוע.</p>
+      </details>
+      <details>
+        <summary>כמה זמן נשארת הגישה לחומרים?</summary>
+        <p>הגישה להקלטות ולחומרי הקורס נשארת גם אחרי שהמחזור מסתיים.</p>
+      </details>
+      <details>
+        <summary>המחיר כולל מע״מ?</summary>
+        <p>המחיר הנקוב הוא <b><span class="js-price">1000 ₪</span></b> ועליו מתווסף מע״מ בשיעור <span class="js-vat-rate">18%</span>. סה״כ <b><span class="js-price-total">1180 ₪</span></b>.</p>
+      </details>
+      <details>
+        <summary>מה ההבדל בין המחזור החי לגרסה הדיגיטלית?</summary>
+        <p>התוכן זהה, אלה אותם ארבעה שיעורים. במחזור החי יש מפגשים בזמן אמת, שאלות ותשובות וקבוצת ליווי. <a href="course.html">לגרסה הדיגיטלית</a>, שזמינה לצפייה מיידית במחיר נמוך יותר.</p>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- CHANGE (result cards) -->
-<section class="section" id="change">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">לא עוד קורס AI</div>
-      <h2 class="title">לא לומדים רק להשתמש ב-AI. <em>לומדים לעבוד איתו.</em></h2>
-      <p class="sub">שימוש ב-AI זה לשאול שאלה ולקוות לתוצאה. עבודה איתו זה לפרק את המשימה, לספק לו את המידע הנכון, לבדוק את התוצאה ולהפוך את זה לתהליך שאפשר לחזור עליו שוב ושוב.</p>
+<!-- ===== הרשמה ===== -->
+<section class="buy-sec" id="buy" aria-labelledby="buy-title">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="buy-grid" id="purchase-details">
+    <div class="buy-left">
+      <p class="eyebrow teal">הרשמה למחזור</p>
+      <h2 class="sec-title" id="buy-title">לשריין מקום<br/><span class="ghost">במחזור הקרוב.</span></h2>
+      <p>ההרשמה נעשית בוואטסאפ, ישירות מולי. משאירים הודעה, ומקבלים את פרטי המפגשים, מועדי המחזור וקישור התשלום. מספר המקומות מוגבל כדי שיישאר זמן לשאלות של כולם.</p>
+      <ul class="incl">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>4 מפגשי זום חיים, שעתיים כל אחד</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>הקלטות מלאות שנשארות איתך</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>קבוצת ליווי בוואטסאפ</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>כל חומרי הקורס ודפי העבודה</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>עובד גם באינטרנט מסונן</li>
+      </ul>
     </div>
-    <div class="cards sr">
-      <div class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4c0 1 .3 1.8.8 2.5A4 4 0 0 0 8 16a4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-.8-6.5c.5-.7.8-1.5.8-2.5a4 4 0 0 0-4-4Z"/><path d="M12 3v17"/></svg></div><h3>חושב נכון עם AI</h3><p>יודע לפרק משימה ולנהל דו שיח שמביא לתוצאה, לא לנחש בקשות.</p></div>
-      <div class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></div><h3>מוציא תשובות מדויקות</h3><p>פחות ניסוי וטעייה, יותר תוצר שאפשר להשתמש בו כבר מהפעם הראשונה.</p></div>
-      <div class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/></svg></div><h3>בונה תהליכי עבודה</h3><p>לא שאלה ותשובה, אלא עבודה מסודרת שחוסכת זמן שוב ושוב.</p></div>
-      <div class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>חוסך שעות עבודה</h3><p>משימות שלקחו שעה מתקצרות לדקות, ומשפרות גם את הפרנסה.</p></div>
-      <div class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M8.5 13.5l2 2 3.5-3.5"/></svg></div><h3>משתמש בכלים הנכונים</h3><p>יודע מתי כל כלי מתאים, ואיך להוציא ממנו את המרב.</p></div>
-      <div class="card"><div class="card-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>עובד בביטחון</h3><p>מפסיק לנחש. יודע מה הוא עושה, ולמה זה עובד.</p></div>
-    </div>
-  </div>
-</section>
 
-<!-- SHIFT (before/after + real task examples) -->
-<section class="section soft" id="shift">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">הפער</div>
-      <h2 class="title">מה משתנה אצלך בפועל.</h2>
-      <p class="sub">לא תיאוריה. ככה נראית העבודה היומיומית לפני הקורס, וככה היא נראית אחריו.</p>
-    </div>
-    <div class="compare reveal">
-      <div class="compare-col before">
-        <h3><i>✕</i>לפני הקורס</h3>
-        <ul class="compare-list">
-          <li>כותבים בקשה קצרה ומקבלים תשובה שלא מתאימה</li>
-          <li>מתחילים סבב ארוך של תיקונים</li>
-          <li>כל משימה מתחילה מחדש, כאילו זו הפעם הראשונה</li>
-          <li>לא ברור באיזה כלי לבחור ולמה</li>
-          <li>מבזבזים זמן בניסוי וטעייה, וחוששים לסמוך על התוצאה</li>
-        </ul>
-      </div>
-      <div class="compare-col after">
-        <h3><i>✓</i>אחרי הקורס</h3>
-        <ul class="compare-list">
-          <li>יודעים לפרק את המשימה לפני שפונים לכלי</li>
-          <li>מובילים את הכלי שלב אחר שלב עד לתוצאה</li>
-          <li>בונים שיטת עבודה שאפשר לחזור עליה בכל משימה דומה</li>
-          <li>יודעים לבחור את הכלי המתאים למשימה</li>
-          <li>יוצרים סוכן קבוע למשימות שחוזרות על עצמן</li>
-        </ul>
-      </div>
-    </div>
-    <p class="pill-lead">כבר בתוך שבוע וחצי תדע להעביר ל-AI משימות כמו:</p>
-    <div class="pill-row reveal">
-      <span class="pill">ניסוח מייל מקצועי</span>
-      <span class="pill">כתיבת הצעת מחיר</span>
-      <span class="pill">סיכום פגישה</span>
-      <span class="pill">ניתוח קובץ Excel</span>
-      <span class="pill">בניית מצגת</span>
-      <span class="pill">יצירת תוכן שיווקי</span>
-      <span class="pill">ארגון מידע ממסמך ארוך</span>
-      <span class="pill">סוכן למשימה חוזרת</span>
-    </div>
-  </div>
-</section>
+    <div class="price-card">
+      <span class="lbl">פירוט המחיר</span>
+      <table class="price-table">
+        <tbody>
+          <tr><th scope="row">השתתפות במחזור</th><td class="js-price">1000 ₪</td></tr>
+          <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">180 ₪</td></tr>
+          <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">1180 ₪</td></tr>
+        </tbody>
+      </table>
 
-<!-- ABOUT (instructor) -->
-<section class="section soft" id="about">
-  <div class="container">
-    <div class="about">
-      <div class="about-head reveal">
-        <div class="eyebrow">מי עומד מאחורי הקורס</div>
-        <h2 class="title">יוחנן שבדרון</h2>
-      </div>
-      <div class="about-photo reveal">
-        <picture>
-          <source srcset="assets/public/yochanan-card.webp" type="image/webp"/>
-          <img src="assets/public/yochanan-card.jpg" alt="יוחנן שבדרון, מייסד SHWADRON.AI ובוגר מדעי המחשב עם התמחות ב-AI" loading="lazy" decoding="async" width="720" height="720"/>
-        </picture>
-        <span class="about-tag">בוגר מדעי המחשב · התמחות ב-AI</span>
-      </div>
-      <div class="about-body reveal">
-        <p>יוחנן מלמד בינה מלאכותית מתוך שילוב של הבנה טכנולוגית עמוקה, כבוגר מדעי המחשב עם התמחות ב-AI, וניסיון בהנגשת הכלים לעבודה יומיומית רגילה. במקום ללמד רשימת פקודות, הוא מלמד דרך חשיבה: מה לבקש, איך להוביל את הכלי, ואיך להפוך אותו לחלק קבוע מהעבודה.</p>
-        <p class="about-emph">לא תלמד רק להשתמש ב-AI. <em>תלמד לעבוד איתו נכון.</em></p>
-        <div class="about-trust">
-          <span>מדעי המחשב · התמחות ב-AI</span>
-          <span>מלמד בגובה העיניים, גם בלי רקע טכני</span>
+      <div class="pd-coupon" id="coupon-box">
+        <label class="pd-coupon-lbl" for="coupon-input">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a2 2 0 0 1 0-4V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 1 0 4v2a2 2 0 0 1 0 4v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2a2 2 0 0 1 0-4z"/><path d="M14 8.5l-4 7"/></svg>
+          יש לך קוד קופון?
+        </label>
+        <div class="pd-coupon-row">
+          <input type="text" id="coupon-input" class="pd-coupon-input" placeholder="קוד קופון" autocomplete="off"/>
+          <button type="button" id="coupon-apply" class="pd-coupon-btn">החל קופון</button>
         </div>
-        <a class="btn btn-blue" href="#join">אני רוצה להתחיל לעבוד נכון עם AI</a>
+        <p class="pd-coupon-msg" id="coupon-msg" role="status" aria-live="polite"></p>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- HOW (dark) -->
-<section class="section dark" id="how">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">איך זה עובד</div>
-      <h2 class="title">שלושה מפגשים. <em>תהליך אחד ברור.</em></h2>
-      <p class="sub">קצר, מעשי וממוקד, כדי להגיע לבין הזמנים עם יכולת אמיתית לעבוד עם AI.</p>
-    </div>
-    <div class="steps sr">
-      <div class="step"><div class="n">1</div><div class="date">יום שלישי · 14/07</div><h3>למה בקשות כלליות נכשלות</h3><p>לומדים להגדיר תוצאה, לספק את ההקשר הנכון ולנהל תהליך שמוביל לתשובה שימושית, במקום לנחש ולנסות שוב.</p></div>
-      <div class="step"><div class="n">2</div><div class="date">יום חמישי · 16/07</div><h3>עבודה על משימות מהחיים</h3><p>תרגול חי על ניסוח מייל, כתיבת הצעת מחיר, סיכום פגישה, תכנון, ניתוח מידע והכנת תוכן, ממש כמו שמגיע ביום עבודה רגיל.</p></div>
-      <div class="step"><div class="n">3</div><div class="date">יום ראשון · 19/07</div><h3>מהפעם הבאה לתהליך קבוע</h3><p>לוקחים משימה שחוזרת על עצמה כל שבוע והופכים אותה לתהליך או לסוכן AI שאפשר להפעיל שוב ושוב, בלי לבנות אותו מחדש.</p></div>
-    </div>
-    <p class="step-note">המטרה היא לא לצאת עם מחברת מלאה. <em>המטרה היא לצאת עם יכולת שאפשר להפעיל כבר ביום למחרת.</em></p>
-  </div>
-</section>
+      <p class="pd-vat">זהו הסכום שייגבה בפועל. תשלום אחד, ללא דמי טיפול וללא תוספות. פרטי התשלום נשלחים אחרי ההרשמה בוואטסאפ.</p>
 
-<!-- GET (soft) -->
-<section class="section soft" id="get">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">מה תקבל</div>
-      <h2 class="title">הכל כלול במחזור.</h2>
+      <a class="btn btn-lg" data-join href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%9C%D7%94%D7%99%D7%A8%D7%A9%D7%9D%20%D7%9C%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%94%D7%A7%D7%A8%D7%95%D7%91" target="_blank" rel="noopener">להרשמה בוואטסאפ</a>
+      <span class="secure">מענה אישי · פרטי המפגשים והתשלום נשלחים בהודעה</span>
+      <a class="terms-link" href="terms.html#product" target="_blank" rel="noopener">לקריאת פרטי העסקה המלאים (נפתח בלשונית חדשה)</a>
     </div>
-    <div class="get sr">
-      <div class="get-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="15" height="14" rx="2"/><path d="M17 9l5-3v12l-5-3"/></svg></span><b>3 מפגשי Zoom</b></div>
-      <div class="get-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg></span><b>שיעורים מוקלטים</b></div>
-      <div class="get-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M5 3h9l5 5v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/></svg></span><b>כל חומרי הקורס</b></div>
-      <div class="get-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-4-5.6"/></svg></span><b>קבוצת ליווי</b></div>
-      <div class="get-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></span><b>תרגול מעשי</b></div>
-      <div class="get-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0"/></svg></span><b>גישה גם לאחר הקורס</b></div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO -->
-<section class="section" id="who">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">למי הקורס מתאים</div>
-      <h2 class="title">לכל מי שרוצה לעבוד חכם יותר.</h2>
-      <p class="sub">מתאים לך אם כבר ניסית ChatGPT או Gemini ולא קיבלת תוצאות עקביות, אם אתה עובד עם מיילים, מסמכים, תוכן, לקוחות או נתונים, ואם אתה מרגיש שאתה חוזר על אותן משימות שוב ושוב. גם בלי רקע טכני, בגובה העיניים ובהתאמה לערכי הציבור החרדי.</p>
-    </div>
-    <div class="aud sr">
-      <div class="aud-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></span><h3>אנשי משרד</h3></div>
-      <div class="aud-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg></span><h3>שכירים</h3></div>
-      <div class="aud-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v13H3z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><h3>עצמאים</h3></div>
-      <div class="aud-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V6a1 1 0 0 1 1-1h6v14H5a1 1 0 0 1-1-1Z"/><path d="M20 19V6a1 1 0 0 0-1-1h-6v14h6a1 1 0 0 0 1-1Z"/></svg></span><h3>אברכים</h3></div>
-      <div class="aud-item"><span class="i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span><h3>סטודנטים</h3></div>
-      <div class="aud-item aud-wide"><h3>וכל מי שרוצה לעבוד חכם יותר, ולהיכנס לבין הזמנים עם יכולת חדשה ביד.</h3></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF (soft) -->
-<section class="section soft" id="proof">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">מהשטח</div>
-      <h2 class="title">מה בוגרים כותבים אחרי.</h2>
-      <p class="sub">תגובות אמיתיות מהוואטסאפ. הפרטים המזהים טושטשו.</p>
-    </div>
-    <div class="proof-grid reveal">
-      <div class="proof-card"><p class="proof-cap">מורה שיודע להנגיש טכנולוגיה מורכבת בבהירות ובסבלנות</p><img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp" alt="תגובת תומר בצלאל, בוגר הקורס" loading="lazy" width="1206" height="1143"/><p class="proof-credit">תומר בצלאל · ביתר</p></div>
-      <div class="proof-stack">
-        <div class="proof-card"><p class="proof-cap">גם עם ניסיון קודם ב-AI, יצא מהמפגש עם ידע חדש ומעמיק</p><img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp" alt="תגובת משתתף בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="788"/></div>
-        <div class="proof-card"><p class="proof-cap">כבר באותו יום התחיל להשתמש בכלים שקיבל בקורס</p><img src="assets/public/assets/whatsapp-proofs/whatsapp-03-blurred.webp" alt="תגובת משתתף בקורס AI, פרטים מטושטשים" loading="lazy" width="1206" height="502"/></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DETAILS -->
-<section class="section" id="details">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">פרטי המחזור</div>
-      <h2 class="title">מחזור AI לפני בין הזמנים.</h2>
-      <p class="sub">המחזור נפתח ב-14/07 ומסתיים בתוך שבוע אחד, כדי להגיע לבין הזמנים כשהיכולת כבר בידיים שלך.</p>
-    </div>
-    <div class="details reveal">
-      <div class="d-row"><span class="k">מתחילים</span><span class="v">14/07 (יום שלישי)</span></div>
-      <div class="d-row"><span class="k">מספר מפגשים</span><span class="v">3 מפגשים</span></div>
-      <div class="d-row"><span class="k">שעות</span><span class="v">19:30-21:30</span></div>
-      <div class="d-row"><span class="k">איפה</span><span class="v">Zoom, גם באינטרנט מסונן</span></div>
-      <div class="d-row"><span class="k">כולל</span><span class="v">הקלטות, חומרים וקבוצת ליווי</span></div>
-      <div class="d-row"><span class="k">עלות</span><span class="v price">1000 ₪ + מע״מ</span></div>
-      <div class="d-dates">
-        <div class="d-date"><b>14/07</b><span>מפגש 1 · שלישי</span></div>
-        <div class="d-date"><b>16/07</b><span>מפגש 2 · חמישי</span></div>
-        <div class="d-date"><b>19/07</b><span>מפגש 3 · ראשון</span></div>
-      </div>
-      <p style="margin-top:24px;color:var(--muted);font-size:.98rem;line-height:1.75;text-align:center">זו אינה רכישה של שלושה שיעורים בלבד. זו השקעה בדרך עבודה שתוכל ללוות אותך בכל משימה חוזרת, גם אחרי סיום המחזור.</p>
-      <p style="margin-top:20px;text-align:center;font-weight:800;color:var(--blue);font-size:1.12rem">המחזור מלא. נפגש במחזור הבא.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section soft" id="faq">
-  <div class="container">
-    <div class="head center sr">
-      <div class="eyebrow">שאלות</div>
-      <h2 class="title">מה חשוב לדעת לפני שנרשמים?</h2>
-    </div>
-    <div class="faq">
-      <details open><summary>צריך ידע קודם?</summary><p>לא. הקורס בנוי מאפס, בגובה העיניים. אם אתה יודע להשתמש בוואטסאפ, אתה מוכן ללמוד לעבוד נכון עם AI.</p></details>
-      <details><summary>מה קורה אם אני מפספס שיעור?</summary><p>כל השיעורים מוקלטים ונשארים איתך. אפשר להשלים בקצב שלך, ולשאול בקבוצת הליווי בוואטסאפ.</p></details>
-      <details><summary>למי זה מתאים?</summary><p>לאנשי משרד, שכירים, עצמאים, אברכים, סטודנטים ואנשים פרטיים. לכל מי שרוצה לעבוד חכם יותר.</p></details>
-      <details><summary>הקורס מתאים לעצמאים ולנותני שירות?</summary><p>כן. חלק גדול מהתרגול המעשי נוגע בדיוק במשימות של עצמאים: הצעות מחיר, תקשורת עם לקוחות, תכנון וניהול זמן.</p></details>
-      <details><summary>הקורס מתאים לשכירים ולאנשי משרד?</summary><p>כן. הדוגמאות במפגש השני מבוססות על עבודה משרדית רגילה: מיילים, סיכומים, מסמכים וניתוח מידע.</p></details>
-      <details><summary>יש לי אינטרנט מסונן. הכלים יעבדו?</summary><p>כן. הכלים שנלמדים נגישים דרך אינטרנט מסונן. יוחנן מכיר את המצב מקרוב ובחר את הכלים בדיוק לפי זה.</p></details>
-      <details><summary>מקבלים הקלטות?</summary><p>כן, את כל שלושת המפגשים, כדי שתוכל לחזור על כל חלק בקצב שלך.</p></details>
-      <details><summary>כמה זמן נשארת הגישה לחומרים?</summary><p>הגישה להקלטות ולחומרי הקורס נשארת גם אחרי שהמחזור מסתיים.</p></details>
-      <details><summary>אילו כלים לומדים בקורס?</summary><p>עובדים עם הכלים הנפוצים והזמינים כמו ChatGPT ו-Gemini, וכל דוגמה מלווה בהסבר איך לבחור את הכלי הנכון למשימה שלפניך.</p></details>
-      <details><summary>הקורס כולל בניית סוכן?</summary><p>כן. במפגש השלישי לומדים איך לקחת משימה שחוזרת על עצמה ולהפוך אותה לתהליך או לסוכן AI שאפשר להפעיל שוב.</p></details>
-      <details><summary>כמה עולה ההשתתפות?</summary><p>עלות ההשתתפות במחזור היא 1000 ₪ בתוספת מע״מ, וכוללת את שלושת המפגשים, ההקלטות, החומרים וקבוצת הליווי.</p></details>
-      <details><summary>המחיר כולל מע״מ?</summary><p>לא. עלות המחזור היא 1000 ₪ בתוספת מע״מ.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- JOIN (payment) -->
-<section class="section join" id="join">
-  <div class="container">
-    <div class="sr">
-      <div class="eyebrow">עדכון</div>
-      <h2 class="title">המחזור הנוכחי מלא.</h2>
-      <p class="sub">תודה לכל מי שנרשם. אפשר להשאיר פרטים בוואטסאפ ולהיות ראשונים לדעת כשייפתח המחזור הבא.</p>
-    </div>
-    <div class="join-card reveal">
-      <div class="join-eyebrow">מחזור לפני בין הזמנים</div>
-      <div class="join-rows">
-        <div class="d-row"><span class="k">מתחילים</span><span class="v">14/07</span></div>
-        <div class="d-row"><span class="k">מבנה</span><span class="v">3 מפגשים · 19:30-21:30 · זום</span></div>
-        <div class="d-row"><span class="k">כולל</span><span class="v">הקלטות · קבוצת ליווי</span></div>
-      </div>
-      <div class="closed-badge">המחזור מלא</div>
-      <p class="closed-sub">כל המקומות במחזור הזה נתפסו.<br/>נפגש במחזור הבא.</p>
-      <a class="btn btn-blue btn-lg" href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%AA%D7%A2%D7%93%D7%9B%D7%9F%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%94%D7%91%D7%90" target="_blank" rel="noopener">עדכנו אותי על המחזור הבא</a>
-      <a class="btn btn-primary btn-lg" href="course.html">לא רוצים לחכות? לגרסה הדיגיטלית של הקורס</a>
-    </div>
-    <p class="join-alt">בינתיים, הצטרפו ל<a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">קבוצת הטיפים בוואטסאפ</a>, שם אני משתף טיפים שוטפים על AI.</p>
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <img src="assets/public/images/brand/shwadron-logo.png" alt="SHWADRON.AI"/>
-  <nav class="foot-links" aria-label="ניווט בתוך העמוד">
-    <a href="#change">מה משתנה</a>
-    <a href="#how">איך זה עובד</a>
-    <a href="#details">פרטי המחזור</a>
-    <a href="#faq">שאלות</a>
-    <a href="#join">הצטרפות</a>
-  </nav>
-  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
-    <h2>מסמכים משפטיים</h2>
+<footer class="site-footer">
+  <img src="assets/public/logo.png" alt="SHWADRON.AI"/>
+  <nav aria-label="מסמכים משפטיים">
     <ul>
-      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
-      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
+      <li><a href="terms.html">תקנון ותנאי רכישה</a></li>
+      <li><a href="privacy.html">מדיניות פרטיות</a></li>
       <li><a href="accessibility.html">הצהרת נגישות</a></li>
       <li><a href="cancellation.html">ביטול עסקה</a></li>
       <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
     </ul>
   </nav>
-  <div class="foot-business">
-    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
-    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972528189921">052-818-9921</a></p>
-  </div>
-  <div class="foot-copy">© 2026 SHWADRON.AI · AI לציבור החרדי · כל הזכויות שמורות</div>
+  <p class="biz">יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></p>
 </footer>
 
-<!-- WHATSAPP -->
-<div class="wa-tip" id="waTip">יש שאלה? יוחנן עונה עכשיו</div>
-<a class="wa" href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1" target="_blank" rel="noopener" aria-label="דבר עם יוחנן בוואטסאפ">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fff" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-23.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-</a>
+<div class="stickybar" id="stickybar">
+  <div class="sb-price"><b class="js-price">1000 ₪</b><span class="sb-vat">+ מע״מ · סה״כ <span class="js-price-total">1180 ₪</span></span></div>
+  <a class="btn btn-sm" data-join href="#buy">להרשמה</a>
+</div>
 
 <script>
-// Nav scrolled + mobile menu
-var nav=document.getElementById('nav');
-window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>8)},{passive:true});
-var menu=document.getElementById('menu'),links=document.getElementById('navLinks');
-menu.addEventListener('click',function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o?'true':'false')});
-links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');menu.setAttribute('aria-expanded','false')})});
-
-// Reveal on scroll
-function obs(){return new IntersectionObserver(function(e,o){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');o.unobserve(x.target)}})},{threshold:.14,rootMargin:'0px 0px -60px 0px'})}
-var a=obs();document.querySelectorAll('.reveal').forEach(function(el){a.observe(el)});
-var b=obs();document.querySelectorAll('.sr').forEach(function(el){b.observe(el)});
-
-// WhatsApp FAB: appears only after scrolling past the hero (400px), never covers hero content
+// ─── מחירים: מקור אמת אחד ─────────────────────────────────────────────
+// המחיר הנקוב הוא לפני מע״מ, והמע״מ מתווסף עליו. כל מקום בעמוד שמציג
+// מחיר נגזר מהמשתנים כאן, כדי שלא ייווצר פער בין מספרים שונים בעמוד.
+//   .js-price       → המחיר לפני מע״מ
+//   .js-price-vat   → סכום המע״מ בלבד
+//   .js-price-total → הסכום הסופי לתשלום
 (function(){
-  var fab=document.querySelector('.wa'),tip=document.getElementById('waTip');
-  function upd(){var show=window.scrollY>400;fab.style.opacity=show?'1':'0';fab.style.pointerEvents=show?'auto':'none';if(!show)tip.classList.remove('show')}
-  upd();window.addEventListener('scroll',upd,{passive:true});
-  setTimeout(function(){if(window.scrollY>400){tip.classList.add('show');setTimeout(function(){tip.classList.remove('show')},5200)}},12000);
-  fab.addEventListener('click',function(){tip.classList.remove('show')});
+  var PRICE    = 1000;   // עלות ההשתתפות במחזור, לפני מע״מ
+  var VAT_RATE = 0.18;
+
+  var priceEx = PRICE;
+  var vat     = Math.round(priceEx * VAT_RATE * 100) / 100;
+  var total   = Math.round(priceEx * (1 + VAT_RATE) * 100) / 100;
+
+  function ils(n){ return (n % 1 === 0 ? String(n) : n.toFixed(2)) + ' ₪'; }
+
+  document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(priceEx); });
+  document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(vat); });
+  document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(total); });
+  document.querySelectorAll('.js-vat-rate').forEach(function(el){ el.textContent = (VAT_RATE * 100) + '%'; });
+
+  // הנתונים המובנים לגוגל נגזרים מאותו מקור, כדי שלא יוצג בתוצאות
+  // החיפוש מחיר שאינו בתוקף.
+  try {
+    var ld = document.getElementById('course-ld');
+    if (ld) {
+      var data = JSON.parse(ld.textContent);
+      data.offers.price = total.toFixed(2);
+      data.offers.priceSpecification.price = String(priceEx);
+      data.offers.priceSpecification.description =
+        priceEx + ' ₪ לפני מע״מ. סה״כ לתשלום ' + total.toFixed(2) + ' ₪ כולל מע״מ ' + (VAT_RATE*100) + '%.';
+      ld.textContent = JSON.stringify(data);
+    }
+  } catch(e){}
+
+  window.SHW_PRICE_EX = priceEx;
+  window.SHW_PRICE = total;
+})();
+
+// ─── מדידת המרות: איזה כפתור הרשמה נלחץ ───────────────────────────────
+(function(){
+  function where(el){
+    if(el.closest('header')) return 'header';
+    if(el.closest('.stickybar')) return 'sticky_mobile';
+    if(el.closest('.hero')) return 'hero';
+    if(el.closest('.price-card')) return 'price_card';
+    var s = el.closest('section');
+    return (s && s.id) ? s.id : 'other';
+  }
+  var value = window.SHW_PRICE || 1180;
+  var item = { item_id:'course-live', item_name:'מחזור AI חי', price:value, quantity:1 };
+  document.querySelectorAll('[data-join]').forEach(function(a){
+    a.addEventListener('click', function(){
+      gtag('event','click_join_cohort',{ cta_location: where(a), value: value, currency:'ILS' });
+      if((a.getAttribute('href')||'').indexOf('wa.me') === 0 || (a.getAttribute('href')||'').indexOf('http') === 0){
+        gtag('event','begin_checkout',{ currency:'ILS', value: value, items:[item] });
+      }
+    });
+  });
+  var marks = [25,50,75,100], seen = {};
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if(h <= 0) return;
+    var pct = (window.scrollY / h) * 100;
+    marks.forEach(function(m){
+      if(pct >= m && !seen[m]){ seen[m] = 1; gtag('event','scroll_depth',{ percent_scrolled: m }); }
+    });
+  }, {passive:true});
+})();
+
+// ─── קופון: נבדק בצד השרת ב-/api/coupon, לעולם לא סומכים על הדפדפן ───
+// קופון שמוגדר לעמוד "cohort-live" מחזיר קישור תשלום משלו, ואז כפתורי
+// ההרשמה מפנים אליו במקום לוואטסאפ.
+(function(){
+  var box   = document.getElementById('coupon-box');
+  var input = document.getElementById('coupon-input');
+  var btn   = document.getElementById('coupon-apply');
+  var msg   = document.getElementById('coupon-msg');
+  if(!box) return;
+
+  function ils(n){ return (n % 1 === 0 ? String(n) : n.toFixed(2)) + ' ₪'; }
+
+  function setMsg(text, ok){
+    msg.textContent = text;
+    msg.className = 'pd-coupon-msg ' + (ok ? 'ok' : 'err');
+  }
+
+  function apply(){
+    var code = input.value.trim();
+    if(!code){ setMsg('יש להזין קוד קופון.', false); return; }
+    btn.disabled = true;
+    setMsg('בודק קופון…', true);
+    fetch('/api/coupon', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ code: code, page: 'cohort-live' })
+    })
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        if(!data.valid){
+          setMsg('קוד קופון לא תקף.', false);
+          btn.disabled = false;
+          return;
+        }
+        document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(data.price); });
+        document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(data.vat); });
+        document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(data.total); });
+        if(data.checkoutUrl){
+          document.querySelectorAll('[data-join]').forEach(function(a){
+            a.href = data.checkoutUrl;
+            a.removeAttribute('target');
+          });
+        }
+        window.SHW_PRICE_EX = data.price;
+        window.SHW_PRICE = data.total;
+        setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.price) + ' + מע״מ.', true);
+        input.disabled = true;
+      })
+      .catch(function(){
+        setMsg('שגיאה בבדיקת הקופון, נסו שוב.', false);
+        btn.disabled = false;
+      });
+  }
+
+  btn.addEventListener('click', apply);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); apply(); } });
+})();
+
+// ─── חשיפה בגלילה ───
+(function(){
+  var els = document.querySelectorAll('.sr');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('on'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries, o){
+    entries.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('on'); o.unobserve(x.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -50px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+// ─── רצועת ההרשמה הקבועה במובייל ───
+(function(){
+  var bar = document.getElementById('stickybar');
+  if(!bar) return;
+  function upd(){ bar.classList.toggle('show', window.scrollY > 480); }
+  upd(); window.addEventListener('scroll', upd, {passive:true});
 })();
 </script>
 </body>
