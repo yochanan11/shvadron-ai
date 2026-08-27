@@ -106,7 +106,7 @@ a:hover{color:var(--teal-ink)}
 .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
   background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
 .grain>*{position:relative;z-index:1}
-.ghost{-webkit-text-stroke:1.5px var(--line-dark);color:transparent}
+.ghost{-webkit-text-stroke:2px #2f7bf6;color:transparent}
 
 @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 .rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
@@ -133,30 +133,30 @@ a:hover{color:var(--teal-ink)}
 .btn[aria-disabled="true"]{opacity:.75}
 
 /* HERO */
-.hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:72px var(--pad) 0}
+.hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:clamp(18px,3.2vh,64px) var(--pad) 0}
 .hero .glow-b{position:absolute;top:-180px;right:120px;width:720px;height:620px;pointer-events:none;
   background:radial-gradient(closest-side,rgba(0,99,237,.34),rgba(0,99,237,0))}
 .hero .glow-t{position:absolute;top:120px;right:560px;width:560px;height:520px;pointer-events:none;
   background:radial-gradient(closest-side,rgba(46,222,191,.14),rgba(46,222,191,0))}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;align-items:end}
-.hero-copy{display:flex;flex-direction:column;gap:32px;padding-bottom:84px}
+.hero-copy{display:flex;flex-direction:column;gap:clamp(12px,2.3vh,30px);padding-bottom:clamp(16px,4.4vh,72px)}
 .eyebrow{display:flex;align-items:center;gap:12px;font-size:.94rem;font-weight:700;letter-spacing:.12em;color:var(--blue)}
 .eyebrow::before{content:"";width:34px;height:2px;background:currentColor}
 .eyebrow.teal{color:var(--teal)}
-.hero-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:6.63rem;line-height:.88;letter-spacing:-.04em}
-.hero-lead{font-size:1.31rem;line-height:1.6;color:var(--on-dark-2);max-width:520px}
+.hero-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:clamp(2.6rem,min(6vw,9.2vh),6.63rem);line-height:.88;letter-spacing:-.04em}
+.hero-lead{font-size:clamp(1rem,1.85vh,1.31rem);line-height:1.6;color:var(--on-dark-2);max-width:520px}
 .hero-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .hero-price{display:flex;flex-direction:column;gap:3px}
 .hero-price b{font-size:1.06rem;font-weight:700}
 .hero-price span{font-weight:400;color:var(--on-dark-3)}
 .hero-price small{font-size:.88rem;color:var(--on-dark-3)}
-.hero-portrait{position:relative;height:600px}
+.hero-portrait{position:relative;height:clamp(260px,57vh,600px)}
 .hero-portrait .plate{position:absolute;top:0;bottom:0;right:0;left:40px;background:var(--deep-2);border-radius:3px}
 .hero-portrait img{position:absolute;top:0;bottom:0;right:0;left:40px;width:calc(100% - 40px);height:100%;
   object-fit:cover;object-position:top center;border-radius:3px}
 .hero-portrait .fade{position:absolute;top:0;bottom:0;right:0;left:40px;border-radius:3px;pointer-events:none;
   background:linear-gradient(to top,rgba(10,26,51,.78),rgba(10,26,51,0) 46%)}
-.hero-portrait .chip{position:absolute;right:0;bottom:0;width:88px;height:88px;background:var(--teal);border-radius:3px}
+.hero-portrait .chip{position:absolute;left:0;bottom:0;width:88px;height:88px;background:var(--teal);border-radius:3px}
 .hero-portrait figcaption{position:absolute;right:28px;bottom:26px;display:flex;flex-direction:column;gap:2px}
 .hero-portrait figcaption b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.38rem;color:#fff}
 .hero-portrait figcaption span{font-size:.88rem;color:var(--on-dark)}
@@ -322,7 +322,6 @@ a:hover{color:var(--teal-ink)}
 /* ─── רספונסיביות ─── */
 @media(max-width:1180px){
   :root{--pad:40px}
-  .hero-title{font-size:5rem}
   .sec-title{font-size:3.6rem}
   .faq-side .sec-title{font-size:3.4rem}
 }
