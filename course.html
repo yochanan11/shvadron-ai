@@ -152,11 +152,14 @@ a:hover{color:var(--teal-ink)}
 .hero-price small{font-size:.88rem;color:var(--on-dark-3)}
 .hero-portrait{position:relative;height:clamp(260px,57vh,600px)}
 
-.hero-portrait img{position:absolute;top:0;right:0;left:0;bottom:76px;z-index:1;width:100%;height:calc(100% - 76px);
-  object-fit:contain;object-position:bottom center}
+.hero-portrait .plate{position:absolute;top:0;bottom:0;right:0;left:40px;background:var(--deep-2);border-radius:3px}
+.hero-portrait img{position:absolute;top:0;bottom:0;right:0;left:40px;width:calc(100% - 40px);height:100%;
+  object-fit:cover;object-position:top center;border-radius:3px}
+.hero-portrait .fade{position:absolute;top:0;bottom:0;right:0;left:40px;border-radius:3px;pointer-events:none;
+  background:linear-gradient(to top,rgba(10,26,51,.78),rgba(10,26,51,0) 46%)}
 
-.hero-portrait .chip{position:absolute;z-index:0;left:0;bottom:76px;width:clamp(84px,11vh,132px);height:clamp(120px,20vh,220px);background:var(--teal);border-radius:3px}
-.hero-portrait figcaption{position:absolute;z-index:2;right:0;bottom:0;display:flex;flex-direction:column;gap:2px}
+.hero-portrait .chip{position:absolute;left:0;bottom:0;width:88px;height:88px;background:var(--teal);border-radius:3px}
+.hero-portrait figcaption{position:absolute;z-index:2;right:28px;bottom:26px;display:flex;flex-direction:column;gap:2px}
 .hero-portrait figcaption b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.38rem;color:#fff}
 .hero-portrait figcaption span{font-size:.88rem;color:var(--on-dark)}
 
@@ -409,8 +412,10 @@ a:hover{color:var(--teal-ink)}
       </div>
     </div>
     <figure class="hero-portrait rise-2">
+      <div class="plate" aria-hidden="true"></div>
+      <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון" width="900" height="1350"/>
+      <div class="fade" aria-hidden="true"></div>
       <div class="chip" aria-hidden="true"></div>
-      <img src="assets/public/yochanan-cutout.webp" alt="יוחנן שבדרון" width="900" height="1403"/>
       <figcaption><b>יוחנן שבדרון</b><span>בוגר מדעי המחשב · התמחות ב-AI</span></figcaption>
     </figure>
   </div>
