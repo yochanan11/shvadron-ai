@@ -346,14 +346,15 @@ a:hover{color:var(--teal-ink)}
   .hero{padding-top:36px}
   .hero-title{font-size:3rem;line-height:.92}
   .hero-lead{font-size:1.06rem}
-  .hero-portrait{height:auto;width:100%;max-width:320px;aspect-ratio:3/4}
+  .hero-portrait{height:auto;width:100%;max-width:320px;aspect-ratio:3/4;margin-inline:auto}
   .hero-portrait .chip{display:none}
   .hero-cta{flex-direction:column;align-items:stretch}
   .hero-cta .btn{width:100%}
   .hero-price{text-align:center}
   .sec-title,.faq-side .sec-title{font-size:2.38rem;line-height:.96}
   .method,.lessons,.outcomes,.proof,.faq,.buy-sec{padding-top:48px;padding-bottom:48px}
-  .method-cards,.out-grid,.quotes,.stats-grid{grid-template-columns:1fr}
+  .method-cards,.out-grid,.quotes{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .method-cards{margin-top:32px}
   .m-card,.out-cell,.out-cta,.stat,.quote{padding:26px 22px}
   .m-card b{font-size:2.13rem}
