@@ -106,7 +106,7 @@ a:hover{color:var(--teal-ink)}
 .grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
   background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
 .grain>*{position:relative;z-index:1}
-.ghost{-webkit-text-stroke:2px #2f7bf6;color:transparent}
+.ghost{color:#6f8cb8}
 
 @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
 .rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
@@ -151,13 +151,12 @@ a:hover{color:var(--teal-ink)}
 .hero-price span{font-weight:400;color:var(--on-dark-3)}
 .hero-price small{font-size:.88rem;color:var(--on-dark-3)}
 .hero-portrait{position:relative;height:clamp(260px,57vh,600px)}
-.hero-portrait .plate{position:absolute;top:0;bottom:0;right:0;left:40px;background:var(--deep-2);border-radius:3px}
-.hero-portrait img{position:absolute;top:0;bottom:0;right:0;left:40px;width:calc(100% - 40px);height:100%;
-  object-fit:cover;object-position:top center;border-radius:3px}
-.hero-portrait .fade{position:absolute;top:0;bottom:0;right:0;left:40px;border-radius:3px;pointer-events:none;
-  background:linear-gradient(to top,rgba(10,26,51,.78),rgba(10,26,51,0) 46%)}
-.hero-portrait .chip{position:absolute;left:0;bottom:0;width:88px;height:88px;background:var(--teal);border-radius:3px}
-.hero-portrait figcaption{position:absolute;right:28px;bottom:26px;display:flex;flex-direction:column;gap:2px}
+
+.hero-portrait img{position:absolute;top:0;right:0;left:0;bottom:76px;z-index:1;width:100%;height:calc(100% - 76px);
+  object-fit:contain;object-position:bottom center}
+
+.hero-portrait .chip{position:absolute;z-index:0;left:0;bottom:76px;width:clamp(84px,11vh,132px);height:clamp(120px,20vh,220px);background:var(--teal);border-radius:3px}
+.hero-portrait figcaption{position:absolute;z-index:2;right:0;bottom:0;display:flex;flex-direction:column;gap:2px}
 .hero-portrait figcaption b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.38rem;color:#fff}
 .hero-portrait figcaption span{font-size:.88rem;color:var(--on-dark)}
 
@@ -344,7 +343,7 @@ a:hover{color:var(--teal-ink)}
   .hero{padding-top:36px}
   .hero-title{font-size:3rem;line-height:.92}
   .hero-lead{font-size:1.06rem}
-  .hero-portrait{height:300px}
+  .hero-portrait{height:370px}
   .hero-portrait .plate,.hero-portrait img,.hero-portrait .fade{left:0;width:100%}
   .hero-portrait .chip{display:none}
   .hero-cta{flex-direction:column;align-items:stretch}
@@ -410,10 +409,8 @@ a:hover{color:var(--teal-ink)}
       </div>
     </div>
     <figure class="hero-portrait rise-2">
-      <div class="plate" aria-hidden="true"></div>
-      <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון" width="900" height="1350"/>
-      <div class="fade" aria-hidden="true"></div>
       <div class="chip" aria-hidden="true"></div>
+      <img src="assets/public/yochanan-cutout.webp" alt="יוחנן שבדרון" width="900" height="1403"/>
       <figcaption><b>יוחנן שבדרון</b><span>בוגר מדעי המחשב · התמחות ב-AI</span></figcaption>
     </figure>
   </div>
