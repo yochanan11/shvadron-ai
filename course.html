@@ -368,6 +368,69 @@ a:hover{color:var(--teal-ink)}
   .site-footer{flex-direction:column;align-items:flex-start;gap:22px}
   .marquee-track{font-size:.88rem}
 }
+/* ── מקטע = מסך שלם (דסקטופ בלבד) ──
+   כל מקטע ממלא את גובה המסך והתוכן ממורכז בתוכו, בלי גלילה פנימית.
+   הגדלים מצטמצמים לפי גובה המסך כדי שהתוכן ייכנס גם במסכים נמוכים. */
+@media(min-width:1001px){
+  .method,.lessons,.outcomes,.proof,.faq,.buy-sec{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding-top:clamp(28px,4.5vh,64px);padding-bottom:clamp(28px,4.5vh,64px)}
+  .sec-title{font-size:clamp(2.2rem,5.6vh,4.88rem)}
+  .faq-side .sec-title{font-size:clamp(2rem,5vh,4.5rem)}
+  .method-intro{gap:clamp(28px,4vw,64px)}
+  .method-intro p{font-size:clamp(1rem,2vh,1.31rem)}
+  .method-cards{margin-top:clamp(24px,4.4vh,72px)}
+  .m-card{padding:clamp(22px,3.4vh,44px) clamp(22px,2.6vw,40px);gap:clamp(8px,1.5vh,16px)}
+  .m-card b{font-size:clamp(2rem,5vh,3.75rem)}
+  .m-card h3{font-size:clamp(1.13rem,2.6vh,1.63rem)}
+  .m-card p{font-size:clamp(.94rem,1.8vh,1.06rem)}
+  .lessons-head{margin-bottom:clamp(20px,3.6vh,56px)}
+  .lesson{padding:clamp(16px,2.9vh,34px) 0}
+  .lesson b{font-size:clamp(1.75rem,4.2vh,2.88rem)}
+  .lesson h3{font-size:clamp(1.25rem,3vh,2rem)}
+  .lesson p{font-size:clamp(.94rem,1.9vh,1.13rem)}
+  .out-grid{margin-top:clamp(20px,3.6vh,56px)}
+  .out-cell,.out-cta{padding:clamp(20px,3.2vh,40px) clamp(20px,2.4vw,36px);gap:clamp(8px,1.3vh,16px)}
+  .out-cell h3{font-size:clamp(1.06rem,2.4vh,1.38rem)}
+  .out-cell p{font-size:clamp(.88rem,1.7vh,1rem)}
+  .out-cta p{font-size:clamp(1.31rem,3.2vh,1.88rem)}
+  .proof .sec-title{margin-bottom:clamp(20px,3.4vh,48px)}
+  .quote{padding:clamp(20px,3.2vh,36px) clamp(20px,2.2vw,32px);gap:clamp(10px,2vh,20px)}
+  .quote p{font-size:clamp(.94rem,2vh,1.19rem)}
+  .orgs{margin-top:clamp(24px,4.4vh,64px);padding-top:clamp(18px,2.8vh,36px)}
+  .faq summary{padding:clamp(12px,2.3vh,28px) 0;font-size:clamp(1.06rem,2.6vh,1.56rem)}
+  .faq details>p{font-size:clamp(.94rem,1.9vh,1.13rem);padding-bottom:clamp(14px,2.3vh,28px)}
+  .buy-grid{gap:clamp(32px,4.6vw,72px)}
+  .buy-left{gap:clamp(14px,2.6vh,28px)}
+  .buy-left>p{font-size:clamp(1rem,2vh,1.19rem)}
+  .incl{gap:clamp(8px,1.5vh,14px);margin-top:0}
+  .incl li{font-size:clamp(.94rem,1.8vh,1.06rem)}
+  .buy-sec{padding-top:clamp(14px,3vh,56px);padding-bottom:clamp(14px,3vh,56px)}
+  .price-card{padding:clamp(12px,2.4vh,44px) clamp(20px,2.2vw,40px);gap:clamp(6px,1.2vh,24px)}
+  .price-table th,.price-table td{padding:clamp(4px,.9vh,14px) 0}
+  .consent{gap:4px}
+  .check-row{line-height:1.45}
+  .price-table th,.price-table td{padding:clamp(7px,1.3vh,14px) 0;font-size:clamp(.94rem,1.8vh,1.06rem)}
+  .price-table .tot th{font-size:clamp(1.06rem,2.2vh,1.31rem);padding-top:clamp(12px,2vh,22px)}
+  .price-table .tot td{font-size:clamp(1.5rem,4vh,2.75rem);padding-top:clamp(8px,1.7vh,22px)}
+  .pd-coupon{padding:clamp(8px,1.6vh,20px);gap:clamp(5px,1vh,12px)}
+  .pd-coupon-input,.pd-coupon-btn{padding-top:clamp(9px,1.5vh,13px);padding-bottom:clamp(9px,1.5vh,13px)}
+  .consent{padding-top:clamp(6px,1.4vh,20px)}
+  .btn-lg{padding-top:clamp(10px,1.8vh,20px);padding-bottom:clamp(10px,1.8vh,20px)}
+}
+/* מסכים נמוכים: דחיסה נוספת של בלוק ההצטרפות בלבד, כדי שגם שם
+   הוא ייכנס למסך אחד. גודל הטקסט המשפטי לא יורד, רק המרווחים. */
+@media(min-width:1001px) and (max-height:780px){
+  .buy-sec{padding-top:12px;padding-bottom:12px}
+  .price-card{padding:12px clamp(20px,2.2vw,40px);gap:6px}
+  .price-table th,.price-table td{padding:4px 0}
+  .price-table .tot th{padding-top:8px}
+  .price-table .tot td{font-size:1.5rem;padding-top:8px}
+  .pd-coupon{padding:8px;gap:5px}
+  .consent{padding-top:6px}
+  .btn-lg{padding-top:10px;padding-bottom:10px}
+  .buy-left{gap:12px}
+}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   .marquee-track{animation:none;width:auto}
