@@ -384,10 +384,11 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   .faq-side .sec-title{font-size:3.4rem}
 }
 @media(max-width:1000px){
-  .hero-grid,.method-intro,.faq-grid,.buy-grid{grid-template-columns:1fr;gap:36px}
+  .method-intro,.faq-grid,.buy-grid{grid-template-columns:1fr;gap:36px}
+  .hero-grid{gap:clamp(20px,3.4vw,36px)}
   .hero-copy{padding-bottom:12px}
   .hero .glow-t{display:none}
-  .hero-portrait{height:460px}
+  .hero-portrait{height:clamp(300px,44vw,460px);margin-bottom:14px}
   .method-cards,.out-grid,.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lesson{grid-template-columns:80px 1fr;gap:16px 24px}
   .lesson p{grid-column:1/-1}
@@ -400,6 +401,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   .nav,.hdr-tel,.site-header .btn{display:none}
   .stickybar{display:flex}
   .hero{padding-top:36px}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
   .hero-title{font-size:3rem;line-height:.92}
   .hero-lead{font-size:1.06rem}
   .hero-portrait{height:auto;width:100%;max-width:320px;aspect-ratio:3/4;margin-inline:auto}
@@ -679,7 +681,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
     <div class="orgs-strip">
       <div class="orgs-track"><ul class="orgs-set"><li><img src="assets/public/logos/logo-mivtach.png" alt="מבטח" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="דרשו" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="כיוון" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="משטרת ישראל" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="חוצות ירושלים" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="המבשר" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="התאחדות יועצי המשכנתאות" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="דוקטור משכנתא" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="פרספקטיבה" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="אוסקר" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="משרד הנגב, הגליל והחוסן הלאומי" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="לוגו שותף" width="99" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li></ul><ul class="orgs-set" aria-hidden="true"><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li></ul></div>
     </div>
-    <a class="orgs-cta" href="https://wa.me/972528189921" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>רוצים גם לעסק שלכם?<span class="sr-only"> (נפתח בוואטסאפ)</span></a>
+    <a class="orgs-cta" href="https://wa.me/972528189921" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>רוצים גם בעסק שלכם?<span class="sr-only"> (נפתח בוואטסאפ)</span></a>
   </div>
 </section>
 
@@ -1041,6 +1043,24 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
     entries.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('on'); o.unobserve(x.target); } });
   },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
   items.forEach(function(el){ io.observe(el); });
+
+  // רשת ביטחון לגלילה מהירה. הצופה מדווח רק על שינוי בחפיפה, ולכן
+  // אלמנט שקפץ מתחת למסך אל מעליו בין שני פריימים לא מדווח כלל ונשאר
+  // שקוף לתמיד. סריקה בגלילה מגלה את מי שכבר עבר לגמרי מעל המסך.
+  var pending=items.slice(), ticking=false;
+  function sweep(){
+    ticking=false;
+    for(var i=pending.length-1;i>=0;i--){
+      var el=pending[i];
+      if(el.classList.contains('on')){ pending.splice(i,1); continue; }
+      if(el.getBoundingClientRect().bottom < 0){
+        el.classList.add('on'); io.unobserve(el); pending.splice(i,1);
+      }
+    }
+    if(!pending.length) window.removeEventListener('scroll',onScroll);
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(sweep); } }
+  window.addEventListener('scroll',onScroll,{passive:true});
 })();
 
 // ספירה עולה של רצועת המספרים.
@@ -1083,6 +1103,17 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
     entries.forEach(function(x){ if(x.isIntersecting){ start(); o.unobserve(x.target); } });
   },{threshold:.6,rootMargin:'0px 0px -18% 0px'});
   io.observe(block);
+
+  // אותה רשת ביטחון: אם הרצועה נותרה מעל המסך אחרי גלילה מהירה, היא
+  // נחשפת מיד עם המספרים הסופיים, בלי ספירה שאיש לא יראה.
+  function onScroll(){
+    if(block.classList.contains('on')){ window.removeEventListener('scroll',onScroll); return; }
+    if(block.getBoundingClientRect().bottom < 0){
+      io.unobserve(block); still=true; start();
+      window.removeEventListener('scroll',onScroll);
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
 })();
 
 // Sticky mobile buy bar: show after scrolling past the hero
