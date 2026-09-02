@@ -33,6 +33,10 @@
 -->
 <script src="assets/js/consent.js"></script>
 
+<!-- מסמן שיש ג׳אווהסקריפט. כללי החשיפה בגלילה תלויים בסימון הזה,
+     כך שבלי ג׳אווהסקריפט כל התוכן מוצג רגיל ולא נשאר שקוף. -->
+<script>document.documentElement.className += ' js';</script>
+
 <script type="application/ld+json" id="course-ld">
 {
   "@context": "https://schema.org",
@@ -113,6 +117,42 @@ a:hover{color:var(--teal-ink)}
 .rise-2{animation:rise .8s cubic-bezier(.2,.7,.2,1) .1s both}
 .rise-3{animation:rise .8s cubic-bezier(.2,.7,.2,1) .2s both}
 .rise-4{animation:rise .8s cubic-bezier(.2,.7,.2,1) .3s both}
+
+/* ── חשיפה בגלילה ──
+   אלמנט עם .reveal מתחיל שקוף ומוסט מטה, ומקבל .on כשהוא נכנס למסך
+   (ה-IntersectionObserver בתחתית הדף). --i הוא מיקום הפריט בקבוצה
+   ו---d השהיה נוספת לקבוצה שלמה, כדי שהפריטים ייכנסו אחד אחרי השני.
+   .panel — מכל שקווי הרשת שלו הם הרקע שלו (‎.method-cards‎, ‎.out-grid‎).
+            הוא רק נדלק בלי הזזה, אחרת נחשף בלוק אפור לפני שהתאים מגיעים.
+   .slide — תא בתוך פאנל כזה: רק זז, ההופעה מטופלת בפאנל עצמו. */
+.js .reveal{--i:0;--y:26px;--d:0ms;
+  opacity:0;transform:translateY(var(--y));
+  transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1);
+  transition-delay:calc(var(--d) + var(--i) * 70ms)}
+.js .reveal.on{opacity:1;transform:none}
+.js .reveal.panel{--y:0px}
+.js .reveal.slide{opacity:1;transform:translateY(var(--y))}
+.js .reveal.slide.on{transform:none}
+.js .reveal:nth-child(2){--i:1}
+.js .reveal:nth-child(3){--i:2}
+.js .reveal:nth-child(4){--i:3}
+.js .reveal:nth-child(5){--i:4}
+.js .reveal:nth-child(6){--i:5}
+.js .method-cards .reveal,.js .out-grid .reveal,.js .quotes .reveal,
+.js .stats-grid .reveal{--d:120ms}
+
+/* מספרי הסטטיסטיקה נספרים כלפי מעלה. ספרות ברוחב אחיד כדי שהמעבר
+   מספרה אחת לשתיים לא יזיז את הטקסט שמתחת. */
+.stat b{font-variant-numeric:tabular-nums}
+
+/* ── מספרי השיעורים עולים מתוך מסכה ── */
+.js .lesson b{overflow:hidden}
+.js .lesson b>span{display:block;transform:translateY(105%);
+  transition:transform .8s cubic-bezier(.2,.7,.2,1);
+  transition-delay:calc(var(--d) + var(--i) * 70ms + 90ms)}
+.js .lesson.on b>span{transform:none}
+.lesson svg{transition:transform .3s ease,color .3s ease}
+.lesson:hover svg{transform:translateX(-6px);color:var(--teal)}
 
 /* כותרת עליונה */
 .site-header{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:40px;
@@ -448,8 +488,10 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   .buy-left{gap:12px}
 }
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;transition-delay:0s!important}
   .marquee-track,.orgs-track{animation:none;width:auto}
+  .js .reveal{opacity:1!important;transform:none!important}
+  .js .lesson b>span{transform:none!important}
 }
 </style>
 
@@ -507,35 +549,35 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 
 <!-- ===== רצועת מספרים ===== -->
 <section class="stats" aria-label="הקורס במספרים">
-  <div class="stats-grid">
-    <div class="stat"><b>4</b><span>שיעורים מוקלטים</span></div>
-    <div class="stat"><b>8</b><span>שעות תוכן בערך</span></div>
-    <div class="stat"><b>14</b><span>ימי ביטול בהחזר מלא</span></div>
-    <div class="stat"><b class="teal">0</b><span>ידע טכני נדרש</span></div>
+  <div class="stats-grid reveal panel">
+    <div class="stat reveal slide"><b data-count="4">4</b><span>שיעורים מוקלטים</span></div>
+    <div class="stat reveal slide"><b data-count="8">8</b><span>שעות תוכן בערך</span></div>
+    <div class="stat reveal slide"><b data-count="14">14</b><span>ימי ביטול בהחזר מלא</span></div>
+    <div class="stat reveal slide"><b class="teal" data-count="0" data-from="10">0</b><span>ידע טכני נדרש</span></div>
   </div>
 </section>
 
 <!-- ===== השיטה ===== -->
 <section class="method" id="method">
   <div class="method-intro">
-    <h2 class="sec-title">AI הוא לא קסם.<br/><em>הוא כמו עובד חדש.</em></h2>
-    <div>
+    <h2 class="sec-title reveal">AI הוא לא קסם.<br/><em>הוא כמו עובד חדש.</em></h2>
+    <div class="reveal">
       <p>עובד חדש לא מתחיל לעבוד לבד ביום הראשון. הוא צריך לדעת מה המשימה, לקבל את החומרים הנכונים, ולהבין מה נחשב תוצר טוב. עם AI זה בדיוק אותו דבר.</p>
       <p>רוב האנשים פותחים צ׳אט, שואלים שאלה, מקבלים תשובה בינונית ומסיקים שזה לא בשבילם. הבעיה היא לא הכלי, אלא שאין שיטה.</p>
     </div>
   </div>
-  <div class="method-cards">
-    <div class="m-card">
+  <div class="method-cards reveal panel">
+    <div class="m-card reveal slide">
       <b>01</b>
       <h3>מתחילים ממשימה, לא מכלי</h3>
       <p>השאלה היא לא מה ChatGPT יודע לעשות, אלא מה אתם צריכים שייצא לכם היום. הכלי נבחר אחרי שהמשימה ברורה.</p>
     </div>
-    <div class="m-card">
+    <div class="m-card reveal slide">
       <b>02</b>
       <h3>קלט טוב, פלט טוב</h3>
       <p>ההקשר, הדוגמאות והכיוון שתכניסו פנימה הם שיקבעו מה יצא. זו לא שאלה ותשובה, זה תהליך.</p>
     </div>
-    <div class="m-card">
+    <div class="m-card reveal slide">
       <b>03</b>
       <h3>אל תחליט שום דבר לבד</h3>
       <p>שלא יניח הנחות, שלא ימציא פרטים, ושיוודא איתכם לפני שהוא מבצע. ההנחיה הזו לבדה מוציאה מהמשחק את רוב התשובות שנשמעות טוב אבל אינן נכונות.</p>
@@ -545,30 +587,30 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 
 <!-- ===== מה לומדים ===== -->
 <section class="lessons grain" id="lessons">
-  <div class="lessons-head">
+  <div class="lessons-head reveal">
     <h2 class="sec-title">ארבעה שיעורים.<br/><span class="ghost">כל אחד תוצר ביד.</span></h2>
     <p>כל שיעור מתחיל ממשימה אמיתית ונגמר במשהו שאפשר להשתמש בו כבר למחרת.</p>
   </div>
-  <div class="lesson">
-    <b>01</b>
+  <div class="lesson reveal">
+    <b><span>01</span></b>
     <h3>שוברים את תקרת הזכוכית</h3>
     <p>מתחילים ממשימה אמיתית מהעבודה שלכם, ומשם בוחרים את הכלי שמתאים לה. היכרות מעשית עם ChatGPT, Claude, Gemini ו-NotebookLM דרך שימוש, לא דרך תפריטים.</p>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
   </div>
-  <div class="lesson">
-    <b>02</b>
+  <div class="lesson reveal">
+    <b><span>02</span></b>
     <h3>קוד המאסטרים</h3>
     <p>עקרונות פרומפטינג שמביאים תוצאה, בניית ספריית פרומפטים אישית, ומרעיון למצגת מקצועית.</p>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
   </div>
-  <div class="lesson">
-    <b>03</b>
+  <div class="lesson reveal">
+    <b><span>03</span></b>
     <h3>המוח הכפול: הסוכן האישי שלכם</h3>
     <p>בונים סוכן AI אישי שמכיר את התחום שלכם, כותב בסגנון שלכם, ועובד בשבילכם.</p>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
   </div>
-  <div class="lesson">
-    <b>04</b>
+  <div class="lesson reveal">
+    <b><span>04</span></b>
     <h3>המאסטרינג: לעבוד על אוטומט</h3>
     <p>תהליכי עבודה וצוות סוכנים שעובד בשבילכם, וארגז הכלים המלא כדי להישאר קדימה.</p>
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
@@ -577,34 +619,34 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 
 <!-- ===== התוצאה ===== -->
 <section class="outcomes" id="outcomes">
-  <h2 class="sec-title">מה תדעו לעשות <em>בסיום.</em></h2>
-  <div class="out-grid">
-    <div class="out-cell">
+  <h2 class="sec-title reveal">מה תדעו לעשות <em>בסיום.</em></h2>
+  <div class="out-grid reveal panel">
+    <div class="out-cell reveal slide">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
       <h3>לכתוב פרומפטים שמייצרים תוצאות</h3>
       <p>להפסיק לקבל תשובות גנריות, ולהגיע לתוצר שאפשר להשתמש בו מיד.</p>
     </div>
-    <div class="out-cell">
+    <div class="out-cell reveal slide">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
       <h3>להשתמש ב-AI בעבודה היומיומית</h3>
       <p>מיילים, ניסוחים, מענה ללקוחות ומשימות חוזרות, בשבריר מהזמן.</p>
     </div>
-    <div class="out-cell">
+    <div class="out-cell reveal slide">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
       <h3>להכין מצגות וסיכומים</h3>
       <p>מרעיון גולמי למצגת או מסמך מסודר, מהר ובאיכות מקצועית.</p>
     </div>
-    <div class="out-cell">
+    <div class="out-cell reveal slide">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
       <h3>ליצור תוכן במהירות</h3>
       <p>תוכן שיווקי, פוסטים וחומרים כתובים, בלי להתחיל מדף ריק.</p>
     </div>
-    <div class="out-cell">
+    <div class="out-cell reveal slide">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
       <h3>לבנות סוכן AI בסיסי</h3>
       <p>עוזר אישי שמכיר את התחום שלכם ועובד בשבילכם, גם כשאתם עסוקים.</p>
     </div>
-    <div class="out-cta">
+    <div class="out-cta reveal slide">
       <p>זה ההבדל בין ״ניסיתי AI״ לבין ״אני עובד עם AI״.</p>
       <a data-buy href="https://mrng.to/zoeR82jDpx">אני רוצה להתחיל ללמוד ←</a>
     </div>
@@ -613,23 +655,23 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 
 <!-- ===== מהשטח ===== -->
 <section class="proof" id="proof">
-  <p class="eyebrow">מהשטח</p>
-  <h2 class="sec-title">מה אומרים מי שכבר למדו.</h2>
+  <p class="eyebrow reveal">מהשטח</p>
+  <h2 class="sec-title reveal">מה אומרים מי שכבר למדו.</h2>
   <div class="quotes">
-    <figure class="quote">
+    <figure class="quote reveal">
       <p>״הבאתי אותך לסדרת הרצאות בעסק ולתהליך הטמעה. הם התחילו להספיק כמעט פי שניים בפחות זמן, העבודה הפכה למסודרת ומהירה יותר, וההכנסות בעסק הוכפלו.״</p>
       <figcaption><cite>חיים · בעל עסק</cite></figcaption>
     </figure>
-    <figure class="quote">
+    <figure class="quote reveal">
       <p>״אחד הדברים הכי חזקים שלקחתי מהקורס זה לא רק להכיר עוד כלי, אלא להבין איך לגשת נכון ל-AI. משימות שהייתי נמרח עליהן הרבה זמן נהיו קצרות וברורות.״</p>
       <figcaption><cite>בוגר הקורס</cite></figcaption>
     </figure>
-    <figure class="quote">
+    <figure class="quote reveal">
       <p>״מורה שיודע להנגיש טכנולוגיה מורכבת בבהירות ובסבלנות.״</p>
       <figcaption><cite>תומר בצלאל · ביתר</cite></figcaption>
     </figure>
   </div>
-  <div class="orgs">
+  <div class="orgs reveal">
     <h3 class="orgs-title">הדרכות והטמעות בעסקים</h3>
     <div class="orgs-strip">
       <div class="orgs-track"><ul class="orgs-set"><li><img src="assets/public/logos/logo-mivtach.png" alt="מבטח" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="דרשו" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="כיוון" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="משטרת ישראל" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="חוצות ירושלים" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="המבשר" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="התאחדות יועצי המשכנתאות" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="דוקטור משכנתא" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="פרספקטיבה" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="אוסקר" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="משרד הנגב, הגליל והחוסן הלאומי" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="לוגו שותף" width="99" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li></ul><ul class="orgs-set" aria-hidden="true"><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li></ul></div>
@@ -641,12 +683,12 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 <!-- ===== שאלות נפוצות ===== -->
 <section class="faq" id="faq">
   <div class="faq-grid">
-    <div class="faq-side">
+    <div class="faq-side reveal">
       <p class="eyebrow">שאלות נפוצות</p>
       <h2 class="sec-title">לפני<br/><em>שמחליטים.</em></h2>
       <p>לא מצאתם את התשובה? כתבו בוואטסאפ <span class="nowrap">ל<a href="https://wa.me/972528189921">052-818-9921</a></span> ותקבלו מענה אישי.</p>
     </div>
-    <div class="faq-list">
+    <div class="faq-list reveal">
       <details open>
         <summary>כבר ניסיתי ChatGPT ולא התרשמתי. למה שיהיה אחרת?</summary>
         <p>כי רוב הניסיונות נעצרים בשאלה ותשובה. הקורס מלמד תהליך עבודה: איך נותנים הקשר, איך מכוונים, ואיך מגיעים לתוצר שאפשר להשתמש בו. זה בדיוק ההבדל בין להתרשם לבין לעבוד.</p>
@@ -681,7 +723,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 <section class="buy-sec" id="buy" aria-labelledby="buy-title">
   <div class="glow" aria-hidden="true"></div>
   <div class="buy-grid" id="purchase-details">
-    <div class="buy-left">
+    <div class="buy-left reveal">
       <h2 class="sec-title" id="buy-title">מחיר אחד.<br/><span class="ghost">גישה מלאה.</span></h2>
       <p>זו גרסת הצפייה של הקורס החי. אותם ארבעה שיעורים, אותו תוכן. מה שאין כאן: מפגשים בזמן אמת, שאלות וליווי אישי. בשביל זה המחיר נמוך יותר.</p>
       <ul class="incl">
@@ -693,7 +735,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
       </ul>
     </div>
 
-    <div class="price-card">
+    <div class="price-card reveal">
       <span class="lbl">פירוט המחיר</span>
       <table class="price-table">
         <tbody>
@@ -980,9 +1022,45 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 })();
 
 // Reveal on scroll
-function obs(){return new IntersectionObserver(function(e,o){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');o.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -50px 0px'})}
-var a=obs();document.querySelectorAll('.reveal').forEach(function(el){a.observe(el)});
-var b=obs();document.querySelectorAll('.sr').forEach(function(el){b.observe(el)});
+// בדפדפן בלי IntersectionObserver מסמנים הכל כגלוי מיד, אחרת התוכן
+// היה נשאר שקוף לצמיתות.
+(function(){
+  var items=[].slice.call(document.querySelectorAll('.reveal,.sr'));
+  if(!items.length) return;
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){ el.classList.add('on'); });
+    return;
+  }
+  var io=new IntersectionObserver(function(entries,o){
+    entries.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('on'); o.unobserve(x.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  items.forEach(function(el){ io.observe(el); });
+})();
+
+// ספירה עולה של רצועת המספרים, מופעלת כשהרצועה נכנסת למסך.
+// הערך הסופי כתוב ב-HTML, כך שבלי ג'אווהסקריפט הוא פשוט מוצג כמות שהוא.
+(function(){
+  var els=[].slice.call(document.querySelectorAll('[data-count]'));
+  if(!els.length || !('IntersectionObserver' in window)) return;
+  var still=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el){
+    var to=+el.getAttribute('data-count');
+    var from=el.hasAttribute('data-from') ? +el.getAttribute('data-from') : 0;
+    if(still || !window.requestAnimationFrame){ el.textContent=to; return; }
+    var dur=1200, t0=0;
+    el.textContent=from;
+    requestAnimationFrame(function step(t){
+      if(!t0) t0=t;
+      var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(from+(to-from)*e);
+      if(p<1) requestAnimationFrame(step);
+    });
+  }
+  var io=new IntersectionObserver(function(entries,o){
+    entries.forEach(function(x){ if(x.isIntersecting){ run(x.target); o.unobserve(x.target); } });
+  },{threshold:.5});
+  els.forEach(function(el){ io.observe(el); });
+})();
 
 // Sticky mobile buy bar: show after scrolling past the hero
 (function(){
