@@ -406,8 +406,8 @@ a:hover{color:var(--teal-ink)}
       <div class="hero-cta rise-4">
         <a class="btn btn-lg" data-buy href="https://mrng.to/zoeR82jDpx">לרכישת הקורס וגישה מיידית</a>
         <p class="hero-price">
-          <b><span class="js-price">485 ₪</span> <span>+ מע״מ</span></b>
-          <small>סה״כ <span class="js-price-total">572.30 ₪</span> כולל מע״מ</small>
+          <b><span class="js-price">385 ₪</span> <span>+ מע״מ</span></b>
+          <small>סה״כ <span class="js-price-total">454.30 ₪</span> כולל מע״מ</small>
         </p>
       </div>
     </div>
@@ -580,7 +580,7 @@ a:hover{color:var(--teal-ink)}
       </details>
       <details>
         <summary>המחיר כולל מע״מ?</summary>
-        <p>המחיר הנקוב הוא <b><span class="js-price">485 ₪</span></b> ועליו מתווסף מע״מ בשיעור <span class="js-vat-rate">18%</span>. הסכום שייגבה בפועל בכרטיס האשראי הוא <b><span class="js-price-total">572.30 ₪</span></b>. אין תוספות נוספות מעבר לכך.</p>
+        <p>המחיר הנקוב הוא <b><span class="js-price">385 ₪</span></b> ועליו מתווסף מע״מ בשיעור <span class="js-vat-rate">18%</span>. הסכום שייגבה בפועל בכרטיס האשראי הוא <b><span class="js-price-total">454.30 ₪</span></b>. אין תוספות נוספות מעבר לכך.</p>
       </details>
       <details>
         <summary>צריך לשלם על הכלים עצמם?</summary>
@@ -621,9 +621,9 @@ a:hover{color:var(--teal-ink)}
       <table class="price-table">
         <tbody>
           <tr><th scope="row">מחיר הקורס החי</th><td><s class="js-compare">950 ₪</s></td></tr>
-          <tr><th scope="row">מחיר גרסת הצפייה</th><td class="js-price">485 ₪</td></tr>
+          <tr><th scope="row">מחיר גרסת הצפייה</th><td class="js-price">385 ₪</td></tr>
           <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">87.30 ₪</td></tr>
-          <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">572.30 ₪</td></tr>
+          <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">454.30 ₪</td></tr>
         </tbody>
       </table>
 
@@ -677,28 +677,28 @@ a:hover{color:var(--teal-ink)}
 </footer>
 
 <div class="stickybar" id="stickybar">
-  <div class="sb-price"><b class="js-price">485 ₪</b><span class="sb-vat">+ מע״מ · סה״כ <span class="js-price-total">572.30 ₪</span></span></div>
+  <div class="sb-price"><b class="js-price">385 ₪</b><span class="sb-vat">+ מע״מ · סה״כ <span class="js-price-total">454.30 ₪</span></span></div>
   <a class="btn btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
 </div>
 
 <script>
 // Single conversion goal: point every buy button to the checkout URL.
-// אין יותר מחיר השקה זמני — המחיר קבוע וישיר תמיד: 485 + מע״מ.
+// אין יותר מחיר השקה זמני — המחיר קבוע וישיר תמיד: 385 + מע״מ.
 //
 // מחירים: המחיר הנקוב הוא לפני מע״מ, והמע״מ מתווסף עליו.
 // כל מקום באתר שמציג מחיר נגזר מהמשתנים כאן, כדי שלא ייווצר פער בין
 // מספרים שונים בעמוד. שינוי שיעור המע״מ נעשה בשורה אחת.
-//   .js-price       → המחיר לפני מע״מ, לדוגמה "485 ₪"
+//   .js-price       → המחיר לפני מע״מ, לדוגמה "385 ₪"
 //   .js-price-vat   → סכום המע״מ בלבד, לדוגמה "87.30 ₪"
-//   .js-price-total → הסכום הסופי לתשלום, לדוגמה "572.30 ₪"
+//   .js-price-total → הסכום הסופי לתשלום, לדוגמה "454.30 ₪"
 (function(){
   // ── מקום אחד לשינוי מחירים ─────────────────────────────
   var COMPARE_PRICE = 950;   // מחיר הקורס החי, לפני מע״מ
-  var PRICE         = 485;   // המחיר הקבוע, לפני מע״מ
+  var PRICE         = 385;   // המחיר הקבוע, לפני מע״מ
   var VAT_RATE      = 0.18;
   // קישור הסליקה חייב לגבות בדיוק את הסכום שהאתר מציג. בכל שינוי מחיר
   // כאן, יש לוודא גם את עמוד הסליקה המתאים.
-  var CHECKOUT = "https://mrng.to/zoeR82jDpx"; // 485 + מע״מ = 572.30 ₪
+  var CHECKOUT = "https://mrng.to/zoeR82jDpx"; // 385 + מע״מ = 454.30 ₪
   // ────────────────────────────────────────────────────────────────
 
   var priceEx = PRICE;

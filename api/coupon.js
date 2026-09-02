@@ -13,7 +13,7 @@ if (fs.existsSync(envPath)) {
 // חייב להישאר זהה לערכים במקור האמת ב-course.html, אחרת המחיר שהקופון
 // מחזיר יסתור את מה שהאתר מציג.
 const LAUNCH_END   = new Date('2026-08-10T23:59:59+03:00').getTime();
-const REGULAR_PRICE = 485;   // בסיס לחישוב הנחה באחוזים
+const REGULAR_PRICE = 385;   // בסיס לחישוב הנחה באחוזים
 const VAT_RATE      = 0.18;
 
 module.exports = async (req, res) => {
