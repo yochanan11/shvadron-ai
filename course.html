@@ -549,7 +549,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 
 <!-- ===== רצועת מספרים ===== -->
 <section class="stats" aria-label="הקורס במספרים">
-  <div class="stats-grid reveal panel">
+  <div class="stats-grid reveal panel" data-counters>
     <div class="stat reveal slide"><b data-count="4">4</b><span>שיעורים מוקלטים</span></div>
     <div class="stat reveal slide"><b data-count="8">8</b><span>שעות תוכן בערך</span></div>
     <div class="stat reveal slide"><b data-count="14">14</b><span>ימי ביטול בהחזר מלא</span></div>
@@ -1025,7 +1025,10 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 // בדפדפן בלי IntersectionObserver מסמנים הכל כגלוי מיד, אחרת התוכן
 // היה נשאר שקוף לצמיתות.
 (function(){
-  var items=[].slice.call(document.querySelectorAll('.reveal,.sr'));
+  var items=[].slice.call(document.querySelectorAll('.reveal,.sr')).filter(function(el){
+    // רצועת המספרים נחשפת יחד עם הספירה, מהצופה הייעודי שאחרי זה
+    return !el.hasAttribute('data-counters') && !(el.closest && el.closest('[data-counters]'));
+  });
   if(!items.length) return;
   if(!('IntersectionObserver' in window)){
     items.forEach(function(el){ el.classList.add('on'); });
@@ -1037,29 +1040,46 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   items.forEach(function(el){ io.observe(el); });
 })();
 
-// ספירה עולה של רצועת המספרים, מופעלת כשהרצועה נכנסת למסך.
-// הערך הסופי כתוב ב-HTML, כך שבלי ג'אווהסקריפט הוא פשוט מוצג כמות שהוא.
+// ספירה עולה של רצועת המספרים.
+// הרצועה יושבת ממש בגבול הקיפול ברוב המסכים, ולכן טריגר רגיל היה יורה
+// כבר בטעינת הדף והספירה הייתה נגמרת לפני שמסתכלים לשם. rootMargin שלילי
+// מוריד את קו ההפעלה לתוך המסך, כך שהיא מתחילה רק כשהרצועה באמת מול העיניים.
+// החשיפה של הרצועה והספירה יוצאות מאותו טריגר, כדי שיהיו מסונכרנות.
+// הערך הסופי כתוב ב-HTML ונדרס רק כשהספירה יוצאת לדרך, כך שגולש שלא
+// גולל לשם רואה את המספר הנכון.
 (function(){
-  var els=[].slice.call(document.querySelectorAll('[data-count]'));
-  if(!els.length || !('IntersectionObserver' in window)) return;
+  var block=document.querySelector('[data-counters]');
+  if(!block || !('IntersectionObserver' in window)) return;
+  var nums=[].slice.call(block.querySelectorAll('[data-count]'));
   var still=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function run(el){
+
+  function count(el,delay){
     var to=+el.getAttribute('data-count');
     var from=el.hasAttribute('data-from') ? +el.getAttribute('data-from') : 0;
     if(still || !window.requestAnimationFrame){ el.textContent=to; return; }
-    var dur=1200, t0=0;
     el.textContent=from;
-    requestAnimationFrame(function step(t){
-      if(!t0) t0=t;
-      var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
-      el.textContent=Math.round(from+(to-from)*e);
-      if(p<1) requestAnimationFrame(step);
-    });
+    setTimeout(function(){
+      var dur=1500, t0=0;
+      requestAnimationFrame(function step(t){
+        if(!t0) t0=t;
+        var p=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-p,3);
+        el.textContent=Math.round(from+(to-from)*e);
+        if(p<1) requestAnimationFrame(step);
+      });
+    },delay);
   }
+
+  function start(){
+    block.classList.add('on');
+    [].forEach.call(block.querySelectorAll('.reveal'),function(el){ el.classList.add('on'); });
+    // אותה מדרגה כמו החשיפה של התאים: 120ms לקבוצה ועוד 70ms לכל תא
+    nums.forEach(function(el,i){ count(el, still ? 0 : 120 + i*70); });
+  }
+
   var io=new IntersectionObserver(function(entries,o){
-    entries.forEach(function(x){ if(x.isIntersecting){ run(x.target); o.unobserve(x.target); } });
-  },{threshold:.5});
-  els.forEach(function(el){ io.observe(el); });
+    entries.forEach(function(x){ if(x.isIntersecting){ start(); o.unobserve(x.target); } });
+  },{threshold:.6,rootMargin:'0px 0px -18% 0px'});
+  io.observe(block);
 })();
 
 // Sticky mobile buy bar: show after scrolling past the hero
