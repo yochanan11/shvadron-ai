@@ -15,7 +15,8 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME } from '../assets/data/courses.mjs';
+import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME,
+         ORGS, ORGS_TITLE } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -184,6 +185,31 @@ ${p.items.map(i => `      <li>${esc(i)}</li>`).join('\n')}
 </div>`;
 }
 
+/* ─── רצועת הלוגואים ───────────────────────────────────────
+   המסילה מורכבת משתי קבוצות זהות, וההנפשה מזיזה אותה ב-50%,
+   כך שהמעבר בין סוף הקבוצה הראשונה לתחילת השנייה לא נראה.
+   כל קבוצה מכילה את הרשימה פעמיים, כדי שגם מסך רחב יתמלא.   */
+function orgs() {
+  const img = (o, hidden) =>
+    `<li><img src="assets/public/logos/${o.file}" ` +
+    (hidden ? 'alt="" aria-hidden="true" ' : `alt="${esc(o.alt)}" `) +
+    `width="${o.w}" height="${o.h}" style="height:${o.h}px" loading="lazy"/></li>`;
+
+  const set = hidden => ORGS.map(o => img(o, hidden)).join('') +
+                        ORGS.map(o => img(o, true)).join('');
+
+  return `<div class="orgs sr">
+  <h3 class="orgs-title">${esc(ORGS_TITLE)}</h3>
+  <div class="orgs-strip">
+    <div class="orgs-track">
+      <ul class="orgs-set">${set(false)}</ul>
+      <ul class="orgs-set" aria-hidden="true">${set(true)}</ul>
+    </div>
+  </div>
+  <a class="orgs-cta" href="https://wa.me/972528189921" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>רוצים גם בעסק שלכם?<span class="sr-only"> (נפתח בוואטסאפ)</span></a>
+</div>`;
+}
+
 /* ─── טבלת פרטי המסלול (.dtl הקיימת) ─── */
 function details(t) {
   const rows = [
@@ -288,6 +314,7 @@ const BLOCKS = {
     fit:     () => TRACKS.map(fitCard).join('\n\n'),
     compare: compareTable,
     details: detailsHub,
+    orgs:    orgs,
   },
   'course-beginners.html': {
     syllabus: beginnersSyllabus,

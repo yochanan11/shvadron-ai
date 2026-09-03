@@ -208,3 +208,27 @@ export const COMPARE = [
 ];
 
 export const TRACKS = [BEGINNERS, ADVANCED];
+
+/* ============================================================
+   רצועת הלוגואים של הארגונים
+   ------------------------------------------------------------
+   זהה לזו שבדף הדיגיטלי. קבצי הלוגו לבנים על רקע שקוף, ולכן
+   הרצועה יושבת על פאנל כהה. הגובה נקבע לכל לוגו בנפרד כדי
+   שכולם ייקראו באותו משקל ויזואלי, ולא לפי רוחב אחיד.
+   ============================================================ */
+export const ORGS_TITLE = 'הדרכות והטמעות בעסקים';
+
+export const ORGS = [
+  { file: 'logo-mivtach.png',          alt: 'מבטח',                              w: 80,  h: 52 },
+  { file: 'logo-dirshu.png',           alt: 'דרשו',                              w: 107, h: 46 },
+  { file: 'logo-kivun.png',            alt: 'כיוון',                             w: 119, h: 40 },
+  { file: 'logo-mishtara.png',         alt: 'משטרת ישראל',                       w: 55,  h: 50 },
+  { file: 'logo-chutzot.png',          alt: 'חוצות ירושלים',                     w: 88,  h: 44 },
+  { file: 'logo-hamevaser.png',        alt: 'המבשר',                             w: 91,  h: 44 },
+  { file: 'logo-hitachdut.png',        alt: 'התאחדות יועצי המשכנתאות',           w: 130, h: 40 },
+  { file: 'logo-doctor-mashkanta.png', alt: 'דוקטור משכנתא',                     w: 59,  h: 52 },
+  { file: 'logo-perspectiva.png',      alt: 'פרספקטיבה',                         w: 57,  h: 54 },
+  { file: 'logo-oscar.png',            alt: 'אוסקר',                             w: 84,  h: 34 },
+  { file: 'logo-negev-galil.png',      alt: 'משרד הנגב, הגליל והחוסן הלאומי',    w: 127, h: 40 },
+  { file: 'logo-signature.png',        alt: 'לוגו שותף',                         w: 99,  h: 44 },
+];
