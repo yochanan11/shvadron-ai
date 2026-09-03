@@ -15,7 +15,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE } from '../assets/data/courses.mjs';
+import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -50,9 +50,9 @@ function sessionDate(startISO, i) {
 const dayMonth  = d => `${d.getUTCDate()}/${d.getUTCMonth() + 1}`;
 const longDate  = d => `${d.getUTCDate()} ב${MONTHS[d.getUTCMonth()]}`;
 
-/* "יום שני, 12 באוקטובר" */
+/* "יום שני, א׳ בחשוון · 12 באוקטובר" */
 const startLabel = t => t.start
-  ? `יום ${t.dayName}, ${longDate(sessionDate(t.start, 0))}`
+  ? `יום ${t.dayName}, ${t.hebrew ? t.hebrew + ' · ' : ''}${longDate(sessionDate(t.start, 0))}`
   : 'יעודכן בהמשך';
 
 /* מחיר בשקלים עם מפריד אלפים, כמו בכל מקום אחר בדף */
@@ -133,7 +133,7 @@ function beginnersSyllabus() {
   <b>${esc(s.n)}</b>
   <div>
     <span class="when">${esc(BEGINNERS.start
-      ? `מפגש ${i + 1} · יום ${BEGINNERS.dayName}, ${dayMonth(sessionDate(BEGINNERS.start, i))}`
+      ? `מפגש ${i + 1} · יום ${BEGINNERS.dayName}, ${s.hebrew ? s.hebrew + ' · ' : ''}${dayMonth(sessionDate(BEGINNERS.start, i))}`
       : s.when)}</span>
     <h3>${esc(s.title)}</h3>
   </div>
@@ -189,8 +189,8 @@ function details(t) {
   const rows = [
     ['מתחילים',   startLabel(t)],
     ['תדירות',    t.cadence],
+    ['שעות',      t.time || TIME],
     ['מפגשים',    `${t.sessions} מפגשים`],
-    ['אורך מפגש', 'שעתיים'],
     ['סה״כ',      `${t.hours} שעות`],
     ['איפה',      'Zoom, גם באינטרנט מסונן'],
   ];
@@ -210,7 +210,7 @@ function detailsHub() {
   const rows = [
     ['מתחילים',   `${startLabel(b)} · ${b.sessions} מפגשים`],
     ['מתקדמים',   `${startLabel(a)} · ${a.sessions} מפגשים`],
-    ['תדירות',    'פעם בשבוע, שעתיים כל מפגש'],
+    ['תדירות',    `פעם בשבוע, ${TIME}`],
     ['איפה',      'Zoom, גם באינטרנט מסונן'],
     ['הקלטות',    'כלולות ונשארות'],
     ['מחיר',      `${ils(b.priceEx)} / ${ils(a.priceEx)} + מע״מ`],
@@ -236,7 +236,7 @@ function jsonLd(t) {
       '@type': 'CourseInstance',
       courseMode: 'online',
       courseWorkload: `PT${t.hours}H`,
-      ...(t.start ? { startDate: t.start } : {}),
+      ...(t.start ? { startDate: `${t.start}T${(t.time || TIME).split('-')[0]}:00${t.tzOffset || ''}` } : {}),
     },
     image: 'https://www.shwadron-ai.com/assets/public/yochanan-card.jpg',
   };
