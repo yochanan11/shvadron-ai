@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME,
-         ORGS, ORGS_TITLE } from '../assets/data/courses.mjs';
+         ORGS, ORGS_TITLE, MARQUEE } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -185,6 +185,22 @@ ${p.items.map(i => `      <li>${esc(i)}</li>`).join('\n')}
 </div>`;
 }
 
+/* ─── הרצועה הנעה ───────────────────────────────────────────
+   שתי קבוצות זהות, וההנפשה מזיזה את המסילה ב-50%, כך שהמעבר
+   ביניהן אינו נראה. כל קבוצה מכילה את הרשימה שלוש פעמים, כדי
+   שתהיה רחבה גם ממסך של 2560 ולא ייווצר פס ירוק ריק בסוף.   */
+function marquee(key) {
+  const items = MARQUEE[key];
+  const set = Array.from({ length: 3 }, () =>
+    items.map(t => `<span>${esc(t)}</span><i>/</i>`).join('')).join('');
+  return `<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div>${set}</div>
+    <div>${set}</div>
+  </div>
+</div>`;
+}
+
 /* ─── רצועת הלוגואים ───────────────────────────────────────
    המסילה מורכבת משתי קבוצות זהות, וההנפשה מזיזה אותה ב-50%,
    כך שהמעבר בין סוף הקבוצה הראשונה לתחילת השנייה לא נראה.
@@ -315,6 +331,7 @@ const BLOCKS = {
     compare: compareTable,
     details: detailsHub,
     orgs:    orgs,
+    marquee: () => marquee('hub'),
   },
   'course-beginners.html': {
     syllabus: beginnersSyllabus,
@@ -322,6 +339,7 @@ const BLOCKS = {
     config:   () => config(BEGINNERS),
     ld:       () => jsonLd(BEGINNERS),
     details:  () => details(BEGINNERS),
+    marquee:  () => marquee('beginners'),
   },
   'course-advanced.html': {
     syllabus: advancedBlocks,
@@ -329,6 +347,7 @@ const BLOCKS = {
     config:   () => config(ADVANCED),
     ld:       () => jsonLd(ADVANCED),
     details:  () => details(ADVANCED),
+    marquee:  () => marquee('advanced'),
   },
 };
 

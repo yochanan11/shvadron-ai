@@ -96,7 +96,9 @@ a:hover{color:var(--teal-ink)}
 .hero-price b{font-size:1.06rem;font-weight:700}
 .hero-price span{font-weight:400;color:var(--on-dark-3)}
 .hero-price small{font-size:.88rem;color:var(--on-dark-3)}
-.hero-portrait{position:relative;height:clamp(240px,52vh,548px);aspect-ratio:3/4;width:auto;margin-bottom:clamp(38px,5vh,56px)}
+.hero-portrait{position:relative;height:clamp(240px,52vh,548px);aspect-ratio:3/4;width:auto;
+  /* ממורכז לגובה ההירו, אחרת נוצר חלל גדול מעליו */
+  align-self:center;margin-block:clamp(12px,2vh,24px)}
 
 .hero-portrait .plate{position:absolute;inset:0;background:var(--deep-2);border-radius:3px}
 .hero-portrait img{position:absolute;inset:0;z-index:1;width:100%;height:100%;
@@ -111,7 +113,7 @@ a:hover{color:var(--teal-ink)}
 
 /* רצועה נעה */
 .marquee{background:var(--teal);color:var(--ink);overflow:hidden;padding:20px 0}
-.marquee-track{display:flex;width:200%;animation:mq 26s linear infinite;
+.marquee-track{display:flex;width:max-content;animation:mq 26s linear infinite;
   font-family:'Heebo',sans-serif;font-weight:800;font-size:1.06rem;letter-spacing:.02em;white-space:nowrap}
 .marquee-track>div{display:flex;align-items:center;gap:28px;padding-left:28px}
 .marquee-track i{font-style:normal;opacity:.45}
@@ -197,7 +199,9 @@ a:hover{color:var(--teal-ink)}
 .faq-grid{display:grid;grid-template-columns:.85fr 1.3fr;gap:64px;align-items:start}
 .faq-side{display:flex;flex-direction:column;gap:18px}
 .faq-side .sec-title{font-size:4.5rem}
-.faq-side>p{font-size:1.13rem;line-height:1.65;color:var(--muted);max-width:430px}
+.faq-side>p{font-size:1.13rem;line-height:1.65;color:var(--muted);max-width:430px;
+  /* מונע מילה או שתיים שנשארות לבדן בשורה האחרונה */
+  text-wrap:balance}
 .faq-side a{color:var(--blue);text-decoration:underline}
 .faq details{border-top:1px solid var(--line)}
 .faq details:last-child{border-bottom:1px solid var(--line)}
