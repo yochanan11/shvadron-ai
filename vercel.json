@@ -1,16 +1,54 @@
 {
   "version": 2,
   "functions": {
-    "api/chat.js": { "memory": 256, "maxDuration": 15 },
-    "api/coupon.js": { "memory": 256, "maxDuration": 10 },
-    "api/admin-coupons.js": { "memory": 256, "maxDuration": 10 }
+    "api/chat.js": {
+      "memory": 256,
+      "maxDuration": 15
+    },
+    "api/coupon.js": {
+      "memory": 256,
+      "maxDuration": 10
+    },
+    "api/admin-coupons.js": {
+      "memory": 256,
+      "maxDuration": 10
+    }
   },
+  "headers": [
+    {
+      "source": "/assets/(css|js)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
   "rewrites": [
-    { "source": "/mortgage-advisors", "destination": "https://mashcn.vercel.app" },
-    { "source": "/mortgage-advisors/(.*)", "destination": "https://mashcn.vercel.app/$1" },
-    { "source": "/api/chat", "destination": "/api/chat" },
-    { "source": "/api/coupon", "destination": "/api/coupon" },
-    { "source": "/api/admin-coupons", "destination": "/api/admin-coupons" },
-    { "source": "/(.*)", "destination": "/$1" }
+    {
+      "source": "/mortgage-advisors",
+      "destination": "https://mashcn.vercel.app"
+    },
+    {
+      "source": "/mortgage-advisors/(.*)",
+      "destination": "https://mashcn.vercel.app/$1"
+    },
+    {
+      "source": "/api/chat",
+      "destination": "/api/chat"
+    },
+    {
+      "source": "/api/coupon",
+      "destination": "/api/coupon"
+    },
+    {
+      "source": "/api/admin-coupons",
+      "destination": "/api/admin-coupons"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
   ]
 }

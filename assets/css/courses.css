@@ -613,21 +613,26 @@ a:hover{color:var(--teal-ink)}
   .path-head p{font-size:clamp(1rem,2vh,1.19rem)}
 
   /* כרטיסי המסלולים */
-  .tracks-head{margin-bottom:clamp(20px,3.6vh,56px)}
-  .tracks-head p{font-size:clamp(1rem,2vh,1.19rem)}
-  .track{padding:clamp(22px,3.4vh,48px) clamp(24px,2.8vw,44px);gap:clamp(10px,1.7vh,20px)}
-  .track h3{font-size:clamp(1.5rem,4.2vh,2.5rem)}
-  .track .lead{font-size:clamp(.94rem,1.9vh,1.13rem)}
-  .track ul{gap:clamp(7px,1.2vh,12px)}
-  .track ul li{font-size:clamp(.94rem,1.8vh,1.06rem)}
-  .track .who{padding:clamp(12px,1.9vh,18px) clamp(14px,1.4vw,20px);font-size:clamp(.88rem,1.7vh,1rem)}
-  .track .foot{padding-top:clamp(14px,2.4vh,26px);gap:clamp(8px,1.3vh,14px)}
+  .tracks-head{margin-bottom:clamp(10px,1.8vh,56px)}
+  .tracks-head p{font-size:clamp(.94rem,1.8vh,1.19rem)}
+  .track{padding:clamp(14px,2.4vh,48px) clamp(24px,2.8vw,44px);gap:clamp(7px,1.2vh,20px)}
+  .track h3{font-size:clamp(1.38rem,3.6vh,2.5rem)}
+  .track .lead{font-size:clamp(.88rem,1.7vh,1.13rem)}
+  .track ul{gap:clamp(5px,.9vh,12px)}
+  .track ul li{font-size:clamp(.88rem,1.7vh,1.06rem)}
+  .track .who{padding:clamp(8px,1.4vh,18px) clamp(14px,1.4vw,20px);font-size:clamp(.82rem,1.6vh,1rem)}
+  .track .foot{padding-top:clamp(8px,1.4vh,26px);gap:clamp(6px,1vh,14px)}
 
-  /* טבלת ההשוואה */
-  .compare>p.lead{margin-bottom:clamp(20px,3.4vh,48px);font-size:clamp(1rem,2vh,1.19rem)}
-  .cmp-tbl{font-size:clamp(.88rem,1.7vh,1.06rem)}
-  .cmp-tbl th,.cmp-tbl td{padding:clamp(9px,1.6vh,20px) clamp(14px,1.5vw,22px)}
-  .cmp-tbl thead th{font-size:clamp(1rem,2.4vh,1.31rem)}
+  /* טבלת ההשוואה: חמש עשרה שורות ועוד כותרת, ולכן הכיווץ כאן
+     אגרסיבי יותר משאר המקטעים, כדי שכולה תיכנס למסך אחד. */
+  .compare{padding-top:clamp(12px,2.2vh,64px);padding-bottom:clamp(12px,2.2vh,64px)}
+  .compare .sec-title{font-size:clamp(1.9rem,4.4vh,3.75rem);margin-bottom:clamp(2px,.6vh,16px)}
+  .compare .eyebrow{font-size:clamp(.82rem,1.5vh,.94rem)}
+  .compare>p.lead{margin-bottom:clamp(10px,1.7vh,32px);font-size:clamp(.88rem,1.6vh,1.06rem)}
+  .cmp-tbl{font-size:clamp(.82rem,1.5vh,1.06rem)}
+  .cmp-tbl th,.cmp-tbl td{padding:clamp(4px,.85vh,20px) clamp(12px,1.2vw,22px)}
+  .cmp-tbl thead th{font-size:clamp(.94rem,1.9vh,1.31rem)}
+  .cmp-tbl thead th span{font-size:clamp(.75rem,1.3vh,.94rem)}
 
   /* המפגשים */
   .lessons-head{margin-bottom:clamp(20px,3.6vh,56px)}
