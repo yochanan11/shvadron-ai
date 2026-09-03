@@ -556,3 +556,10 @@ a:hover{color:var(--teal-ink)}
 /* שני CTA שווי משקל בהירו, אחד מתחת לשני */
 .hero-cta.two{flex-direction:column;align-items:stretch;max-width:420px;gap:12px}
 .hero-cta.two .btn{width:100%}
+
+/* שני מחירים בשורה אחת מתחת ל-CTA של דף הבחירה */
+.hero-price.two-price{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:6px;
+  font-size:1rem;color:var(--on-dark-2);padding-top:4px}
+.hero-price.two-price b{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.13rem;color:#fff}
+.hero-price.two-price i{font-style:normal;color:var(--on-dark-3)}
+.hero-price.two-price small{width:100%;font-size:.88rem;color:var(--on-dark-3)}

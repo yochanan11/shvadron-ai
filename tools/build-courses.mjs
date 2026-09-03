@@ -35,6 +35,14 @@ const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
 
 const ind = (n, s) => s.split('\n').map(l => (l ? ' '.repeat(n) + l : l)).join('\n');
 
+/* מחיר בשקלים עם מפריד אלפים, כמו בכל מקום אחר בדף */
+const ils = n => n.toLocaleString('he-IL') + ' ₪';
+
+/* השורה הקטנה מתחת לכפתור בכרטיס המסלול */
+const priceNote = t => t.priceEx
+  ? `${t.meta[0]} · ${ils(t.priceEx)} + מע״מ`
+  : `${t.meta[0]} · המחיר יעודכן`;
+
 /* ─── שרשרת שלבים: רעיון ← אפיון ← בנייה ─────────────────────
    בנויה על אותם ויזואלים של .pills span, עם חץ מפריד.        */
 function flow(steps, label) {
@@ -58,7 +66,7 @@ ${t.highlights.map(h => `    <li>${CHECK}${esc(h)}</li>`).join('\n')}
   <p class="who">${esc(t.promise)}</p>
   <div class="foot">
     <a class="btn btn-lg" href="${t.file}" data-track-pick="${t.id}">לפרטים על מסלול ${esc(t.short)}</a>
-    <span class="note">${esc(t.meta[0])} · המחיר יעודכן</span>
+    <span class="note">${esc(priceNote(t))}</span>
   </div>
 </article>`;
 }
@@ -154,6 +162,65 @@ ${p.items.map(i => `      <li>${esc(i)}</li>`).join('\n')}
 </div>`;
 }
 
+/* ─── נתונים מובנים לגוגל, כולל המחיר ─── */
+function jsonLd(t) {
+  const url = `https://www.shwadron-ai.com/${t.file}`;
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: `${t.name} — ${t.sessions === 3 ? 'שלושה' : 'תשעה'} מפגשי זום`,
+    description: t.ldDescription,
+    provider: { '@type': 'Person', name: 'יוחנן שבדרון', url: 'https://www.shwadron-ai.com/' },
+    inLanguage: 'he',
+    educationalLevel: t.level,
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'online',
+      courseWorkload: `PT${t.hours}H`,
+    },
+    image: 'https://www.shwadron-ai.com/assets/public/yochanan-card.jpg',
+  };
+  if (t.priceEx != null) {
+    const total = Math.round(t.priceEx * (1 + t.vatRate) * 100) / 100;
+    data.offers = {
+      '@type': 'Offer',
+      price: total.toFixed(2),
+      priceCurrency: 'ILS',
+      availability: 'https://schema.org/InStock',
+      url,
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: String(t.priceEx),
+        priceCurrency: 'ILS',
+        valueAddedTaxIncluded: false,
+        description: `${t.priceEx} ₪ לפני מע״מ. סה״כ לתשלום ${total.toFixed(2)} ₪ ` +
+                     `כולל מע״מ ${t.vatRate * 100}%.`,
+      },
+    };
+  }
+  return '<script type="application/ld+json" id="course-ld">\n' +
+         JSON.stringify(data, null, 2) + '\n</' + 'script>';
+}
+
+/* ─── הגדרת הדף: מכאן courses.js לוקח את המחיר ─── */
+function config(t) {
+  const price = t.priceEx == null ? 'null' : String(t.priceEx);
+  const note  = t.priceEx == null
+    ? '// המחיר טרם נקבע. לקביעתו: priceEx ב-assets/data/courses.mjs.'
+    : '// המחיר מגיע מ-priceEx ב-assets/data/courses.mjs. לשינוי, לערוך שם';
+  return `<script>
+  ${note}
+  // ולהריץ: node tools/build-courses.mjs
+  window.SHW_COURSE = {
+    id:         '${t.id}',
+    name:       '${t.name}',
+    price:      ${price},
+    vatRate:    ${t.vatRate},
+    couponPage: '${t.id}'
+  };
+</` + `script>`;
+}
+
 /* ─── ההחלפה בפועל ─── */
 const BLOCKS = {
   'index.html': {
@@ -164,10 +231,14 @@ const BLOCKS = {
   'course-beginners.html': {
     syllabus: beginnersSyllabus,
     learn:    learnPills,
+    config:   () => config(BEGINNERS),
+    ld:       () => jsonLd(BEGINNERS),
   },
   'course-advanced.html': {
     syllabus: advancedBlocks,
     project:  projectBox,
+    config:   () => config(ADVANCED),
+    ld:       () => jsonLd(ADVANCED),
   },
 };
 

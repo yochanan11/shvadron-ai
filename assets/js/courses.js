@@ -22,7 +22,10 @@ var C = window.SHW_COURSE || {};
 var VAT = typeof C.vatRate === 'number' ? C.vatRate : 0.18;
 var hasPrice = typeof C.price === 'number' && C.price > 0;
 
-function ils(n){ return (n % 1 === 0 ? String(n) : n.toFixed(2)) + ' ₪'; }
+function ils(n){
+  // 3750 מוצג כ-3,750. שברי אגורות נשמרים כפי שהם.
+  return (n % 1 === 0 ? n.toLocaleString('he-IL') : n.toFixed(2)) + ' ₪';
+}
 function each(sel, fn){ document.querySelectorAll(sel).forEach(fn); }
 
 /* ─── מחירים: מקור אמת אחד ─────────────────────────────────
@@ -69,12 +72,16 @@ function render(priceEx){
   } catch(e){}
 }
 
+// אלמנטי המחיר נשלחים מהשרת עם hidden, כדי שדפדפן ללא JS יראה את
+// גרסת "המחיר יעודכן" ולא מחיר ריק. כאן מחליטים מי מהשניים מוצג.
 if (hasPrice) {
   render(C.price);
-  each('[data-no-price]', function(el){ el.hidden = true; });
+  each('[data-has-price]', function(el){ el.hidden = false; });
+  each('[data-no-price]',  function(el){ el.hidden = true; });
 } else {
   // כל עוד המחיר לא נקבע, אין מה להציג ואין מה להנחות בקופון.
   each('[data-has-price]', function(el){ el.hidden = true; });
+  each('[data-no-price]',  function(el){ el.hidden = false; });
 }
 
 /* ─── מדידת המרות: איזה כפתור הרשמה נלחץ ─────────────────── */

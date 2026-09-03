@@ -33,19 +33,43 @@
 -->
 <script src="assets/js/consent.js"></script>
 
-<script type="application/ld+json" id="course-ld">
-{
-  "@context": "https://schema.org",
-  "@type": "Course",
-  "name": "AI למתקדמים — תשעה מפגשי זום",
-  "description": "תשעה מפגשי זום חיים בשלושה תחומים: סוכני AI ו-Projects, אוטומציות עם Make, ובניית תוכנות עם Claude Code ו-Codex ללא ידע בתכנות, עם פרויקט אישי בסיום.",
-  "provider": {"@type":"Person","name":"יוחנן שבדרון","url":"https://www.shwadron-ai.com/"},
-  "inLanguage": "he",
-  "educationalLevel": "Intermediate",
-  "hasCourseInstance": {"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT18H"},
-  "image": "https://www.shwadron-ai.com/assets/public/yochanan-card.jpg"
-}
-</script>
+<!-- BUILD:ld -->
+  <script type="application/ld+json" id="course-ld">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "AI למתקדמים — תשעה מפגשי זום",
+    "description": "תשעה מפגשי זום חיים בשלושה תחומים: סוכני AI ו-Projects, אוטומציות עם Make, ובניית תוכנות עם Claude Code ו-Codex ללא ידע בתכנות, עם פרויקט אישי בסיום.",
+    "provider": {
+      "@type": "Person",
+      "name": "יוחנן שבדרון",
+      "url": "https://www.shwadron-ai.com/"
+    },
+    "inLanguage": "he",
+    "educationalLevel": "Intermediate",
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "courseWorkload": "PT18H"
+    },
+    "image": "https://www.shwadron-ai.com/assets/public/yochanan-card.jpg",
+    "offers": {
+      "@type": "Offer",
+      "price": "4425.00",
+      "priceCurrency": "ILS",
+      "availability": "https://schema.org/InStock",
+      "url": "https://www.shwadron-ai.com/course-advanced.html",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": "3750",
+        "priceCurrency": "ILS",
+        "valueAddedTaxIncluded": false,
+        "description": "3750 ₪ לפני מע״מ. סה״כ לתשלום 4425.00 ₪ כולל מע״מ 18%."
+      }
+    }
+  }
+  </script>
+  <!-- /BUILD:ld -->
 </head>
 <body>
 <script>document.documentElement.className += ' js';</script>
@@ -357,8 +381,8 @@
         <p>כל המפגשים מוקלטים ונשארים איתך. אפשר להשלים בקצב שלך, ולשאול בקבוצת הליווי בוואטסאפ.</p>
       </details>
       <details>
-        <summary>איך נרשמים ומה המחיר?</summary>
-        <p>ההרשמה נעשית בוואטסאפ ישירות מול יוחנן. המחיר ומועדי המחזור הקרוב יפורסמו כאן, ובינתיים אפשר לכתוב הודעה ולשריין מקום ברשימה.</p>
+        <summary>מה המחיר ואיך נרשמים?</summary>
+        <p>3,750 ₪ + מע״מ, סה״כ <b>4,425 ₪</b>. תשלום אחד, ללא דמי טיפול. ההרשמה נעשית בוואטסאפ ישירות מול יוחנן, ומועדי המחזור הקרוב יפורסמו כאן.</p>
       </details>
     </div>
   </div>
@@ -451,18 +475,19 @@
   <a class="btn btn-sm" data-join href="#buy">להרשמה</a>
 </div>
 
-<script>
-  // המחיר טרם נקבע. ברגע שהוא ייקבע, מחליפים כאן את null במספר
-  // (המחיר לפני מע״מ) וכל הדף מתעדכן: הכותרות, טבלת המחיר, הרצועה
-  // התחתונה, תיבת הקופון והנתונים המובנים לגוגל.
-  window.SHW_COURSE = {
-    id:         'course-advanced',
-    name:       'AI למתקדמים',
-    price:      null,
-    vatRate:    0.18,
-    couponPage: 'course-advanced'
-  };
-</script>
+<!-- BUILD:config -->
+  <script>
+    // המחיר מגיע מ-priceEx ב-assets/data/courses.mjs. לשינוי, לערוך שם
+    // ולהריץ: node tools/build-courses.mjs
+    window.SHW_COURSE = {
+      id:         'course-advanced',
+      name:       'AI למתקדמים',
+      price:      3750,
+      vatRate:    0.18,
+      couponPage: 'course-advanced'
+    };
+  </script>
+  <!-- /BUILD:config -->
 <script src="assets/js/courses.js"></script>
 </body>
 </html>
