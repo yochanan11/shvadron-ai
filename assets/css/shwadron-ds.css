@@ -68,3 +68,8 @@ body{font-family:var(--font-sans);color:var(--color-ink);line-height:var(--lh-no
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* מספר טלפון וקישור וואטסאפ לא נשברים לשתי שורות.
+   הכלל היה עד כה מוטמע ב-course.html בלבד; כאן הוא חל על כל
+   דפי האתר, כי כולם טוענים את הגיליון הזה. */
+a[href*="wa.me"],a[href^="tel:"],.nowrap{white-space:nowrap}
