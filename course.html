@@ -22,7 +22,12 @@
 <link rel="stylesheet" href="assets/css/site-legal.css"/>
 <link rel="stylesheet" href="assets/css/forms-a11y.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
+<link rel="stylesheet" href="assets/css/course-bot.css"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap"/>
+
+<!-- מקור האמת היחיד למחירי הקורס. נטען גם בשרת ע"י /api/course-bot,
+     כדי שהמחיר בעמוד, המחיר שהבוט אומר והמחיר שהקופון מחשב יהיו זהים. -->
+<script src="assets/js/course-pricing.js"></script>
 
 <!-- ═══════════ ANALYTICS ═══════════
      המזהים של GA4 ו-Clarity מוגדרים בתוך assets/js/consent.js, וזה המקום
@@ -816,13 +821,16 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 //   .js-price-vat   → סכום המע״מ בלבד, לדוגמה "87.30 ₪"
 //   .js-price-total → הסכום הסופי לתשלום, לדוגמה "454.30 ₪"
 (function(){
-  // ── מקום אחד לשינוי מחירים ─────────────────────────────
-  var COMPARE_PRICE = 2500;   // מחיר הקורס החי, לפני מע״מ
-  var PRICE         = 385;   // המחיר הקבוע, לפני מע״מ
-  var VAT_RATE      = 0.18;
+  // ── מקור המחירים ─────────────────────────────
+  // המספרים עצמם יושבים ב-assets/js/course-pricing.js, שהוא המקום
+  // היחיד לשנות בו מחיר. הערכים כאן הם גיבוי למקרה שהקובץ לא נטען.
+  var P = window.SHW_COURSE_PRICING || {};
+  var COMPARE_PRICE = P.comparePrice || 2500;   // מחיר הקורס החי, לפני מע״מ
+  var PRICE         = P.priceEx      || 385;    // המחיר הקבוע, לפני מע״מ
+  var VAT_RATE      = P.vatRate      || 0.18;
   // קישור הסליקה חייב לגבות בדיוק את הסכום שהאתר מציג. בכל שינוי מחיר
   // כאן, יש לוודא גם את עמוד הסליקה המתאים.
-  var CHECKOUT = "https://mrng.to/zoeR82jDpx"; // 385 + מע״מ = 454.30 ₪
+  var CHECKOUT = P.checkoutUrl || "https://mrng.to/zoeR82jDpx"; // 385 + מע״מ = 454.30 ₪
   // ────────────────────────────────────────────────────────────────
 
   var priceEx = PRICE;
@@ -1139,5 +1147,9 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   prev&&prev.addEventListener('click',function(){ go(current()-1); });
 })();
 </script>
+
+<!-- "יוחנן הדיגיטלי" — בוט השאלות של העמוד. נטען אחרון ובאופן עצמאי:
+     אם השירות בשרת אינו זמין, שאר העמוד ממשיך לעבוד כרגיל. -->
+<script src="assets/js/course-bot.js" defer></script>
 </body>
 </html>

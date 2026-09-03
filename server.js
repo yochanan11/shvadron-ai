@@ -88,6 +88,10 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// בוט עמוד הקורס. אותו handler שרץ ב-Vercel, כדי שבדיקה מקומית
+// תבדוק את הקוד האמיתי ולא עותק שלו.
+app.post('/api/course-bot', (req, res) => require('./api/course-bot')(req, res));
+
 // Local dev
 if (require.main === module) {
   const PORT = process.env.PORT || 3000;

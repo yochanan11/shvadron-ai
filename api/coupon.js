@@ -10,11 +10,15 @@ if (fs.existsSync(envPath)) {
   });
 }
 
-// חייב להישאר זהה לערכים במקור האמת ב-course.html, אחרת המחיר שהקופון
-// מחזיר יסתור את מה שהאתר מציג.
-const LAUNCH_END   = new Date('2026-08-10T23:59:59+03:00').getTime();
-const REGULAR_PRICE = 385;   // בסיס לחישוב הנחה באחוזים
-const VAT_RATE      = 0.18;
+// המחירים נשאבים ממקור האמת המשותף, כדי שהמחיר שהקופון מחזיר לא
+// יסתור את מה שהאתר מציג. אם הקובץ לא נטען משום סיבה, נשארים
+// הערכים שהיו כאן קודם, כדי שהקופונים לא ייפלו.
+let pricing = {};
+try { pricing = require('../assets/js/course-pricing.js'); } catch (e) { pricing = {}; }
+
+const LAUNCH_END    = new Date('2026-08-10T23:59:59+03:00').getTime();
+const REGULAR_PRICE = pricing.priceEx || 385;   // בסיס לחישוב הנחה באחוזים
+const VAT_RATE      = pricing.vatRate || 0.18;
 
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

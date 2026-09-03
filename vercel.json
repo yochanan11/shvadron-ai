@@ -2,6 +2,7 @@
   "version": 2,
   "functions": {
     "api/chat.js": { "memory": 256, "maxDuration": 15 },
+    "api/course-bot.js": { "memory": 256, "maxDuration": 30 },
     "api/coupon.js": { "memory": 256, "maxDuration": 10 },
     "api/admin-coupons.js": { "memory": 256, "maxDuration": 10 }
   },
@@ -9,6 +10,7 @@
     { "source": "/mortgage-advisors", "destination": "https://mashcn.vercel.app" },
     { "source": "/mortgage-advisors/(.*)", "destination": "https://mashcn.vercel.app/$1" },
     { "source": "/api/chat", "destination": "/api/chat" },
+    { "source": "/api/course-bot", "destination": "/api/course-bot" },
     { "source": "/api/coupon", "destination": "/api/coupon" },
     { "source": "/api/admin-coupons", "destination": "/api/admin-coupons" },
     { "source": "/(.*)", "destination": "/$1" }

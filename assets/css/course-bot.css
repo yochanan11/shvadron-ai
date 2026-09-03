@@ -1,0 +1,407 @@
+/* ============================================================
+   SHWADRON.AI — "יוחנן הדיגיטלי", בוט השאלות של עמוד הקורס
+   ------------------------------------------------------------
+   נשען על משתני העיצוב של העמוד (--ink, --blue, --teal ...).
+   מוגדרים כאן fallback-ים ליד כל משתנה, כדי שהרכיב ייראה נכון גם
+   אם ייטען בעמוד שלא הגדיר את הטוקנים.
+
+   מיקום: פינה שמאלית תחתונה. במובייל הרכיב מורם מעל רצועת
+   הרכישה הקבועה, כדי לא להסתיר את כפתור התשלום.
+   ============================================================ */
+
+.yd-root{
+  --yd-ink:var(--ink,#0a1a33);
+  --yd-night:var(--night,#0f2141);
+  --yd-blue:var(--blue,#0063ed);
+  --yd-teal:var(--teal,#2edebf);
+  --yd-paper:var(--paper,#fff);
+  --yd-ice:var(--ice,#eff1f4);
+  --yd-line:var(--line,#dde1e7);
+  --yd-muted:var(--muted,#4c5765);
+  --yd-face:url("../public/images/brand/yochanan-character.webp");
+
+  position:fixed;
+  left:24px;
+  bottom:24px;
+  z-index:120;
+  display:flex;
+  flex-direction:column;
+  /* הכיוון בתוך הרכיב הוא rtl, ולכן flex-start הוא הצד הימני.
+     flex-end מצמיד את הכפתור, הבועה והחלון לשוליים השמאליים. */
+  align-items:flex-end;
+  gap:12px;
+  direction:rtl;
+  font-family:'Assistant',-apple-system,'Segoe UI',sans-serif;
+}
+
+/* כל עוד לא ניתנה הכרעה בהודעת העוגיות, הבאנר תופס את תחתית המסך.
+   אין טעם להציג מתחתיו רכיב שלא רואים. */
+html[data-consent="undecided"] .yd-root{display:none}
+
+/* ── חיתוך הדמותג לאייקון עגול ──
+   התמונה המקורית היא 1024x1536 עם רקע שקוף. במקום קובץ נוסף,
+   החיתוך נעשה כאן: ריבוע של 760px סביב הראש והכתפיים. היחס
+   נשמר בשני הצירים, ולכן התמונה לא נמתחת. */
+.yd-face{
+  background-image:var(--yd-face);
+  background-repeat:no-repeat;
+  background-size:134.7% 202.1%;
+  background-position:59.5% 24.5%;
+  background-color:#e9edf3;
+}
+
+/* ── הכפתור הסגור ─────────────────────────────────────────── */
+.yd-launcher{
+  position:relative;
+  width:64px;
+  height:64px;
+  padding:0;
+  border:2px solid var(--yd-teal);
+  border-radius:50%;
+  background:var(--yd-paper);
+  cursor:pointer;
+  overflow:visible;
+  box-shadow:0 14px 30px -12px rgba(10,26,51,.55);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.yd-launcher:hover{transform:translateY(-2px);box-shadow:0 18px 34px -12px rgba(10,26,51,.6)}
+.yd-launcher .yd-face{
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+}
+/* חיווי זמינות */
+.yd-launcher::after{
+  content:"";
+  position:absolute;
+  bottom:2px;
+  left:2px;
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--yd-teal);
+  border:2px solid var(--yd-paper);
+}
+
+/* ── בועת ההזמנה ──────────────────────────────────────────── */
+.yd-invite{
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  max-width:250px;
+  padding:12px 14px;
+  background:var(--yd-paper);
+  color:var(--yd-ink);
+  border:1px solid var(--yd-line);
+  border-radius:4px;
+  font-size:.94rem;
+  line-height:1.45;
+  box-shadow:0 14px 30px -16px rgba(10,26,51,.5);
+  animation:yd-pop .4s cubic-bezier(.2,.7,.2,1) both;
+}
+.yd-invite::after{
+  content:"";
+  position:absolute;
+  bottom:-7px;
+  left:22px;
+  width:12px;
+  height:12px;
+  background:var(--yd-paper);
+  border-right:1px solid var(--yd-line);
+  border-bottom:1px solid var(--yd-line);
+  transform:rotate(45deg);
+}
+.yd-invite[hidden]{display:none}
+.yd-invite-open{
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  text-align:right;
+  cursor:pointer;
+}
+.yd-invite-close{
+  flex:none;
+  width:22px;
+  height:22px;
+  margin:-2px -4px 0 0;
+  padding:0;
+  border:0;
+  border-radius:3px;
+  background:transparent;
+  color:var(--yd-muted);
+  font-size:1.05rem;
+  line-height:1;
+  cursor:pointer;
+}
+.yd-invite-close:hover{background:var(--yd-ice);color:var(--yd-ink)}
+
+@keyframes yd-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ── חלון השיחה ───────────────────────────────────────────── */
+.yd-panel{
+  display:flex;
+  flex-direction:column;
+  width:min(380px,calc(100vw - 32px));
+  height:min(620px,calc(100vh - 150px));
+  background:var(--yd-paper);
+  border:1px solid var(--yd-line);
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:0 30px 60px -24px rgba(10,26,51,.55);
+  animation:yd-pop .22s cubic-bezier(.2,.7,.2,1) both;
+}
+.yd-panel[hidden]{display:none}
+
+.yd-head{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:13px 16px;
+  background:var(--yd-ink);
+  color:#fff;
+  border-bottom:3px solid var(--yd-teal);
+}
+.yd-head .yd-face{
+  flex:none;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:2px solid var(--yd-teal);
+}
+.yd-head-txt{flex:1 1 auto;min-width:0}
+.yd-head h2{
+  margin:0;
+  font-family:'Heebo',-apple-system,'Segoe UI',sans-serif;
+  font-size:1.06rem;
+  font-weight:800;
+  line-height:1.2;
+  color:#fff;
+}
+.yd-head p{
+  margin:2px 0 0;
+  font-size:.8rem;
+  line-height:1.3;
+  color:var(--on-dark-3,#8fa2bf);
+}
+.yd-head-btn{
+  flex:none;
+  width:32px;
+  height:32px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:0;
+  border-radius:3px;
+  background:transparent;
+  color:#c2cddd;
+  cursor:pointer;
+}
+.yd-head-btn:hover{background:rgba(255,255,255,.12);color:#fff}
+.yd-head-btn svg{width:18px;height:18px}
+
+/* ── אזור ההודעות ─────────────────────────────────────────── */
+.yd-log{
+  flex:1 1 auto;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:var(--yd-ice);
+}
+.yd-msg{
+  max-width:88%;
+  padding:10px 13px;
+  border-radius:4px;
+  font-size:.95rem;
+  line-height:1.55;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.yd-msg-bot{
+  align-self:flex-start;
+  background:var(--yd-paper);
+  color:var(--yd-ink);
+  border:1px solid var(--yd-line);
+}
+.yd-msg-me{
+  align-self:flex-end;
+  background:var(--yd-blue);
+  color:#fff;
+}
+.yd-msg-err{
+  align-self:flex-start;
+  background:#fff4f4;
+  color:#8c2b2b;
+  border:1px solid #f0d2d2;
+}
+
+/* חיווי הקלדה */
+.yd-typing{
+  align-self:flex-start;
+  display:flex;
+  gap:4px;
+  padding:12px 14px;
+  background:var(--yd-paper);
+  border:1px solid var(--yd-line);
+  border-radius:4px;
+}
+.yd-typing i{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#9aa4b3;
+  animation:yd-blink 1.1s infinite ease-in-out;
+}
+.yd-typing i:nth-child(2){animation-delay:.16s}
+.yd-typing i:nth-child(3){animation-delay:.32s}
+@keyframes yd-blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+
+/* ── כפתורי פעולה בתוך שיחה ───────────────────────────────── */
+.yd-act{
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 18px;
+  border:0;
+  border-radius:3px;
+  background:var(--yd-teal);
+  color:var(--yd-ink);
+  font-family:'Heebo',-apple-system,'Segoe UI',sans-serif;
+  font-size:.94rem;
+  font-weight:800;
+  cursor:pointer;
+  text-decoration:none;
+}
+.yd-act:hover{background:#25c7ab;color:var(--yd-ink)}
+.yd-act-wa{background:var(--yd-ink);color:#fff}
+.yd-act-wa:hover{background:var(--yd-night);color:#fff}
+.yd-act svg{width:17px;height:17px}
+
+/* ── שאלות מהירות ─────────────────────────────────────────── */
+.yd-quick{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  padding:12px 16px;
+  border-top:1px solid var(--yd-line);
+  background:var(--yd-paper);
+}
+.yd-quick[hidden]{display:none}
+.yd-quick button{
+  padding:7px 12px;
+  border:1px solid var(--yd-line);
+  border-radius:3px;
+  background:var(--yd-paper);
+  color:var(--yd-ink);
+  font-family:inherit;
+  font-size:.83rem;
+  line-height:1.3;
+  cursor:pointer;
+  transition:border-color .15s ease, background .15s ease;
+}
+.yd-quick button:hover{border-color:var(--yd-teal);background:#f4fdfb}
+
+/* ── שורת הכתיבה ──────────────────────────────────────────── */
+.yd-form{
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  padding:12px 16px;
+  border-top:1px solid var(--yd-line);
+  background:var(--yd-paper);
+}
+.yd-input{
+  flex:1 1 auto;
+  min-height:42px;
+  max-height:110px;
+  padding:10px 12px;
+  border:1px solid var(--yd-line);
+  border-radius:3px;
+  background:var(--yd-paper);
+  color:var(--yd-ink);
+  font-family:inherit;
+  font-size:.95rem;
+  line-height:1.4;
+  resize:none;
+}
+.yd-input::placeholder{color:#9aa4b3}
+.yd-input:focus{border-color:var(--yd-blue);outline:none}
+.yd-input:focus-visible{outline:3px solid var(--yd-teal);outline-offset:2px}
+.yd-send{
+  flex:none;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  padding:0;
+  border:0;
+  border-radius:3px;
+  background:var(--yd-teal);
+  color:var(--yd-ink);
+  cursor:pointer;
+}
+.yd-send:hover:not(:disabled){background:#25c7ab}
+.yd-send:disabled{opacity:.45;cursor:default}
+.yd-send svg{width:19px;height:19px}
+
+.yd-note{
+  margin:0;
+  padding:0 16px 12px;
+  background:var(--yd-paper);
+  color:var(--yd-muted);
+  font-size:.72rem;
+  line-height:1.4;
+  text-align:center;
+}
+
+/* ── מובייל ───────────────────────────────────────────────── */
+@media(max-width:720px){
+  .yd-root{
+    left:14px;
+    right:auto;
+    /* מעל רצועת הרכישה הקבועה, ומעל שולי המסך במכשירים עם מגרעת */
+    bottom:calc(96px + env(safe-area-inset-bottom,0px));
+  }
+  .yd-invite{max-width:min(250px,calc(100vw - 40px))}
+
+  /* בזמן שהחלון פתוח הוא תופס מסך מלא, והכפתור והבועה מוסתרים */
+  .yd-root.is-full{left:0;right:0;bottom:0;top:0;gap:0}
+  .yd-root.is-full .yd-launcher,
+  .yd-root.is-full .yd-invite{display:none}
+  .yd-root.is-full .yd-panel{
+    width:100%;
+    height:100%;
+    border:0;
+    border-radius:0;
+    animation:none;
+  }
+  .yd-root.is-full .yd-form{
+    padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));
+  }
+  .yd-msg{max-width:92%}
+}
+
+/* מונע גלילה של הרקע כשהחלון פתוח במסך מלא */
+body.yd-locked{overflow:hidden}
+
+/* ── מיקוד ונגישות ────────────────────────────────────────── */
+.yd-root :focus-visible{outline:3px solid var(--yd-teal);outline-offset:2px;border-radius:3px}
+.yd-head :focus-visible{outline-color:#fff}
+.yd-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ── כיבוד העדפת תנועה מופחתת ─────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  .yd-invite,.yd-panel{animation:none}
+  .yd-launcher{transition:none}
+  .yd-launcher:hover{transform:none}
+  .yd-typing i{animation:none;opacity:.55}
+}
