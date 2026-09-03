@@ -563,3 +563,6 @@ a:hover{color:var(--teal-ink)}
 .hero-price.two-price b{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.13rem;color:#fff}
 .hero-price.two-price i{font-style:normal;color:var(--on-dark-3)}
 .hero-price.two-price small{width:100%;font-size:.88rem;color:var(--on-dark-3)}
+
+/* הערה מתחת לטבלת פרטי המסלול */
+.dtl-note{font-size:.88rem;color:var(--faint);margin-top:2px}

@@ -15,7 +15,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { BEGINNERS, ADVANCED, COMPARE, TRACKS } from '../assets/data/courses.mjs';
+import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -34,6 +34,26 @@ const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke
   '<path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>';
 
 const ind = (n, s) => s.split('\n').map(l => (l ? ' '.repeat(n) + l : l)).join('\n');
+
+/* ─── מועדים ───────────────────────────────────────────────
+   מועד המפגש הראשון נשמר בקובץ הנתונים, והמפגשים הבאים נגזרים
+   ממנו לפי התדירות. שינוי תאריך הפתיחה מזיז את כל הסדרה.      */
+const MONTHS = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני',
+                'יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+
+/* התאריך של מפגש מספר i, בשבועות מהפתיחה */
+function sessionDate(startISO, i) {
+  const d = new Date(startISO + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() + i * 7);
+  return d;
+}
+const dayMonth  = d => `${d.getUTCDate()}/${d.getUTCMonth() + 1}`;
+const longDate  = d => `${d.getUTCDate()} ב${MONTHS[d.getUTCMonth()]}`;
+
+/* "יום שני, 12 באוקטובר" */
+const startLabel = t => t.start
+  ? `יום ${t.dayName}, ${longDate(sessionDate(t.start, 0))}`
+  : 'יעודכן בהמשך';
 
 /* מחיר בשקלים עם מפריד אלפים, כמו בכל מקום אחר בדף */
 const ils = n => n.toLocaleString('he-IL') + ' ₪';
@@ -109,10 +129,12 @@ ${COMPARE.map(r => `    <tr>
 
 /* ─── סילבוס מסלול המתחילים (.lesson הקיים) ─── */
 function beginnersSyllabus() {
-  return BEGINNERS.syllabus.map(s => `<div class="lesson sr">
+  return BEGINNERS.syllabus.map((s, i) => `<div class="lesson sr">
   <b>${esc(s.n)}</b>
   <div>
-    <span class="when">${esc(s.when)}</span>
+    <span class="when">${esc(BEGINNERS.start
+      ? `מפגש ${i + 1} · יום ${BEGINNERS.dayName}, ${dayMonth(sessionDate(BEGINNERS.start, i))}`
+      : s.when)}</span>
     <h3>${esc(s.title)}</h3>
   </div>
   <div class="lesson-body">
@@ -162,6 +184,43 @@ ${p.items.map(i => `      <li>${esc(i)}</li>`).join('\n')}
 </div>`;
 }
 
+/* ─── טבלת פרטי המסלול (.dtl הקיימת) ─── */
+function details(t) {
+  const rows = [
+    ['מתחילים',   startLabel(t)],
+    ['תדירות',    t.cadence],
+    ['מפגשים',    `${t.sessions} מפגשים`],
+    ['אורך מפגש', 'שעתיים'],
+    ['סה״כ',      `${t.hours} שעות`],
+    ['איפה',      'Zoom, גם באינטרנט מסונן'],
+  ];
+  const price = t.priceEx == null
+    ? '<b class="price">תעודכן בהמשך</b>'
+    : `<b class="price">${ils(t.priceEx)} + מע״מ</b>`;
+  return `<div class="dtl">
+${rows.map(([k, v]) => `  <div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('\n')}
+  <div><span>עלות</span>${price}</div>
+</div>
+<p class="dtl-note">${esc(SCHEDULE_NOTE)}</p>`;
+}
+
+/* פרטי שני המסלולים בדף הבחירה */
+function detailsHub() {
+  const [b, a] = TRACKS;
+  const rows = [
+    ['מתחילים',   `${startLabel(b)} · ${b.sessions} מפגשים`],
+    ['מתקדמים',   `${startLabel(a)} · ${a.sessions} מפגשים`],
+    ['תדירות',    'פעם בשבוע, שעתיים כל מפגש'],
+    ['איפה',      'Zoom, גם באינטרנט מסונן'],
+    ['הקלטות',    'כלולות ונשארות'],
+    ['מחיר',      `${ils(b.priceEx)} / ${ils(a.priceEx)} + מע״מ`],
+  ];
+  return `<div class="dtl">
+${rows.map(([k, v]) => `  <div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('\n')}
+</div>
+<p class="dtl-note">${esc(SCHEDULE_NOTE)}</p>`;
+}
+
 /* ─── נתונים מובנים לגוגל, כולל המחיר ─── */
 function jsonLd(t) {
   const url = `https://www.shwadron-ai.com/${t.file}`;
@@ -177,6 +236,7 @@ function jsonLd(t) {
       '@type': 'CourseInstance',
       courseMode: 'online',
       courseWorkload: `PT${t.hours}H`,
+      ...(t.start ? { startDate: t.start } : {}),
     },
     image: 'https://www.shwadron-ai.com/assets/public/yochanan-card.jpg',
   };
@@ -227,18 +287,21 @@ const BLOCKS = {
     tracks:  () => TRACKS.map(trackCard).join('\n\n'),
     fit:     () => TRACKS.map(fitCard).join('\n\n'),
     compare: compareTable,
+    details: detailsHub,
   },
   'course-beginners.html': {
     syllabus: beginnersSyllabus,
     learn:    learnPills,
     config:   () => config(BEGINNERS),
     ld:       () => jsonLd(BEGINNERS),
+    details:  () => details(BEGINNERS),
   },
   'course-advanced.html': {
     syllabus: advancedBlocks,
     project:  projectBox,
     config:   () => config(ADVANCED),
     ld:       () => jsonLd(ADVANCED),
+    details:  () => details(ADVANCED),
   },
 };
 
