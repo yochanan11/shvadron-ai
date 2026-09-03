@@ -591,12 +591,13 @@ a:hover{color:var(--teal-ink)}
    (טבלת ההשוואה) עדיין גדל לפי התוכן במקום להיחתך.
    זהה בהתנהגותו למקטעים של הדף הדיגיטלי.                    */
 @media(min-width:1001px){
-  .path,.tracks,.compare,.method,.shift,.lessons,.project,.outcomes,.proof,.faq,.buy-sec{
+  .path,.tracks,.compare,.method,.shift,.lessons,.project,.outcomes,.proof,.buy-sec{
     min-height:100vh;display:flex;flex-direction:column;justify-content:center;
     padding-top:clamp(28px,4.5vh,64px);padding-bottom:clamp(28px,4.5vh,64px)}
 
   .sec-title{font-size:clamp(2.2rem,5.6vh,4.88rem)}
-  .faq-side .sec-title{font-size:clamp(2rem,5vh,4.5rem)}
+  /* מקטע השאלות אינו נדחס למסך אחד, ולכן הכותרת שלו לא תלויה בגובהו */
+  .faq .sec-title{font-size:4.5rem}
 
   /* השיטה */
   .method-intro{gap:clamp(28px,4vw,64px)}
@@ -664,14 +665,6 @@ a:hover{color:var(--teal-ink)}
   .quote p{font-size:clamp(.94rem,2vh,1.19rem)}
   .orgs{margin-top:clamp(24px,4.4vh,56px);padding:clamp(16px,2.6vh,30px) 0;gap:clamp(10px,1.6vh,18px)}
   .orgs-title{font-size:clamp(1.13rem,2.6vh,1.5rem)}
-
-  /* שאלות נפוצות */
-  .faq summary{padding:clamp(16px,3vh,28px) 0;font-size:clamp(1.06rem,2.6vh,1.56rem)}
-  .faq details>p{font-size:clamp(.94rem,1.9vh,1.13rem);padding-bottom:clamp(18px,2.8vh,28px)}
-  .faq-side{gap:clamp(14px,2.2vh,22px)}
-  .faq-side>p{font-size:clamp(1rem,2vh,1.13rem)}
-  .dtl div{padding:clamp(12px,2.1vh,18px) clamp(14px,1.4vw,20px)}
-  .dtl span,.dtl b{font-size:clamp(.94rem,1.8vh,1rem)}
 
   /* הרשמה */
   .buy-grid{gap:clamp(32px,4.6vw,72px)}
