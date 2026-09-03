@@ -591,13 +591,15 @@ a:hover{color:var(--teal-ink)}
    (טבלת ההשוואה) עדיין גדל לפי התוכן במקום להיחתך.
    זהה בהתנהגותו למקטעים של הדף הדיגיטלי.                    */
 @media(min-width:1001px){
-  .path,.tracks,.compare,.method,.shift,.lessons,.project,.outcomes,.proof,.buy-sec{
+  .path,.tracks,.compare,.method,.shift,.lessons,.project,.outcomes,.proof,.faq,.buy-sec{
     min-height:100vh;display:flex;flex-direction:column;justify-content:center;
     padding-top:clamp(28px,4.5vh,64px);padding-bottom:clamp(28px,4.5vh,64px)}
 
   .sec-title{font-size:clamp(2.2rem,5.6vh,4.88rem)}
-  /* מקטע השאלות אינו נדחס למסך אחד, ולכן הכותרת שלו לא תלויה בגובהו */
-  .faq .sec-title{font-size:4.5rem}
+  .faq .sec-title{font-size:clamp(2.4rem,5.2vh,4.5rem)}
+  /* רק הריפוד מתכווץ במסכים נמוכים, לא גודל הגופן, כדי שהשאלות
+     יישארו קריאות גם כשהמקטע נכנס למסך אחד. */
+  .faq summary{padding:clamp(20px,3vh,28px) 0}
 
   /* השיטה */
   .method-intro{gap:clamp(28px,4vw,64px)}
@@ -699,3 +701,8 @@ a:hover{color:var(--teal-ink)}
   .btn-lg{padding-top:10px;padding-bottom:10px}
   .buy-left{gap:12px}
 }
+
+/* פאנל פרטי המסלול, כשהוא עומד כמקטע בפני עצמו.
+   הטבלה לא נמתחת לכל רוחב העמודה, כדי שהתווית והערך לא יתרחקו. */
+.faq-panel{display:flex;flex-direction:column;gap:14px}
+.faq-panel .dtl{max-width:620px}
