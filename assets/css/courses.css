@@ -710,3 +710,19 @@ a:hover{color:var(--teal-ink)}
    הטבלה לא נמתחת לכל רוחב העמודה, כדי שהתווית והערך לא יתרחקו. */
 .faq-panel{display:flex;flex-direction:column;gap:14px}
 .faq-panel .dtl{max-width:620px}
+
+/* ── חלוקת צבע בין מקטע למקטע ──────────────────────────────
+   המקטעים הבהירים מתחלפים בין לבן לאפור, כך ששני מקטעים
+   סמוכים לעולם אינם באותו גוון והעין רואה איפה אחד נגמר.
+   בכל מקטע הכרטיסים מקבלים את הגוון ההפוך לרקע, כדי שלא
+   ייעלמו בתוכו. הצבעים הם אותם שני טוקנים שכבר בשימוש,
+   --paper ו---ice; לא נוסף גוון חדש.                        */
+.sec-paper{background:var(--paper)}
+.sec-paper .m-card,.sec-paper .track,.sec-paper .cmp-col,.sec-paper .out-cell,
+.sec-paper .quote,.sec-paper .project-box,.sec-paper .dtl,
+.sec-paper .pills span,.sec-paper .flow span,.sec-paper .pd-coupon{background:var(--ice)}
+
+.sec-ice{background:var(--ice)}
+.sec-ice .m-card,.sec-ice .track,.sec-ice .cmp-col,.sec-ice .out-cell,
+.sec-ice .quote,.sec-ice .project-box,.sec-ice .dtl,
+.sec-ice .pills span,.sec-ice .flow span{background:var(--paper)}
