@@ -280,7 +280,7 @@ a:hover{color:var(--teal-ink)}
   .hero-portrait{height:460px}
   .method-cards,.out-grid,.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lesson{grid-template-columns:80px 1fr;gap:16px 24px}
-  .lesson p{grid-column:1/-1}
+  .lesson p,.lesson-body{grid-column:1/-1}
   .lesson svg{display:none}
   .lessons-head{flex-direction:column;align-items:flex-start;gap:18px}
 }
@@ -490,3 +490,69 @@ a:hover{color:var(--teal-ink)}
   .project-box .num{font-size:3rem}
   .syl-block{margin-top:36px}
 }
+
+/* ============================================================
+   המשך: רכיבי שני המסלולים
+   הכל נגזר מהטוקנים והמידות שכבר בקובץ. אין צבע, פונט או מרווח
+   חדשים, רק הרכבה אחרת של אותם חלקים.
+   ============================================================ */
+
+/* ─── מסלול ההתקדמות: מתחילים ← מתקדמים ─── */
+.path{padding:96px var(--pad);background:var(--paper)}
+.path-head{max-width:720px;margin-bottom:48px}
+.path-head .sec-title{margin-bottom:18px}
+.path-head p{font-size:1.19rem;line-height:1.65;color:var(--muted)}
+.path-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch}
+/* השלב עצמו הוא בדיוק .m-card, רק על רקע לבן */
+.path .m-card{background:var(--ice);border-top-color:var(--blue)}
+.path .m-card.step-2{border-top-color:var(--teal)}
+.path .m-card .lvl{align-self:flex-start}
+.path-link{display:flex;align-items:center;justify-content:center;padding:0 28px;color:var(--faint)}
+.path-link svg{width:34px;height:34px}
+
+/* ─── שרשרת שלבים: הקלטה ← תמלול ← סיכום ─── */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:20px}
+.flow span{padding:9px 18px;border-radius:3px;background:var(--paper);
+  border:1px solid var(--line);font-size:1rem;line-height:1.4;color:var(--muted)}
+.flow i{font-style:normal;font-size:1.13rem;color:var(--faint)}
+/* על הרקע הכהה של מקטע המפגשים */
+.lessons .flow span{background:transparent;border-color:var(--line-dark);color:var(--on-dark-2)}
+.lessons .flow i{color:#40598a}
+
+/* ─── גוף שורת השיעור: פסקה, ורשימה או שרשרת מתחתיה ─── */
+.lesson-body{display:flex;flex-direction:column}
+.lesson-list{list-style:none;display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px}
+.lesson-list li{position:relative;padding-right:16px;font-size:1.06rem;color:var(--on-dark)}
+.lesson-list li::before{content:"";position:absolute;right:0;top:.62em;
+  width:6px;height:6px;border-radius:50%;background:var(--teal)}
+
+/* כותרת קטנה מעל רשימה, בכרטיסי הבחירה ובפרויקט */
+.fit-lead{font-weight:700;color:var(--text)}
+.cmp-col .fit-lead{color:var(--muted)}
+.cmp-col .btn{margin-top:auto;align-self:flex-start}
+
+@media(max-width:1000px){
+  /* גוף השיעור עובר לשורה משלו, כמו שהפסקה עשתה קודם */
+  .lesson-body{grid-column:1/-1}
+  .path-grid{grid-template-columns:1fr}
+  .path-link{padding:22px 0;transform:rotate(-90deg)}
+}
+@media(max-width:720px){
+  .path{padding-top:48px;padding-bottom:48px}
+  .path-head{margin-bottom:32px}
+  .flow{gap:8px;margin-top:16px}
+  .flow span{padding:7px 14px;font-size:.94rem}
+  .lesson-list{gap:6px 16px}
+  .lesson-list li{font-size:.94rem}
+}
+
+/* ─── כפתור משני על רקע כהה ───────────────────────────────
+   .btn-dark נבלע ברקע הכהה של ההירו, ולכן הגרסה המשנית שם היא
+   מסגרת. אותן מידות, אותו גופן, אותם צבעים מהפלטה.          */
+.btn-line{background:transparent;color:#fff;box-shadow:none;
+  border:1.5px solid var(--line-dark);}
+.btn-line:hover{background:transparent;border-color:var(--teal);color:var(--teal)}
+
+/* שני CTA שווי משקל בהירו, אחד מתחת לשני */
+.hero-cta.two{flex-direction:column;align-items:stretch;max-width:420px;gap:12px}
+.hero-cta.two .btn{width:100%}

@@ -4,11 +4,11 @@
    כל דף מגדיר window.SHW_COURSE לפני הטעינה של הקובץ הזה:
 
      window.SHW_COURSE = {
-       id:         'course-basic',   // מזהה למדידה
-       name:       'קורס הבסיס',
+       id:         'course-beginners',  // מזהה למדידה
+       name:       'AI למתחילים',
        price:      null,             // המחיר לפני מע״מ. null = טרם נקבע
        vatRate:    0.18,
-       couponPage: 'course-basic'    // המפתח שנבדק מול /api/coupon
+       couponPage: 'course-beginners'  // המפתח שנבדק מול /api/coupon
      };
 
    כדי לפרסם מחיר: להחליף את price במספר. זה המקום היחיד שצריך
