@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME,
-         ORGS, ORGS_TITLE, MARQUEE } from '../assets/data/courses.mjs';
+         ORGS, ORGS_TITLE, MARQUEE, WEBINAR } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -185,6 +185,36 @@ ${p.items.map(i => `      <li>${esc(i)}</li>`).join('\n')}
 </div>`;
 }
 
+/* ─── הוובינר ───────────────────────────────────────────────
+   הנגן נטען רק כשמגיעים אליו (loading="lazy"), כדי שלא יאט את
+   טעינת הדף. הכותרת מגיעה מקובץ הנתונים ומכילה <em>, ולכן היא
+   היחידה שאינה עוברת בריחת תווים.                             */
+function videoSrc() {
+  return WEBINAR.provider === 'vimeo'
+    ? `https://player.vimeo.com/video/${WEBINAR.id}?dnt=1`
+    : `https://drive.google.com/file/d/${WEBINAR.id}/preview`;
+}
+
+function webinar(ctaHref) {
+  const href = ctaHref || WEBINAR.cta.href;
+  return `<section class="webinar" id="webinar">
+  <div class="webinar-grid">
+    <div class="webinar-copy sr">
+      <p class="eyebrow teal">${esc(WEBINAR.eyebrow)}</p>
+      <h2 class="sec-title">${WEBINAR.title}</h2>
+      <p class="lead">${esc(WEBINAR.lead)}</p>
+      <p class="note">${esc(WEBINAR.note)}</p>
+      <a class="btn btn-lg" href="${href}" data-join>${esc(WEBINAR.cta.text)}</a>
+    </div>
+    <div class="video-frame sr sr-2">
+      <iframe src="${videoSrc()}" title="וובינר AI עם יוחנן שבדרון"
+              loading="lazy" allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+  </div>
+</section>`;
+}
+
 /* ─── הרצועה הנעה ───────────────────────────────────────────
    שתי קבוצות זהות, וההנפשה מזיזה את המסילה ב-50%, כך שהמעבר
    ביניהן אינו נראה. כל קבוצה מכילה את הרשימה שלוש פעמים, כדי
@@ -332,6 +362,7 @@ const BLOCKS = {
     details: detailsHub,
     orgs:    orgs,
     marquee: () => marquee('hub'),
+    webinar: () => webinar('#tracks'),
   },
   'course-beginners.html': {
     syllabus: beginnersSyllabus,
@@ -340,6 +371,7 @@ const BLOCKS = {
     ld:       () => jsonLd(BEGINNERS),
     details:  () => details(BEGINNERS),
     marquee:  () => marquee('beginners'),
+    webinar:  () => webinar('#buy'),
   },
   'course-advanced.html': {
     syllabus: advancedBlocks,
@@ -348,6 +380,7 @@ const BLOCKS = {
     ld:       () => jsonLd(ADVANCED),
     details:  () => details(ADVANCED),
     marquee:  () => marquee('advanced'),
+    webinar:  () => webinar('#buy'),
   },
 };
 

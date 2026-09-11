@@ -726,3 +726,39 @@ a:hover{color:var(--teal-ink)}
 .sec-ice .m-card,.sec-ice .track,.sec-ice .cmp-col,.sec-ice .out-cell,
 .sec-ice .quote,.sec-ice .project-box,.sec-ice .dtl,
 .sec-ice .pills span,.sec-ice .flow span{background:var(--paper)}
+
+/* ── הוובינר ───────────────────────────────────────────────
+   מקטע כהה, כמו מקטע המפגשים. הרקע הכהה גם מפריד אותו משני
+   שכניו הבהירים בלי לשבור את מחזור הלבן והאפור.              */
+.webinar{background:var(--night);color:#fff;padding:104px var(--pad)}
+.webinar-grid{display:grid;grid-template-columns:.95fr 1.25fr;gap:64px;align-items:center}
+.webinar-grid>*{min-width:0}
+.webinar-copy{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.webinar-copy .lead{font-size:1.19rem;line-height:1.65;color:var(--on-dark-2)}
+.webinar-copy .note{font-size:1.06rem;line-height:1.65;color:var(--on-dark);
+  border-right:3px solid var(--teal);padding-right:18px}
+.webinar-copy .btn{margin-top:8px}
+
+/* מסגרת הנגן: יחס 16:9 קבוע, כדי שלא יקפוץ בזמן הטעינה */
+.video-frame{position:relative;aspect-ratio:16/9;width:100%;border-radius:3px;
+  overflow:hidden;background:var(--deep-2);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+@media(max-width:1000px){
+  .webinar-grid{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:720px){
+  .webinar{padding-top:48px;padding-bottom:48px}
+  .webinar-copy{gap:14px}
+  .webinar-copy .lead{font-size:1.06rem}
+  .webinar-copy .note{font-size:.94rem;padding-right:14px}
+  .webinar-copy .btn{width:100%}
+}
+@media(min-width:1001px){
+  .webinar{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding-top:clamp(28px,4.5vh,64px);padding-bottom:clamp(28px,4.5vh,64px)}
+  .webinar-grid{gap:clamp(32px,4.4vw,64px)}
+  .webinar-copy{gap:clamp(10px,1.8vh,20px)}
+  .webinar-copy .lead{font-size:clamp(1rem,2vh,1.19rem)}
+  .webinar-copy .note{font-size:clamp(.94rem,1.8vh,1.06rem)}
+}
