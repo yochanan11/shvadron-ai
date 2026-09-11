@@ -259,8 +259,8 @@ export const MARQUEE = {
    את סקריפט הבנייה. אין מה לשנות ב-HTML.
    ============================================================ */
 export const WEBINAR = {
-  provider: 'drive',
-  id:       '1ToQpyEzkPQOdKSA_5LuufirdvP9w4r93',
+  provider: 'vimeo',
+  id:       '1225883626',   // https://vimeo.com/1225883626
   eyebrow:  'וובינר מלא, פתוח לצפייה',
   title:    'רוצים לראות אותי <em>מלמד?</em>',
   lead:     'זה וובינר שלם שהעברתי, במלואו, בלי תשלום ובלי הרשמה. ' +
