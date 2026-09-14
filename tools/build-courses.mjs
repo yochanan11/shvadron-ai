@@ -195,18 +195,26 @@ function videoSrc() {
     : `https://drive.google.com/file/d/${WEBINAR.id}/preview`;
 }
 
-function webinar(ctaHref) {
-  const href = ctaHref || WEBINAR.cta.href;
+/* opts.reveal — שם מחלקת החשיפה בגלילה. דפי המסלולים משתמשים
+   ב-sr, והדף הדיגיטלי ב-reveal, ולכן היא פרמטר ולא קבוע.
+   opts.attr — תגית המדידה. בדף הדיגיטלי היא נשארת ריקה, כי שם
+   סקריפט הדף דורס את ה-href של כל [data-buy] בקישור לסליקה. */
+function webinar(opts = {}) {
+  const href   = opts.ctaHref || WEBINAR.cta.href;
+  const text   = opts.ctaText || WEBINAR.cta.text;
+  const reveal = opts.reveal  || 'sr';
+  const second = reveal === 'sr' ? 'sr sr-2' : reveal;
+  const attr   = opts.attr === undefined ? ' data-join' : opts.attr;
   return `<section class="webinar" id="webinar">
   <div class="webinar-grid">
-    <div class="webinar-copy sr">
+    <div class="webinar-copy ${reveal}">
       <p class="eyebrow teal">${esc(WEBINAR.eyebrow)}</p>
       <h2 class="sec-title">${WEBINAR.title}</h2>
       <p class="lead">${esc(WEBINAR.lead)}</p>
       <p class="note">${esc(WEBINAR.note)}</p>
-      <a class="btn btn-lg" href="${href}" data-join>${esc(WEBINAR.cta.text)}</a>
+      <a class="btn btn-lg" href="${href}"${attr}>${esc(text)}</a>
     </div>
-    <div class="video-frame sr sr-2">
+    <div class="video-frame ${second}">
       <iframe src="${videoSrc()}" title="וובינר AI עם יוחנן שבדרון"
               loading="lazy" allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
@@ -362,7 +370,7 @@ const BLOCKS = {
     details: detailsHub,
     orgs:    orgs,
     marquee: () => marquee('hub'),
-    webinar: () => webinar('#tracks'),
+    webinar: () => webinar({ ctaHref: '#tracks' }),
   },
   'course-beginners.html': {
     syllabus: beginnersSyllabus,
@@ -371,7 +379,16 @@ const BLOCKS = {
     ld:       () => jsonLd(BEGINNERS),
     details:  () => details(BEGINNERS),
     marquee:  () => marquee('beginners'),
-    webinar:  () => webinar('#buy'),
+    webinar:  () => webinar({ ctaHref: '#buy' }),
+  },
+  // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.
+  'course.html': {
+    webinar: () => webinar({
+      ctaHref: '#buy',
+      ctaText: 'אני רוצה להתחיל ללמוד',
+      reveal:  'reveal',
+      attr:    '',
+    }),
   },
   'course-advanced.html': {
     syllabus: advancedBlocks,
@@ -380,7 +397,7 @@ const BLOCKS = {
     ld:       () => jsonLd(ADVANCED),
     details:  () => details(ADVANCED),
     marquee:  () => marquee('advanced'),
-    webinar:  () => webinar('#buy'),
+    webinar:  () => webinar({ ctaHref: '#buy' }),
   },
 };
 

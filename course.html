@@ -378,6 +378,23 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 .sb-vat{font-size:.75rem;color:var(--muted)}
 
 /* ─── רספונסיביות ─── */
+/* ── הוובינר ──────────────────────────────────────────────
+   מקטע כהה עם נגן ביחס 16:9. זהה למקטע שבדפי המסלולים החיים,
+   ומשתמש באותם טוקנים שכבר מוגדרים כאן למעלה. */
+.webinar{background:var(--night);color:#fff;padding:104px var(--pad)}
+.webinar-grid{display:grid;grid-template-columns:.95fr 1.25fr;gap:64px;align-items:center}
+.webinar-grid>*{min-width:0}
+.webinar-copy{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.webinar-copy .lead{font-size:1.19rem;line-height:1.65;color:var(--on-dark-2)}
+.webinar-copy .note{font-size:1.06rem;line-height:1.65;color:var(--on-dark);
+  border-right:3px solid var(--teal);padding-right:18px}
+.webinar-copy .btn{margin-top:8px}
+.video-frame{position:relative;aspect-ratio:16/9;width:100%;border-radius:3px;
+  overflow:hidden;background:var(--deep-2);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media(max-width:1000px){
+  .webinar-grid{grid-template-columns:1fr;gap:32px}
+}
 @media(max-width:1180px){
   :root{--pad:40px}
   .sec-title{font-size:3.6rem}
@@ -410,7 +427,11 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   .hero-cta .btn{width:100%}
   .hero-price{text-align:center}
   .sec-title,.faq-side .sec-title{font-size:2.38rem;line-height:.96}
-  .method,.lessons,.outcomes,.proof,.faq,.buy-sec{padding-top:48px;padding-bottom:48px}
+  .method,.lessons,.outcomes,.proof,.faq,.buy-sec,.webinar{padding-top:48px;padding-bottom:48px}
+  .webinar-copy{gap:14px}
+  .webinar-copy .lead{font-size:1.06rem}
+  .webinar-copy .note{font-size:.94rem;padding-right:14px}
+  .webinar-copy .btn{width:100%}
   .method-cards,.out-grid,.quotes{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .method-cards{margin-top:32px}
@@ -433,7 +454,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
    כל מקטע ממלא את גובה המסך והתוכן ממורכז בתוכו, בלי גלילה פנימית.
    הגדלים מצטמצמים לפי גובה המסך כדי שהתוכן ייכנס גם במסכים נמוכים. */
 @media(min-width:1001px){
-  .method,.lessons,.outcomes,.proof,.faq,.buy-sec{
+  .method,.lessons,.outcomes,.proof,.faq,.buy-sec,.webinar{
     min-height:100vh;display:flex;flex-direction:column;justify-content:center;
     padding-top:clamp(28px,4.5vh,64px);padding-bottom:clamp(28px,4.5vh,64px)}
   .sec-title{font-size:clamp(2.2rem,5.6vh,4.88rem)}
@@ -685,6 +706,26 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
     <a class="orgs-cta" href="https://wa.me/972528189921" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>רוצים גם בעסק שלכם?<span class="sr-only"> (נפתח בוואטסאפ)</span></a>
   </div>
 </section>
+
+<!-- ===== הוובינר ===== -->
+<!-- BUILD:webinar -->
+  <section class="webinar" id="webinar">
+    <div class="webinar-grid">
+      <div class="webinar-copy reveal">
+        <p class="eyebrow teal">וובינר מלא, פתוח לצפייה</p>
+        <h2 class="sec-title">רוצים לראות אותי <em>מלמד?</em></h2>
+        <p class="lead">זה וובינר שלם שהעברתי, במלואו, בלי תשלום ובלי הרשמה. אפשר פשוט ללחוץ ולראות איך נראה שיעור אצלי.</p>
+        <p class="note">ואם אתם עצמאים או בעלי עסקים — לא תצאו מכאן רק עם התרשמות. תצאו עם כלי עובד ביד, עוד לפני שנפגשנו.</p>
+        <a class="btn btn-lg" href="#buy">אני רוצה להתחיל ללמוד</a>
+      </div>
+      <div class="video-frame reveal">
+        <iframe src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
+                loading="lazy" allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+  </section>
+  <!-- /BUILD:webinar -->
 
 <!-- ===== שאלות נפוצות ===== -->
 <section class="faq" id="faq">
