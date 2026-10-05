@@ -13,7 +13,10 @@ if (fs.existsSync(envPath)) {
 // חייב להישאר זהה לערכים במקור האמת ב-course.html, אחרת המחיר שהקופון
 // מחזיר יסתור את מה שהאתר מציג.
 const LAUNCH_END   = new Date('2026-08-10T23:59:59+03:00').getTime();
-const REGULAR_PRICE = 385;   // בסיס לחישוב הנחה באחוזים
+const REGULAR_PRICE = 385;   // בסיס לחישוב הנחה באחוזים (הקורס הדיגיטלי)
+// המחיר לפני מע״מ של מסלולי הזום, לחישוב הנחה באחוזים בדפים שלהם.
+// חייב להישאר זהה ל-priceEx ב-assets/data/courses.mjs.
+const PAGE_PRICES = { 'course-beginners': 750, 'course-advanced': 3750 };
 const VAT_RATE      = 0.18;
 
 module.exports = async (req, res) => {
@@ -61,7 +64,7 @@ module.exports = async (req, res) => {
   }
 
   var price = coupon.type === 'percent'
-    ? REGULAR_PRICE * (1 - Number(coupon.value) / 100)
+    ? (PAGE_PRICES[enteredPage] || REGULAR_PRICE) * (1 - Number(coupon.value) / 100)
     : Number(coupon.value);
   price = Math.max(0, Math.round(price * 100) / 100);
 
