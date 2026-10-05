@@ -28,7 +28,8 @@ module.exports = async (req, res) => {
 
   // רשימת הקופונים נשמרת ב-Vercel KV (שם דף הניהול admin-coupons.html
   // עורך אותה). כל קופון הוא אובייקט: { code, type: 'fixed'|'percent',
-  // value, page, checkoutUrl }. checkoutUrl הוא קישור תשלום קיים ב-Morning
+  // value, page, checkoutUrl, until? }. until הוא היום האחרון שבו הקופון
+  // תקף (YYYY-MM-DD, שעון ישראל). checkoutUrl הוא קישור תשלום קיים ב-Morning
   // שגובה בדיוק את הסכום הזה — אין לנו כרגע גישת API ל-Morning שיוצרת
   // קישור סליקה אוטומטית לכל סכום, אז חייבים קישור מוכן מראש לכל קופון.
   var coupons = [];
@@ -58,6 +59,11 @@ module.exports = async (req, res) => {
   });
   if (!entered || !coupon) {
     return res.status(400).json({ valid: false, error: 'invalid-code' });
+  }
+  // היום לפי שעון ישראל, בפורמט YYYY-MM-DD, כדי שקופון יפוג בחצות שלנו.
+  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jerusalem' }).format(new Date());
+  if (coupon.until && today > coupon.until) {
+    return res.status(400).json({ valid: false, error: 'expired' });
   }
   if (!coupon.checkoutUrl) {
     return res.status(503).json({ valid: false, error: 'coupon-missing-checkout-url' });
