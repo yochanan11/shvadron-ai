@@ -15,7 +15,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME,
+import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME, NO_CLASSES,
          ORGS, ORGS_TITLE, MARQUEE, WEBINAR } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -42,11 +42,20 @@ const ind = (n, s) => s.split('\n').map(l => (l ? ' '.repeat(n) + l : l)).join('
 const MONTHS = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני',
                 'יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
 
-/* התאריך של מפגש מספר i, בשבועות מהפתיחה */
+/* האם בערב הזה אין מפגש (חנוכה וכדומה). השוואת מחרוזות ISO */
+const isBreak = d => {
+  const iso = d.toISOString().slice(0, 10);
+  return NO_CLASSES.some(b => iso >= b.from && iso <= b.to);
+};
+
+/* התאריך של מפגש מספר i, שבוע אחרי שבוע מהפתיחה. שבוע שנופל
+   בימים בלי מפגשים מדולג, והמפגש עובר לשבוע שאחריו. */
 function sessionDate(startISO, i) {
   const d = new Date(startISO + 'T00:00:00Z');
-  d.setUTCDate(d.getUTCDate() + i * 7);
-  return d;
+  for (let n = 0; ; d.setUTCDate(d.getUTCDate() + 7)) {
+    if (isBreak(d)) continue;
+    if (n++ === i) return d;
+  }
 }
 const dayMonth  = d => `${d.getUTCDate()}/${d.getUTCMonth() + 1}`;
 const longDate  = d => `${d.getUTCDate()} ב${MONTHS[d.getUTCMonth()]}`;
