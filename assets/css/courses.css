@@ -61,6 +61,15 @@ a:hover{color:var(--teal-ink)}
 .rise-4{animation:rise .8s cubic-bezier(.2,.7,.2,1) .3s both}
 
 /* כותרת עליונה */
+/* באנר מבצע מעל הכותרת. גולל עם הדף, לא נדבק */
+.promo-bar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;
+  padding:10px var(--pad);background:var(--teal);color:var(--ink);font-size:.98rem;text-align:center;line-height:1.5}
+.promo-bar[hidden]{display:none}
+.promo-bar p{margin:0}
+.promo-bar code{font-family:inherit;font-weight:800;letter-spacing:.06em;background:var(--ink);color:#fff;
+  padding:1px 8px;border-radius:3px;white-space:nowrap}
+.promo-bar a{color:var(--ink);font-weight:800;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.promo-bar a:hover{color:var(--ink);text-decoration-thickness:2px}
 .site-header{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:40px;
   padding:20px var(--pad);background:var(--ink);color:#fff;border-bottom:1px solid var(--line-dark-2)}
 .site-header .logo img{height:38px;width:auto;filter:brightness(0) invert(1)}

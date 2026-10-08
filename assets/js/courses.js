@@ -186,6 +186,26 @@ if (hasPrice) {
   });
 })();
 
+/* ─── באנר מבצע: מוצג עד data-until כולל, לפי שעון ישראל.
+       לחיצה עליו בדף מסלול ממלאת את הקוד בשדה הקופון.     ─── */
+(function(){
+  var bar = document.querySelector('.promo-bar');
+  if(!bar) return;
+  var today;
+  try {
+    today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jerusalem' }).format(new Date());
+  } catch(e){ return; }
+  if(today > bar.getAttribute('data-until')) return;
+  bar.hidden = false;
+  var link  = bar.querySelector('[data-promo-code]');
+  var input = document.getElementById('coupon-input');
+  if(link && input){
+    link.addEventListener('click', function(){
+      if(!input.disabled) input.value = link.getAttribute('data-promo-code');
+    });
+  }
+})();
+
 /* ─── חשיפה בגלילה ─── */
 (function(){
   var els = document.querySelectorAll('.sr');
