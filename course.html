@@ -743,7 +743,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
       </details>
       <details>
         <summary>מה ההבדל בין זה לקורס החי?</summary>
-        <p>התוכן זהה, אלה אותם ארבעה שיעורים. בקורס החי יש מפגשים בזמן אמת, שאלות ותשובות וליווי אישי, ולכן מחירו <span class="js-compare">2500 ₪</span> + מע״מ. כאן הלמידה עצמאית, ולכן המחיר נמוך יותר.</p>
+        <p>התוכן זהה, אלה אותם ארבעה שיעורים. בקורס החי יש מפגשים בזמן אמת, שאלות ותשובות וליווי אישי, ולכן מחירם גבוה יותר (<a href="index.html">לפרטים על המסלולים בזום</a>). כאן הלמידה עצמאית, ולכן המחיר נמוך יותר.</p>
       </details>
       <details>
         <summary>המחיר כולל מע״מ?</summary>
@@ -787,9 +787,8 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
       <span class="lbl">פירוט המחיר</span>
       <table class="price-table">
         <tbody>
-          <tr><th scope="row">מחיר הקורס החי</th><td><s class="js-compare">2500 ₪</s></td></tr>
           <tr><th scope="row">מחיר גרסת הצפייה</th><td class="js-price">385 ₪</td></tr>
-          <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">87.30 ₪</td></tr>
+          <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">69.30 ₪</td></tr>
           <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">454.30 ₪</td></tr>
         </tbody>
       </table>
@@ -856,11 +855,10 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 // כל מקום באתר שמציג מחיר נגזר מהמשתנים כאן, כדי שלא ייווצר פער בין
 // מספרים שונים בעמוד. שינוי שיעור המע״מ נעשה בשורה אחת.
 //   .js-price       → המחיר לפני מע״מ, לדוגמה "385 ₪"
-//   .js-price-vat   → סכום המע״מ בלבד, לדוגמה "87.30 ₪"
+//   .js-price-vat   → סכום המע״מ בלבד, לדוגמה "69.30 ₪"
 //   .js-price-total → הסכום הסופי לתשלום, לדוגמה "454.30 ₪"
 (function(){
   // ── מקום אחד לשינוי מחירים ─────────────────────────────
-  var COMPARE_PRICE = 2500;   // מחיר הקורס החי, לפני מע״מ
   var PRICE         = 385;   // המחיר הקבוע, לפני מע״מ
   var VAT_RATE      = 0.18;
   // קישור הסליקה חייב לגבות בדיוק את הסכום שהאתר מציג. בכל שינוי מחיר
@@ -874,7 +872,6 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 
   // אחוז החיסכון מחושב ולא מוקלד, אחרת אחרי שינוי מחיר היה נשאר
   // כתוב אחוז חיסכון שגוי.
-  var savePct = Math.round((1 - priceEx / COMPARE_PRICE) * 100);
 
   // Whole shekels stay whole; agorot are shown to two places (572.30, not 572.3)
   function ils(n){ return (n % 1 === 0 ? String(n) : n.toFixed(2)) + ' ₪'; }
@@ -883,8 +880,6 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(priceEx); });
   document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(vat); });
   document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(total); });
-  document.querySelectorAll('.js-compare').forEach(function(el){ el.textContent = ils(COMPARE_PRICE); });
-  document.querySelectorAll('.js-save').forEach(function(el){ el.textContent = 'חיסכון ' + savePct + '%'; });
   document.querySelectorAll('.js-vat-rate').forEach(function(el){ el.textContent = (VAT_RATE * 100) + '%'; });
 
   // אין יותר חלון השקה, אז רכיבי הדחיפות (הבאדג׳ים והספירה לאחור) תמיד מוסתרים.

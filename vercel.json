@@ -50,5 +50,22 @@
       "source": "/(.*)",
       "destination": "/$1"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/index1.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/course-access.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/index-cohort-full-backup.html",
+      "destination": "/",
+      "permanent": false
+    }
   ]
 }
