@@ -16,7 +16,7 @@ const LAUNCH_END   = new Date('2026-08-10T23:59:59+03:00').getTime();
 const REGULAR_PRICE = 385;   // בסיס לחישוב הנחה באחוזים (הקורס הדיגיטלי)
 // המחיר לפני מע״מ של מסלולי הזום, לחישוב הנחה באחוזים בדפים שלהם.
 // חייב להישאר זהה ל-priceEx ב-assets/data/courses.mjs.
-const PAGE_PRICES = { 'course-beginners': 750, 'course-advanced': 3750 };
+const PAGE_PRICES = { 'course-beginners': 750, 'course-advanced': 2500 };
 const VAT_RATE      = 0.18;
 
 module.exports = async (req, res) => {
@@ -73,6 +73,12 @@ module.exports = async (req, res) => {
     ? (PAGE_PRICES[enteredPage] || REGULAR_PRICE) * (1 - Number(coupon.value) / 100)
     : Number(coupon.value);
   price = Math.max(0, Math.round(price * 100) / 100);
+
+  // קופון שמעלה את המחיר מעל מחיר המסלול (למשל אחרי שהמחיר ירד והקופון
+  // לא עודכן) לא מוצג בכלל, כדי שלקוח לא יראה "הנחה" יקרה מהמחיר הרגיל.
+  if (PAGE_PRICES[enteredPage] && price >= PAGE_PRICES[enteredPage]) {
+    return res.status(400).json({ valid: false, error: 'invalid-code' });
+  }
 
   // הסכום הסופי מעוגל כלפי מעלה ל-10 אגורות הקרובות (אין מטבע של אגורה
   // בודדת בישראל), וה-מע״מ המוצג מחושב אחורה מהסכום המעוגל כדי שהשורות

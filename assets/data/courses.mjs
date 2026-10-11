@@ -118,7 +118,7 @@ export const ADVANCED = {
   kicker:   'מסלול ב׳ · השלב הבא',
   sessions: 9,
   hours:    18,
-  priceEx:  3750,          // המחיר לפני מע״מ. null = טרם נקבע
+  priceEx:  2500,          // המחיר לפני מע״מ. null = טרם נקבע
   vatRate:  0.18,
   start:    '2026-11-25',  // מועד המפגש הראשון. null = טרם נקבע
   dayName:  'רביעי',       // יום בשבוע, לתצוגה
@@ -211,7 +211,7 @@ export const COMPARE = [
   { label: 'פרויקט אישי',       b: 'לא נכלל', bNo: true,             a: 'כן, בסיום המסלול' },
   { label: 'נדרש ידע בתכנות',   b: 'לא',                             a: 'לא' },
   { label: 'הקלטות וקבוצת ליווי', b: 'כן',                           a: 'כן' },
-  { label: 'מחיר',              b: '750 ₪ + מע״מ',                   a: '3,750 ₪ + מע״מ' },
+  { label: 'מחיר',              b: '750 ₪ + מע״מ',                   a: '2,500 ₪ + מע״מ' },
 ];
 
 export const TRACKS = [BEGINNERS, ADVANCED];
