@@ -370,6 +370,26 @@ function config(t) {
 </` + `script>`;
 }
 
+/* ─── מצב המחיר בתוך ה-HTML עצמו ─────────────────────────────
+   הסקריפט בדף מחליף בין "המחיר יעודכן" למחיר, אבל מי שקורא את
+   הדף בלי JS (גוגל, תצוגות מקדימות, כלי AI) ראה עד עכשיו "טרם
+   פורסם". כאן ה-HTML נכתב כבר במצב הנכון, עם הסכומים עצמם.     */
+const fmt = n => (n % 1 === 0 ? n.toLocaleString('he-IL') : n.toFixed(2)) + ' ₪';
+function staticPrice(html, t) {
+  const has = !!t.priceEx;
+  html = html.replace(/<([a-z]+)([^>]*?) data-(has|no)-price( hidden)?([^>]*)>/g,
+    (_m, tag, pre, kind, _h, post) =>
+      `<${tag}${pre} data-${kind}-price${(kind === 'has') !== has ? ' hidden' : ''}${post}>`);
+  if (!has) return html;
+  const vat   = Math.round(t.priceEx * t.vatRate * 100) / 100;
+  const total = Math.round(t.priceEx * (1 + t.vatRate) * 100) / 100;
+  const val = { 'js-price': fmt(t.priceEx), 'js-price-vat': fmt(vat),
+                'js-price-total': fmt(total), 'js-vat-rate': (t.vatRate * 100) + '%' };
+  return html.replace(/class="(js-price|js-price-vat|js-price-total|js-vat-rate)"([^>]*)>[^<]*</g,
+    (_m, cls, rest) => `class="${cls}"${rest}>${val[cls]}<`);
+}
+const PRICED = { 'course-beginners.html': BEGINNERS, 'course-advanced.html': ADVANCED };
+
 /* ─── ההחלפה בפועל ─── */
 const BLOCKS = {
   'index.html': {
@@ -425,6 +445,7 @@ for (const [file, blocks] of Object.entries(BLOCKS)) {
     html = html.replace(re, (_m, open, close) =>
       `${open}\n${ind(2, render())}\n${' '.repeat(2)}${close}`);
   }
+  if (PRICED[file]) html = staticPrice(html, PRICED[file]);
   writeFileSync(path, html);
   console.log(`✓ ${file}`);
   touched++;
