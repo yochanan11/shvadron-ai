@@ -41,7 +41,7 @@
       msg.textContent = 'פותח…';
       function open(){
         try { localStorage.setItem(KEY, '1'); } catch(e){}
-        if(window.gtag) gtag('event', 'generate_lead', { lead_source: 'webinar_gift' });
+        if(window.gtag) gtag('event', 'generate_lead', { lead_source: 'webinar_gift', traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
         unlock();
       }
       fetch('/api/lead', {

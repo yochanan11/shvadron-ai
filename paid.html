@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="assets/css/site-legal.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
 <script src="assets/js/consent.js" defer></script>
+<script src="assets/js/source.js" defer></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 /* Legacy names remapped onto the Shwadron.AI design system.
@@ -508,5 +509,21 @@ footer p{color:rgba(255,255,255,.72)}
   <p>© 2026 יוחנן שבדרון · SHWADRON.AI · כל הזכויות שמורות</p>
 </footer>
 
+<script>
+// הגעה לדף התודה. זו לא רכישה מאומתת: אפשר להגיע לכאן גם בלי לשלם.
+// רכישות סופרים רק לפי דוח המכירות במורנינג. האירוע נשלח פעם אחת לכל
+// דפדפן, ורק אם ניתנה הסכמה לסטטיסטיקה.
+// consent.js נטען כאן עם defer, ולכן מחכים לסוף טעינת הדף.
+document.addEventListener('DOMContentLoaded', function(){
+  try {
+    var KEY = 'shw_thankyou_sent_zoom';
+    if (localStorage.getItem(KEY)) return;
+    localStorage.setItem(KEY, '1');
+    window.SHW.consent.onGrant('statistics', function(){
+      gtag('event','reached_thank_you',{ product: (new URLSearchParams(location.search).get('track') || 'unknown'), traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
+    });
+  } catch(e){}
+});
+</script>
 </body>
 </html>

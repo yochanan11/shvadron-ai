@@ -19,23 +19,18 @@
      GA4 ו-Clarity נטענים רק לאחר אישור קטגוריית "סטטיסטיקה".
 -->
 <script src="assets/js/consent.js"></script>
+<script src="assets/js/source.js"></script>
 <script>
-// אירוע רכישה: נשלח פעם אחת בלבד לכל רוכש, ורק אם ניתנה הסכמה לסטטיסטיקה.
-// מזהה העסקה נשמר מקומית גם ללא הסכמה, כדי שרענון עמוד לא ייספר כמכירה נוספת.
+// הגעה לדף התודה. זו לא רכישה מאומתת: אפשר להגיע לכאן גם בלי לשלם.
+// רכישות סופרים רק לפי דוח המכירות במורנינג. האירוע נשלח פעם אחת לכל
+// דפדפן, ורק אם ניתנה הסכמה לסטטיסטיקה.
 (function(){
   try {
-    var KEY = 'shw_purchase_sent';
+    var KEY = 'shw_thankyou_sent_digital';
     if (localStorage.getItem(KEY)) return;
-    var value = 385;
-    var txid = 'shw-' + Date.now() + '-' + Math.floor(Math.random()*10000);
-    localStorage.setItem(KEY, txid);
+    localStorage.setItem(KEY, '1');
     window.SHW.consent.onGrant('statistics', function(){
-      gtag('event','purchase',{
-        transaction_id: txid,
-        value: value,
-        currency: 'ILS',
-        items: [{ item_id:'course-digital', item_name:'גישה דיגיטלית לקורס AI', price:value, quantity:1 }]
-      });
+      gtag('event','reached_thank_you',{ product: 'course-digital', traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
     });
   } catch(e){}
 })();

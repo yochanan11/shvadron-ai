@@ -101,11 +101,12 @@ if (hasPrice) {
   each('[data-join]', function(a){
     a.addEventListener('click', function(){
       gtag('event','click_join_cohort',{
-        cta_location: where(a), course_id: C.id || '', value: value, currency:'ILS'
+        cta_location: where(a), course_id: C.id || '', value: value, currency:'ILS',
+        traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct'
       });
       var href = a.getAttribute('href') || '';
       if(href.indexOf('wa.me') === 0 || href.indexOf('http') === 0){
-        gtag('event','begin_checkout',{ currency:'ILS', value: value, items:[item] });
+        gtag('event','begin_checkout',{ currency:'ILS', value: value, items:[item], traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
       }
     });
   });
@@ -113,7 +114,7 @@ if (hasPrice) {
   // מעקב אחרי בחירת מסלול בדף הבחירה
   each('[data-track-pick]', function(a){
     a.addEventListener('click', function(){
-      gtag('event','select_course_track',{ course_id: a.getAttribute('data-track-pick') });
+      gtag('event','select_course_track',{ course_id: a.getAttribute('data-track-pick'), traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
     });
   });
 

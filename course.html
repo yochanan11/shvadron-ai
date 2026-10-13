@@ -32,6 +32,7 @@
      לאירועים בעמודים לא זורקות שגיאה לפני מתן ההסכמה.
 -->
 <script src="assets/js/consent.js"></script>
+<script src="assets/js/source.js"></script>
 
 <!-- מסמן שיש ג׳אווהסקריפט. כללי החשיפה בגלילה תלויים בסימון הזה,
      כך שבלי ג׳אווהסקריפט כל התוכן מוצג רגיל ולא נשאר שקוף. -->
@@ -1054,8 +1055,8 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   document.querySelectorAll('[data-buy]').forEach(function(a){
     a.addEventListener('click', function(){
       var loc = where(a);
-      gtag('event','click_buy_course',{ cta_location: loc, value: value, currency:'ILS' });
-      gtag('event','begin_checkout',{ currency:'ILS', value: value, items:[item] });
+      gtag('event','click_buy_course',{ cta_location: loc, value: value, currency:'ILS', traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
+      gtag('event','begin_checkout',{ currency:'ILS', value: value, items:[item], traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
     });
   });
   // How far people actually read before leaving
