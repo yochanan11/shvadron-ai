@@ -537,6 +537,20 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   .js .reveal{opacity:1!important;transform:none!important}
   .js .lesson b>span{transform:none!important}
 }
+/* ציטוט קצר מתחת לכפתור הראשון: הוכחה כבר במסך הראשון */
+.hero-proof{margin:2px 0 0;padding:10px 14px;border-inline-start:3px solid var(--teal);background:rgba(255,255,255,.05);
+  color:#fff;font-size:1rem;line-height:1.55;max-width:560px}
+.hero-proof cite{display:block;font-style:normal;font-size:.86rem;color:#9fb0c8;margin-top:4px}
+/* "נשמע מוכר?" */
+.pains{padding:72px var(--pad);text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+.pains .eyebrow{justify-content:center;font-size:1.06rem}
+.pains-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:920px;width:100%}
+.pains-list li{background:var(--paper);padding:20px 22px;border-radius:3px;text-align:right;font-size:1.13rem;line-height:1.5;
+  border-inline-start:3px solid #e2574c;font-weight:600}
+.pains-close{font-family:'Heebo',sans-serif;font-weight:800;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.3;max-width:720px;margin:6px 0 0}
+@media (max-width:760px){.pains-list{grid-template-columns:1fr}.pains{padding:56px var(--pad)}}
+
+.sec-ice{background:var(--ice)}
 </style>
 <link rel="stylesheet" href="assets/css/gift.css"/>
 <script src="assets/js/gift.js" defer></script>
@@ -570,15 +584,16 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   <div class="hero-grid">
     <div class="hero-copy">
       <p class="eyebrow teal rise">גרסת הצפייה של הקורס</p>
-      <h1 class="hero-title rise-2">להפסיק לשאול<br/><span class="ghost">ולהתחיל</span><br/>לעבוד איתו.</h1>
-      <p class="hero-lead rise-3">ארבעה שיעורים מוקלטים שמלמדים שיטת עבודה מסודרת עם AI. לא מתחילים מכלי, מתחילים ממשימה. בלי רקע טכני.</p>
+      <h1 class="hero-title rise-2">מנסה AI<br/><span class="ghost">ולא יוצא</span><br/>מזה כלום?</h1>
+      <p class="hero-lead rise-3">ארבעה שיעורים מוקלטים, בקצב שלך, שמלמדים שיטת עבודה מסודרת עם AI: מתחילים ממשימה אמיתית מהעבודה ויוצאים עם תוצר. גישה מיידית, בלי רקע טכני.</p>
       <div class="hero-cta rise-4">
         <a class="btn btn-lg" data-buy href="https://mrng.to/zoeR82jDpx">לרכישת הקורס וגישה מיידית</a>
         <p class="hero-price">
           <b><span class="js-price">385 ₪</span> <span>+ מע״מ</span></b>
-          <small>סה״כ <span class="js-price-total">454.30 ₪</span> כולל מע״מ</small>
+          <small>סה״כ <span class="js-price-total">454.30 ₪</span> כולל מע״מ · אפשר עד 3 תשלומים</small>
         </p>
       </div>
+      <p class="hero-proof rise-4">״לפני הקורס כל עולם ה-AI הרגיש לי כמו סינית. אחרי ארבעת השיעורים סוף סוף יש לי בסיס, ואני מבין מה אני עושה.״ <cite>בוגר הקורס הדיגיטלי · מתוך 1,500 בוגרים</cite></p>
     </div>
     <figure class="hero-portrait rise-2">
       <div class="plate" aria-hidden="true"></div>
@@ -606,6 +621,19 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 </section>
 
 <!-- ===== השיטה ===== -->
+<!-- ===== נשמע מוכר ===== -->
+<section class="pains sec-ice" id="pains">
+  <p class="eyebrow reveal">נשמע מוכר?</p>
+  <ul class="pains-list reveal">
+      <li>שואל את ChatGPT, מקבל תשובה כללית, מתקן פעמיים ומוותר</li>
+      <li>כולם מדברים על כלים, פרומפטים וסוכנים, ואתה לא יודע מאיפה להתחיל</li>
+      <li>מבזבז זמן על מיילים, ניסוחים וסיכומים שהיו יכולים לקחת דקות</li>
+      <li>אין לך ערבים פנויים לקורס חי, אבל לא רוצה להישאר מאחור</li>
+  </ul>
+  <p class="pains-close reveal">זה לא הכלי. חסרה שיטה. ארבעה שיעורים, בזמן שנוח לך, והיא אצלך.</p>
+  <a class="btn btn-lg reveal" href="#buy">אני רוצה להתחיל ללמוד</a>
+</section>
+
 <section class="method" id="method">
   <div class="method-intro">
     <h2 class="sec-title reveal">AI הוא לא קסם.<br/><em>הוא כמו עובד חדש.</em></h2>
@@ -767,6 +795,14 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
       <p>לא מצאתם את התשובה? כתבו בוואטסאפ <span class="nowrap">ל<a href="https://wa.me/972528189921">052-818-9921</a></span> ותקבלו מענה אישי.</p>
     </div>
     <div class="faq-list reveal">
+      <details>
+        <summary>למה לא ללמוד לבד ביוטיוב?</summary>
+        <p>ביוטיוב לומדים מה כל כלי יודע לעשות, בסרטונים מפוזרים. כאן יש שיטת עבודה אחת מסודרת, מההתחלה ועד הסוף, עם דוגמאות מהעבודה האמיתית וספריית פרומפטים מוכנה. זה מה שחוסך את חודשי הניסוי והטעייה.</p>
+      </details>
+      <details>
+        <summary>אין לי הרבה זמן. זה מתאים לי?</summary>
+        <p>בדיוק בשביל זה יש גרסה מוקלטת. ארבעה שיעורים שרואים מתי שנוח, מכל מכשיר, וחוזרים אליהם כמה שרוצים. כבר אחרי השיעור הראשון אפשר להתחיל לחסוך זמן.</p>
+      </details>
       <details open>
         <summary>כבר ניסיתי ChatGPT ולא התרשמתי. למה שיהיה אחרת?</summary>
         <p>כי רוב הניסיונות נעצרים בשאלה ותשובה. הקורס מלמד תהליך עבודה: איך נותנים הקשר, איך מכוונים, ואיך מגיעים לתוצר שאפשר להשתמש בו. זה בדיוק ההבדל בין להתרשם לבין לעבוד.</p>
