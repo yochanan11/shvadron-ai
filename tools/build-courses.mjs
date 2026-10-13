@@ -189,7 +189,9 @@ function projectBox() {
     <p class="fit-lead">${esc(p.lead)}</p>
     <ul>
 ${p.items.map(i => `      <li>${esc(i)}</li>`).join('\n')}
-    </ul>
+    </ul>${p.example ? `
+    <p class="project-example">${esc(p.example)}${p.exampleLink
+      ? ` <a href="${esc(p.exampleLink.href)}">${esc(p.exampleLink.text)}</a>` : ''}</p>` : ''}
   </div>
 </div>`;
 }

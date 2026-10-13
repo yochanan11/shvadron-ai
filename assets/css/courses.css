@@ -197,6 +197,15 @@ a:hover{color:var(--teal-ink)}
 .quote{background:var(--ice);padding:36px 32px;border-radius:3px;border-bottom:3px solid var(--blue);
   display:flex;flex-direction:column;gap:20px}
 .quote p{font-size:1.19rem;line-height:1.6}
+/* קריאה לפעולה שנשארת לבד בשורה האחרונה של הרשת: לכל הרוחב */
+.out-grid>.out-cta:last-child:nth-child(3n+1){grid-column:1/-1}
+.wa-proofs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px;align-items:start}
+.wa-proofs figure{margin:0}
+.wa-proofs img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);box-shadow:0 18px 40px -24px rgba(10,26,51,.45)}
+.wa-note{margin-top:14px;font-size:.88rem;color:var(--muted)}
+@media (max-width:760px){.wa-proofs{grid-template-columns:1fr}}
+.project-example{margin-top:18px;padding:14px 16px;background:var(--ice);border-right:3px solid var(--teal);font-weight:600}
+.project-example a{font-weight:800;white-space:nowrap}
 .quote cite{font-style:normal;font-size:.94rem;font-weight:700;color:var(--muted)}
 /* פאנל כהה: קבצי הלוגו לבנים על שקוף, ועל רקע לבן הם נעלמים. */
 .orgs{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:56px;
