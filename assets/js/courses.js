@@ -225,7 +225,7 @@ function applyCoupon(data){
       if(!onTrack) return;
       applyCoupon(data);
       each('.js-regular', function(el){ el.textContent = ils(C.price); });
-      each('.js-price-label', function(el){ el.textContent = 'מחיר מבצע עד ' + until.slice(8) + '/' + until.slice(5, 7); });
+      each('.js-price-label', function(el){ el.textContent = 'מחיר רישום מוקדם עד ' + until.slice(8) + '/' + until.slice(5, 7); });
       each('[data-promo-row]', function(el){ el.hidden = false; });
       document.getElementById('coupon-box').hidden = true;
     })
