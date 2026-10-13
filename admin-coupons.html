@@ -36,6 +36,7 @@
   td input,td select{width:100%;padding:8px 9px;border:1px solid var(--border);
     border-radius:8px;font-family:inherit;font-size:.88rem}
   td.num{max-width:90px}
+  td select.f-page{min-width:170px}
   .tbl-wrap{overflow-x:auto}
   .empty{color:var(--muted);font-size:.9rem;padding:16px 4px}
 </style>
@@ -43,7 +44,7 @@
 <body>
 <div class="wrap">
   <h1>ניהול קודי קופון</h1>
-  <p class="sub">כל שורה היא קופון: קוד, סוג הנחה (מחיר קבוע או אחוזים), הערך, לאיזה עמוד הוא חל, וקישור התשלום התואם ב-Morning.</p>
+  <p class="sub">כל שורה היא קופון: קוד, סוג הנחה (מחיר קבוע או אחוזים), הערך, לאיזה קורס הוא חל, וקישור התשלום התואם ב-Morning.</p>
 
   <div class="card" id="gate">
     <label for="pw">סיסמת ניהול</label>
@@ -60,7 +61,7 @@
             <th>קוד קופון</th>
             <th>סוג הנחה</th>
             <th>ערך</th>
-            <th>עמוד</th>
+            <th>קורס</th>
             <th>קישור תשלום (Morning)</th>
             <th>תקף עד</th>
             <th></th>
@@ -79,7 +80,7 @@
     <p class="hint">
       <b>סוג "מחיר קבוע"</b>: הערך הוא המחיר לפני מע״מ, למשל 675.<br/>
       <b>סוג "אחוזים"</b>: הערך הוא אחוז ההנחה ממחיר המחירון, למשל 20 = 20% הנחה.<br/>
-      <b>עמוד</b>: מזהה העמוד שבו הקופון תקף, למשל <code>course-digital</code> עבור course.html. אם ריק, הקופון לא יעבוד באף עמוד.<br/>
+      <b>קורס</b>: בדף של איזה קורס הקופון עובד. קופון עובד רק בדף שנבחר, ואפשר ליצור אותו קוד לכמה קורסים בשורות נפרדות.<br/>
       <b>קישור תשלום</b>: חובה. חייב להיות קישור סליקה קיים ב-Morning שגובה בדיוק את הסכום המעוגל שהאתר יציג (הסה״כ כולל מע״מ, מעוגל <b>כלפי מעלה ל-10 אגורות הקרובות</b>) — אחרת הלקוח יראה מחיר אחד ויחויב בסכום אחר. לדוגמה: מחיר 436.50 + מע״מ נותן סכום גולמי של 515.07, אבל האתר יציג 515.10 ₪ — לכן הקישור ב-Morning צריך לגבות 515.10 ₪, לא 515.07.<br/>
       <b>תקף עד</b>: לא חובה. הקופון עובד עד סוף היום הזה (שעון ישראל) ומפסיק לבד. ריק = ללא הגבלה.<br/>
       שמירה מחליפה את כל הרשימה. השינוי חי מיד, בלי דיפלוי.
@@ -119,21 +120,35 @@
     return 'שגיאה: ' + (err || 'לא ידועה');
   }
 
+  // הקורסים שקופון יכול לחול עליהם. הערך הוא המזהה שהדף שולח ל-/api/coupon.
+  var PAGES = [
+    { id: 'course-beginners', name: 'AI למתחילים (זום)' },
+    { id: 'course-advanced',  name: 'AI למתקדמים (זום)' },
+    { id: 'course-digital',   name: 'הקורס הדיגיטלי' }
+  ];
+  function pageOptions(selected){
+    var list = PAGES.slice();
+    // קופון ישן עם מזהה שלא ברשימה נשמר כמו שהוא, כדי שלא יימחק בטעות
+    if(selected && !list.some(function(p){ return p.id === selected; })) list.push({ id: selected, name: selected });
+    return '<option value="">בחרו קורס…</option>' + list.map(function(p){
+      return '<option value="' + p.id + '"' + (p.id === selected ? ' selected' : '') + '>' + p.name + '</option>';
+    }).join('');
+  }
+
   function addRow(coupon){
-    coupon = coupon || { code:'', type:'fixed', value:'', page:'course-digital', checkoutUrl:'' };
+    coupon = coupon || { code:'', type:'fixed', value:'', page:'', checkoutUrl:'' };
     var tr = document.createElement('tr');
     tr.innerHTML =
       '<td><input class="f-code" value="" placeholder="KISLEV10"/></td>' +
       '<td><select class="f-type"><option value="fixed">מחיר קבוע</option><option value="percent">אחוזים</option></select></td>' +
       '<td class="num"><input class="f-value" type="number" step="0.01" placeholder="675"/></td>' +
-      '<td><input class="f-page" placeholder="course-digital"/></td>' +
+      '<td><select class="f-page">' + pageOptions(coupon.page) + '</select></td>' +
       '<td><input class="f-url" placeholder="https://mrng.to/..."/></td>' +
       '<td><input class="f-until" type="date"/></td>' +
       '<td><button type="button" class="btn-danger f-del">מחיקה</button></td>';
     tr.querySelector('.f-code').value = coupon.code || '';
     tr.querySelector('.f-type').value = coupon.type === 'percent' ? 'percent' : 'fixed';
     tr.querySelector('.f-value').value = coupon.value != null ? coupon.value : '';
-    tr.querySelector('.f-page').value = coupon.page || '';
     tr.querySelector('.f-url').value = coupon.checkoutUrl || '';
     tr.querySelector('.f-until').value = coupon.until || '';
     tr.querySelector('.f-del').addEventListener('click', function(){ tr.remove(); toggleEmpty(); });
@@ -151,7 +166,7 @@
         code: tr.querySelector('.f-code').value.trim(),
         type: tr.querySelector('.f-type').value,
         value: Number(tr.querySelector('.f-value').value),
-        page: tr.querySelector('.f-page').value.trim(),
+        page: tr.querySelector('.f-page').value,
         checkoutUrl: tr.querySelector('.f-url').value.trim(),
         until: tr.querySelector('.f-until').value
       };
@@ -180,7 +195,7 @@
     var codes = readRows();
     var bad = codes.find(function(c){ return !c.checkoutUrl || !c.page || !c.value || isNaN(c.value); });
     if(bad){
-      setPanelMsg('לכל קופון חייבים להיות: קוד, ערך, עמוד וקישור תשלום.', false);
+      setPanelMsg('לכל קופון חייבים להיות: קוד, ערך, קורס וקישור תשלום.', false);
       return;
     }
     saveBtn.disabled = true;
