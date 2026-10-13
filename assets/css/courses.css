@@ -210,7 +210,7 @@ a:hover{color:var(--teal-ink)}
 .wall-tile:hover{transform:translateY(-3px)}
 .wall-tile img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
 .wall .t1{grid-column:span 5}.wall .t2{grid-column:span 3}.wall .t3,.wall .t4{grid-column:span 2}
-.wall .t5{grid-column:span 5}.wall .t6{grid-column:span 2}.wall .t7{grid-column:span 5}
+.wall .t5{grid-column:span 4}.wall .t6{grid-column:span 3}.wall .t7{grid-column:span 5}
 @media (max-width:900px){
   .wall{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:260px;grid-auto-flow:dense}
   .wall .wall-tile{grid-column:span 1}
