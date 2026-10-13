@@ -1,5 +1,13 @@
 const { kvRequest } = require('./_kv');
 
+// מאיזה דף הגיע הטופס, בשם שמובן בדף הניהול
+const COURSES = {
+  'index.html':            'דף הבית (שני המסלולים)',
+  'course-beginners.html': 'AI למתחילים (זום)',
+  'course-advanced.html':  'AI למתקדמים (זום)',
+  'course.html':           'הקורס הדיגיטלי',
+};
+
 // טופס "הוובינר במתנה": שומר שם, טלפון והסכמה לדיוור ברשימה "leads"
 // ב-Vercel KV. דף הניהול admin-leads.html קורא מאותה רשימה.
 // הוובינר נפתח בדפדפן גם אם השמירה נכשלה, כדי לא להעניש את הגולש.
@@ -22,7 +30,8 @@ module.exports = async (req, res) => {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
-  const lead = { name, phone: local, consent, page, ts: new Date().toISOString() };
+  const course = COURSES[page] || COURSES['index.html'];
+  const lead = { name, phone: local, consent, course, page, ts: new Date().toISOString() };
   try {
     await kvRequest(['RPUSH', 'leads', JSON.stringify(lead)]);
     return res.json({ ok: true });

@@ -50,7 +50,7 @@
     </div>
     <div class="tbl-wrap">
       <table>
-        <thead><tr><th>תאריך</th><th>שם</th><th>טלפון</th><th>דיוור</th><th>עמוד</th></tr></thead>
+        <thead><tr><th>תאריך</th><th>שם</th><th>טלפון</th><th>דיוור</th><th>הגיע מ</th></tr></thead>
         <tbody id="tbody"></tbody>
       </table>
     </div>
@@ -67,6 +67,14 @@
   var password = '';
   try { password = sessionStorage.getItem('shw_admin_pw') || ''; } catch(e){}
 
+  // פניות ישנות נשמרו רק עם שם הקובץ: מתרגמים לשם הקורס
+  var COURSES = {
+    'index.html': 'דף הבית (שני המסלולים)', '': 'דף הבית (שני המסלולים)',
+    'course-beginners.html': 'AI למתחילים (זום)',
+    'course-advanced.html': 'AI למתקדמים (זום)',
+    'course.html': 'הקורס הדיגיטלי'
+  };
+  function course(l){ return l.course || COURSES[l.page || ''] || l.page; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function showGate(m){ gate.style.display='block'; panel.style.display='none'; gateMsg.textContent = m || ''; }
 
@@ -87,7 +95,7 @@
           var d = new Date(l.ts);
           return '<tr><td>' + esc(d.toLocaleString('he-IL')) + '</td><td>' + esc(l.name) +
             '</td><td><a href="https://wa.me/972' + esc(l.phone.replace(/^0/, '')) + '" target="_blank" rel="noopener">' + esc(l.phone) +
-            '</a></td><td class="' + (l.consent ? 'yes">כן' : 'no">לא') + '</td><td>' + esc(l.page || '') + '</td></tr>';
+            '</a></td><td class="' + (l.consent ? 'yes">כן' : 'no">לא') + '</td><td>' + esc(course(l)) + '</td></tr>';
         }).join('');
       })
       .catch(function(){ panelMsg.textContent = 'שגיאת רשת.'; });
@@ -97,8 +105,8 @@
   pw.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ password = pw.value; load(); } });
   document.getElementById('reload').addEventListener('click', load);
   document.getElementById('csv').addEventListener('click', function(){
-    var rows = [['תאריך','שם','טלפון','הסכמה לדיוור','עמוד']].concat(leads.map(function(l){
-      return [new Date(l.ts).toLocaleString('he-IL'), l.name, l.phone, l.consent ? 'כן' : 'לא', l.page || ''];
+    var rows = [['תאריך','שם','טלפון','הסכמה לדיוור','הגיע מ']].concat(leads.map(function(l){
+      return [new Date(l.ts).toLocaleString('he-IL'), l.name, l.phone, l.consent ? 'כן' : 'לא', course(l)];
     }));
     var csv = '﻿' + rows.map(function(r){ return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(','); }).join('\n');
     var a = document.createElement('a');
