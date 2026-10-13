@@ -831,3 +831,11 @@ a:hover{color:var(--teal-ink)}
 
 /* כמה חוסכים, מתחת לסה״כ, כשמוחלת הנחה */
 .pd-saving{margin:-8px 0 0;font-weight:800;color:var(--teal-ink);font-size:1.02rem}
+
+/* דף הבית: שני מסלולים מקבילים, לא שלבים */
+.path-grid.two-goals{grid-template-columns:1fr 1fr;gap:20px}
+.path-cta{margin-top:auto;font-weight:800;color:var(--blue);text-decoration:none}
+.path-cta:hover{text-decoration:underline}
+.path-digital{margin:28px auto 0;text-align:center;font-size:1.06rem;color:var(--muted)}
+.path-digital a{font-weight:800;color:var(--blue)}
+@media (max-width:760px){.path-grid.two-goals{grid-template-columns:1fr}}

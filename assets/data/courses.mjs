@@ -33,7 +33,7 @@ export const BEGINNERS = {
   file:     'course-beginners.html',
   name:     'AI למתחילים',
   short:    'מתחילים',
-  kicker:   'מסלול א׳ · נקודת ההתחלה',
+  kicker:   'בסיס ושיטת עבודה',
   sessions: 3,
   hours:    6,
   priceEx:  750,           // המחיר לפני מע״מ. null = טרם נקבע
@@ -115,7 +115,7 @@ export const ADVANCED = {
   file:     'course-advanced.html',
   name:     'AI למתקדמים',
   short:    'מתקדמים',
-  kicker:   'מסלול ב׳ · השלב הבא',
+  kicker:   'לבנות עם AI',
   sessions: 9,
   hours:    18,
   priceEx:  2500,          // המחיר לפני מע״מ. null = טרם נקבע
