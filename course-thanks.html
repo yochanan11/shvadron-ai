@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="robots" content="noindex, nofollow"/>
-<title>תודה על הרכישה! נפתח לך גישה לקורס | SHWADRON.AI</title>
+<title>תודה על הרכישה! הגישה נשלחה למייל | SHWADRON.AI</title>
 <meta name="description" content="הרכישה הושלמה. מלאו שם, טלפון ודוא״ל ונפתח לכם גישה מיידית לכל שיעורי הקורס ולחומרים הנלווים."/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -131,7 +131,7 @@ form{display:flex;flex-direction:column;gap:22px;text-align:right}
 .disclosure a{color:var(--blue);text-underline-offset:3px}
 
 /* ── מסך האישור ── */
-.success{display:none}
+.success{display:block}
 .success .hero .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:center}
 .done-card{background:var(--white);border-radius:3px;box-shadow:rgba(0,0,0,.6) 0 40px 80px -40px;padding:44px 40px 40px;color:var(--navy)}
 .done-card .k{font-family:'Heebo',sans-serif;font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--muted)}
@@ -203,131 +203,8 @@ body.done .success{display:block}
 
 <main id="main">
 
-  <!-- FORM STATE -->
-  <div class="form-state">
-
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">
-          <span class="mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-          </span>
-          <span>התשלום התקבל בהצלחה</span>
-        </div>
-        <h1>תודה<span class="dotend">.</span></h1>
-        <div class="hero-sub">
-          <div class="rule" aria-hidden="true"></div>
-          <p>עוד שלב קצר ואתם בפנים. מלאו את הפרטים ונפתח לכם גישה מלאה לכל שיעורי הקורס ולחומרים הנלווים.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="body-grid">
-      <div class="wrap">
-
-        <div class="card">
-          <h2>פרטים לפתיחת הגישה</h2>
-          <p class="lead">קישור הצפייה יישלח לכתובת המייל שתזינו כאן.</p>
-
-          <div class="error-summary" id="error-summary" role="alert" hidden tabindex="-1">
-            <h2>יש לתקן את הפרטים הבאים</h2>
-            <ul id="error-list"></ul>
-          </div>
-
-          <form id="access-form" novalidate>
-            <div class="field">
-              <label for="f-name">שם מלא <span class="req" aria-hidden="true">*</span>
-                <span class="hint">שדה חובה.</span></label>
-              <input id="f-name" name="שם_מלא" type="text" placeholder="ישראל ישראלי" required
-                     autocomplete="name" aria-required="true" aria-describedby="f-name-err"/>
-              <strong class="field-error" id="f-name-err"></strong>
-            </div>
-            <div class="field">
-              <label for="f-phone">טלפון <span class="req" aria-hidden="true">*</span>
-                <span class="hint">שדה חובה. 10 ספרות, לדוגמה 0501234567.</span></label>
-              <input id="f-phone" name="טלפון" type="tel" placeholder="050-0000000" required
-                     autocomplete="tel" inputmode="tel" aria-required="true" aria-describedby="f-phone-err"/>
-              <strong class="field-error" id="f-phone-err"></strong>
-            </div>
-            <div class="field">
-              <label for="f-email">כתובת מייל <span class="req" aria-hidden="true">*</span>
-                <span class="hint">שדה חובה. לכתובת הזו יישלח קישור הגישה לקורס.</span></label>
-              <input id="f-email" name="מייל" type="email" placeholder="israel@example.com" required
-                     autocomplete="email" inputmode="email" aria-required="true" aria-describedby="f-email-err"/>
-              <strong class="field-error" id="f-email-err"></strong>
-            </div>
-
-            <!-- הסכמה לדיוור שיווקי: נפרדת, לא מסומנת מראש, ואינה תנאי לפתיחת הגישה -->
-            <label class="check-row" for="f-marketing">
-              <input type="checkbox" id="f-marketing" name="דיוור_שיווקי" value="כן"/>
-              <span>אני מאשר לקבל עדכונים, הטבות ותוכן מקצועי בדוא״ל ובאמצעי קשר דיגיטליים.
-                ניתן להסיר את ההסכמה בכל עת. <b>לא חובה, ולא משפיע על פתיחת הגישה.</b></span>
-            </label>
-
-            <button type="submit" class="btn" id="submit-btn">שליחה ופתיחת גישה <span class="arrow" aria-hidden="true">←</span></button>
-            <p class="form-note">הפרטים נשמרים אצלנו בלבד, לצורך פתיחת הגישה ושליחת החומרים.</p>
-          </form>
-        </div>
-
-        <div class="side">
-          <div>
-            <h3>מה קורה עכשיו</h3>
-            <div class="steps">
-              <div class="step">
-                <span class="num" aria-hidden="true">01</span>
-                <div>
-                  <h4>מילוי הפרטים</h4>
-                  <p>שם, טלפון וכתובת מייל. פחות מדקה.</p>
-                </div>
-              </div>
-              <div class="step">
-                <span class="num" aria-hidden="true">02</span>
-                <div>
-                  <h4>פתיחת הגישה</h4>
-                  <p>אנחנו פותחים לכם את הגישה לכל שיעורי הקורס.</p>
-                </div>
-              </div>
-              <div class="step">
-                <span class="num" aria-hidden="true">03</span>
-                <div>
-                  <h4>הקישור במייל</h4>
-                  <p>קישור הצפייה והחומרים הנלווים נשלחים אליכם למייל.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="wa-box">
-            <div class="t">בינתיים, בואו לקבוצה</div>
-            <p>טיפים שוטפים על AI, כלים חדשים ותשובות לשאלות, בקבוצת הוואטסאפ שלנו.</p>
-            <a class="wa-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.6 9.1c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.7l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.2c.3.1.5.1.6 0l.5-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4v.6c-.1.5-.7 1-1.2 1.1a6.6 6.6 0 0 1-5-2.3 7.6 7.6 0 0 1-2-3.6c-.1-.9.1-1.5.4-1.9Z"/></svg>
-              לקבוצת הטיפים בוואטסאפ
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="disclosure">
-      <div class="wrap">
-        <h3>מה קורה עם הפרטים שמסרתם</h3>
-        <ul>
-          <li><b>מי אוסף.</b> יוחנן שבדרון, בעל העסק SHWADRON.AI.</li>
-          <li><b>לשם מה.</b> פתיחת הגישה לקורס, שליחת קישורי הצפייה והחומרים, ומתן תמיכה.</li>
-          <li><b>האם חובה.</b> שם, טלפון ודוא״ל נדרשים כדי לפתוח את הגישה. בלעדיהם לא נוכל לעשות זאת. אישור הדיוור השיווקי הוא רשות מלאה.</li>
-          <li><b>איפה נשמר.</b> במערכת האוטומציה Make ובמערכת החשבוניות Morning.</li>
-          <li><b>למי עשוי להימסר.</b> לספקים אלה בלבד, לצורך אספקת השירות, ולרשויות המס כחלק מהתיעוד החשבונאי.</li>
-          <li><b>עיון ותיקון.</b> אפשר לבקש לעיין במידע, לתקן או למחוק אותו בפנייה אלינו. פירוט מלא ב<a href="privacy.html">מדיניות הפרטיות</a>.</li>
-        </ul>
-      </div>
-    </section>
-
-  </div>
-
-  <!-- SUCCESS STATE -->
-  <div class="success" role="status" aria-live="polite">
+  <!-- הגישה נשלחת אוטומטית למייל מיד אחרי התשלום, ולכן אין כאן טופס -->
+  <div class="success" role="status">
     <section class="hero">
       <div class="wrap">
         <div>
@@ -335,21 +212,21 @@ body.done .success{display:block}
             <span class="mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
             </span>
-            <span>הפרטים נקלטו</span>
+            <span>התשלום התקבל בהצלחה</span>
           </div>
-          <h1>קיבלנו<span class="dotend">.</span></h1>
+          <h1>תודה<span class="dotend">.</span></h1>
           <div class="hero-sub">
             <div class="rule" aria-hidden="true"></div>
-            <p>אנחנו פותחים לכם את הגישה לקורס ושולחים את קישור הצפייה למייל. אפשר לסגור את החלון.</p>
+            <p>הגישה לקורס כבר בדרך אליך. קישור הצפייה לכל השיעורים והחומרים נשלח אוטומטית לכתובת המייל שהזנת בתשלום.</p>
           </div>
         </div>
 
         <div class="done-card">
-          <div class="k">הקישור נשלח אל</div>
-          <div class="mail" id="done-email">המייל שהזנתם</div>
+          <div class="k">לא רואים את המייל?</div>
           <ul class="done-list">
-            <li>לא רואים את המייל בתיבה. שווה לבדוק גם בקידומי מכירות ובספאם.</li>
-            <li>משהו לא הסתדר. כתבו לנו בוואטסאפ ל־052-818-9921 ונטפל בזה.</li>
+            <li><span><b>בדקו בתיקיית הספאם</b> ובלשונית "קידומי מכירות". לפעמים המייל הראשון מגיע לשם.</span></li>
+            <li><span>חיפוש בתיבת המייל לפי <b>SHWADRON</b> או <b>יוחנן שבדרון</b> בדרך כלל מוצא אותו מיד.</span></li>
+            <li><span>עדיין אין? כתבו לנו בוואטסאפ ל־<a href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%9B%D7%A9%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%20%D7%95%D7%9C%D7%90%20%D7%A7%D7%99%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%99%D7%99%D7%9C%20%D7%94%D7%92%D7%99%D7%A9%D7%94" target="_blank" rel="noopener">052-818-9921</a>, ונשלח לכם את הקישור ידנית.</span></li>
           </ul>
           <div class="done-next">
             <div class="t">רוצים להמשיך משם?</div>
@@ -360,7 +237,7 @@ body.done .success{display:block}
           <div class="done-wa">
             <div class="t">בינתיים, בואו לקבוצת הטיפים</div>
             <a class="wa-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M8.6 9.1c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.7l-.4.5c-.1.2-.2.3 0 .6a6 6 0 0 0 2.6 2.2c.3.1.5.1.6 0l.5-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4v.6c-.1.5-.7 1-1.2 1.1a6.6 6.6 0 0 1-5-2.3 7.6 7.6 0 0 1-2-3.6c-.1-.9.1-1.5.4-1.9Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
               לקבוצת הוואטסאפ
             </a>
           </div>
@@ -390,109 +267,6 @@ body.done .success{display:block}
   </div>
 </footer>
 
-<script>
-// Recorded-course access form: sends details to the existing Make webhook,
-// then shows the success state so the buyer knows we received it.
-//
-// Validation is hand-rolled rather than left to reportValidity() so that each
-// error gets a Hebrew message, an inline location AND an entry in a summary at
-// the top of the form that takes focus. The native bubble is not reliably
-// announced by screen readers and disappears on the next keystroke.
-(function(){
-  var form    = document.getElementById('access-form');
-  var summary = document.getElementById('error-summary');
-  var list    = document.getElementById('error-list');
-  var btn     = document.getElementById('submit-btn');
 
-  var RULES = [
-    { id:'f-name',  label:'שם מלא',
-      test:function(v){ return v.trim().length >= 2; },
-      msg:'יש להזין שם מלא, לפחות שני תווים.' },
-    { id:'f-phone', label:'טלפון',
-      test:function(v){ return /^0\d{1,2}-?\d{7}$/.test(v.replace(/[\s()]/g,'')); },
-      msg:'יש להזין מספר טלפון ישראלי תקין, לדוגמה 0501234567.' },
-    { id:'f-email', label:'כתובת מייל',
-      test:function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); },
-      msg:'יש להזין כתובת דוא״ל תקינה, בפורמט name@example.com.' }
-  ];
-
-  function clearError(rule){
-    var elm = document.getElementById(rule.id);
-    elm.removeAttribute('aria-invalid');
-    document.getElementById(rule.id + '-err').textContent = '';
-  }
-  function setError(rule){
-    var elm = document.getElementById(rule.id);
-    elm.setAttribute('aria-invalid','true');
-    document.getElementById(rule.id + '-err').textContent = rule.msg;
-  }
-
-  RULES.forEach(function(rule){
-    var elm = document.getElementById(rule.id);
-    elm.addEventListener('blur', function(){
-      if(elm.getAttribute('aria-invalid') === 'true' && rule.test(elm.value)) clearError(rule);
-    });
-  });
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-
-    var failed = [];
-    RULES.forEach(function(rule){
-      var elm = document.getElementById(rule.id);
-      if(rule.test(elm.value)){ clearError(rule); } else { setError(rule); failed.push(rule); }
-    });
-
-    if(failed.length){
-      list.innerHTML = '';
-      failed.forEach(function(rule){
-        var li = document.createElement('li');
-        var a  = document.createElement('a');
-        a.href = '#' + rule.id;
-        a.textContent = rule.label + ': ' + rule.msg;
-        a.addEventListener('click', function(ev){
-          ev.preventDefault();
-          document.getElementById(rule.id).focus();
-        });
-        li.appendChild(a);
-        list.appendChild(li);
-      });
-      summary.hidden = false;
-      summary.focus();
-      return;
-    }
-
-    summary.hidden = true;
-    btn.textContent = 'שולח...';
-    btn.disabled = true;
-
-    var data = { מוצר: 'קורס AI מוקלט' };
-    new FormData(form).forEach(function(v,k){ data[k] = v; });
-    // The marketing checkbox is absent from FormData when unticked; record the
-    // refusal explicitly so the CRM never treats "missing" as "opted in".
-    data['דיוור_שיווקי'] = document.getElementById('f-marketing').checked ? 'כן' : 'לא';
-    data['תאריך_שליחה']  = new Date().toISOString();
-
-    try{
-      // הרשמות לקורס הדיגיטלי: ה-webhook התפעולי הקיים, לפתיחת הגישה.
-      await fetch('https://hook.us2.make.com/psjd7do40epacy6laf4zsr1191nr9ldo', {
-        method: 'POST',
-        headers: {'Content-Type':'application/json'},
-        body: JSON.stringify(data)
-      });
-    }catch(_){}
-
-    // מסך האישור מציג את הכתובת שאליה נשלח הקישור, כדי שטעות הקלדה תתגלה מיד.
-    var mail = document.getElementById('done-email');
-    var typed = document.getElementById('f-email').value.trim();
-    if(mail && typed){ mail.textContent = typed; }
-
-    document.body.classList.add('done');
-    window.scrollTo(0,0);
-    var ok = document.querySelector('.success h1');
-    if(ok){ ok.setAttribute('tabindex','-1'); ok.focus(); }
-  });
-})();
-</script>
 </body>
 </html>
