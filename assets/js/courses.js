@@ -129,6 +129,24 @@ if (hasPrice) {
   }, {passive:true});
 })();
 
+/* המחיר הרגיל כולל מע״מ, להשוואה מול מחיר אחרי הנחה */
+function regularTotal(){ return Math.round(C.price * (1 + VAT) * 100) / 100; }
+
+/* כשהנחה כבר מוחלת אוטומטית (מבצע או בוגרים) שדה הקופון מתקפל
+   לקישור קטן "יש לך קוד קופון אחר?", כדי שלא ייראה שצריך קוד */
+function collapseCoupon(){
+  var box = document.getElementById('coupon-box');
+  if(!box) return;
+  var t = box.querySelector('.pd-coupon-toggle');
+  box.classList.add('is-collapsed');
+  if(!t) return;
+  t.hidden = false;
+  t.onclick = function(){
+    box.classList.remove('is-collapsed'); t.hidden = true;
+    var i = document.getElementById('coupon-input'); if(i) i.focus();
+  };
+}
+
 /* מחיל תוצאת קופון תקפה מ-/api/coupon: המחירים בדף וקישור התשלום */
 function applyCoupon(data){
   each('.js-price',       function(el){ el.textContent = ils(data.price); });
@@ -143,7 +161,7 @@ function applyCoupon(data){
   }
   window.SHW_PRICE_EX = data.price;
   window.SHW_PRICE    = data.total;
-  var regular = Math.round(C.price * (1 + VAT) * 100) / 100;
+  var regular = regularTotal();
   var save = Math.round((regular - data.total) * 100) / 100;
   each('[data-saving]', function(el){
     el.textContent = save > 0 ? 'חוסכים ' + ils(save) + ' מהמחיר הרגיל' : '';
@@ -193,8 +211,8 @@ function applyCoupon(data){
         // קופון ידני מחליף את הנחת הרישום המוקדם, אז השורה שלה כבר לא נכונה
         each('.promo-bar, [data-promo]', function(el){ el.hidden = true; });
         each('[data-promo-row]', function(el){ el.hidden = false; });
-        each('.js-regular', function(el){ el.textContent = ils(C.price); });
-        each('.js-price-label', function(el){ el.textContent = 'מחיר אחרי קופון'; });
+        each('.js-regular', function(el){ el.textContent = ils(regularTotal()); });
+        each('.js-price-label', function(el){ el.textContent = 'מחיר אחרי קופון, לפני מע״מ'; });
         setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.total) + ' כולל מע״מ.', true);
         input.disabled = true;
       })
@@ -233,11 +251,10 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
       var regular = Math.round(C.price * (1 + VAT) * 100) / 100;
       var fill = { total: ils(data.total), regular: ils(regular), save: ils(Math.round((regular - data.total) * 100) / 100) };
       bar.querySelectorAll('[data-alumni]').forEach(function(el){ el.textContent = fill[el.getAttribute('data-alumni')]; });
-      each('.js-regular', function(el){ el.textContent = ils(C.price); });
-      each('.js-price-label', function(el){ el.textContent = 'מחיר בוגרים'; });
+      each('.js-regular', function(el){ el.textContent = ils(regularTotal()); });
+      each('.js-price-label', function(el){ el.textContent = 'מחיר בוגרים, לפני מע״מ'; });
       each('[data-promo-row]', function(el){ el.hidden = false; });
-      var m = document.getElementById('coupon-msg');
-      if(m){ m.textContent = 'הטבת הבוגרים כבר מחושבת במחיר. הנחות לא מצטרפות זו לזו.'; m.className = 'pd-coupon-msg ok'; }
+      collapseCoupon();
       show('alumni-on');
     })
     .catch(function(){ show('alumni-off'); });
@@ -275,12 +292,10 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
       each('[data-promo]', function(el){ el.hidden = false; });
       if(!onTrack) return;
       applyCoupon(data);
-      each('.js-regular', function(el){ el.textContent = ils(C.price); });
-      each('.js-price-label', function(el){ el.textContent = 'מחיר רישום מוקדם עד ' + until.slice(8) + '/' + until.slice(5, 7); });
+      each('.js-regular', function(el){ el.textContent = ils(regularTotal()); });
+      each('.js-price-label', function(el){ el.textContent = 'מחיר רישום מוקדם, לפני מע״מ'; });
       each('[data-promo-row]', function(el){ el.hidden = false; });
-      // שדה הקופון נשאר, למי שיש קוד אחר (למשל קופון אישי)
-      var m = document.getElementById('coupon-msg');
-      if(m){ m.textContent = 'הנחת הרישום המוקדם כבר מחושבת במחיר. יש לך קוד אחר? אפשר להזין אותו כאן.'; m.className = 'pd-coupon-msg ok'; }
+      collapseCoupon();
     })
     .catch(function(){});
 })();

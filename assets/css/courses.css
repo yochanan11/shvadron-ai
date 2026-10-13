@@ -857,3 +857,10 @@ a:hover{color:var(--teal-ink)}
 
 /* המחיר הסופי כולל מע״מ הוא המחיר הראשי בהירו */
 .hero-price b .js-price-total{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.5rem;color:#fff}
+
+/* שדה קופון מקופל כשהנחה כבר מוחלת */
+.pd-coupon.is-collapsed{background:none;padding:0}
+.pd-coupon.is-collapsed .pd-coupon-lbl,.pd-coupon.is-collapsed .pd-coupon-row,.pd-coupon.is-collapsed .pd-coupon-msg{display:none}
+.pd-coupon-toggle{align-self:flex-start;background:none;border:0;padding:0;color:var(--blue);font:inherit;font-weight:700;font-size:.95rem;text-decoration:underline;cursor:pointer}
+/* החיסכון בולט מתחת לסה״כ */
+.pd-saving{font-size:1.13rem}
