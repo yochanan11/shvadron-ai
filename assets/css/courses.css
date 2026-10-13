@@ -828,3 +828,6 @@ a:hover{color:var(--teal-ink)}
 .orgs-quote{margin:0 auto;max-width:720px;padding:0 var(--pad);text-align:center;color:#fff}
 .orgs-quote blockquote{margin:0;font-size:1.13rem;line-height:1.65}
 .orgs-quote figcaption{margin-top:8px;font-size:.88rem;color:#9fb0c8}
+
+/* כמה חוסכים, מתחת לסה״כ, כשמוחלת הנחה */
+.pd-saving{margin:-8px 0 0;font-weight:800;color:var(--teal-ink);font-size:1.02rem}

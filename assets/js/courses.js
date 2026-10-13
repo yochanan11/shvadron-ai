@@ -143,6 +143,12 @@ function applyCoupon(data){
   }
   window.SHW_PRICE_EX = data.price;
   window.SHW_PRICE    = data.total;
+  var regular = Math.round(C.price * (1 + VAT) * 100) / 100;
+  var save = Math.round((regular - data.total) * 100) / 100;
+  each('[data-saving]', function(el){
+    el.textContent = save > 0 ? 'חוסכים ' + ils(save) + ' מהמחיר הרגיל' : '';
+    el.hidden = !(save > 0);
+  });
 }
 
 /* ─── קופון: נבדק בצד השרת ב-/api/coupon, לעולם לא סומכים
@@ -177,8 +183,15 @@ function applyCoupon(data){
           btn.disabled = false;
           return;
         }
+        // הנחות לא מצטרפות: קוד שמביא למחיר גבוה מהמחיר שכבר מוצג לא מוחל
+        if(window.SHW_PRICE && data.total >= window.SHW_PRICE){
+          setMsg(data.total === window.SHW_PRICE ? 'ההנחה הזו כבר מחושבת במחיר.' : 'המחיר שמוצג כבר נמוך יותר. הנחות לא מצטרפות זו לזו.', false);
+          btn.disabled = false;
+          return;
+        }
         applyCoupon(data);
         // קופון ידני מחליף את הנחת הרישום המוקדם, אז השורה שלה כבר לא נכונה
+        each('.promo-bar, [data-promo]', function(el){ el.hidden = true; });
         each('[data-promo-row]', function(el){ el.hidden = false; });
         each('.js-regular', function(el){ el.textContent = ils(C.price); });
         each('.js-price-label', function(el){ el.textContent = 'מחיר אחרי קופון'; });
@@ -197,13 +210,46 @@ function applyCoupon(data){
   });
 })();
 
+/* ─── הטבת בוגרים: מי שהגיע מ-/alumni (?offer=alumni) לדף המתקדמים.
+       הקופון "בוגרים" נבדק מול /api/coupon. כשהוא מוגדר, המחיר והקישור
+       מתחלפים, והנחת הרישום המוקדם לא מוצגת בכלל, כדי שלא יהיו שתי הנחות
+       מתחרות. כשהוא עדיין לא מוגדר, מוצגת הפניה לוואטסאפ במקום מחיר. ─── */
+var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location.search);
+(function(){
+  var bar = document.querySelector('.alumni-bar');
+  if(!ALUMNI || !bar) return;
+  function show(cls){
+    bar.hidden = false;
+    bar.querySelectorAll('.' + cls).forEach(function(el){ el.hidden = false; });
+  }
+  fetch('/api/coupon', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ code: bar.getAttribute('data-code'), page: 'course-advanced' })
+  })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if(!data.valid){ show('alumni-off'); return; }
+      applyCoupon(data);
+      var regular = Math.round(C.price * (1 + VAT) * 100) / 100;
+      var fill = { total: ils(data.total), regular: ils(regular), save: ils(Math.round((regular - data.total) * 100) / 100) };
+      bar.querySelectorAll('[data-alumni]').forEach(function(el){ el.textContent = fill[el.getAttribute('data-alumni')]; });
+      each('.js-regular', function(el){ el.textContent = ils(C.price); });
+      each('.js-price-label', function(el){ el.textContent = 'מחיר בוגרים'; });
+      each('[data-promo-row]', function(el){ el.hidden = false; });
+      var m = document.getElementById('coupon-msg');
+      if(m){ m.textContent = 'הטבת הבוגרים כבר מחושבת במחיר. הנחות לא מצטרפות זו לזו.'; m.className = 'pd-coupon-msg ok'; }
+      show('alumni-on');
+    })
+    .catch(function(){ show('alumni-off'); });
+})();
+
 /* ─── מבצע: עד data-until כולל, לפי שעון ישראל. הקוד שעל הבאנר
        נבדק מול /api/coupon, ורק אם הוא תקף הבאנר מוצג ובדף מסלול
        ההנחה מוחלת לבד: המחיר הרגיל מחוק, מחיר המבצע במקומו, וקישור
        התשלום מתחלף. אם הקופון לא מוגדר, הדף נשאר במחיר הרגיל.    ─── */
 (function(){
-  var bar = document.querySelector('.promo-bar');
-  if(!bar) return;
+  var bar = document.querySelector('.promo-bar:not(.alumni-bar)');
+  if(!bar || ALUMNI) return;
   var today, until = bar.getAttribute('data-until');
   try {
     today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jerusalem' }).format(new Date());

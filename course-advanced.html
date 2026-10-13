@@ -87,6 +87,15 @@
   <a href="#buy">למחיר המבצע ←</a>
 </div>
 
+<!-- הטבת בוגרים: מוצגת רק למי שהגיע מהקישור /alumni (?offer=alumni).
+     המחיר נלקח מהקופון "בוגרים" בדף הקופונים, ומוצג רק כשהוא מוגדר. -->
+<div class="promo-bar alumni-bar" data-code="בוגרים" hidden>
+  <p class="alumni-on" hidden><b>הטבת בוגרים:</b> 20% הנחה למי שכבר למד אצלנו · <b data-alumni="total"></b> במקום <s data-alumni="regular"></s> · חוסכים <span data-alumni="save"></span></p>
+  <p class="alumni-off" hidden><b>ברוכים השבים!</b> לפרטים על הטבת הבוגרים במסלול המתקדמים, כתבו לי בוואטסאפ</p>
+  <a class="alumni-on" href="#buy" hidden>למחיר הבוגרים ←</a>
+  <a class="alumni-off" href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%91%D7%95%D7%92%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%98%D7%91%D7%AA%20%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D" target="_blank" rel="noopener" hidden>לוואטסאפ ←</a>
+</div>
+
 <header class="site-header">
   <a href="index.html" class="logo"><img src="assets/public/logo.png" alt="SHWADRON.AI, חזרה לדף הבית" width="190" height="38"/></a>
   <nav class="nav" aria-label="ניווט בעמוד">
@@ -523,6 +532,7 @@
           <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">2,950 ₪</td></tr>
         </tbody>
       </table>
+      <p class="pd-saving" data-saving hidden></p>
 
       <div class="pd-coupon" id="coupon-box" data-has-price>
         <label class="pd-coupon-lbl" for="coupon-input">

@@ -74,6 +74,11 @@
       "source": "/index-cohort-full-backup.html",
       "destination": "/",
       "permanent": false
+    },
+    {
+      "source": "/alumni",
+      "destination": "/course-advanced.html?offer=alumni&utm_source=alumni",
+      "permanent": false
     }
   ]
 }
