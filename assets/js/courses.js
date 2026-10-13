@@ -221,6 +221,7 @@ function applyCoupon(data){
     .then(function(data){
       if(!data.valid) return;
       bar.hidden = false;
+      each('[data-promo]', function(el){ el.hidden = false; });
       if(!onTrack) return;
       applyCoupon(data);
       each('.js-regular', function(el){ el.textContent = ils(C.price); });

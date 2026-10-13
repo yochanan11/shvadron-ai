@@ -66,6 +66,19 @@ a:hover{color:var(--teal-ink)}
   padding:10px var(--pad);background:var(--teal);color:var(--ink);font-size:.98rem;text-align:center;line-height:1.5}
 /* hidden גובר תמיד, גם על רכיבים שמגדירים display משלהם */
 [hidden]{display:none!important}
+/* מדבקת מבצע: עיגול טורקיז מוטה, נדבק לפינת התמונה ולכרטיס המחיר */
+.sticker{position:absolute;z-index:3;top:-22px;left:-26px;width:124px;height:124px;border-radius:50%;
+  background:var(--teal);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;line-height:1;transform:rotate(-12deg);box-shadow:0 10px 24px rgba(0,0,0,.35);
+  outline:2px dashed rgba(10,26,51,.35);outline-offset:-9px;font-family:'Heebo',sans-serif;pointer-events:none}
+.sticker b{font-size:2.3rem;font-weight:900;letter-spacing:-.02em}
+.sticker span{font-size:1.05rem;font-weight:800;margin-top:2px}
+.sticker small{font-size:.8rem;font-weight:700;margin-top:5px}
+.sticker-sm{top:-30px;left:-18px;width:96px;height:96px;outline-offset:-7px}
+.sticker-sm b{font-size:1.75rem}
+.sticker-sm span{font-size:.9rem}
+.sticker-sm small{font-size:.72rem}
+.price-card{position:relative}
 .promo-bar p{margin:0}
 .promo-bar code{font-family:inherit;font-weight:800;letter-spacing:.06em;background:var(--ink);color:#fff;
   padding:1px 8px;border-radius:3px;white-space:nowrap}
