@@ -128,6 +128,22 @@ if (hasPrice) {
   }, {passive:true});
 })();
 
+/* מחיל תוצאת קופון תקפה מ-/api/coupon: המחירים בדף וקישור התשלום */
+function applyCoupon(data){
+  each('.js-price',       function(el){ el.textContent = ils(data.price); });
+  each('.js-price-vat',   function(el){ el.textContent = ils(data.vat); });
+  each('.js-price-total', function(el){ el.textContent = ils(data.total); });
+  if(data.checkoutUrl){
+    each('[data-join]', function(a){
+      if((a.getAttribute('href') || '').charAt(0) === '#') return;  // קישורי גלילה נשארים
+      a.href = data.checkoutUrl;
+      a.removeAttribute('target');
+    });
+  }
+  window.SHW_PRICE_EX = data.price;
+  window.SHW_PRICE    = data.total;
+}
+
 /* ─── קופון: נבדק בצד השרת ב-/api/coupon, לעולם לא סומכים
        על הדפדפן. קופון שמוגדר לעמוד הזה מחזיר קישור תשלום
        משלו, ואז כפתורי ההרשמה מפנים אליו במקום לוואטסאפ.  ─── */
@@ -160,17 +176,7 @@ if (hasPrice) {
           btn.disabled = false;
           return;
         }
-        each('.js-price',       function(el){ el.textContent = ils(data.price); });
-        each('.js-price-vat',   function(el){ el.textContent = ils(data.vat); });
-        each('.js-price-total', function(el){ el.textContent = ils(data.total); });
-        if(data.checkoutUrl){
-          each('[data-join]', function(a){
-            a.href = data.checkoutUrl;
-            a.removeAttribute('target');
-          });
-        }
-        window.SHW_PRICE_EX = data.price;
-        window.SHW_PRICE    = data.total;
+        applyCoupon(data);
         setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.price) + ' + מע״מ.', true);
         input.disabled = true;
       })
@@ -186,9 +192,10 @@ if (hasPrice) {
   });
 })();
 
-/* ─── מבצע: מוצג עד data-until כולל, לפי שעון ישראל. ההגדרה
-       כולה יושבת על הבאנר (תאריך, אחוז, קוד), וכל אלמנט [data-promo]
-       בדף נדלק איתו. המחיר המוזל מחושב כמו ב-/api/coupon.        ─── */
+/* ─── מבצע: עד data-until כולל, לפי שעון ישראל. הקוד שעל הבאנר
+       נבדק מול /api/coupon, ורק אם הוא תקף הבאנר מוצג ובדף מסלול
+       ההנחה מוחלת לבד: המחיר הרגיל מחוק, מחיר המבצע במקומו, וקישור
+       התשלום מתחלף. אם הקופון לא מוגדר, הדף נשאר במחיר הרגיל.    ─── */
 (function(){
   var bar = document.querySelector('.promo-bar');
   if(!bar) return;
@@ -199,42 +206,29 @@ if (hasPrice) {
   if(today > until) return;
 
   var days = Math.round((Date.parse(until) - Date.parse(today)) / 864e5) + 1;
-  var left = days <= 1 ? '· היום היום האחרון!' : '· נותרו ' + days + ' ימים';
-  var pct  = Number(bar.getAttribute('data-pct')) || 0;
-  var code = bar.getAttribute('data-code') || '';
-
-  var fill = { left: left };
-  if(hasPrice && pct){
-    var price = Math.round(C.price * (1 - pct / 100) * 100) / 100;
-    fill.total   = ils(Math.ceil(price * (1 + VAT) * 10) / 10);
-    fill.regular = ils(Math.round(C.price * (1 + VAT) * 100) / 100);
-  }
-  each('[data-promo-fill]', function(el){
-    var v = fill[el.getAttribute('data-promo-fill')];
-    if(v) el.textContent = v;
-  });
-  bar.hidden = false;
-  each('[data-promo]', function(el){
-    // בדף בלי מחיר אין סכום להציג, אז מציגים רק את מה שלא תלוי בו
-    if(el.querySelector('[data-promo-fill="total"]') && !fill.total) return;
-    el.hidden = false;
+  each('[data-promo-fill="left"]', function(el){
+    el.textContent = days <= 1 ? '· היום היום האחרון!' : '· נותרו ' + days + ' ימים';
   });
 
-  // "להפעלת ההנחה" ממלא את הקוד ומפעיל אותו, בלי הקלדה
-  var input = document.getElementById('coupon-input');
-  var apply = document.getElementById('coupon-apply');
-  function useCode(run){
-    if(!input || input.disabled) return;
-    input.value = code;
-    if(run && apply) apply.click();
-  }
-  each('.promo-bar [data-promo-code]', function(a){
-    a.addEventListener('click', function(){ useCode(false); });
-  });
-  each('[data-promo-apply]', function(btn){
-    // התוצאה (הצלחה או שגיאה) מוצגת בהודעת הקופון שמתחת
-    btn.addEventListener('click', function(){ useCode(true); });
-  });
+  var onTrack = hasPrice && document.getElementById('coupon-box');
+  fetch('/api/coupon', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ code: bar.getAttribute('data-code'),
+                           page: onTrack ? (C.couponPage || C.id) : 'course-beginners' })
+  })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if(!data.valid) return;
+      bar.hidden = false;
+      if(!onTrack) return;
+      applyCoupon(data);
+      each('.js-regular', function(el){ el.textContent = ils(C.price); });
+      each('.js-price-label', function(el){ el.textContent = 'מחיר מבצע עד ' + until.slice(8) + '/' + until.slice(5, 7); });
+      each('[data-promo-row]', function(el){ el.hidden = false; });
+      document.getElementById('coupon-box').hidden = true;
+    })
+    .catch(function(){});
 })();
 
 /* ─── חשיפה בגלילה ─── */

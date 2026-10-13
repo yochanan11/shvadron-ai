@@ -78,10 +78,10 @@
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
 <!-- באנר מבצע. מוצג רק עד data-until (כולל, שעון ישראל), ואז נעלם לבד.
-     הקוד חייב להיות זהה לקופון שהוגדר ב-admin-coupons.html -->
+     הקוד ב-data-code חייב להיות זהה לקופון שהוגדר ב-admin-coupons.html -->
 <div class="promo-bar" data-until="2026-10-19" data-pct="10" data-code="KISLEV10" hidden>
-  <p><b>מבצע הרשמה מוקדמת:</b> 10% הנחה על שני המסלולים עם הקוד <code>KISLEV10</code> · עד 19/10 בלבד <span class="promo-left" data-promo-fill="left"></span></p>
-  <a href="#buy" data-promo-code="KISLEV10">להפעלת ההנחה ←</a>
+  <p><b>מבצע הרשמה מוקדמת:</b> 10% הנחה על שני המסלולים, עד 19/10 בלבד <span class="promo-left" data-promo-fill="left"></span></p>
+  <a href="#buy">למחיר המבצע ←</a>
 </div>
 
 <header class="site-header">
@@ -121,7 +121,6 @@
           <b data-has-price><span class="js-price">750 ₪</span> <span>+ מע״מ</span></b>
           <small data-has-price>סה״כ <span class="js-price-total">885 ₪</span> כולל מע״מ</small>
         </p>
-        <p class="promo-hero" data-promo hidden>מחיר מבצע עד 19/10: <b data-promo-fill="total"></b> <s data-promo-fill="regular"></s> עם הקוד <code>KISLEV10</code></p>
       </div>
       <p class="hero-lead rise-4" style="font-size:1rem">מתחילים <b>יום שני, י״ג בכסליו · 23 בנובמבר</b> · פעם בשבוע, 19:30-21:30 · 3 מפגשים · Zoom, גם באינטרנט מסונן</p>
     </div>
@@ -406,18 +405,13 @@
     <div class="price-card">
       <span class="lbl">פרטי ההרשמה</span>
 
-      <div class="promo-box" data-promo hidden>
-        <p class="promo-box-tag">מבצע הרשמה מוקדמת · 10% הנחה <span data-promo-fill="left"></span></p>
-        <p class="promo-box-price"><b data-promo-fill="total"></b> <s data-promo-fill="regular"></s> <small>כולל מע״מ</small></p>
-        <p class="promo-box-note">עם הקוד <code>KISLEV10</code> · בתוקף עד 19/10 בלבד</p>
-        <button type="button" class="btn promo-box-btn" data-promo-apply>הפעלת ההנחה</button>
-      </div>
 
       <p class="pd-vat" data-no-price hidden>המחיר של המחזור הקרוב טרם פורסם. שלח הודעה בוואטסאפ, ותקבל את המחיר, את מועדי המפגשים ואת פרטי התשלום עוד לפני שההרשמה נפתחת לכולם.</p>
 
       <table class="price-table" data-has-price>
         <tbody>
-          <tr><th scope="row">השתתפות במסלול</th><td class="js-price">750 ₪</td></tr>
+          <tr data-promo-row hidden><th scope="row">מחיר רגיל</th><td><s class="js-regular"></s></td></tr>
+          <tr><th scope="row" class="js-price-label">השתתפות במסלול</th><td class="js-price">750 ₪</td></tr>
           <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">135 ₪</td></tr>
           <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">885 ₪</td></tr>
         </tbody>
