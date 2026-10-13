@@ -70,6 +70,23 @@ a:hover{color:var(--teal-ink)}
   padding:1px 8px;border-radius:3px;white-space:nowrap}
 .promo-bar a{color:var(--ink);font-weight:800;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 .promo-bar a:hover{color:var(--ink);text-decoration-thickness:2px}
+.promo-bar .promo-left{font-weight:800}
+/* מבצע בתוך הדף: שורה בהירו וקופסה בכרטיס המחיר */
+.promo-hero{margin:4px 0 0;padding:8px 12px;border:1px solid var(--teal);border-radius:3px;color:#fff;font-size:.98rem;line-height:1.6}
+.promo-hero[hidden],.promo-box[hidden]{display:none}
+.promo-hero b{color:var(--teal);font-size:1.12rem}
+.promo-hero s{color:var(--on-dark-3,#9fb0c8);margin-inline-start:4px}
+.promo-hero code,.promo-box code{font-family:inherit;font-weight:800;letter-spacing:.06em;background:var(--teal);color:var(--ink);padding:1px 8px;border-radius:3px;white-space:nowrap}
+.promo-box{background:var(--ink);color:#fff;border-radius:3px;padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.promo-box p{margin:0}
+.promo-box-tag{color:var(--teal);font-weight:800;font-size:.94rem}
+.promo-box-price b{font-family:'Heebo',sans-serif;font-weight:900;font-size:2rem;color:#fff}
+.promo-box-price s{color:#9fb0c8;font-weight:600;margin-inline-start:6px}
+.promo-box-price small{color:#9fb0c8;font-size:.88rem}
+.promo-box-note{font-size:.94rem;color:#d7e0ec}
+.promo-box-btn{align-self:stretch;margin-top:8px;padding:12px 20px;border:0;cursor:pointer;justify-content:center;
+  background:var(--teal);color:var(--ink);font-family:'Heebo',sans-serif;font-weight:800;font-size:1.06rem;border-radius:3px;text-decoration:none}
+.promo-box-btn:hover{background:#25c7ab}
 .site-header{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:40px;
   padding:20px var(--pad);background:var(--ink);color:#fff;border-bottom:1px solid var(--line-dark-2)}
 .site-header .logo img{height:38px;width:auto;filter:brightness(0) invert(1)}

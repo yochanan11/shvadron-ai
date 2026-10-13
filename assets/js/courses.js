@@ -186,24 +186,55 @@ if (hasPrice) {
   });
 })();
 
-/* ─── באנר מבצע: מוצג עד data-until כולל, לפי שעון ישראל.
-       לחיצה עליו בדף מסלול ממלאת את הקוד בשדה הקופון.     ─── */
+/* ─── מבצע: מוצג עד data-until כולל, לפי שעון ישראל. ההגדרה
+       כולה יושבת על הבאנר (תאריך, אחוז, קוד), וכל אלמנט [data-promo]
+       בדף נדלק איתו. המחיר המוזל מחושב כמו ב-/api/coupon.        ─── */
 (function(){
   var bar = document.querySelector('.promo-bar');
   if(!bar) return;
-  var today;
+  var today, until = bar.getAttribute('data-until');
   try {
     today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jerusalem' }).format(new Date());
   } catch(e){ return; }
-  if(today > bar.getAttribute('data-until')) return;
-  bar.hidden = false;
-  var link  = bar.querySelector('[data-promo-code]');
-  var input = document.getElementById('coupon-input');
-  if(link && input){
-    link.addEventListener('click', function(){
-      if(!input.disabled) input.value = link.getAttribute('data-promo-code');
-    });
+  if(today > until) return;
+
+  var days = Math.round((Date.parse(until) - Date.parse(today)) / 864e5) + 1;
+  var left = days <= 1 ? '· היום היום האחרון!' : '· נותרו ' + days + ' ימים';
+  var pct  = Number(bar.getAttribute('data-pct')) || 0;
+  var code = bar.getAttribute('data-code') || '';
+
+  var fill = { left: left };
+  if(hasPrice && pct){
+    var price = Math.round(C.price * (1 - pct / 100) * 100) / 100;
+    fill.total   = ils(Math.ceil(price * (1 + VAT) * 10) / 10);
+    fill.regular = ils(Math.round(C.price * (1 + VAT) * 100) / 100);
   }
+  each('[data-promo-fill]', function(el){
+    var v = fill[el.getAttribute('data-promo-fill')];
+    if(v) el.textContent = v;
+  });
+  bar.hidden = false;
+  each('[data-promo]', function(el){
+    // בדף בלי מחיר אין סכום להציג, אז מציגים רק את מה שלא תלוי בו
+    if(el.querySelector('[data-promo-fill="total"]') && !fill.total) return;
+    el.hidden = false;
+  });
+
+  // "להפעלת ההנחה" ממלא את הקוד ומפעיל אותו, בלי הקלדה
+  var input = document.getElementById('coupon-input');
+  var apply = document.getElementById('coupon-apply');
+  function useCode(run){
+    if(!input || input.disabled) return;
+    input.value = code;
+    if(run && apply) apply.click();
+  }
+  each('.promo-bar [data-promo-code]', function(a){
+    a.addEventListener('click', function(){ useCode(false); });
+  });
+  each('[data-promo-apply]', function(btn){
+    // התוצאה (הצלחה או שגיאה) מוצגת בהודעת הקופון שמתחת
+    btn.addEventListener('click', function(){ useCode(true); });
+  });
 })();
 
 /* ─── חשיפה בגלילה ─── */
