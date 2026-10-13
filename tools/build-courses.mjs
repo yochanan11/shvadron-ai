@@ -67,10 +67,12 @@ const startLabel = t => t.start
 
 /* מחיר בשקלים עם מפריד אלפים, כמו בכל מקום אחר בדף */
 const ils = n => n.toLocaleString('he-IL') + ' ₪';
+/* המחיר הסופי כולל מע״מ: זה המחיר הראשי שמוצג לצרכן */
+const totalOf = t => Math.round(t.priceEx * (1 + t.vatRate) * 100) / 100;
 
 /* השורה הקטנה מתחת לכפתור בכרטיס המסלול */
 const priceNote = t => t.priceEx
-  ? `${t.meta[0]} · ${ils(t.priceEx)} + מע״מ`
+  ? `${t.meta[0]} · ${ils(totalOf(t))} כולל מע״מ`
   : `${t.meta[0]} · המחיר יעודכן`;
 
 /* ─── שרשרת שלבים: רעיון ← אפיון ← בנייה ─────────────────────
@@ -305,7 +307,7 @@ function details(t) {
   ];
   const price = t.priceEx == null
     ? '<b class="price">תעודכן בהמשך</b>'
-    : `<b class="price">${ils(t.priceEx)} + מע״מ</b>`;
+    : `<b class="price">${ils(totalOf(t))} כולל מע״מ</b>`;
   return `<div class="dtl">
 ${rows.map(([k, v]) => `  <div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('\n')}
   <div><span>עלות</span>${price}</div>
@@ -322,7 +324,7 @@ function detailsHub() {
     ['תדירות',    `פעם בשבוע, ${TIME}`],
     ['איפה',      'Zoom, גם באינטרנט מסונן'],
     ['הקלטות',    'כלולות ונשארות'],
-    ['מחיר',      `${ils(b.priceEx)} / ${ils(a.priceEx)} + מע״מ`],
+    ['מחיר',      `${ils(totalOf(b))} / ${ils(totalOf(a))} כולל מע״מ`],
   ];
   return `<div class="dtl">
 ${rows.map(([k, v]) => `  <div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('\n')}

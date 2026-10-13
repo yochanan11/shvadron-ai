@@ -216,7 +216,7 @@ export const COMPARE = [
   { label: 'תעודת סיום',        b: 'לא נכלל', bNo: true,             a: 'כן' },
   { label: 'נדרש ידע בתכנות',   b: 'לא',                             a: 'לא' },
   { label: 'הקלטות וקבוצת ליווי', b: 'כן',                           a: 'כן' },
-  { label: 'מחיר',              b: '750 ₪ + מע״מ',                   a: '2,500 ₪ + מע״מ' },
+  { label: 'מחיר',              b: '885 ₪ כולל מע״מ',                a: '2,950 ₪ כולל מע״מ' },
 ];
 
 export const TRACKS = [BEGINNERS, ADVANCED];

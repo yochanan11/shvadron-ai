@@ -588,8 +588,8 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
       <div class="hero-cta rise-4">
         <a class="btn btn-lg" data-buy href="https://mrng.to/zoeR82jDpx">לרכישת הקורס וגישה מיידית</a>
         <p class="hero-price">
-          <b><span class="js-price">385 ₪</span> <span>+ מע״מ</span></b>
-          <small>סה״כ <span class="js-price-total">454.30 ₪</span> כולל מע״מ · אפשר עד 3 תשלומים</small>
+          <b><span class="js-price-total">454.30 ₪</span> <span>כולל מע״מ</span></b>
+          <small>אפשר עד 3 תשלומים</small>
         </p>
       </div>
       <p class="hero-proof rise-4">״לפני הקורס כל עולם ה-AI הרגיש לי כמו סינית. אחרי ארבעת השיעורים סוף סוף יש לי בסיס, ואני מבין מה אני עושה.״ <cite>בוגר הקורס הדיגיטלי · מתוך 1,500 בוגרים</cite></p>
@@ -808,7 +808,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
       </details>
       <details>
         <summary>המחיר כולל מע״מ?</summary>
-        <p>המחיר הנקוב הוא <b><span class="js-price">385 ₪</span></b> ועליו מתווסף מע״מ בשיעור <span class="js-vat-rate">18%</span>. הסכום שייגבה בפועל בכרטיס האשראי הוא <b><span class="js-price-total">454.30 ₪</span></b>. אין תוספות נוספות מעבר לכך.</p>
+        <p>כן. הסכום לתשלום הוא <b><span class="js-price-total">454.30 ₪</span></b> כולל מע״מ (<span class="js-price">385 ₪</span> + מע״מ <span class="js-vat-rate">18%</span>), וזה מה שייגבה בפועל. אין תוספות מעבר לכך.</p>
       </details>
       <details>
         <summary>צריך לשלם על הכלים עצמם?</summary>
@@ -904,7 +904,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 </footer>
 
 <div class="stickybar" id="stickybar">
-  <div class="sb-price"><b class="js-price">385 ₪</b><span class="sb-vat">+ מע״מ · סה״כ <span class="js-price-total">454.30 ₪</span></span></div>
+  <div class="sb-price"><b class="js-price-total">454.30 ₪</b><span class="sb-vat">כולל מע״מ · עד 3 תשלומים</span></div>
   <a class="btn btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
 </div>
 
@@ -1112,7 +1112,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
         document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = data.checkoutUrl; });
         window.SHW_PRICE_EX = data.price;
         window.SHW_PRICE = data.total;
-        setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.price) + ' + מע״מ.', true);
+        setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.total) + ' כולל מע״מ.', true);
         input.disabled = true;
       })
       .catch(function(){

@@ -195,7 +195,7 @@ function applyCoupon(data){
         each('[data-promo-row]', function(el){ el.hidden = false; });
         each('.js-regular', function(el){ el.textContent = ils(C.price); });
         each('.js-price-label', function(el){ el.textContent = 'מחיר אחרי קופון'; });
-        setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.price) + ' + מע״מ.', true);
+        setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.total) + ' כולל מע״מ.', true);
         input.disabled = true;
       })
       .catch(function(){
