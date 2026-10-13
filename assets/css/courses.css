@@ -199,22 +199,20 @@ a:hover{color:var(--teal-ink)}
 .quote p{font-size:1.19rem;line-height:1.6}
 /* קריאה לפעולה שנשארת לבד בשורה האחרונה של הרשת: לכל הרוחב */
 .out-grid>.out-cta:last-child:nth-child(3n+1){grid-column:1/-1}
-/* קיר ההמלצות: צילומי וואטסאפ בפריסת פסיפס, שתי שורות. כל תמונה
-   משובצת באריח בצורה שלה (רחבה ברחב, גבוהה בצר), כך שנחתך רק התחתית */
 .wall-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;letter-spacing:-.02em;
   color:var(--ink);text-align:center;margin:0 0 10px}
-.wall-sub{text-align:center;color:var(--muted);font-weight:700;font-size:1.06rem;margin:0 0 36px}
-.wall{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:300px;gap:14px}
-.wall-tile{display:block;overflow:hidden;border-radius:6px;background:#efe7dc;
+.wall-sub{text-align:center;color:var(--muted);font-weight:700;font-size:1.06rem;margin:0 auto 36px;max-width:640px}
+.wall-sub + .wall-sub{margin-top:-26px;font-weight:600;font-size:.98rem}
+/* קיר ההמלצות: צילומי וואטסאפ שלמים, שורות ממורכזות. רק צילומים
+   שידוע מאיזה מוצר הם, ובדף של אותו מוצר */
+.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.wall-tile{flex:0 1 calc((100% - 28px) / 3);height:300px;display:block;overflow:hidden;border-radius:6px;background:#efe7dc;
   box-shadow:0 18px 40px -26px rgba(10,26,51,.5);transition:transform .2s}
 .wall-tile:hover{transform:translateY(-3px)}
-.wall-tile img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
-.wall .t1{grid-column:span 5}.wall .t2{grid-column:span 3}.wall .t3,.wall .t4{grid-column:span 2}
-.wall .t5{grid-column:span 4}.wall .t6{grid-column:span 3}.wall .t7{grid-column:span 5}
+.wall-tile img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
 @media (max-width:900px){
-  .wall{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:260px;grid-auto-flow:dense}
-  .wall .wall-tile{grid-column:span 1}
-  .wall .t1,.wall .t5,.wall .t7{grid-column:span 2}
+  .wall-tile{flex-basis:100%;height:auto}
+  .wall-tile img{height:auto}
 }
 .wa-proofs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:40px;align-items:start}
 .wa-proofs figure{margin:0}
@@ -825,3 +823,8 @@ a:hover{color:var(--teal-ink)}
   border-inline-start:3px solid #e2574c;font-weight:600}
 .pains-close{font-family:'Heebo',sans-serif;font-weight:800;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.3;max-width:720px;margin:6px 0 0}
 @media (max-width:760px){.pains-list{grid-template-columns:1fr}.pains{padding:56px var(--pad)}}
+
+/* ההמלצה על הטמעה, בתוך הפאנל הכהה של הלוגואים */
+.orgs-quote{margin:0 auto;max-width:720px;padding:0 var(--pad);text-align:center;color:#fff}
+.orgs-quote blockquote{margin:0;font-size:1.13rem;line-height:1.65}
+.orgs-quote figcaption{margin-top:8px;font-size:.88rem;color:#9fb0c8}

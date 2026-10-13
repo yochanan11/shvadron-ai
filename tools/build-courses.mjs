@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME, NO_CLASSES,
-         ORGS, ORGS_TITLE, MARQUEE, WEBINAR } from '../assets/data/courses.mjs';
+         ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -279,6 +279,10 @@ function orgs() {
 
   return `<div class="orgs sr">
   <h3 class="orgs-title">${esc(ORGS_TITLE)}</h3>
+  <figure class="orgs-quote">
+    <blockquote>״${esc(ORGS_QUOTE.text)}״</blockquote>
+    <figcaption>${esc(ORGS_QUOTE.who)}</figcaption>
+  </figure>
   <div class="orgs-strip">
     <div class="orgs-track">
       <ul class="orgs-set">${set(false)}</ul>
