@@ -177,6 +177,10 @@ function applyCoupon(data){
           return;
         }
         applyCoupon(data);
+        // קופון ידני מחליף את הנחת הרישום המוקדם, אז השורה שלה כבר לא נכונה
+        each('[data-promo-row]', function(el){ el.hidden = false; });
+        each('.js-regular', function(el){ el.textContent = ils(C.price); });
+        each('.js-price-label', function(el){ el.textContent = 'מחיר אחרי קופון'; });
         setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.price) + ' + מע״מ.', true);
         input.disabled = true;
       })
@@ -227,7 +231,9 @@ function applyCoupon(data){
       each('.js-regular', function(el){ el.textContent = ils(C.price); });
       each('.js-price-label', function(el){ el.textContent = 'מחיר רישום מוקדם עד ' + until.slice(8) + '/' + until.slice(5, 7); });
       each('[data-promo-row]', function(el){ el.hidden = false; });
-      document.getElementById('coupon-box').hidden = true;
+      // שדה הקופון נשאר, למי שיש קוד אחר (למשל קופון אישי)
+      var m = document.getElementById('coupon-msg');
+      if(m){ m.textContent = 'הנחת הרישום המוקדם כבר מחושבת במחיר. יש לך קוד אחר? אפשר להזין אותו כאן.'; m.className = 'pd-coupon-msg ok'; }
     })
     .catch(function(){});
 })();
