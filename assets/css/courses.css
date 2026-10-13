@@ -839,3 +839,12 @@ a:hover{color:var(--teal-ink)}
 .path-digital{margin:28px auto 0;text-align:center;font-size:1.06rem;color:var(--muted)}
 .path-digital a{font-weight:800;color:var(--blue)}
 @media (max-width:760px){.path-grid.two-goals{grid-template-columns:1fr}}
+
+/* דף המתקדמים: "בקצרה", שבע תשובות קצרות */
+.brief{padding:88px var(--pad)}
+.brief-list{margin:40px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line)}
+.brief-row{background:var(--paper);padding:26px 28px;margin:0}
+.brief-row dt{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.19rem;margin-bottom:8px}
+.brief-row dd{margin:0;font-size:1.02rem;line-height:1.65;color:var(--muted)}
+.brief-row:last-child:nth-child(odd){grid-column:1/-1}
+@media (max-width:760px){.brief-list{grid-template-columns:1fr}.brief{padding:64px var(--pad)}}
