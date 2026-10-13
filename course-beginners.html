@@ -71,6 +71,8 @@
   }
   </script>
   <!-- /BUILD:ld -->
+<link rel="stylesheet" href="assets/css/gift.css"/>
+<script src="assets/js/gift.js" defer></script>
 </head>
 <body>
 <script>document.documentElement.className += ' js';</script>
@@ -112,8 +114,8 @@
   <div class="hero-grid">
     <div class="hero-copy">
       <p class="eyebrow rise"><span class="live-dot" aria-hidden="true"></span> מסלול א׳ · נקודת ההתחלה</p>
-      <h1 class="hero-title rise-2">שלושה מפגשים.<br/><span class="ghost">ואתה כבר</span><br/>שולט בכלי.</h1>
-      <p class="hero-lead rise-3">המעבר משימוש בסיסי ב-AI לעבודה נכונה ומקצועית. שש שעות שבהן אתה לומד לבקש נכון, להוציא מפגישה סיכום החלטות ומשימות, ולבנות מצגת ברמה גבוהה. בלי רקע טכני.</p>
+      <h1 class="hero-title rise-2">מקבל מ-AI<br/><span class="ghost">תשובות בינוניות?</span><br/>זה נגמר כאן.</h1>
+      <p class="hero-lead rise-3">שלושה ערבים בזום, ומפסיקים לנחש. לומדים לבקש נכון ולהוציא מ-AI עבודה מוכנה: סיכום פגישה עם החלטות ומשימות, מסמך, מייל ומצגת ברמה גבוהה. בלי רקע טכני.</p>
       <div class="hero-cta rise-4">
         <a class="btn btn-lg" data-join href="#buy">להרשמה למסלול המתחילים</a>
         <p class="hero-price">
@@ -122,6 +124,7 @@
           <small data-has-price>סה״כ <span class="js-price-total">885 ₪</span> כולל מע״מ · אפשר עד 3 תשלומים</small>
         </p>
       </div>
+      <p class="hero-proof rise-4">״משימות שהייתי נמרח עליהן הרבה זמן נהיו הרבה יותר קצרות וברורות. הכל עובד לי היום אחרת״ <cite>בוגר הקורס · מתוך 1,500 בוגרים</cite></p>
       <p class="hero-lead rise-4" style="font-size:1rem">מתחילים <b>יום שני, י״ג בכסליו · 23 בנובמבר</b> · פעם בשבוע, 19:30-21:30 · 3 מפגשים · Zoom, גם באינטרנט מסונן</p>
     </div>
     <figure class="hero-portrait rise-2">
@@ -153,6 +156,19 @@
     <div class="stat"><b>6</b><span>שעות לימוד ותרגול</span></div>
     <div class="stat"><b class="teal">0</b><span>ידע טכני נדרש</span></div>
   </div>
+</section>
+
+<!-- ===== נשמע מוכר ===== -->
+<section class="pains sec-ice" id="pains">
+  <p class="eyebrow sr">נשמע מוכר?</p>
+  <ul class="pains-list sr">
+      <li>שואל את ChatGPT, מקבל תשובה כללית, מתקן פעמיים ומוותר</li>
+      <li>מבזבז שעה על סיכום פגישה, מייל או הצעת מחיר</li>
+      <li>מרגיש שכולם כבר עובדים עם AI, ורק אתה נשאר מאחור</li>
+      <li>לא בטוח על מה אפשר לסמוך ומה הוא סתם ממציא</li>
+  </ul>
+  <p class="pains-close sr">זה לא אתה. פשוט אף אחד לא לימד אותך שיטה. בשלושה ערבים זה משתנה.</p>
+  <a class="btn btn-lg sr" data-join href="#buy">אני רוצה ללמוד את השיטה</a>
 </section>
 
 <!-- ===== השיטה ===== -->
@@ -326,16 +342,30 @@
   <section class="webinar" id="webinar">
     <div class="webinar-grid">
       <div class="webinar-copy sr">
-        <p class="eyebrow teal">וובינר מלא, פתוח לצפייה</p>
-        <h2 class="sec-title">רוצים לראות אותי <em>מלמד?</em></h2>
-        <p class="lead">זה וובינר שלם שהעברתי, במלואו, בלי תשלום ובלי הרשמה. אפשר פשוט ללחוץ ולראות איך נראה שיעור אצלי.</p>
+        <p class="eyebrow teal">מתנה · וובינר מלא</p>
+        <h2 class="sec-title">וובינר שלם, <em>במתנה.</em></h2>
+        <p class="lead">וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד. ככה רואים בדיוק איך נראה שיעור אצלי, עוד לפני שנרשמים.</p>
         <p class="note">ואם אתם עצמאים או בעלי עסקים — לא תצאו מכאן רק עם התרשמות. תצאו עם כלי עובד ביד, עוד לפני שנפגשנו.</p>
-        <a class="btn btn-lg" href="#buy" data-join>לבחירת המסלול שלי</a>
+        <form class="gift-form" data-gift novalidate>
+          <div class="gift-fields">
+            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          </div>
+          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+          <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
+          <p class="gift-msg" role="status" aria-live="polite"></p>
+          <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+        </form>
+        <a class="btn btn-lg gift-after" href="#buy" data-join hidden>לבחירת המסלול שלי</a>
       </div>
-      <div class="video-frame sr sr-2">
-        <iframe src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
-                loading="lazy" allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="video-frame gift-locked sr sr-2">
+        <div class="gift-cover" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+        </div>
+        <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
       </div>
     </div>
   </section>
@@ -374,6 +404,14 @@
       <p>לא מצאת את התשובה? כתוב בוואטסאפ ל<a href="https://wa.me/972528189921">052-818-9921</a> ותקבל מענה אישי.</p>
     </div>
     <div class="faq-list">
+      <details>
+        <summary>למה לא ללמוד לבד ביוטיוב?</summary>
+        <p>ביוטיוב לומדים מה כל כלי יודע לעשות. כאן לומדים שיטת עבודה, ומתרגלים אותה על המשימות שלך מהעבודה, מול מרצה שעונה על השאלה ברגע שהיא עולה, בקבוצה של עד 20 משתתפים. רוב מי שמגיע אלינו כבר ניסה לבד, וזה בדיוק מה שהיה חסר לו.</p>
+      </details>
+      <details>
+        <summary>אין לי הרבה זמן. זה מתאים לי?</summary>
+        <p>שעתיים בערב, פעם בשבוע, שלוש פעמים בסך הכל. כל מפגש מוקלט, ומה שלומדים חוסך זמן כבר מהשבוע הראשון: סיכום פגישה, מייל או מצגת שלוקחים היום שעה, ייקחו כמה דקות.</p>
+      </details>
       <details open>
         <summary>צריך ידע קודם?</summary>
         <p>לא. המסלול בנוי מאפס. אם אתה יודע להשתמש בוואטסאפ, אתה מוכן להתחיל.</p>

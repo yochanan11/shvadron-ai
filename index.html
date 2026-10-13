@@ -70,6 +70,8 @@
   ]
 }
 </script>
+<link rel="stylesheet" href="assets/css/gift.css"/>
+<script src="assets/js/gift.js" defer></script>
 </head>
 <body>
 <script>document.documentElement.className += ' js';</script>
@@ -114,6 +116,7 @@
         <a class="btn btn-lg btn-line" href="course-advanced.html" data-track-pick="course-advanced">לפרטים על מסלול מתקדמים</a>
         <p class="hero-price two-price"><b>750 ₪</b> למתחילים <i aria-hidden="true">·</i> <b>2,500 ₪</b> למתקדמים <small>לפני מע״מ</small></p>
       </div>
+      <p class="hero-proof rise-4">״כבר יש לי מעל 20 סוכנים, ואני מרגיש שהעבודה שלי התקצרה בשעתיים״ <cite>בוגר ממחזור ראשון · מתוך 1,500 בוגרים</cite></p>
       <p class="hero-lead rise-4" style="font-size:1rem">מתחילים <b>י״ג בכסליו</b> · מתקדמים <b>ט״ו בכסליו</b> · פעם בשבוע, 19:30-21:30 · גם באינטרנט מסונן · 1,500 בוגרים ב-30 מחזורים</p>
     </div>
     <figure class="hero-portrait rise-2">
@@ -424,16 +427,30 @@
   <section class="webinar" id="webinar">
     <div class="webinar-grid">
       <div class="webinar-copy sr">
-        <p class="eyebrow teal">וובינר מלא, פתוח לצפייה</p>
-        <h2 class="sec-title">רוצים לראות אותי <em>מלמד?</em></h2>
-        <p class="lead">זה וובינר שלם שהעברתי, במלואו, בלי תשלום ובלי הרשמה. אפשר פשוט ללחוץ ולראות איך נראה שיעור אצלי.</p>
+        <p class="eyebrow teal">מתנה · וובינר מלא</p>
+        <h2 class="sec-title">וובינר שלם, <em>במתנה.</em></h2>
+        <p class="lead">וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד. ככה רואים בדיוק איך נראה שיעור אצלי, עוד לפני שנרשמים.</p>
         <p class="note">ואם אתם עצמאים או בעלי עסקים — לא תצאו מכאן רק עם התרשמות. תצאו עם כלי עובד ביד, עוד לפני שנפגשנו.</p>
-        <a class="btn btn-lg" href="#tracks" data-join>לבחירת המסלול שלי</a>
+        <form class="gift-form" data-gift novalidate>
+          <div class="gift-fields">
+            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          </div>
+          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+          <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
+          <p class="gift-msg" role="status" aria-live="polite"></p>
+          <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+        </form>
+        <a class="btn btn-lg gift-after" href="#tracks" data-join hidden>לבחירת המסלול שלי</a>
       </div>
-      <div class="video-frame sr sr-2">
-        <iframe src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
-                loading="lazy" allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="video-frame gift-locked sr sr-2">
+        <div class="gift-cover" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+        </div>
+        <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
       </div>
     </div>
   </section>

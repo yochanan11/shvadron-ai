@@ -1,0 +1,22 @@
+/* ============================================================
+   הוובינר במתנה: טופס קצר שפותח את הנגן במקום
+   ============================================================ */
+.gift-form{display:flex;flex-direction:column;gap:12px;width:100%;max-width:520px;margin-top:4px}
+.gift-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gift-fields label{display:flex;flex-direction:column;gap:6px;font-size:.92rem;font-weight:700;color:#fff}
+.gift-fields input{padding:13px 14px;border-radius:3px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);color:#fff;font:inherit;font-size:1.02rem}
+.gift-fields input:focus{outline:2px solid var(--teal);outline-offset:1px}
+.gift-consent{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;line-height:1.5;color:rgba(255,255,255,.85);cursor:pointer}
+.gift-consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--teal);flex:none}
+.gift-form .btn{align-self:flex-start}
+.gift-msg{margin:0;min-height:1.3em;font-weight:700;font-size:.95rem;color:var(--teal)}
+.gift-msg.err{color:#ff8a80}
+.gift-fine{margin:0;font-size:.82rem;color:rgba(255,255,255,.6)}
+.gift-fine a{color:inherit;text-decoration:underline}
+.gift-after[hidden]{display:none!important}
+.gift-locked{background:linear-gradient(135deg,#132a4d,#0a1a33)}
+.gift-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  color:#fff;text-align:center;padding:20px;font-weight:700;font-size:1.06rem}
+.gift-cover svg{width:74px;height:74px;padding:18px;border-radius:50%;background:var(--teal);color:var(--ink,#0a1a33)}
+@media (max-width:620px){.gift-fields{grid-template-columns:1fr}.gift-form .btn{align-self:stretch}}

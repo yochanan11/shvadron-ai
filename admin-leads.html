@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>מי ביקש את הוובינר | SHWADRON.AI</title>
+<style>
+  :root{--blue:#123f8a;--border:#e2e6ee;--muted:#667;--bg:#f6f8fb}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:#141824;padding:28px 16px 60px}
+  .wrap{max-width:900px;margin:0 auto}
+  h1{font-size:1.3rem;margin:0 0 6px}
+  p.sub{color:var(--muted);font-size:.92rem;margin:0 0 22px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px}
+  label{display:block;font-size:.88rem;font-weight:700;margin-bottom:6px}
+  input[type=password]{width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:.95rem}
+  .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center}
+  button{border:none;border-radius:10px;padding:11px 20px;font-weight:800;font-size:.92rem;cursor:pointer;font-family:inherit}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-ghost{background:#eef1f6;color:#141824}
+  .msg{margin-top:12px;font-size:.88rem;font-weight:700;min-height:1.2em}
+  .msg.err{color:#b3261e}
+  #gate,#panel{display:none}
+  .tbl-wrap{overflow-x:auto;margin-top:14px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{text-align:start;padding:8px;border-bottom:1px solid var(--border);white-space:nowrap}
+  th{font-size:.76rem;color:var(--muted);font-weight:800}
+  .yes{color:#0a7a4a;font-weight:800}
+  .no{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>מי ביקש את הוובינר</h1>
+  <p class="sub">כל מי שהשאיר פרטים בטופס "הוובינר במתנה". לשלוח הודעות שיווקיות מותר רק למי שמסומן "כן" בעמודת הדיוור.</p>
+
+  <div class="card" id="gate">
+    <label for="pw">סיסמת ניהול (אותה סיסמה של דף הקופונים)</label>
+    <input type="password" id="pw" autocomplete="off"/>
+    <div class="row"><button class="btn-primary" id="pw-submit">כניסה</button></div>
+    <p class="msg err" id="gate-msg"></p>
+  </div>
+
+  <div class="card" id="panel">
+    <div class="row">
+      <b id="count"></b>
+      <button class="btn-ghost" id="reload">רענון</button>
+      <button class="btn-ghost" id="csv">הורדה לאקסל (CSV)</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>תאריך</th><th>שם</th><th>טלפון</th><th>דיוור</th><th>עמוד</th></tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <p class="msg err" id="panel-msg"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var gate = document.getElementById('gate'), panel = document.getElementById('panel');
+  var pw = document.getElementById('pw'), gateMsg = document.getElementById('gate-msg');
+  var tbody = document.getElementById('tbody'), panelMsg = document.getElementById('panel-msg');
+  var leads = [];
+  var password = '';
+  try { password = sessionStorage.getItem('shw_admin_pw') || ''; } catch(e){}
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function showGate(m){ gate.style.display='block'; panel.style.display='none'; gateMsg.textContent = m || ''; }
+
+  function load(){
+    fetch('/api/admin-leads', { headers: { 'X-Admin-Password': password } })
+      .then(function(r){ return r.json().then(function(d){ return { ok: r.ok, d: d }; }); })
+      .then(function(r){
+        if(!r.ok){
+          if(r.d.error === 'unauthorized'){ showGate('סיסמה שגויה.'); return; }
+          showGate(r.d.error === 'kv-not-configured' ? 'מסד הנתונים (Vercel KV) לא מחובר.' : 'שגיאה: ' + r.d.error);
+          return;
+        }
+        try { sessionStorage.setItem('shw_admin_pw', password); } catch(e){}
+        gate.style.display='none'; panel.style.display='block';
+        leads = r.d.leads || [];
+        document.getElementById('count').textContent = leads.length + ' פניות';
+        tbody.innerHTML = leads.map(function(l){
+          var d = new Date(l.ts);
+          return '<tr><td>' + esc(d.toLocaleString('he-IL')) + '</td><td>' + esc(l.name) +
+            '</td><td><a href="https://wa.me/972' + esc(l.phone.replace(/^0/, '')) + '" target="_blank" rel="noopener">' + esc(l.phone) +
+            '</a></td><td class="' + (l.consent ? 'yes">כן' : 'no">לא') + '</td><td>' + esc(l.page || '') + '</td></tr>';
+        }).join('');
+      })
+      .catch(function(){ panelMsg.textContent = 'שגיאת רשת.'; });
+  }
+
+  document.getElementById('pw-submit').addEventListener('click', function(){ password = pw.value; load(); });
+  pw.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ password = pw.value; load(); } });
+  document.getElementById('reload').addEventListener('click', load);
+  document.getElementById('csv').addEventListener('click', function(){
+    var rows = [['תאריך','שם','טלפון','הסכמה לדיוור','עמוד']].concat(leads.map(function(l){
+      return [new Date(l.ts).toLocaleString('he-IL'), l.name, l.phone, l.consent ? 'כן' : 'לא', l.page || ''];
+    }));
+    var csv = '﻿' + rows.map(function(r){ return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(','); }).join('\n');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = 'webinar-leads.csv'; a.click();
+  });
+
+  if(password) load(); else showGate();
+})();
+</script>
+</body>
+</html>

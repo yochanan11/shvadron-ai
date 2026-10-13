@@ -538,6 +538,8 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   .js .lesson b>span{transform:none!important}
 }
 </style>
+<link rel="stylesheet" href="assets/css/gift.css"/>
+<script src="assets/js/gift.js" defer></script>
 </head>
 
 <body>
@@ -727,16 +729,30 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   <section class="webinar" id="webinar">
     <div class="webinar-grid">
       <div class="webinar-copy reveal">
-        <p class="eyebrow teal">וובינר מלא, פתוח לצפייה</p>
-        <h2 class="sec-title">רוצים לראות אותי <em>מלמד?</em></h2>
-        <p class="lead">זה וובינר שלם שהעברתי, במלואו, בלי תשלום ובלי הרשמה. אפשר פשוט ללחוץ ולראות איך נראה שיעור אצלי.</p>
+        <p class="eyebrow teal">מתנה · וובינר מלא</p>
+        <h2 class="sec-title">וובינר שלם, <em>במתנה.</em></h2>
+        <p class="lead">וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד. ככה רואים בדיוק איך נראה שיעור אצלי, עוד לפני שנרשמים.</p>
         <p class="note">ואם אתם עצמאים או בעלי עסקים — לא תצאו מכאן רק עם התרשמות. תצאו עם כלי עובד ביד, עוד לפני שנפגשנו.</p>
-        <a class="btn btn-lg" href="#buy">אני רוצה להתחיל ללמוד</a>
+        <form class="gift-form" data-gift novalidate>
+          <div class="gift-fields">
+            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          </div>
+          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+          <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
+          <p class="gift-msg" role="status" aria-live="polite"></p>
+          <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+        </form>
+        <a class="btn btn-lg gift-after" href="#buy" hidden>אני רוצה להתחיל ללמוד</a>
       </div>
-      <div class="video-frame reveal">
-        <iframe src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
-                loading="lazy" allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="video-frame gift-locked reveal">
+        <div class="gift-cover" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+        </div>
+        <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
       </div>
     </div>
   </section>

@@ -223,12 +223,26 @@ function webinar(opts = {}) {
       <h2 class="sec-title">${WEBINAR.title}</h2>
       <p class="lead">${esc(WEBINAR.lead)}</p>
       <p class="note">${esc(WEBINAR.note)}</p>
-      <a class="btn btn-lg" href="${href}"${attr}>${esc(text)}</a>
+      <form class="gift-form" data-gift novalidate>
+        <div class="gift-fields">
+          <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+          <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+        </div>
+        <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+        <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
+        <p class="gift-msg" role="status" aria-live="polite"></p>
+        <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+      </form>
+      <a class="btn btn-lg gift-after" href="${href}"${attr} hidden>${esc(text)}</a>
     </div>
-    <div class="video-frame ${second}">
-      <iframe src="${videoSrc()}" title="וובינר AI עם יוחנן שבדרון"
-              loading="lazy" allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <div class="video-frame gift-locked ${second}">
+      <div class="gift-cover" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+      </div>
+      <iframe data-src="${videoSrc()}" title="וובינר AI עם יוחנן שבדרון"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
     </div>
   </div>
 </section>`;
