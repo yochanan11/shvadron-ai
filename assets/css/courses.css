@@ -287,6 +287,8 @@ a:hover{color:var(--teal-ink)}
 .price-table .tot td{font-family:'Heebo',sans-serif;font-weight:900;font-size:2.75rem;letter-spacing:-.02em;border-bottom:none;padding-top:22px}
 .pd-vat{font-size:.94rem;line-height:1.6;color:var(--muted)}
 .secure{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.88rem;color:#8a8781}
+.alt-pay{margin:10px 0 0;text-align:center;font-size:.88rem;line-height:1.6;color:#6b6862}
+.alt-pay a{color:inherit;text-decoration:underline}
 
 /* קופון */
 .pd-coupon{background:var(--ice);border-radius:3px;padding:20px;display:flex;flex-direction:column;gap:12px}
