@@ -90,7 +90,7 @@ function flow(steps, label) {
 function trackCard(t, i) {
   const sr = i ? ' sr-2' : '';
   const promoNote = t.priceEx
-    ? `\n    <b class="note promo" data-promo hidden>עד 19.10 ב-23:59: ${
+    ? `\n    <b class="note promo" data-promo hidden>עד 19.10 בחצות ${
         fmt(Math.round(totalOf(t) * 0.9 * 100) / 100)} כולל מע״מ</b>`
     : '';
   return `<article class="track${t.tone ? ' ' + t.tone : ''} sr${sr}">
