@@ -425,21 +425,20 @@ const PRICED = { 'course-beginners.html': BEGINNERS, 'course-advanced.html': ADV
 
 /* ─── ההחלפה בפועל ─── */
 const BLOCKS = {
+  // fitCard, learnPills, details ו-detailsHub נשארים בקובץ אך אינם
+  // מוזרקים יותר: המקטעים שהשתמשו בהם הוסרו מהדפים כדי לקצר אותם.
+  // להחזרת אחד מהם צריך להחזיר גם את סימני ה-BUILD לדף.
   'index.html': {
     tracks:  () => TRACKS.map(trackCard).join('\n\n'),
-    fit:     () => TRACKS.map(fitCard).join('\n\n'),
     compare: compareTable,
-    details: detailsHub,
     orgs:    orgs,
     marquee: () => marquee('hub'),
     webinar: () => webinar({ ctaHref: '#tracks' }),
   },
   'course-beginners.html': {
     syllabus: beginnersSyllabus,
-    learn:    learnPills,
     config:   () => config(BEGINNERS),
     ld:       () => jsonLd(BEGINNERS),
-    details:  () => details(BEGINNERS),
     marquee:  () => marquee('beginners'),
     webinar:  () => webinar({ ctaHref: '#buy' }),
   },
@@ -457,7 +456,6 @@ const BLOCKS = {
     project:  projectBox,
     config:   () => config(ADVANCED),
     ld:       () => jsonLd(ADVANCED),
-    details:  () => details(ADVANCED),
     marquee:  () => marquee('advanced'),
     webinar:  () => webinar({ ctaHref: '#buy' }),
   },
