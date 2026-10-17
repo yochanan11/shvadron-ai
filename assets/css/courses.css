@@ -366,18 +366,18 @@ a:hover{color:var(--teal-ink)}
   .hero-cta .btn{width:100%}
   .hero-price{text-align:center}
   .sec-title,.faq-side .sec-title{font-size:2.38rem;line-height:.96}
-  .method,.lessons,.outcomes,.proof,.faq,.buy-sec{padding-top:48px;padding-bottom:48px}
+  .method,.lessons,.outcomes,.proof,.faq,.buy-sec{padding-top:64px;padding-bottom:64px}
   .method-cards,.out-grid,.quotes{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .method-cards{margin-top:32px}
-  .m-card,.out-cell,.out-cta,.stat,.quote{padding:26px 22px}
+  .m-card,.out-cell,.out-cta,.stat,.quote{padding:30px 24px}
   .m-card b{font-size:2.13rem}
   .lesson{grid-template-columns:1fr;gap:10px;padding:22px 0}
   .lesson b{font-size:1.63rem}
   .lesson h3{font-size:1.31rem}
   .faq summary{font-size:1.19rem;padding:20px 0}
   .faq details>p{font-size:.94rem;padding-left:0;padding-right:14px}
-  .price-card{padding:26px 22px}
+  .price-card{padding:30px 24px;gap:22px}
   .price-table .tot td{font-size:2rem}
   .site-footer{flex-direction:column;align-items:flex-start;gap:22px}
   .marquee-track{font-size:.88rem}
@@ -770,7 +770,8 @@ a:hover{color:var(--teal-ink)}
 .sec-paper{background:var(--paper)}
 .sec-paper .m-card,.sec-paper .track,.sec-paper .cmp-col,.sec-paper .out-cell,
 .sec-paper .quote,.sec-paper .project-box,.sec-paper .dtl,
-.sec-paper .pills span,.sec-paper .flow span,.sec-paper .pd-coupon{background:var(--ice)}
+.sec-paper .pills span,.sec-paper .flow span,.sec-paper .pd-coupon,
+.sec-paper .pains-list li{background:var(--ice)}
 
 .sec-ice{background:var(--ice)}
 .sec-ice .m-card,.sec-ice .track,.sec-ice .cmp-col,.sec-ice .out-cell,
@@ -866,3 +867,139 @@ a:hover{color:var(--teal-ink)}
 .pd-coupon-toggle{align-self:flex-start;background:none;border:0;padding:0;color:var(--blue);font:inherit;font-weight:700;font-size:.95rem;text-decoration:underline;cursor:pointer}
 /* החיסכון בולט מתחת לסה״כ */
 .pd-saving{font-size:1.13rem}
+
+/* ============================================================
+   רכיבי מכירה: קופסת הקנייה, ההבטחה, הדדליין ובורר המסלול
+   ------------------------------------------------------------
+   העיקרון: בכל מקום שבו מופיע מחיר מופיעים לידו גם הערך,
+   הביטחון והדדליין. לכן הרכיבים כאן חוזרים בכמה מקומות בדף,
+   ולא רק במקטע ההרשמה שבתחתית.
+   ============================================================ */
+
+/* ההבטחה. אותו נוסח בכל מקום, גם על רקע כהה וגם על רקע בהיר */
+.guar{display:flex;align-items:flex-start;gap:9px;font-size:.98rem;line-height:1.5;font-weight:700;
+  color:var(--text);background:rgba(46,222,191,.14);border-radius:3px;padding:12px 14px}
+.guar svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--teal-ink)}
+.guar.on-dark{color:#fff;background:rgba(46,222,191,.12)}
+.guar.on-dark svg{color:var(--teal)}
+.guar.bare{background:none;padding:0}
+
+/* הדדליין, תמיד ליד הכפתור */
+.pd-deadline{display:flex;align-items:center;gap:8px;font-size:.94rem;font-weight:700;color:#b4472a}
+.pd-deadline svg{width:17px;height:17px;flex-shrink:0}
+
+/* המחיר הגדול בקופסה: מחיר רגיל מחוק, המחיר בפועל, ותשלומים */
+.pd-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.pd-price .now{font-family:'Heebo',sans-serif;font-weight:900;font-size:2.75rem;letter-spacing:-.02em;line-height:1}
+.pd-price .was{font-size:1.19rem;font-weight:700;color:var(--faint)}
+.pd-price .vat{width:100%;font-size:.94rem;color:var(--muted)}
+.pd-pmt{margin:0;font-size:1rem;font-weight:700;color:var(--muted)}
+
+/* רשימת הערך בתוך הקופסה. אותו וי של .incl, בצבעי רקע בהיר */
+.price-card .incl li{color:var(--text);font-size:1rem}
+.price-card .incl{gap:11px}
+
+/* אמצעי התשלום, קטן מתחת לכפתור */
+.pay-methods{text-align:center;font-size:.88rem;color:var(--faint)}
+
+/* "יש שאלה לפני?" — וואטסאפ ככפתור משני בלבד */
+.pd-ask{text-align:center;font-size:.94rem;color:var(--muted)}
+.pd-ask a{font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+
+/* מקטע הקנייה האמצעי: אותו פס כהה של מקטע ההרשמה, כרטיס אחד במרכז */
+.offer-sec{background:var(--ink);color:#fff;padding:72px var(--pad);position:relative;overflow:hidden}
+.offer-sec .price-card{max-width:560px;margin-inline:auto}
+.offer-head{max-width:560px;margin:0 auto 26px;text-align:center}
+.offer-head h2{font-family:'Heebo',sans-serif;font-weight:900;font-size:clamp(1.9rem,4vw,2.5rem);line-height:1.1}
+.offer-head p{margin-top:10px;font-size:1.06rem;color:var(--on-dark)}
+
+/* "מה קורה אחרי שמשלמים" */
+.after-pay{max-width:560px;margin:26px auto 0;list-style:none;counter-reset:ap;
+  display:flex;flex-direction:column;gap:10px}
+.after-pay li{counter-increment:ap;display:flex;align-items:flex-start;gap:12px;
+  font-size:1rem;line-height:1.55;color:var(--on-dark-2)}
+.after-pay li::before{content:counter(ap);flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  background:rgba(255,255,255,.1);color:#fff;font-family:'Heebo',sans-serif;font-weight:800;font-size:.88rem;
+  display:flex;align-items:center;justify-content:center}
+
+/* בורר המסלול בדף הבית: שני כפתורים שכל אחד נושא שתי שורות */
+.btn-stack{flex-direction:column;gap:3px;text-align:center;line-height:1.25;padding-block:16px}
+.btn-stack small{font-family:'Assistant',sans-serif;font-weight:600;font-size:.88rem;opacity:.85}
+
+/* פס הדחיפות במצב "אין מבצע": אותו פס, בגוון כהה */
+.promo-bar.promo-ever{background:var(--night);color:#fff}
+.promo-bar.promo-ever a{color:var(--teal)}
+.promo-bar.promo-ever a:hover{color:var(--teal)}
+
+/* פס הוכחות מתחת להירו */
+.trust{background:var(--paper);padding:34px var(--pad);display:grid;gap:18px;
+  grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;border-bottom:1px solid var(--line)}
+.trust p{font-size:1.06rem;line-height:1.55;font-weight:700}
+.trust p span{display:block;margin-top:4px;font-weight:600;font-size:.94rem;color:var(--muted)}
+.trust .trust-nums{grid-column:1/-1;font-family:'Heebo',sans-serif;font-weight:800;font-size:1.02rem;
+  color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+@media(max-width:720px){.trust{grid-template-columns:1fr;padding:26px var(--pad)}}
+
+/* כרטיס המרצה */
+.teacher{display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:center;
+  background:var(--paper);border-radius:3px;padding:34px 32px;border-bottom:3px solid var(--blue)}
+.teacher img{width:150px;height:150px;border-radius:50%;object-fit:cover;object-position:top}
+.teacher h3{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.63rem;line-height:1.15}
+.teacher p{margin-top:8px;font-size:1.06rem;line-height:1.65;color:var(--muted)}
+.teacher blockquote{margin-top:14px;font-size:1.06rem;line-height:1.6;font-weight:700;
+  border-right:3px solid var(--teal);padding-right:14px}
+@media(max-width:720px){
+  .teacher{grid-template-columns:1fr;gap:18px;padding:26px 22px;text-align:center}
+  .teacher img{margin-inline:auto;width:120px;height:120px}
+  .teacher blockquote{text-align:right}
+}
+
+/* החשבון הפשוט בדף המתקדמים */
+.math{background:var(--paper);border-radius:3px;padding:32px 30px;border-bottom:3px solid var(--teal);
+  max-width:760px;margin-inline:auto;text-align:center}
+.math b{display:block;font-family:'Heebo',sans-serif;font-weight:900;font-size:clamp(1.5rem,3.4vw,2.13rem);line-height:1.2}
+.math p{margin-top:12px;font-size:1.06rem;line-height:1.65;color:var(--muted)}
+.math small{display:block;margin-top:10px;font-size:.88rem;color:var(--faint)}
+
+/* בטלפון: כפתור הקנייה חייב להיות במסך הראשון, ולכן ההירו קומפקטי */
+@media(max-width:720px){
+  .offer-sec{padding:48px var(--pad)}
+  .pd-price .now{font-size:2.25rem}
+  .guar{font-size:.94rem}
+}
+
+/* כרטיס המסלול בדף הבחירה: מתי מתחילים, התוצר, המחיר והקישור לפרטים */
+.track .when-line{margin-top:-10px;font-size:1rem;font-weight:700;color:var(--blue)}
+.track .foot .note.promo{font-size:.94rem;font-weight:800;color:var(--teal-ink);text-align:center}
+.track .foot .more{font-size:.94rem;font-weight:700;color:var(--blue);text-align:center;
+  text-decoration:underline;text-underline-offset:3px}
+
+/* במסך צר הכותרת מתקצרת, כדי שהמחיר והכפתור יישארו במסך הראשון */
+@media(max-width:430px){
+  .hero-title{font-size:2.5rem}
+}
+
+/* ============================================================
+   אוויר: ריווח נדיב סביב רכיבי המכירה החדשים, כדי שהדף יינשם
+   ולא ייראה כמו טופס צפוף
+   ============================================================ */
+.guar{padding:14px 16px;margin-block:2px}
+.pd-price{margin-top:4px}
+.pd-pmt{margin-top:-10px}
+.price-card .incl{gap:13px;margin-block:6px}
+.offer-sec{padding:96px var(--pad)}
+.offer-head{margin-bottom:34px}
+.after-pay{margin-top:34px;gap:14px}
+.trust{padding:44px var(--pad);gap:26px}
+.trust .trust-nums{padding-top:22px}
+.teacher{padding:40px 36px;gap:34px}
+.math{padding:40px 36px}
+.hero-cta.two{gap:14px}
+.btn-stack{padding-block:18px}
+@media(max-width:720px){
+  .offer-sec{padding:64px var(--pad)}
+  .trust{padding:34px var(--pad);gap:22px}
+  .teacher{padding:30px 24px}
+  .math{padding:30px 24px}
+  .after-pay{margin-top:28px}
+}

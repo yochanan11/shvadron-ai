@@ -83,22 +83,32 @@ function flow(steps, label) {
   return `<div class="flow" role="list" aria-label="${esc(label)}">\n  ${items}\n</div>`;
 }
 
-/* ─── כרטיס מסלול בדף הבחירה (.track הקיים) ─── */
+/* ─── כרטיס מסלול בדף הבחירה (.track הקיים) ───────────────────
+   הכרטיס נושא את כל מה שצריך כדי להחליט: מתי מתחילים, מה יוצאים
+   איתו, המחיר, ומחיר הרישום המוקדם כל עוד הוא בתוקף. הכפתור
+   מוביל למקטע ההרשמה שבדף המסלול, ושם גם מוחלת ההנחה.          */
 function trackCard(t, i) {
   const sr = i ? ' sr-2' : '';
+  const promoNote = t.priceEx
+    ? `\n    <b class="note promo" data-promo hidden>עד 19.10 ב-23:59: ${
+        fmt(Math.round(totalOf(t) * 0.9 * 100) / 100)} כולל מע״מ</b>`
+    : '';
   return `<article class="track${t.tone ? ' ' + t.tone : ''} sr${sr}">
   <span class="lvl on-light${t.tone ? ' ' + t.tone : ''}">${esc(t.kicker.split('·')[0].trim())}</span>
   <div class="meta">${t.meta.map((m, j) =>
     (j ? '<i aria-hidden="true">·</i>' : '') + `<span>${esc(m)}</span>`).join('')}</div>
   <h3>${esc(t.name)}</h3>
+  <p class="when-line">${esc(`${t.sessions} מפגשים · מיום ${t.dayName} ${
+    t.start ? dayMonth(sessionDate(t.start, 0)) : 'יעודכן'} · ${t.time || TIME}`)}</p>
   <p class="lead">${esc(t.lead)}</p>
   <ul>
 ${t.highlights.map(h => `    <li>${CHECK}${esc(h)}</li>`).join('\n')}
   </ul>
-  <p class="who">${esc(t.promise)}</p>
+  <p class="who"><b>${esc(t.outcome || t.promise)}</b></p>
   <div class="foot">
-    <a class="btn btn-lg" href="${t.file}" data-track-pick="${t.id}">לפרטים על מסלול ${esc(t.short)}</a>
-    <span class="note">${esc(priceNote(t))}</span>
+    <a class="btn btn-lg" href="${t.file}#buy" data-track-pick="${t.id}">לשריין מקום במסלול ${esc(t.short)}</a>
+    <span class="note">${esc(priceNote(t))}</span>${promoNote}
+    <a class="more" href="${t.file}" data-track-pick="${t.id}">לכל הפרטים על המסלול &#8592;</a>
   </div>
 </article>`;
 }
@@ -406,8 +416,9 @@ function staticPrice(html, t) {
   const vat   = Math.round(t.priceEx * t.vatRate * 100) / 100;
   const total = Math.round(t.priceEx * (1 + t.vatRate) * 100) / 100;
   const val = { 'js-price': fmt(t.priceEx), 'js-price-vat': fmt(vat),
-                'js-price-total': fmt(total), 'js-vat-rate': (t.vatRate * 100) + '%' };
-  return html.replace(/class="(js-price|js-price-vat|js-price-total|js-vat-rate)"([^>]*)>[^<]*</g,
+                'js-price-total': fmt(total), 'js-price-pmt': fmt(Math.round(total / 3)),
+                'js-vat-rate': (t.vatRate * 100) + '%' };
+  return html.replace(/class="(js-price|js-price-vat|js-price-total|js-price-pmt|js-vat-rate)"([^>]*)>[^<]*</g,
     (_m, cls, rest) => `class="${cls}"${rest}>${val[cls]}<`);
 }
 const PRICED = { 'course-beginners.html': BEGINNERS, 'course-advanced.html': ADVANCED };

@@ -79,11 +79,16 @@
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<!-- באנר מבצע. מוצג רק עד data-until (כולל, שעון ישראל), ואז נעלם לבד.
+<!-- פס הדחיפות. פס המבצע מוצג רק עד data-until (כולל, שעון ישראל) ורק אם
+     הקוד שעליו תקף ב-/api/coupon, ואחרי התאריך מתחלף מעצמו בפס הקבוע.
      הקוד ב-data-code חייב להיות זהה לקופון שהוגדר ב-admin-coupons.html -->
 <div class="promo-bar" data-until="2026-10-19" data-pct="10" data-code="KISLEV10" hidden>
-  <p><b>הנחת רישום מוקדם:</b> 10% על שני המסלולים, עד 19/10 בלבד <span class="promo-left" data-promo-fill="left"></span></p>
-  <a href="#tracks">לבחירת מסלול ←</a>
+  <p><span aria-hidden="true">&#9203;</span> <b>ההנחה נגמרת ביום שני 19.10 ב-23:59</b> &middot; מתחילים 796.50 ₪ במקום 885 ₪ &middot; מתקדמים 2,655 ₪ במקום 2,950 ₪ <span class="promo-left" data-promo-fill="left"></span></p>
+  <a href="#tracks">לבחור מסלול &#8592;</a>
+</div>
+<div class="promo-bar promo-ever" data-promo-else hidden>
+  <p><span aria-hidden="true">&#128101;</span> <b>מחזור כסליו</b> &middot; עד 20 איש בקבוצה &middot; נפתח ב-23.11</p>
+  <a href="#tracks">לבחור מסלול &#8592;</a>
 </div>
 
 <header class="site-header">
@@ -91,13 +96,13 @@
   <nav class="nav" aria-label="ניווט בעמוד">
     <a href="#tracks">שני המסלולים</a>
     <a href="#fit">איזה מסלול שלי</a>
-    <a href="#proof">מהשטח</a>
+    <a href="#biz">לבעלי עסקים</a>
     <a href="#faq">שאלות</a>
     <a href="course.html">גרסה דיגיטלית</a>
   </nav>
   <div class="hdr-side">
     <a class="hdr-tel" href="https://wa.me/972528189921">052-818-9921</a>
-    <a class="btn btn-sm" data-join href="#tracks">לבחירת מסלול</a>
+    <a class="btn btn-sm" data-join href="#tracks">לבחור מסלול</a>
   </div>
 </header>
 
@@ -109,16 +114,17 @@
   <div class="glow-t" aria-hidden="true"></div>
   <div class="hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow teal rise"><span class="live-dot" aria-hidden="true"></span> מחזור כסליו · ההרשמה פתוחה</p>
-      <h1 class="hero-title rise-2">שני מסלולים.<br/><span class="ghost">אחד מהם</span><br/>מתחיל אצלך.</h1>
-      <p class="hero-lead rise-3">משתמש ב-AI ומקבל תשובות בינוניות? או שכבר רוצה שהוא יעבוד בשבילך? <b>מתחילים</b> — לומדים לעבוד נכון עם AI ולהוציא ממנו תוצרים מקצועיים. <b>מתקדמים</b> — לומדים לבנות באמצעות AI סוכנים, אוטומציות ותוכנות. שניהם חיים בזום, בגובה העיניים, בלי רקע טכני.</p>
+      <p class="eyebrow teal rise"><span class="live-dot" aria-hidden="true"></span> מחזור כסליו · ההרשמה פתוחה · עד 20 איש בקבוצה</p>
+      <h1 class="hero-title rise-2">מעסיקים כבר שואלים:<br/><span class="ghost">״אתה יודע לעבוד</span><br/>עם AI?״</h1>
+      <p class="hero-lead rise-3">קורס AI מעשי, חי בזום מהבית. <b>מתחילים</b> — כלי עבודה אמיתיים לעבודה ולעסק. <b>מתקדמים</b> — לבנות סוכנים ואוטומציות.</p>
       <div class="hero-cta two rise-4">
-        <a class="btn btn-lg" href="course-beginners.html" data-track-pick="course-beginners">לפרטים על מסלול מתחילים</a>
-        <a class="btn btn-lg btn-line" href="course-advanced.html" data-track-pick="course-advanced">לפרטים על מסלול מתקדמים</a>
-        <p class="hero-price two-price"><b>885 ₪</b> למתחילים <i aria-hidden="true">·</i> <b>2,950 ₪</b> למתקדמים <small>כולל מע״מ</small></p>
+        <a class="btn btn-lg btn-stack" href="course-beginners.html#buy" data-track-pick="course-beginners">אני מתחיל עם AI<small>מתחילים · 3 ערבים · 885 ₪</small></a>
+        <a class="btn btn-lg btn-line btn-stack" href="course-advanced.html#buy" data-track-pick="course-advanced">אני כבר משתמש ורוצה לבנות<small>מתקדמים · 9 מפגשים · 2,950 ₪</small></a>
+        <p class="hero-price two-price"><small data-promo hidden>עד 19.10 ב-23:59: מתחילים 796.50 ₪ · מתקדמים 2,655 ₪ · כולל מע״מ</small><small>המחירים כוללים מע״מ · אפשר עד 3 תשלומים</small></p>
       </div>
-      <p class="hero-proof rise-4">״כבר יש לי מעל 20 סוכנים, ואני מרגיש שהעבודה שלי התקצרה בשעתיים״ <cite>בוגר אחד המחזורים הראשונים של הקורס · מתוך 1,500 בוגרים</cite></p>
-      <p class="hero-lead rise-4" style="font-size:1rem">מתחילים <b>י״ג בכסליו</b> · מתקדמים <b>ט״ו בכסליו</b> · פעם בשבוע, 19:30-21:30 · גם באינטרנט מסונן · 1,500 בוגרים ב-30 מחזורים</p>
+      <p class="guar on-dark rise-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>אחרי השיעור הראשון לא מתאים לך? מחזירים לך את כל הכסף.</p>
+      <p class="hero-proof rise-4">לא בטוח איזה מסלול? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%9C%D7%91%D7%98%20%D7%91%D7%99%D7%9F%20%D7%94%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%D7%99%D7%9D.%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9%20%D7%91-AI%20%5B%D7%91%D7%9B%D7%9C%D7%9C%20%D7%9C%D7%90%20%2F%20%D7%A7%D7%A6%D7%AA%20%2F%20%D7%9B%D7%9C%20%D7%99%D7%95%D7%9D%5D" target="_blank" rel="noopener">כתוב ליוחנן מה אתה עושה היום</a>, והוא יגיד לך מה מתאים.</p>
+      <p class="hero-lead rise-4" style="font-size:1rem">יוחנן שבדרון · מרצה חרדי · 1,500+ בוגרים · 30+ קורסים · המפגשים בזום עובדים גם באינטרנט מסונן</p>
     </div>
     <figure class="hero-portrait rise-2">
       <div class="sticker" data-promo hidden aria-label="10% הנחת רישום מוקדם עד 19 באוקטובר"><b>10%</b><span>הנחת רישום<br/>מוקדם</span><small>עד 19/10</small></div>
@@ -141,6 +147,13 @@
   </div>
   <!-- /BUILD:marquee -->
 
+
+<!-- ===== פס הוכחות ===== -->
+<section class="trust" aria-label="מי כבר למד כאן">
+  <p>מעסיקים פונים אלינו ומבקשים את הבוגרים שלנו.<span>״ידע ב-AI״ הפך לדרישה גם במשרות משרד, שיווק והנהלת חשבונות.</span></p>
+  <p>בעלי עסקים שולחים אלינו את העובדים שלהם ללמוד.<span>עובד שיודע לעבוד עם AI מספיק יותר בפחות זמן.</span></p>
+  <p class="trust-nums">1,500+ בוגרים · 30+ קורסים · הטמעות במשרדי ממשלה ובעסקים</p>
+</section>
 <!-- ===== רצועת מספרים ===== -->
 <section class="stats" aria-label="הקורסים במספרים">
   <div class="stats-grid">
@@ -152,38 +165,17 @@
 </section>
 
 <!-- ===== נשמע מוכר ===== -->
-<section class="pains sec-ice" id="pains">
+<section class="pains sec-paper" id="pains">
   <p class="eyebrow sr">נשמע מוכר?</p>
+  <h2 class="sec-title sr">בינה מלאכותית כבר <em>משנה את העבודה.</em></h2>
   <ul class="pains-list sr">
-      <li>שואל את ChatGPT, מקבל תשובה כללית, מתקן פעמיים ומוותר</li>
+      <li>חלק גדול מהעובדים כבר משתמשים ב-AI, אבל רובם לא יודעים להוציא ממנו עבודה מוכנה</li>
+      <li>במודעות דרושים מבקשים יותר ויותר ״ידע ב-AI״, גם במשרות משרד, שיווק והנהלת חשבונות</li>
+      <li>בעסק, עבודה חוזרת אוכלת שעות שיכולות ללכת לפרנסה ולבית</li>
       <li>מבזבז שעות על סיכומים, מיילים ומצגות שהיו יכולים לקחת דקות</li>
-      <li>אותן משימות חוזרות כל שבוע, ואתה עדיין עושה אותן בידיים</li>
-      <li>מרגיש שכולם כבר עובדים עם AI, ורק אתה נשאר מאחור</li>
   </ul>
-  <p class="pains-close sr">יש מסלול לכל נקודת פתיחה. בוחרים את שלך, ומתחילים בכסליו.</p>
+  <p class="pains-close sr">הבעיה היא לא בך. אף אחד לא הראה לך איך. וזה נלמד, צעד אחרי צעד.</p>
   <a class="btn btn-lg sr" href="#tracks">איזה מסלול מתאים לי?</a>
-</section>
-
-<!-- ===== מסלול ההתקדמות ===== -->
-<section class="path sec-paper" id="path">
-  <div class="path-head sr">
-    <p class="eyebrow">שני מסלולים</p>
-    <h2 class="sec-title">שני מסלולי לימוד. <em>שתי מטרות שונות.</em></h2>
-    <p>לא כולם צריכים לעבור את אותה דרך. בוחרים לפי מה שרוצים להשיג.</p>
-  </div>
-  <div class="path-grid two-goals">
-    <div class="m-card sr">
-      <h3>AI למתחילים</h3>
-      <p>למי שרוצה בסיס מסודר ושיטת עבודה נכונה עם AI: לבקש נכון, לבדוק את התוצר ולהוציא ממנו עבודה מקצועית.</p>
-      <a class="path-cta" href="course-beginners.html" data-track-pick="course-beginners">למסלול המתחילים ←</a>
-    </div>
-    <div class="m-card step-2 sr sr-2">
-      <h3>AI למתקדמים</h3>
-      <p>למי שכבר משתמש ב-AI ורוצה ללמוד לבנות בעצמו: סוכנים, אוטומציות ופתרונות קטנים, בלי לדעת תכנות.</p>
-      <a class="path-cta" href="course-advanced.html" data-track-pick="course-advanced">למסלול המתקדמים ←</a>
-    </div>
-  </div>
-  <p class="path-digital sr">רוצים ללמוד את הבסיס בזמן ובקצב שלכם? <a href="course.html">הקורס הדיגיטלי: ארבעה שיעורים מוקלטים, גישה מיידית ←</a></p>
 </section>
 
 <!-- ===== שני המסלולים ===== -->
@@ -200,6 +192,7 @@
     <span class="lvl on-light">בסיס ושיטת עבודה</span>
     <div class="meta"><span>3 מפגשים</span><i aria-hidden="true">·</i><span>שעתיים כל מפגש</span><i aria-hidden="true">·</i><span>סה״כ 6 שעות</span></div>
     <h3>AI למתחילים</h3>
+    <p class="when-line">3 מפגשים · מיום שני 23/11 · 19:30-21:30</p>
     <p class="lead">מיועד למי שרוצה לעבור משימוש בסיסי ב-AI לעבודה נכונה ומקצועית.</p>
     <ul>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>שיטת עבודה נכונה עם AI</li>
@@ -208,10 +201,12 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>מפגישה לסיכום, החלטות ומשימות</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>בניית מצגות מקצועיות</li>
     </ul>
-    <p class="who">לומדים לעבוד נכון עם AI ולהוציא ממנו תוצרים מקצועיים.</p>
+    <p class="who"><b>יוצאים עם: הצעת מחיר, מכתב, סיכום פגישה ומצגת, מוכנים לשליחה.</b></p>
     <div class="foot">
-      <a class="btn btn-lg" href="course-beginners.html" data-track-pick="course-beginners">לפרטים על מסלול מתחילים</a>
+      <a class="btn btn-lg" href="course-beginners.html#buy" data-track-pick="course-beginners">לשריין מקום במסלול מתחילים</a>
       <span class="note">3 מפגשים · 885 ₪ כולל מע״מ</span>
+      <b class="note promo" data-promo hidden>עד 19.10 ב-23:59: 796.50 ₪ כולל מע״מ</b>
+      <a class="more" href="course-beginners.html" data-track-pick="course-beginners">לכל הפרטים על המסלול &#8592;</a>
     </div>
   </article>
 
@@ -219,6 +214,7 @@
     <span class="lvl on-light pro">לבנות עם AI</span>
     <div class="meta"><span>9 מפגשים</span><i aria-hidden="true">·</i><span>שעתיים כל מפגש</span><i aria-hidden="true">·</i><span>סה״כ 18 שעות</span></div>
     <h3>AI למתקדמים</h3>
+    <p class="when-line">9 מפגשים · מיום רביעי 25/11 · 19:30-21:30</p>
     <p class="lead">מיועד למי שכבר מכיר ומשתמש ב-AI ורוצה לעבור לשלב הבא. אין צורך לדעת תכנות.</p>
     <ul>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>סוכני AI ועבודה עם Projects</li>
@@ -228,18 +224,32 @@
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>פרויקט AI אישי, עם תרגול והכוונה</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>תעודת סיום</li>
     </ul>
-    <p class="who">לומדים לבנות באמצעות AI סוכנים, אוטומציות ותוכנות.</p>
+    <p class="who"><b>מתרגלים לבנות: סוכנים ואוטומציות לעבודה שחוזרת על עצמה, ופרויקט AI אישי עם הכוונה.</b></p>
     <div class="foot">
-      <a class="btn btn-lg" href="course-advanced.html" data-track-pick="course-advanced">לפרטים על מסלול מתקדמים</a>
+      <a class="btn btn-lg" href="course-advanced.html#buy" data-track-pick="course-advanced">לשריין מקום במסלול מתקדמים</a>
       <span class="note">9 מפגשים · 2,950 ₪ כולל מע״מ</span>
+      <b class="note promo" data-promo hidden>עד 19.10 ב-23:59: 2,655 ₪ כולל מע״מ</b>
+      <a class="more" href="course-advanced.html" data-track-pick="course-advanced">לכל הפרטים על המסלול &#8592;</a>
     </div>
   </article>
   <!-- /BUILD:tracks -->
   </div>
 </section>
 
+
+<!-- ===== המרצה ===== -->
+<section class="brief sec-paper" id="teacher">
+  <div class="teacher sr">
+    <img src="assets/public/yochanan-avatar.jpg" alt="יוחנן שבדרון" width="640" height="640" loading="lazy"/>
+    <div>
+      <h3>יוחנן שבדרון</h3>
+      <p>מרצה בן הציבור החרדי-חסידי, בוגר מדעי המחשב עם התמחות ב-AI. הטמיע בינה מלאכותית במשרדי ממשלה ובעסקים, ולימד יותר מ-1,500 בוגרים ב-30 מחזורי קורסים.</p>
+      <blockquote>״אני לא מלמד כלים. אני מלמד שיטה, ואתה יוצא עם תוצר ביד כבר מהמפגש הראשון.״</blockquote>
+    </div>
+  </div>
+</section>
 <!-- ===== איזה מסלול שלי ===== -->
-<section class="shift sec-paper" id="fit">
+<section class="shift sec-ice" id="fit">
   <p class="eyebrow sr">אזור בחירת מסלול</p>
   <h2 class="sec-title sr">איזה מסלול <em>מתאים לי?</em></h2>
   <div class="cmp">
@@ -275,7 +285,7 @@
 </section>
 
 <!-- ===== השוואה ===== -->
-<section class="compare sec-ice" id="compare">
+<section class="compare sec-paper" id="compare">
   <p class="eyebrow sr">השוואה מלאה</p>
   <h2 class="sec-title sr">מה יש בכל מסלול.</h2>
   <p class="lead sr">שני המסלולים חיים בזום ומוקלטים, פעם בשבוע בשעה 19:30 עד 21:30. הטבלה מראה בדיוק איפה הם נפרדים.</p>
@@ -376,6 +386,37 @@
   </div>
 </section>
 
+<!-- ===== מסלול ההתקדמות ===== -->
+<section class="path sec-ice" id="path">
+  <div class="path-head sr">
+    <p class="eyebrow">שני מסלולים</p>
+    <h2 class="sec-title">שני מסלולי לימוד. <em>שתי מטרות שונות.</em></h2>
+    <p>לא כולם צריכים לעבור את אותה דרך. בוחרים לפי מה שרוצים להשיג.</p>
+  </div>
+  <div class="path-grid two-goals">
+    <div class="m-card sr">
+      <h3>AI למתחילים</h3>
+      <p>למי שרוצה בסיס מסודר ושיטת עבודה נכונה עם AI: לבקש נכון, לבדוק את התוצר ולהוציא ממנו עבודה מקצועית.</p>
+      <a class="path-cta" href="course-beginners.html" data-track-pick="course-beginners">למסלול המתחילים ←</a>
+    </div>
+    <div class="m-card step-2 sr sr-2">
+      <h3>AI למתקדמים</h3>
+      <p>למי שכבר משתמש ב-AI ורוצה ללמוד לבנות בעצמו: סוכנים, אוטומציות ופתרונות קטנים, בלי לדעת תכנות.</p>
+      <a class="path-cta" href="course-advanced.html" data-track-pick="course-advanced">למסלול המתקדמים ←</a>
+    </div>
+  </div>
+  <p class="path-digital sr">רוצים ללמוד את הבסיס בזמן ובקצב שלכם? <a href="course.html">הקורס הדיגיטלי: ארבעה שיעורים מוקלטים, גישה מיידית ←</a></p>
+</section>
+
+
+<!-- ===== לבעלי עסקים ===== -->
+<section class="crosslink" id="biz">
+  <div>
+    <b>שולח עובד ללמוד?</b>
+    <p>עובד שיודע לעבוד עם AI מספיק יותר בפחות זמן, ואתה לא צריך לגייס עוד אחד. חשבונית מס על שם העסק · אפשר לרשום כמה עובדים · אפשרות לסדנה פרטית לצוות.</p>
+  </div>
+  <a class="btn btn-sm" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%91%D7%A2%D7%9C%20%D7%A2%D7%A1%D7%A7%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%9C%D7%95%D7%97%20%D7%A2%D7%95%D7%91%D7%93%2F%D7%99%D7%9D%20%D7%9C%D7%9C%D7%9E%D7%95%D7%93.%20%D7%9B%D7%9E%D7%94%20%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%3A%20%5B%20%5D" target="_blank" rel="noopener">אני רוצה לשלוח עובדים</a>
+</section>
 <!-- ===== השיטה ===== -->
 <section class="method sec-paper" id="method">
   <div class="method-intro">
@@ -434,40 +475,6 @@
   </div>
   <!-- /BUILD:orgs -->
 </section>
-
-<!-- ===== הוובינר ===== -->
-<!-- BUILD:webinar -->
-  <section class="webinar" id="webinar">
-    <div class="webinar-grid">
-      <div class="webinar-copy sr">
-        <p class="eyebrow teal">מתנה · וובינר מלא</p>
-        <h2 class="sec-title">וובינר שלם, <em>במתנה.</em></h2>
-        <p class="lead">וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד. ככה רואים בדיוק איך נראה שיעור אצלי, עוד לפני שנרשמים.</p>
-        <p class="note">ואם אתם עצמאים או בעלי עסקים, תראו בו איך נראית עבודה אמיתית עם AI על משימה מהעבודה, עוד לפני שנפגשנו.</p>
-        <form class="gift-form" data-gift novalidate>
-          <div class="gift-fields">
-            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
-            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-          </div>
-          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-          <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
-          <p class="gift-msg" role="status" aria-live="polite"></p>
-          <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
-        </form>
-        <a class="btn btn-lg gift-after" href="#tracks" data-join hidden>לבחירת המסלול שלי</a>
-      </div>
-      <div class="video-frame gift-locked sr sr-2">
-        <div class="gift-cover" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
-        </div>
-        <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
-      </div>
-    </div>
-  </section>
-  <!-- /BUILD:webinar -->
 
 <!-- ===== פרטי המסלול ===== -->
 <section class="faq sec-paper" id="details">
@@ -530,6 +537,18 @@
         <p>כן. הכלים שנלמדים נגישים דרך אינטרנט מסונן, והמפגשים עצמם מתקיימים בזום.</p>
       </details>
       <details>
+        <summary>אני לא בטוח שאני מספיק טכנולוגי</summary>
+        <p>אם אתה יודע להשתמש בוואטסאפ, אתה מוכן. לא צריך אנגלית ולא צריך תכנות.</p>
+      </details>
+      <details>
+        <summary>זה יעזור לי למצוא עבודה או להתקדם?</summary>
+        <p>מעסיקים פונים אלינו ומבקשים בוגרים. משרה אנחנו לא מבטיחים, אבל יוצאים מכאן עם כישור שמעסיקים מחפשים ועם תוצרים שאפשר להראות.</p>
+      </details>
+      <details>
+        <summary>מה אם זה לא בשבילי?</summary>
+        <p>אחרי השיעור הראשון לא מתאים לך? מחזירים לך את כל הכסף, בלי שאלות. מבקשים בוואטסאפ או במייל עד 48 שעות אחרי המפגש הראשון, וההחזר מבוצע בתוך 14 ימים לאמצעי התשלום המקורי. התנאים המלאים ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p>
+      </details>
+      <details>
         <summary>מתי המחזור הקרוב ומה המחיר?</summary>
         <p><b>מסלול המתחילים</b> נפתח ביום שני, י״ג בכסליו (23 בנובמבר): 885 ₪ כולל מע״מ (750 ₪ + מע״מ). <b>מסלול המתקדמים</b> נפתח ביום רביעי, ט״ו בכסליו (25 בנובמבר): 2,950 ₪ כולל מע״מ (2,500 ₪ + מע״מ). שניהם פעם בשבוע, בשעה 19:30 עד 21:30. בחנוכה אין מפגשים. ייתכנו שינויים במועדים ובשעות.</p>
       </details>
@@ -547,8 +566,8 @@
   <div class="buy-grid">
     <div class="buy-left">
       <p class="eyebrow teal">ההרשמה</p>
-      <h2 class="sec-title" id="buy-title">בוחרים מסלול,<br/><span class="ghost">ומתחילים.</span></h2>
-      <p>ההרשמה והתשלום נעשים ישירות מדף המסלול, בתשלום מאובטח באשראי, או בהעברה בנקאית או ביט (בקשו את הפרטים בוואטסאפ). אחרי התשלום מקבלים את פרטי המפגשים והקישור לזום. שאלות לפני? כתבו לי בוואטסאפ. עד 20 משתתפים בכל מחזור, כדי שיישאר זמן לשאלות של כולם.</p>
+      <h2 class="sec-title" id="buy-title">צעד אחד,<br/><span class="ghost">ומתחילים.</span></h2>
+      <p>עד 20 איש בקבוצה, כדי שיישאר זמן לשאלות של כולם. ההרשמה והתשלום נעשים ישירות מדף המסלול, בתשלום מאובטח באשראי, או בהעברה בנקאית או ביט. אחרי התשלום מקבלים את פרטי המפגשים והקישור לזום.</p>
       <ul class="incl">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>מפגשי זום חיים, שעתיים כל אחד</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>הקלטות מלאות שנשארות איתך</li>
@@ -560,15 +579,50 @@
 
     <div class="price-card">
       <span class="lbl">בחירת מסלול</span>
-      <p class="pd-vat">המחירים כוללים מע״מ. בוחרים את המסלול שמתאים, ובדף שלו יש את התוכנית המלאה ואת פירוט המחיר המלא. אם אתה מתלבט, שלח הודעה ונחליט יחד תוך כמה דקות.</p>
-      <a class="btn btn-lg" href="course-beginners.html" data-track-pick="course-beginners">מסלול מתחילים · 885 ₪</a>
-      <a class="btn btn-lg btn-dark" href="course-advanced.html" data-track-pick="course-advanced">מסלול מתקדמים · 2,950 ₪</a>
-      <a class="btn btn-lg btn-dark" data-join href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%D7%99%D7%9D%20%D7%91%D7%96%D7%95%D7%9D" target="_blank" rel="noopener">מתלבט? כתוב לי בוואטסאפ</a>
-      <span class="secure">התשלום מאובטח ונעשה בדף של כל מסלול</span>
+      <p class="pd-vat">המחירים כוללים מע״מ, ואפשר עד 3 תשלומים ללא דמי טיפול. בדף של כל מסלול יש את התוכנית המלאה, את פירוט המחיר ואת כפתור התשלום.</p>
+      <a class="btn btn-lg" href="course-beginners.html#buy" data-track-pick="course-beginners">מתחילים · 885 ₪</a>
+      <a class="btn btn-lg btn-dark" href="course-advanced.html#buy" data-track-pick="course-advanced">מתקדמים · 2,950 ₪</a>
+      <p class="pd-deadline" data-promo hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ההנחה נגמרת ביום שני 19.10 ב-23:59</p>
+      <p class="guar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>אחרי השיעור הראשון לא מתאים לך? מחזירים לך את כל הכסף.</p>
+      <p class="pd-ask">מתלבט בין המסלולים? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%9C%D7%91%D7%98%20%D7%91%D7%99%D7%9F%20%D7%94%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%D7%99%D7%9D.%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9%20%D7%91-AI%20%5B%D7%91%D7%9B%D7%9C%D7%9C%20%D7%9C%D7%90%20%2F%20%D7%A7%D7%A6%D7%AA%20%2F%20%D7%9B%D7%9C%20%D7%99%D7%95%D7%9D%5D" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
       <a class="terms-link" href="terms.html#product" target="_blank" rel="noopener">לקריאת פרטי העסקה המלאים (נפתח בלשונית חדשה)</a>
     </div>
   </div>
 </section>
+<!-- ===== הוובינר ===== -->
+<!-- BUILD:webinar -->
+  <section class="webinar" id="webinar">
+    <div class="webinar-grid">
+      <div class="webinar-copy sr">
+        <p class="eyebrow teal">מתנה · וובינר מלא</p>
+        <h2 class="sec-title">וובינר שלם, <em>במתנה.</em></h2>
+        <p class="lead">עוד לא מוכן להחליט? זה וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד, וככה רואים בדיוק איך נראה שיעור אצלי עוד לפני שנרשמים.</p>
+        <p class="note">ואם אתם עצמאים או בעלי עסקים, תראו בו איך נראית עבודה אמיתית עם AI על משימה מהעבודה, עוד לפני שנפגשנו.</p>
+        <form class="gift-form" data-gift novalidate>
+          <div class="gift-fields">
+            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          </div>
+          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+          <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
+          <p class="gift-msg" role="status" aria-live="polite"></p>
+          <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+        </form>
+        <a class="btn btn-lg gift-after" href="#tracks" data-join hidden>לבחירת המסלול שלי</a>
+      </div>
+      <div class="video-frame gift-locked sr sr-2">
+        <div class="gift-cover" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+        </div>
+        <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+      </div>
+    </div>
+  </section>
+  <!-- /BUILD:webinar -->
+
 
 </main>
 
@@ -590,10 +644,10 @@
 
 <div class="stickybar" id="stickybar">
   <div class="sb-price">
-    <b>הקורסים בזום</b>
-    <span class="sb-vat">מתחילים 885 ₪ | מתקדמים 2,950 ₪ · כולל מע״מ</span>
+    <b>מתחילים 885 ₪ · מתקדמים 2,950 ₪</b>
+    <span class="sb-vat">כולל מע״מ · החזר מלא אחרי השיעור הראשון</span>
   </div>
-  <a class="btn btn-sm" data-join href="#tracks">לבחירת מסלול</a>
+  <a class="btn btn-sm" data-join href="#tracks">לבחור מסלול</a>
 </div>
 
 <script>

@@ -348,6 +348,20 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 .price-table .tot td{font-family:'Heebo',sans-serif;font-weight:900;font-size:2.75rem;letter-spacing:-.02em;border-bottom:none;padding-top:22px}
 .pd-vat{font-size:.94rem;line-height:1.6;color:var(--muted)}
 .secure{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.88rem;color:#8a8781}
+/* ההבטחה, ליד כל כפתור קנייה */
+.dig-guar{display:flex;align-items:flex-start;gap:9px;font-size:.98rem;line-height:1.5;font-weight:700;
+  color:var(--text);background:rgba(46,222,191,.14);border-radius:3px;padding:12px 14px;margin-top:4px}
+.dig-guar svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--teal-ink)}
+.dig-guar.on-dark{color:#fff;background:rgba(46,222,191,.12);max-width:420px}
+.dig-guar.on-dark svg{color:var(--teal)}
+.pd-ask{text-align:center;font-size:.94rem;color:var(--muted)}
+.pd-ask a{font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+/* הפניה למסלול החי בתחתית הדף */
+.dig-cross{background:var(--night);color:#fff;padding:56px var(--pad);display:flex;align-items:center;
+  justify-content:space-between;gap:32px;flex-wrap:wrap}
+.dig-cross div{display:flex;flex-direction:column;gap:8px}
+.dig-cross b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.88rem;line-height:1.15}
+.dig-cross p{font-size:1.06rem;color:var(--on-dark);max-width:560px}
 
 /* קופון */
 .pd-coupon{background:var(--ice);border-radius:3px;padding:20px;display:flex;flex-direction:column;gap:12px}
@@ -586,8 +600,8 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
   <div class="hero-grid">
     <div class="hero-copy">
       <p class="eyebrow teal rise">גרסת הצפייה של הקורס</p>
-      <h1 class="hero-title rise-2">מנסה AI<br/><span class="ghost">ולא יוצא</span><br/>מזה כלום?</h1>
-      <p class="hero-lead rise-3">ארבעה שיעורים מוקלטים, בקצב שלך, שמלמדים שיטת עבודה מסודרת עם AI: מתחילים ממשימה אמיתית מהעבודה ויוצאים עם תוצר. גישה מיידית, בלי רקע טכני.</p>
+      <h1 class="hero-title rise-2">קורס AI מלא,<br/><span class="ghost">בקצב שלך,</span><br/>מהבית.</h1>
+      <p class="hero-lead rise-3">ארבעה שיעורים מוקלטים שמלמדים שיטת עבודה מסודרת עם AI: מתחילים ממשימה אמיתית מהעבודה ויוצאים עם תוצר. גישה מיידית, בלי רקע טכני.</p>
       <div class="hero-cta rise-4">
         <a class="btn btn-lg" data-buy href="https://mrng.to/zoeR82jDpx">לרכישת הקורס וגישה מיידית</a>
         <p class="hero-price">
@@ -595,6 +609,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
           <small>אפשר עד 3 תשלומים</small>
         </p>
       </div>
+      <p class="dig-guar on-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא.</p>
       <p class="hero-proof rise-4">״לפני הקורס כל עולם ה-AI הרגיש לי כמו סינית. אחרי ארבעת השיעורים סוף סוף יש לי בסיס, ואני מבין מה אני עושה.״ <cite>בוגר הקורס הדיגיטלי · מתוך 1,500 בוגרים</cite></p>
     </div>
     <figure class="hero-portrait rise-2">
@@ -757,7 +772,7 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
       <div class="webinar-copy reveal">
         <p class="eyebrow teal">מתנה · וובינר מלא</p>
         <h2 class="sec-title">וובינר שלם, <em>במתנה.</em></h2>
-        <p class="lead">וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד. ככה רואים בדיוק איך נראה שיעור אצלי, עוד לפני שנרשמים.</p>
+        <p class="lead">עוד לא מוכן להחליט? זה וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד, וככה רואים בדיוק איך נראה שיעור אצלי עוד לפני שנרשמים.</p>
         <p class="note">ואם אתם עצמאים או בעלי עסקים, תראו בו איך נראית עבודה אמיתית עם AI על משימה מהעבודה, עוד לפני שנפגשנו.</p>
         <form class="gift-form" data-gift novalidate>
           <div class="gift-fields">
@@ -886,8 +901,19 @@ a[href*="wa.me"],.nowrap{white-space:nowrap}
 
       <a class="btn btn-dark btn-lg" data-buy href="https://mrng.to/zoeR82jDpx">למעבר לתשלום מאובטח</a>
       <span class="secure">תשלום מאובטח · גישה מיידית</span>
+      <p class="dig-guar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא, כל עוד לא נצפה יותר משיעור אחד.</p>
+      <p class="pd-ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
     </div>
   </div>
+</section>
+
+<!-- ===== הפניה למסלול החי ===== -->
+<section class="dig-cross">
+  <div>
+    <b>רוצה ליווי וקבוצה?</b>
+    <p>במסלול המתחילים בזום יש עד 20 איש בקבוצה, מרצה שעונה לך בזמן אמת, תרגול על המשימות שלך וקבוצת ליווי בוואטסאפ. שלושה ערבים חיים, מיום שני 23.11.</p>
+  </div>
+  <a class="btn btn-sm" href="course-beginners.html#buy">למסלול המתחילים בזום &#8592;</a>
 </section>
 
 </main>

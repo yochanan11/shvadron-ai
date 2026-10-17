@@ -27,11 +27,14 @@ function ils(n){
   return (n % 1 === 0 ? n.toLocaleString('he-IL') : n.toFixed(2)) + ' ₪';
 }
 function each(sel, fn){ document.querySelectorAll(sel).forEach(fn); }
+/* תשלום אחד מתוך שלושה. מעוגל לשקל, ולכן מוצג בדף עם "כ-" לפניו */
+function pmt(total){ return Math.round(total / 3); }
 
 /* ─── מחירים: מקור אמת אחד ─────────────────────────────────
    .js-price       → המחיר לפני מע״מ
    .js-price-vat   → סכום המע״מ בלבד
    .js-price-total → הסכום הסופי לתשלום
+   .js-price-pmt   → תשלום אחד מתוך שלושה, מעוגל לשקל
    [data-has-price] → מוצג רק כשיש מחיר
    [data-no-price]  → מוצג רק כשהמחיר טרם נקבע                */
 function render(priceEx){
@@ -41,6 +44,7 @@ function render(priceEx){
   each('.js-price',       function(el){ el.textContent = ils(priceEx); });
   each('.js-price-vat',   function(el){ el.textContent = ils(vat); });
   each('.js-price-total', function(el){ el.textContent = ils(total); });
+  each('.js-price-pmt',   function(el){ el.textContent = ils(pmt(total)); });
   each('.js-vat-rate',    function(el){ el.textContent = (VAT * 100) + '%'; });
 
   window.SHW_PRICE_EX = priceEx;
@@ -152,6 +156,7 @@ function applyCoupon(data){
   each('.js-price',       function(el){ el.textContent = ils(data.price); });
   each('.js-price-vat',   function(el){ el.textContent = ils(data.vat); });
   each('.js-price-total', function(el){ el.textContent = ils(data.total); });
+  each('.js-price-pmt',   function(el){ el.textContent = ils(pmt(data.total)); });
   if(data.checkoutUrl){
     each('[data-join]', function(a){
       if((a.getAttribute('href') || '').charAt(0) === '#') return;  // קישורי גלילה נשארים
@@ -265,17 +270,21 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
        ההנחה מוחלת לבד: המחיר הרגיל מחוק, מחיר המבצע במקומו, וקישור
        התשלום מתחלף. אם הקופון לא מוגדר, הדף נשאר במחיר הרגיל.    ─── */
 (function(){
-  var bar = document.querySelector('.promo-bar:not(.alumni-bar)');
-  if(!bar || ALUMNI) return;
+  var bar = document.querySelector('.promo-bar:not(.alumni-bar):not(.promo-ever)');
+  // הפס הקבוע ("מחזור כסליו · עד 20 איש") מחליף את פס המבצע ברגע
+  // שההנחה אינה בתוקף, כדי שלא יישאר ראש הדף בלי קריאה לפעולה.
+  function evergreen(){ each('[data-promo-else]', function(el){ el.hidden = false; }); }
+  if(ALUMNI) return;
+  if(!bar){ evergreen(); return; }
   var today, until = bar.getAttribute('data-until');
   try {
     today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jerusalem' }).format(new Date());
-  } catch(e){ return; }
-  if(today > until) return;
+  } catch(e){ evergreen(); return; }
+  if(today > until){ evergreen(); return; }
 
   var days = Math.round((Date.parse(until) - Date.parse(today)) / 864e5) + 1;
   each('[data-promo-fill="left"]', function(el){
-    el.textContent = days <= 1 ? '· היום היום האחרון!' : '· נותרו ' + days + ' ימים';
+    el.textContent = days <= 1 ? '· היום בחצות ההנחה נגמרת' : '· נותרו ' + days + ' ימים';
   });
 
   var onTrack = hasPrice && document.getElementById('coupon-box');
@@ -287,7 +296,7 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
   })
     .then(function(res){ return res.json(); })
     .then(function(data){
-      if(!data.valid) return;
+      if(!data.valid){ evergreen(); return; }
       bar.hidden = false;
       each('[data-promo]', function(el){ el.hidden = false; });
       if(!onTrack) return;
@@ -297,7 +306,7 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
       each('[data-promo-row]', function(el){ el.hidden = false; });
       collapseCoupon();
     })
-    .catch(function(){});
+    .catch(evergreen);
 })();
 
 /* ─── חשיפה בגלילה ─── */

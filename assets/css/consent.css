@@ -151,3 +151,32 @@
 @media(prefers-reduced-motion:reduce){
   .shw-ck-btn{transition:none}
 }
+
+/* ── Compact banner on phones ────────────────────────────────
+   The banner used to cover roughly half of a phone screen, which
+   pushed the price and the buy button out of the first view. The
+   same disclosure stays on screen, as one short band at the
+   bottom: tighter type, two clamped lines of text, and the
+   buttons on a single row. ───────────────────────────────── */
+@media(max-width:560px){
+  .shw-cookie-banner{
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+    font-size:.85rem;
+    line-height:1.45;
+    border-top-width:3px;
+  }
+  .shw-cookie-banner h2{font-size:.92rem;margin:0 0 3px}
+  .shw-cookie-banner p{
+    margin:0 0 8px;
+    font-size:.8rem;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    overflow:hidden;
+  }
+  .shw-cookie-actions{gap:6px 8px}
+  /* The wide single-column buttons belong to the settings dialog,
+     not to this band: here they sit next to each other. */
+  .shw-cookie-actions .shw-ck-btn{flex:0 1 auto;padding:9px 16px;font-size:.85rem}
+  .shw-cookie-actions .shw-ck-link{padding:9px 4px;font-size:.78rem}
+}
