@@ -116,7 +116,8 @@ function sendConfirmation(d) {
     '<div dir="rtl" style="background:#F4F4F1;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">' +
       '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #DEDED8">' +
         '<div style="background:#0A0A0B;padding:18px 24px;text-align:right">' +
-          '<span style="font-size:20px;font-weight:bold;color:#ffffff;letter-spacing:.5px">SHWADRON<span style="color:#3EE6B0">.AI</span></span>' +
+          // הלוגו הלבן מהאתר (PNG, כי Gmail לא מציג SVG). אם תמונות חסומות, מוצג הטקסט החלופי
+          '<img src="https://ai.shwadron-ai.com/assets/public/logo-white.png" alt="SHWADRON.AI" width="190" height="54" style="display:block;border:0;width:190px;height:auto;color:#ffffff;font-size:20px;font-weight:bold"/>' +
         '</div>' +
         '<div style="padding:24px;color:#0A0A0B;font-size:16px;line-height:1.6;text-align:right">' + body + '</div>' +
       '</div>' +
