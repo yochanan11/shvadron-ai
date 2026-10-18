@@ -21,6 +21,7 @@
   .btn-ghost{background:#eef1f6;color:#141824}
   .msg{margin-top:12px;font-size:.88rem;font-weight:700;min-height:1.2em}
   .msg.err{color:#b3261e}
+  .msg.ok{color:#0B7A5A}
   #gate,#panel{display:none}
   .tbl-wrap{overflow-x:auto;margin-top:14px}
   table{width:100%;border-collapse:collapse;font-size:.9rem}
@@ -47,7 +48,9 @@
       <b id="count"></b>
       <button class="btn-ghost" id="reload">רענון</button>
       <button class="btn-ghost" id="csv">הורדה לאקסל (CSV)</button>
+      <button class="btn-ghost" id="sheet-test">בדיקת חיבור לגיליון</button>
     </div>
+    <p class="msg" id="sheet-msg"></p>
     <div class="tbl-wrap">
       <table>
         <thead><tr><th>תאריך</th><th>שם</th><th>טלפון</th><th>דיוור</th><th>הגיע מ</th></tr></thead>
@@ -72,7 +75,8 @@
     'index.html': 'דף הבית (שני המסלולים)', '': 'דף הבית (שני המסלולים)',
     'course-beginners.html': 'AI למתחילים (זום)',
     'course-advanced.html': 'AI למתקדמים (זום)',
-    'course.html': 'הקורס הדיגיטלי'
+    'course.html': 'הקורס הדיגיטלי',
+    'business.html': 'הטמעה בעסקים'
   };
   function course(l){ return l.course || COURSES[l.page || ''] || l.page; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
@@ -104,6 +108,14 @@
   document.getElementById('pw-submit').addEventListener('click', function(){ password = pw.value; load(); });
   pw.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ password = pw.value; load(); } });
   document.getElementById('reload').addEventListener('click', load);
+  document.getElementById('sheet-test').addEventListener('click', function(){
+    var m = document.getElementById('sheet-msg');
+    m.className = 'msg'; m.textContent = 'בודק…';
+    fetch('/api/admin-leads?test=sheet', { headers: { 'X-Admin-Password': password } })
+      .then(function(r){ return r.json(); })
+      .then(function(d){ m.className = 'msg ' + (d.ok ? 'ok' : 'err'); m.textContent = d.why || d.error || 'שגיאה לא ידועה'; })
+      .catch(function(){ m.className = 'msg err'; m.textContent = 'שגיאת רשת.'; });
+  });
   document.getElementById('csv').addEventListener('click', function(){
     var rows = [['תאריך','שם','טלפון','הסכמה לדיוור','הגיע מ']].concat(leads.map(function(l){
       return [new Date(l.ts).toLocaleString('he-IL'), l.name, l.phone, l.consent ? 'כן' : 'לא', course(l)];

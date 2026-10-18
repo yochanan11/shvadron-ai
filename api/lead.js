@@ -16,8 +16,9 @@ async function toSheet(lead, kind) {
       body: JSON.stringify({ ...lead, kind, secret: process.env.LEADS_SHEET_SECRET || '' }),
       signal: ctrl.signal,
     });
-    const out = await r.json().catch(() => ({}));
-    if (!r.ok || !out.ok) throw new Error('sheet-error');
+    const text = await r.text();
+    let out = {}; try { out = JSON.parse(text); } catch (e) {}
+    if (!r.ok || !out.ok) throw new Error('sheet-error ' + r.status + ' ' + text.slice(0, 200));
   } finally {
     clearTimeout(timer);
   }
@@ -68,6 +69,8 @@ module.exports = async (req, res) => {
     kvRequest(['RPUSH', 'leads', JSON.stringify(lead)]),
     toSheet(lead, callback ? 'callback' : 'webinar'),
   ]);
+  // נראה ב-Vercel > Logs. לא מכשיל את הבקשה אם הליד נשמר ב-KV.
+  if (sheet.status === 'rejected' && sheet.reason.message !== 'sheet-not-configured') console.error('lead sheet:', sheet.reason.message);
   if (kv.status === 'fulfilled' || sheet.status === 'fulfilled') return res.json({ ok: true });
   const err = kv.reason && kv.reason.message === 'kv-not-configured' ? 'kv-not-configured' : 'kv-error';
   return res.status(503).json({ ok: false, error: err });
