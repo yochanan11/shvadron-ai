@@ -416,13 +416,13 @@ ${rows.map(([k, v]) => `  <div><span>${esc(k)}</span><b>${esc(v)}</b></div>`).jo
 
 /* ─── נתונים מובנים לגוגל, כולל המחיר ─── */
 function jsonLd(t) {
-  const url = `https://www.shwadron-ai.com/${t.file}`;
+  const url = `https://ai.shwadron-ai.com/${t.file}`;
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Course',
     name: `${t.name} — ${t.sessions === 3 ? 'שלושה' : 'תשעה'} מפגשי זום`,
     description: t.ldDescription,
-    provider: { '@type': 'Person', name: 'יוחנן שבדרון', url: 'https://www.shwadron-ai.com/' },
+    provider: { '@type': 'Person', name: 'יוחנן שבדרון', url: 'https://ai.shwadron-ai.com/' },
     inLanguage: 'he',
     educationalLevel: t.level,
     hasCourseInstance: {
@@ -431,7 +431,7 @@ function jsonLd(t) {
       courseWorkload: `PT${t.hours}H`,
       ...(t.start ? { startDate: `${t.start}T${(t.time || TIME).split('-')[0]}:00${t.tzOffset || ''}` } : {}),
     },
-    image: 'https://www.shwadron-ai.com/assets/public/yochanan-card.jpg',
+    image: 'https://ai.shwadron-ai.com/assets/public/yochanan-card.jpg',
   };
   if (t.priceEx != null) {
     const total = Math.round(t.priceEx * (1 + t.vatRate) * 100) / 100;
