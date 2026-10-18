@@ -68,6 +68,11 @@ h1,.h-hero{font-size:clamp(72px,13vw,200px);line-height:.86}
 /* הכותרת הראשית צועקת בכל מסך: מתמלאת לכ-90% מרוחב התוכן, עד 200px במחשב.
    --fit נקבע בכל עמוד לפי אורך השורה הארוכה בכותרת */
 h1[style*="--fit"]{font-size:clamp(56px,calc((min(100vw,var(--wrap)) - 2*var(--pad))*var(--fit)),200px)}
+/* כותרת ארוכה מדי לטלפון: .m-line יורדת לשורה משלה, ו---fit-m מחליף את --fit */
+@media (max-width:600px){
+  h1[style*="--fit-m"]{font-size:clamp(56px,calc((100vw - 2*var(--pad))*var(--fit-m)),200px)}
+  h1 .m-line{display:block}
+}
 h2,.h-sec{font-size:clamp(56px,8vw,120px);line-height:.92}
 .h-sm{font-size:clamp(48px,7vw,104px);line-height:.92}
 /* כותרות המשנה בתוך כרטיסים הן Heebo, לא Karantina */
