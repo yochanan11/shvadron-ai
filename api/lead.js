@@ -54,13 +54,12 @@ module.exports = async (req, res) => {
   const callback = b.kind === 'callback';
   // מקור ההגעה (utm_source הראשון), אם הגולש אישר עוגיות סטטיסטיקה
   const source = String(b.source || '').trim().slice(0, 40);
-  // מייל: לא חובה. כתובת שלא נראית תקינה פשוט לא נשמרת
-  const rawEmail = String(b.email || '').trim().slice(0, 120);
-  const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail) ? rawEmail : '';
+  // מייל: שדה חובה בכל הטפסים
+  const email = String(b.email || '').trim().slice(0, 120);
 
   // טלפון ישראלי: 05X-XXXXXXX, או עם קידומת 972
   const local = phone.replace(/^\+?972/, '0');
-  if (!name || !/^0\d{8,9}$/.test(local)) {
+  if (!name || !/^0\d{8,9}$/.test(local) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 

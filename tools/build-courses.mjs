@@ -328,7 +328,7 @@ function webinar(opts = {}) {
         <div class="gift-fields">
           <label><span>שם</span><input name="name" autocomplete="name" required/></label>
           <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-          <label class="biz-wide"><span>מייל <small>(לא חובה)</small></span><input name="email" type="email" inputmode="email" autocomplete="email"/></label>
+          <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
         </div>
         <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
         <button class="btn btn-primary btn-block" type="submit">פתחו לי את הוובינר</button>

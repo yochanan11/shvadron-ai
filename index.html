@@ -59,7 +59,10 @@
       <a href="#webinar">הוובינר</a>
       <a href="#faq">שאלות</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="#tracks">בחר מסלול</a>
+    <div class="head-cta">
+      <a class="btn btn-ghost btn-sm head-callback" href="#callback">השאירו פרטים</a>
+      <a class="btn btn-primary btn-sm" href="#tracks">בחר מסלול</a>
+    </div>
   </div>
 </header>
 
@@ -410,7 +413,7 @@
           <div class="gift-fields">
             <label><span>שם</span><input name="name" autocomplete="name" required/></label>
             <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-            <label class="biz-wide"><span>מייל <small>(לא חובה)</small></span><input name="email" type="email" inputmode="email" autocomplete="email"/></label>
+            <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
           </div>
           <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
           <button class="btn btn-primary btn-block" type="submit">פתחו לי את הוובינר</button>
@@ -483,7 +486,7 @@
           <div class="gift-fields">
             <label><span>שם</span><input name="name" autocomplete="name" required/></label>
             <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-            <label class="biz-wide"><span>מייל <small>(לא חובה)</small></span><input name="email" type="email" inputmode="email" autocomplete="email"/></label>
+            <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
           </div>
           <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
           <button class="btn btn-primary" type="submit">חזרו אליי</button>
@@ -523,11 +526,14 @@
 </footer>
 
 <div class="dock" id="stickybar">
-  <div class="dock-price">
+  <div class="dock-price dock-price--long">
     <b>מאפס למאה 885 ₪ · צבא הסוכנים 2,950 ₪</b>
     <span>כולל מע״מ · החזר מלא אחרי השיעור הראשון</span>
   </div>
-  <a class="btn btn-primary btn-sm" href="#tracks">בחר מסלול</a>
+  <div class="dock-cta">
+    <a class="btn btn-ghost btn-sm" href="#callback">השאירו פרטים</a>
+    <a class="btn btn-primary btn-sm" href="#tracks">בחר מסלול</a>
+  </div>
 </div>
 
 <script>

@@ -563,3 +563,12 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .tips-btn{display:inline-flex;align-items:center;gap:10px}
 .tips-btn svg{width:20px;height:20px;flex:none}
 .gift-fields small{font-weight:400;opacity:.7}
+
+/* "השאירו פרטים" זמין תמיד: ליד כפתור התשלום בכותרת (מחשב) וברצועה התחתונה (נייד) */
+.head-cta,.dock-cta{display:flex;align-items:center;gap:8px;flex:none}
+/* מתחת ל-1100px הכפתור לא נכנס לכותרת בלי לשבור אותה לשתי שורות,
+   ולכן שם הרצועה התחתונה (עם "השאירו פרטים") מוצגת גם בטאבלט */
+@media(max-width:1099px){.head-callback{display:none}.dock{display:flex}body{padding-bottom:84px}}
+@media(max-width:400px){.dock-price span{display:none}.dock-cta .btn{padding-inline:14px}}
+/* בדף הבית שורת המחיר ארוכה מדי לצד שני כפתורים בטלפון */
+@media(max-width:520px){.dock-price--long{display:none}.dock-price--long + .dock-cta{flex:1;justify-content:center}}
