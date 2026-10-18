@@ -1,0 +1,293 @@
+/* ============================================================
+   SHWADRON.AI — מערכת העיצוב
+   ------------------------------------------------------------
+   כהה, מינימליסטי, טיפוגרפיה ענקית ומרווחים גדולים. הצבע היחיד
+   שמדגיש הוא הטורקיז, וכל השאר הוא רקע כהה, טקסט בהיר וקווים דקים.
+
+   העקרונות שאסור לשבור:
+   · צבע הדגשה אחד. אין גרדיאנטים, אין כרטיסים עם פס צבע בצד,
+     אין צללים כבדים ואין תמונות סטוק של אנשים.
+   · אייקונים רק כקו דק בצבע ההדגשה, ורק כשאין להם טקסט לצידם.
+   · הדף נבנה מהנייד כלפי מעלה. רוב התנועה מגיעה מסטטוסים.
+   · כל רכיב לחיץ הוא a או button אמיתיים, בגובה 48 פיקסלים ומעלה.
+   ============================================================ */
+
+:root{
+  --bg:#0A0A0B;         /* רקע ראשי */
+  --bg-2:#0E0E10;       /* רקע מקטע חלופי */
+  --card:#141416;       /* כרטיסים */
+  --line:#26262B;       /* גבולות כרטיס */
+  --line-soft:#1C1C1F;  /* מפרידי מקטעים */
+  --ink:#F4F4F1;        /* טקסט ראשי */
+  --ink-2:#C8C8CC;      /* טקסט משני */
+  --muted:#A1A1A6;      /* טקסט עמום, עובר ניגודיות 4.5:1 על הרקע */
+  --dim:#6B6B72;        /* רק לטקסט ענק, 24px ומעלה */
+  --accent:#3EE6B0;     /* צבע ההדגשה היחיד */
+  --accent-ink:#0A0A0B; /* טקסט על גבי ההדגשה */
+  --light-bg:#F4F4F1;   /* מקטע המעסיקים בלבד */
+  --light-ink:#0A0A0B;
+  --light-muted:#55555B;
+  --light-line:#DEDED8;
+  --live:#FF5A4E;       /* רק לנקודת LIVE */
+  --wrap:1200px;
+  --pad:24px;
+  --sec:clamp(80px,10vw,120px);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);direction:rtl;
+  font-family:'Heebo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--ink);text-decoration:none}
+a:hover{color:#fff}
+[hidden]{display:none!important}
+::selection{background:var(--accent);color:var(--accent-ink)}
+
+/* טבעת פוקוס שנראית על רקע כהה ועל רקע בהיר */
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+.skip{position:absolute;right:-9999px;top:0;z-index:200;background:var(--accent);
+  color:var(--accent-ink);padding:12px 20px;font-weight:800}
+.skip:focus{right:12px;top:12px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* מספרים ומותג נשארים משמאל לימין בתוך טקסט עברי */
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.sec{padding-block:var(--sec);border-top:1px solid var(--line-soft)}
+.sec-2{background:var(--bg-2)}
+.stack{display:flex;flex-direction:column;gap:clamp(32px,5vw,56px)}
+
+/* ── טיפוגרפיה ───────────────────────────────────────────── */
+.display,h1,h2,h3{font-family:'Karantina','Heebo',sans-serif;font-weight:700;letter-spacing:-.01em}
+h1,.h-hero{font-size:clamp(72px,13vw,200px);line-height:.86}
+h2,.h-sec{font-size:clamp(56px,8vw,120px);line-height:.92}
+.h-sm{font-size:clamp(48px,7vw,104px);line-height:.92}
+/* כותרות המשנה בתוך כרטיסים הן Heebo, לא Karantina */
+h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-size:21px;
+  line-height:1.3;letter-spacing:0}
+.lead{font-size:clamp(18px,2.2vw,22px);line-height:1.6;color:var(--ink-2);max-width:66ch}
+.body{font-size:17px;line-height:1.65;color:var(--muted);max-width:66ch}
+.small{font-size:15px;color:var(--muted)}
+.ghost{color:var(--dim)}
+.on-accent{color:var(--accent)}
+
+/* תווית מקטע ממוספרת */
+.eyebrow{font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;
+  letter-spacing:.14em;color:var(--accent)}
+
+/* ── כפתורים ─────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:'Heebo',sans-serif;font-weight:700;font-size:17px;
+  padding:16px 32px;min-height:56px;border:0;border-radius:999px;cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:#56EFC0;color:var(--accent-ink)}
+.btn-light{background:var(--ink);color:var(--bg)}
+.btn-light:hover{background:#fff;color:var(--bg)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid #3A3A40;font-weight:500}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-sm{font-size:15px;padding:12px 22px;min-height:48px}
+.btn-block{width:100%}
+
+/* ── כותרת עליונה ────────────────────────────────────────── */
+.site-head{position:sticky;top:0;z-index:40;background:rgba(10,10,11,.88);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:16px;padding-block:16px}
+.brand{font-family:'Heebo',sans-serif;font-weight:800;font-size:20px;letter-spacing:.08em}
+.brand span{color:var(--accent)}
+.site-nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px;color:var(--muted)}
+.site-nav a{color:var(--muted)}
+.site-nav a:hover{color:var(--ink)}
+
+/* ── רצועת מספרים ────────────────────────────────────────── */
+.figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:0 32px;border-top:1px solid #1F1F23;border-bottom:1px solid #1F1F23}
+/* בלי מרווח בין התאים שני מספרים סמוכים נראים כמספר אחד */
+.figures>div{padding-block:28px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.fig{font-family:'Karantina','Heebo',sans-serif;font-weight:700;font-size:clamp(52px,7vw,72px);line-height:1}
+.fig-label{font-size:15px;color:var(--muted)}
+
+/* ── כרטיסים ─────────────────────────────────────────────── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;
+  padding:36px 32px;display:flex;flex-direction:column;gap:24px}
+.card.is-featured{border:1.5px solid var(--accent);position:relative}
+.card-flag{position:absolute;top:-14px;right:28px;background:var(--accent);color:var(--accent-ink);
+  font-size:13px;font-weight:800;padding:6px 14px;border-radius:999px}
+.card-kicker{font-size:14px;font-weight:500;color:var(--muted)}
+.card-name{font-family:'Karantina','Heebo',sans-serif;font-weight:700;
+  font-size:clamp(56px,8vw,72px);line-height:.9}
+.card-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:20px}
+.card-mini .fig{font-size:48px}
+.card-mini .fig-label{font-size:13px}
+.ticks{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:16px;color:var(--ink-2)}
+.ticks li{display:flex;gap:10px}
+.ticks li::before{content:"✓";color:var(--accent);font-weight:800;flex-shrink:0}
+.card-foot{margin-top:auto;display:flex;flex-direction:column;gap:14px}
+.card-price{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.card-price b{font-size:28px;font-weight:800}
+.card-price span{font-size:14px;color:var(--muted)}
+.card-price .when{color:var(--accent);font-weight:500}
+
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:stretch}
+.grid-3{display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.rule-top{border-top:2px solid var(--ink);padding-top:20px;display:flex;flex-direction:column;gap:12px}
+
+/* ── טבלת השוואה ─────────────────────────────────────────── */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px}
+.tbl{width:100%;min-width:760px;border-collapse:collapse;font-size:16px;text-align:right}
+.tbl thead tr{background:var(--card)}
+.tbl th,.tbl td{padding:18px 20px}
+.tbl thead th{font-weight:800;font-size:18px}
+.tbl tbody tr{border-top:1px solid var(--line)}
+.tbl tbody th{color:var(--muted);font-weight:500}
+.tbl tbody td{color:var(--ink-2)}
+.tbl .col-accent{color:var(--accent)}
+
+/* ── שלבים ממוספרים ──────────────────────────────────────── */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.step{padding:32px 0 32px 24px;border-top:1px solid #3A3A40;display:flex;flex-direction:column;gap:14px}
+.step:first-child{border-top-color:var(--ink)}
+.step-n{font-family:'Karantina','Heebo',sans-serif;font-weight:700;font-size:64px;line-height:1;color:var(--dim)}
+.step:first-child .step-n{color:var(--accent)}
+
+/* ── מקטע המעסיקים, הבהיר היחיד ──────────────────────────── */
+.light{background:var(--light-bg);color:var(--light-ink)}
+.light .eyebrow{color:#0B7A5A}
+.light .body,.light .small{color:var(--light-muted)}
+.light .ghost{color:#6B6B72}
+.quote-card{background:#fff;border:1px solid var(--light-line);border-radius:24px;
+  padding:36px;display:flex;flex-direction:column;gap:24px}
+.quote-card blockquote{font-size:24px;line-height:1.5;font-weight:500}
+.quote-card figcaption{font-size:15px;color:var(--light-muted)}
+.logos{display:flex;flex-wrap:wrap;gap:14px 36px;align-items:center}
+.logos img{height:34px;width:auto;opacity:.85}
+.cta-box{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
+  background:var(--bg);color:var(--ink);border-radius:24px;padding:32px 36px}
+.cta-box b{font-size:24px;font-weight:800}
+.cta-box p{font-size:16px;color:var(--muted);margin-top:6px}
+
+/* ── תגיות אמון ──────────────────────────────────────────── */
+.badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.badge{display:flex;gap:16px;align-items:flex-start}
+.badge svg{width:32px;height:32px;flex-shrink:0;color:var(--accent)}
+.badge b{display:block;font-size:19px;font-weight:700}
+.badge span{display:block;font-size:15px;color:var(--muted);margin-top:4px;line-height:1.5}
+
+/* ── מי מוביל ────────────────────────────────────────────── */
+.founder{display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,56px);align-items:center}
+.founder-photo{flex:1 1 340px;max-width:460px;border-radius:28px;overflow:hidden;border:1px solid var(--line)}
+.founder-photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:top}
+.founder-body{flex:999 1 420px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.founder-quote{font-size:clamp(20px,2.6vw,26px);line-height:1.5;font-weight:500}
+.founder-list{list-style:none;display:flex;flex-direction:column;gap:14px;font-size:17px;
+  color:var(--ink-2);border-top:1px solid var(--line);padding-top:24px}
+.founder-list li{display:flex;gap:12px}
+.founder-list li::before{content:"";flex-shrink:0;width:14px;height:2px;background:var(--accent);margin-top:13px}
+
+/* ── שאלות ───────────────────────────────────────────────── */
+.qa{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;font-size:21px;font-weight:700;padding:26px 0;
+  display:flex;justify-content:space-between;align-items:center;gap:16px}
+.qa summary::-webkit-details-marker{display:none}
+.qa .sign{font-size:28px;font-weight:400;color:var(--accent);transition:transform .2s;line-height:1}
+.qa details[open] .sign{transform:rotate(45deg)}
+.qa details>p{margin:0 0 26px;font-size:17px;line-height:1.7;color:var(--muted);max-width:66ch}
+.qa details>p a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+
+/* ── קשת ההירו ───────────────────────────────────────────── */
+.arc{display:block;width:100%;height:180px;margin-top:40px}
+
+/* ── רצועת הקנייה הקבועה בנייד ────────────────────────────── */
+.dock{position:fixed;inset-inline:0;bottom:0;z-index:45;display:none;
+  align-items:center;justify-content:space-between;gap:12px;
+  background:rgba(10,10,11,.96);backdrop-filter:blur(10px);
+  border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.dock-price{display:flex;flex-direction:column;gap:2px;min-width:0}
+.dock-price b{font-size:19px;font-weight:800}
+.dock-price span{font-size:13px;color:var(--muted)}
+
+/* ── פוטר ────────────────────────────────────────────────── */
+.site-foot{border-top:1px solid var(--line-soft);padding-block:32px}
+.site-foot .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;
+  align-items:center;font-size:14px;color:#8A8A90}
+.site-foot nav{display:flex;flex-wrap:wrap;gap:24px}
+.site-foot a{color:#8A8A90}
+.site-foot a:hover{color:var(--ink-2)}
+
+/* ── נייד ────────────────────────────────────────────────── */
+@media(max-width:860px){
+  .site-nav{display:none}
+  .dock{display:flex}
+  body{padding-bottom:84px}
+  .card{padding:28px 24px}
+  .step{padding-left:0}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+/* ============================================================
+   רכיבים שמגיעים מהסקריפטים הקיימים
+   ------------------------------------------------------------
+   פס המבצע, רצועת הקנייה וטופס הוובינר מנוהלים על ידי
+   assets/js/courses.js ו-assets/js/gift.js, שלא השתנו. כאן הם
+   מקבלים את הלבוש של מערכת העיצוב הזו.
+   ============================================================ */
+
+/* פס הדחיפות מעל הכותרת */
+.promo-bar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 18px;
+  padding:12px var(--pad);background:var(--accent);color:var(--accent-ink);
+  font-size:15px;line-height:1.5;text-align:center}
+.promo-bar p{margin:0}
+.promo-bar b{font-weight:800}
+.promo-bar a{color:var(--accent-ink);font-weight:800;text-decoration:underline;
+  text-underline-offset:3px;white-space:nowrap}
+.promo-bar a:hover{color:var(--accent-ink);text-decoration-thickness:2px}
+.promo-bar.promo-ever{background:var(--card);color:var(--ink);border-bottom:1px solid var(--line)}
+.promo-bar.promo-ever a{color:var(--accent)}
+.promo-left{font-weight:800}
+
+/* רצועת הקנייה הקבועה: courses.js מוסיף show אחרי גלילה */
+.dock{transform:translateY(110%);transition:transform .25s ease}
+.dock.show{transform:none}
+
+/* טופס הוובינר, על רקע כהה */
+.gift-form{background:var(--card);border:1px solid var(--line);border-radius:24px;
+  padding:32px 28px;display:flex;flex-direction:column;gap:18px}
+.gift-fields{display:flex;flex-direction:column;gap:14px}
+.gift-form label{display:flex;flex-direction:column;gap:8px;font-size:15px;
+  font-weight:500;color:var(--ink-2)}
+.gift-form input[type="text"],.gift-form input[type="tel"],.gift-form input:not([type]){
+  font-family:inherit;font-size:17px;padding:16px 18px;border-radius:14px;
+  border:1px solid #3A3A40;background:var(--bg);color:var(--ink);min-height:52px}
+.gift-form input::placeholder{color:#8A8A90}
+.gift-consent{flex-direction:row!important;align-items:flex-start;gap:10px;
+  font-size:14px;line-height:1.5;color:var(--muted)}
+.gift-consent input{flex-shrink:0;width:20px;height:20px;margin-top:2px;accent-color:var(--accent)}
+.gift-msg{font-size:15px;font-weight:600;color:var(--accent)}
+.gift-msg:empty{display:none}
+.gift-fine{font-size:13px;color:#8A8A90;line-height:1.6}
+.gift-fine a{color:var(--accent);text-decoration:underline}
+.video-frame{position:relative;border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  background:var(--card);aspect-ratio:16/9}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.gift-cover{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:14px;color:var(--muted);text-align:center;padding:24px}
+.gift-cover svg{width:52px;height:52px;color:var(--accent);opacity:.7}
+.gift-locked:not(.is-open) iframe{visibility:hidden}
+
+/* באנר העוגיות מקבל את צבעי המערכת */
+.shw-cookie-banner{background:var(--card)!important;border-top-color:var(--accent)!important}
+.shw-cookie-banner h2{color:var(--ink)!important}
+.shw-cookie-banner p{color:var(--muted)!important}
+.shw-ck-primary{background:var(--accent)!important;color:var(--accent-ink)!important;
+  border-color:var(--accent)!important}

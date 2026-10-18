@@ -1,0 +1,29 @@
+/* ============================================================
+   SHWADRON.AI — גופנים
+   ------------------------------------------------------------
+   קהל היעד גולש הרבה פעמים דרך אינטרנט מסונן, וחלק מספקי הסינון
+   חוסמים דומיינים חיצוניים. לכן הגופנים אמורים לשבת על השרת שלנו
+   ולא להיטען מגוגל.
+
+   כרגע הם עדיין נטענים מ-Google Fonts, כי אין גישה להורדת קבצי
+   ה-woff2. כשהקבצים יהיו בריפו (assets/fonts/), מוחקים את ה-import
+   שלמטה ומסירים את ההערה מבלוקי ה-@font-face. זה הקובץ היחיד
+   שצריך לגעת בו, וכל הדפים כבר מקשרים אליו.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@400;500;700;800&display=swap');
+
+/* ── הגרסה המקומית, להפעלה כשהקבצים יגיעו ──────────────────
+@font-face{font-family:'Karantina';font-style:normal;font-weight:700;font-display:swap;
+  src:url('../fonts/karantina-700.woff2') format('woff2')}
+@font-face{font-family:'Karantina';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../fonts/karantina-400.woff2') format('woff2')}
+@font-face{font-family:'Heebo';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../fonts/heebo-400.woff2') format('woff2')}
+@font-face{font-family:'Heebo';font-style:normal;font-weight:500;font-display:swap;
+  src:url('../fonts/heebo-500.woff2') format('woff2')}
+@font-face{font-family:'Heebo';font-style:normal;font-weight:700;font-display:swap;
+  src:url('../fonts/heebo-700.woff2') format('woff2')}
+@font-face{font-family:'Heebo';font-style:normal;font-weight:800;font-display:swap;
+  src:url('../fonts/heebo-800.woff2') format('woff2')}
+───────────────────────────────────────────────────────────── */
