@@ -519,4 +519,5 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .biz-proof{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:start}
 .biz-proof .shot{max-width:380px}
 .gift-fields .biz-wide{grid-column:1 / -1}
+.biz-note{border:1px solid var(--line);border-radius:20px;padding:24px 28px;display:flex;flex-direction:column;gap:10px}
 @media (max-width:760px){.biz-proof{grid-template-columns:1fr}.biz-proof .shot{max-width:none}}
