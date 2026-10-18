@@ -25,7 +25,7 @@ async function testSheet() {
   let d = null; try { d = JSON.parse(text); } catch (e) {}
   if (d && d.ok) return { ok: true, why: 'עובד. נוספה שורת "בדיקת חיבור" ללשונית "לידים מהאתר".' };
   if (d && d.error === 'forbidden') return { ok: false, why: 'הסיסמה לא תואמת: SECRET בסקריפט שונה מ-LEADS_SHEET_SECRET ב-Vercel. אחרי תיקון בסקריפט צריך גם פריסה מחדש (ניהול פריסות > עריכה > גרסה חדשה).' };
-  if (/accounts\.google\.com|ServiceLogin|signin/i.test(text)) return { ok: false, why: 'גוגל דורש התחברות: בהגדרות הפריסה של הסקריפט "מי יכול לגשת" צריך להיות "כל אחד".' };
+  if (status === 401 || status === 403 || /accounts\.google\.com|ServiceLogin|signin/i.test(text)) return { ok: false, why: 'גוגל דורש התחברות: בהגדרות הפריסה של הסקריפט "מי יכול לגשת" צריך להיות "כל אחד".' };
   if (/doPost/.test(text)) return { ok: false, why: 'הסקריפט שנפרס לא מכיל את הקוד (לא נמצאה הפונקציה doPost). צריך להדביק את הקוד, לשמור, ולפרוס גרסה חדשה.' };
   return { ok: false, why: 'הסקריפט החזיר תשובה לא צפויה (קוד ' + status + '): ' + text.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300) };
 }
