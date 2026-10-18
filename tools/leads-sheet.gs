@@ -70,7 +70,7 @@ const WEBINARS = {
     title: 'התוסף של קלוד ו-ChatGPT לדפדפן, ואיזה כוח זה נותן לנו',
     when: 'יום רביעי, 21.10, בשעה 20:30',
     start: '20261021T203000', end: '20261021T213000',   // שעון ישראל, ללוח השנה
-    zoom: 'ZOOM-LINK-HERE',
+    zoom: 'https://us06web.zoom.us/j/82945699160?pwd=ZL8rdX5bTHKJL4gUgZrVGA71cbJJmn.1',
     prepare: 'מחשב עם דפדפן Chrome, וחשבון ב-ChatGPT או בקלוד (אפשר גם חינמי).',
   },
 };
