@@ -99,8 +99,10 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
 .site-head .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
   gap:16px;padding-block:16px}
-.brand{font-family:'Heebo',sans-serif;font-weight:800;font-size:20px;letter-spacing:.08em}
-.brand span{color:var(--accent)}
+/* הלוגו. הקובץ לבן על רקע שקוף, ולכן הוא יושב כמו שהוא על הרקע הכהה */
+.brand{display:inline-flex;align-items:center}
+.brand img{height:34px;width:auto}
+.brand-foot{height:28px;width:auto;opacity:.75}
 .site-nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px;color:var(--muted)}
 .site-nav a{color:var(--muted)}
 .site-nav a:hover{color:var(--ink)}
