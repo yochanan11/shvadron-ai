@@ -52,6 +52,7 @@
     <nav class="site-nav" aria-label="ניווט ראשי">
       <a href="#tracks">המסלולים</a>
       <a href="#plan">תוכנית האב</a>
+      <a href="#live">השידור החי</a>
       <a href="#employers">מעסיקים</a>
       <a href="#webinar">הוובינר</a>
       <a href="#faq">שאלות</a>
@@ -260,29 +261,41 @@
 </section>
 
 <!-- ===== 04 השידור החי =====
-     מקטע מוכן, מוסתר עד שייקבע תאריך. להפעלה: למחוק את המילה hidden
-     מהתגית שלמטה, למלא את התאריך והשעה בשני המקומות המסומנים,
-     ולהוסיף את הקישור "השידור החי" לניווט העליון. אין ספירה לאחור
-     כל עוד אין תאריך אמיתי. -->
-<section class="sec" id="live" hidden>
+     השידור כבר התקיים, וההקלטה שלו היא הוובינר שמחכה בתחתית הדף מאחורי
+     טופס שם וטלפון. לכן המקטע הזה הוא הוכחה ולא הזמנה, ואין בו ספירה
+     לאחור. כשייקבע מועד לשידור הבא, יש בהמשך הקובץ הערה עם הגרסה
+     ההפוכה, של אירוע עתידי עם תאריך. -->
+<section class="sec" id="live">
   <div class="wrap">
     <div style="border:1.5px solid var(--accent);border-radius:32px;padding:clamp(28px,6vw,80px);display:flex;flex-direction:column;gap:32px;background:#0F1312">
       <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
         <p class="eyebrow">04 · השידור החי</p>
         <p style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;border:1px solid #3A3A40;border-radius:999px;padding:8px 16px">
           <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--live)"></span>
-          LIVE · [תאריך ושעה]
+          השידור האחרון · ההקלטה פתוחה
         </p>
       </div>
       <h2 class="h-sm">שעה אחת.<br/>עסק אחד.<br/><span class="on-accent">מאפס.</span></h2>
-      <p class="lead">בשידור חי, מול כולם, נבנה עסק שלם עם AI: לוגו, דף נחיתה, סרטון, הצעת מחיר ומענה אוטומטי ללקוחות. בלי עריכה ובלי הכנה מראש. אם משהו ייתקע, תראו את זה בשידור. ככה יודעים שזה אמיתי.</p>
+      <p class="lead">בשידור האחרון בנינו חי, מול כולם, סוכן שנכנס לתיבת המייל, מאתר חשבוניות ומעדכן אותן בטבלה בלי שנוגעים בזה, ועוד כמה דברים בדרך. בלי עריכה ובלי הכנה מראש, כולל המקומות שבהם נתקענו ותיקנו תוך כדי. ככה יודעים שזה אמיתי.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-        <a class="btn btn-primary" href="#webinar">שמור לי מקום בשידור</a>
-        <span class="small">חינם · מספר הצופים מוגבל</span>
+        <a class="btn btn-primary" href="#webinar">לצפות בשידור המלא</a>
+        <span class="small">חינם · משאירים שם וטלפון וההקלטה נפתחת כאן</span>
       </div>
+      <p class="small" style="border-top:1px solid #2A2F2D;padding-top:20px;margin:0">השידור הבא יוכרז כאן ובקבוצת הוואטסאפ.</p>
     </div>
   </div>
 </section>
+
+<!-- ───────────────────────────────────────────────────────────
+     הגרסה לשידור הבא, כשיהיה לו תאריך. להחלפה: להעתיק את התג
+     שלמטה במקום התג שלמעלה, ולמלא את התאריך והשעה.
+
+     <p style="...">
+       <span aria-hidden="true" style="...background:var(--live)"></span>
+       LIVE · [תאריך ושעה]
+     </p>
+     והכפתור: <a class="btn btn-primary" href="#webinar">שמור לי מקום בשידור</a>
+     ─────────────────────────────────────────────────────────── -->
 
 <!-- ===== 05 מעסיקים ===== -->
 <section class="sec light" id="employers">
