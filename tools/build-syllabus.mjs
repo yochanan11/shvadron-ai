@@ -224,6 +224,8 @@ img{display:block;max-width:100%}
 
 .toolbar{max-width:210mm;margin:0 auto 20px;display:flex;flex-wrap:wrap;gap:12px;
   align-items:center;justify-content:space-between;color:var(--muted);font-size:15px}
+.toolbar a{color:var(--ink);font-weight:500;padding-block:12px}
+.toolbar a:hover{color:var(--accent)}
 .toolbar button{font:700 15px 'Heebo',sans-serif;background:var(--accent);color:var(--accent-ink);
   border:0;border-radius:999px;padding:12px 24px;min-height:48px;cursor:pointer}
 
@@ -310,6 +312,7 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
 </head>
 <body>
 <div class="toolbar">
+  <a href="index.html#tracks">→ חזרה לאתר</a>
   <span>סילבוס מסלולי הזום · מחזור כסליו</span>
   <button type="button" onclick="window.print()">הדפסה / שמירה כ-PDF</button>
 </div>
