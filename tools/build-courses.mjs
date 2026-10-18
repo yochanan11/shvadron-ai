@@ -15,8 +15,9 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { BEGINNERS, ADVANCED, COMPARE, TRACKS, SCHEDULE_NOTE, TIME, NO_CLASSES,
-         ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR } from '../assets/data/courses.mjs';
+import { BEGINNERS, ADVANCED, DIGITAL, ALL_TRACKS, COMPARE, TRACKS, SCHEDULE_NOTE,
+         TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR }
+         from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -83,6 +84,18 @@ function flow(steps, label) {
   return `<div class="flow" role="list" aria-label="${esc(label)}">\n  ${items}\n</div>`;
 }
 
+/* ─── שורת מפגש בעיצוב החדש (.lesson ב-shw-2026.css) ─── */
+function lessonRow(n, when, title, desc, extra) {
+  return `<article class="lesson">
+  <span class="lesson-n ltr">${esc(n)}</span>
+  <div>
+    <p class="lesson-when">${esc(when)}</p>
+    <h3 class="card-title">${esc(title)}</h3>
+    <p class="body">${esc(desc)}</p>${extra ? '\n' + ind(4, extra) : ''}
+  </div>
+</article>`;
+}
+
 /* ─── כרטיס מסלול בדף הבחירה (.track הקיים) ───────────────────
    הכרטיס נושא את כל מה שצריך כדי להחליט: מתי מתחילים, מה יוצאים
    איתו, המחיר, ומחיר הרישום המוקדם כל עוד הוא בתוקף. הכפתור
@@ -111,6 +124,78 @@ ${t.highlights.map(h => `    <li>${CHECK}${esc(h)}</li>`).join('\n')}
     <a class="more" href="${t.file}" data-track-pick="${t.id}">לכל הפרטים על המסלול &#8592;</a>
   </div>
 </article>`;
+}
+
+/* ─── שלושת כרטיסי המסלולים בדף הבית (.card ב-shw-2026.css) ──
+   המחירים נגזרים כולם מ-priceEx, כך שעדכון מחיר בקובץ הנתונים
+   מתגלגל לכרטיס, לטבלת ההשוואה ולדף המסלול באותה הרצה.      */
+function hubTrack(t) {
+  const total = totalOf(t);
+  const pmt   = fmt(Math.round(total / 3));
+  const when  = t.start
+    ? `פתיחה: יום ${t.dayName}, ${dayMonth(sessionDate(t.start, 0))}`
+    : (t.when || '');
+  const href  = t.start ? `${t.file}#buy` : t.file;
+  const note  = t.note || `כולל מע״מ · או 3 תשלומים של כ-${pmt}`;
+  return `<article class="card${t.flag ? ' is-featured' : ''}">${t.flag
+    ? `\n  <span class="card-flag">${esc(t.flag)}</span>` : ''}
+  <p class="card-kicker">${esc(t.kicker)}</p>
+  <h3 class="card-name">${esc(t.name)}</h3>
+  <p class="body" style="color:var(--ink-2)">${esc(t.lead)}</p>
+  <div class="card-mini">
+${t.figures.map(([n, l], i) => `    <div><span class="fig${
+      i === 2 && t.flag ? ' on-accent' : ''}">${esc(n)}</span><span class="fig-label">${esc(l)}</span></div>`).join('\n')}
+  </div>
+  <ul class="ticks">
+${t.ticks.map(x => `    <li>${esc(x)}</li>`).join('\n')}
+  </ul>
+  <div class="card-foot">
+    <div class="card-price">
+      <b>${esc(fmt(total))}</b>
+      <span class="${t.start ? 'when' : ''}">${esc(when)}</span>
+    </div>
+    <span class="small">${esc(note)}</span>
+    <a class="btn ${t.flag ? 'btn-primary' : 'btn-light'} btn-block" href="${href}" data-track-pick="${t.id}">${esc(t.cta)}</a>
+  </div>
+</article>`;
+}
+const hubTracks = () => ALL_TRACKS.map(hubTrack).join('\n\n');
+
+/* ─── טבלת ההשוואה של שלושת המסלולים ─── */
+function hubCompare() {
+  const [b, d, a] = ALL_TRACKS;
+  const rows = [
+    ['למי', 'לא נגעו, או נגעו קצת', 'רוצים ללמוד לבד, בקצב שלהם', 'רוצים AI בעבודה ובעסק'],
+    ['פורמט', '3 ערבים חיים בזום', '4 שיעורים מוקלטים, 8 שעות', '9 מפגשים חיים בזום, 18 שעות'],
+    ['ליווי', 'מרצה חי וקבוצת וואטסאפ', 'ספריית פרומפטים ועדכוני תוכן', 'מרצה חי והכוונה בבנייה'],
+    ['יוצאים עם', 'ביטחון ושימוש יומיומי', 'סוכן אישי וארבעה תוצרים', 'פרויקט AI אישי ותעודת סיום'],
+    ['מתחילים', `יום ${b.dayName} ${dayMonth(sessionDate(b.start, 0))}`, 'מיד עם הרכישה',
+                `יום ${a.dayName} ${dayMonth(sessionDate(a.start, 0))}`],
+  ];
+  return `<table class="tbl">
+  <thead>
+    <tr>
+      <th scope="col" style="width:16%">&nbsp;</th>
+      <th scope="col">${esc(b.name)}</th>
+      <th scope="col">${esc(d.name)}</th>
+      <th scope="col" class="col-accent">${esc(a.name)}</th>
+    </tr>
+  </thead>
+  <tbody>
+${rows.map(([k, ...v]) => `    <tr><th scope="row">${esc(k)}</th>${
+      v.map(x => `<td>${esc(x)}</td>`).join('')}</tr>`).join('\n')}
+    <tr><th scope="row">מחיר</th>${ALL_TRACKS.map(t =>
+      `<td><b>${esc(fmt(totalOf(t)))}</b></td>`).join('')}</tr>
+  </tbody>
+</table>`;
+}
+
+/* ─── רצועת הלוגואים במקטע המעסיקים הבהיר ─── */
+function hubLogos() {
+  return `<div class="logos">
+${ORGS.filter(o => o.alt !== 'לוגו שותף').map(o =>
+  `  <img src="assets/public/logos/${o.file}" alt="${esc(o.alt)}" width="${o.w}" height="${o.h}" loading="lazy"/>`).join('\n')}
+</div>`;
 }
 
 /* ─── כרטיס "מתאים לי אם" (.cmp-col הקיים ממקטע הפער) ─── */
@@ -151,37 +236,24 @@ ${COMPARE.map(r => `    <tr>
 
 /* ─── סילבוס מסלול המתחילים (.lesson הקיים) ─── */
 function beginnersSyllabus() {
-  return BEGINNERS.syllabus.map((s, i) => `<div class="lesson sr">
-  <b>${esc(s.n)}</b>
-  <div>
-    <span class="when">${esc(BEGINNERS.start
+  return BEGINNERS.syllabus.map((s, i) => lessonRow(
+    s.n,
+    BEGINNERS.start
       ? `מפגש ${i + 1} · יום ${BEGINNERS.dayName}, ${s.hebrew ? s.hebrew + ' · ' : ''}${dayMonth(sessionDate(BEGINNERS.start, i))}`
-      : s.when)}</span>
-    <h3>${esc(s.title)}</h3>
-  </div>
-  <div class="lesson-body">
-    <p>${esc(s.desc)}</p>
-${s.flow ? ind(4, flow(s.flow, `שלבי ${s.title}`)) : ''}
-  </div>
-  ${ARROW}
-</div>`).join('\n');
+      : s.when,
+    s.title, s.desc,
+    s.flow ? flow(s.flow, `שלבי ${s.title}`) : '')).join('\n');
 }
 
 /* ─── שלושת התחומים של מסלול המתקדמים (.lesson הקיים) ─── */
 function advancedBlocks() {
-  return ADVANCED.blocks.map(bl => `<div class="lesson sr">
-  <b>${esc(bl.n)}</b>
-  <div>
-    <span class="when">${esc(bl.when)}</span>
-    <h3>${esc(bl.title)}</h3>
-  </div>
-  <div class="lesson-body">
-    <p>${esc(bl.desc)}</p>
-${bl.items ? ind(4, `<ul class="lesson-list">\n${bl.items.map(x => `  <li>${esc(x)}</li>`).join('\n')}\n</ul>`) : ''}
-${bl.flow ? ind(4, flow(bl.flow, `שלבי ${bl.title}`)) : ''}
-  </div>
-  ${ARROW}
-</div>`).join('\n');
+  return ADVANCED.blocks.map(bl => {
+    const extra = [
+      bl.items ? `<ul class="ticks">\n${bl.items.map(x => `  <li>${esc(x)}</li>`).join('\n')}\n</ul>` : '',
+      bl.flow ? flow(bl.flow, `שלבי ${bl.title}`) : '',
+    ].filter(Boolean).join('\n');
+    return lessonRow(bl.n, bl.when, bl.title, bl.desc, extra);
+  }).join('\n');
 }
 
 /* ─── רשימת "מה לומדים" (.pills הקיים) ─── */
@@ -190,21 +262,18 @@ function learnPills() {
     BEGINNERS.learn.map(l => `  <span>${esc(l)}</span>`).join('\n')}\n</div>`;
 }
 
-/* ─── הפרויקט האישי (.project-box הקיים) ─── */
+/* ─── הפרויקט האישי, בכרטיס של העיצוב החדש ─── */
 function projectBox() {
   const p = ADVANCED.project;
-  return `<div class="project-box sr">
-  <div class="num" aria-hidden="true">✦</div>
-  <div>
-    <h2>${esc(p.title)}</h2>
-    <p>${esc(p.desc)}</p>
-    <p class="fit-lead">${esc(p.lead)}</p>
-    <ul>
-${p.items.map(i => `      <li>${esc(i)}</li>`).join('\n')}
-    </ul>${p.example ? `
-    <p class="project-example">${esc(p.example)}${p.exampleLink
-      ? ` <a href="${esc(p.exampleLink.href)}">${esc(p.exampleLink.text)}</a>` : ''}</p>` : ''}
-  </div>
+  return `<div class="card">
+  <p class="card-kicker">${esc(p.title)}</p>
+  <p class="lead">${esc(p.desc)}</p>
+  <p class="body" style="color:var(--ink-2)">${esc(p.lead)}</p>
+  <ul class="ticks">
+${p.items.map(i => `    <li>${esc(i)}</li>`).join('\n')}
+  </ul>${p.example ? `
+  <p class="small">${esc(p.example)}${p.exampleLink
+    ? ` <a href="${esc(p.exampleLink.href)}" style="color:var(--accent);text-decoration:underline">${esc(p.exampleLink.text)}</a>` : ''}</p>` : ''}
 </div>`;
 }
 
@@ -223,39 +292,39 @@ function videoSrc() {
    opts.attr — תגית המדידה. בדף הדיגיטלי היא נשארת ריקה, כי שם
    סקריפט הדף דורס את ה-href של כל [data-buy] בקישור לסליקה. */
 function webinar(opts = {}) {
-  const href   = opts.ctaHref || WEBINAR.cta.href;
-  const text   = opts.ctaText || WEBINAR.cta.text;
-  const reveal = opts.reveal  || 'sr';
-  const second = reveal === 'sr' ? 'sr sr-2' : reveal;
-  const attr   = opts.attr === undefined ? ' data-join' : opts.attr;
-  return `<section class="webinar" id="webinar">
-  <div class="webinar-grid">
-    <div class="webinar-copy ${reveal}">
-      <p class="eyebrow teal">${esc(WEBINAR.eyebrow)}</p>
-      <h2 class="sec-title">${WEBINAR.title}</h2>
+  const href = opts.ctaHref || WEBINAR.cta.href;
+  const text = opts.ctaText || WEBINAR.cta.text;
+  const n    = opts.num || '07';
+  return `<section class="sec" id="webinar">
+  <div class="wrap stack">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <p class="eyebrow">${esc(n)} · עוד לא מוכן להחליט</p>
+      <h2 class="h-sm">וובינר שלם,<br/><span class="on-accent">במתנה.</span></h2>
       <p class="lead">${esc(WEBINAR.lead)}</p>
-      <p class="note">${esc(WEBINAR.note)}</p>
+      <p class="body">${esc(WEBINAR.note)}</p>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
       <form class="gift-form" data-gift novalidate>
         <div class="gift-fields">
           <label><span>שם</span><input name="name" autocomplete="name" required/></label>
           <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
         </div>
         <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-        <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
+        <button class="btn btn-primary btn-block" type="submit">פתחו לי את הוובינר</button>
         <p class="gift-msg" role="status" aria-live="polite"></p>
         <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
       </form>
-      <a class="btn btn-lg gift-after" href="${href}"${attr} hidden>${esc(text)}</a>
-    </div>
-    <div class="video-frame gift-locked ${second}">
-      <div class="gift-cover" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+      <div class="video-frame gift-locked">
+        <div class="gift-cover" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+        </div>
+        <iframe data-src="${videoSrc()}" title="וובינר AI עם יוחנן שבדרון"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
       </div>
-      <iframe data-src="${videoSrc()}" title="וובינר AI עם יוחנן שבדרון"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
     </div>
+    <a class="btn btn-light gift-after" href="${href}" data-join hidden>${esc(text)}</a>
   </div>
 </section>`;
 }
@@ -429,34 +498,26 @@ const BLOCKS = {
   // מוזרקים יותר: המקטעים שהשתמשו בהם הוסרו מהדפים כדי לקצר אותם.
   // להחזרת אחד מהם צריך להחזיר גם את סימני ה-BUILD לדף.
   'index.html': {
-    tracks:  () => TRACKS.map(trackCard).join('\n\n'),
-    compare: compareTable,
-    orgs:    orgs,
-    marquee: () => marquee('hub'),
+    tracks:  hubTracks,
+    compare: hubCompare,
+    logos:   hubLogos,
     webinar: () => webinar({ ctaHref: '#tracks' }),
   },
   'course-beginners.html': {
     syllabus: beginnersSyllabus,
     config:   () => config(BEGINNERS),
     ld:       () => jsonLd(BEGINNERS),
-    marquee:  () => marquee('beginners'),
     webinar:  () => webinar({ ctaHref: '#buy' }),
   },
   // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.
   'course.html': {
-    webinar: () => webinar({
-      ctaHref: '#buy',
-      ctaText: 'אני רוצה להתחיל ללמוד',
-      reveal:  'reveal',
-      attr:    '',
-    }),
+    webinar: () => webinar({ ctaHref: '#buy', ctaText: 'אני רוצה להתחיל ללמוד' }),
   },
   'course-advanced.html': {
     syllabus: advancedBlocks,
     project:  projectBox,
     config:   () => config(ADVANCED),
     ld:       () => jsonLd(ADVANCED),
-    marquee:  () => marquee('advanced'),
     webinar:  () => webinar({ ctaHref: '#buy' }),
   },
 };

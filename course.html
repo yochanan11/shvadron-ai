@@ -782,34 +782,36 @@ body:has(#shw-cookie-banner) .wa-float{bottom:210px}
 
 <!-- ===== הוובינר ===== -->
 <!-- BUILD:webinar -->
-  <section class="webinar" id="webinar">
-    <div class="webinar-grid">
-      <div class="webinar-copy reveal">
-        <p class="eyebrow teal">מתנה · וובינר מלא</p>
-        <h2 class="sec-title">וובינר שלם, <em>במתנה.</em></h2>
+  <section class="sec" id="webinar">
+    <div class="wrap stack">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <p class="eyebrow">07 · עוד לא מוכן להחליט</p>
+        <h2 class="h-sm">וובינר שלם,<br/><span class="on-accent">במתנה.</span></h2>
         <p class="lead">עוד לא מוכן להחליט? זה וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד, וככה רואים בדיוק איך נראה שיעור אצלי עוד לפני שנרשמים.</p>
-        <p class="note">ואם אתם עצמאים או בעלי עסקים, תראו בו איך נראית עבודה אמיתית עם AI על משימה מהעבודה, עוד לפני שנפגשנו.</p>
+        <p class="body">ואם אתם עצמאים או בעלי עסקים, תראו בו איך נראית עבודה אמיתית עם AI על משימה מהעבודה, עוד לפני שנפגשנו.</p>
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
         <form class="gift-form" data-gift novalidate>
           <div class="gift-fields">
             <label><span>שם</span><input name="name" autocomplete="name" required/></label>
             <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
           </div>
           <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-          <button class="btn btn-lg" type="submit">פתחו לי את הוובינר</button>
+          <button class="btn btn-primary btn-block" type="submit">פתחו לי את הוובינר</button>
           <p class="gift-msg" role="status" aria-live="polite"></p>
           <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
         </form>
-        <a class="btn btn-lg gift-after" href="#buy" hidden>אני רוצה להתחיל ללמוד</a>
-      </div>
-      <div class="video-frame gift-locked reveal">
-        <div class="gift-cover" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+        <div class="video-frame gift-locked">
+          <div class="gift-cover" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
+          </div>
+          <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
         </div>
-        <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
       </div>
+      <a class="btn btn-light gift-after" href="#buy" data-join hidden>אני רוצה להתחיל ללמוד</a>
     </div>
   </section>
   <!-- /BUILD:webinar -->

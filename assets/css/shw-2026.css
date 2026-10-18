@@ -308,3 +308,77 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .quote-card.is-big blockquote{font-size:clamp(19px,2.2vw,26px);line-height:1.55;font-weight:400}
 .quote-card.is-big blockquote::first-line{font-weight:500}
 .quote-card.is-big figcaption{font-weight:600}
+
+/* ── שורות המפגשים ו"מה לומדים" ───────────────────────────── */
+.lessons{display:flex;flex-direction:column;border-bottom:1px solid var(--line)}
+.lesson{display:grid;grid-template-columns:auto 1fr;gap:20px 32px;align-items:start;
+  padding-block:clamp(26px,3vw,40px);border-top:1px solid var(--line)}
+.lesson-n{font-family:'Karantina','Heebo',sans-serif;font-weight:700;
+  font-size:clamp(44px,5vw,64px);line-height:.9;color:var(--dim)}
+.lesson:first-child .lesson-n{color:var(--accent)}
+.lesson-when{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.lesson .card-title{margin-bottom:10px}
+.lesson .ticks{margin-top:16px}
+
+/* שרשרת שלבים */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:18px}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:7px 15px;font-size:15px;color:var(--ink-2)}
+.flow i{font-style:normal;color:var(--dim)}
+
+/* ── כרטיס המחיר בדף מסלול ────────────────────────────────── */
+.buy{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
+.buy-card{background:var(--card);border:1px solid var(--line);border-radius:24px;
+  padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px}
+.buy-now{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.buy-now b{font-family:'Karantina','Heebo',sans-serif;font-weight:700;
+  font-size:clamp(56px,7vw,80px);line-height:.9}
+.buy-now s{font-size:21px;color:var(--dim)}
+.buy-now span{width:100%;font-size:15px;color:var(--muted)}
+.buy-pmt{font-size:17px;font-weight:700;color:var(--ink-2)}
+.pay-row{text-align:center;font-size:14px;color:var(--dim)}
+.guarantee{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:700;
+  line-height:1.5;background:rgba(62,230,176,.1);border-radius:14px;padding:14px 16px}
+.guarantee svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--accent)}
+.deadline{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:var(--live)}
+.deadline svg{width:17px;height:17px;flex-shrink:0}
+.ask{text-align:center;font-size:15px;color:var(--muted)}
+.ask a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;font-weight:700}
+
+/* שדה הקופון נפתח רק בלחיצה, כדי שלא ייראה שצריך קוד */
+.coupon{border-top:1px solid var(--line);padding-top:18px}
+.coupon-toggle{background:none;border:0;padding:0;cursor:pointer;font:inherit;font-size:15px;
+  font-weight:700;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.coupon-toggle:hover{color:var(--ink)}
+.coupon-body{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.coupon-row{display:flex;gap:8px}
+.coupon-row input{flex:1 1 auto;min-width:0;background:var(--bg);border:1px solid #3A3A40;
+  border-radius:14px;padding:14px 16px;font:inherit;font-size:16px;color:var(--ink);min-height:50px}
+.coupon-row input::placeholder{color:#8A8A90}
+.coupon-row input:disabled{opacity:.6}
+.coupon-row button{background:var(--ink);color:var(--bg);border:0;border-radius:14px;
+  padding:14px 20px;font-family:'Heebo',sans-serif;font-weight:800;font-size:15px;
+  cursor:pointer;white-space:nowrap;min-height:50px}
+.coupon-row button:disabled{opacity:.6;cursor:default}
+.coupon-msg{font-size:14px;font-weight:600}
+.coupon-msg:empty{display:none}
+.coupon-msg.ok{color:var(--accent)}
+.coupon-msg.err{color:var(--live)}
+.saving{font-weight:800;color:var(--accent);font-size:17px}
+
+/* מצב המלאי, מספר אמיתי בלבד */
+.stock{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);
+  border-radius:999px;padding:10px 18px;font-size:15px;font-weight:700}
+.stock b{color:var(--accent)}
+
+@media(max-width:860px){
+  .buy{grid-template-columns:1fr}
+  .lesson{grid-template-columns:1fr;gap:10px}
+  .lesson-n{font-size:40px}
+}
+
+/* צילומי מסך של המלצות מהוואטסאפ */
+.shot{display:block;border:1px solid var(--line);border-radius:20px;overflow:hidden;
+  background:var(--card);transition:border-color .2s}
+.shot:hover{border-color:var(--accent)}
+.shot img{width:100%;height:auto}
