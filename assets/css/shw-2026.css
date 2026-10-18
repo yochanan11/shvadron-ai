@@ -120,8 +120,11 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   gap:0 32px;border-top:1px solid #1F1F23;border-bottom:1px solid #1F1F23}
 /* בלי מרווח בין התאים שני מספרים סמוכים נראים כמספר אחד */
 .figures>div{padding-block:28px;display:flex;flex-direction:column;gap:4px;min-width:0}
-.fig{font-family:'Karantina','Heebo',sans-serif;font-weight:700;font-size:clamp(52px,7vw,72px);line-height:1}
+/* ספרות ב-Heebo ולא ב-Karantina: בגופן הצר 8 נראה כמו 0 */
+.fig{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:clamp(44px,5.5vw,60px);line-height:1}
 .fig-label{font-size:15px;color:var(--muted)}
+/* מספר עם + נכתב משמאל לימין, אבל חייב להתיישר לימין כמו התווית שלו, אחרת הוא נצמד למספר של התא הסמוך */
+.fig.ltr{text-align:right}
 
 /* ── כרטיסים ─────────────────────────────────────────────── */
 .card{background:var(--card);border:1px solid var(--line);border-radius:24px;
@@ -134,7 +137,8 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   font-size:clamp(56px,8vw,72px);line-height:.9}
 .card-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:20px}
-.card-mini .fig{font-size:48px}
+.card-mini>div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.card-mini .fig{font-size:36px}
 .card-mini .fig-label{font-size:13px}
 .ticks{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:16px;color:var(--ink-2)}
 .ticks li{display:flex;gap:10px}
@@ -339,10 +343,11 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .buy-card{background:var(--card);border:1px solid var(--line);border-radius:24px;
   padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px}
 .buy-now{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
-.buy-now b{font-family:'Karantina','Heebo',sans-serif;font-weight:700;
-  font-size:clamp(56px,7vw,80px);line-height:.9}
+.buy-now b{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em;
+  font-size:clamp(48px,5.5vw,64px);line-height:1}
 .buy-now s{font-size:21px;color:var(--muted)}
-.buy-now span{width:100%;font-size:15px;color:var(--muted)}
+/* רק השורה "כולל מע״מ", לא ה-span של המחיר שבתוך <b> (שהיה מתכווץ ל-15px) */
+.buy-now > span{width:100%;font-size:15px;color:var(--muted)}
 .buy-pmt{font-size:17px;font-weight:700;color:var(--ink-2)}
 .pay-row{text-align:center;font-size:14px;color:var(--muted)}
 .guarantee{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:700;
