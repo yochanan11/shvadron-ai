@@ -286,7 +286,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .gift-fields{display:flex;flex-direction:column;gap:14px}
 .gift-form label{display:flex;flex-direction:column;gap:8px;font-size:15px;
   font-weight:500;color:var(--ink-2)}
-.gift-form input[type="text"],.gift-form input[type="tel"],.gift-form input:not([type]){
+.gift-form input[type="text"],.gift-form input[type="tel"],.gift-form input[type="email"],.gift-form input:not([type]){
   font-family:inherit;font-size:17px;padding:16px 18px;border-radius:14px;
   border:1px solid #3A3A40;background:var(--bg);color:var(--ink);min-height:52px}
 .gift-form input::placeholder{color:#8A8A90}
