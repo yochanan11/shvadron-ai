@@ -55,7 +55,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: first + ' ' + last, firstName: first, lastName: last, phone: phone, email: email,
-        track: trackInput.value, message: message, topic: topic, kind: 'register',
+        track: trackInput.value, message: message, topic: topic, topicKey: topic ? forKey : '', kind: 'register',
         consent: el.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '', page: 'register.html'
       })
     }).then(function(r){

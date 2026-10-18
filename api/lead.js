@@ -75,13 +75,15 @@ module.exports = async (req, res) => {
   const track = register ? (TRACKS[b.track] || '') : '';
   const message = register ? String(b.message || '').trim().slice(0, 1000) : '';
   const topic = register ? String(b.topic || '').trim().slice(0, 160) : '';
+  // מפתח הוובינר (?for= בקישור). סקריפט הגיליון שולח לפיו מייל אישור עם פרטי הוובינר והזום
+  const topicKey = register ? String(b.topicKey || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) : '';
   if (register && (!email || !track)) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
   const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '') + (callback ? ' · בקשה לחזרה' : '')
     + (track ? ' · ' + track : '') + (topic ? ' · ' + topic : '');
-  const lead = { name, phone: local, email, consent, course, page, company, source, track, message, topic, ts: new Date().toISOString() };
+  const lead = { name, phone: local, email, consent, course, page, company, source, track, message, topic, topicKey, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([

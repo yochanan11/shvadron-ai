@@ -51,7 +51,78 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
+  // מייל אישור לנרשמים בטופס ההרשמה. אם השליחה נכשלה, הליד כבר נשמר ולא מכשילים את הבקשה.
+  if (d.kind === 'register' && d.email) {
+    try { sendConfirmation(d); } catch (err) { console.error('confirmation mail: ' + err); }
+  }
   return out({ ok: true });
+}
+
+/* ------------------------------------------------------------
+   מייל אישור הרשמה
+   נשלח מחשבון הגוגל שמריץ את הסקריפט (MailApp), אז בהתקנה הראשונה
+   צריך לאשר את ההרשאה "שליחת מייל בשמך". מכסה בחשבון רגיל: כ-100 מיילים ביום.
+   וובינר חדש: מוסיפים כאן מפתח עם אותו שם כמו ב-TOPICS ב-assets/js/register.js,
+   ושולחים קישור register.html?for=<מפתח>. כל השאר נשלח לבד.
+   ------------------------------------------------------------ */
+const WEBINARS = {
+  'browser-webinar': {
+    title: 'התוסף של קלוד ו-ChatGPT לדפדפן, ואיזה כוח זה נותן לנו',
+    when: 'יום רביעי, 21.10, בשעה 20:30',
+    start: '20261021T203000', end: '20261021T213000',   // שעון ישראל, ללוח השנה
+    zoom: 'ZOOM-LINK-HERE',
+    prepare: 'מחשב עם דפדפן Chrome, וחשבון ב-ChatGPT או בקלוד (אפשר גם חינמי).',
+  },
+};
+const TIPS_GROUP = 'https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv';
+
+function sendConfirmation(d) {
+  const first = String(d.name || '').trim().split(/\s+/)[0] || '';
+  const w = WEBINARS[d.topicKey];
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const btn = (href, text) => '<a href="' + esc(href) + '" style="display:inline-block;background:#3EE6B0;color:#0A0A0B;text-decoration:none;font-weight:bold;padding:13px 26px;border-radius:999px;margin:6px 0">' + esc(text) + '</a>';
+
+  let subject, body;
+  if (w) {
+    const cal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      + '&text=' + encodeURIComponent('וובינר · ' + w.title)
+      + '&dates=' + w.start + '/' + w.end + '&ctz=Asia/Jerusalem'
+      + '&details=' + encodeURIComponent('קישור לזום ' + w.zoom);
+    subject = 'נרשמת לוובינר · ' + w.title;
+    body =
+      '<p style="font-size:18px;margin:0 0 14px">שלום ' + esc(first) + ',</p>' +
+      '<p>איזה כיף שנרשמת! מחכה לראות אותך בוובינר.</p>' +
+      '<div style="background:#F4F4F1;border-right:4px solid #3EE6B0;padding:14px 16px;margin:18px 0;border-radius:6px">' +
+        '<p style="margin:0 0 6px;font-weight:bold;font-size:17px">' + esc(w.title) + '</p>' +
+        '<p style="margin:0">📅 ' + esc(w.when) + '</p>' +
+        '<p style="margin:0">💻 בזום, ללא עלות</p>' +
+      '</div>' +
+      '<p style="margin:0 0 4px">הקישור להצטרפות</p>' + btn(w.zoom, 'כניסה לזום') +
+      '<p style="margin:14px 0 4px">וכדי לא לשכוח</p>' + btn(cal, 'הוספה ליומן') +
+      '<p style="margin-top:18px"><b>מה כדאי להכין?</b><br/>' + esc(w.prepare) + ' נעבוד יחד בלייב, אז כדאי להגיע עם מחשב ולא רק מהטלפון.</p>';
+  } else {
+    subject = 'קיבלנו את הפרטים שלך | SHWADRON.AI';
+    body =
+      '<p style="font-size:18px;margin:0 0 14px">שלום ' + esc(first) + ',</p>' +
+      '<p>תודה שנרשמת! הפרטים התקבלו, ויוחנן יחזור אליך בהקדם.</p>' +
+      (d.track ? '<p>המסלול שבחרת: <b>' + esc(d.track) + '</b></p>' : '');
+  }
+  body +=
+    '<p>בינתיים, בקבוצת הטיפים בוואטסאפ אני משתף טיפים קצרים על AI כמעט כל יום.</p>' + btn(TIPS_GROUP, 'להצטרפות לקבוצת הטיפים') +
+    '<p style="margin-top:22px">שאלות? אפשר פשוט להשיב למייל הזה, או לכתוב לי בוואטסאפ 052-818-9921.</p>' +
+    '<p style="margin:18px 0 0">להתראות,<br/><b>יוחנן שבדרון</b><br/><span style="color:#55555B">SHWADRON.AI</span></p>';
+
+  const html =
+    '<div dir="rtl" style="background:#F4F4F1;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">' +
+      '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #DEDED8">' +
+        '<div style="background:#0A0A0B;padding:18px 24px;text-align:right">' +
+          '<span style="font-size:20px;font-weight:bold;color:#ffffff;letter-spacing:.5px">SHWADRON<span style="color:#3EE6B0">.AI</span></span>' +
+        '</div>' +
+        '<div style="padding:24px;color:#0A0A0B;font-size:16px;line-height:1.6;text-align:right">' + body + '</div>' +
+      '</div>' +
+    '</div>';
+
+  MailApp.sendEmail({ to: d.email, subject: subject, htmlBody: html, name: 'יוחנן שבדרון' });
 }
 
 function getSheet() {
@@ -75,6 +146,11 @@ function getSheet() {
 
 function out(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+}
+
+// להרצה ידנית מתוך עורך הסקריפט: שולח את מייל האישור של הוובינר לכתובת שלך, כדי לראות איך הוא נראה
+function testConfirmationMail() {
+  sendConfirmation({ name: 'יוחנן שבדרון', email: Session.getEffectiveUser().getEmail(), topicKey: 'browser-webinar', kind: 'register' });
 }
 
 // להרצה ידנית מתוך עורך הסקריפט: יוצר את הלשונית ומוסיף שורת בדיקה
