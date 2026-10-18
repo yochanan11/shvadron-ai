@@ -303,3 +303,8 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 /* הכותרת העליונה נדבקת, ולכן קפיצה לעוגן חייבת להשאיר לה מקום,
    אחרת ראש המקטע מסתתר מתחתיה */
 :target,section[id]{scroll-margin-top:88px}
+
+/* ציטוט ראשי במקטע המעסיקים: רחב יותר וגדול יותר משני הקצרים */
+.quote-card.is-big blockquote{font-size:clamp(19px,2.2vw,26px);line-height:1.55;font-weight:400}
+.quote-card.is-big blockquote::first-line{font-weight:500}
+.quote-card.is-big figcaption{font-weight:600}
