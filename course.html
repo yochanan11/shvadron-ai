@@ -23,6 +23,7 @@
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
 <script src="assets/js/gift.js" defer></script>
+<script src="assets/js/callback.js" defer></script>
 <script>document.documentElement.className += ' js';</script>
 
 <script type="application/ld+json" id="course-ld">
@@ -280,6 +281,34 @@
       <p class="guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא, כל עוד לא נצפה יותר משיעור אחד.</p>
       <p class="ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
       <a class="small" href="terms.html#product" target="_blank" rel="noopener" style="text-align:center;color:var(--accent);text-decoration:underline">לקריאת פרטי העסקה המלאים</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== השארת פרטים: למי שעוד לא מוכן לשלם ===== -->
+<section class="sec" id="callback">
+  <div class="wrap">
+    <div class="callback">
+      <div class="callback-text">
+        <p class="eyebrow">עוד לא בטוחים?</p>
+        <h2 class="h-sm">השאירו פרטים.<br/><span class="ghost">יוחנן יחזור אליכם.</span></h2>
+        <p class="body">שאלה לפני שנרשמים? משאירים שם וטלפון, ויוחנן חוזר אליכם לשיחה קצרה. בלי התחייבות.</p>
+      </div>
+      <div>
+        <form class="gift-form" data-callback novalidate>
+          <div class="gift-fields">
+            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          </div>
+          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+          <button class="btn btn-primary" type="submit">חזרו אליי</button>
+          <p class="gift-msg" role="status" aria-live="polite"></p>
+          <p class="gift-fine">הפרטים משמשים לחזרה אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+        </form>
+        <div class="gift-after" tabindex="-1" hidden>
+          <p class="lead"><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

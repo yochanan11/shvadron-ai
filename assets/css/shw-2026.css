@@ -546,3 +546,13 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .letter{margin-top:20px;border-top:1px solid var(--light-line);padding-top:16px}
 .letter summary{cursor:pointer;font-weight:700;color:#0B7A5A;font-size:16px}
 .letter-body{display:flex;flex-direction:column;gap:12px;margin-top:16px;font-size:17px;line-height:1.7;color:var(--light-muted)}
+
+/* "חזרו אליי": טקסט וטופס זה לצד זה בכרטיס, אחד מעל השני בטלפון */
+.callback{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;
+  background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(28px,4vw,48px)}
+.callback-text{display:flex;flex-direction:column;gap:18px}
+/* הטופס כבר יושב בתוך הכרטיס, אז בלי מסגרת משלו */
+.callback .gift-form{background:none;border:0;padding:0;max-width:none}
+/* בלי זה שדה הקלט שומר על רוחב מינימלי ובורח ממסגרת הטופס */
+.gift-fields label,.gift-fields input{min-width:0}
+@media (max-width:820px){.callback{grid-template-columns:1fr}}

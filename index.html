@@ -29,6 +29,7 @@
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
 <script src="assets/js/gift.js" defer></script>
+<script src="assets/js/callback.js" defer></script>
 </head>
 <body>
 
@@ -463,6 +464,34 @@
 </section>
 
 <!-- ===== סגירה ===== -->
+<!-- ===== השארת פרטים: למי שעוד לא מוכן לשלם ===== -->
+<section class="sec" id="callback">
+  <div class="wrap">
+    <div class="callback">
+      <div class="callback-text">
+        <p class="eyebrow">עוד לא בטוחים?</p>
+        <h2 class="h-sm">השאירו פרטים.<br/><span class="ghost">יוחנן יחזור אליכם.</span></h2>
+        <p class="body">שאלה לפני שנרשמים? משאירים שם וטלפון, ויוחנן חוזר אליכם לשיחה קצרה. בלי התחייבות.</p>
+      </div>
+      <div>
+        <form class="gift-form" data-callback novalidate>
+          <div class="gift-fields">
+            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          </div>
+          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+          <button class="btn btn-primary" type="submit">חזרו אליי</button>
+          <p class="gift-msg" role="status" aria-live="polite"></p>
+          <p class="gift-fine">הפרטים משמשים לחזרה אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+        </form>
+        <div class="gift-after" tabindex="-1" hidden>
+          <p class="lead"><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" style="text-align:center">
   <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:36px">
     <h2>מאפס למאה.<br/><span class="on-accent">ואז, צבא.</span></h2>
