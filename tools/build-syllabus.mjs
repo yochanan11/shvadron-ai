@@ -132,19 +132,20 @@ function beginnersPage(total) {
 }
 
 /* ─── עמודים 2-3: צבא הסוכנים ─── */
+/* כמה מפגשים נכנסים לעמוד הראשון של המסלול. השאר עוברים לעמוד ההמשך */
+const ADV_FIRST_PAGE = 4;
+
 function advancedPages(total) {
   const t = ADVANCED, ds = dates(t), p = t.project;
-  const blocks = t.blocks.map(b => `<article class="lesson">
-      <span class="lesson-n ltr">${esc(b.n)}</span>
+  const lessons = t.plan.map((s, i) => `<article class="lesson">
+      <span class="lesson-n ltr">${String(i + 1).padStart(2, '0')}</span>
       <div>
-        <p class="lesson-when">${esc(b.when)}</p>
-        <h3>${esc(b.title)}</h3>
-        <p class="body">${esc(b.desc)}</p>
-        ${b.items ? `<div class="pills">${b.items.map(x => `<span>${esc(x)}</span>`).join('')}</div>` : flow(b.flow)}
+        <p class="lesson-when">מפגש ${i + 1} · ${esc(s.domain)} · יום ${t.dayName}, ${esc(hebrewDate(ds[i]))} · ${dayMonth(ds[i])}</p>
+        <h3>${esc(s.title)}</h3>
+        <p class="body">${esc(s.desc)}</p>
+        ${s.items ? `<div class="pills">${s.items.map(x => `<span>${esc(x)}</span>`).join('')}</div>` : flow(s.flow)}
       </div>
-    </article>`).join('\n    ');
-  const sched = ds.map((d, i) => `<li><b class="ltr">${String(i + 1).padStart(2, '0')}</b><span>יום ${t.dayName}, ${
-    esc(hebrewDate(d))}</span><span class="ltr">${dayMonth(d)}</span></li>`).join('\n      ');
+    </article>`);
   return `<section class="sheet">
   <header class="sheet-head">
     <p class="eyebrow">סילבוס · מסלול 2 מתוך 2</p>
@@ -154,9 +155,8 @@ function advancedPages(total) {
   </header>
   ${figures(t)}
   ${facts(t)}
-  <p class="eyebrow">שלושה תחומים מרכזיים</p>
   <div class="lessons">
-    ${blocks}
+    ${lessons.slice(0, ADV_FIRST_PAGE).join('\n    ')}
   </div>
   ${pageFoot(2, total)}
 </section>
@@ -164,6 +164,17 @@ function advancedPages(total) {
 <section class="sheet">
   <header class="sheet-head sheet-head-sm">
     <p class="eyebrow">צבא הסוכנים · המשך</p>
+  </header>
+  <div class="lessons lessons-cont">
+    ${lessons.slice(ADV_FIRST_PAGE).join('\n    ')}
+  </div>
+  <p class="small">${esc(breakNote)}</p>
+  ${pageFoot(3, total)}
+</section>
+
+<section class="sheet">
+  <header class="sheet-head sheet-head-sm">
+    <p class="eyebrow">צבא הסוכנים · פרויקט ומה כלול</p>
   </header>
   <div class="box project">
     <p class="eyebrow">${esc(p.title)}</p>
@@ -173,26 +184,19 @@ function advancedPages(total) {
     <p class="small">${esc(p.example)}</p>
   </div>
   <div class="cols">
-    <div class="box">
-      <p class="eyebrow">מועדי המפגשים</p>
-      <ol class="sched">
-      ${sched}
-      </ol>
-      <p class="small"><span class="ltr">${esc(t.time || TIME)}</span> · ${esc(breakNote)}</p>
-    </div>
   ${fit(t)}
+    <div class="box">
+      <p class="eyebrow">מה כלול</p>
+      <ul class="ticks">
+${t.highlights.map(h => `        <li>${esc(h)}</li>`).join('\n')}
+      </ul>
+    </div>
   </div>
-  <div class="box">
-    <p class="eyebrow">מה כלול</p>
-    <ul class="ticks">
-${t.highlights.map(h => `      <li>${esc(h)}</li>`).join('\n')}
-    </ul>
-  </div>
-  ${pageFoot(3, total)}
+  ${pageFoot(4, total)}
 </section>`;
 }
 
-const TOTAL = 3;
+const TOTAL = 4;
 const html = `<!DOCTYPE html>
 <!-- נוצר אוטומטית על ידי tools/build-syllabus.mjs מתוך assets/data/courses.mjs. לא לערוך ידנית. -->
 <html lang="he" dir="rtl">
@@ -257,6 +261,7 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
 .lesson>div{display:flex;flex-direction:column;gap:6px;min-width:0}
 .lesson-n{font-family:'Karantina','Heebo',sans-serif;font-weight:700;font-size:52px;line-height:.9;color:var(--dim)}
 .lesson:first-child .lesson-n{color:var(--accent)}
+.lessons-cont .lesson:first-child .lesson-n{color:var(--dim)}
 .lesson-when{font-size:13px;font-weight:500;color:var(--accent)}
 
 .flow,.pills{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:4px}
@@ -272,12 +277,6 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
 .ticks{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink-2)}
 .ticks li{display:flex;gap:8px}
 .ticks li::before{content:"✓";color:var(--accent);font-weight:800;flex-shrink:0}
-.sched{list-style:none;display:flex;flex-direction:column;font-size:14px}
-.sched li{display:grid;grid-template-columns:30px 1fr auto;gap:10px;padding-block:5px;border-top:1px solid var(--line)}
-.sched li:first-child{border-top:0}
-.sched b{color:var(--accent);font-weight:700}
-.sched span:last-child{color:var(--muted)}
-
 .sheet-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line-soft);display:flex;
   flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;font-size:12px;color:var(--dim)}
 .sheet-foot img{height:20px;width:auto;opacity:.8}
@@ -298,12 +297,14 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
   .sheet{max-width:none;width:210mm;height:297mm;min-height:0;margin:0;border:0;break-after:page}
   .sheet:last-child{break-after:auto}
   .sheet{padding:11mm 14mm 8mm;gap:14px}
-  h1{font-size:80px}
+  h1{font-size:76px}
+  .lead{font-size:15.5px}
   .fig,.lesson-n{font-size:44px}
   .figures>div{padding-block:8px}
-  .lesson{padding-block:9px}
+  .lesson{padding-block:8px}
+  .lesson>div{gap:4px}
   .sheet-head{gap:6px}
-  .box{padding:14px 18px;gap:8px}
+  .box{padding:12px 18px;gap:7px}
 }
 </style>
 </head>

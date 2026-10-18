@@ -62,6 +62,7 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
 .lesson>div{display:flex;flex-direction:column;gap:6px;min-width:0}
 .lesson-n{font-family:'Karantina','Heebo',sans-serif;font-weight:700;font-size:52px;line-height:.9;color:var(--dim)}
 .lesson:first-child .lesson-n{color:var(--accent)}
+.lessons-cont .lesson:first-child .lesson-n{color:var(--dim)}
 .lesson-when{font-size:13px;font-weight:500;color:var(--accent)}
 
 .flow,.pills{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:4px}
@@ -77,12 +78,6 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
 .ticks{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink-2)}
 .ticks li{display:flex;gap:8px}
 .ticks li::before{content:"✓";color:var(--accent);font-weight:800;flex-shrink:0}
-.sched{list-style:none;display:flex;flex-direction:column;font-size:14px}
-.sched li{display:grid;grid-template-columns:30px 1fr auto;gap:10px;padding-block:5px;border-top:1px solid var(--line)}
-.sched li:first-child{border-top:0}
-.sched b{color:var(--accent);font-weight:700}
-.sched span:last-child{color:var(--muted)}
-
 .sheet-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line-soft);display:flex;
   flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;font-size:12px;color:var(--dim)}
 .sheet-foot img{height:20px;width:auto;opacity:.8}
@@ -103,12 +98,14 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
   .sheet{max-width:none;width:210mm;height:297mm;min-height:0;margin:0;border:0;break-after:page}
   .sheet:last-child{break-after:auto}
   .sheet{padding:11mm 14mm 8mm;gap:14px}
-  h1{font-size:80px}
+  h1{font-size:76px}
+  .lead{font-size:15.5px}
   .fig,.lesson-n{font-size:44px}
   .figures>div{padding-block:8px}
-  .lesson{padding-block:9px}
+  .lesson{padding-block:8px}
+  .lesson>div{gap:4px}
   .sheet-head{gap:6px}
-  .box{padding:14px 18px;gap:8px}
+  .box{padding:12px 18px;gap:7px}
 }
 </style>
 </head>
@@ -159,8 +156,8 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
       <span class="lesson-n ltr">03</span>
       <div>
         <p class="lesson-when">מפגש 3 · יום שני, ד׳ בטבת · 14/12</p>
-        <h3>בניית מצגת ברמה גבוהה באמצעות AI</h3>
-        <p class="body">מרעיון ועד מצגת מוכנה, כולל השלבים שרוב האנשים מדלגים עליהם ולכן המצגת יוצאת בינונית.</p>
+        <h3>בניית מצגת ברמה גבוהה ויצירת תמונות באמצעות AI</h3>
+        <p class="body">מרעיון ועד מצגת מוכנה, כולל השלבים שרוב האנשים מדלגים עליהם ולכן המצגת יוצאת בינונית. בדרך לומדים ליצור תמונות ב-AI, למצגת ולכל עבודה אחרת.</p>
         <div class="flow"><b><span>רעיון</span></b><b><i aria-hidden="true">←</i><span>חידוד מסר</span></b><b><i aria-hidden="true">←</i><span>קהל יעד</span></b><b><i aria-hidden="true">←</i><span>מבנה</span></b><b><i aria-hidden="true">←</i><span>תוכן</span></b><b><i aria-hidden="true">←</i><span>ויזואל</span></b><b><i aria-hidden="true">←</i><span>בניית המצגת</span></b><b><i aria-hidden="true">←</i><span>ביקורת ושיפור</span></b></div>
       </div>
     </article>
@@ -185,7 +182,7 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
   <footer class="sheet-foot">
     <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/>
     <span>ai.shwadron-ai.com · ייתכנו שינויים במועדים ובשעות</span>
-    <span class="ltr">1 / 3</span>
+    <span class="ltr">1 / 4</span>
   </footer>
 </section>
 
@@ -208,46 +205,113 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
     <div><dt>היקף</dt><dd>18 שעות</dd></div>
     <div><dt>מחיר</dt><dd>2,950 ₪ כולל מע״מ</dd></div>
   </dl>
-  <p class="eyebrow">שלושה תחומים מרכזיים</p>
   <div class="lessons">
     <article class="lesson">
       <span class="lesson-n ltr">01</span>
       <div>
-        <p class="lesson-when">תחום ראשון מתוך שלושה</p>
-        <h3>סוכני AI ו-Projects</h3>
-        <p class="body">מתי סוכן הוא הכלי הנכון, ואיך בונים אחד שבאמת עובד בשביל העסק.</p>
-        <div class="pills"><span>להבין מהו סוכן AI</span><span>להבין מתי נכון להשתמש בסוכן</span><span>לבנות סוכנים איכותיים לעסק</span><span>לעבוד נכון עם Projects</span></div>
+        <p class="lesson-when">מפגש 1 · סוכני AI · יום רביעי, ט״ו בכסליו · 25/11</p>
+        <h3>מהו סוכן AI ומתי נכון להשתמש בו</h3>
+        <p class="body">ההבדל בין שיחה עם צ׳אט לבין סוכן, מתי סוכן הוא הכלי הנכון, ועבודה נכונה עם Projects.</p>
+        <div class="pills"><span>להבין מהו סוכן AI</span><span>מתי נכון להשתמש בסוכן</span><span>עבודה עם Projects</span></div>
       </div>
     </article>
     <article class="lesson">
       <span class="lesson-n ltr">02</span>
       <div>
-        <p class="lesson-when">תחום שני מתוך שלושה</p>
-        <h3>אוטומציות</h3>
-        <p class="body">עבודה עם Make מאפס, עד אוטומציה ראשונה שבנית בעצמך.</p>
-        <div class="pills"><span>Forms</span><span>Google Sheets</span><span>Gmail</span><span>Google Calendar</span><span>Webhooks</span><span>שילוב AI בתהליכי אוטומציה</span></div>
+        <p class="lesson-when">מפגש 2 · סוכני AI · יום רביעי, כ״ב בכסליו · 2/12</p>
+        <h3>בניית סוכנים איכותיים לעסק</h3>
+        <p class="body">בונים סוכן שמכיר את העסק: הוראות, ידע ומקורות, ובדיקה ושיפור עד שהוא עובד כמו שצריך.</p>
+        <div class="pills"><span>הוראות לסוכן</span><span>ידע ומקורות</span><span>בדיקה ושיפור</span></div>
       </div>
     </article>
     <article class="lesson">
       <span class="lesson-n ltr">03</span>
       <div>
-        <p class="lesson-when">תחום שלישי מתוך שלושה</p>
-        <h3>Claude Code / Codex</h3>
-        <p class="body">בניית תוכנות וכלים באמצעות AI ללא צורך בכתיבת קוד.</p>
-        <div class="flow"><b><span>רעיון</span></b><b><i aria-hidden="true">←</i><span>אפיון</span></b><b><i aria-hidden="true">←</i><span>פירוק הדרישות</span></b><b><i aria-hidden="true">←</i><span>מתן הוראות ל-AI</span></b><b><i aria-hidden="true">←</i><span>בנייה</span></b><b><i aria-hidden="true">←</i><span>בדיקות</span></b><b><i aria-hidden="true">←</i><span>תיקונים</span></b><b><i aria-hidden="true">←</i><span>שיפור</span></b></div>
+        <p class="lesson-when">מפגש 3 · יצירת סרטונים · יום רביעי, ו׳ בטבת · 16/12</p>
+        <h3>יצירת סרטונים באמצעות AI</h3>
+        <p class="body">מרעיון ועד סרטון מוכן, לשיווק, להדרכה ולעבודה בעסק.</p>
+        <div class="flow"><b><span>רעיון</span></b><b><i aria-hidden="true">←</i><span>תסריט</span></b><b><i aria-hidden="true">←</i><span>תמונות</span></b><b><i aria-hidden="true">←</i><span>סרטון</span></b><b><i aria-hidden="true">←</i><span>עריכה ושיפור</span></b></div>
+      </div>
+    </article>
+    <article class="lesson">
+      <span class="lesson-n ltr">04</span>
+      <div>
+        <p class="lesson-when">מפגש 4 · אוטומציות · יום רביעי, י״ג בטבת · 23/12</p>
+        <h3>Make מאפס ואוטומציה ראשונה</h3>
+        <p class="body">היכרות עם Make ובניית אוטומציה ראשונה בעצמכם, מטופס ועד טבלה שמתעדכנת לבד.</p>
+        <div class="pills"><span>Make</span><span>Forms</span><span>Google Sheets</span></div>
       </div>
     </article>
   </div>
   <footer class="sheet-foot">
     <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/>
     <span>ai.shwadron-ai.com · ייתכנו שינויים במועדים ובשעות</span>
-    <span class="ltr">2 / 3</span>
+    <span class="ltr">2 / 4</span>
   </footer>
 </section>
 
 <section class="sheet">
   <header class="sheet-head sheet-head-sm">
     <p class="eyebrow">צבא הסוכנים · המשך</p>
+  </header>
+  <div class="lessons lessons-cont">
+    <article class="lesson">
+      <span class="lesson-n ltr">05</span>
+      <div>
+        <p class="lesson-when">מפגש 5 · אוטומציות · יום רביעי, כ׳ בטבת · 30/12</p>
+        <h3>מיילים, יומן ו-Webhooks</h3>
+        <p class="body">אוטומציות שעובדות עם תיבת המייל וביומן, וחיבור בין מערכות באמצעות Webhooks.</p>
+        <div class="pills"><span>Gmail</span><span>Google Calendar</span><span>Webhooks</span></div>
+      </div>
+    </article>
+    <article class="lesson">
+      <span class="lesson-n ltr">06</span>
+      <div>
+        <p class="lesson-when">מפגש 6 · אוטומציות · יום רביעי, כ״ז בטבת · 6/1</p>
+        <h3>שילוב AI בתהליכי אוטומציה</h3>
+        <p class="body">מכניסים AI לתוך האוטומציה, כך שהיא גם קוראת, מסווגת ומנסחת, ולא רק מעבירה מידע.</p>
+        <div class="pills"><span>שילוב AI באוטומציה</span><span>חיבור בין מערכות</span></div>
+      </div>
+    </article>
+    <article class="lesson">
+      <span class="lesson-n ltr">07</span>
+      <div>
+        <p class="lesson-when">מפגש 7 · Claude Code / Codex · יום רביעי, ה׳ בשבט · 13/1</p>
+        <h3>מרעיון לאפיון</h3>
+        <p class="body">איך הופכים רעיון לתוכנה להוראות ברורות ל-AI, בלי לכתוב קוד.</p>
+        <div class="flow"><b><span>רעיון</span></b><b><i aria-hidden="true">←</i><span>אפיון</span></b><b><i aria-hidden="true">←</i><span>פירוק הדרישות</span></b><b><i aria-hidden="true">←</i><span>מתן הוראות ל-AI</span></b></div>
+      </div>
+    </article>
+    <article class="lesson">
+      <span class="lesson-n ltr">08</span>
+      <div>
+        <p class="lesson-when">מפגש 8 · Claude Code / Codex · יום רביעי, י״ב בשבט · 20/1</p>
+        <h3>בנייה, בדיקות ותיקונים</h3>
+        <p class="body">בונים את הכלי עם Claude Code ו-Codex, בודקים אותו ומתקנים עד שהוא עושה מה שצריך.</p>
+        <div class="flow"><b><span>בנייה</span></b><b><i aria-hidden="true">←</i><span>בדיקות</span></b><b><i aria-hidden="true">←</i><span>תיקונים</span></b><b><i aria-hidden="true">←</i><span>שיפור</span></b></div>
+      </div>
+    </article>
+    <article class="lesson">
+      <span class="lesson-n ltr">09</span>
+      <div>
+        <p class="lesson-when">מפגש 9 · פרויקט אישי · יום רביעי, י״ט בשבט · 27/1</p>
+        <h3>הפרויקט האישי</h3>
+        <p class="body">עובדים על הפרויקט האישי עם הכוונה: בודקים, משפרים, ולומדים איך להמשיך לפתח אותו בעצמכם.</p>
+        <div class="pills"><span>בדיקה</span><span>שיפור</span><span>איך ממשיכים מכאן</span></div>
+      </div>
+    </article>
+  </div>
+  <p class="small">אין מפגשים בחנוכה</p>
+  <footer class="sheet-foot">
+    <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/>
+    <span>ai.shwadron-ai.com · ייתכנו שינויים במועדים ובשעות</span>
+    <span class="ltr">3 / 4</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="sheet-head sheet-head-sm">
+    <p class="eyebrow">צבא הסוכנים · פרויקט ומה כלול</p>
   </header>
   <div class="box project">
     <p class="eyebrow">פרויקט אישי</p>
@@ -257,21 +321,6 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
     <p class="small">דוגמה: סוכן שנכנס לתיבת המייל, מאתר חשבוניות ומעדכן אותן בטבלה, בלי שנוגעים בזה.</p>
   </div>
   <div class="cols">
-    <div class="box">
-      <p class="eyebrow">מועדי המפגשים</p>
-      <ol class="sched">
-      <li><b class="ltr">01</b><span>יום רביעי, ט״ו בכסליו</span><span class="ltr">25/11</span></li>
-      <li><b class="ltr">02</b><span>יום רביעי, כ״ב בכסליו</span><span class="ltr">2/12</span></li>
-      <li><b class="ltr">03</b><span>יום רביעי, ו׳ בטבת</span><span class="ltr">16/12</span></li>
-      <li><b class="ltr">04</b><span>יום רביעי, י״ג בטבת</span><span class="ltr">23/12</span></li>
-      <li><b class="ltr">05</b><span>יום רביעי, כ׳ בטבת</span><span class="ltr">30/12</span></li>
-      <li><b class="ltr">06</b><span>יום רביעי, כ״ז בטבת</span><span class="ltr">6/1</span></li>
-      <li><b class="ltr">07</b><span>יום רביעי, ה׳ בשבט</span><span class="ltr">13/1</span></li>
-      <li><b class="ltr">08</b><span>יום רביעי, י״ב בשבט</span><span class="ltr">20/1</span></li>
-      <li><b class="ltr">09</b><span>יום רביעי, י״ט בשבט</span><span class="ltr">27/1</span></li>
-      </ol>
-      <p class="small"><span class="ltr">19:30-21:30</span> · אין מפגשים בחנוכה</p>
-    </div>
   <div class="box">
     <p class="eyebrow">מתאים לי אם</p>
     <ul class="ticks">
@@ -283,22 +332,23 @@ h3{font-size:19px;font-weight:700;line-height:1.3}
       <li>אין לי ידע בקוד וזה בדיוק מה שאני מחפש</li>
     </ul>
   </div>
-  </div>
-  <div class="box">
-    <p class="eyebrow">מה כלול</p>
-    <ul class="ticks">
-      <li>סוכני AI ועבודה עם Projects</li>
-      <li>אוטומציות עם Make מאפס</li>
-      <li>Claude Code ו-Codex ללא כתיבת קוד</li>
-      <li>חיבור בין מערכות</li>
-      <li>פרויקט AI אישי, עם תרגול והכוונה</li>
-      <li>תעודת סיום</li>
-    </ul>
+    <div class="box">
+      <p class="eyebrow">מה כלול</p>
+      <ul class="ticks">
+        <li>סוכני AI ועבודה עם Projects</li>
+        <li>אוטומציות עם Make מאפס</li>
+        <li>Claude Code ו-Codex ללא כתיבת קוד</li>
+        <li>יצירת סרטונים באמצעות AI</li>
+        <li>חיבור בין מערכות</li>
+        <li>פרויקט AI אישי, עם תרגול והכוונה</li>
+        <li>תעודת סיום</li>
+      </ul>
+    </div>
   </div>
   <footer class="sheet-foot">
     <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/>
     <span>ai.shwadron-ai.com · ייתכנו שינויים במועדים ובשעות</span>
-    <span class="ltr">3 / 3</span>
+    <span class="ltr">4 / 4</span>
   </footer>
 </section>
 </body>
