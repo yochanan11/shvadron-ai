@@ -382,3 +382,108 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   background:var(--card);transition:border-color .2s}
 .shot:hover{border-color:var(--accent)}
 .shot img{width:100%;height:auto}
+
+/* סימן ההצלחה בדף התודה */
+.done-mark{display:inline-flex;align-self:flex-start;color:var(--accent)}
+.done-mark svg{width:56px;height:56px}
+
+/* ============================================================
+   תנועה
+   ------------------------------------------------------------
+   assets/js/shw-motion.js מוסיף את המחלקה motion ל-<html> רק אם
+   המשתמש לא ביקש פחות תנועה. כל מה שכאן תלוי במחלקה הזו, ולכן
+   דף בלי ג׳אווהסקריפט, או משתמש שביקש לצמצם תנועה, מקבל דף
+   סטטי מלא וקריא ולא שום דבר מוסתר.
+   ============================================================ */
+
+/* ── חשיפה בגלילה ── */
+.motion .rise{opacity:0;transform:translateY(22px);
+  transition:opacity .62s cubic-bezier(.22,.8,.26,1) var(--d,0ms),
+             transform .62s cubic-bezier(.22,.8,.26,1) var(--d,0ms)}
+.motion .rise.in{opacity:1;transform:none}
+
+/* ── כניסת ההירו: כל שורה עולה מאחורי מסכה ── */
+.motion #top .eyebrow,
+.motion #top .lead,
+.motion #top .ticks,
+.motion #top .body,
+.motion #top .guarantee,
+.motion #top .done-mark,
+.motion #top > .wrap > div,
+.motion #top p:not(.eyebrow):not(.lead):not(.body):not(.guarantee):not(.done-mark){
+  animation:up .8s cubic-bezier(.22,.8,.26,1) both}
+.motion #top .eyebrow{animation-delay:.05s}
+.motion #top h1{animation:none}
+.motion #top .lead{animation-delay:.42s}
+.motion #top .ticks{animation-delay:.5s}
+.motion #top > .wrap > div{animation-delay:.58s}
+.motion #top .body,.motion #top .guarantee{animation-delay:.66s}
+
+/* הכותרת עצמה: כל שורה נחשפת מאחורי מסכה, באפקט של סרגל שעולה */
+.motion #top h1{overflow:hidden;display:block}
+.motion #top h1 .mask{display:block;overflow:hidden}
+.motion #top h1 .mask > span{display:block;animation:up .9s cubic-bezier(.22,.8,.26,1) both}
+.motion #top h1 .mask:nth-child(1) > span{animation-delay:.12s}
+.motion #top h1 .mask:nth-child(2) > span{animation-delay:.22s}
+.motion #top h1 .mask:nth-child(3) > span{animation-delay:.32s}
+
+@keyframes up{from{opacity:0;transform:translateY(110%)}to{opacity:1;transform:none}}
+
+/* ── הקשתות נמתחות ── */
+.motion .arc path{stroke-dasharray:2400;stroke-dashoffset:2400;
+  animation:draw 2.4s cubic-bezier(.3,.7,.3,1) .35s both}
+.motion .arc path:nth-child(2){animation-delay:.5s}
+.motion .arc path:nth-child(3){animation-delay:.65s}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ── פס התקדמות הגלילה ── */
+.scroll-bar{position:fixed;inset-inline:0;top:0;z-index:60;height:2px;
+  background:var(--accent);transform:scaleX(0);transform-origin:right center;
+  will-change:transform;pointer-events:none}
+
+/* ── הכותרת העליונה מתכווצת בגלילה ── */
+.site-head{transition:padding .25s ease,background .25s ease,border-color .25s ease}
+.site-head.is-stuck{background:rgba(10,10,11,.96);border-bottom-color:var(--line)}
+.site-head.is-stuck .wrap{padding-block:10px}
+.site-head .wrap{transition:padding .25s ease}
+.site-head.is-stuck .brand img{height:28px}
+.brand img{transition:height .25s ease}
+
+/* ── כרטיס שמגיב לעכבר ──
+   הטיה קטנה, ונקודת אור שעוקבת אחרי הסמן. בלי צל כבד ובלי
+   גרדיאנט צבעוני, רק הבהרה עדינה של הרקע הקיים. */
+.motion .card,.motion .quote-card,.motion .buy-card{
+  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:transform .35s cubic-bezier(.22,.8,.26,1),border-color .25s ease;
+  position:relative}
+.motion .card::after,.motion .buy-card::after{content:"";position:absolute;inset:0;
+  border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s ease;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),
+    rgba(62,230,176,.09),transparent 65%)}
+.motion .card:hover::after,.motion .buy-card:hover::after{opacity:1}
+.motion .card:hover,.motion .buy-card:hover{border-color:#3A3A40}
+.motion .card.is-featured:hover{border-color:var(--accent)}
+
+/* ── כפתור: הבהק שחולף ── */
+.btn{position:relative;overflow:hidden}
+.motion .btn::before{content:"";position:absolute;inset:0 auto 0 -60%;width:45%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:skewX(-18deg);transition:left .55s ease}
+.motion .btn:hover::before{left:115%}
+.motion .btn-primary:hover,.motion .btn-light:hover{transform:translateY(-1px)}
+.btn{transition:background .18s,color .18s,border-color .18s,transform .18s}
+
+/* ── צילומי המלצות ותגיות ── */
+.motion .shot{transition:transform .3s cubic-bezier(.22,.8,.26,1),border-color .2s}
+.motion .shot:hover{transform:translateY(-4px) scale(1.012)}
+.motion .lesson{transition:background .25s ease}
+.motion .lesson:hover{background:rgba(255,255,255,.015)}
+
+/* ── הנקודה החיה בתג ── */
+.motion .eyebrow + * .live-dot,.motion [style*="background:var(--accent)"][aria-hidden="true"]{
+  animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+
+@media(prefers-reduced-motion:reduce){
+  .scroll-bar{display:none}
+}

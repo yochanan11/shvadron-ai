@@ -34,7 +34,7 @@ export const BEGINNERS = {
   name:     'מאפס למאה',
   short:    'מאפס למאה',
   legacyName: 'AI למתחילים',   // השם שבו הוא מופיע בחשבוניות ובתקנון
-  kicker:   'בסיס ושיטת עבודה',
+  kicker:   'זום חי · למי שלא נגע, או נגע קצת',
   sessions: 3,
   hours:    6,
   priceEx:  750,           // המחיר לפני מע״מ. null = טרם נקבע
@@ -124,7 +124,7 @@ export const ADVANCED = {
   short:    'צבא הסוכנים',
   legacyName: 'AI למתקדמים',
   seatsLeft: 11,               // מקומות שנותרו מתוך 20. null = לא להציג מספר
-  kicker:   'לבנות עם AI',
+  kicker:   'זום חי · מתקדמים, לעבודה ולעסק',
   sessions: 9,
   hours:    18,
   priceEx:  2500,          // המחיר לפני מע״מ. null = טרם נקבע

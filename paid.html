@@ -3,453 +3,122 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>תודה שנרשמת | SHWADRON.AI</title>
+<meta name="description" content="ההרשמה התקבלה. הצעד הבא הוא להצטרף לקבוצת הוואטסאפ של המחזור, שבה נשלחים קישור הזום, התזכורות וחומרי ההכנה."/>
 <meta name="robots" content="noindex, nofollow"/>
-<title>תודה שנרשמת! הצעד הבא | SHWADRON.AI</title>
-<meta name="description" content="ההרשמה לקורס אושרה. כל העדכונים, הפרטים הלוגיסטיים וקישור הזום יגיעו לקבוצת הוואטסאפ של הקורס."/>
-<link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
-<link rel="stylesheet" href="assets/css/site-legal.css"/>
+<link rel="icon" type="image/png" href="assets/public/icon.svg"/>
+<link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
+<link rel="stylesheet" href="assets/css/fonts.css"/>
+<link rel="stylesheet" href="assets/css/shw-2026.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
 <script src="assets/js/consent.js" defer></script>
 <script src="assets/js/source.js" defer></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-/* Legacy names remapped onto the Shwadron.AI design system.
-   Every value now resolves to a token from assets/css/shwadron-ds.css. */
-:root{
-  --blue:var(--color-primary);
-  --blue2:var(--color-primary-hover);
-  --teal:var(--color-accent);
-  --teal2:var(--turquoise-400);
-  --teal-text:var(--turquoise-700);
-  --navy:var(--color-surface-inverse);
-  --bg:var(--color-surface-sunken);
-  --bg2:var(--color-surface);
-  --text:var(--color-ink);
-  --text2:var(--color-ink);
-  --muted:var(--color-ink-soft);
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--font-sans);
-  background:var(--bg2);
-  color:var(--text);
-  direction:rtl;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-
-/* NAV */
-nav{
-  position:fixed;top:0;width:100%;z-index:200;
-  padding:0 6%;
-  display:flex;justify-content:space-between;align-items:center;
-  background:var(--navy);
-  height:64px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.logo img{height:48px;width:auto;display:block}
-.nav-back{
-  color:rgba(255,255,255,.55);font-size:.875rem;font-weight:600;
-  text-decoration:none;
-  padding:7px 14px;border-radius:8px;
-  transition:color .2s,background .2s;
-  display:flex;align-items:center;gap:6px;
-}
-.nav-back:hover{color:#fff;background:rgba(255,255,255,.08)}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  background:var(--navy);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:100px 6% 64px;
-  position:relative;
-  overflow:hidden;
-  text-align:center;
-}
-
-/* background glow orbs */
-.hero::before{
-  content:'';position:absolute;
-  width:600px;height:600px;
-  background:radial-gradient(ellipse,rgba(0,99,237,.18) 0%,transparent 70%);
-  top:-100px;right:-100px;pointer-events:none;
-}
-.hero::after{
-  content:'';position:absolute;
-  width:500px;height:500px;
-  background:radial-gradient(ellipse,rgba(0,201,167,.12) 0%,transparent 70%);
-  bottom:-80px;left:-80px;pointer-events:none;
-}
-
-.hero-inner{
-  position:relative;z-index:1;
-  max-width:660px;
-  margin:0 auto;
-  display:flex;flex-direction:column;align-items:center;
-}
-
-/* Check animation */
-.check-wrap{
-  margin-bottom:28px;
-}
-.check-circle{
-  width:88px;height:88px;
-  background:linear-gradient(135deg,var(--teal2),var(--blue));
-  border-radius:50%;
-  display:inline-flex;align-items:center;justify-content:center;
-  box-shadow:0 0 0 14px rgba(0,201,167,.1),0 12px 48px rgba(0,99,237,.4);
-  animation:pop .6s cubic-bezier(.34,1.56,.64,1) both;
-}
-@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-.check-circle svg{animation:draw .4s ease .5s both}
-@keyframes draw{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
-
-/* Badge */
-.badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(135deg,#0063ed 0%,#00c9a7 100%);
-  color:#fff;
-  font-size:.74rem;font-weight:900;
-  letter-spacing:.13em;text-transform:uppercase;
-  padding:9px 20px;
-  border-radius:100px;
-  box-shadow:0 0 0 1.5px rgba(255,255,255,.15),0 6px 28px rgba(0,99,237,.5);
-  margin-bottom:24px;
-  position:relative;overflow:hidden;
-}
-.badge::before{
-  content:'';position:absolute;top:0;left:-100%;
-  width:55%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
-  transform:skewX(-18deg);
-  animation:shine 3s ease-in-out infinite 1s;
-}
-@keyframes shine{0%,60%{left:-100%}100%{left:200%}}
-
-.hero-title{
-  font-size:clamp(2.4rem,6vw,4.2rem);
-  font-weight:900;line-height:1.05;
-  color:#fff;
-  margin-bottom:10px;
-  letter-spacing:-.04em;
-}
-.hero-subline{
-  font-size:clamp(1.2rem,2.8vw,1.9rem);
-  font-weight:800;
-  line-height:1.3;
-  margin-bottom:20px;
-  background:linear-gradient(130deg,var(--teal) 0%,var(--blue2) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.hero-desc{
-  font-size:clamp(.95rem,1.4vw,1.08rem);
-  color:rgba(255,255,255,.55);
-  line-height:1.85;
-  margin-bottom:36px;
-  max-width:520px;
-}
-.hero-desc strong{color:rgba(255,255,255,.88);font-weight:700}
-
-/* WhatsApp CTA */
-.cta-wa{
-  display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  background:#25d366;
-  color:#fff;font-weight:900;font-size:1.08rem;
-  padding:18px 38px;border-radius:100px;
-  text-decoration:none;
-  box-shadow:0 4px 32px rgba(37,211,102,.45);
-  transition:all .22s;
-  width:100%;max-width:440px;
-  letter-spacing:-.01em;
-}
-.cta-wa:hover{background:#1da851;transform:translateY(-3px);box-shadow:0 10px 44px rgba(37,211,102,.5)}
-
-/* Sub note */
-.hero-note{
-  margin-top:16px;
-  font-size:.78rem;color:rgba(255,255,255,.28);
-  display:flex;align-items:center;gap:6px;justify-content:center;
-}
-
-/* Separator */
-.sep-band{
-  height:5px;
-  background:linear-gradient(90deg,transparent 0%,var(--navy) 10%,var(--blue) 42%,var(--teal2) 88%,transparent 100%);
-  margin:0 6%;border-radius:100px;
-  position:relative;z-index:1;
-}
-
-/* INFO CARDS */
-.info-section{
-  background:var(--bg);
-  padding:72px 6%;
-}
-.info-inner{max-width:820px;margin:0 auto}
-.info-label{
-  display:inline-block;
-  font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--teal-text);
-  background:rgba(0,150,124,.08);
-  border:1px solid rgba(0,150,124,.15);
-  padding:5px 14px;border-radius:100px;
-  margin-bottom:20px;
-}
-.info-title{
-  font-size:clamp(1.6rem,3.2vw,2.4rem);
-  font-weight:900;line-height:1.2;
-  letter-spacing:-.04em;
-  color:var(--text);
-  margin-bottom:10px;
-}
-.info-title em{
-  font-style:normal;
-  background:linear-gradient(90deg,var(--blue),var(--teal2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-.info-sub{
-  font-size:1rem;color:var(--muted);line-height:1.75;
-  margin-bottom:44px;
-}
-
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.info-card{
-  background:#fff;
-  border-radius:18px;
-  padding:28px 24px;
-  border:1.5px solid rgba(0,0,0,.07);
-  box-shadow:0 2px 18px rgba(0,0,0,.06);
-  display:flex;flex-direction:column;gap:10px;
-}
-.card-icon{
-  width:44px;height:44px;
-  border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;
-  flex-shrink:0;
-}
-.card-icon.blue{background:rgba(0,99,237,.08)}
-.card-icon.teal{background:rgba(0,201,167,.1)}
-.card-icon.green{background:rgba(37,211,102,.1)}
-.info-card h3{font-size:.98rem;font-weight:800;color:var(--text)}
-.info-card p{font-size:.85rem;color:var(--muted);line-height:1.7}
-
-/* FOOTER */
-footer{
-  background:var(--navy);
-  border-top:1px solid rgba(255,255,255,.06);
-  padding:24px 6%;
-  text-align:center;
-}
-footer p{font-size:.78rem;color:rgba(255,255,255,.22)}
-
-/* RESPONSIVE */
-@media(max-width:700px){
-  .cards-grid{grid-template-columns:1fr}
-  .hero{padding:90px 6% 56px}
-  .cta-wa{font-size:.98rem;padding:16px 28px}
-}
-@media(max-width:480px){
-  .check-circle{width:72px;height:72px}
-  .info-section{padding:56px 6%}
-}
-
-/* ═══════════════════════════════════════════════════════════
-   DESIGN SYSTEM LAYER - Shwadron.AI
-   Presentation only. No copy, order, link or behaviour is
-   touched below.
-   ═══════════════════════════════════════════════════════════ */
-
-/* Two-tone focus ring: stays visible on white, navy AND turquoise backgrounds. */
-:focus-visible{outline:3px solid var(--blue-900);outline-offset:2px;
-  box-shadow:0 0 0 6px var(--turquoise-400);border-radius:var(--radius-sm)}
-.navy :focus-visible,footer :focus-visible{outline-color:#fff;box-shadow:0 0 0 6px var(--blue-600)}
-
-/* ── Nav ── */
-nav{background:var(--color-surface-inverse);border-bottom:1px solid rgba(255,255,255,.15)}
-.logo img{filter:brightness(0) invert(1)}
-.nav-back{border-radius:var(--radius-pill);font-size:var(--fs-sm);font-weight:var(--fw-medium);
-  color:rgba(255,255,255,.85);transition:background var(--dur-fast) var(--ease-standard)}
-.nav-back:hover{background:rgba(255,255,255,.08);color:var(--white)}
-
-/* ── Surfaces: flat only, no gradients or textures ── */
-.hero{background:var(--color-surface-inverse)}
-.hero::before,.hero::after{display:none}
-.check-circle{background:var(--color-accent);box-shadow:none;animation:none}
-.check-circle svg{animation:none}
-.check-circle svg path{stroke:#0a1a33}
-.badge{background:var(--color-primary);color:var(--white);box-shadow:none;
-  border-radius:var(--radius-pill);font-size:var(--fs-xs);font-weight:var(--fw-semibold);letter-spacing:var(--ls-wide)}
-.badge::before{display:none}
-.sep-band{background:var(--color-accent)}
-
-/* ── Gradient text replaced with solid brand colour ── */
-.hero-subline,.info-title em{background:none;-webkit-background-clip:initial;background-clip:initial;
-  -webkit-text-fill-color:initial}
-.hero-subline{color:var(--turquoise-400)}
-.info-title em{color:var(--color-primary)}
-
-/* ── Typography ── */
-.hero-title{font-size:clamp(var(--fs-2xl),6vw,var(--fs-4xl));font-weight:var(--fw-black);
-  line-height:var(--lh-tight);letter-spacing:var(--ls-tight)}
-.hero-subline{font-size:clamp(var(--fs-md),2.8vw,var(--fs-xl));font-weight:var(--fw-bold);line-height:var(--lh-snug)}
-.hero-desc{font-size:var(--fs-base);line-height:var(--lh-relaxed);color:rgba(255,255,255,.8)}
-.hero-desc strong{color:var(--white);font-weight:var(--fw-bold)}
-.hero-note{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
-.info-title{font-size:clamp(var(--fs-xl),3.2vw,var(--fs-2xl));font-weight:var(--fw-black);
-  line-height:var(--lh-snug);letter-spacing:var(--ls-tight)}
-.info-sub{font-size:var(--fs-base);line-height:var(--lh-relaxed)}
-.info-label{border-radius:var(--radius-pill);background:var(--color-accent-tint);
-  border:1px solid var(--color-border);color:var(--turquoise-700);
-  font-size:var(--fs-xs);font-weight:var(--fw-semibold);letter-spacing:var(--ls-wide)}
-
-/* ── Cards ── */
-.info-card{border-radius:var(--radius-lg);border:1px solid var(--color-border);box-shadow:var(--shadow-sm)}
-.info-card h3{font-size:var(--fs-base);font-weight:var(--fw-bold)}
-.info-card p{font-size:var(--fs-sm);line-height:var(--lh-normal)}
-.card-icon{border-radius:var(--radius-md)}
-.card-icon.blue{background:var(--color-primary-tint)}
-.card-icon.teal,.card-icon.green{background:var(--color-accent-tint)}
-
-/* ── Button: pill, solid fill, hover = one step darker ── */
-.cta-wa{border-radius:var(--radius-pill);font-size:var(--fs-base);font-weight:var(--fw-semibold);box-shadow:none;
-  transition:background var(--dur-fast) var(--ease-standard),transform var(--dur-fast) var(--ease-standard)}
-.cta-wa:hover{background:#1da851;transform:none;box-shadow:none}
-.cta-wa:active{transform:scale(.97)}
-
-/* ── Footer ── */
-footer{background:var(--color-surface-inverse);border-top:1px solid rgba(255,255,255,.15)}
-footer p{font-size:var(--fs-xs);color:rgba(255,255,255,.6)}
-
-/* ══════════ CONTRAST CORRECTIONS ══════════════════════════════════
-   Must stay last: the design-system layer above re-colours these. */
-.cta-wa{background:#075e54}        /* white on #25d366 was 1.98:1 */
-.cta-wa:hover{background:#0a7d6f}
-.info-label{color:#0f6b58;background:rgba(0,150,124,.10)}  /* was #158e78 on #e8fbf7, 3.78:1 */
-.hero-note{color:rgba(255,255,255,.75)}                    /* was .28 alpha on navy */
-footer p{color:rgba(255,255,255,.72)}
-.prep-list{list-style:none;padding:0;margin:20px 0 0;display:flex;flex-direction:column;gap:12px}
-.prep-list li{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:14px;padding:16px 18px;font-size:.95rem;line-height:1.6;color:var(--muted)}
-.prep-list b{color:var(--text)}
-.share-btn{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:#075e54;color:#fff;font-weight:800;padding:12px 24px;border-radius:100px;text-decoration:none}
-.site-box{margin-top:40px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;gap:10px}
-.site-t{font-weight:900;font-size:1.2rem;color:var(--text)}
-.site-box p{margin:0;font-size:.95rem;line-height:1.65;color:var(--muted)}
-.site-btn{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #d6dbe4;color:#141824;font-weight:800;padding:12px 20px;border-radius:100px;text-decoration:none;margin-top:4px}
-.site-btn:hover{border-color:#4285F4}
-.site-fine{font-size:.85rem!important}
-</style>
 </head>
 <body>
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<!-- NAV -->
-<nav aria-label="ניווט ראשי">
-  <a href="index.html" class="logo">
-    <img src="assets/public/logo.svg" alt="שבדרון AI, חזרה לדף הבית" width="140" height="48"/>
-  </a>
-  <a href="index.html" class="nav-back">← חזרה לאתר</a>
-</nav>
+<header class="site-head">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="SHWADRON.AI, חזרה לדף הבית"><img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/></a>
+    <span class="small">תודה שנרשמת</span>
+  </div>
+</header>
 
 <main id="main">
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
+<!-- ===== HERO ===== -->
+<section id="top" style="padding-top:clamp(56px,8vw,96px)">
+  <div class="wrap stack">
+    <p class="done-mark" aria-hidden="true">
+      <svg viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="18" stroke="currentColor" stroke-width="2"/><path d="M11 19.5L16.5 25L27 13" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </p>
+    <p class="eyebrow"><span data-t="badge">ברוך הבא למחזור נובמבר</span></p>
+    <h1>תודה<br/><span class="on-accent">שנרשמת.</span></h1>
+    <p class="lead" data-t="sub">המקום שלך במחזור שמור.</p>
+    <p class="body" style="font-size:19px;color:var(--ink-2)">הצעד הבא לוקח עשר שניות: להצטרף לקבוצת הוואטסאפ של המחזור. <b style="color:var(--ink)">שם יישלחו קישור הזום, התזכורות וחומרי ההכנה.</b></p>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+      <a href="https://wa.me/972528189921" data-group target="_blank" rel="noopener" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
+        <span data-t="cta">הצטרף לקבוצת הוואטסאפ של המחזור</span>
+      </a>
+      <span class="small">הקבוצה סגורה · משתתפי המחזור בלבד</span>
+    </div>
+  </div>
+  <svg aria-hidden="true" viewBox="0 0 1440 220" preserveAspectRatio="none" class="arc">
+    <path d="M-40 220 Q720 -40 1480 220" fill="none" stroke="var(--accent)" stroke-opacity=".55" stroke-width="1.5"/>
+    <path d="M-40 220 Q720 10 1480 220" fill="none" stroke="#F4F4F1" stroke-opacity=".08" stroke-width="1"/>
+  </svg>
+</section>
 
-    <div class="check-wrap">
-      <div class="check-circle">
-        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" aria-hidden="true">
-          <path d="M9 19.5L16 26.5L29 12" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+<!-- ===== מה מחכה לך ===== -->
+<section class="sec" id="next">
+  <div class="wrap stack">
+    <p class="eyebrow">01 · מה מחכה לך עכשיו</p>
+    <h2 class="h-sm">הכול מסודר מכאן.</h2>
+    <div class="grid">
+      <div class="card">
+        <span class="lesson-n ltr">01</span>
+        <h3 class="card-title">מייל גישה לאתר הקורס</h3>
+        <p class="body">תוך כמה דקות יגיע אליך מייל הרשמה לאתר הקורסים, ובנפרד הקבלה ממורנינג. לא רואה? בדוק בספאם ובלשונית קידומי מכירות.</p>
+      </div>
+      <div class="card">
+        <span class="lesson-n ltr">02</span>
+        <h3 class="card-title">קבוצת הוואטסאפ</h3>
+        <p class="body">מצטרפים בכפתור שלמעלה. לפני כל מפגש נשלחים לשם קישור הזום ותזכורת, ואחריו ההקלטה.</p>
+      </div>
+      <div class="card is-featured">
+        <span class="lesson-n ltr" style="color:var(--accent)">03</span>
+        <h3 class="card-title" data-t="date">23/11 ו-25/11 · יוצאים לדרך</h3>
+        <p class="body" data-t="when">מאפס למאה נפתח ביום שני, י״ג בכסליו, וצבא הסוכנים ביום רביעי, ט״ו בכסליו, בשעה 19:30 בזום. בחנוכה אין מפגשים.</p>
       </div>
     </div>
-
-    <div class="badge">✦ &nbsp;<span data-t="badge">ברוך הבא למחזור כסליו</span></div>
-
-    <h1 class="hero-title">תודה רבה שנרשמת!</h1>
-    <span class="hero-subline" data-t="sub">המקום שלך במחזור שמור.</span>
-
-    <p class="hero-desc">
-      הצעד הבא, ולוקח 10 שניות: להצטרף לקבוצת הוואטסאפ של המחזור.<br/>
-      <strong>שם יישלחו קישור הזום, התזכורות וחומרי ההכנה.</strong>
-    </p>
-
-    <a href="https://wa.me/972528189921" data-group target="_blank" rel="noopener" class="cta-wa">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32" fill="#fff" aria-hidden="true"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.47.678 4.784 1.857 6.764L2 30l7.43-1.82A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm6.29 18.89c-.345-.172-2.04-1.006-2.356-1.12-.317-.115-.547-.172-.778.172-.23.345-.892 1.12-1.094 1.35-.201.23-.403.258-.748.086-.345-.172-1.456-.537-2.774-1.712-1.025-.914-1.717-2.043-1.918-2.388-.2-.345-.021-.531.151-.703.155-.155.345-.403.517-.604.172-.2.23-.345.345-.574.115-.23.057-.431-.029-.604-.086-.172-.778-1.875-1.066-2.566-.28-.674-.565-.583-.778-.593l-.662-.011c-.23 0-.604.086-.92.431s-1.208 1.18-1.208 2.877 1.237 3.337 1.409 3.567c.172.23 2.434 3.714 5.898 5.208.824.356 1.467.569 1.969.728.827.263 1.58.226 2.174.137.663-.1 2.04-.834 2.328-1.638.287-.805.287-1.494.2-1.638-.086-.143-.316-.23-.661-.402z"/></svg>
-      <span data-t="cta">הצטרף לקבוצת הוואטסאפ של המחזור</span>
-    </a>
-
-    <p class="hero-note">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      הקבוצה סגורה · משתתפי המחזור בלבד
-    </p>
-
   </div>
 </section>
 
-<!-- separator -->
-<div style="background:var(--navy);line-height:0">
-  <div class="sep-band"></div>
-</div>
+<!-- ===== אתר הקורסים ===== -->
+<section class="sec sec-2">
+  <div class="wrap">
+    <div class="card" style="max-width:720px;margin-inline:auto">
+      <p class="card-kicker">אתר הקורס שלך</p>
+      <p class="lead" style="color:var(--ink)">כל ההקלטות והחומרים מחכים לך שם.</p>
+      <p class="body">נכנסים עם כתובת המייל שהזנת בתשלום, או פשוט עם חשבון גוגל.</p>
+      <a class="btn btn-light" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener">כניסה לאתר הקורסים ←</a>
+      <p class="small">לא מצליח להיכנס? חפש בתיבת המייל את מייל ההרשמה מ-SHWADRON, או כתוב לי בוואטסאפ ל-<a href="https://wa.me/972528189921" style="color:var(--accent);text-decoration:underline">052-818-9921</a>.</p>
+    </div>
+  </div>
+</section>
 
-<!-- INFO CARDS -->
-<section class="info-section">
-  <div class="info-inner">
-    <div class="info-label">מה מחכה לך עכשיו</div>
-    <h2 class="info-title">הכל <em>מסודר</em> מכאן.</h2>
-    <p class="info-sub">שלושה דברים, לפי הסדר:</p>
-
-    <div class="cards-grid">
-
-      <div class="info-card">
-        <div class="card-icon blue">📩</div>
-        <h3>מייל גישה לאתר הקורס</h3>
-        <p>תוך כמה דקות יגיע אליך מייל הרשמה לאתר הקורסים, ובנפרד הקבלה ממורנינג. לא רואה? בדוק בספאם ובלשונית "קידומי מכירות".</p>
+<!-- ===== איך להגיע מוכן ===== -->
+<section class="sec" id="prep">
+  <div class="wrap stack">
+    <p class="eyebrow">02 · לפני המפגש הראשון</p>
+    <h2 class="h-sm">איך להגיע מוכן.</h2>
+    <div class="grid-3">
+      <div class="rule-top">
+        <h3 class="card-title">מחשב, לא טלפון</h3>
+        <p class="body">עובדים יחד מול המסך, וקשה לעשות את זה מטלפון.</p>
       </div>
-
-      <div class="info-card">
-        <div class="card-icon teal">📱</div>
-        <h3>קבוצת הוואטסאפ</h3>
-        <p>מצטרפים בכפתור למעלה. לפני כל מפגש נשלחים לשם קישור הזום ותזכורת, ואחריו ההקלטה.</p>
+      <div class="rule-top">
+        <h3 class="card-title">משימה אמיתית אחת</h3>
+        <p class="body">מייל שצריך לנסח, פגישה לסכם, מצגת להכין. עליה נתרגל.</p>
       </div>
-
-      <div class="info-card">
-        <div class="card-icon green">🚀</div>
-        <h3 data-t="date">23/11 ו-25/11 · יוצאים לדרך</h3>
-        <p data-t="when">המתחילים נפתחים ביום שני, י״ג בכסליו, והמתקדמים ביום רביעי, ט״ו בכסליו, בשעה 19:30 בזום. בחנוכה אין מפגשים.</p>
+      <div class="rule-top">
+        <h3 class="card-title">חשבון ChatGPT או Gemini</h3>
+        <p class="body">מספיקה הגרסה החינמית. אם אין, נפתח יחד במפגש הראשון.</p>
       </div>
-
     </div>
+  </div>
+</section>
 
-    <div class="site-box">
-      <div class="site-t">אתר הקורס שלך</div>
-      <p>כל ההקלטות, החומרים ודפי העבודה של המסלול מחכים לך באתר הקורסים. נכנסים עם כתובת המייל שהזנת בתשלום, וגם אפשר פשוט להיכנס עם חשבון גוגל.</p>
-      <a class="site-btn" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.8 0-5.2-1.9-6.1-4.5H2.2v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.9 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.2a11 11 0 0 0 0 9.8l3.7-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.1 1.6l3.1-3.1A11 11 0 0 0 2.2 7.1l3.7 2.8C6.8 7.3 9.2 5.4 12 5.4z"/></svg> כניסה לאתר הקורסים</a>
-      <p class="site-fine">לא מצליח להיכנס? חפש בתיבת המייל את מייל ההרשמה מ-SHWADRON, או כתוב לי בוואטסאפ ל-<a href="https://wa.me/972528189921">052-818-9921</a>.</p>
+<!-- ===== שיתוף ===== -->
+<section class="sec sec-2">
+  <div class="wrap cta-box" style="background:var(--card);border:1px solid var(--line)">
+    <div>
+      <b>מכיר מישהו שזה בשבילו?</b>
+      <p>ללמוד עם חבר זה כיף יותר. שלח לו את הקישור לפני שהמקומות נגמרים.</p>
     </div>
-
-    <div class="prep">
-      <h2 class="info-title" style="margin-top:56px">איך להגיע <em>מוכן.</em></h2>
-      <ul class="prep-list">
-        <li><b>מחשב ולא טלפון.</b> עובדים יחד מול המסך, וקשה לעשות את זה מטלפון.</li>
-        <li><b>משימה אמיתית אחת מהעבודה.</b> מייל שצריך לנסח, פגישה לסכם, מצגת להכין. עליה נתרגל.</li>
-        <li><b>חשבון ב-ChatGPT או ב-Gemini.</b> מספיקה הגרסה החינמית. אם אין, נפתח יחד במפגש הראשון.</li>
-      </ul>
-    </div>
-
-    <div class="share">
-      <h2 class="info-title" style="margin-top:56px">מכיר מישהו <em>שזה בשבילו?</em></h2>
-      <p class="info-sub">ללמוד עם חבר זה כיף יותר. שלח לו את הקישור לפני שהמקומות נגמרים.</p>
-      <a class="share-btn" target="_blank" rel="noopener" href="https://wa.me/?text=%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20AI%20%D7%A9%D7%9C%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%20%D7%A9%D7%91%D7%93%D7%A8%D7%95%D7%9F%20%D7%91%D7%96%D7%95%D7%9D.%20%D7%A9%D7%95%D7%95%D7%94%20%D7%9C%D7%9A%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%3A%20https%3A%2F%2Fai.shwadron-ai.com">📤 שלח לחבר בוואטסאפ</a>
-    </div>
+    <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/?text=%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20AI%20%D7%A9%D7%9C%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%20%D7%A9%D7%91%D7%93%D7%A8%D7%95%D7%9F%20%D7%91%D7%96%D7%95%D7%9D.%20%D7%A9%D7%95%D7%95%D7%94%20%D7%9C%D7%9A%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%3A%20https%3A%2F%2Fai.shwadron-ai.com">שלח לחבר בוואטסאפ ←</a>
   </div>
 </section>
 
@@ -462,12 +131,12 @@ footer p{color:rgba(255,255,255,.72)}
 (function(){
   var TRACKS = {
     beginners: {
-      name: 'AI למתחילים', GROUP: 'https://chat.whatsapp.com/I0SqI1c2AC8K3RzFn9e6Np',
+      name: 'מאפס למאה', GROUP: 'https://chat.whatsapp.com/I0SqI1c2AC8K3RzFn9e6Np',
       date: '23/11 · יוצאים לדרך',
       when: 'המפגש הראשון ביום שני, י״ג בכסליו (23/11), בשעה 19:30 בזום. ממשיכים פעם בשבוע, ובחנוכה אין מפגש.'
     },
     advanced: {
-      name: 'AI למתקדמים', GROUP: 'https://chat.whatsapp.com/CMvfHZJGW9k2Fz6AbOf2dd',
+      name: 'צבא הסוכנים', GROUP: 'https://chat.whatsapp.com/CMvfHZJGW9k2Fz6AbOf2dd',
       date: '25/11 · יוצאים לדרך',
       when: 'המפגש הראשון ביום רביעי, ט״ו בכסליו (25/11), בשעה 19:30 בזום. ממשיכים פעם בשבוע, ובחנוכה אין מפגש.'
     }
@@ -489,24 +158,19 @@ footer p{color:rgba(255,255,255,.72)}
 
 </main>
 
-<!-- FOOTER -->
-<footer>
-  <p style="margin-bottom:16px"><a href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;background:#075e54;color:#fff;font-weight:800;padding:11px 22px;border-radius:100px;font-size:.95rem;text-decoration:none">💬 הצטרפו לקבוצת הטיפים בוואטסאפ</a></p>
-  <nav class="foot-legal-nav" aria-label="מסמכים משפטיים">
-    <h2>מסמכים משפטיים</h2>
-    <ul>
-      <li><a href="terms.html">תקנון האתר ותנאי רכישה</a></li>
-      <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
-      <li><a href="accessibility.html">הצהרת נגישות</a></li>
-      <li><a href="cancellation.html">ביטול עסקה</a></li>
-      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
-    </ul>
-  </nav>
-  <div class="foot-business">
-    <p><strong>SHWADRON.AI</strong> · יוחנן שבדרון · עוסק מורשה 203223078</p>
-    <p>yochanan@shwadron-ai.com · yochanan@shwadron-ai.com · <a href="https://wa.me/972528189921">052-818-9921</a></p>
+<footer class="site-foot">
+  <div class="wrap">
+    <img class="brand-foot" src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107" loading="lazy"/>
+    <nav aria-label="קישורים משפטיים">
+      <a href="index.html">כל המסלולים</a>
+      <a href="terms.html">תקנון</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="accessibility.html">הצהרת נגישות</a>
+      <a href="cancellation.html">ביטול עסקה</a>
+      <a href="#" data-consent-settings>הגדרות עוגיות</a>
+    </nav>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
   </div>
-  <p>© 2026 יוחנן שבדרון · SHWADRON.AI · כל הזכויות שמורות</p>
 </footer>
 
 <script>
@@ -525,5 +189,6 @@ document.addEventListener('DOMContentLoaded', function(){
   } catch(e){}
 });
 </script>
+<script src="assets/js/shw-motion.js" defer></script>
 </body>
 </html>

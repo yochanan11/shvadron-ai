@@ -3,21 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>תודה על הרכישה | SHWADRON.AI</title>
+<meta name="description" content="התשלום התקבל. מייל ההרשמה לאתר הקורסים נשלח לכתובת שהזנת בתשלום, ושם מחכים כל השיעורים והחומרים."/>
 <meta name="robots" content="noindex, nofollow"/>
-<title>תודה על הרכישה! הגישה נשלחה למייל | SHWADRON.AI</title>
-<meta name="description" content="הרכישה הושלמה. מלאו שם, טלפון ודוא״ל ונפתח לכם גישה מיידית לכל שיעורי הקורס ולחומרים הנלווים."/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap"/>
-<link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
-<link rel="stylesheet" href="assets/css/forms-a11y.css"/>
+<link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
+<link rel="stylesheet" href="assets/css/fonts.css"/>
+<link rel="stylesheet" href="assets/css/shw-2026.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
-
-<!-- ═══════════ ANALYTICS ═══════════
-     המזהים מוגדרים במקום אחד בלבד: assets/js/consent.js.
-     GA4 ו-Clarity נטענים רק לאחר אישור קטגוריית "סטטיסטיקה".
--->
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
 <script>
@@ -35,239 +28,96 @@
   } catch(e){}
 })();
 </script>
-
-<style>
-/* ═══════════════════════════════════════════════════════════
-   עמוד התודה של הקורס הדיגיטלי.
-   אותה שפה חזותית של course.html: נייבי 0a1a33, טורקיז 2edebf,
-   כחול 0063ed, Heebo לכותרות ו-Assistant לטקסט, פינה של 3px.
-   ═══════════════════════════════════════════════════════════ */
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --navy:#0a1a33; --navy-2:#0f2141; --teal:#2edebf; --blue:#0063ed;
-  --paper:#eff1f4; --white:#fff; --line:#d3d9e1; --muted:#5a6b85; --faint:#9aa6b8; --on-navy:#d3dceb; --on-navy-soft:#8fa2bf;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Assistant',var(--font-sans),system-ui,sans-serif;color:var(--navy);background:var(--paper);
-  direction:rtl;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased;line-height:1.6}
-img{display:block;max-width:100%}
-h1,h2,h3,.num,.btn{font-family:'Heebo',var(--font-sans),system-ui,sans-serif}
-main{flex:1}
-.wrap{max-width:1180px;margin:0 auto}
-
-/* ── כותרת עליונה ── */
-.top{background:var(--navy);padding:20px 72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.top img{height:38px;width:auto}
-.top-meta{display:flex;align-items:center;gap:28px;font-size:1rem;font-weight:600;color:var(--on-navy)}
-.top-meta a{color:var(--on-navy);text-decoration:none}
-.top-meta a:hover{color:#fff}
-.tag{display:flex;align-items:center;gap:9px;color:var(--teal)}
-.dot{display:block;width:8px;height:8px;border-radius:3px;background:var(--teal)}
-
-/* ── פס פתיחה כהה ── */
-.hero{background:var(--navy);padding:92px 72px 100px;color:#fff}
-.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
-.eyebrow .mark{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:3px;background:var(--teal);flex:none}
-.eyebrow .mark svg{width:18px;height:18px}
-.eyebrow span{font-family:'Heebo',sans-serif;font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--teal)}
-.hero h1{font-size:clamp(3.6rem,8vw,7rem);font-weight:900;line-height:.95;letter-spacing:-.02em;color:#fff}
-.hero h1 .dotend{color:var(--teal)}
-.hero-sub{display:flex;align-items:flex-end;gap:40px;margin-top:32px}
-.rule{flex:none;width:88px;height:4px;border-radius:3px;background:var(--teal);margin-bottom:14px}
-.hero-sub p{max-width:700px;font-size:1.4rem;line-height:1.55;color:var(--on-navy);text-wrap:pretty}
-
-/* ── גוף העמוד ── */
-.body-grid{padding:96px 72px 100px}
-.body-grid .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:start}
-.card{background:var(--white);border-radius:3px;box-shadow:rgba(10,26,51,.14) 0 30px 60px -34px;padding:44px 40px 40px}
-.card h2{font-size:2rem;font-weight:900;line-height:1.2;margin-bottom:6px}
-.card .lead{font-size:1.06rem;color:var(--muted);margin-bottom:32px}
-
-form{display:flex;flex-direction:column;gap:22px;text-align:right}
-.field label{display:block;font-family:'Heebo',sans-serif;font-size:.94rem;font-weight:700;color:var(--navy);margin-bottom:7px}
-.field .req{color:var(--blue)}
-.field input{width:100%;font-family:inherit;font-size:1rem;padding:13px 14px;border:.8px solid var(--line);border-radius:3px;
-  background:var(--white);color:var(--navy);transition:border-color .12s cubic-bezier(.4,0,.2,1),box-shadow .12s cubic-bezier(.4,0,.2,1)}
-.field input:focus{outline:none;border-color:var(--blue)}
-.field input::placeholder{color:var(--faint)}
-.check-row{margin:2px 0 0;font-size:.95rem;color:var(--muted)}
-.check-row b{color:var(--navy);font-weight:700}
-.btn{margin-top:6px;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:62px;
-  border:none;border-radius:3px;cursor:pointer;background:var(--teal);color:var(--navy);font-size:1.19rem;font-weight:800;
-  transition:background .12s cubic-bezier(.4,0,.2,1)}
-.btn:hover{background:#1fb99a}
-.btn:disabled{opacity:.55;cursor:default}
-.btn .arrow{font-size:1.3rem}
-.form-note{text-align:center;font-size:.9rem;color:var(--muted)}
-
-.side{display:flex;flex-direction:column;gap:36px}
-.side h3{font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--muted);margin-bottom:24px}
-.steps{display:flex;flex-direction:column;gap:24px}
-.step{display:flex;gap:20px;align-items:flex-start}
-.step .num{flex:none;font-size:2.5rem;font-weight:900;line-height:1;color:var(--blue)}
-.step h4{font-family:'Heebo',sans-serif;font-size:1.31rem;font-weight:800;color:var(--navy)}
-.step p{margin-top:4px;font-size:1.06rem;color:var(--muted)}
-
-.wa-box{background:var(--navy-2);border-radius:3px;padding:32px 30px;color:#fff}
-.wa-box .t{font-family:'Heebo',sans-serif;font-size:1.88rem;font-weight:900;line-height:1.15}
-.wa-box p{margin:12px 0 22px;font-size:1.06rem;color:var(--on-navy-soft)}
-.wa-btn{display:inline-flex;align-items:center;gap:11px;background:var(--teal);color:var(--navy);border-radius:3px;
-  font-family:'Heebo',sans-serif;font-size:1.06rem;font-weight:800;padding:15px 26px;text-decoration:none;
-  transition:background .12s cubic-bezier(.4,0,.2,1)}
-.wa-btn:hover{background:#1fb99a}
-.wa-btn svg{width:19px;height:19px;flex:none}
-
-/* ── גילוי הפרטים ── */
-.disclosure{background:var(--white);padding:72px 72px 76px}
-.disclosure h3{font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--muted);margin-bottom:26px}
-.disclosure ul{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 44px}
-.disclosure li{font-size:1rem;line-height:1.7;color:var(--muted)}
-.disclosure li b{color:var(--navy);font-weight:700}
-.disclosure a{color:var(--blue);text-underline-offset:3px}
-
-/* ── מסך האישור ── */
-.success{display:block}
-.success .hero .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:center}
-.done-card{background:var(--white);border-radius:3px;box-shadow:rgba(0,0,0,.6) 0 40px 80px -40px;padding:44px 40px 40px;color:var(--navy)}
-.done-card .k{font-family:'Heebo',sans-serif;font-size:.94rem;font-weight:800;letter-spacing:.14em;color:var(--muted)}
-.done-card .mail{margin-top:12px;padding-bottom:24px;border-bottom:.8px solid var(--line);
-  font-family:'Heebo',sans-serif;font-size:1.63rem;font-weight:800;direction:ltr;text-align:right;word-break:break-all}
-.done-list{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:16px}
-.done-list li{display:flex;gap:12px;align-items:flex-start;font-size:1.06rem;line-height:1.65;color:var(--muted)}
-.done-list li::before{content:"";flex:none;width:8px;height:8px;border-radius:3px;background:var(--teal);margin-top:10px}
-.done-wa{margin-top:30px;padding-top:26px;border-top:.8px solid var(--line)}
-.done-wa .t{font-family:'Heebo',sans-serif;font-size:1.19rem;font-weight:800;margin-bottom:16px}
-body.done .form-state{display:none}
-body.done .success{display:block}
-
-/* ── פוטר ── */
-.foot{background:var(--navy-2);padding:56px 72px;color:var(--on-navy-soft)}
-.foot .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:48px;flex-wrap:wrap}
-.foot nav ul{list-style:none;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:1rem;font-weight:600}
-.foot a{color:var(--teal);text-decoration:none}
-.foot a:hover{color:#fff}
-.foot-biz{text-align:left;display:flex;flex-direction:column;gap:6px;font-size:.94rem}
-.foot-biz .strong{color:#fff;font-weight:700}
-
-.skip{position:absolute;right:-9999px;top:0;background:var(--teal);color:var(--navy);padding:12px 18px;font-weight:800;z-index:99}
-.skip:focus{right:12px;top:12px}
-
-/* ── רספונסיבי ── */
-@media(max-width:1000px){
-  .top,.hero,.body-grid,.disclosure,.foot{padding-left:28px;padding-right:28px}
-  .body-grid .wrap,.success .hero .wrap{grid-template-columns:1fr;gap:40px}
-  .disclosure ul{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:640px){
-  .top{padding:14px 20px}
-  .top img{height:30px}
-  .top .tag{display:none}
-  .hero{padding:44px 20px 48px}
-  .hero h1{font-size:4rem}
-  .hero-sub{display:block;margin-top:22px}
-  .rule{width:72px;margin:0 0 18px}
-  .hero-sub p{font-size:1.13rem}
-  .body-grid{padding:28px 16px 32px}
-  .card{padding:28px 20px 26px}
-  .card h2{font-size:1.56rem}
-  .disclosure{padding:34px 20px 36px}
-  .disclosure ul{grid-template-columns:1fr}
-  .foot{padding:28px 20px 32px}
-  .foot .wrap{flex-direction:column;gap:16px}
-  .foot-biz{text-align:right}
-  .done-card{padding:28px 20px 26px}
-}
-.done-next{margin-top:22px;padding:18px 20px;border:1px solid #cfe0f7;background:#f3f8ff;border-radius:3px;display:flex;flex-direction:column;gap:8px}
-.done-next .t{font-weight:800;font-size:1.06rem}
-.done-next p{margin:0;font-size:.95rem;line-height:1.6;opacity:.85}
-.done-next a{color:var(--blue);font-weight:800;text-decoration:none}
-.done-next a:hover{text-decoration:underline}
-.site-btn{display:inline-flex;align-items:center;gap:10px;margin-top:14px;background:#fff;border:1.5px solid #d6dbe4;color:#141824;font-weight:800;padding:12px 20px;border-radius:100px;text-decoration:none}
-.site-btn:hover{border-color:#4285F4}
-.site-note{margin:10px 0 0;font-size:.95rem;color:var(--muted)}
-</style>
 </head>
 <body>
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<header class="top">
-  <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="190" height="38"/>
-  <div class="top-meta">
-    <a href="https://wa.me/972528189921">052-818-9921</a>
-    <span class="tag"><span class="dot" aria-hidden="true"></span>קורס AI דיגיטלי</span>
+<header class="site-head">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="SHWADRON.AI, חזרה לדף הבית"><img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/></a>
+    <span class="small">התשלום התקבל</span>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- הגישה נשלחת אוטומטית למייל מיד אחרי התשלום, ולכן אין כאן טופס -->
-  <div class="success" role="status">
-    <section class="hero">
-      <div class="wrap">
-        <div>
-          <div class="eyebrow">
-            <span class="mark" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-            </span>
-            <span>התשלום התקבל בהצלחה</span>
-          </div>
-          <h1>תודה<span class="dotend">.</span></h1>
-          <div class="hero-sub">
-            <div class="rule" aria-hidden="true"></div>
-            <p>הגישה לקורס כבר בדרך אליך. מייל הרשמה לאתר הקורסים נשלח אוטומטית לכתובת שהזנת בתשלום, ושם מחכים כל השיעורים והחומרים.</p>
-          </div>
-        </div>
-
-        <div class="done-card">
-          <div class="k">אתר הקורס שלכם</div>
-          <a class="site-btn" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h5.9a5 5 0 0 1-2.2 3.3v2.7h3.6c2.1-1.9 3.3-4.8 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.6-2.7c-1 .7-2.2 1-3.7 1-2.8 0-5.2-1.9-6.1-4.5H2.2v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.9 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.2a11 11 0 0 0 0 9.8l3.7-2.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3 .6 4.1 1.6l3.1-3.1A11 11 0 0 0 2.2 7.1l3.7 2.8C6.8 7.3 9.2 5.4 12 5.4z"/></svg> כניסה לאתר הקורסים</a>
-          <p class="site-note">נכנסים עם כתובת המייל שהזנתם בתשלום, או פשוט עם חשבון גוגל.</p>
-          <div class="k" style="margin-top:26px">לא רואים את מייל ההרשמה?</div>
-          <ul class="done-list">
-            <li><span><b>בדקו בתיקיית הספאם</b> ובלשונית "קידומי מכירות". לפעמים המייל הראשון מגיע לשם.</span></li>
-            <li><span>חיפוש בתיבת המייל לפי <b>SHWADRON</b> או <b>יוחנן שבדרון</b> בדרך כלל מוצא אותו מיד.</span></li>
-            <li><span>עדיין אין? כתבו לנו בוואטסאפ ל־<a href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%9B%D7%A9%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%20%D7%95%D7%9C%D7%90%20%D7%A7%D7%99%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%99%D7%99%D7%9C%20%D7%94%D7%92%D7%99%D7%A9%D7%94" target="_blank" rel="noopener">052-818-9921</a>, ונשלח לכם את הקישור ידנית.</span></li>
-          </ul>
-          <div class="done-next">
-            <div class="t">רוצים להמשיך משם?</div>
-            <p>בקורסים החיים בזום לומדים יחד, שואלים בזמן אמת ובונים. מסלול המתקדמים מלמד לבנות סוכנים, אוטומציות ותוכנות בלי לדעת תכנות.</p>
-            <a href="course-advanced.html">למסלול המתקדמים ←</a>
-            <a href="index.html#tracks">לכל המסלולים בזום ←</a>
-          </div>
-          <div class="done-wa">
-            <div class="t">בינתיים, בואו לקבוצת הטיפים</div>
-            <a class="wa-btn" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#0a1a33" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/></svg>
-              לקבוצת הוואטסאפ
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+<section id="top" style="padding-top:clamp(56px,8vw,96px)">
+  <div class="wrap stack">
+    <p class="done-mark" aria-hidden="true">
+      <svg viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="18" stroke="currentColor" stroke-width="2"/><path d="M11 19.5L16.5 25L27 13" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </p>
+    <p class="eyebrow">המוח השני · התשלום התקבל</p>
+    <h1>תודה.</h1>
+    <p class="lead">הגישה לקורס כבר בדרך אליך. מייל ההרשמה לאתר הקורסים נשלח אוטומטית לכתובת שהזנת בתשלום, ושם מחכים כל השיעורים והחומרים.</p>
+    <div>
+      <a class="btn btn-primary" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener">כניסה לאתר הקורסים ←</a>
+    </div>
+    <p class="small">נכנסים עם כתובת המייל שהזנת בתשלום, או פשוט עם חשבון גוגל.</p>
   </div>
+  <svg aria-hidden="true" viewBox="0 0 1440 220" preserveAspectRatio="none" class="arc">
+    <path d="M-40 220 Q720 -40 1480 220" fill="none" stroke="var(--accent)" stroke-opacity=".55" stroke-width="1.5"/>
+    <path d="M-40 220 Q720 10 1480 220" fill="none" stroke="#F4F4F1" stroke-opacity=".08" stroke-width="1"/>
+  </svg>
+</section>
+
+<section class="sec" id="help">
+  <div class="wrap stack">
+    <p class="eyebrow">01 · לא רואה את מייל ההרשמה</p>
+    <h2 class="h-sm">שלוש בדיקות.</h2>
+    <div class="grid-3">
+      <div class="rule-top">
+        <h3 class="card-title">תיקיית הספאם</h3>
+        <p class="body">בדוק גם בלשונית קידומי מכירות. לפעמים המייל הראשון מגיע לשם.</p>
+      </div>
+      <div class="rule-top">
+        <h3 class="card-title">חיפוש בתיבה</h3>
+        <p class="body">חיפוש לפי SHWADRON או יוחנן שבדרון בדרך כלל מוצא אותו מיד.</p>
+      </div>
+      <div class="rule-top">
+        <h3 class="card-title">עדיין אין?</h3>
+        <p class="body">כתוב לי בוואטסאפ ל-<a href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%A8%D7%9B%D7%A9%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99%20%D7%95%D7%9C%D7%90%20%D7%A7%D7%99%D7%91%D7%9C%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%9E%D7%99%D7%99%D7%9C%20%D7%94%D7%92%D7%99%D7%A9%D7%94" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">052-818-9921</a> ואשלח את הקישור ידנית.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-2">
+  <div class="wrap stack">
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line)">
+      <div>
+        <b>רוצה להמשיך משם?</b>
+        <p>בקורסים החיים בזום לומדים יחד, שואלים בזמן אמת ובונים. צבא הסוכנים מלמד לבנות סוכנים ואוטומציות בלי לדעת לתכנת.</p>
+      </div>
+      <a class="btn btn-ghost" href="course-advanced.html">לצבא הסוכנים ←</a>
+    </div>
+    <div class="cta-box" style="background:none;border:1px dashed var(--line)">
+      <div>
+        <b>בינתיים, בוא לקבוצת הטיפים</b>
+        <p>טיפים קצרים על AI, בלי ספאם ובלי התחייבות.</p>
+      </div>
+      <a class="btn btn-ghost" href="https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo" target="_blank" rel="noopener">לקבוצת הוואטסאפ ←</a>
+    </div>
+  </div>
+</section>
 
 </main>
 
-<footer class="foot">
+<footer class="site-foot">
   <div class="wrap">
-    <nav aria-label="מסמכים משפטיים">
-      <ul>
-        <li><a href="terms.html">תקנון ותנאי רכישה</a></li>
-        <li><a href="privacy.html">מדיניות פרטיות ועוגיות</a></li>
-        <li><a href="accessibility.html">הצהרת נגישות</a></li>
-        <li><a href="cancellation.html">ביטול עסקה</a></li>
-        <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
-      </ul>
+    <img class="brand-foot" src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107" loading="lazy"/>
+    <nav aria-label="קישורים משפטיים">
+      <a href="index.html">כל המסלולים</a>
+      <a href="terms.html">תקנון</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="accessibility.html">הצהרת נגישות</a>
+      <a href="cancellation.html">ביטול עסקה</a>
+      <a href="#" data-consent-settings>הגדרות עוגיות</a>
     </nav>
-    <div class="foot-biz">
-      <div class="strong">יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></div>
-      <div>yochanan@shwadron-ai.com</div>
-      <div>© 2026 SHWADRON.AI · כל הזכויות שמורות</div>
-    </div>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
   </div>
 </footer>
 
-
+<script src="assets/js/shw-motion.js" defer></script>
 </body>
 </html>
