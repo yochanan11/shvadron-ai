@@ -124,7 +124,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .fig{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:clamp(44px,5.5vw,60px);line-height:1}
 .fig-label{font-size:15px;color:var(--muted)}
 /* מספר עם + נכתב משמאל לימין, אבל חייב להתיישר לימין כמו התווית שלו, אחרת הוא נצמד למספר של התא הסמוך */
-.fig.ltr{text-align:right}
+.fig.ltr,.step-n.ltr{text-align:right}
 
 /* ── כרטיסים ─────────────────────────────────────────────── */
 .card{background:var(--card);border:1px solid var(--line);border-radius:24px;
@@ -514,3 +514,9 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 @media(prefers-reduced-motion:reduce){
   .scroll-bar{display:none}
 }
+
+/* דף העסקים: ההמלצה וצילום ההודעה זה לצד זה, והשדה של שם העסק לכל הרוחב */
+.biz-proof{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:start}
+.biz-proof .shot{max-width:380px}
+.gift-fields .biz-wide{grid-column:1 / -1}
+@media (max-width:760px){.biz-proof{grid-template-columns:1fr}.biz-proof .shot{max-width:none}}

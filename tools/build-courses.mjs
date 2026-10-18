@@ -512,6 +512,10 @@ const BLOCKS = {
     ld:       () => jsonLd(BEGINNERS),
     webinar:  () => webinar({ ctaHref: '#buy' }),
   },
+  // דף העסקים: רק רצועת הלוגואים, כמו בדף הבית.
+  'business.html': {
+    logos: hubLogos,
+  },
   // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.
   'course.html': {
     webinar: () => webinar({ ctaHref: '#buy', ctaText: 'אני רוצה להתחיל ללמוד' }),

@@ -6,9 +6,10 @@ const COURSES = {
   'course-beginners.html': 'AI למתחילים (זום)',
   'course-advanced.html':  'AI למתקדמים (זום)',
   'course.html':           'הקורס הדיגיטלי',
+  'business.html':         'הטמעה בעסקים',
 };
 
-// טופס "הוובינר במתנה": שומר שם, טלפון והסכמה לדיוור ברשימה "leads"
+// טופס "הוובינר במתנה" וטופס הפנייה בדף העסקים: שומר שם, טלפון והסכמה לדיוור ברשימה "leads"
 // ב-Vercel KV. דף הניהול admin-leads.html קורא מאותה רשימה.
 // הוובינר נפתח בדפדפן גם אם השמירה נכשלה, כדי לא להעניש את הגולש.
 module.exports = async (req, res) => {
@@ -23,6 +24,8 @@ module.exports = async (req, res) => {
   const phone = String(b.phone || '').replace(/[^\d+]/g, '').slice(0, 20);
   const page  = String(b.page || '').trim().slice(0, 60);
   const consent = b.consent === true;
+  // רק בטופס העסקים: שם העסק, מוצג בדף הניהול לצד הדף שממנו הגיעה הפנייה
+  const company = String(b.company || '').trim().slice(0, 80);
 
   // טלפון ישראלי: 05X-XXXXXXX, או עם קידומת 972
   const local = phone.replace(/^\+?972/, '0');
@@ -30,7 +33,7 @@ module.exports = async (req, res) => {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
-  const course = COURSES[page] || COURSES['index.html'];
+  const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '');
   const lead = { name, phone: local, consent, course, page, ts: new Date().toISOString() };
   try {
     await kvRequest(['RPUSH', 'leads', JSON.stringify(lead)]);
