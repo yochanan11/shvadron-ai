@@ -3,37 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>AI למתקדמים · תשעה מפגשי זום | SHWADRON.AI</title>
-<meta name="description" content="תשעה מפגשי זום חיים, 18 שעות: בניית סוכני AI ועבודה עם Projects, אוטומציות עם Make, ובניית תוכנות עם Claude Code ו-Codex ללא ידע בתכנות, ופרויקט AI אישי שמתכננים ובונים לאורך הקורס."/>
-<meta name="keywords" content="AI למתקדמים, סוכני AI, אוטומציות Make, Claude Code, Codex, בניית תוכנה בלי קוד, יוחנן שבדרון"/>
+<title>צבא הסוכנים · תשעה מפגשים חיים בזום | SHWADRON.AI</title>
+<meta name="description" content="תשעה מפגשים חיים שבהם מתרגלים לבנות סוכני AI ואוטומציות שלוקחים את העבודה החוזרת מהידיים, בלי לדעת לתכנת, ולאורך הדרך פרויקט AI אישי."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://www.shwadron-ai.com/course-advanced.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.shwadron-ai.com/course-advanced.html"/>
-<meta property="og:title" content="AI למתקדמים · תשעה מפגשי זום | SHWADRON.AI"/>
-<meta property="og:description" content="סוכני AI, אוטומציות ובניית תוכנות עם AI. תשעה מפגשים חיים, ופרויקט AI אישי שבונים לאורך הקורס."/>
+<meta property="og:title" content="צבא הסוכנים · תשעה מפגשים חיים בזום | SHWADRON.AI"/>
+<meta property="og:description" content="אתה מפקד, והם עובדים. סוכנים ואוטומציות שרצים לבד, לעסק שלך או לקידום שלך בעבודה."/>
 <meta property="og:image" content="https://www.shwadron-ai.com/assets/public/yochanan-card.jpg"/>
 <meta property="og:locale" content="he_IL"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
-<link rel="stylesheet" href="assets/css/site-legal.css"/>
-<link rel="stylesheet" href="assets/css/forms-a11y.css"/>
+<link rel="stylesheet" href="assets/css/fonts.css"/>
+<link rel="stylesheet" href="assets/css/shw-2026.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap"/>
-<link rel="stylesheet" href="assets/css/courses.css"/>
-
-<!-- ═══════════ ANALYTICS ═══════════
-     המזהים של GA4 ו-Clarity מוגדרים בתוך assets/js/consent.js, וזה המקום
-     היחיד שצריך לגעת בו. הסקריפטים נטענים אך ורק אחרי שהגולש אישר את
-     קטגוריית "סטטיסטיקה" בהודעת העוגיות.
--->
+<link rel="stylesheet" href="assets/css/gift.css"/>
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
-
+<script src="assets/js/gift.js" defer></script>
 <!-- BUILD:ld -->
   <script type="application/ld+json" id="course-ld">
   {
@@ -72,209 +61,125 @@
   }
   </script>
   <!-- /BUILD:ld -->
-<link rel="stylesheet" href="assets/css/gift.css"/>
-<script src="assets/js/gift.js" defer></script>
 </head>
 <body>
-<script>document.documentElement.className += ' js';</script>
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<!-- פס הדחיפות. פס המבצע מוצג רק עד data-until (כולל, שעון ישראל) ורק אם
-     הקוד שעליו תקף ב-/api/coupon, ואחרי התאריך מתחלף מעצמו בפס הקבוע.
-     הקוד ב-data-code חייב להיות זהה לקופון שהוגדר ב-admin-coupons.html -->
 <div class="promo-bar" data-until="2026-10-19" data-pct="10" data-code="KISLEV10" hidden>
-  <p><span aria-hidden="true">&#9203;</span> <b>ההנחה נגמרת ביום שני 19.10 בחצות</b> &middot; מתחילים 796.50 ₪ במקום 885 ₪ &middot; מתקדמים 2,655 ₪ במקום 2,950 ₪ <span class="promo-left" data-promo-fill="left"></span></p>
-  <a href="#buy">לשריין מקום &#8592;</a>
+  <p><b>ההנחה נגמרת ביום שני 19.10 בחצות</b> · 2,655 ₪ במקום 2,950 ₪ <span class="promo-left" data-promo-fill="left"></span></p>
+  <a href="#buy">לשריין מקום ←</a>
 </div>
 <div class="promo-bar promo-ever" data-promo-else hidden>
-  <p><span aria-hidden="true">&#128101;</span> <b>מחזור כסליו</b> &middot; עד 20 איש בקבוצה &middot; נפתח ב-23.11</p>
-  <a href="#buy">לשריין מקום &#8592;</a>
+  <p><b>מחזור נובמבר</b> · נשארו 11 מקומות מתוך 20 · נפתח ב-25.11</p>
+  <a href="#buy">לשריין מקום ←</a>
 </div>
 
 <!-- הטבת בוגרים: מוצגת רק למי שהגיע מהקישור /alumni (?offer=alumni).
      המחיר נלקח מהקופון "בוגרים" בדף הקופונים, ומוצג רק כשהוא מוגדר. -->
 <div class="promo-bar alumni-bar" data-code="בוגרים" hidden>
   <p class="alumni-on" hidden><b>הטבת בוגרים:</b> 20% הנחה למי שכבר למד אצלנו · <b data-alumni="total"></b> במקום <s data-alumni="regular"></s> · חוסכים <span data-alumni="save"></span></p>
-  <p class="alumni-off" hidden><b>ברוכים השבים!</b> לפרטים על הטבת הבוגרים במסלול המתקדמים, כתבו לי בוואטסאפ</p>
+  <p class="alumni-off" hidden><b>ברוכים השבים!</b> לפרטים על הטבת הבוגרים, כתבו לי בוואטסאפ</p>
   <a class="alumni-on" href="#buy" hidden>למחיר הבוגרים ←</a>
-  <a class="alumni-off" href="https://wa.me/972528189921?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%91%D7%95%D7%92%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%98%D7%91%D7%AA%20%D7%94%D7%91%D7%95%D7%92%D7%A8%D7%99%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D" target="_blank" rel="noopener" hidden>לוואטסאפ ←</a>
+  <a class="alumni-off" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D%20(%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%9B%D7%A1%D7%9C%D7%99%D7%95)" target="_blank" rel="noopener" hidden>לוואטסאפ ←</a>
 </div>
 
-<header class="site-header">
-  <a href="index.html" class="logo"><img src="assets/public/logo.png" alt="SHWADRON.AI, חזרה לדף הבית" width="190" height="38"/></a>
-  <nav class="nav" aria-label="ניווט בעמוד">
-    <a href="#shift">מה משתנה</a>
-    <a href="#lessons">מה לומדים</a>
-    <a href="#project">הפרויקט האישי</a>
-    <a href="#offer">המחיר</a>
-    <a href="#faq">שאלות</a>
-    <a href="course-beginners.html">AI למתחילים</a>
-  </nav>
-  <div class="hdr-side">
-    <a class="hdr-tel" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D%20(%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%9B%D7%A1%D7%9C%D7%99%D7%95)" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>052-818-9921</a>
-    <a class="btn btn-sm" data-join href="#buy">לשריין מקום</a>
+<header class="site-head">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="SHWADRON.AI, חזרה לדף הבית"><img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/></a>
+    <nav class="site-nav" aria-label="ניווט בעמוד">
+      <a href="#shift">מה משתנה</a>
+      <a href="#lessons">מה לומדים</a>
+      <a href="#project">הפרויקט האישי</a>
+      <a href="#employers">מעסיקים</a>
+      <a href="#buy">המחיר</a>
+      <a href="#faq">שאלות</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-join href="#buy">שריין מקום</a>
   </div>
 </header>
-
-<nav class="crumbs" aria-label="מיקום בעמוד">
-  <a href="index.html">הקורסים בזום</a><span aria-hidden="true">›</span>AI למתקדמים
-</nav>
 
 <main id="main">
 
 <!-- ===== HERO ===== -->
-<section class="hero grain">
-  <div class="glow-b" aria-hidden="true"></div>
-  <div class="glow-t" aria-hidden="true"></div>
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow teal rise"><span class="live-dot" aria-hidden="true"></span> מחזור כסליו · ההרשמה פתוחה</p>
-      <h1 class="hero-title rise-2">עוד עובד בעסק.<br/><span class="ghost">בלי עוד</span><br/>משכורת.</h1>
-      <span class="hero-rule rise-3" aria-hidden="true"></span>
-      <p class="hero-lead rise-3">תשעה מפגשים שבהם מתרגלים לבנות סוכנים ואוטומציות שלוקחים את העבודה החוזרת מהידיים, ולאורך הדרך מתכננים ובונים פרויקט AI אישי, עם תרגול והכוונה.</p>
-      <p class="hero-lead rise-3" style="font-size:1rem">בלי לדעת לתכנת · מיום רביעי <b>25.11</b> · 19:30-21:30 · 9 מפגשים · גם באינטרנט מסונן · עד 20 איש בקבוצה</p>
-      <div class="hero-cta rise-4">
-        <a class="btn btn-lg" data-join href="#buy">לשריין מקום</a>
-        <p class="hero-price">
-          <b data-has-price><s class="js-regular" data-promo-row hidden></s> <span class="js-price-total">2,950 ₪</span> <span>כולל מע״מ</span></b>
-          <small data-has-price>או 3 תשלומים של כ-<span class="js-price-pmt">983 ₪</span> · לבוגרי המתחילים יש 20% הנחה</small>
-          <small data-promo hidden>ההנחה נגמרת ביום שני 19.10 בחצות</small>
-        </p>
+<section id="top" style="padding-top:clamp(56px,8vw,96px)">
+  <div class="wrap stack">
+    <p class="eyebrow">זום חי · מתקדמים, לעבודה ולעסק</p>
+    <h1>צבא<br/><span class="on-accent">הסוכנים.</span></h1>
+    <p class="lead">אתה מפקד, והם עובדים. תשעה מפגשים שבהם מתרגלים לבנות סוכנים ואוטומציות שלוקחים את העבודה החוזרת מהידיים, ולאורך הדרך מתכננים ובונים פרויקט AI אישי.</p>
+    <ul class="ticks" style="flex-direction:row;flex-wrap:wrap;gap:10px 28px">
+      <li>בלי לדעת לתכנת</li>
+      <li>עובד באינטרנט מסונן</li>
+      <li class="ltr" dir="rtl">1,500 בוגרים</li>
+    </ul>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+      <a class="btn btn-primary" data-join href="#buy">שריין מקום במחזור</a>
+      <p class="buy-pmt" style="margin:0">
+        <span class="js-price-total">2,950 ₪</span>
+        <span style="font-weight:400;color:var(--muted)"> או 3 תשלומים של כ-<span class="js-price-pmt">983 ₪</span></span>
+      </p>
+    </div>
+    <p class="body" style="margin-top:4px">מיום רביעי <b style="color:var(--ink)">25.11</b> · 19:30 עד 21:30 · 9 מפגשים · לבוגרי מאפס למאה יש 20% הנחה</p>
+  </div>
+  <svg aria-hidden="true" viewBox="0 0 1440 220" preserveAspectRatio="none" class="arc">
+    <path d="M-40 220 Q720 -40 1480 220" fill="none" stroke="var(--accent)" stroke-opacity=".55" stroke-width="1.5"/>
+    <path d="M-40 220 Q720 10 1480 220" fill="none" stroke="#F4F4F1" stroke-opacity=".08" stroke-width="1"/>
+  </svg>
+</section>
+
+<!-- ===== מה משתנה ===== -->
+<section class="sec" id="shift">
+  <div class="wrap stack">
+    <p class="eyebrow">01 · מה משתנה אצלך</p>
+    <h2 class="h-sm">לפני. ואחרי.</h2>
+    <div class="grid">
+      <div class="card">
+        <p class="card-kicker">לפני</p>
+        <ul class="ticks" style="color:var(--muted)">
+          <li style="--x:1">מסביר לכלי כל פעם מי אתה ומה התחום שלך</li>
+          <li>עושה ביד תהליכים שחוזרים על עצמם כל שבוע</li>
+          <li>מעתיק מידע ידנית בין טופס, גיליון, מייל ויומן</li>
+          <li>מתפשר על כלי שכמעט עושה את מה שצריך</li>
+        </ul>
       </div>
-      <p class="guar on-dark rise-4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>אחרי השיעור הראשון לא מתאים לך? מחזירים לך את כל הכסף.</p>
-      <p class="hero-proof rise-4">״כבר יש לי מעל 20 סוכנים, ואני מרגיש שהעבודה שלי התקצרה בשעתיים״ <cite>בוגר אחד המחזורים הראשונים של הקורס · מתוך 1,500 בוגרים</cite></p>
-      <p class="hero-lead rise-4" style="font-size:1rem">יוחנן שבדרון · מרצה חרדי · 1,500+ בוגרים · 30+ קורסים</p>
+      <div class="card is-featured">
+        <p class="card-kicker">מה תתרגל לבנות</p>
+        <ul class="ticks">
+          <li>סוכן שמכיר את התחום ואת הסגנון שלך</li>
+          <li>אוטומציה ב-Make לתהליך שחוזר על עצמו</li>
+          <li>חיבור בין מערכות במקום העתקה ידנית</li>
+          <li>כלי קטן שחסר לך, גם בלי לדעת קוד</li>
+        </ul>
+      </div>
     </div>
-    <figure class="hero-portrait rise-2">
-      <div class="sticker" data-promo hidden aria-label="10% הנחת רישום מוקדם עד 19 באוקטובר"><b>10%</b><span>הנחת רישום<br/>מוקדם</span><small>עד 19/10</small></div>
-      <div class="plate" aria-hidden="true"></div>
-      <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון" width="900" height="1350"/>
-      <div class="fade" aria-hidden="true"></div>
-      <div class="chip" aria-hidden="true"></div>
-      <figcaption><b>יוחנן שבדרון</b><span>בן הציבור החרדי-חסידי<br/>בוגר מדעי המחשב · התמחות ב-AI<br/>הטמעות במשרדי ממשלה וב-30+ עסקים</span></figcaption>
-    </figure>
-  </div>
-  <a class="scroll-cue" href="#shift" aria-label="גלילה להמשך הדף"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg></a>
-</section>
-
-<!-- ===== רצועה נעה ===== -->
-<!-- BUILD:marquee -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <div><span>נפתח ט״ו בכסליו</span><i>/</i><span>9 מפגשי זום חיים</span><i>/</i><span>סוכני AI</span><i>/</i><span>Projects</span><i>/</i><span>אוטומציות ב-Make</span><i>/</i><span>Claude Code</span><i>/</i><span>Codex</span><i>/</i><span>פרויקט אישי</span><i>/</i><span>נפתח ט״ו בכסליו</span><i>/</i><span>9 מפגשי זום חיים</span><i>/</i><span>סוכני AI</span><i>/</i><span>Projects</span><i>/</i><span>אוטומציות ב-Make</span><i>/</i><span>Claude Code</span><i>/</i><span>Codex</span><i>/</i><span>פרויקט אישי</span><i>/</i><span>נפתח ט״ו בכסליו</span><i>/</i><span>9 מפגשי זום חיים</span><i>/</i><span>סוכני AI</span><i>/</i><span>Projects</span><i>/</i><span>אוטומציות ב-Make</span><i>/</i><span>Claude Code</span><i>/</i><span>Codex</span><i>/</i><span>פרויקט אישי</span><i>/</i></div>
-      <div><span>נפתח ט״ו בכסליו</span><i>/</i><span>9 מפגשי זום חיים</span><i>/</i><span>סוכני AI</span><i>/</i><span>Projects</span><i>/</i><span>אוטומציות ב-Make</span><i>/</i><span>Claude Code</span><i>/</i><span>Codex</span><i>/</i><span>פרויקט אישי</span><i>/</i><span>נפתח ט״ו בכסליו</span><i>/</i><span>9 מפגשי זום חיים</span><i>/</i><span>סוכני AI</span><i>/</i><span>Projects</span><i>/</i><span>אוטומציות ב-Make</span><i>/</i><span>Claude Code</span><i>/</i><span>Codex</span><i>/</i><span>פרויקט אישי</span><i>/</i><span>נפתח ט״ו בכסליו</span><i>/</i><span>9 מפגשי זום חיים</span><i>/</i><span>סוכני AI</span><i>/</i><span>Projects</span><i>/</i><span>אוטומציות ב-Make</span><i>/</i><span>Claude Code</span><i>/</i><span>Codex</span><i>/</i><span>פרויקט אישי</span><i>/</i></div>
+    <div class="card" style="text-align:center;align-items:center">
+      <p class="lead" style="font-weight:700;color:var(--ink)">אוטומציה אחת שחוסכת 3 שעות בשבוע היא יותר מ-150 שעות בשנה.</p>
+      <p class="body" style="margin-inline:auto">זה הזמן שהולך היום על העתקה בין מערכות, על אותן תשובות שחוזרות ועל טבלאות שמתעדכנות בידיים. מה שווה לך הזמן הזה, רק אתה יודע.</p>
+      <p class="small">חשבון להמחשה בלבד, ולא הבטחה לתוצאה. התוצאה בפועל תלויה בתהליכים שלך ובמה שתבנה.</p>
     </div>
   </div>
-  <!-- /BUILD:marquee -->
-
-
-<!-- ===== פס הוכחות ===== -->
-<section class="trust" aria-label="מי כבר למד כאן">
-  <p>בעלי עסקים שולחים אלינו את העובדים שלהם ללמוד.<span>כי עובד שיודע לבנות אוטומציה מספיק יותר בפחות זמן.</span></p>
-  <p>מעסיקים פונים אלינו ומבקשים את הבוגרים שלנו.<span>ידע ב-AI הפך לדרישה במודעות דרושים, לא ליתרון.</span></p>
-  <p class="trust-nums">1,500+ בוגרים · 30+ קורסים · הטמעות במשרדי ממשלה ובעסקים</p>
 </section>
-<!-- ===== רצועת מספרים ===== -->
-<section class="stats" aria-label="הקורס במספרים">
-  <div class="stats-grid">
-    <div class="stat"><b>9</b><span>מפגשים חיים בזום</span></div>
-    <div class="stat"><b>18</b><span>שעות לימוד ותרגול</span></div>
-    <div class="stat"><b>3</b><span>תחומים מרכזיים</span></div>
-    <div class="stat"><b class="teal">0</b><span>ידע בתכנות נדרש</span></div>
+
+<!-- ===== מספרים ===== -->
+<section class="sec sec-2">
+  <div class="wrap figures" style="border:0">
+    <div><span class="fig">9</span><span class="fig-label">מפגשים חיים בזום</span></div>
+    <div><span class="fig">18</span><span class="fig-label">שעות לימוד ותרגול</span></div>
+    <div><span class="fig">3</span><span class="fig-label">תחומים מרכזיים</span></div>
+    <div><span class="fig on-accent">0</span><span class="fig-label">ידע בתכנות נדרש</span></div>
   </div>
 </section>
 
-<!-- ===== הפער ===== -->
-<section class="shift sec-ice" id="shift">
-  <p class="eyebrow sr">הפער</p>
-  <h2 class="sec-title sr">מה משתנה אצלך בפועל.</h2>
-  <div class="cmp">
-    <div class="cmp-col sr">
-      <h3><i aria-hidden="true">✕</i>לפני המסלול</h3>
-      <ul>
-        <li>מסביר לכלי כל פעם מי אתה ומה התחום שלך</li>
-        <li>עושה ביד תהליכים שחוזרים על עצמם כל שבוע</li>
-        <li>מעתיק מידע ידנית בין טופס, גיליון, מייל ויומן</li>
-        <li>מתפשר על כלי שכמעט עושה את מה שצריך</li>
-        <li>ה-AI עונה לך, אבל לא עושה בשבילך</li>
-      </ul>
+<!-- ===== מה לומדים ===== -->
+<section class="sec" id="lessons">
+  <div class="wrap stack">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <p class="eyebrow">02 · מה לומדים</p>
+      <h2 class="h-sm">תשעה מפגשים.<br/><span class="ghost">שלושה תחומים.</span></h2>
+      <p class="body">פעם בשבוע, 19:30 עד 21:30, בזום עם תרגול חי. כל מפגש מוקלט ונשאר אצלך. חלוקת תשעת המפגשים בין התחומים תפורסם לפני פתיחת המחזור. בחנוכה אין מפגשים, וייתכנו שינויים במועדים ובשעות.</p>
     </div>
-    <div class="cmp-col after sr sr-2">
-      <h3><i aria-hidden="true">✓</i>מה תתרגלו לבנות</h3>
-      <ul>
-        <li>סוכן שמכיר את התחום ואת הסגנון שלך</li>
-        <li>אוטומציה ב-Make לתהליך שחוזר על עצמו</li>
-        <li>חיבור בין מערכות במקום העתקה ידנית</li>
-        <li>כלי קטן שחסר לך, גם בלי לדעת קוד</li>
-        <li>פרויקט AI אישי, ואיך לבדוק, לשפר ולהמשיך לפתח אותו בעצמך</li>
-      </ul>
-    </div>
-  </div>
-  <p class="pill-lead sr">דוגמאות למה שמתרגלים לבנות:</p>
-  <div class="pills sr sr-2">
-    <span>קליטת פניות מטופס</span>
-    <span>עדכון גיליון אוטומטי</span>
-    <span>מיילים יוצאים לפי תנאי</span>
-    <span>תיאום ביומן</span>
-    <span>סיכום ותיוק מסמכים</span>
-    <span>חיבור בין מערכות</span>
-    <span>כלי פנימי לעסק</span>
-    <span>סוכן לתחום מוגדר</span>
-  </div>
-</section>
-
-
-<!-- ===== חשבון פשוט ===== -->
-<section class="brief sec-paper" id="math">
-  <div class="math sr">
-    <b>אוטומציה אחת שחוסכת 3 שעות בשבוע היא יותר מ-150 שעות בשנה.</b>
-    <p>זה הזמן שהולך היום על העתקה בין מערכות, על אותן תשובות שחוזרות ועל טבלאות שמתעדכנות בידיים. מה שווה לך הזמן הזה, רק אתה יודע.</p>
-    <small>חשבון להמחשה בלבד, ולא הבטחה לתוצאה. התוצאה בפועל תלויה בתהליכים שלך ובמה שתבנה.</small>
-  </div>
-</section>
-<!-- ===== קופסת הקנייה ===== -->
-<section class="offer-sec" id="offer" aria-labelledby="offer-title">
-  <div class="offer-head">
-    <p class="eyebrow teal">מסלול מתקדמים · מחזור כסליו</p>
-    <h2 id="offer-title">לשריין מקום במחזור הקרוב.</h2>
-    <p>תשעה מפגשים חיים בזום, מיום רביעי 25.11, עד 20 איש בקבוצה.</p>
-  </div>
-  <div class="price-card">
-    <span class="lbl">מסלול מתקדמים · מחזור כסליו</span>
-    <div class="pd-price">
-      <b class="now"><span class="js-price-total">2,950 ₪</span></b>
-      <s class="was js-regular" data-promo-row hidden></s>
-      <span class="vat">כולל מע״מ &middot; בלי דמי טיפול ובלי תוספות</span>
-    </div>
-    <p class="pd-pmt">או 3 תשלומים של כ-<span class="js-price-pmt">983 ₪</span></p>
-      <ul class="incl">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>9 מפגשים חיים בזום, סה״כ 18 שעות</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>סוכני AI ועבודה נכונה עם Projects</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>אוטומציות ב-Make מאפס, מקצה לקצה</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Claude Code ו-Codex בלי לכתוב קוד</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>פרויקט AI אישי, עם תרגול והכוונה</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>הקלטות, קבוצת ליווי ותעודת סיום</li>
-      </ul>
-    <a class="btn btn-lg" data-join href="https://mrng.to/lEPor40mkA">לשריין מקום &middot; תשלום מאובטח</a>
-    <p class="pay-methods">אשראי &middot; ביט &middot; העברה בנקאית</p>
-    <p class="guar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>אחרי השיעור הראשון לא מתאים לך? מחזירים לך את כל הכסף.</p>
-    <p class="pd-deadline" data-promo hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ההנחה נגמרת ביום שני 19.10 בחצות</p>
-    <p class="pd-ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D%20(%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%9B%D7%A1%D7%9C%D7%99%D7%95)" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
-  </div>
-    <ol class="after-pay">
-      <li>מקבלים מייל ווואטסאפ עם אישור, תוך דקות.</li>
-      <li>מצטרפים לקבוצת המחזור בוואטסאפ.</li>
-      <li>יום לפני המפגש הראשון מגיע קישור לזום ותזכורת.</li>
-    </ol>
-</section>
-<!-- ===== המפגשים ===== -->
-<section class="lessons grain" id="lessons">
-  <div class="lessons-head">
-    <h2 class="sec-title sr">תשעה מפגשים.<br/><span class="ghost">שלושה תחומים.</span></h2>
-    <p class="sr sr-2">פותחים ביום רביעי, ט״ו בכסליו, וממשיכים פעם בשבוע בשעה 19:30 עד 21:30. כל מפגש הוא שעתיים בזום עם תרגול חי, ומי שמפספס מקבל את ההקלטה. בחנוכה אין מפגשים. חלוקת תשעת המפגשים בין שלושת התחומים תפורסם בהמשך, וייתכנו שינויים במועדים ובשעות.</p>
-  </div>
-  <!-- BUILD:syllabus -->
+    <div class="lessons">
+      <!-- BUILD:syllabus -->
   <article class="lesson">
     <span class="lesson-n ltr">01</span>
     <div>
@@ -324,11 +229,16 @@
     </div>
   </article>
   <!-- /BUILD:syllabus -->
+    </div>
+  </div>
 </section>
 
 <!-- ===== הפרויקט האישי ===== -->
-<section class="project sec-ice" id="project">
-  <!-- BUILD:project -->
+<section class="sec sec-2" id="project">
+  <div class="wrap stack">
+    <p class="eyebrow">03 · הפרויקט האישי</p>
+    <h2 class="h-sm">פרויקט אחד.<br/><span class="ghost">שלך.</span></h2>
+    <!-- BUILD:project -->
   <div class="card">
     <p class="card-kicker">פרויקט אישי</p>
     <p class="lead">לאורך הקורס תתכננו ותבנו פרויקט AI אישי, עם תרגול והכוונה, ותלמדו איך לבדוק, לשפר ולהמשיך לפתח אותו בעצמכם.</p>
@@ -343,151 +253,175 @@
     <p class="small">דוגמה: סוכן שנכנס לתיבת המייל, מאתר חשבוניות ומעדכן אותן בטבלה, בלי שנוגעים בזה. <a href="#webinar" style="color:var(--accent);text-decoration:underline">לצפייה בסרטון ←</a></p>
   </div>
   <!-- /BUILD:project -->
+    <div class="card" style="background:none;border-style:dashed">
+      <p class="card-kicker">כנות</p>
+      <p class="lead" style="color:var(--ink)">זה לא קסם. זו עבודה.</p>
+      <p class="body">בונים בידיים, נתקעים, מתקנים וממשיכים, עם מישהו שעוזר לך ברגע שנתקעת. לכן הקבוצה קטנה ולכן יש פרויקט אישי עם הכוונה. הקורס הוא הכשרה. הוא אינו שירות הטמעה בעסק ואינו כולל בניית מערכת עבור המשתתף.</p>
+    </div>
+  </div>
 </section>
 
-
-<!-- ===== כנות ===== -->
-<section class="brief sec-paper" id="honest">
-  <div class="math sr">
-    <b>זה לא קסם. זו עבודה.</b>
-    <p>בונים בידיים, נתקעים, מתקנים וממשיכים, עם מישהו שעוזר לך ברגע שנתקעת. לכן הקבוצה קטנה, לכן יש פרויקט אישי עם הכוונה, ולכן זה לא קורס של צפייה בלבד.</p>
-    <small>הקורס הוא הכשרה. הוא אינו שירות הטמעה בעסק ואינו כולל בניית מערכת עבור המשתתף.</small>
+<!-- ===== מעסיקים ===== -->
+<section class="sec light" id="employers">
+  <div class="wrap stack">
+    <p class="eyebrow">04 · מעסיקים</p>
+    <h2 class="h-sm">מעסיקים כבר פונים אלינו.<br/><span class="ghost">הם רוצים את הבוגרים.</span></h2>
+    <figure class="quote-card is-big">
+      <blockquote>״כמשרד יזמות נדל״ן, העובדים שלנו הם אנשי תכנון, כספים, שיווק וניהול פרויקטים. לא מתכנתים ולא אנשי טכנולוגיה. בתוך שישה מפגשים הבאת אותם למקום שבו הם לא רק משתמשים ב-AI אלא ממש מפתחים באמצעותו. נבנו אצלנו כלים ותוכנות ייעודיות למחלקות, מערכות לבקרה ולניהול ותהליכי עבודה אוטומטיים, דברים שלפני הקורס לא הייתי מעלה על דעתי שהעובדים שלנו יוכלו לבנות בעצמם.״</blockquote>
+      <figcaption>יענקי · משרד יזמות נדל״ן · על קורס בן שישה מפגשים שהועבר לצוות החברה</figcaption>
+    </figure>
+    <div class="grid">
+      <figure class="quote-card">
+        <blockquote>״היי יוחנן, אני מחפש עובד אצלי במשרד למשכנתאות. תמליץ לי על אחד שכבר עבר את הקורס.״</blockquote>
+        <figcaption>מ.ו. · מנכ״ל משרד למשכנתאות</figcaption>
+      </figure>
+      <figure class="quote-card">
+        <blockquote>״היי יוחנן, אנחנו מחפשים עובד שיוכל לעשות לנו מצגות מחומרים שאנחנו שולחים, שעבר את הקורס שלך.״</blockquote>
+        <figcaption>י.צ. · חוצות ירושלים</figcaption>
+      </figure>
+    </div>
+    <p class="small">הודעות שהגיעו לוואטסאפ של יוחנן. הפרטים המזהים צומצמו לראשי תיבות.</p>
+    <div class="cta-box">
+      <div>
+        <b>מחפשים עובד שיודע להפעיל AI?</b>
+        <p>דברו איתנו. נחבר אתכם לבוגרים המתאימים, או נכשיר את הצוות שלכם.</p>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%91%D7%A2%D7%9C%20%D7%A2%D7%A1%D7%A7%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%9C%D7%95%D7%97%20%D7%A2%D7%95%D7%91%D7%93%2F%D7%99%D7%9D%20%D7%9C%D7%9C%D7%9E%D7%95%D7%93.%20%D7%9B%D7%9E%D7%94%20%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%3A%20%5B%20%5D" target="_blank" rel="noopener">לדבר איתנו בוואטסאפ ←</a>
+    </div>
   </div>
 </section>
 
 <!-- ===== מהשטח ===== -->
-<section class="proof sec-ice" id="proof">
-  <h2 class="wall-title sr">אומרים עלינו</h2>
-  <p class="wall-sub sr">1,500 בוגרים · 30 מחזורים</p>
-  <p class="wall-sub sr">המסלול למתקדמים נפתח לראשונה במחזור הזה. אלה דברים שכתבו בוגרי הקורסים הקודמים שלנו.</p>
-  <div class="wall sr">
-    <a class="wall-tile" href="assets/public/assets/whatsapp-proofs/whatsapp-13.jpg" target="_blank" rel="noopener"><img src="assets/public/assets/whatsapp-proofs/whatsapp-13.jpg" alt="בוגר ממחזור ראשון של הקורס: יש לי מעל 20 סוכנים, והעבודה שלי התקצרה בשעתיים" loading="lazy"/></a>
-    <a class="wall-tile" href="assets/public/assets/whatsapp-proofs/whatsapp-05-blurred.webp" target="_blank" rel="noopener"><img src="assets/public/assets/whatsapp-proofs/whatsapp-05-blurred.webp" alt="בוגר הקורס: הקמתי עם GPT אתרים שהורידו ממני חצי מהעבודה, הכל עם הכללים שלמדנו" loading="lazy"/></a>
-    <a class="wall-tile" href="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp" target="_blank" rel="noopener"><img src="assets/public/assets/whatsapp-proofs/whatsapp-01-blurred.webp" alt="תומר בצלאל, בוגר הקורס החי: מורה שיודע להנגיש טכנולוגיה מורכבת בבהירות ובסבלנות" loading="lazy"/></a>
-    <a class="wall-tile" href="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp" target="_blank" rel="noopener"><img src="assets/public/assets/whatsapp-proofs/whatsapp-02-blurred.webp" alt="משתתף בקורס החי: גם עם ניסיון קודם ב-AI יצא עם ידע חדש ומעמיק" loading="lazy"/></a>
+<section class="sec" id="proof">
+  <div class="wrap stack">
+    <p class="eyebrow">05 · מהשטח</p>
+    <h2 class="h-sm">אומרים עלינו.</h2>
+    <p class="body">המסלול הזה נפתח לראשונה במחזור הנוכחי. אלה דברים שכתבו בוגרי הקורסים הקודמים שלנו.</p>
+    <div class="grid">
+      <a class="shot" href="assets/public/assets/whatsapp-proofs/whatsapp-13.jpg" target="_blank" rel="noopener">
+        <img src="assets/public/assets/whatsapp-proofs/whatsapp-13.jpg" alt="בוגר ממחזור ראשון של הקורס: יש לי מעל 20 סוכנים, והעבודה שלי התקצרה בשעתיים" loading="lazy"/>
+      </a>
+      <a class="shot" href="assets/public/assets/whatsapp-proofs/whatsapp-05-blurred.webp" target="_blank" rel="noopener">
+        <img src="assets/public/assets/whatsapp-proofs/whatsapp-05-blurred.webp" alt="בוגר הקורס: הקמתי עם GPT אתרים שהורידו ממני חצי מהעבודה, הכל עם הכללים שלמדנו" loading="lazy"/>
+      </a>
+      <a class="shot" href="assets/public/assets/whatsapp-proofs/whatsapp-09-blurred.webp" target="_blank" rel="noopener">
+        <img src="assets/public/assets/whatsapp-proofs/whatsapp-09-blurred.webp" alt="חיים, בעל עסק: אחרי סדרת ההרצאות וההטמעה העובדים מספיקים כמעט פי שניים וההכנסות הוכפלו" loading="lazy"/>
+      </a>
+    </div>
+    <p class="small">תגובות אמיתיות מהוואטסאפ. הפרטים המזהים טושטשו. לחיצה על תמונה פותחת אותה בגודל מלא.</p>
   </div>
-  <p class="wa-note sr">תגובות אמיתיות מהוואטסאפ. הפרטים המזהים טושטשו. לחיצה על תמונה פותחת אותה בגודל מלא.</p>
 </section>
 
-<!-- ===== הרשמה ===== -->
-<section class="buy-sec" id="buy" aria-labelledby="buy-title">
-  <div class="glow" aria-hidden="true"></div>
-  <div class="buy-grid" id="purchase-details">
-    <div class="buy-left">
-      <p class="eyebrow teal">הרשמה למסלול המתקדמים</p>
-      <h2 class="sec-title" id="buy-title">לשריין מקום<br/><span class="ghost">במחזור הקרוב.</span></h2>
-      <p>ההרשמה והתשלום נעשים ישירות מהדף, בתשלום מאובטח באשראי, או בהעברה בנקאית או ביט (בקשו ממני את הפרטים בוואטסאפ). אחרי התשלום מקבלים את פרטי המפגשים והקישור לזום. שאלות לפני? כתבו לי בוואטסאפ. עד 20 משתתפים במחזור, כדי שיישאר זמן לשאלות של כולם.</p>
-      <ul class="incl">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>9 מפגשי זום חיים, סה״כ 18 שעות</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>סוכני AI ועבודה נכונה עם Projects</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>אוטומציות ב-Make מאפס, מקצה לקצה</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Claude Code ו-Codex, ופרויקט AI אישי עם הכוונה</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>הקלטות מלאות וקבוצת ליווי בוואטסאפ</li>
+<!-- ===== מי מוביל ===== -->
+<section class="sec sec-2">
+  <div class="wrap founder">
+    <figure class="founder-photo">
+      <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון, מרצה ומטמיע בינה מלאכותית" width="900" height="1350" loading="lazy"/>
+    </figure>
+    <div class="founder-body">
+      <p class="eyebrow">06 · מי מוביל</p>
+      <h2 class="h-sm">יוחנן שבדרון</h2>
+      <p class="founder-quote">לא באתי להוריד את הרמה בשביל אף אחד. באתי להביא את הרמה הכי גבוהה, למקום שבו אתה נמצא.</p>
+      <ul class="founder-list">
+        <li>בוגר תואר ראשון במדעי המחשב, התמחות בבינה מלאכותית</li>
+        <li>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</li>
+        <li>1,500 בוגרים ב-30 מחזורים</li>
       </ul>
     </div>
+  </div>
+</section>
 
-    <div class="price-card">
-      <span class="lbl">פרטי ההרשמה</span>
+<!-- ===== המחיר ===== -->
+<section class="sec" id="buy">
+  <div class="wrap buy" id="purchase-details">
+    <div class="stack" style="gap:28px">
+      <p class="eyebrow">07 · שריון מקום</p>
+      <h2 class="h-sm">מחיר אחד.<br/><span class="ghost">הכול בפנים.</span></h2>
+      <p class="stock">נשארו <b>11 מקומות</b> מתוך 20 · מתחילים ביום רביעי 25.11</p>
+      <ul class="ticks" style="font-size:17px">
+        <li>9 מפגשים חיים בזום, סה״כ 18 שעות</li>
+        <li>סוכני AI ועבודה נכונה עם Projects</li>
+        <li>אוטומציות ב-Make מאפס, מקצה לקצה</li>
+        <li>Claude Code ו-Codex בלי לכתוב קוד</li>
+        <li>פרויקט AI אישי, עם תרגול והכוונה</li>
+        <li>הקלטות, קבוצת ליווי ותעודת סיום</li>
+      </ul>
+      <p class="body">אחרי התשלום מגיעים מייל ווואטסאפ עם אישור, מצטרפים לקבוצת המחזור, ויום לפני המפגש הראשון נשלח קישור הזום ותזכורת.</p>
+    </div>
 
+    <div class="buy-card">
+      <p class="card-kicker">צבא הסוכנים · מחזור נובמבר</p>
+      <div class="buy-now">
+        <b><span class="js-price-total">2,950 ₪</span></b>
+        <s class="js-regular" data-promo-row hidden></s>
+        <span>כולל מע״מ · בלי דמי טיפול ובלי תוספות</span>
+      </div>
+      <p class="buy-pmt">או 3 תשלומים של כ-<span class="js-price-pmt">983 ₪</span></p>
+      <p class="saving" data-saving hidden></p>
 
-      <table class="price-table" data-has-price>
-        <tbody>
-          <tr data-promo-row hidden><th scope="row">מחיר רגיל, כולל מע״מ</th><td><s class="js-regular"></s></td></tr>
-          <tr><th scope="row" class="js-price-label">השתתפות במסלול</th><td class="js-price">2,500 ₪</td></tr>
-          <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">450 ₪</td></tr>
-          <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">2,950 ₪</td></tr>
-        </tbody>
-      </table>
-      <p class="pd-saving" data-saving hidden></p>
+      <a class="btn btn-primary btn-block" data-join href="https://mrng.to/lEPor40mkA">שריין מקום במחזור</a>
+      <p class="pay-row">אשראי · ביט · העברה בנקאית</p>
 
-      <div class="pd-coupon" id="coupon-box" data-has-price>
-        <label class="pd-coupon-lbl" for="coupon-input">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a2 2 0 0 1 0-4V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 1 0 4v2a2 2 0 0 1 0 4v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2a2 2 0 0 1 0-4z"/><path d="M14 8.5l-4 7"/></svg>
-          יש לך קוד קופון?
-        </label>
-        <div class="pd-coupon-row">
-          <input type="text" id="coupon-input" class="pd-coupon-input" placeholder="קוד קופון" autocomplete="off"/>
-          <button type="button" id="coupon-apply" class="pd-coupon-btn">החל קופון</button>
+      <p class="guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>אחרי המפגש הראשון לא מתאים לך? מחזירים לך את כל הכסף.</p>
+      <p class="deadline" data-promo hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ההנחה נגמרת ביום שני 19.10 בחצות</p>
+
+      <div class="coupon" id="coupon-box">
+        <button type="button" class="coupon-toggle" id="coupon-open">יש לי קוד קופון</button>
+        <div class="coupon-body" id="coupon-fields" hidden>
+          <label class="sr-only" for="coupon-input">קוד קופון</label>
+          <div class="coupon-row">
+            <input type="text" id="coupon-input" placeholder="קוד קופון" autocomplete="off"/>
+            <button type="button" id="coupon-apply">החל</button>
+          </div>
+          <p class="coupon-msg" id="coupon-msg" role="status" aria-live="polite"></p>
         </div>
-        <p class="pd-coupon-msg" id="coupon-msg" role="status" aria-live="polite"></p>
-        <button type="button" class="pd-coupon-toggle" hidden>יש לך קוד קופון אחר?</button>
       </div>
 
-      <p class="pd-vat" data-has-price>זהו הסכום שייגבה בפועל, בתשלום אחד או בעד 3 תשלומים. ללא דמי טיפול וללא תוספות. פרטי המפגשים נשלחים אחרי התשלום.</p>
-
-      <a class="btn btn-lg" data-join href="https://mrng.to/lEPor40mkA">לשריין מקום · תשלום מאובטח</a>
-      <p class="pay-methods">אשראי · ביט · העברה בנקאית</p>
-      <p class="guar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>אחרי השיעור הראשון לא מתאים לך? מחזירים לך את כל הכסף.</p>
-      <p class="pd-deadline" data-promo hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>ההנחה נגמרת ביום שני 19.10 בחצות</p>
-      <p class="pd-ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D%20(%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%9B%D7%A1%D7%9C%D7%99%D7%95)" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
-      <p class="alt-pay">לא נוח באשראי? אפשר גם בהעברה בנקאית או בביט. <a href="https://wa.me/972528189921" target="_blank" rel="noopener">כתבו לי בוואטסאפ</a> ואשלח את הפרטים. אחרי התשלום שולחים אסמכתא בוואטסאפ או במייל (<a href="mailto:yochanan@shwadron-ai.com">yochanan@shwadron-ai.com</a>), ומקבלים את קישור הזום והפרטים המלאים.</p>
-      <a class="terms-link" href="terms.html#product" target="_blank" rel="noopener">לקריאת פרטי העסקה המלאים (נפתח בלשונית חדשה)</a>
+      <p class="ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D%20(%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%9B%D7%A1%D7%9C%D7%99%D7%95)" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
+      <p class="small" style="text-align:center">לא נוח באשראי? אפשר גם בהעברה בנקאית או בביט. <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D%20(%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%9B%D7%A1%D7%9C%D7%99%D7%95)" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">בקשו ממני את הפרטים</a>, ואחרי התשלום שולחים אסמכתא ומקבלים את קישור הזום.</p>
+      <a class="small" href="terms.html#product" target="_blank" rel="noopener" style="text-align:center;color:var(--accent);text-decoration:underline">לקריאת פרטי העסקה המלאים</a>
     </div>
   </div>
 </section>
 
-<!-- ===== שאלות נפוצות ===== -->
-<section class="faq sec-ice" id="faq">
-  <div class="faq-grid">
-    <div class="faq-side">
-      <p class="eyebrow">שאלות נפוצות</p>
-      <h2 class="sec-title">מה ש<em>שואלים.</em></h2>
-      <p>לא מצאת את התשובה? כתוב בוואטסאפ ל<a href="https://wa.me/972528189921">052-818-9921</a> ותקבל מענה אישי.</p>
-    </div>
-    <div class="faq-list">
-      <details>
-        <summary>למה לא ללמוד לבד ביוטיוב?</summary>
-        <p>ביוטיוב רואים מישהו אחר בונה. כאן אתה בונה בעצמך, על הצורך שלך, עם הכוונה צמודה כשמשהו נתקע, ובקבוצה של עד 20 משתתפים. בסוף יוצאים עם פרויקט שעובד אצלך, לא עם רשימת סרטונים שמורים.</p>
-      </details>
+<!-- ===== שאלות ===== -->
+<section class="sec sec-2" id="faq">
+  <div class="wrap stack" style="max-width:880px">
+    <p class="eyebrow">08 · לפני שמחליטים</p>
+    <h2 class="h-sm">שאלות. תשובות קצרות.</h2>
+    <div class="qa">
       <details open>
-        <summary>צריך לדעת לתכנת?</summary>
-        <p>לא. זו נקודת המוצא של המסלול, ולא הערת שוליים. גם בתחום של Claude Code ו-Codex, כל מה שנדרש ממך זה לדעת לתאר מה אתה רוצה שייבנה. הכתיבה עצמה נעשית על ידי ה-AI.</p>
+        <summary><span>צריך לדעת לתכנת?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>לא. זו נקודת המוצא של המסלול ולא הערת שוליים. גם בתחום של Claude Code ו-Codex, כל מה שנדרש ממך זה לדעת לתאר מה אתה רוצה שייבנה. הכתיבה עצמה נעשית על ידי ה-AI.</p>
       </details>
       <details>
-        <summary>אני לא בטוח שאני מספיק מתקדם</summary>
-        <p>המסלול מיועד למי שכבר מכיר ומשתמש ב-AI, לא למי שמומחה. אם אתה עובד עם ChatGPT או Gemini באופן שוטף, אתה בפנים. אם עוד לא, <a href="course-beginners.html">מסלול המתחילים</a> הוא הצעד הראשון.</p>
+        <summary><span>אני לא בטוח שאני מספיק מתקדם</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>המסלול מיועד למי שכבר מכיר ומשתמש ב-AI, לא למי שמומחה. אם אתה עובד עם ChatGPT או Gemini באופן שוטף, אתה בפנים. אם עוד לא, <a href="course-beginners.html">מאפס למאה</a> הוא הצעד הראשון. הוא אינו תנאי, אבל הוא הבסיס.</p>
       </details>
       <details>
-        <summary>הכלים עולים כסף?</summary>
-        <p>חלק מהתהליכים רצים בגרסאות חינמיות וחלק דורשים מנוי. נראה את שתי הדרכים, כדי שתדע בדיוק מה שווה לך ומה לא.</p>
+        <summary><span>מה מתרגלים בפועל?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>בכל מפגש בונים מול המסך. מגדירים סוכן לתחום מוגדר, מחברים טופס לגיליון ולמייל, מאפיינים כלי קטן ונותנים ל-AI לבנות אותו, ואז בודקים, מתקנים ומשפרים.</p>
       </details>
       <details>
-        <summary>יש לי אינטרנט מסונן. הכלים יעבדו?</summary>
-        <p>כן. הכלים שנלמדים נגישים דרך אינטרנט מסונן, והמפגשים עצמם מתקיימים בזום. אם יש לך שאלה על ספק סינון מסוים, כתוב לי בוואטסאפ ונבדוק מראש.</p>
+        <summary><span>מה לא כלול?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>הקורס הוא הכשרה. הוא אינו שירות הטמעה אישית בעסק, ואינו כולל בניית מערכת עבור המשתתף. חלק מהתהליכים רצים בגרסאות חינמיות של הכלים וחלק דורשים מנוי, ונראה את שתי הדרכים.</p>
       </details>
       <details>
-        <summary>מה אם זה לא בשבילי?</summary>
-        <p>אחרי המפגש הראשון לא מתאים לך? מחזירים לך את כל הכסף, בלי שאלות. מבקשים בוואטסאפ או במייל עד 48 שעות אחרי המפגש הראשון, וההחזר מבוצע בתוך 14 ימים לאמצעי התשלום המקורי. התנאים המלאים ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p>
+        <summary><span>ואם זה לא בשבילי?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>אחרי המפגש הראשון לא מתאים לך ומחזירים לך את כל הכסף, בלי שאלות. מבקשים בוואטסאפ או במייל עד 48 שעות מתום המפגש הראשון, וההחזר מבוצע תוך 14 ימים לאמצעי התשלום המקורי. בנוסף, לפי חוק, אפשר לבטל תוך 14 ימים מהרכישה ולפחות יומיים שאינם ימי מנוחה לפני המפגש הראשון. הכול ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p>
       </details>
       <details>
-        <summary>מה קורה אם אני מפספס מפגש?</summary>
-        <p>כל המפגשים מוקלטים ונשארים איתך. אפשר להשלים בקצב שלך, ולשאול בקבוצת הליווי בוואטסאפ.</p>
+        <summary><span>יש לי אינטרנט מסונן</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>הכלים שנלמדים נגישים דרך אינטרנט מסונן, והמפגשים עצמם מתקיימים בזום. אם יש לך שאלה על ספק סינון מסוים, כתוב לי ונבדוק מראש.</p>
       </details>
       <details>
-        <summary>מה לומדים ב-18 שעות?</summary>
-        <p>שלושה תחומים, בתשעה מפגשים של שעתיים: סוכני AI ו-Projects; אוטומציות ב-Make עם טפסים, Google Sheets, Gmail, יומן ו-Webhooks; ובניית כלים עם Claude Code ו-Codex בלי לכתוב קוד בעצמכם.</p>
-      </details>
-      <details>
-        <summary>מה מתרגלים?</summary>
-        <p>בכל מפגש בונים מול המסך: מגדירים סוכן לתחום מוגדר, מחברים טופס לגיליון ולמייל, מאפיינים כלי קטן ונותנים ל-AI לבנות אותו, ואז בודקים, מתקנים ומשפרים.</p>
-      </details>
-      <details>
-        <summary>מה כולל הפרויקט האישי?</summary>
-        <p>לאורך הקורס תתכננו ותבנו פרויקט AI אישי, עם תרגול והכוונה, ותלמדו איך לבדוק, לשפר ולהמשיך לפתח אותו בעצמכם.</p>
-      </details>
-      <details>
-        <summary>מה לא כלול?</summary>
-        <p>הקורס הוא הכשרה. הוא אינו שירות הטמעה אישית בעסק, ואינו כולל בניית מערכת עבור המשתתף.</p>
-      </details>
-      <details>
-        <summary>מה המחיר ואיך נרשמים?</summary>
-        <p><b>2,950 ₪</b> כולל מע״מ (2,500 ₪ + מע״מ). אפשר בתשלום אחד או בעד 3 תשלומים, ללא דמי טיפול. המחזור נפתח ביום רביעי, ט״ו בכסליו (25 בנובמבר), בשעה 19:30 עד 21:30, ופעם בשבוע. בחנוכה אין מפגשים. התשלום מאובטח ונעשה ישירות מהדף, וייתכנו שינויים במועדים ובשעות.</p>
+        <summary><span>מה קורה אם אני מפספס מפגש?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>כל המפגשים מוקלטים ונשארים איתך. אפשר להשלים בקצב שלך ולשאול בקבוצת הליווי בוואטסאפ.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ===== הוובינר ===== -->
 <!-- BUILD:webinar -->
   <section class="sec" id="webinar">
     <div class="wrap stack">
@@ -523,40 +457,40 @@
   </section>
   <!-- /BUILD:webinar -->
 
-<!-- ===== מעבר למסלול המתחילים ===== -->
-<section class="crosslink">
-  <div>
-    <b>עוד לא מרגיש ששולט ב-AI עצמו?</b>
-    <p>מסלול המתחילים סוגר את הבסיס: שיטת עבודה נכונה, 7 הכללים לפרומפט, NotebookLM, סיכומי פגישות ומצגות. שלושה מפגשים, ואפשר להמשיך לכאן.</p>
+<!-- ===== המסלול הקודם ===== -->
+<section class="sec">
+  <div class="wrap cta-box" style="background:var(--card);border:1px solid var(--line)">
+    <div>
+      <b>עוד לא מרגיש ששולט ב-AI עצמו?</b>
+      <p>מאפס למאה סוגר את הבסיס בשלושה ערבים: שיטת עבודה נכונה, 7 הכללים לפרומפט, סיכומי פגישות ומצגות. אפשר להתחיל שם ולהמשיך לכאן.</p>
+    </div>
+    <a class="btn btn-ghost" href="course-beginners.html#buy" data-track-pick="course-beginners">למאפס למאה ←</a>
   </div>
-  <a class="btn btn-sm" href="course-beginners.html" data-track-pick="course-beginners">למסלול המתחילים ←</a>
 </section>
 
 </main>
 
-<footer class="site-footer">
-  <img src="assets/public/logo.png" alt="SHWADRON.AI"/>
-  <nav aria-label="מסמכים משפטיים">
-    <ul>
-      <li><a href="index.html">הקורסים בזום</a></li>
-      <li><a href="terms.html">תקנון ותנאי רכישה</a></li>
-      <li><a href="privacy.html">מדיניות פרטיות</a></li>
-      <li><a href="accessibility.html">הצהרת נגישות</a></li>
-      <li><a href="cancellation.html">ביטול עסקה</a></li>
-      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
-    </ul>
-  </nav>
-  <p class="biz">יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></p>
+<footer class="site-foot">
+  <div class="wrap">
+    <img class="brand-foot" src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107" loading="lazy"/>
+    <nav aria-label="קישורים משפטיים">
+      <a href="index.html">כל המסלולים</a>
+      <a href="terms.html">תקנון</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="accessibility.html">הצהרת נגישות</a>
+      <a href="cancellation.html">ביטול עסקה</a>
+      <a href="#" data-consent-settings>הגדרות עוגיות</a>
+    </nav>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
+  </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%A8%D7%99%D7%99%D7%9F%20%D7%9E%D7%A7%D7%95%D7%9D%20%D7%91%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%20%D7%94%D7%9E%D7%AA%D7%A7%D7%93%D7%9E%D7%99%D7%9D%20(%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%9B%D7%A1%D7%9C%D7%99%D7%95)" target="_blank" rel="noopener" aria-label="שליחת הודעה ליוחנן בוואטסאפ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
-
-<div class="stickybar" id="stickybar">
-  <div class="sb-price">
+<div class="dock" id="stickybar">
+  <div class="dock-price">
     <b class="js-price-total">2,950 ₪</b>
-    <span class="sb-vat">3 תשלומים של כ-<span class="js-price-pmt">983 ₪</span> · החזר מלא אחרי שיעור 1</span>
+    <span>3 תשלומים של כ-<span class="js-price-pmt">983 ₪</span> · נשארו 11 מקומות</span>
   </div>
-  <a class="btn btn-sm" data-join href="#buy">לשריין מקום</a>
+  <a class="btn btn-primary btn-sm" data-join href="#buy">שריין מקום</a>
 </div>
 
 <!-- BUILD:config -->
@@ -573,5 +507,6 @@
   </script>
   <!-- /BUILD:config -->
 <script src="assets/js/courses.js"></script>
+<script src="assets/js/shw-coupon.js"></script>
 </body>
 </html>

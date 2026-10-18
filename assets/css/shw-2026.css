@@ -324,7 +324,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:18px}
 .flow span{background:var(--card);border:1px solid var(--line);border-radius:999px;
   padding:7px 15px;font-size:15px;color:var(--ink-2)}
-.flow i{font-style:normal;color:var(--dim)}
+.flow i{font-style:normal;color:var(--muted)}
 
 /* ── כרטיס המחיר בדף מסלול ────────────────────────────────── */
 .buy{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
@@ -333,10 +333,10 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .buy-now{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
 .buy-now b{font-family:'Karantina','Heebo',sans-serif;font-weight:700;
   font-size:clamp(56px,7vw,80px);line-height:.9}
-.buy-now s{font-size:21px;color:var(--dim)}
+.buy-now s{font-size:21px;color:var(--muted)}
 .buy-now span{width:100%;font-size:15px;color:var(--muted)}
 .buy-pmt{font-size:17px;font-weight:700;color:var(--ink-2)}
-.pay-row{text-align:center;font-size:14px;color:var(--dim)}
+.pay-row{text-align:center;font-size:14px;color:var(--muted)}
 .guarantee{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:700;
   line-height:1.5;background:rgba(62,230,176,.1);border-radius:14px;padding:14px 16px}
 .guarantee svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--accent)}

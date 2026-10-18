@@ -3,39 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>גישה דיגיטלית לקורס AI המלא | SHWADRON.AI</title>
-<meta name="description" content="גישה דיגיטלית לקורס ה-AI המלא. אותם השיעורים מהקורס החי, לצפייה בקצב שלכם מכל מכשיר, בלי רקע טכני. מתחילים ללמוד תוך דקות."/>
+<title>המוח השני · קורס AI דיגיטלי בקצב שלך | SHWADRON.AI</title>
+<meta name="description" content="ארבעה שיעורים מוקלטים, ארבעה תוצרים ביד. בסוף יש לך סוכן אישי שמכיר את העבודה שלך וכותב בסגנון שלך. גישה מיידית, בעברית, בלי רקע טכני."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://www.shwadron-ai.com/course.html"/>
-<meta property="og:type" content="product"/>
+<meta property="og:type" content="website"/>
 <meta property="og:url" content="https://www.shwadron-ai.com/course.html"/>
-<meta property="og:title" content="גישה דיגיטלית לקורס AI המלא | SHWADRON.AI"/>
-<meta property="og:description" content="גישה מיידית, צפייה ללא הגבלה, מתאים למתחילים. רוכשים ומתחילים ללמוד תוך דקות."/>
-<meta property="og:image" content="https://www.shwadron-ai.com/yochanan.jpg"/>
+<meta property="og:title" content="המוח השני · קורס AI דיגיטלי בקצב שלך | SHWADRON.AI"/>
+<meta property="og:description" content="ארבעה שיעורים, ארבעה תוצרים ביד. גישה מיידית, צפייה ללא הגבלה, ביטול תוך 14 יום."/>
+<meta property="og:image" content="https://www.shwadron-ai.com/assets/public/yochanan-card.jpg"/>
 <meta property="og:locale" content="he_IL"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="assets/css/shwadron-ds.css"/>
-<link rel="stylesheet" href="assets/css/site-legal.css"/>
-<link rel="stylesheet" href="assets/css/forms-a11y.css"/>
+<link rel="stylesheet" href="assets/css/fonts.css"/>
+<link rel="stylesheet" href="assets/css/shw-2026.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&family=Assistant:wght@400;500;600;700&display=swap"/>
-
-<!-- ═══════════ ANALYTICS ═══════════
-     המזהים של GA4 ו-Clarity מוגדרים בתוך assets/js/consent.js, וזה המקום
-     היחיד שצריך לגעת בו. הסקריפטים נטענים אך ורק אחרי שהגולש אישר את
-     קטגוריית "סטטיסטיקה" בהודעת העוגיות. ללא אישור, שום סקריפט מעקב
-     לא יורד לדפדפן. הפונקציה gtag קיימת תמיד כ-no-op, כך שקריאות
-     לאירועים בעמודים לא זורקות שגיאה לפני מתן ההסכמה.
--->
+<link rel="stylesheet" href="assets/css/gift.css"/>
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
-
-<!-- מסמן שיש ג׳אווהסקריפט. כללי החשיפה בגלילה תלויים בסימון הזה,
-     כך שבלי ג׳אווהסקריפט כל התוכן מוצג רגיל ולא נשאר שקוף. -->
+<script src="assets/js/gift.js" defer></script>
 <script>document.documentElement.className += ' js';</script>
 
 <script type="application/ld+json" id="course-ld">
@@ -65,722 +52,267 @@
   "image": "https://www.shwadron-ai.com/yochanan.jpg"
 }
 </script>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-/* ============================================================
-   SHWADRON.AI — דף הקורס הדיגיטלי
-   מיושם אחד לאחד מקובץ העיצוב design-proposal/Main.dc.html.
-   ============================================================ */
-:root{
-  --ink:#0a1a33;          /* כחול הדיו של הלוגו, הרקע הכהה הראשי */
-  --night:#0f2141;        /* מקטע כהה משני */
-  --deep-2:#132a4d;
-  --line-dark:#1e3358;
-  --line-dark-2:#16294a;
-  --blue:#0063ed;         /* כחול הלוגו */
-  --blue-on-dark:#2f7bf6;
-  --teal:#2edebf;         /* טורקיז הלוגו, לפעולה בלבד */
-  --teal-ink:#12b394;
-  --paper:#fff;
-  --ice:#eff1f4;
-  --line:#dde1e7;
-  --line-2:#e2e6ec;
-  --text:#0a1a33;
-  --muted:#4c5765;
-  --faint:#9aa4b3;
-  --on-dark:#a8b8d0;
-  --on-dark-2:#c2cddd;
-  --on-dark-3:#8fa2bf;
-  --pad:72px;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Assistant',-apple-system,'Segoe UI',sans-serif;background:var(--ice);color:var(--text);direction:rtl;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
-a{text-decoration:none;color:inherit}
-a:hover{color:var(--teal-ink)}
-::selection{background:var(--blue);color:#fff}
-:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:3px}
-.skip{position:absolute;right:-9999px;top:0;background:var(--ink);color:#fff;padding:12px 20px;z-index:200;font-weight:700}
-.skip:focus{right:12px;top:12px}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.h{font-family:'Heebo',-apple-system,'Segoe UI',sans-serif}
-.wrap{padding-right:var(--pad);padding-left:var(--pad)}
-
-.grain{position:relative;overflow:hidden}
-.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;
-  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
-.grain>*{position:relative;z-index:1}
-.ghost{color:#6f8cb8}
-
-@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
-.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
-.rise-2{animation:rise .8s cubic-bezier(.2,.7,.2,1) .1s both}
-.rise-3{animation:rise .8s cubic-bezier(.2,.7,.2,1) .2s both}
-.rise-4{animation:rise .8s cubic-bezier(.2,.7,.2,1) .3s both}
-
-/* ── חשיפה בגלילה ──
-   אלמנט עם .reveal מתחיל שקוף ומוסט מטה, ומקבל .on כשהוא נכנס למסך
-   (ה-IntersectionObserver בתחתית הדף). --i הוא מיקום הפריט בקבוצה
-   ו---d השהיה נוספת לקבוצה שלמה, כדי שהפריטים ייכנסו אחד אחרי השני.
-   .panel — מכל שקווי הרשת שלו הם הרקע שלו (‎.method-cards‎, ‎.out-grid‎).
-            הוא רק נדלק בלי הזזה, אחרת נחשף בלוק אפור לפני שהתאים מגיעים.
-   .slide — תא בתוך פאנל כזה: רק זז, ההופעה מטופלת בפאנל עצמו. */
-.js .reveal{--i:0;--y:26px;--d:0ms;
-  opacity:0;transform:translateY(var(--y));
-  transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1);
-  transition-delay:calc(var(--d) + var(--i) * 70ms)}
-.js .reveal.on{opacity:1;transform:none}
-.js .reveal.panel{--y:0px}
-.js .reveal.slide{opacity:1;transform:translateY(var(--y))}
-.js .reveal.slide.on{transform:none}
-.js .reveal:nth-child(2){--i:1}
-.js .reveal:nth-child(3){--i:2}
-.js .reveal:nth-child(4){--i:3}
-.js .reveal:nth-child(5){--i:4}
-.js .reveal:nth-child(6){--i:5}
-.js .method-cards .reveal,.js .out-grid .reveal,.js .quotes .reveal,
-.js .stats-grid .reveal{--d:120ms}
-
-/* מספרי הסטטיסטיקה נספרים כלפי מעלה. ספרות ברוחב אחיד כדי שהמעבר
-   מספרה אחת לשתיים לא יזיז את הטקסט שמתחת. */
-.stat b{font-variant-numeric:tabular-nums}
-
-/* ── מספרי השיעורים עולים מתוך מסכה ── */
-.js .lesson b{overflow:hidden}
-.js .lesson b>span{display:block;transform:translateY(105%);
-  transition:transform .8s cubic-bezier(.2,.7,.2,1);
-  transition-delay:calc(var(--d) + var(--i) * 70ms + 90ms)}
-.js .lesson.on b>span{transform:none}
-.lesson svg{transition:transform .3s ease,color .3s ease}
-.lesson:hover svg{transform:translateX(-6px);color:var(--teal)}
-
-/* כותרת עליונה */
-.site-header{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:space-between;gap:40px;
-  padding:20px var(--pad);background:var(--ink);color:#fff;border-bottom:1px solid var(--line-dark-2)}
-.site-header .logo img{height:38px;width:auto;filter:brightness(0) invert(1)}
-.nav{display:flex;align-items:center;gap:34px;font-size:1rem;font-weight:600;color:#d3dceb}
-.nav a:hover{color:var(--teal)}
-.hdr-side{display:flex;align-items:center;gap:18px}
-.hdr-tel{font-size:.94rem;color:var(--on-dark-3);font-weight:600}
-a[href*="wa.me"],.nowrap{white-space:nowrap}
-
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:none;cursor:pointer;
-  background:var(--teal);color:var(--ink);border-radius:3px;font-family:'Heebo',sans-serif;font-weight:800}
-.btn:hover{background:#25c7ab;color:var(--ink)}
-.btn-sm{padding:13px 26px;font-size:1rem;font-weight:700}
-.btn-lg{padding:20px 40px;font-size:1.19rem;box-shadow:0 18px 40px -18px rgba(46,222,191,.7)}
-.btn-dark{background:var(--ink);color:#fff}
-.btn-dark:hover{background:var(--night);color:#fff}
-
-
-/* HERO */
-.hero{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:clamp(18px,3.2vh,64px) var(--pad) clamp(30px,3.4vh,40px)}
-.hero .glow-b{position:absolute;top:-180px;right:120px;width:720px;height:620px;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(0,99,237,.34),rgba(0,99,237,0))}
-.hero .glow-t{position:absolute;top:120px;right:560px;width:560px;height:520px;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(46,222,191,.14),rgba(46,222,191,0))}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:auto auto;justify-content:center;gap:clamp(36px,4.4vw,72px);align-items:end}
-.hero-copy{display:flex;flex-direction:column;gap:clamp(12px,2.3vh,30px);padding-bottom:clamp(16px,4.4vh,72px);max-width:560px}
-.eyebrow{display:flex;align-items:center;gap:12px;font-size:.94rem;font-weight:700;letter-spacing:.12em;color:var(--blue)}
-.eyebrow::before{content:"";width:34px;height:2px;background:currentColor}
-.eyebrow.teal{color:var(--teal)}
-.hero-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:clamp(2.6rem,min(6vw,9.2vh),6.63rem);line-height:.88;letter-spacing:-.04em}
-.hero-lead{font-size:clamp(1rem,1.85vh,1.31rem);line-height:1.6;color:var(--on-dark-2);max-width:520px}
-.hero-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.hero-price{display:flex;flex-direction:column;gap:3px}
-.hero-price b{font-size:1.06rem;font-weight:700}
-.hero-price span{font-weight:400;color:var(--on-dark-3)}
-.hero-price small{font-size:.88rem;color:var(--on-dark-3)}
-.hero-portrait{position:relative;height:clamp(240px,52vh,548px);aspect-ratio:3/4;width:auto;margin-bottom:clamp(38px,5vh,56px)}
-
-.hero-portrait .plate{position:absolute;inset:0;background:var(--deep-2);border-radius:3px}
-.hero-portrait img{position:absolute;inset:0;z-index:1;width:100%;height:100%;
-  object-fit:cover;object-position:center top;border-radius:3px}
-.hero-portrait .fade{position:absolute;inset:0;z-index:2;border-radius:3px;pointer-events:none;
-  background:linear-gradient(to top,rgba(10,26,51,.88),rgba(10,26,51,.55) 12%,rgba(10,26,51,0) 30%)}
-
-.hero-portrait .chip{position:absolute;z-index:0;left:-26px;bottom:-26px;width:96px;height:96px;background:var(--teal);border-radius:3px}
-.hero-portrait figcaption{position:absolute;z-index:3;right:24px;bottom:22px;display:flex;flex-direction:column;gap:2px}
-.hero-portrait figcaption b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.38rem;color:#fff}
-.hero-portrait figcaption span{font-size:.88rem;color:var(--on-dark)}
-
-/* רצועה נעה */
-.marquee{background:var(--teal);color:var(--ink);overflow:hidden;padding:20px 0}
-.marquee-track{display:flex;width:max-content;animation:mq 26s linear infinite;
-  font-family:'Heebo',sans-serif;font-weight:800;font-size:1.06rem;letter-spacing:.02em;white-space:nowrap}
-.marquee-track>div{display:flex;align-items:center;gap:28px;padding-left:28px}
-.marquee-track i{font-style:normal;opacity:.45}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(50%)}}
-
-/* רצועת מספרים */
-.stats{background:var(--ink);color:#fff;padding:0 var(--pad) 8px}
-.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
-  background:var(--line-dark-2);border:1px solid var(--line-dark-2);border-top:none}
-.stat{background:var(--ink);padding:34px 30px;display:flex;flex-direction:column;gap:6px}
-.stat b{font-family:'Heebo',sans-serif;font-weight:900;font-size:3.25rem;line-height:1;letter-spacing:-.03em}
-.stat b.teal{color:var(--teal)}
-.stat span{font-size:.94rem;color:var(--on-dark-3)}
-
-/* השיטה */
-.method{padding:110px var(--pad) 96px;background:var(--ice)}
-.method-intro{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;align-items:start}
-.sec-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:4.88rem;line-height:.92;letter-spacing:-.035em}
-.sec-title em{font-style:normal;color:var(--faint)}
-.method-intro p{font-size:1.31rem;line-height:1.65;color:#37404d}
-.method-intro>div:last-child{display:flex;flex-direction:column;gap:20px;padding-top:12px}
-.method-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;margin-top:72px;background:var(--line)}
-.m-card{background:var(--ice);padding:44px 40px;display:flex;flex-direction:column;gap:16px;border-top:3px solid var(--line)}
-.m-card:first-child{border-top-color:var(--blue)}
-.m-card b{font-family:'Heebo',sans-serif;font-weight:900;font-size:3.75rem;line-height:1;color:var(--blue)}
-.m-card h3{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.63rem;line-height:1.2}
-.m-card p{font-size:1.06rem;line-height:1.65;color:var(--muted)}
-
-/* שיעורים */
-.lessons{background:var(--night);color:#fff;padding:104px var(--pad)}
-.lessons-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:56px}
-.lessons-head p{font-size:1.31rem;font-weight:600;line-height:1.55;color:#fff;max-width:440px;padding-bottom:10px;
-  padding-right:20px;border-right:3px solid var(--blue-on-dark)}
-.lesson{display:grid;grid-template-columns:92px 0.72fr 1.28fr 30px;gap:30px;align-items:center;padding:34px 0;border-top:1px solid var(--line-dark)}
-.lesson:last-child{border-bottom:1px solid var(--line-dark)}
-.lesson b{font-family:'Heebo',sans-serif;font-weight:900;font-size:2.88rem;line-height:1;color:var(--teal)}
-.lesson h3{font-family:'Heebo',sans-serif;font-weight:800;font-size:2rem;line-height:1.15}
-.lesson p{font-size:1.25rem;line-height:1.75;color:#c2cddd}
-.lesson svg{width:26px;height:26px;color:#40598a}
-
-/* התוצאה */
-.outcomes{padding:104px var(--pad);background:var(--ice)}
-.out-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line);margin-top:56px}
-.out-cell{background:var(--paper);padding:40px 36px;display:flex;flex-direction:column;gap:12px}
-.out-cell svg{width:26px;height:26px;color:var(--teal-ink)}
-.out-cell h3{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.38rem}
-.out-cell p{font-size:1rem;line-height:1.6;color:var(--muted)}
-.out-cta{background:var(--teal);padding:40px 36px;display:flex;flex-direction:column;justify-content:center;gap:16px;color:var(--ink)}
-.out-cta p{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.88rem;line-height:1.12}
-.out-cta a{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.06rem;color:var(--ink)}
-.out-cta a:hover{color:var(--ink);text-decoration:underline}
-
-/* מהשטח */
-.proof{background:var(--paper);padding:100px var(--pad)}
-.proof .sec-title{margin-bottom:48px}
-.proof .eyebrow{margin-bottom:20px}
-.quotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
-.quote{background:var(--ice);padding:36px 32px;border-radius:3px;border-bottom:3px solid var(--blue);
-  display:flex;flex-direction:column;gap:20px}
-.quote p{font-size:1.19rem;line-height:1.6}
-.quote cite{font-style:normal;font-size:.94rem;font-weight:700;color:var(--muted)}
-.wall-title{font-family:'Heebo',sans-serif;font-weight:900;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1;letter-spacing:-.02em;
-  color:var(--ink);text-align:center;margin:0 0 10px}
-.wall-sub{text-align:center;color:var(--muted);font-weight:700;font-size:1.06rem;margin:0 auto 36px;max-width:640px}
-.wall-sub + .wall-sub{margin-top:-26px;font-weight:600;font-size:.98rem}
-/* קיר ההמלצות: צילומי וואטסאפ שלמים, שורות ממורכזות. רק צילומים
-   שידוע מאיזה מוצר הם, ובדף של אותו מוצר */
-.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-.wall-tile{flex:0 1 calc((100% - 28px) / 3);height:300px;display:block;overflow:hidden;border-radius:6px;background:#efe7dc;
-  box-shadow:0 18px 40px -26px rgba(10,26,51,.5);transition:transform .2s}
-.wall-tile:hover{transform:translateY(-3px)}
-.wall-tile img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
-@media (max-width:900px){
-  .wall-tile{flex-basis:100%;height:auto}
-  .wall-tile img{height:auto}
-}
-.wa-note{margin-top:14px;font-size:.88rem;color:var(--muted)}
-/* פאנל כהה: קבצי הלוגו לבנים על שקוף, ועל רקע לבן הם נעלמים. */
-.orgs{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:56px;
-  margin-inline:calc(var(--pad) * -1);
-  padding:30px 0;background:var(--ink);border-radius:0}
-.orgs-title{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.5rem;color:#fff;text-align:center;
-  padding-inline:var(--pad)}
-.orgs-strip{position:relative;width:100%;overflow:hidden;
-  -webkit-mask-image:linear-gradient(to left,transparent,#000 5%,#000 95%,transparent);
-  mask-image:linear-gradient(to left,transparent,#000 5%,#000 95%,transparent)}
-.orgs-track{display:flex;width:max-content;animation:orgs 42s linear infinite}
-.orgs-set{display:flex;align-items:center;gap:46px;padding-left:46px;list-style:none;margin:0}
-.orgs-set li{display:flex;align-items:center}
-.orgs-set img{width:auto;max-width:150px;object-fit:contain;opacity:.85}
-/* פנייה משנית: מסגרת ולא מילוי, כדי שלא תתחרה בכפתור הרכישה */
-.orgs-cta{display:inline-flex;align-items:center;gap:9px;border:1.5px solid var(--teal);color:var(--teal);
-  font-family:'Heebo',sans-serif;font-weight:800;font-size:1rem;padding:12px 26px;border-radius:3px}
-.orgs-cta:hover{background:var(--teal);color:var(--ink)}
-.orgs-cta svg{width:18px;height:18px}
-@keyframes orgs{from{transform:translateX(0)}to{transform:translateX(50%)}}
-
-/* שאלות נפוצות */
-.faq{background:var(--ice);padding:104px var(--pad)}
-.faq-grid{display:grid;grid-template-columns:.85fr 1.3fr;gap:64px;align-items:start}
-.faq-side{display:flex;flex-direction:column;gap:18px}
-.faq-side .sec-title{font-size:4.5rem}
-.faq-side>p{font-size:1.13rem;line-height:1.65;color:var(--muted);max-width:320px}
-.faq-side a{color:var(--blue);text-decoration:underline}
-.faq details{border-top:1px solid var(--line)}
-.faq details:last-child{border-bottom:1px solid var(--line)}
-.faq summary{display:flex;align-items:center;justify-content:space-between;gap:24px;cursor:pointer;list-style:none;
-  padding:28px 0;font-family:'Heebo',sans-serif;font-weight:800;font-size:1.56rem;line-height:1.25}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";flex-shrink:0;width:26px;height:26px;
-  background:linear-gradient(var(--text),var(--text)) center/16px 2.2px no-repeat,
-             linear-gradient(var(--text),var(--text)) center/2.2px 16px no-repeat}
-.faq details[open] summary{color:var(--blue)}
-.faq details[open] summary::after{background:linear-gradient(var(--blue),var(--blue)) center/16px 2.2px no-repeat}
-.faq details>p{padding:0 20px 28px 0;border-right:3px solid var(--blue);
-  font-size:1.13rem;line-height:1.7;color:var(--muted);max-width:660px}
-.faq details>p a{color:var(--blue);text-decoration:underline}
-
-/* בלוק הרכישה */
-.buy-sec{position:relative;overflow:hidden;background:var(--ink);color:#fff;padding:104px var(--pad)}
-.buy-sec .glow{position:absolute;bottom:-220px;left:40px;width:700px;height:620px;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(46,222,191,.14),rgba(46,222,191,0))}
-.buy-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
-.buy-grid>*{min-width:0}
-.buy-left{display:flex;flex-direction:column;gap:28px}
-.buy-left>p{font-size:1.19rem;line-height:1.65;color:var(--on-dark);max-width:480px}
-.incl{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:8px}
-.incl li{display:flex;align-items:center;gap:12px;font-size:1.06rem;color:#d3dceb}
-.incl svg{width:20px;height:20px;flex-shrink:0;color:var(--teal)}
-.price-card{background:var(--paper);color:var(--text);border-radius:3px;padding:44px 40px;
-  display:flex;flex-direction:column;gap:24px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
-.price-card>.lbl{font-size:.94rem;font-weight:700;letter-spacing:.1em;color:var(--blue)}
-.price-table{width:100%;border-collapse:collapse}
-.price-table th{text-align:right;font-weight:400;color:var(--muted);font-size:1.06rem;padding:14px 0;border-bottom:1px solid var(--line-2)}
-.price-table td{text-align:left;font-weight:700;font-size:1.06rem;padding:14px 0;border-bottom:1px solid var(--line-2);overflow-wrap:anywhere}
-.price-table s{color:var(--faint);font-weight:600}
-.price-table .tot th{font-family:'Heebo',sans-serif;font-weight:800;font-size:1.31rem;color:var(--text);border-bottom:none;padding-top:22px}
-.price-table .tot td{font-family:'Heebo',sans-serif;font-weight:900;font-size:2.75rem;letter-spacing:-.02em;border-bottom:none;padding-top:22px}
-.pd-vat{font-size:.94rem;line-height:1.6;color:var(--muted)}
-.secure{display:flex;align-items:center;justify-content:center;gap:8px;font-size:.88rem;color:#8a8781}
-/* ההבטחה, ליד כל כפתור קנייה */
-.dig-guar{display:flex;align-items:flex-start;gap:9px;font-size:.98rem;line-height:1.5;font-weight:700;
-  color:var(--text);background:rgba(46,222,191,.14);border-radius:3px;padding:12px 14px;margin-top:4px}
-.dig-guar svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--teal-ink)}
-.dig-guar.on-dark{color:#fff;background:rgba(46,222,191,.12);max-width:420px}
-.dig-guar.on-dark svg{color:var(--teal)}
-.pd-ask{text-align:center;font-size:.94rem;color:var(--muted)}
-.pd-ask a{font-weight:700;color:var(--blue);text-decoration:underline;text-underline-offset:3px}
-/* הפניה למסלול החי בתחתית הדף */
-.dig-cross{background:var(--night);color:#fff;padding:56px var(--pad);display:flex;align-items:center;
-  justify-content:space-between;gap:32px;flex-wrap:wrap}
-.dig-cross div{display:flex;flex-direction:column;gap:8px}
-.dig-cross b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.88rem;line-height:1.15}
-.dig-cross p{font-size:1.06rem;color:var(--on-dark);max-width:560px}
-/* פס האקצנט מתחת לכותרת, הניווט הקליל ובועת הוואטסאפ */
-.hero-rule{display:block;width:190px;height:7px;background:var(--teal);border-radius:2px;margin:4px 0}
-.nav{font-weight:500;letter-spacing:.015em}
-.hdr-tel{display:inline-flex;align-items:center;gap:9px;border:1.5px solid rgba(46,222,191,.45);
-  border-radius:3px;padding:11px 18px;color:#fff;font-weight:700;transition:border-color .2s,color .2s}
-.hdr-tel svg{width:18px;height:18px;color:var(--teal)}
-.hdr-tel:hover{border-color:var(--teal);color:var(--teal)}
-.wa-float{position:fixed;z-index:85;left:26px;bottom:26px;width:58px;height:58px;border-radius:50%;
-  background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 14px 30px -12px rgba(0,0,0,.55);transition:background .2s,transform .2s}
-.wa-float svg{width:29px;height:29px}
-.wa-float:hover{background:#1fbe59;color:#fff;transform:translateY(-2px)}
-body:has(#shw-cookie-banner) .wa-float{bottom:210px}
-@media(max-width:720px){.hero-rule{width:140px;height:6px}.wa-float{display:none}}
-
-/* קופון */
-.pd-coupon{background:var(--ice);border-radius:3px;padding:20px;display:flex;flex-direction:column;gap:12px}
-.pd-coupon-lbl{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:700}
-.pd-coupon-lbl svg{width:19px;height:19px;color:var(--teal-ink)}
-.pd-coupon-row{display:flex;align-items:stretch;gap:8px}
-.pd-coupon-input{flex-grow:1;min-width:0;background:var(--paper);border:1px solid #d3d9e1;border-radius:3px;
-  padding:13px 14px;font-family:inherit;font-size:1rem;color:var(--text)}
-.pd-coupon-input::placeholder{color:var(--faint)}
-.pd-coupon-input:disabled{background:var(--line-2);color:var(--muted)}
-.pd-coupon-btn{background:#0a1a33;color:#fff;border:none;border-radius:3px;cursor:pointer;
-  font-family:'Heebo',sans-serif;font-weight:800;font-size:.94rem;padding:13px 22px;white-space:nowrap}
-.pd-coupon-btn:hover{background:var(--night)}
-.pd-coupon-btn:disabled{opacity:.6;cursor:default}
-.pd-coupon-msg{font-size:.88rem;font-weight:600}
-.pd-coupon-msg:empty{display:none}
-.pd-coupon-msg.ok{color:var(--teal-ink)}
-.pd-coupon-msg.err{color:#c0563a}
-
-/* אישור התקנון, נדרש בחוק לפני מעבר לסליקה */
-.consent{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line-2);padding-top:20px}
-.check-row{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;line-height:1.55;color:var(--muted);cursor:pointer}
-.check-row input{flex-shrink:0;margin-top:3px;width:18px;height:18px;accent-color:var(--blue)}
-.check-row a{color:var(--blue);text-decoration:underline}
-.field-error{display:block;color:#c0563a;font-size:.88rem;font-weight:700}
-.field-error:empty{display:none}
-.terms-link{font-size:.88rem;color:var(--blue);text-decoration:underline}
-
-/* פוטר */
-.site-footer{background:var(--night);color:var(--on-dark-3);padding:56px var(--pad);
-  display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;border-top:1px solid var(--line-dark)}
-.site-footer img{height:34px;width:auto;filter:brightness(0) invert(1)}
-.site-footer nav ul{list-style:none;display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-size:.94rem}
-.site-footer nav a{color:var(--on-dark-3)}
-.site-footer nav a:hover{color:var(--teal)}
-.site-footer .biz{font-size:.94rem}
-
-/* רצועת רכישה קבועה במובייל */
-.stickybar{position:fixed;bottom:0;right:0;left:0;z-index:90;display:none;align-items:center;justify-content:space-between;gap:12px;
-  background:var(--paper);border-top:1px solid var(--line);padding:12px 16px;
-  box-shadow:0 -12px 30px -18px rgba(10,26,51,.35);transform:translateY(110%);transition:transform .25s ease}
-.stickybar.show{transform:none}
-.sb-price{display:flex;flex-direction:column;gap:2px}
-.sb-price b{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.13rem}
-.sb-vat{font-size:.75rem;color:var(--muted)}
-
-/* ─── רספונסיביות ─── */
-/* ── הוובינר ──────────────────────────────────────────────
-   מקטע כהה עם נגן ביחס 16:9. זהה למקטע שבדפי המסלולים החיים,
-   ומשתמש באותם טוקנים שכבר מוגדרים כאן למעלה. */
-.webinar{background:var(--night);color:#fff;padding:104px var(--pad)}
-.webinar-grid{display:grid;grid-template-columns:.95fr 1.25fr;gap:64px;align-items:center}
-.webinar-grid>*{min-width:0}
-.webinar-copy{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-.webinar-copy .lead{font-size:1.19rem;line-height:1.65;color:var(--on-dark-2)}
-.webinar-copy .note{font-size:1.06rem;line-height:1.65;color:var(--on-dark);
-  border-right:3px solid var(--teal);padding-right:18px}
-.webinar-copy .btn{margin-top:8px}
-.video-frame{position:relative;aspect-ratio:16/9;width:100%;border-radius:3px;
-  overflow:hidden;background:var(--deep-2);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
-.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-@media(max-width:1000px){
-  .webinar-grid{grid-template-columns:1fr;gap:32px}
-}
-@media(max-width:1180px){
-  :root{--pad:40px}
-  .sec-title{font-size:3.6rem}
-  .faq-side .sec-title{font-size:3.4rem}
-}
-@media(max-width:1000px){
-  .method-intro,.faq-grid,.buy-grid{grid-template-columns:1fr;gap:36px}
-  .hero-grid{gap:clamp(20px,3.4vw,36px)}
-  .hero-copy{padding-bottom:12px}
-  .hero .glow-t{display:none}
-  .hero-portrait{height:clamp(300px,44vw,460px);margin-bottom:14px}
-  .method-cards,.out-grid,.quotes{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .lesson{grid-template-columns:80px 1fr;gap:16px 24px}
-  .lesson p{grid-column:1/-1}
-  .lesson svg{display:none}
-  .lessons-head{flex-direction:column;align-items:flex-start;gap:18px}
-}
-@media(max-width:720px){
-  :root{--pad:18px}
-  body{padding-bottom:84px}
-  .nav,.hdr-tel,.site-header .btn{display:none}
-  .stickybar{display:flex}
-  .hero{padding-top:36px}
-  .hero-grid{grid-template-columns:1fr;gap:36px}
-  .hero-title{font-size:3rem;line-height:.92}
-  .hero-lead{font-size:1.06rem}
-  .hero-portrait{height:auto;width:100%;max-width:320px;aspect-ratio:3/4;margin-inline:auto}
-  .hero-portrait .chip{display:none}
-  .hero-cta{flex-direction:column;align-items:stretch}
-  .hero-cta .btn{width:100%}
-  .hero-price{text-align:center}
-  .sec-title,.faq-side .sec-title{font-size:2.38rem;line-height:.96}
-  .method,.lessons,.outcomes,.proof,.faq,.buy-sec,.webinar{padding-top:48px;padding-bottom:48px}
-  .webinar-copy{gap:14px}
-  .webinar-copy .lead{font-size:1.06rem}
-  .webinar-copy .note{font-size:.94rem;padding-right:14px}
-  .webinar-copy .btn{width:100%}
-  .method-cards,.out-grid,.quotes{grid-template-columns:1fr}
-  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .method-cards{margin-top:32px}
-  .m-card,.out-cell,.out-cta,.stat,.quote{padding:26px 22px}
-  .m-card b{font-size:2.13rem}
-  .lesson{grid-template-columns:1fr;gap:10px;padding:22px 0}
-  .lesson b{font-size:1.63rem}
-  .lesson h3{font-size:1.31rem}
-  .faq summary{font-size:1.19rem;padding:20px 0}
-  .faq details>p{font-size:.94rem;padding-left:0;padding-right:14px}
-  .price-card{padding:26px 22px}
-  .price-table .tot td{font-size:2rem}
-  /* התווית מעל הרצועה, אחרת היא תופסת את כל הרוחב והרצועה נעלמת */
-  .orgs{gap:14px;padding:22px 0}
-  .orgs-title{font-size:1.19rem}
-  .site-footer{flex-direction:column;align-items:flex-start;gap:22px}
-  .marquee-track{font-size:.88rem}
-}
-/* ── מקטע = מסך שלם (דסקטופ בלבד) ──
-   כל מקטע ממלא את גובה המסך והתוכן ממורכז בתוכו, בלי גלילה פנימית.
-   הגדלים מצטמצמים לפי גובה המסך כדי שהתוכן ייכנס גם במסכים נמוכים. */
-@media(min-width:1001px){
-  .method,.lessons,.outcomes,.proof,.faq,.buy-sec,.webinar{
-    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
-    padding-top:clamp(28px,4.5vh,64px);padding-bottom:clamp(28px,4.5vh,64px)}
-  .sec-title{font-size:clamp(2.2rem,5.6vh,4.88rem)}
-  .faq-side .sec-title{font-size:clamp(2rem,5vh,4.5rem)}
-  .method-intro{gap:clamp(28px,4vw,64px)}
-  .method-intro p{font-size:clamp(1rem,2vh,1.31rem)}
-  .method-cards{margin-top:clamp(24px,4.4vh,72px)}
-  .m-card{padding:clamp(22px,3.4vh,44px) clamp(22px,2.6vw,40px);gap:clamp(8px,1.5vh,16px)}
-  .m-card b{font-size:clamp(2rem,5vh,3.75rem)}
-  .m-card h3{font-size:clamp(1.13rem,2.6vh,1.63rem)}
-  .m-card p{font-size:clamp(.94rem,1.8vh,1.06rem)}
-  .lessons-head{margin-bottom:clamp(20px,3.6vh,56px)}
-  .lesson{padding:clamp(16px,2.9vh,34px) 0}
-  .lesson b{font-size:clamp(1.63rem,3.9vh,2.63rem)}
-  .lesson h3{font-size:clamp(1.25rem,3vh,2rem)}
-  .lesson p{font-size:clamp(1.06rem,2.2vh,1.25rem)}
-  .out-grid{margin-top:clamp(20px,3.6vh,56px)}
-  .out-cell,.out-cta{padding:clamp(20px,3.2vh,40px) clamp(20px,2.4vw,36px);gap:clamp(8px,1.3vh,16px)}
-  .out-cell h3{font-size:clamp(1.06rem,2.4vh,1.38rem)}
-  .out-cell p{font-size:clamp(.88rem,1.7vh,1rem)}
-  .out-cta p{font-size:clamp(1.31rem,3.2vh,1.88rem)}
-  .proof .sec-title{margin-bottom:clamp(20px,3.4vh,48px)}
-  .quote{padding:clamp(20px,3.2vh,36px) clamp(20px,2.2vw,32px);gap:clamp(10px,2vh,20px)}
-  .quote p{font-size:clamp(.94rem,2vh,1.19rem)}
-  .orgs{margin-top:clamp(24px,4.4vh,64px);padding-top:clamp(18px,2.8vh,36px)}
-  .faq summary{padding:clamp(12px,2.3vh,28px) 0;font-size:clamp(1.06rem,2.6vh,1.56rem)}
-  .faq details>p{font-size:clamp(.94rem,1.9vh,1.13rem);padding-bottom:clamp(14px,2.3vh,28px)}
-  .buy-grid{gap:clamp(32px,4.6vw,72px)}
-  .buy-left{gap:clamp(14px,2.6vh,28px)}
-  .buy-left>p{font-size:clamp(1rem,2vh,1.19rem)}
-  .incl{gap:clamp(8px,1.5vh,14px);margin-top:0}
-  .incl li{font-size:clamp(.94rem,1.8vh,1.06rem)}
-  .buy-sec{padding-top:clamp(14px,3vh,56px);padding-bottom:clamp(14px,3vh,56px)}
-  .price-card{padding:clamp(12px,2.4vh,44px) clamp(20px,2.2vw,40px);gap:clamp(6px,1.2vh,24px)}
-  .price-table th,.price-table td{padding:clamp(4px,.9vh,14px) 0}
-  .consent{gap:4px}
-  .check-row{line-height:1.45}
-  .price-table th,.price-table td{padding:clamp(7px,1.3vh,14px) 0;font-size:clamp(.94rem,1.8vh,1.06rem)}
-  .price-table .tot th{font-size:clamp(1.06rem,2.2vh,1.31rem);padding-top:clamp(12px,2vh,22px)}
-  .price-table .tot td{font-size:clamp(1.5rem,4vh,2.75rem);padding-top:clamp(8px,1.7vh,22px)}
-  .pd-coupon{padding:clamp(8px,1.6vh,20px);gap:clamp(5px,1vh,12px)}
-  .pd-coupon-input,.pd-coupon-btn{padding-top:clamp(9px,1.5vh,13px);padding-bottom:clamp(9px,1.5vh,13px)}
-  .consent{padding-top:clamp(6px,1.4vh,20px)}
-  .btn-lg{padding-top:clamp(10px,1.8vh,20px);padding-bottom:clamp(10px,1.8vh,20px)}
-}
-/* מסכים נמוכים: דחיסה נוספת של בלוק ההצטרפות בלבד, כדי שגם שם
-   הוא ייכנס למסך אחד. גודל הטקסט המשפטי לא יורד, רק המרווחים. */
-@media(min-width:1001px) and (max-height:780px){
-  .buy-sec{padding-top:12px;padding-bottom:12px}
-  .price-card{padding:12px clamp(20px,2.2vw,40px);gap:6px}
-  .price-table th,.price-table td{padding:4px 0}
-  .price-table .tot th{padding-top:8px}
-  .price-table .tot td{font-size:1.5rem;padding-top:8px}
-  .pd-coupon{padding:8px;gap:5px}
-  .consent{padding-top:6px}
-  .btn-lg{padding-top:10px;padding-bottom:10px}
-  .buy-left{gap:12px}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;transition-delay:0s!important}
-  .marquee-track,.orgs-track{animation:none;width:auto}
-  .js .reveal{opacity:1!important;transform:none!important}
-  .js .lesson b>span{transform:none!important}
-}
-/* ציטוט קצר מתחת לכפתור הראשון: הוכחה כבר במסך הראשון */
-.hero-proof{margin:2px 0 0;padding:10px 14px;border-inline-start:3px solid var(--teal);background:rgba(255,255,255,.05);
-  color:#fff;font-size:1rem;line-height:1.55;max-width:560px}
-.hero-proof cite{display:block;font-style:normal;font-size:.86rem;color:#9fb0c8;margin-top:4px}
-/* "נשמע מוכר?" */
-.pains{padding:72px var(--pad);text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
-.pains .eyebrow{justify-content:center;font-size:1.06rem}
-.pains-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:920px;width:100%}
-.pains-list li{background:var(--paper);padding:20px 22px;border-radius:3px;text-align:right;font-size:1.13rem;line-height:1.5;
-  border-inline-start:3px solid #e2574c;font-weight:600}
-.pains-close{font-family:'Heebo',sans-serif;font-weight:800;font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.3;max-width:720px;margin:6px 0 0}
-@media (max-width:760px){.pains-list{grid-template-columns:1fr}.pains{padding:56px var(--pad)}}
-
-.sec-ice{background:var(--ice)}
-
-/* המחיר הסופי כולל מע״מ הוא המחיר הראשי בהירו */
-.hero-price b .js-price-total{font-family:'Heebo',sans-serif;font-weight:900;font-size:1.5rem;color:#fff}
-</style>
-<link rel="stylesheet" href="assets/css/gift.css"/>
-<script src="assets/js/gift.js" defer></script>
 </head>
-
 <body>
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<header class="site-header">
-  <a href="index.html" class="logo"><img src="assets/public/logo.png" alt="SHWADRON.AI, חזרה לדף הבית" width="190" height="38"/></a>
-  <nav class="nav" aria-label="ניווט בעמוד">
-    <a href="#method">השיטה</a>
-    <a href="#lessons">מה לומדים</a>
-    <a href="#proof">מהשטח</a>
-    <a href="#faq">שאלות</a>
-    <a href="index.html">הקורסים בזום</a>
-  </nav>
-  <div class="hdr-side">
-    <a class="hdr-tel" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>052-818-9921</a>
-    <a class="btn btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
+<header class="site-head">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="SHWADRON.AI, חזרה לדף הבית"><img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/></a>
+    <nav class="site-nav" aria-label="ניווט בעמוד">
+      <a href="#lessons">ארבעת השיעורים</a>
+      <a href="#able">מה תדע לעשות</a>
+      <a href="#proof">מהשטח</a>
+      <a href="#buy">המחיר</a>
+      <a href="#faq">שאלות</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
   </div>
 </header>
 
 <main id="main">
 
 <!-- ===== HERO ===== -->
-<section class="hero grain">
-  <div class="glow-b" aria-hidden="true"></div>
-  <div class="glow-t" aria-hidden="true"></div>
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow teal rise">גרסת הצפייה של הקורס</p>
-      <h1 class="hero-title rise-2">קורס AI מלא,<br/><span class="ghost">בקצב שלך,</span><br/>מהבית.</h1>
-      <span class="hero-rule rise-3" aria-hidden="true"></span>
-      <p class="hero-lead rise-3">ארבעה שיעורים מוקלטים שמלמדים שיטת עבודה מסודרת עם AI: מתחילים ממשימה אמיתית מהעבודה ויוצאים עם תוצר. גישה מיידית, בלי רקע טכני.</p>
-      <div class="hero-cta rise-4">
-        <a class="btn btn-lg" data-buy href="https://mrng.to/zoeR82jDpx">לרכישת הקורס וגישה מיידית</a>
-        <p class="hero-price">
-          <b><span class="js-price-total">385 ₪</span> <span>כולל מע״מ</span></b>
-          <small>אפשר עד 3 תשלומים</small>
-        </p>
-      </div>
-      <p class="dig-guar on-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא.</p>
-      <p class="hero-proof rise-4">״לפני הקורס כל עולם ה-AI הרגיש לי כמו סינית. אחרי ארבעת השיעורים סוף סוף יש לי בסיס, ואני מבין מה אני עושה.״ <cite>בוגר הקורס הדיגיטלי · מתוך 1,500 בוגרים</cite></p>
+<section id="top" style="padding-top:clamp(56px,8vw,96px)">
+  <div class="wrap stack">
+    <p class="eyebrow">דיגיטלי · בקצב שלך, מהבית</p>
+    <h1>המוח<br/><span class="on-accent">השני.</span></h1>
+    <p class="lead">ארבעה שיעורים, ארבעה תוצרים ביד. בסוף יש לך סוכן אישי שמכיר את העבודה שלך וכותב בסגנון שלך.</p>
+    <ul class="ticks" style="flex-direction:row;flex-wrap:wrap;gap:10px 28px">
+      <li>לא צריך אנגלית</li>
+      <li>גישה מיידית</li>
+      <li>צפייה ללא הגבלה</li>
+    </ul>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+      <a class="btn btn-primary" data-buy href="https://mrng.to/zoeR82jDpx">אני רוצה את המוח השני ←</a>
+      <p class="buy-pmt" style="margin:0">
+        <span class="js-price-total">385 ₪</span>
+        <span style="font-weight:400;color:var(--muted)"> או עד 3 תשלומים</span>
+      </p>
     </div>
-    <figure class="hero-portrait rise-2">
-      <div class="plate" aria-hidden="true"></div>
-      <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון" width="900" height="1350"/>
-      <div class="fade" aria-hidden="true"></div>
-      <div class="chip" aria-hidden="true"></div>
-      <figcaption><b>יוחנן שבדרון</b><span>בן הציבור החרדי-חסידי<br/>בוגר מדעי המחשב · התמחות ב-AI<br/>הטמעות במשרדי ממשלה וב-30+ עסקים</span></figcaption>
-    </figure>
+    <p class="guarantee" style="max-width:460px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא, כל עוד לא נצפה יותר משיעור אחד.</p>
   </div>
+  <svg aria-hidden="true" viewBox="0 0 1440 220" preserveAspectRatio="none" class="arc">
+    <path d="M-40 220 Q720 -40 1480 220" fill="none" stroke="var(--accent)" stroke-opacity=".55" stroke-width="1.5"/>
+    <path d="M-40 220 Q720 10 1480 220" fill="none" stroke="#F4F4F1" stroke-opacity=".08" stroke-width="1"/>
+  </svg>
 </section>
 
-<!-- ===== רצועה נעה ===== -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track"><div><span>ללא רקע טכני</span><i>/</i><span>4 שיעורים מוקלטים</span><i>/</i><span>גישה מיידית</span><i>/</i><span>צפייה ללא הגבלה</span><i>/</i><span>ביטול תוך 14 יום</span><i>/</i><span>ספריית פרומפטים</span><i>/</i><span>ללא רקע טכני</span><i>/</i><span>4 שיעורים מוקלטים</span><i>/</i><span>גישה מיידית</span><i>/</i><span>צפייה ללא הגבלה</span><i>/</i><span>ביטול תוך 14 יום</span><i>/</i><span>ספריית פרומפטים</span><i>/</i><span>ללא רקע טכני</span><i>/</i><span>4 שיעורים מוקלטים</span><i>/</i><span>גישה מיידית</span><i>/</i><span>צפייה ללא הגבלה</span><i>/</i><span>ביטול תוך 14 יום</span><i>/</i><span>ספריית פרומפטים</span><i>/</i></div><div><span>ללא רקע טכני</span><i>/</i><span>4 שיעורים מוקלטים</span><i>/</i><span>גישה מיידית</span><i>/</i><span>צפייה ללא הגבלה</span><i>/</i><span>ביטול תוך 14 יום</span><i>/</i><span>ספריית פרומפטים</span><i>/</i><span>ללא רקע טכני</span><i>/</i><span>4 שיעורים מוקלטים</span><i>/</i><span>גישה מיידית</span><i>/</i><span>צפייה ללא הגבלה</span><i>/</i><span>ביטול תוך 14 יום</span><i>/</i><span>ספריית פרומפטים</span><i>/</i><span>ללא רקע טכני</span><i>/</i><span>4 שיעורים מוקלטים</span><i>/</i><span>גישה מיידית</span><i>/</i><span>צפייה ללא הגבלה</span><i>/</i><span>ביטול תוך 14 יום</span><i>/</i><span>ספריית פרומפטים</span><i>/</i></div></div>
-</div>
-
-<!-- ===== רצועת מספרים ===== -->
-<section class="stats" aria-label="הקורס במספרים">
-  <div class="stats-grid reveal panel" data-counters>
-    <div class="stat reveal slide"><b data-count="4">4</b><span>שיעורים מוקלטים</span></div>
-    <div class="stat reveal slide"><b data-count="8">8</b><span>שעות תוכן בערך</span></div>
-    <div class="stat reveal slide"><b data-count="14">14</b><span>ימי ביטול בהחזר מלא</span></div>
-    <div class="stat reveal slide"><b class="teal" data-count="0" data-from="10">0</b><span>ידע טכני נדרש</span></div>
-  </div>
-</section>
-
-<!-- ===== השיטה ===== -->
 <!-- ===== נשמע מוכר ===== -->
-<section class="pains sec-ice" id="pains">
-  <p class="eyebrow reveal">נשמע מוכר?</p>
-  <ul class="pains-list reveal">
-      <li>שואל את ChatGPT, מקבל תשובה כללית, מתקן פעמיים ומוותר</li>
-      <li>כולם מדברים על כלים, פרומפטים וסוכנים, ואתה לא יודע מאיפה להתחיל</li>
-      <li>מבזבז זמן על מיילים, ניסוחים וסיכומים שהיו יכולים לקחת דקות</li>
-      <li>אין לך ערבים פנויים לקורס חי, אבל לא רוצה להישאר מאחור</li>
-  </ul>
-  <p class="pains-close reveal">זה לא הכלי. חסרה שיטה. ארבעה שיעורים, בזמן שנוח לך, והיא אצלך.</p>
-  <a class="btn btn-lg reveal" href="#buy">אני רוצה להתחיל ללמוד</a>
-</section>
-
-<section class="method" id="method">
-  <div class="method-intro">
-    <h2 class="sec-title reveal">AI הוא לא קסם.<br/><em>הוא כמו עובד חדש.</em></h2>
-    <div class="reveal">
-      <p>עובד חדש לא מתחיל לעבוד לבד ביום הראשון. הוא צריך לדעת מה המשימה, לקבל את החומרים הנכונים, ולהבין מה נחשב תוצר טוב. עם AI זה בדיוק אותו דבר.</p>
-      <p>רוב האנשים פותחים צ׳אט, שואלים שאלה, מקבלים תשובה בינונית ומסיקים שזה לא בשבילם. הבעיה היא לא הכלי, אלא שאין שיטה.</p>
+<section class="sec" id="pains">
+  <div class="wrap stack">
+    <p class="eyebrow">01 · נשמע מוכר</p>
+    <h2 class="h-sm">ניסית לבד. נתקעת.</h2>
+    <div class="grid-3">
+      <div class="rule-top"><p class="body">ישבת על AI עשרות פעמים, ועדיין לא הגעת לאן שרצית.</p></div>
+      <div class="rule-top"><p class="body">ראית סרטונים ביוטיוב, אבל אף אחד לא הראה לך שיטה שלמה מקצה לקצה.</p></div>
+      <div class="rule-top"><p class="body">אין לך ערב פנוי קבוע בשבוע, ואתה צריך ללמוד בקצב שלך.</p></div>
     </div>
-  </div>
-  <div class="method-cards reveal panel">
-    <div class="m-card reveal slide">
-      <b>01</b>
-      <h3>מתחילים ממשימה, לא מכלי</h3>
-      <p>השאלה היא לא מה ChatGPT יודע לעשות, אלא מה אתם צריכים שייצא לכם היום. הכלי נבחר אחרי שהמשימה ברורה.</p>
-    </div>
-    <div class="m-card reveal slide">
-      <b>02</b>
-      <h3>קלט טוב, פלט טוב</h3>
-      <p>ההקשר, הדוגמאות והכיוון שתכניסו פנימה הם שיקבעו מה יצא. זו לא שאלה ותשובה, זה תהליך.</p>
-    </div>
-    <div class="m-card reveal slide">
-      <b>03</b>
-      <h3>אל תחליט שום דבר לבד</h3>
-      <p>שלא יניח הנחות, שלא ימציא פרטים, ושיוודא איתכם לפני שהוא מבצע. ההנחיה הזו לבדה מוציאה מהמשחק את רוב התשובות שנשמעות טוב אבל אינן נכונות.</p>
-    </div>
+    <p class="lead">בדיוק בשביל זה המסלול הזה קיים. אותו תוכן, בלי מועדים קבועים.</p>
   </div>
 </section>
 
-<!-- ===== מה לומדים ===== -->
-<section class="lessons grain" id="lessons">
-  <div class="lessons-head reveal">
-    <h2 class="sec-title">ארבעה שיעורים.<br/><span class="ghost">כל אחד תוצר ביד.</span></h2>
-    <p>כל שיעור מתחיל ממשימה אמיתית ונגמר במשהו שאפשר להשתמש בו כבר למחרת.</p>
-  </div>
-  <div class="lesson reveal">
-    <b><span>01</span></b>
-    <h3>מתחילים ממשימה: איזה כלי לאיזו עבודה</h3>
-    <p>מתחילים ממשימה אמיתית מהעבודה שלכם, ומשם בוחרים את הכלי שמתאים לה. היכרות מעשית עם ChatGPT, Claude, Gemini ו-NotebookLM דרך שימוש, לא דרך תפריטים.</p>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
-  </div>
-  <div class="lesson reveal">
-    <b><span>02</span></b>
-    <h3>פרומפטים שעובדים: ספרייה אישית ומצגת מקצועית</h3>
-    <p>עקרונות פרומפטינג שמביאים תוצאה, בניית ספריית פרומפטים אישית, ומרעיון למצגת מקצועית.</p>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
-  </div>
-  <div class="lesson reveal">
-    <b><span>03</span></b>
-    <h3>הסוכן האישי שלכם: עוזר שמכיר את העסק</h3>
-    <p>בונים סוכן AI אישי שמכיר את התחום שלכם, כותב בסגנון שלכם, ועובד בשבילכם.</p>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
-  </div>
-  <div class="lesson reveal">
-    <b><span>04</span></b>
-    <h3>עבודה על אוטומט: תהליכים וצוות סוכנים</h3>
-    <p>תהליכי עבודה וצוות סוכנים שעובד בשבילכם, וארגז הכלים המלא כדי להישאר קדימה.</p>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+<!-- ===== מספרים ===== -->
+<section class="sec sec-2">
+  <div class="wrap figures" style="border:0">
+    <div><span class="fig">4</span><span class="fig-label">שיעורים מוקלטים</span></div>
+    <div><span class="fig">8</span><span class="fig-label">שעות תוכן</span></div>
+    <div><span class="fig">∞</span><span class="fig-label">צפיות, בכל מכשיר</span></div>
+    <div><span class="fig on-accent">14</span><span class="fig-label">ימי ביטול בהחזר מלא</span></div>
   </div>
 </section>
 
-<!-- ===== התוצאה ===== -->
-<section class="outcomes" id="outcomes">
-  <h2 class="sec-title reveal">מה תדעו לעשות <em>בסיום.</em></h2>
-  <div class="out-grid reveal panel">
-    <div class="out-cell reveal slide">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-      <h3>לכתוב פרומפטים שמייצרים תוצאות</h3>
-      <p>להפסיק לקבל תשובות גנריות, ולהגיע לתוצר שאפשר להשתמש בו מיד.</p>
+<!-- ===== מה תדע לעשות ===== -->
+<section class="sec" id="able">
+  <div class="wrap stack">
+    <p class="eyebrow">02 · בסוף ארבעת השיעורים</p>
+    <h2 class="h-sm">מה תדע לעשות.</h2>
+    <div class="grid-3">
+      <div class="rule-top"><p class="body">לבחור את הכלי הנכון למשימה, במקום לנסות הכול על הכול.</p></div>
+      <div class="rule-top"><p class="body">לכתוב פרומפט שמחזיר תוצר מקצועי, ולשמור אותו לשימוש חוזר.</p></div>
+      <div class="rule-top"><p class="body">לבנות סוכן אישי שמכיר את העבודה שלך וכותב בסגנון שלך.</p></div>
+      <div class="rule-top"><p class="body">להפוך תהליך שחוזר על עצמו לעבודה שרצה כמעט לבד.</p></div>
     </div>
-    <div class="out-cell reveal slide">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-      <h3>להשתמש ב-AI בעבודה היומיומית</h3>
-      <p>מיילים, ניסוחים, מענה ללקוחות ומשימות חוזרות, בשבריר מהזמן.</p>
+  </div>
+</section>
+
+<!-- ===== ארבעת השיעורים ===== -->
+<section class="sec sec-2" id="lessons">
+  <div class="wrap stack">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <p class="eyebrow">03 · מה לומדים</p>
+      <h2 class="h-sm">ארבעה שיעורים.<br/><span class="ghost">ארבעה תוצרים.</span></h2>
+      <p class="body">כל שיעור נגמר במשהו גמור שנשאר אצלך, לא בהבנה תיאורטית. צופים בקצב שלך, מכל מכשיר, בלי הגבלת זמן.</p>
     </div>
-    <div class="out-cell reveal slide">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-      <h3>להכין מצגות וסיכומים</h3>
-      <p>מרעיון גולמי למצגת או מסמך מסודר, מהר ובאיכות מקצועית.</p>
-    </div>
-    <div class="out-cell reveal slide">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-      <h3>ליצור תוכן במהירות</h3>
-      <p>תוכן שיווקי, פוסטים וחומרים כתובים, בלי להתחיל מדף ריק.</p>
-    </div>
-    <div class="out-cell reveal slide">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-      <h3>לבנות סוכן AI בסיסי</h3>
-      <p>עוזר אישי שמכיר את התחום שלכם ועובד בשבילכם, גם כשאתם עסוקים.</p>
-    </div>
-    <div class="out-cta reveal slide">
-      <p>זה ההבדל בין ״ניסיתי AI״ לבין ״אני עובד עם AI״.</p>
-      <a data-buy href="https://mrng.to/zoeR82jDpx">אני רוצה להתחיל ללמוד ←</a>
+    <div class="lessons">
+      <article class="lesson">
+        <span class="lesson-n ltr">01</span>
+        <div>
+          <p class="lesson-when">שיעור ראשון</p>
+          <h3 class="card-title">מתחילים ממשימה, לא מכלי</h3>
+          <p class="body">איזה כלי מתאים לאיזו עבודה, ולמה רוב הניסיונות נתקעים כבר בשאלה הזאת.</p>
+        </div>
+      </article>
+      <article class="lesson">
+        <span class="lesson-n ltr">02</span>
+        <div>
+          <p class="lesson-when">שיעור שני</p>
+          <h3 class="card-title">פרומפטים שעובדים</h3>
+          <p class="body">בונים ספרייה אישית של פרומפטים, ומוציאים מצגת מקצועית מקצה לקצה.</p>
+        </div>
+      </article>
+      <article class="lesson">
+        <span class="lesson-n ltr">03</span>
+        <div>
+          <p class="lesson-when">שיעור שלישי</p>
+          <h3 class="card-title">הסוכן האישי שלך</h3>
+          <p class="body">עוזר שמכיר את העסק ואת הסגנון שלך, ולא צריך שתסביר לו מחדש כל פעם.</p>
+        </div>
+      </article>
+      <article class="lesson">
+        <span class="lesson-n ltr">04</span>
+        <div>
+          <p class="lesson-when">שיעור רביעי</p>
+          <h3 class="card-title">עבודה על אוטומט</h3>
+          <p class="body">תהליכים שרצים לבד, וצוות סוכנים שמחלק ביניהם את העבודה.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- ===== מהשטח ===== -->
-<section class="proof" id="proof">
-  <h2 class="wall-title reveal">אומרים עלינו</h2>
-  <p class="wall-sub reveal">1,500 בוגרים · 30 מחזורים</p>
-  <div class="wall reveal">
-    <a class="wall-tile" href="assets/public/assets/whatsapp-proofs/whatsapp-10.jpg" target="_blank" rel="noopener"><img src="assets/public/assets/whatsapp-proofs/whatsapp-10.jpg" alt="בוגר הקורס הדיגיטלי: לפני הקורס עולם ה-AI הרגיש כמו סינית, אחרי ארבעת השיעורים יש לי בסיס" loading="lazy"/></a>
-    <a class="wall-tile" href="assets/public/assets/whatsapp-proofs/whatsapp-11.jpg" target="_blank" rel="noopener"><img src="assets/public/assets/whatsapp-proofs/whatsapp-11.jpg" alt="בוגר הקורס הדיגיטלי: גיליתי לא מעט דברים ששינו לי את צורת העבודה" loading="lazy"/></a>
-    <a class="wall-tile" href="assets/public/assets/whatsapp-proofs/whatsapp-12.jpg" target="_blank" rel="noopener"><img src="assets/public/assets/whatsapp-proofs/whatsapp-12.jpg" alt="בוגר הקורס הדיגיטלי: הקורס השלים דברים שהיו חסרים לי" loading="lazy"/></a>
-  </div>
-  <p class="wa-note reveal">תגובות אמיתיות מהוואטסאפ. הפרטים המזהים טושטשו. לחיצה על תמונה פותחת אותה בגודל מלא.</p>
-  <div class="orgs reveal">
-    <h3 class="orgs-title">הדרכות והטמעות בעסקים</h3>
-    <div class="orgs-strip">
-      <div class="orgs-track"><ul class="orgs-set"><li><img src="assets/public/logos/logo-mivtach.png" alt="מבטח" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="דרשו" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="כיוון" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="משטרת ישראל" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="חוצות ירושלים" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="המבשר" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="התאחדות יועצי המשכנתאות" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="דוקטור משכנתא" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="פרספקטיבה" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="אוסקר" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="משרד הנגב, הגליל והחוסן הלאומי" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="לוגו שותף" width="99" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li></ul><ul class="orgs-set" aria-hidden="true"><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-mivtach.png" alt="" aria-hidden="true" width="80" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-dirshu.png" alt="" aria-hidden="true" width="107" height="46" style="height:46px"/></li><li><img src="assets/public/logos/logo-kivun.png" alt="" aria-hidden="true" width="119" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-mishtara.png" alt="" aria-hidden="true" width="55" height="50" style="height:50px"/></li><li><img src="assets/public/logos/logo-chutzot.png" alt="" aria-hidden="true" width="88" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hamevaser.png" alt="" aria-hidden="true" width="91" height="44" style="height:44px"/></li><li><img src="assets/public/logos/logo-hitachdut.png" alt="" aria-hidden="true" width="130" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-doctor-mashkanta.png" alt="" aria-hidden="true" width="59" height="52" style="height:52px"/></li><li><img src="assets/public/logos/logo-perspectiva.png" alt="" aria-hidden="true" width="57" height="54" style="height:54px"/></li><li><img src="assets/public/logos/logo-oscar.png" alt="" aria-hidden="true" width="84" height="34" style="height:34px"/></li><li><img src="assets/public/logos/logo-negev-galil.png" alt="" aria-hidden="true" width="127" height="40" style="height:40px"/></li><li><img src="assets/public/logos/logo-signature.png" alt="" aria-hidden="true" width="99" height="44" style="height:44px"/></li></ul></div>
+<section class="sec" id="proof">
+  <div class="wrap stack">
+    <p class="eyebrow">04 · מהשטח</p>
+    <h2 class="h-sm">אומרים עלינו.</h2>
+    <figure class="quote-card is-big" style="background:var(--card);border-color:var(--line)">
+      <blockquote style="color:var(--ink)">״קניתי מיוחנן את הקורס הדיגיטלי, ואוו. היו דברים שהיו חסרים לי בטירוף והקורס הזה הוסיף לי אותם. אני יושב רצינית על ה-AI מניסן, ואם תחשבו שישבתי עליו בערך 20 פעמים ללא החופשים והגעתי לאן שהגעתי, האבל הגדול היה שחסר לי הרבה פרקטיקה והרבה ידע, והחוסרים האלו הם לכאורה הבסיסיים ביותר.״</blockquote>
+      <figcaption style="color:var(--muted)">יוחי · בוגר הקורס הדיגיטלי</figcaption>
+    </figure>
+    <div class="grid">
+      <a class="shot" href="assets/public/assets/whatsapp-proofs/whatsapp-10.jpg" target="_blank" rel="noopener">
+        <img src="assets/public/assets/whatsapp-proofs/whatsapp-10.jpg" alt="בוגר הקורס הדיגיטלי: לפני הקורס עולם ה-AI הרגיש כמו סינית, אחרי ארבעת השיעורים יש לי בסיס" loading="lazy"/>
+      </a>
+      <a class="shot" href="assets/public/assets/whatsapp-proofs/whatsapp-11.jpg" target="_blank" rel="noopener">
+        <img src="assets/public/assets/whatsapp-proofs/whatsapp-11.jpg" alt="בוגר הקורס הדיגיטלי: גיליתי לא מעט דברים ששינו לי את צורת העבודה" loading="lazy"/>
+      </a>
+      <a class="shot" href="assets/public/assets/whatsapp-proofs/whatsapp-12.jpg" target="_blank" rel="noopener">
+        <img src="assets/public/assets/whatsapp-proofs/whatsapp-12.jpg" alt="יוחי, בוגר הקורס הדיגיטלי: הקורס הוסיף לי דברים שהיו חסרים לי, פרקטיקה וידע בסיסי" loading="lazy"/>
+      </a>
     </div>
-    <a class="orgs-cta" href="https://wa.me/972528189921" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>רוצים גם בעסק שלכם?<span class="sr-only"> (נפתח בוואטסאפ)</span></a>
+    <p class="small">תגובות אמיתיות מהוואטסאפ. הפרטים המזהים טושטשו. לחיצה על תמונה פותחת אותה בגודל מלא.</p>
   </div>
 </section>
 
-<!-- ===== הוובינר ===== -->
+<!-- ===== מי מוביל ===== -->
+<section class="sec sec-2">
+  <div class="wrap founder">
+    <figure class="founder-photo">
+      <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון, מרצה ומטמיע בינה מלאכותית" width="900" height="1350" loading="lazy"/>
+    </figure>
+    <div class="founder-body">
+      <p class="eyebrow">05 · מי מוביל</p>
+      <h2 class="h-sm">יוחנן שבדרון</h2>
+      <p class="founder-quote">לא באתי להוריד את הרמה בשביל אף אחד. באתי להביא את הרמה הכי גבוהה, למקום שבו אתה נמצא.</p>
+      <ul class="founder-list">
+        <li>בוגר תואר ראשון במדעי המחשב, התמחות בבינה מלאכותית</li>
+        <li>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</li>
+        <li>1,500 בוגרים ב-30 מחזורים</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== המחיר ===== -->
+<section class="sec" id="buy">
+  <div class="wrap buy" id="purchase-details">
+    <div class="stack" style="gap:28px">
+      <p class="eyebrow">06 · מחיר אחד</p>
+      <h2 class="h-sm">גישה מלאה.<br/><span class="ghost">מיד.</span></h2>
+      <p class="body">זו ההקלטה של הקורס החי בגרסתו המלאה, ארבעה מפגשים. מה שאין כאן, מפגשים בזמן אמת, שאלות וליווי אישי. בשביל זה המחיר נמוך יותר.</p>
+      <ul class="ticks" style="font-size:17px">
+        <li>4 שיעורים מוקלטים, כ-8 שעות תוכן</li>
+        <li>גישה מיידית מכל מכשיר, צפייה חוזרת ללא הגבלת זמן</li>
+        <li>חומרי עזר וספריית פרומפטים מוכנה לשימוש</li>
+        <li>עדכוני תוכן עתידיים, ללא תשלום נוסף</li>
+        <li>ביטול תוך 14 ימים בהחזר מלא, בתנאי התקנון</li>
+      </ul>
+    </div>
+
+    <div class="buy-card">
+      <p class="card-kicker">המוח השני · גישה מיידית</p>
+      <div class="buy-now">
+        <b><span class="js-price-total">385 ₪</span></b>
+        <span>כולל מע״מ · בלי דמי טיפול ובלי תוספות</span>
+      </div>
+      <p class="buy-pmt">בתשלום אחד או עד 3 תשלומים</p>
+
+      <div class="coupon" id="coupon-box">
+        <button type="button" class="coupon-toggle" id="coupon-open">יש לי קוד קופון</button>
+        <div class="coupon-body" id="coupon-fields" hidden>
+          <label class="sr-only" for="coupon-input">קוד קופון</label>
+          <div class="coupon-row">
+            <input type="text" id="coupon-input" placeholder="קוד קופון" autocomplete="off"/>
+            <button type="button" id="coupon-apply">החל</button>
+          </div>
+          <p class="coupon-msg" id="coupon-msg" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="consent" style="border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:10px">
+        <label class="gift-consent" for="terms-accept">
+          <input type="checkbox" id="terms-accept" aria-describedby="terms-accept-err"/>
+          <span>קראתי ואני מאשר את <a href="terms.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">תקנון האתר ותנאי הרכישה</a> ואת <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">מדיניות הפרטיות</a>.</span>
+        </label>
+        <strong class="coupon-msg err" id="terms-accept-err" role="alert"></strong>
+        <label class="gift-consent" for="marketing-accept">
+          <input type="checkbox" id="marketing-accept"/>
+          <span>אני מאשר לקבל עדכונים, הטבות ותוכן מקצועי בדוא״ל ובאמצעי קשר דיגיטליים. ניתן להסיר את ההסכמה בכל עת. לא חובה, ואינו תנאי לרכישה.</span>
+        </label>
+      </div>
+
+      <a class="btn btn-primary btn-block" data-buy href="https://mrng.to/zoeR82jDpx">למעבר לתשלום מאובטח</a>
+      <p class="pay-row">תשלום מאובטח · גישה מיידית</p>
+
+      <p class="guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא, כל עוד לא נצפה יותר משיעור אחד.</p>
+      <p class="ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
+      <a class="small" href="terms.html#product" target="_blank" rel="noopener" style="text-align:center;color:var(--accent);text-decoration:underline">לקריאת פרטי העסקה המלאים</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== שאלות ===== -->
+<section class="sec sec-2" id="faq">
+  <div class="wrap stack" style="max-width:880px">
+    <p class="eyebrow">07 · לפני שמחליטים</p>
+    <h2 class="h-sm">שאלות. תשובות קצרות.</h2>
+    <div class="qa">
+      <details open>
+        <summary><span>כמה זמן לוקח לעבור את הקורס?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>כשמונה שעות תוכן, בארבעה שיעורים. אפשר לפרוס אותם על פני שבוע או על פני חודש. הגישה נשארת בלי הגבלת זמן.</p>
+      </details>
+      <details>
+        <summary><span>מה ההבדל בינו לבין המסלולים החיים?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>כאן אין מפגשים בזמן אמת, אין שאלות למרצה ואין קבוצת ליווי, ולכן המחיר נמוך יותר. אם אתה רוצה מרצה שעונה לך תוך כדי וקבוצה של עד 20 איש, <a href="course-beginners.html">מאפס למאה</a> הוא המסלול.</p>
+      </details>
+      <details>
+        <summary><span>ואם זה לא מתאים לי?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>אפשר לבטל תוך 14 ימים מהרכישה ולקבל החזר מלא, כל עוד לא נצפה יותר משיעור אחד מלא. בקשה שתגיע אחרי צפייה נרחבת יותר תיבחן לגופה ובאופן הוגן. הפרטים המלאים ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p>
+      </details>
+      <details>
+        <summary><span>המחיר כולל מע״מ?</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>כן. הסכום לתשלום הוא <span class="js-price-total">385 ₪</span> כולל מע״מ (<span class="js-price">326.27 ₪</span> ועוד מע״מ <span class="js-vat-rate">18%</span>), וזה מה שייגבה בפועל. אין תוספות מעבר לכך.</p>
+      </details>
+      <details>
+        <summary><span>יש לי אינטרנט מסונן</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>הכלים שנלמדים נגישים דרך אינטרנט מסונן. אם יש לך שאלה על ספק סינון מסוים, כתוב לי ונבדוק מראש.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- BUILD:webinar -->
   <section class="sec" id="webinar">
     <div class="wrap stack">
@@ -816,144 +348,40 @@ body:has(#shw-cookie-banner) .wa-float{bottom:210px}
   </section>
   <!-- /BUILD:webinar -->
 
-<!-- ===== שאלות נפוצות ===== -->
-<section class="faq" id="faq">
-  <div class="faq-grid">
-    <div class="faq-side reveal">
-      <p class="eyebrow">שאלות נפוצות</p>
-      <h2 class="sec-title">לפני<br/><em>שמחליטים.</em></h2>
-      <p>לא מצאתם את התשובה? כתבו בוואטסאפ <span class="nowrap">ל<a href="https://wa.me/972528189921">052-818-9921</a></span> ותקבלו מענה אישי.</p>
+<!-- ===== המסלול הבא ===== -->
+<section class="sec">
+  <div class="wrap cta-box" style="background:var(--card);border:1px solid var(--line)">
+    <div>
+      <b>רוצה ליווי וקבוצה?</b>
+      <p>במאפס למאה יש עד 20 איש בקבוצה, מרצה שעונה לך בזמן אמת, תרגול על המשימות שלך וקבוצת ליווי בוואטסאפ. שלושה ערבים חיים, מיום שני 23.11.</p>
     </div>
-    <div class="faq-list reveal">
-      <details>
-        <summary>למה לא ללמוד לבד ביוטיוב?</summary>
-        <p>ביוטיוב לומדים מה כל כלי יודע לעשות, בסרטונים מפוזרים. כאן יש שיטת עבודה אחת מסודרת, מההתחלה ועד הסוף, עם דוגמאות מהעבודה האמיתית וספריית פרומפטים מוכנה. זה מה שחוסך את חודשי הניסוי והטעייה.</p>
-      </details>
-      <details>
-        <summary>אין לי הרבה זמן. זה מתאים לי?</summary>
-        <p>בדיוק בשביל זה יש גרסה מוקלטת. ארבעה שיעורים שרואים מתי שנוח, מכל מכשיר, וחוזרים אליהם כמה שרוצים. כבר אחרי השיעור הראשון אפשר להתחיל לחסוך זמן.</p>
-      </details>
-      <details open>
-        <summary>כבר ניסיתי ChatGPT ולא התרשמתי. למה שיהיה אחרת?</summary>
-        <p>כי רוב הניסיונות נעצרים בשאלה ותשובה. הקורס מלמד תהליך עבודה: איך נותנים הקשר, איך מכוונים, ואיך מגיעים לתוצר שאפשר להשתמש בו. זה בדיוק ההבדל בין להתרשם לבין לעבוד.</p>
-      </details>
-      <details>
-        <summary>מה ההבדל בין זה לקורס החי?</summary>
-        <p>זו ההקלטה של הקורס החי בגרסתו המלאה, ארבעה מפגשים (המסלול החי למתחילים צומצם מאז לשלושה מפגשים ממוקדים). בקורסים החיים יש מפגשים בזמן אמת, שאלות ותשובות וליווי אישי, ולכן מחירם גבוה יותר (<a href="index.html">לפרטים על המסלולים בזום</a>). כאן הלמידה עצמאית, ולכן המחיר נמוך יותר.</p>
-      </details>
-      <details>
-        <summary>המחיר כולל מע״מ?</summary>
-        <p>כן. הסכום לתשלום הוא <b><span class="js-price-total">385 ₪</span></b> כולל מע״מ (<span class="js-price">326.27 ₪</span> + מע״מ <span class="js-vat-rate">18%</span>), וזה מה שייגבה בפועל. אין תוספות מעבר לכך.</p>
-      </details>
-      <details>
-        <summary>צריך לשלם על הכלים עצמם?</summary>
-        <p>לכלים שנלמדים בקורס יש גרסאות חינמיות שאפשר להתחיל ולעבוד איתן. לחלק מהיכולות המתקדמות קיימים מנויים בתשלום של אותם ספקים. הקורס אינו כולל מנויים, וההחלטה אם לשדרג נשארת שלכם.</p>
-      </details>
-      <details>
-        <summary>הקורס מתאים גם בלי רקע טכני?</summary>
-        <p>כן. הקורס בנוי מאפס, בגובה העיניים. אם אתם יודעים להשתמש בוואטסאפ, אתם מוכנים ללמוד לעבוד נכון עם AI.</p>
-      </details>
-      <details>
-        <summary>ואם זה לא יתאים לי?</summary>
-        <p>אפשר לבטל תוך 14 ימים ולקבל החזר מלא, כל עוד לא נצפה יותר משיעור אחד מלא. הפרטים המלאים ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p>
-      </details>
-    </div>
+    <a class="btn btn-ghost" href="course-beginners.html#buy" data-track-pick="course-beginners">למאפס למאה ←</a>
   </div>
-</section>
-
-<!-- ===== הצטרפות =====
-     גילוי פרטי העסקה ותיבת אישור התקנון נדרשים בחוק הגנת הצרכן,
-     והסליקה מתבצעת מחוץ לאתר, ולכן הם חייבים להופיע כאן לפני המעבר. -->
-<section class="buy-sec" id="buy" aria-labelledby="buy-title">
-  <div class="glow" aria-hidden="true"></div>
-  <div class="buy-grid" id="purchase-details">
-    <div class="buy-left reveal">
-      <h2 class="sec-title" id="buy-title">מחיר אחד.<br/><span class="ghost">גישה מלאה.</span></h2>
-      <p>זו ההקלטה של הקורס החי בגרסתו המלאה, ארבעה מפגשים. מה שאין כאן: מפגשים בזמן אמת, שאלות וליווי אישי. בשביל זה המחיר נמוך יותר.</p>
-      <ul class="incl">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>4 שיעורים מוקלטים, כ-8 שעות תוכן</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>גישה מיידית מכל מכשיר, צפייה חוזרת ללא הגבלת זמן</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>חומרי עזר וספריית פרומפטים מוכנה לשימוש</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>עדכוני תוכן עתידיים, ללא תשלום נוסף</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>ביטול תוך 14 ימים בהחזר מלא, בתנאי <a href="cancellation.html">התקנון</a></span></li>
-      </ul>
-    </div>
-
-    <div class="price-card reveal">
-      <span class="lbl">פירוט המחיר</span>
-      <table class="price-table">
-        <tbody>
-          <tr><th scope="row">מחיר גרסת הצפייה</th><td class="js-price">326.27 ₪</td></tr>
-          <tr><th scope="row">מע״מ <span class="js-vat-rate">18%</span></th><td class="js-price-vat">58.73 ₪</td></tr>
-          <tr class="tot"><th scope="row">סה״כ לתשלום</th><td class="js-price-total">385 ₪</td></tr>
-        </tbody>
-      </table>
-
-      <div class="pd-coupon" id="coupon-box">
-        <label class="pd-coupon-lbl" for="coupon-input">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a2 2 0 0 1 0-4V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2a2 2 0 0 1 0 4v2a2 2 0 0 1 0 4v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2a2 2 0 0 1 0-4z"/><path d="M14 8.5l-4 7"/></svg>
-          יש לך קוד קופון?
-        </label>
-        <div class="pd-coupon-row">
-          <input type="text" id="coupon-input" class="pd-coupon-input" placeholder="קוד קופון" autocomplete="off"/>
-          <button type="button" id="coupon-apply" class="pd-coupon-btn">החל קופון</button>
-        </div>
-        <p class="pd-coupon-msg" id="coupon-msg" role="status" aria-live="polite"></p>
-      </div>
-
-      <p class="pd-vat">זהו הסכום שייגבה בפועל בכרטיס האשראי, בתשלום אחד או בעד 3 תשלומים. ללא דמי טיפול וללא תוספות.</p>
-
-      <div class="consent">
-        <label class="check-row" for="terms-accept">
-          <input type="checkbox" id="terms-accept" aria-describedby="terms-accept-err"/>
-          <span>קראתי ואני מאשר את <a href="terms.html" target="_blank" rel="noopener">תקנון האתר ותנאי הרכישה</a> ואת <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</span>
-        </label>
-        <strong class="field-error" id="terms-accept-err" role="alert"></strong>
-        <label class="check-row" for="marketing-accept">
-          <input type="checkbox" id="marketing-accept"/>
-          <span>אני מאשר לקבל עדכונים, הטבות ותוכן מקצועי בדוא״ל ובאמצעי קשר דיגיטליים. ניתן להסיר את ההסכמה בכל עת. לא חובה, ואינו תנאי לרכישה.</span>
-        </label>
-        <a class="terms-link" href="terms.html#product" target="_blank" rel="noopener">לקריאת פרטי העסקה המלאים (נפתח בלשונית חדשה)</a>
-      </div>
-
-      <a class="btn btn-dark btn-lg" data-buy href="https://mrng.to/zoeR82jDpx">למעבר לתשלום מאובטח</a>
-      <span class="secure">תשלום מאובטח · גישה מיידית</span>
-      <p class="dig-guar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא, כל עוד לא נצפה יותר משיעור אחד.</p>
-      <p class="pd-ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== הפניה למסלול החי ===== -->
-<section class="dig-cross">
-  <div>
-    <b>רוצה ליווי וקבוצה?</b>
-    <p>במסלול המתחילים בזום יש עד 20 איש בקבוצה, מרצה שעונה לך בזמן אמת, תרגול על המשימות שלך וקבוצת ליווי בוואטסאפ. שלושה ערבים חיים, מיום שני 23.11.</p>
-  </div>
-  <a class="btn btn-sm" href="course-beginners.html#buy">למסלול המתחילים בזום &#8592;</a>
 </section>
 
 </main>
 
-<footer class="site-footer">
-  <img src="assets/public/logo.png" alt="SHWADRON.AI"/>
-  <nav aria-label="מסמכים משפטיים">
-    <ul>
-      <li><a href="terms.html">תקנון ותנאי רכישה</a></li>
-      <li><a href="privacy.html">מדיניות פרטיות</a></li>
-      <li><a href="accessibility.html">הצהרת נגישות</a></li>
-      <li><a href="cancellation.html">ביטול עסקה</a></li>
-      <li><a href="#" data-consent-settings>הגדרות עוגיות</a></li>
-    </ul>
-  </nav>
-  <p class="biz">יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></p>
+<footer class="site-foot">
+  <div class="wrap">
+    <img class="brand-foot" src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107" loading="lazy"/>
+    <nav aria-label="קישורים משפטיים">
+      <a href="index.html">כל המסלולים</a>
+      <a href="terms.html">תקנון</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="accessibility.html">הצהרת נגישות</a>
+      <a href="cancellation.html">ביטול עסקה</a>
+      <a href="#" data-consent-settings>הגדרות עוגיות</a>
+    </nav>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
+  </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99" target="_blank" rel="noopener" aria-label="שליחת הודעה ליוחנן בוואטסאפ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg></a>
-
-<div class="stickybar" id="stickybar">
-  <div class="sb-price"><b class="js-price-total">385 ₪</b><span class="sb-vat">כולל מע״מ · עד 3 תשלומים</span></div>
-  <a class="btn btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
+<div class="dock" id="stickybar">
+  <div class="dock-price">
+    <b class="js-price-total">385 ₪</b>
+    <span>כולל מע״מ · עד 3 תשלומים</span>
+  </div>
+  <a class="btn btn-primary btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
 </div>
 
 <script>
@@ -1286,5 +714,6 @@ body:has(#shw-cookie-banner) .wa-float{bottom:210px}
   prev&&prev.addEventListener('click',function(){ go(current()-1); });
 })();
 </script>
+<script src="assets/js/shw-coupon.js"></script>
 </body>
 </html>
