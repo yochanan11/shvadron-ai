@@ -19,8 +19,9 @@
     });
     forms.forEach(function(form){
       form.hidden = true;
-      var after = form.parentNode.querySelector('.gift-after');
-      if(after) after.hidden = false;
+      // תודה + הזמנה לקבוצת הטיפים במקום הטופס, וכפתור ההמשך שמתחת לנגן
+      var sec = form.closest('section') || document;
+      sec.querySelectorAll('.gift-done, .gift-after').forEach(function(el){ el.hidden = false; });
     });
   }
 
@@ -37,6 +38,8 @@
       msg.classList.remove('err');
       if(!name){ msg.textContent = 'נא למלא שם.'; msg.classList.add('err'); form.elements.name.focus(); return; }
       if(!/^0\d{8,9}$/.test(phone)){ msg.textContent = 'נא למלא מספר טלפון תקין.'; msg.classList.add('err'); form.elements.phone.focus(); return; }
+      var email = form.elements.email ? form.elements.email.value.trim() : '';
+      if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.textContent = 'כתובת המייל לא תקינה (אפשר גם להשאיר ריק).'; msg.classList.add('err'); form.elements.email.focus(); return; }
       var btn = form.querySelector('button'); btn.disabled = true;
       msg.textContent = 'פותח…';
       function open(){
@@ -47,7 +50,7 @@
       fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, phone: phone, consent: form.elements.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '',
+        body: JSON.stringify({ name: name, phone: phone, email: email, consent: form.elements.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '',
                                page: location.pathname.replace(/^\//, '') || 'index.html' })
       }).then(open, open);
     });

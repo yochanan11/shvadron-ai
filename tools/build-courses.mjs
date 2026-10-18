@@ -16,7 +16,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, DIGITAL, ALL_TRACKS, COMPARE, TRACKS, SCHEDULE_NOTE,
-         TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR }
+         TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR, TIPS_GROUP }
          from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -328,12 +328,17 @@ function webinar(opts = {}) {
         <div class="gift-fields">
           <label><span>שם</span><input name="name" autocomplete="name" required/></label>
           <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          <label class="biz-wide"><span>מייל <small>(לא חובה)</small></span><input name="email" type="email" inputmode="email" autocomplete="email"/></label>
         </div>
         <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
         <button class="btn btn-primary btn-block" type="submit">פתחו לי את הוובינר</button>
         <p class="gift-msg" role="status" aria-live="polite"></p>
         <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
       </form>
+      <div class="gift-done" hidden>
+        <p class="lead"><b>הוובינר פתוח, צפייה מהנה.</b> רוצים להמשיך לקבל טיפים קצרים על AI? בקבוצת הטיפים יוחנן משתף טיפים שוטפים, בלי ספאם.</p>
+        <a class="btn btn-primary tips-btn" href="${TIPS_GROUP}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
+      </div>
       <div class="video-frame gift-locked">
         <div class="gift-cover" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>

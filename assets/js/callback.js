@@ -19,6 +19,8 @@
       msg.classList.remove('err');
       if(!name){ msg.textContent = 'נא למלא שם.'; msg.classList.add('err'); form.elements.name.focus(); return; }
       if(!/^0\d{8,9}$/.test(phone)){ msg.textContent = 'נא למלא מספר טלפון תקין.'; msg.classList.add('err'); form.elements.phone.focus(); return; }
+      var email = form.elements.email ? form.elements.email.value.trim() : '';
+      if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.textContent = 'כתובת המייל לא תקינה (אפשר גם להשאיר ריק).'; msg.classList.add('err'); form.elements.email.focus(); return; }
       var btn = form.querySelector('button'); btn.disabled = true;
       msg.textContent = 'שולח…';
 
@@ -30,7 +32,7 @@
       fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, phone: phone, company: company, kind: 'callback',
+        body: JSON.stringify({ name: name, phone: phone, email: email, company: company, kind: 'callback',
                                consent: form.elements.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '', page: page })
       }).then(function(r){
         if(!r.ok) return fail();

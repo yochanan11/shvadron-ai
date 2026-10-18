@@ -19,7 +19,9 @@
 
 const SHEET_NAME = 'לידים מהאתר';
 const SECRET = 'CHANGE-ME';
-const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה'];
+// סדר העמודות בלשונית. עמודה חדשה שנוספת כאן (כמו "מייל") מתווספת לבד
+// בסוף שורת הכותרות בלשונית קיימת, בלי לגעת בשורות הישנות.
+const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה', 'מייל'];
 
 function doPost(e) {
   let d;
@@ -31,16 +33,19 @@ function doPost(e) {
   lock.waitLock(10000);
   try {
     const sheet = getSheet();
-    sheet.appendRow([
-      d.ts ? new Date(d.ts) : new Date(),
-      d.name || '',
-      "'" + (d.phone || ''),            // גרש: שהאפס בתחילת המספר לא ייעלם
-      d.course || '',
-      d.company || '',
-      d.kind === 'callback' ? 'בקשה לחזרה' : 'וובינר',
-      d.consent ? 'כן' : 'לא',
-      d.source || '',
-    ]);
+    const values = {
+      'תאריך': d.ts ? new Date(d.ts) : new Date(),
+      'שם': d.name || '',
+      'טלפון': "'" + (d.phone || ''),       // גרש: שהאפס בתחילת המספר לא ייעלם
+      'מאיזה דף': d.course || '',
+      'שם העסק': d.company || '',
+      'סוג פנייה': d.kind === 'callback' ? 'בקשה לחזרה' : 'וובינר',
+      'הסכמה לדיוור': d.consent ? 'כן' : 'לא',
+      'מקור הגעה': d.source || '',
+      'מייל': d.email || '',
+    };
+    const head = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    sheet.appendRow(head.map(h => (h in values ? values[h] : '')));
   } finally {
     lock.releaseLock();
   }
@@ -54,10 +59,15 @@ function getSheet() {
     sheet = ss.insertSheet(SHEET_NAME);
     sheet.setRightToLeft(true);
     sheet.appendRow(HEADERS);
-    sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
     sheet.setFrozenRows(1);
     sheet.getRange('A:A').setNumberFormat('dd/MM/yyyy HH:mm');
   }
+  // כותרות שחסרות בלשונית קיימת נוספות בסוף
+  const head = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
+  HEADERS.filter(h => head.indexOf(h) === -1).forEach(h => {
+    sheet.getRange(1, sheet.getLastColumn() + 1).setValue(h);
+  });
+  sheet.getRange(1, 1, 1, sheet.getLastColumn()).setFontWeight('bold');
   return sheet;
 }
 
@@ -69,6 +79,6 @@ function out(obj) {
 function testRow() {
   doPost({ postData: { contents: JSON.stringify({
     secret: SECRET, name: 'בדיקה', phone: '0500000000', course: 'בדיקה מהעורך',
-    kind: 'callback', consent: false, ts: new Date().toISOString(),
+    kind: 'callback', consent: false, email: 'test@example.com', ts: new Date().toISOString(),
   }) } });
 }

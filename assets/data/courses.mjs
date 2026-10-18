@@ -377,6 +377,9 @@ export const MARQUEE = {
    כשהסרטון יעלה ל-Vimeo: להחליף כאן את provider ואת id, ולהריץ
    את סקריפט הבנייה. אין מה לשנות ב-HTML.
    ============================================================ */
+/* קבוצת הטיפים בוואטסאפ: מוצעת לכל מי שהשאיר פרטים, מיד אחרי השליחה */
+export const TIPS_GROUP = 'https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo';
+
 export const WEBINAR = {
   provider: 'vimeo',
   id:       '1225883626',   // https://vimeo.com/1225883626

@@ -54,6 +54,9 @@ module.exports = async (req, res) => {
   const callback = b.kind === 'callback';
   // מקור ההגעה (utm_source הראשון), אם הגולש אישר עוגיות סטטיסטיקה
   const source = String(b.source || '').trim().slice(0, 40);
+  // מייל: לא חובה. כתובת שלא נראית תקינה פשוט לא נשמרת
+  const rawEmail = String(b.email || '').trim().slice(0, 120);
+  const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail) ? rawEmail : '';
 
   // טלפון ישראלי: 05X-XXXXXXX, או עם קידומת 972
   const local = phone.replace(/^\+?972/, '0');
@@ -62,7 +65,7 @@ module.exports = async (req, res) => {
   }
 
   const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '') + (callback ? ' · בקשה לחזרה' : '');
-  const lead = { name, phone: local, consent, course, page, company, source, ts: new Date().toISOString() };
+  const lead = { name, phone: local, email, consent, course, page, company, source, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([
