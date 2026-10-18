@@ -19,7 +19,7 @@ Products and their pages:
 
 ```bash
 node tools/build-courses.mjs      # regenerate track content after editing assets/data/courses.mjs
-node tools/build-syllabus.mjs     # regenerate syllabus.html (printable A4 syllabus of both Zoom tracks) from the same data
+node tools/build-syllabus.mjs     # regenerate syllabus-{beginners,advanced,digital}.html (printable A4 syllabus per course) from the same data
 npm start                         # local Express server (server.js) on the repo root, incl. a local /api/chat
 python3 -m http.server 8765       # quickest static preview (api/ calls will fail; mock them)
 node --check <file.js>            # syntax check; there is no test suite or linter

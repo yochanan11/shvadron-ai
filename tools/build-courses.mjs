@@ -242,7 +242,10 @@ function beginnersSyllabus() {
       ? `מפגש ${i + 1} · יום ${BEGINNERS.dayName}, ${s.hebrew ? s.hebrew + ' · ' : ''}${dayMonth(sessionDate(BEGINNERS.start, i))}`
       : s.when,
     s.title, s.desc,
-    s.flow ? flow(s.flow, `שלבי ${s.title}`) : '')).join('\n');
+    [s.flow ? flow(s.flow, `שלבי ${s.title}`) : '',
+     s.flow2 ? `<p class="small" style="margin-top:18px">${esc(s.flow2Label)}</p>\n` +
+       flow(s.flow2, `שלבי ${s.flow2Label}`).replace('class="flow"', 'class="flow" style="margin-top:8px"') : '',
+    ].filter(Boolean).join('\n'))).join('\n');
 }
 
 /* ─── שלושת התחומים של מסלול המתקדמים (.lesson הקיים) ─── */
