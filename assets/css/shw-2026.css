@@ -109,7 +109,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   gap:16px;padding-block:16px}
 /* הלוגו. הקובץ לבן על רקע שקוף, ולכן הוא יושב כמו שהוא על הרקע הכהה */
 .brand{display:inline-flex;align-items:center}
-.brand img{height:34px;width:auto}
+.brand img{height:38px;width:auto}
 .brand-foot{height:28px;width:auto;opacity:.75}
 .site-nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px;color:var(--muted)}
 .site-nav a{color:var(--muted)}
@@ -473,7 +473,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .site-head.is-stuck{background:rgba(10,10,11,.96);border-bottom-color:var(--line)}
 .site-head.is-stuck .wrap{padding-block:10px}
 .site-head .wrap{transition:padding .25s ease}
-.site-head.is-stuck .brand img{height:28px}
+.site-head.is-stuck .brand img{height:32px}
 .brand img{transition:height .25s ease}
 
 /* ── כרטיס שמגיב לעכבר ──

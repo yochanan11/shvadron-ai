@@ -90,7 +90,7 @@ ${t.fit.map(f => `      <li>${esc(f)}</li>`).join('\n')}
   </div>`;
 
 const pageFoot = (n, total) => `<footer class="sheet-foot">
-    <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/>
+    <img src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84"/>
     <span>ai.shwadron-ai.com · ${esc(SCHEDULE_NOTE)}</span>
     <span class="ltr">${n} / ${total}</span>
   </footer>`;
@@ -240,7 +240,7 @@ ${rows.map(([k, v]) => `    <div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).jo
   ${box('מה כלול', t.includes)}
   </div>
   <footer class="sheet-foot">
-    <img src="assets/public/logo-white.png" alt="SHWADRON.AI" width="380" height="107"/>
+    <img src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84"/>
     <span>ai.shwadron-ai.com</span>
     <span class="ltr">1 / 1</span>
   </footer>
