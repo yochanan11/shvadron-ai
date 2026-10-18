@@ -31,6 +31,13 @@ const COURSES = {
   'course-advanced.html':  'AI למתקדמים (זום)',
   'course.html':           'הקורס הדיגיטלי',
   'business.html':         'הטמעה בעסקים',
+  'register.html':         'טופס הרשמה',
+};
+
+// טופס ההרשמה (register.html): המסלול שבחרו
+const TRACKS = {
+  beginners: 'מאפס למאה (מתחילים)',
+  advanced:  'צבא הסוכנים (מתקדמים)',
 };
 
 // טופס "הוובינר במתנה" וטופס "חזרו אליי" (דפי הקורסים ודף העסקים): שומר שם, טלפון והסכמה לדיוור ברשימה "leads"
@@ -63,13 +70,23 @@ module.exports = async (req, res) => {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
-  const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '') + (callback ? ' · בקשה לחזרה' : '');
-  const lead = { name, phone: local, email, consent, course, page, company, source, ts: new Date().toISOString() };
+  // טופס ההרשמה: מסלול, מה רוצים ללמוד, ובשביל מה נרשמו (למשל וובינר)
+  const register = b.kind === 'register';
+  const track = register ? (TRACKS[b.track] || '') : '';
+  const message = register ? String(b.message || '').trim().slice(0, 1000) : '';
+  const topic = register ? String(b.topic || '').trim().slice(0, 160) : '';
+  if (register && (!email || !track)) {
+    return res.status(400).json({ ok: false, error: 'invalid' });
+  }
+
+  const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '') + (callback ? ' · בקשה לחזרה' : '')
+    + (track ? ' · ' + track : '') + (topic ? ' · ' + topic : '');
+  const lead = { name, phone: local, email, consent, course, page, company, source, track, message, topic, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([
     kvRequest(['RPUSH', 'leads', JSON.stringify(lead)]),
-    toSheet(lead, callback ? 'callback' : 'webinar'),
+    toSheet(lead, callback ? 'callback' : register ? 'register' : 'webinar'),
   ]);
   // נראה ב-Vercel > Logs. לא מכשיל את הבקשה אם הליד נשמר ב-KV.
   if (sheet.status === 'rejected' && sheet.reason.message !== 'sheet-not-configured') console.error('lead sheet:', sheet.reason.message);
