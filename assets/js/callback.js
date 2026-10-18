@@ -31,7 +31,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name, phone: phone, company: company, kind: 'callback',
-                               consent: form.elements.consent.checked, page: page })
+                               consent: form.elements.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '', page: page })
       }).then(function(r){
         if(!r.ok) return fail();
         if(window.gtag) gtag('event', 'generate_lead', { lead_source: 'callback_' + page.replace('.html', ''), traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });

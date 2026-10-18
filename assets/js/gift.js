@@ -47,7 +47,7 @@
       fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, phone: phone, consent: form.elements.consent.checked,
+        body: JSON.stringify({ name: name, phone: phone, consent: form.elements.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '',
                                page: location.pathname.replace(/^\//, '') || 'index.html' })
       }).then(open, open);
     });

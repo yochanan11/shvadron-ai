@@ -48,6 +48,7 @@ Display rule: the VAT-inclusive total is the main price everywhere; the pre-VAT 
 ## Other moving parts
 
 - `assets/js/gift.js` + `api/lead.js`: the webinar is gated behind a name/phone form; leads go to KV list `leads` (viewed in `admin-leads.html`). Marketing consent is a separate, unticked checkbox, as the privacy policy requires.
+- `assets/js/callback.js`: the "call me back" form on the home, course and business pages, also via `api/lead.js` (`kind: 'callback'`). Every lead is also appended to the owner's Google Sheet (tab "לידים מהאתר") through the Apps Script in `tools/leads-sheet.gs`, configured by the Vercel env vars `LEADS_SHEET_URL` and `LEADS_SHEET_SECRET`; without them the sheet step is skipped. A lead counts as saved if KV or the sheet succeeded.
 - `assets/js/consent.js`: cookie consent manager; GA4/Clarity load only after consent. Use `SHW.consent.onGrant('statistics', fn)` for anything analytics-related, including browser storage.
 - `assets/js/source.js`: first-touch `utm_source` (stored only after statistics consent) exposed as `SHW_SOURCE()` and attached to GA4 events. Thank-you pages send `reached_thank_you`, not `purchase`: verified purchases come only from Morning's sales report. Tagged links per source are in `UTM.md`.
 - `api/chat.js` (Vercel) and `server.js` (local) each carry the same sales-bot `SYSTEM_PROMPT` with prices/dates; keep them in sync.

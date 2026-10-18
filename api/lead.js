@@ -1,5 +1,28 @@
 const { kvRequest } = require('./_kv');
 
+// גיליון הלידים בגוגל: סקריפט Apps Script שמותקן בגיליון עצמו (tools/leads-sheet.gs)
+// ומוסיף שורה ללשונית "לידים מהאתר". מוגדר בשני משתני סביבה ב-Vercel:
+// LEADS_SHEET_URL (כתובת ה-Web app) ו-LEADS_SHEET_SECRET (זהה ל-SECRET בסקריפט).
+// בלי הכתובת פשוט מדלגים. אם הגיליון איטי או נופל, הליד עדיין נשמר ב-KV.
+async function toSheet(lead, kind) {
+  const url = process.env.LEADS_SHEET_URL;
+  if (!url) throw new Error('sheet-not-configured');
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 6000);
+  try {
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...lead, kind, secret: process.env.LEADS_SHEET_SECRET || '' }),
+      signal: ctrl.signal,
+    });
+    const out = await r.json().catch(() => ({}));
+    if (!r.ok || !out.ok) throw new Error('sheet-error');
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 // מאיזה דף הגיע הטופס, בשם שמובן בדף הניהול
 const COURSES = {
   'index.html':            'דף הבית (שני המסלולים)',
@@ -28,6 +51,8 @@ module.exports = async (req, res) => {
   const company = String(b.company || '').trim().slice(0, 80);
   // טופס "חזרו אליי" (לעומת טופס הוובינר), כדי שבדף הניהול יהיה ברור מי ביקש שיחה
   const callback = b.kind === 'callback';
+  // מקור ההגעה (utm_source הראשון), אם הגולש אישר עוגיות סטטיסטיקה
+  const source = String(b.source || '').trim().slice(0, 40);
 
   // טלפון ישראלי: 05X-XXXXXXX, או עם קידומת 972
   const local = phone.replace(/^\+?972/, '0');
@@ -36,11 +61,14 @@ module.exports = async (req, res) => {
   }
 
   const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '') + (callback ? ' · בקשה לחזרה' : '');
-  const lead = { name, phone: local, consent, course, page, ts: new Date().toISOString() };
-  try {
-    await kvRequest(['RPUSH', 'leads', JSON.stringify(lead)]);
-    return res.json({ ok: true });
-  } catch (e) {
-    return res.status(503).json({ ok: false, error: e.message === 'kv-not-configured' ? 'kv-not-configured' : 'kv-error' });
-  }
+  const lead = { name, phone: local, consent, course, page, company, source, ts: new Date().toISOString() };
+
+  // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
+  const [kv, sheet] = await Promise.allSettled([
+    kvRequest(['RPUSH', 'leads', JSON.stringify(lead)]),
+    toSheet(lead, callback ? 'callback' : 'webinar'),
+  ]);
+  if (kv.status === 'fulfilled' || sheet.status === 'fulfilled') return res.json({ ok: true });
+  const err = kv.reason && kv.reason.message === 'kv-not-configured' ? 'kv-not-configured' : 'kv-error';
+  return res.status(503).json({ ok: false, error: err });
 };
