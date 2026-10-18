@@ -198,6 +198,23 @@ ${ORGS.filter(o => o.alt !== 'לוגו שותף').map(o =>
 </div>`;
 }
 
+/* ─── רצועת לוגואים נעה (דף העסקים) ───
+   שתי קבוצות זהות זו אחרי זו, והמסילה זזה בדיוק ברוחב קבוצה אחת,
+   כך שהלולאה חלקה. כל קבוצה מכילה את הרשימה פעמיים כדי שתהיה רחבה
+   ממסך גדול. רק הלוגואים בקבוצה הראשונה נקראים לקורא מסך. */
+function logoRun() {
+  const list = ORGS.filter(o => o.alt !== 'לוגו שותף');
+  const img = (o, hidden) =>
+    `<img src="assets/public/logos/${o.file}" alt="${hidden ? '' : esc(o.alt)}" width="${o.w}" height="${o.h}" loading="lazy"/>`;
+  const set = hidden => list.map(o => img(o, hidden)).concat(list.map(o => img(o, true))).join('');
+  return `<div class="logo-run">
+  <div class="logo-run-track">
+    <div class="logos">${set(false)}</div>
+    <div class="logos" aria-hidden="true">${set(true)}</div>
+  </div>
+</div>`;
+}
+
 /* ─── כרטיס "מתאים לי אם" (.cmp-col הקיים ממקטע הפער) ─── */
 function fitCard(t, i) {
   const sr = i ? ' sr-2' : '';
@@ -514,7 +531,7 @@ const BLOCKS = {
   },
   // דף העסקים: רק רצועת הלוגואים, כמו בדף הבית.
   'business.html': {
-    logos: hubLogos,
+    logos: logoRun,
   },
   // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.
   'course.html': {

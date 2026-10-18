@@ -39,12 +39,15 @@
     '.card', '.rule-top', '.step', '.lesson', '.quote-card',
     '.badge', '.tbl-wrap', '.figures > div', '.founder-photo',
     '.founder-body > *', '.cta-box', '.qa details', '.buy-card',
-    '.gift-form', '.video-frame', '.logos', '.shot', '.arc'
+    '.gift-form', '.video-frame', '.logos', '.logo-run', '.shot', '.arc'
   ];
   var items = [];
   SELECTORS.forEach(function (s) {
     document.querySelectorAll(s).forEach(function (el) {
       if (el.closest('#top') || items.indexOf(el) > -1) return;  // ההירו מונפש בנפרד
+      // ברצועה הנעה הלוגואים רחבים פי כמה מהמסך ולא היו מגיעים לסף החשיפה;
+      // הרצועה עצמה נחשפת במקומם
+      if (el.matches('.logo-run .logos')) return;
       items.push(el);
     });
   });
