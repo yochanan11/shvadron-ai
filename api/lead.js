@@ -57,6 +57,8 @@ module.exports = async (req, res) => {
   const consent = b.consent === true;
   // רק בטופס העסקים: שם העסק, מוצג בדף הניהול לצד הדף שממנו הגיעה הפנייה
   const company = String(b.company || '').trim().slice(0, 80);
+  // רק בטופס העסקים: גודל הצוות, כפי שנבחר ברשימה (למשל "11-25")
+  const employees = String(b.employees || '').trim().slice(0, 20);
   // טופס "חזרו אליי" (לעומת טופס הוובינר), כדי שבדף הניהול יהיה ברור מי ביקש שיחה
   const callback = b.kind === 'callback';
   // מקור ההגעה (utm_source הראשון), אם הגולש אישר עוגיות סטטיסטיקה
@@ -81,9 +83,10 @@ module.exports = async (req, res) => {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
-  const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '') + (callback ? ' · בקשה לחזרה' : '')
+  const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '')
+    + (employees ? ' · ' + employees + ' עובדים' : '') + (callback ? ' · בקשה לחזרה' : '')
     + (track ? ' · ' + track : '') + (topic ? ' · ' + topic : '');
-  const lead = { name, phone: local, email, consent, course, page, company, source, track, message, topic, topicKey, ts: new Date().toISOString() };
+  const lead = { name, phone: local, email, consent, course, page, company, employees, source, track, message, topic, topicKey, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([

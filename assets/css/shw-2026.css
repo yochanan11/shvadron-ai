@@ -176,6 +176,11 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .light .eyebrow{color:#0B7A5A}
 .light .body,.light .small{color:var(--light-muted)}
 .light .ghost{color:#6B6B72}
+/* בלוק בתוך מקטע בהיר: גבול וטקסט כהים, אחרת הכתב נבלע ברקע */
+.light .biz-note{border-color:var(--light-line)}
+.light .ticks{color:var(--light-ink)}
+.light .ticks li::before{color:#0B7A5A}
+.light .card-title{color:var(--light-ink)}
 .quote-card{background:#fff;border:1px solid var(--light-line);border-radius:24px;
   padding:36px;display:flex;flex-direction:column;gap:24px}
 .quote-card blockquote{font-size:24px;line-height:1.5;font-weight:500}
@@ -521,6 +526,41 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .gift-fields .biz-wide{grid-column:1 / -1}
 .biz-note{border:1px solid var(--line);border-radius:20px;padding:24px 28px;display:flex;flex-direction:column;gap:10px}
 @media (max-width:760px){.biz-proof{grid-template-columns:1fr}.biz-proof .shot{justify-self:center;width:100%;max-width:320px}}
+
+/* תוסף הנגישות מזריק את רצועת ההודעה פעמיים,
+   והעותק השני יושב בדיוק על הראשון וגורם לטקסט מרוח. מציגים רק את הראשון. */
+[class*="etrogezratnashim"] ~ [class*="etrogezratnashim"]{display:none!important}
+
+/* דף העסקים: ציטוט ההוכחה מתחת לכותרת, ומחשבון עלות השעות */
+.hero-proof{border-inline-start:3px solid var(--accent);padding-inline-start:20px;
+  display:flex;flex-direction:column;gap:8px;max-width:62ch}
+.hero-proof blockquote{font-size:clamp(19px,2.2vw,23px);line-height:1.45;font-weight:500;color:var(--ink)}
+.hero-proof figcaption{font-size:15px;color:var(--muted)}
+.hero-proof figcaption a{color:var(--accent);text-decoration:underline;white-space:nowrap}
+
+.calc{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,3vw,32px);
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:center}
+.calc-fields{display:flex;flex-direction:column;gap:16px}
+.calc-fields label{display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:500;color:var(--ink-2)}
+.calc-fields input{background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;color:var(--ink);font:inherit;font-size:17px;min-height:52px;width:100%}
+.calc-fields input:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
+.calc-out{display:flex;flex-direction:column;gap:8px;border-inline-start:1px solid var(--line);
+  padding-inline-start:clamp(24px,3vw,40px)}
+.calc-out .fig{font-size:clamp(36px,4.4vw,56px);color:var(--accent);line-height:1.05;word-break:break-word}
+.calc-sub{font-size:15px;color:var(--muted);line-height:1.6}
+.calc-sub:empty{display:none}
+@media (max-width:760px){
+  .calc{grid-template-columns:1fr}
+  .calc-out{border-inline-start:0;border-top:1px solid var(--line);padding-inline-start:0;padding-top:24px}
+}
+
+/* שדה בחירה בטופס "חזרו אליי", באותו מראה של שאר השדות */
+.gift-form select{background:var(--bg);border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;color:var(--ink);font:inherit;font-size:17px;min-height:52px;width:100%;
+  appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%23A1A1A6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E");
+  background-position:left 18px center;background-repeat:no-repeat;padding-inline-start:46px}
+.gift-form select:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-color:var(--accent)}
 
 /* קבצי הלוגו לבנים, ולכן בתוך מקטע בהיר הם יושבים על פאנל כהה */
 .logo-panel{background:var(--bg);border-radius:20px;padding:28px 32px}
