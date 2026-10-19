@@ -532,7 +532,7 @@ const BLOCKS = {
     syllabus: beginnersSyllabus,
     config:   () => config(BEGINNERS),
     ld:       () => jsonLd(BEGINNERS),
-    webinar:  () => webinar({ ctaHref: '#buy' }),
+    webinar:  () => webinar({ ctaHref: '#buy', num: '08' }),
   },
   // דף העסקים: רק רצועת הלוגואים, כמו בדף הבית.
   'business.html': {
@@ -540,14 +540,14 @@ const BLOCKS = {
   },
   // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.
   'course.html': {
-    webinar: () => webinar({ ctaHref: '#buy', ctaText: 'אני רוצה להתחיל ללמוד' }),
+    webinar: () => webinar({ ctaHref: '#buy', ctaText: 'אני רוצה להתחיל ללמוד', num: '08' }),
   },
   'course-advanced.html': {
     syllabus: advancedBlocks,
     project:  projectBox,
     config:   () => config(ADVANCED),
     ld:       () => jsonLd(ADVANCED),
-    webinar:  () => webinar({ ctaHref: '#buy' }),
+    webinar:  () => webinar({ ctaHref: '#buy', num: '09' }),
   },
 };
 
