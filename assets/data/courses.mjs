@@ -378,7 +378,7 @@ export const MARQUEE = {
    את סקריפט הבנייה. אין מה לשנות ב-HTML.
    ============================================================ */
 /* קבוצת הטיפים בוואטסאפ: מוצעת לכל מי שהשאיר פרטים, מיד אחרי השליחה */
-export const TIPS_GROUP = 'https://chat.whatsapp.com/FhqiQLsHMtIEJx3gPBSZJo';
+export const TIPS_GROUP = 'https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv';
 
 export const WEBINAR = {
   provider: 'vimeo',
