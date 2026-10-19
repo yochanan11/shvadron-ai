@@ -566,9 +566,11 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 
 /* "השאירו פרטים" זמין תמיד: ליד כפתור התשלום בכותרת (מחשב) וברצועה התחתונה (נייד) */
 .head-cta,.dock-cta{display:flex;align-items:center;gap:8px;flex:none}
-/* מתחת ל-1100px הכפתור לא נכנס לכותרת בלי לשבור אותה לשתי שורות,
-   ולכן שם הרצועה התחתונה (עם "השאירו פרטים") מוצגת גם בטאבלט */
-@media(max-width:1099px){.head-callback{display:none}.dock{display:flex}body{padding-bottom:84px}}
-@media(max-width:400px){.dock-price span{display:none}.dock-cta .btn{padding-inline:14px}}
-/* בדף הבית שורת המחיר ארוכה מדי לצד שני כפתורים בטלפון */
-@media(max-width:520px){.dock-price--long{display:none}.dock-price--long + .dock-cta{flex:1;justify-content:center}}
+/* מתחת ל-1240px הכפתור לא נכנס לכותרת בלי לשבור אותה לשתי שורות,
+   ולכן שם הרצועה התחתונה (עם "מתלבטים? נחזור אליכם") מוצגת גם בטאבלט */
+@media(max-width:1239px){.head-callback{display:none}.dock{display:flex}body{padding-bottom:84px}}
+/* בטלפון אין מקום למחיר לצד שני הכפתורים; המחיר מופיע ממילא בדף */
+@media(max-width:640px){.dock-price{display:none}.dock-cta{flex:1;justify-content:center}.dock-cta .btn{padding-inline:16px}}
+@media(max-width:900px){.dock-price--long{display:none}.dock-price--long + .dock-cta{flex:1;justify-content:center}}
+@media(max-width:360px){.brand img{height:32px}}
+@media(max-width:340px){.brand img{height:26px}.dock-cta .btn,.site-head .btn{font-size:13px;padding-inline:12px}}
