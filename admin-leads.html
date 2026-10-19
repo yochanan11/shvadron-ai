@@ -99,7 +99,7 @@
           var d = new Date(l.ts);
           return '<tr><td>' + esc(d.toLocaleString('he-IL')) + '</td><td>' + esc(l.name) +
             '</td><td><a href="https://wa.me/972' + esc(l.phone.replace(/^0/, '')) + '" target="_blank" rel="noopener">' + esc(l.phone) +
-            '</a></td><td>' + (l.email ? '<a href="mailto:' + esc(l.email) + '">' + esc(l.email) + '</a>' : '') + '</td><td class="' + (l.consent ? 'yes">כן' : 'no">לא') + '</td><td>' + esc(course(l)) + '</td></tr>';
+            '</a></td><td>' + (l.email ? '<a href="mailto:' + esc(l.email) + '">' + esc(l.email) + '</a>' : '') + '</td><td class="' + (l.consent ? 'yes">כן' : 'no">לא') + '</td><td>' + esc(course(l)) + (l.message ? '<br/><small style="color:#A1A1A6">' + esc(l.message) + '</small>' : '') + '</td></tr>';
         }).join('');
       })
       .catch(function(){ panelMsg.textContent = 'שגיאת רשת.'; });
@@ -117,8 +117,8 @@
       .catch(function(){ m.className = 'msg err'; m.textContent = 'שגיאת רשת.'; });
   });
   document.getElementById('csv').addEventListener('click', function(){
-    var rows = [['תאריך','שם','טלפון','מייל','הסכמה לדיוור','הגיע מ']].concat(leads.map(function(l){
-      return [new Date(l.ts).toLocaleString('he-IL'), l.name, l.phone, l.email || '', l.consent ? 'כן' : 'לא', course(l)];
+    var rows = [['תאריך','שם','טלפון','מייל','הסכמה לדיוור','הגיע מ','מה רוצה ללמוד']].concat(leads.map(function(l){
+      return [new Date(l.ts).toLocaleString('he-IL'), l.name, l.phone, l.email || '', l.consent ? 'כן' : 'לא', course(l), l.message || ''];
     }));
     var csv = '﻿' + rows.map(function(r){ return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(','); }).join('\n');
     var a = document.createElement('a');
