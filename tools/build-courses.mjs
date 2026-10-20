@@ -525,7 +525,7 @@ const BLOCKS = {
   'index.html': {
     tracks:  hubTracks,
     compare: hubCompare,
-    logos:   hubLogos,
+    logos:   logoRun,
     webinar: () => webinar({ ctaHref: '#tracks' }),
   },
   'course-beginners.html': {
@@ -534,7 +534,7 @@ const BLOCKS = {
     ld:       () => jsonLd(BEGINNERS),
     webinar:  () => webinar({ ctaHref: '#buy', num: '08' }),
   },
-  // דף העסקים: רק רצועת הלוגואים, כמו בדף הבית.
+  // דף העסקים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
   'business.html': {
     logos: logoRun,
   },
