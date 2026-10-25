@@ -56,9 +56,19 @@
       <a class="btn btn-primary" href="business.html#contact">לתיאום שיחת היכרות ←</a>
       <a class="btn btn-ghost" href="business.html#offer">למסלולי ההטמעה</a>
     </div>
+    <img class="hero-char" src="assets/public/brand/character-trophy.webp" alt="הדמותג של SHWADRON.AI מחזיק גביע AI" width="420" height="900" loading="eager"/>
   </div>
 </section>
 
+<!-- ===== רצועת מספרים =====
+     כל שלושת המספרים נספרים מהעמוד עצמו ולא מומצאים. -->
+<section class="sec cases-figures" style="padding-block:clamp(8px,2vw,20px)">
+  <div class="wrap figures" style="border:0">
+    <div><span class="fig">5</span><span class="fig-label">עסקים מסופרים כאן</span></div>
+    <div><span class="fig">17</span><span class="fig-label">סוכנים שנבנו בפועל</span></div>
+    <div><span class="fig on-accent">0</span><span class="fig-label">מתכנתים בחדר</span></div>
+  </div>
+</section>
 <!-- ===== רצועת הלוגואים ===== -->
 <section class="sec" id="orgs" style="padding-block:clamp(32px,4vw,52px)">
   <div class="wrap" style="display:flex;flex-direction:column;gap:18px">
@@ -85,7 +95,7 @@
     <p class="eyebrow">01 · הסיפורים</p>
     <h2>מה באמת יוצא מזה.</h2>
 
-    <article class="case">
+    <article class="case" data-n="01">
       <header class="case-head">
         <p class="case-who">משרד יזמות נדל״ן · ירושלים · 15 עובדים</p>
         <h3 class="case-title">ארבעה סוכנים, ואף מתכנת אחד</h3>
@@ -103,11 +113,11 @@
       </div>
 
       <p class="case-label">מה נבנה שם בפועל</p>
-      <ul class="ticks case-built">
-        <li>סוכן שבונה מצגות למשקיעים</li>
-        <li>סוכן ששולח סקירות לדיירים ובודק מעקב</li>
-        <li>סוכן שבונה מצגות לדיירים</li>
-        <li>סוכן שמכין ישיבות צוות</li>
+      <ul class="built-chips">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שבונה מצגות למשקיעים</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן ששולח סקירות לדיירים ובודק מעקב</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שבונה מצגות לדיירים</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שמכין ישיבות צוות</span></li>
       </ul>
       <p class="body">ולצידם כלים ותוכנות ייעודיות למחלקות, מערכות לבקרה ולניהול ותהליכי עבודה אוטומטיים. הכול נבנה על ידי העובדים עצמם.</p>
 
@@ -120,7 +130,7 @@
     <!-- שם הארגון לא מתפרסם לבקשתו. העיר, הסדר גודל וטווח התפקידים
          עושים את העבודה בלעדיו. הניסוח כאן הוא של בקרה והתאמה מהצד
          של המוסד, ולא טענה כלפי אף גורם ציבורי. -->
-    <article class="case">
+    <article class="case" data-n="02">
       <header class="case-head">
         <p class="case-who">רשת מוסדות · ביתר עילית · 20 עובדים ומנהלים</p>
         <h3 class="case-title">שבועות של שני עובדים, הפכו ליום אחד</h3>
@@ -138,8 +148,8 @@
       </div>
 
       <p class="case-label">מה נבנה שם בפועל</p>
-      <ul class="ticks case-built">
-        <li>סוכן שעושה את הבקרה מול משרד החינוך ומול מחלקות העירייה, ומראה מה התקבל ומה עדיין לא</li>
+      <ul class="built-chips">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שעושה את הבקרה מול משרד החינוך ומול מחלקות העירייה, ומראה מה התקבל ומה עדיין לא</span></li>
       </ul>
 
       <p class="case-result">עבודה ששני עובדים ישבו עליה שבועות, נעשית היום ביום אחד.</p>
@@ -148,7 +158,7 @@
 
     <!-- עדיין חסרים לסיפור הזה עיר, מספר עובדים והתפקידים שישבו
          בחדר. הוא עומד גם בלעדיהם, והם ישודרגו כשיגיעו. -->
-    <article class="case">
+    <article class="case" data-n="03">
       <header class="case-head">
         <p class="case-who">משרד רואי חשבון</p>
         <h3 class="case-title">הלקוח מקבל את הסיכום לפני שמישהו התיישב לכתוב אותו</h3>
@@ -166,9 +176,9 @@
       </div>
 
       <p class="case-label">מה נבנה שם בפועל</p>
-      <ul class="ticks case-built">
-        <li>סוכן שנכנס לתיקיות בדרייב ומוציא סיכום ללקוח</li>
-        <li>סוכן שמאזין לפגישות ומוציא ללקוחות סיכומי פגישות ומשימות להמשך</li>
+      <ul class="built-chips">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שנכנס לתיקיות בדרייב ומוציא סיכום ללקוח</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שמאזין לפגישות ומוציא ללקוחות סיכומי פגישות ומשימות להמשך</span></li>
       </ul>
     </article>
 
@@ -176,7 +186,7 @@
          התיעוד נעשה בידיעת ההורים ובאישורם, וזה נאמר במפורש כי בלי
          המשפט הזה הסיפור נקרא אחרת ממה שהוא. ההזמנה לענפים אחרים
          נפרדת מהסיפור ולא מתחזה לו. -->
-    <article class="case">
+    <article class="case" data-n="04">
       <header class="case-head">
         <p class="case-who">רשת חינוכית בינלאומית · ארבעה סניפים בכמה מדינות · לימוד אישי בזום</p>
         <h3 class="case-title">ארבעה סניפים, וכל הורה יודע איפה הילד שלו עומד</h3>
@@ -194,10 +204,10 @@
       </div>
 
       <p class="case-label">מה נבנה שם בפועל</p>
-      <ul class="ticks case-built">
-        <li>סוכן שמתעד מה נלמד בשיעור ומעדכן את ההורים בהתקדמות</li>
-        <li>סוכן שבוחן את ההתקדמות ומציע דרכי פעולה, על סמך מה שעבד עם תלמידים שנתקלו באותו קושי</li>
-        <li>סוכן שבונה תוכנית לימודית</li>
+      <ul class="built-chips">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שמתעד מה נלמד בשיעור ומעדכן את ההורים בהתקדמות</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שבוחן את ההתקדמות ומציע דרכי פעולה, על סמך מה שעבד עם תלמידים שנתקלו באותו קושי</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שבונה תוכנית לימודית</span></li>
       </ul>
       <p class="small" style="color:var(--muted)">התיעוד ועדכון ההורים נעשים בידיעת ההורים ובאישורם.</p>
 
@@ -205,7 +215,7 @@
     </article>
 
     <!-- עדיין חסרים עיר, מספר עובדים והתפקידים בחדר. -->
-    <article class="case">
+    <article class="case" data-n="05">
       <header class="case-head">
         <p class="case-who">משרד פרסום</p>
         <h3 class="case-title">ארבעה סוכנים שעובדים כמו צוות, והאחרון מבקר את השלושה</h3>
@@ -223,11 +233,11 @@
       </div>
 
       <p class="case-label">מה נבנה שם בפועל</p>
-      <ul class="ticks case-built">
-        <li>סוכן שעושה מחקר שוק</li>
-        <li>סוכן שמציע רעיונות לקופי</li>
-        <li>סוכן שמציע סקיצות לגרפיקה</li>
-        <li>סוכן שמבקר את המודעות</li>
+      <ul class="built-chips">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שעושה מחקר שוק</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שמציע רעיונות לקופי</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שמציע סקיצות לגרפיקה</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 L4 14h6l-1 8 9-12h-6z" fill="currentColor"/></svg><span>סוכן שמבקר את המודעות</span></li>
       </ul>
       <p class="body">ארבעתם יחד הם שרשרת ולא ארגז כלים: מחקר, קופי, ויזואל, וביקורת על מה שיצא. <b>הסוכן האחרון בודק את העבודה של השלושה שלפניו</b>, וזה בדיוק ההבדל בין להשתמש ב-AI לבין לבנות איתו תהליך עבודה.</p>
     </article>
