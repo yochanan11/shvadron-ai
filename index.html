@@ -70,15 +70,14 @@
 <main id="main">
 
 <!-- ===== HERO ===== -->
-<section id="top" style="padding-top:clamp(64px,10vw,120px)">
+<!-- ההירו מהודק בכוונה: פס הפרומו שמעליו כבר אומר שמחזור נובמבר
+     פתוח, ולכן התווית הכפולה ירדה. כל מה שמעל הכפתור נשאר קצר כדי
+     שהכפתור עצמו ייכנס למסך הראשון גם בלפטופ וגם בטלפון. -->
+<section id="top" style="padding-top:clamp(36px,5vw,72px)">
   <div class="wrap stack">
-    <p style="display:inline-flex;align-self:flex-start;align-items:center;gap:10px;border:1px solid #2A2A2F;border-radius:999px;padding:8px 16px;font-size:14px;color:var(--ink-2)">
-      <span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>
-      ההרשמה למחזור נובמבר פתוחה
-    </p>
-    <p class="eyebrow" style="font-size:clamp(18px,2.2vw,24px);letter-spacing:0">AI אַיי אַיי</p>
+    <p class="eyebrow" style="font-size:clamp(16px,2vw,21px);letter-spacing:0">AI אַיי אַיי</p>
     <h1 style="--fit:.19;--fit-m:.34">כולם כבר שם.<br/><span class="on-accent">ואתה?</span></h1>
-    <p class="lead">סיכום פגישה שלוקח שעה, מייל שנכתב שלוש פעמים, מצגת שנדחית לערב. זה הזמן שנשרף אצלך כל שבוע. לא צריך להפוך למתכנת ולא צריך אנגלית, צריך ללמוד להפעיל את הכלי הכי חזק של הדור ולהישאר בדיוק מי שאתה.</p>
+    <p class="lead">סיכום פגישה שלוקח שעה, מייל שנכתב שלוש פעמים, מצגת שנדחית לערב. זה הזמן שנשרף אצלך כל שבוע. לא צריך להפוך למתכנת ולא צריך אנגלית, צריך ללמוד להפעיל את הכלי הכי חזק של הדור.</p>
     <div style="display:flex;flex-wrap:wrap;gap:14px">
       <a class="btn btn-light" href="#tracks">בחר את המסלול שלך ←</a>
       <a class="btn btn-ghost" href="#webinar">
@@ -86,13 +85,15 @@
         צפה בוובינר המלא
       </a>
     </div>
-    <p class="small" style="margin:0;padding:12px 16px;border:1px solid #2A2A2F;border-radius:14px;color:var(--ink-2)"><b style="color:var(--accent)">ביום רביעי 4.11, וובינר חינם:</b> Claude Code למי שלא מתכנת. אל תשאל אותו, תן לו עבודה. <a href="https://wa.me/972528189921?text=%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%A8" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">כתוב לי וובינר בוואטסאפ</a> · <a href="https://did.li/shwadron-ai" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">שמור את המספר וקבל טיפ יומי בסטטוס</a></p>
     <div class="figures" style="margin-top:8px">
       <div><span class="fig ltr">1,500+</span><span class="fig-label">בוגרים</span></div>
       <div><span class="fig">30</span><span class="fig-label">מחזורים</span></div>
       <div><span class="fig ltr">30+</span><span class="fig-label">עסקים וגופים שהטמיעו</span></div>
       <div><span class="fig on-accent">0</span><span class="fig-label">מילים באנגלית שצריך לדעת</span></div>
     </div>
+    <!-- הודעת הוובינר ירדה מתחת לרצועת המספרים: היא הצעה מתחרה,
+         ולא כדאי שתעמוד בין הכפתור הראשי לבין ההוכחה -->
+    <p class="small" style="margin:0;padding:12px 16px;border:1px solid #2A2A2F;border-radius:14px;color:var(--ink-2)"><b style="color:var(--accent)">ביום רביעי 4.11, וובינר חינם:</b> Claude Code למי שלא מתכנת. אל תשאל אותו, תן לו עבודה. <a href="https://wa.me/972528189921?text=%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%A8" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">כתוב לי וובינר בוואטסאפ</a> · <a href="https://did.li/shwadron-ai" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">שמור את המספר וקבל טיפ יומי בסטטוס</a></p>
     <img class="hero-char" src="assets/public/brand/character-train.webp" alt="הדמותג של SHWADRON.AI מזמין לעלות על רכבת ה-AI" width="560" height="900" loading="eager"/>
   </div>
   <svg aria-hidden="true" viewBox="0 0 1440 220" preserveAspectRatio="none" class="arc">
@@ -127,68 +128,33 @@
   </div>
 </section>
 
-<!-- ===== 01 העיקרון ===== -->
-<section class="sec" id="principle">
-  <div class="wrap stack">
-    <div class="sec-head-art">
-      <div class="stack">
-        <p class="eyebrow">01 · העיקרון</p>
-        <h2>AI לא יחליף אותך.<br/><span class="ghost">מי שיודע להפעיל AI, כן.</span></h2>
-      </div>
-      <img class="sec-art" src="assets/public/brand/art-principle.webp" alt="הדמותג של SHWADRON.AI לוחץ על שלט, ורובוט AI סוחב בשבילו ערימת מסמכים" width="578" height="760" loading="lazy"/>
-    </div>
-    <div class="grid-3">
-      <div class="rule-top">
-        <h3 class="card-title">לא הופכים למתכנת</h3>
-        <p class="body">אתה טוב במשהו. הזמן שלך שווה כסף שם. לא באת ללמוד מקצוע חדש, באת להכפיל את המקצוע שיש לך.</p>
-      </div>
-      <div class="rule-top">
-        <h3 class="card-title">מתחילים ממשימה, לא מכלי</h3>
-        <p class="body">לא סקירה של עשרים אפליקציות. לוקחים עבודה אמיתית שלך, ופותרים אותה מול העיניים.</p>
-      </div>
-      <div class="rule-top">
-        <h3 class="card-title">מביאים את הרמה, לא מורידים אותה</h3>
-        <p class="body">אותם כלים ואותה רמה שעובדים איתם בחברות המובילות. בשפה ברורה, בעברית, ובסביבה שמתאימה לך.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== תגיות אמון ===== -->
-<section class="sec">
-  <div class="wrap badges">
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 16.5 L14 21 L23 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p><b>לא צריך אנגלית</b><span>הכול בעברית: ההסברים, ההנחיות והתרגול.</span></p>
-    </div>
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 3 L27 7.5 V15.5 C27 22 22 27 16 29 C10 27 5 22 5 15.5 V7.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 16 L15 20 L21.5 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p><b>עובד באינטרנט מסונן</b><span>הכלים שנלמדים נגישים דרך סינון, והמפגשים בזום.</span></p>
-    </div>
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M6 25 L8 19.5 A11 11 0 1 1 12.5 24 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      <p><b>ליווי בוואטסאפ</b><span>שאלה באמצע העבודה? יש מי שעונה.</span></p>
-    </div>
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M7 16 A9 9 0 1 0 10 9.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 5 V10 H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p><b>החזר מלא אחרי השיעור הראשון</b><span>במסלולים החיים. בדיגיטלי, ביטול תוך 14 יום לפי <a href="cancellation.html" style="color:var(--accent);text-decoration:underline">התקנון</a>.</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 02 המסלולים ===== -->
+<!-- ===== 01 המסלולים ===== -->
 <section class="sec sec-2" id="tracks">
   <div class="wrap stack">
     <div style="display:flex;flex-direction:column;gap:20px">
-      <p class="eyebrow">02 · המסלולים</p>
+      <p class="eyebrow">01 · המסלולים</p>
       <h2>איפה אתה היום?</h2>
       <p class="lead">שלושה מסלולים. סולם אחד. בוחרים לפי המקום שבו אתה עומד, לא לפי מה שנשמע הכי מרשים.</p>
-      <!-- בחירה מהירה: שלוש שורות שעונות על "איזה מסלול שלי" בלי לקרוא את כל הכרטיסים -->
-      <ul class="ticks" style="font-size:17px">
-        <li>״ניסיתי קצת, וזה לא ממש יוצא לי״ ← <a href="course-beginners.html" data-track-pick="course-beginners" style="color:var(--accent);text-decoration:underline;font-weight:700">מאפס למאה</a>, שלושה ערבים חיים</li>
-        <li>״אין לי ערב פנוי קבוע, אני רוצה בקצב שלי״ ← <a href="course.html" data-track-pick="course-digital" style="color:var(--accent);text-decoration:underline;font-weight:700">המוח השני</a>, דיגיטלי, גישה מיידית</li>
-        <li>״אני כבר עובד עם AI ורוצה שיעבוד בשבילי״ ← <a href="course-advanced.html" data-track-pick="course-advanced" style="color:var(--accent);text-decoration:underline;font-weight:700">צבא הסוכנים</a>, סוכנים ואוטומציות</li>
-      </ul>
+      <!-- בחירה מהירה. זה הרכיב שבשבילו הדף הזה קיים, ולכן הוא
+           כרטיסים לחיצים ולא רשימה עם קישור קטן בתוך משפט. הגולש
+           מזהה את המשפט שלו ולוחץ, בלי לקרוא את כל הכרטיסים. -->
+      <div class="pick-grid">
+        <a class="pick" href="course-beginners.html" data-track-pick="course-beginners">
+          <span class="pick-say">״ניסיתי קצת, וזה לא ממש יוצא לי״</span>
+          <b>מאפס למאה</b>
+          <span class="pick-meta">שלושה ערבים חיים בזום ←</span>
+        </a>
+        <a class="pick" href="course.html" data-track-pick="course-digital">
+          <span class="pick-say">״אין לי ערב פנוי קבוע, אני רוצה בקצב שלי״</span>
+          <b>המוח השני</b>
+          <span class="pick-meta">דיגיטלי, גישה מיידית ←</span>
+        </a>
+        <a class="pick" href="course-advanced.html" data-track-pick="course-advanced">
+          <span class="pick-say">״אני כבר עובד עם AI ורוצה שיעבוד בשבילי״</span>
+          <b>צבא הסוכנים</b>
+          <span class="pick-meta">סוכנים ואוטומציות ←</span>
+        </a>
+      </div>
     </div>
 
     <div class="grid">
@@ -293,12 +259,69 @@
   <!-- /BUILD:compare -->
       </div>
       <p class="small">המחירים כוללים מע״מ. בכל מסלול אפשר עד שלושה תשלומים, בלי דמי טיפול.</p>
+      <!-- שני הדברים שמשנים את ההחלטה ולא הופיעו בדף הבית:
+           מה בוגר מאפס למאה מקבל אם ימשיך, ומה כלול בצבא הסוכנים -->
+      <ul class="ticks" style="font-size:16px">
+        <li>מי שנרשם ל<b>צבא הסוכנים</b> מקבל איתו את הקורס הדיגיטלי <b>המוח השני</b> במלואו, בלי תוספת תשלום.</li>
+        <li>בוגר <b>מאפס למאה</b> שממשיך לצבא הסוכנים מקבל <b>20% הנחה</b> על המסלול המתקדם.</li>
+        <li>בשני המסלולים החיים: לא מתאים לך אחרי המפגש הראשון, מקבל את כל הכסף בחזרה.</li>
+      </ul>
       <!-- גשר למתלבטים: מי שראה את שלושת המסלולים ועדיין לא יודע לבחור
            לא אמור לנשור כאן. מכאן הוא עובר להשארת פרטים. -->
       <p class="body">לא בטוח איזה מסלול מתאים לך? <a href="#callback" style="color:var(--accent);text-decoration:underline;font-weight:700">השאירו פרטים ויוחנן יחזור אליכם לשיחה קצרה</a>, בלי התחייבות.</p>
     </div>
   </div>
 </section>
+
+<!-- ===== 02 העיקרון ===== -->
+<section class="sec" id="principle">
+  <div class="wrap stack">
+    <div class="sec-head-art">
+      <div class="stack">
+        <p class="eyebrow">02 · העיקרון</p>
+        <h2>AI לא יחליף אותך.<br/><span class="ghost">מי שיודע להפעיל AI, כן.</span></h2>
+      </div>
+      <img class="sec-art" src="assets/public/brand/art-principle.webp" alt="הדמותג של SHWADRON.AI לוחץ על שלט, ורובוט AI סוחב בשבילו ערימת מסמכים" width="578" height="760" loading="lazy"/>
+    </div>
+    <div class="grid-3">
+      <div class="rule-top">
+        <h3 class="card-title">לא הופכים למתכנת</h3>
+        <p class="body">אתה טוב במשהו. הזמן שלך שווה כסף שם. לא באת ללמוד מקצוע חדש, באת להכפיל את המקצוע שיש לך.</p>
+      </div>
+      <div class="rule-top">
+        <h3 class="card-title">מתחילים ממשימה, לא מכלי</h3>
+        <p class="body">לא סקירה של עשרים אפליקציות. לוקחים עבודה אמיתית שלך, ופותרים אותה מול העיניים.</p>
+      </div>
+      <div class="rule-top">
+        <h3 class="card-title">מביאים את הרמה, לא מורידים אותה</h3>
+        <p class="body">אותם כלים ואותה רמה שעובדים איתם בחברות המובילות. בשפה ברורה, בעברית, ובסביבה שמתאימה לך.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== תגיות אמון ===== -->
+<section class="sec">
+  <div class="wrap badges">
+    <div class="badge">
+      <svg aria-hidden="true" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 16.5 L14 21 L23 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p><b>לא צריך אנגלית</b><span>הכול בעברית: ההסברים, ההנחיות והתרגול.</span></p>
+    </div>
+    <div class="badge">
+      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 3 L27 7.5 V15.5 C27 22 22 27 16 29 C10 27 5 22 5 15.5 V7.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 16 L15 20 L21.5 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p><b>עובד באינטרנט מסונן</b><span>הכלים שנלמדים נגישים דרך סינון, והמפגשים בזום.</span></p>
+    </div>
+    <div class="badge">
+      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M6 25 L8 19.5 A11 11 0 1 1 12.5 24 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <p><b>ליווי בוואטסאפ</b><span>שאלה באמצע העבודה? יש מי שעונה.</span></p>
+    </div>
+    <div class="badge">
+      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M7 16 A9 9 0 1 0 10 9.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 5 V10 H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p><b>החזר מלא אחרי השיעור הראשון</b><span>במסלולים החיים. בדיגיטלי, ביטול תוך 14 יום לפי <a href="cancellation.html" style="color:var(--accent);text-decoration:underline">התקנון</a>.</span></p>
+    </div>
+  </div>
+</section>
+
 
 <!-- ===== 03 תוכנית האב ===== -->
 <section class="sec" id="plan">
@@ -539,6 +562,13 @@
 <footer class="site-foot">
   <div class="wrap">
     <img class="brand-foot" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84" loading="lazy"/>
+    <nav aria-label="המסלולים" class="foot-tracks">
+      <a href="course-beginners.html">מאפס למאה</a>
+      <a href="course.html">המוח השני</a>
+      <a href="course-advanced.html">צבא הסוכנים</a>
+      <a href="business.html">לעסקים ולארגונים</a>
+      <a href="cases.html">מה נבנה בעסקים</a>
+    </nav>
     <nav aria-label="קישורים משפטיים">
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
@@ -567,5 +597,6 @@
 </script>
 <script src="assets/js/courses.js"></script>
 <script src="assets/js/shw-motion.js" defer></script>
+<script src="assets/js/shw-nav.js" defer></script>
 </body>
 </html>

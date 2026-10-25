@@ -35,6 +35,13 @@ The build also writes the priced state straight into the HTML (`staticPrice`): `
 
 Display rule: the VAT-inclusive total is the main price everywhere; the pre-VAT figure appears only in breakdowns.
 
+**One deliberate exception, approved by the owner:** on `business.html` the exposure
+lecture is shown as `2,500 ₪ + מע״מ`, pre-VAT, because that is what a business buyer
+expects to compare. Do not "fix" it to the VAT-inclusive figure. That price is
+hand-written (not generated), and 2,500 + VAT currently equals the advanced track's
+price exactly, which the copy on that page leans on without naming the number; if
+either price changes, re-check that sentence.
+
 ## Pricing, coupons and checkout
 
 - Checkout is external (Morning / "חשבונית ירוקה", `mrng.to/...` links). Each displayed amount must match a Morning link exactly; the site cannot create links. Morning redirects buyers to the thank-you pages.

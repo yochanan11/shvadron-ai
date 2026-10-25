@@ -96,6 +96,25 @@ function lessonRow(n, when, title, desc, extra) {
 </article>`;
 }
 
+/* ─── הודעת הפסקה בין שני מפגשים ─────────────────────────────
+   כשהסדרה מדלגת על שבוע, בלוח נפער חור של שבועיים. בלי שורה
+   שמסבירה אותו הגולש רואה תאריכים שלא מסתדרים ומאבד אמון בלוח.
+   מחזיר מחרוזת ריקה כשאין דילוג בין i-1 ל-i.                */
+function breakNote(startISO, i) {
+  if (!startISO || i === 0) return '';
+  const prev = sessionDate(startISO, i - 1);
+  const next = sessionDate(startISO, i);
+  const gapDays = Math.round((next - prev) / 86400000);
+  if (gapDays <= 7) return '';
+  /* איזה טווח נפל באמצע. אם יש כמה, לוקחים את הראשון שרלוונטי */
+  const mid = NO_CLASSES.find(b => {
+    const from = new Date(b.from + 'T00:00:00Z');
+    return from > prev && from < next;
+  });
+  const label = mid ? mid.label : 'הפסקה';
+  return `<p class="lesson-break">${esc(label)}: אין מפגש בשבוע הזה, והסדרה ממשיכה בשבוע שאחריו.</p>\n`;
+}
+
 /* ─── כרטיס מסלול בדף הבחירה (.track הקיים) ───────────────────
    הכרטיס נושא את כל מה שצריך כדי להחליט: מתי מתחילים, מה יוצאים
    איתו, המחיר, ומחיר הרישום המוקדם כל עוד הוא בתוקף. הכפתור
@@ -253,7 +272,7 @@ ${COMPARE.map(r => `    <tr>
 
 /* ─── סילבוס מסלול המתחילים (.lesson הקיים) ─── */
 function beginnersSyllabus() {
-  return BEGINNERS.syllabus.map((s, i) => lessonRow(
+  return BEGINNERS.syllabus.map((s, i) => breakNote(BEGINNERS.start, i) + lessonRow(
     s.n,
     BEGINNERS.start
       ? `מפגש ${i + 1} · יום ${BEGINNERS.dayName}, ${s.hebrew ? s.hebrew + ' · ' : ''}${dayMonth(sessionDate(BEGINNERS.start, i))}`
@@ -491,6 +510,7 @@ function config(t) {
     name:       '${t.name}',
     price:      ${price},
     vatRate:    ${t.vatRate},
+    start:      ${t.start ? `'${t.start}'` : 'null'},
     couponPage: '${t.id}'
   };
 </` + `script>`;
@@ -529,13 +549,17 @@ const BLOCKS = {
     webinar: () => webinar({ ctaHref: '#tracks' }),
   },
   'course-beginners.html': {
+    logos:    logoRun,
     syllabus: beginnersSyllabus,
     config:   () => config(BEGINNERS),
     ld:       () => jsonLd(BEGINNERS),
     webinar:  () => webinar({ ctaHref: '#buy', num: '08' }),
   },
-  // דף העסקים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
+  // דף העסקים ועמוד הסיפורים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
   'business.html': {
+    logos: logoRun,
+  },
+  'cases.html': {
     logos: logoRun,
   },
   // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.
@@ -543,6 +567,7 @@ const BLOCKS = {
     webinar: () => webinar({ ctaHref: '#buy', ctaText: 'אני רוצה להתחיל ללמוד', num: '08' }),
   },
   'course-advanced.html': {
+    logos:    logoRun,
     syllabus: advancedBlocks,
     project:  projectBox,
     config:   () => config(ADVANCED),

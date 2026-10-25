@@ -333,4 +333,27 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
   window.addEventListener('scroll', upd, {passive:true});
 })();
 
+/* ─── כמה ימים נשארו עד הפתיחה ──────────────────────────────
+   דחיפות אמיתית ולא מומצאת: התאריך הוא התאריך שמופיע בדף ממילא,
+   ואין כאן שום מונה מקומות או ספירה לאחור שאי אפשר לאמת. כשאין
+   תאריך, או שהמחזור כבר נפתח, האלמנט פשוט נשאר מוסתר. */
+(function(){
+  var els = document.querySelectorAll('[data-days-to-start]');
+  if(!els.length || !C.start) return;
+
+  var start = new Date(C.start + 'T00:00:00');
+  var today = new Date(); today.setHours(0,0,0,0);
+  var days  = Math.round((start - today) / 86400000);
+  if(!isFinite(days) || days < 0) return;
+
+  var text = days === 0 ? 'המחזור נפתח היום'
+           : days === 1 ? 'המחזור נפתח מחר'
+           : 'המחזור נפתח בעוד ' + days + ' ימים';
+
+  els.forEach(function(el){
+    el.textContent = text;
+    el.removeAttribute('hidden');
+  });
+})();
+
 })();
