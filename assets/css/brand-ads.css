@@ -151,8 +151,6 @@ h2 .ghost,.ghost{color:var(--brand-teal)}
 .authority p{margin:0;font-size:15px;line-height:1.5;color:#fff}
 .authority b{font-size:17px}
 
-/* תמונת המירוץ רחבה: במחשב מגבילים ברוחב כדי שלא תיכנס לטקסט */
-@media (min-width:1000px){.hero-char[src*="character-speed"]{height:auto;width:min(560px,36vw);top:clamp(120px,12vw,170px)}}
 
 /* ── לבן ואפור לסירוגין: כל מקטע אחרי ההירו מתחלף, אף פעם לא שני לבנים ברצף ── */
 main>section.sec{background:#fff;border-top:0}
@@ -174,7 +172,6 @@ main #top .gift-fields label,main #live div[style*="#0F1312"] .gift-fields label
 /* הדמותג לא נכנס לטקסט: מקסימום 40% מרוחב התוכן, והטקסט עד 58% */
 @media (min-width:1000px){
   .hero-char{max-width:calc(min(100vw, var(--wrap)) * .38);object-fit:contain;object-position:bottom}
-  .hero-char[src*="character-speed"]{width:calc(min(100vw, var(--wrap)) * .38);height:auto}
 }
 
 /* בלי גלילה לרוחב בשום רוחב מסך */
