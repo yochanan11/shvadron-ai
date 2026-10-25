@@ -284,7 +284,21 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .case-label{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.04em}
 .case-col{display:flex;flex-direction:column;gap:6px}
-.case-built li{font-weight:600;color:var(--ink)}
+/* ״מה נבנה״ כשבבים ולא כרשימת נקודות. זה החלק שהגולש סורק, והוא
+   צריך להיראות כמו דברים שאפשר לקחת ולא כמו עוד פסקה. */
+.built-chips{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0;padding:0}
+.built-chips li{display:inline-flex;align-items:center;gap:9px;
+  padding:11px 16px;border-radius:999px;font-size:15px;font-weight:600;color:var(--ink);
+  background:color-mix(in srgb,var(--accent) 9%,transparent);
+  border:1px solid color-mix(in srgb,var(--accent) 28%,transparent)}
+.built-chips svg{flex:0 0 auto;width:17px;height:17px;color:var(--accent)}
+
+/* מספר הסיפור, גדול ודהוי, נותן קצב לעמוד שהוא אחרת קיר של טקסט */
+.case{position:relative;overflow:hidden}
+.case::before{content:attr(data-n);position:absolute;top:10px;left:26px;
+  font-family:'Heebo',sans-serif;font-weight:800;font-size:92px;line-height:1;
+  color:var(--accent);opacity:.09;pointer-events:none}
+@media(max-width:700px){.case::before{font-size:62px;left:16px}}
 /* התוצאה המדידה. כשיש מספר הוא הדבר היחיד בכרטיס שצריך לקפוץ לעין */
 .case-result{padding:16px 20px;border-radius:14px;background:var(--accent);
   color:var(--accent-ink);font-family:'Heebo',sans-serif;
