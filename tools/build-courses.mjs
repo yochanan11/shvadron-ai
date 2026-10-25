@@ -555,8 +555,11 @@ const BLOCKS = {
     ld:       () => jsonLd(BEGINNERS),
     webinar:  () => webinar({ ctaHref: '#buy', num: '08' }),
   },
-  // דף העסקים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
+  // דף העסקים ועמוד הסיפורים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
   'business.html': {
+    logos: logoRun,
+  },
+  'cases.html': {
     logos: logoRun,
   },
   // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.

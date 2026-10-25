@@ -267,6 +267,20 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .pick b{font-family:'Heebo',sans-serif;font-size:19px;font-weight:800;color:var(--accent)}
 .pick-meta{font-size:13px;color:var(--muted)}
 
+/* ── סיפור לקוח ───────────────────────────────────────────
+   מבנה אחיד לכל סיפור ב-cases.html: מי, מה עשינו, מה נבנה בשם,
+   ומה אמרו. ״מה נבנה״ הוא החלק שמוכר, ולכן הוא מודגש. */
+.case{display:flex;flex-direction:column;gap:18px;padding:34px 30px;
+  background:var(--card);border:1px solid var(--line);border-radius:22px}
+.case-head{display:flex;flex-direction:column;gap:6px}
+.case-who{font-size:14px;color:var(--muted);letter-spacing:.02em}
+.case-title{font-family:'Heebo',sans-serif;font-size:clamp(25px,3vw,34px);
+  font-weight:800;line-height:1.15}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.case-label{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.04em}
+.case-col{display:flex;flex-direction:column;gap:6px}
+.case-built li{font-weight:600;color:var(--ink)}
+
 /* ── מסלולים אחרים ────────────────────────────────────────
    מקטע #other בתחתית כל דף מוצר. כל כרטיס הוא קישור שלם ולא
    טקסט עם קישור קטן בתוכו, כי זה הרכיב שאמור להציל גולש שהבין
