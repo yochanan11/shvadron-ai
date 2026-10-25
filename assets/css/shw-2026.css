@@ -159,6 +159,23 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .card{background:var(--card);border:1px solid var(--line);border-radius:24px;
   padding:36px 32px;display:flex;flex-direction:column;gap:24px}
 .card.is-featured{border:1.5px solid var(--accent);position:relative}
+/* המסלול המומלץ בדף העסקים. מסומן אחרת מ-is-featured כדי ששני
+   הסימונים לא יתחרו: אחד אומר ״מכאן מתחילים״ והשני ״זה המקיף ביותר״ */
+.card.is-recommended{border:1.5px solid var(--accent);position:relative;
+  background:linear-gradient(180deg,rgba(45,212,191,.06),transparent 220px)}
+.card-flag{display:inline-flex;align-self:flex-start;padding:5px 12px;border-radius:999px;
+  font-size:13px;font-weight:800;color:var(--accent-ink);background:var(--accent)}
+.card-flag.is-quiet{color:var(--accent);background:transparent;
+  border:1px solid var(--accent);font-weight:700}
+
+/* מחיר בדף העסקים. מוצג לפני מע״מ, בניגוד לשאר האתר, כמקובל מול
+   לקוח עסקי. ההחלטה מתועדת ב-CLAUDE.md */
+.biz-price{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
+.biz-price b{font-family:'Heebo',sans-serif;font-size:34px;font-weight:800;line-height:1}
+.biz-price>span{font-size:16px;color:var(--muted);font-weight:600}
+.biz-price-what{margin-top:8px;font-size:14px;color:var(--ink-2);line-height:1.6}
+.biz-price-fine{margin-top:4px;font-size:13px;color:var(--muted)}
+.biz-price + .btn{margin-top:16px}
 .card-flag{position:absolute;top:-14px;right:28px;background:var(--accent);color:var(--accent-ink);
   font-size:13px;font-weight:800;padding:6px 14px;border-radius:999px}
 .card-kicker{font-size:14px;font-weight:500;color:var(--muted)}
