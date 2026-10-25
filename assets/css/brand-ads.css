@@ -153,3 +153,29 @@ h2 .ghost,.ghost{color:var(--brand-teal)}
 
 /* תמונת המירוץ רחבה: במחשב מגבילים ברוחב כדי שלא תיכנס לטקסט */
 @media (min-width:1000px){.hero-char[src*="character-speed"]{height:auto;width:min(560px,36vw);top:clamp(120px,12vw,170px)}}
+
+/* ── לבן ואפור לסירוגין: כל מקטע אחרי ההירו מתחלף, אף פעם לא שני לבנים ברצף ── */
+main>section.sec{background:#fff;border-top:0}
+main>section.sec:nth-of-type(even){background:#E6EEF8}
+main>section.sec:nth-of-type(even) .card,main>section.sec:nth-of-type(even) .biz-note,main>section.sec:nth-of-type(even) .gift-form:not(.callback .gift-form){background:#fff}
+/* המקטע שמיד אחרי ההירו תמיד אפור, אז הגל נצבע באפור */
+#top::after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140' preserveAspectRatio='none'%3E%3Cpath d='M0 140 L0 118 Q720 70 1440 8 L1440 140 Z' fill='%23E6EEF8'/%3E%3C/svg%3E")!important}
+.site-foot{background:#1E3A69;color:#E8F0FA;border-top:0}
+.site-foot a{color:#fff}
+
+/* טופסים על רקע בהיר: תוויות כהות ושדות עם גבול ברור (gift.css נבנה לרקע כהה) */
+main .gift-fields label,main .gift-form label{color:var(--ink);font-weight:700}
+main .gift-fields input,main .gift-form input[type="text"],.gift-form input[type="tel"],.gift-form input[type="email"],.gift-form input:not([type]),.gift-form select{
+  background:#fff;color:var(--ink);border:1.5px solid #9FB1CB;border-radius:12px}
+.gift-fields input::placeholder{color:#7D8BA3}
+main .gift-consent{color:var(--muted)}
+main #top .gift-fields label,main #live div[style*="#0F1312"] .gift-fields label,#top .gift-consent,#live div[style*="#0F1312"] .gift-consent{color:#fff}
+
+/* הדמותג לא נכנס לטקסט: מקסימום 40% מרוחב התוכן, והטקסט עד 58% */
+@media (min-width:1000px){
+  .hero-char{max-width:calc(min(100vw, var(--wrap)) * .38);object-fit:contain;object-position:bottom}
+  .hero-char[src*="character-speed"]{width:calc(min(100vw, var(--wrap)) * .38);height:auto}
+}
+
+/* בלי גלילה לרוחב בשום רוחב מסך */
+html{overflow-x:clip}
