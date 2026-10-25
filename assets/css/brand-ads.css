@@ -179,3 +179,21 @@ main #top .gift-fields label,main #live div[style*="#0F1312"] .gift-fields label
 
 /* בלי גלילה לרוחב בשום רוחב מסך */
 html{overflow-x:clip}
+
+/* שיחת ההיכרות בעסקים: טופס מימין, כרטיס כחול "מה קורה בשיחה" משמאל */
+.contact-grid{display:grid;gap:clamp(28px,4vw,56px);align-items:start}
+@media (min-width:900px){.contact-grid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}}
+.contact-main .gift-form{max-width:none}
+.contact-aside{background:var(--ad-blue) url("../public/brand/bg-blue.jpg") center/cover no-repeat;color:#fff;border-radius:24px;
+  padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:18px;box-shadow:0 18px 40px rgba(30,58,105,.22);position:sticky;top:100px}
+.contact-aside .eyebrow{color:#D2F7EF;margin:0}
+.contact-steps{margin:0;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px}
+.contact-steps li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:12px;font-size:16px;line-height:1.55;color:#EAF2FF}
+.contact-steps li::before{content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--brand-teal);color:var(--accent-ink);
+  font-weight:800;display:grid;place-items:center}
+.contact-steps b{color:#fff}
+.contact-who{display:flex;align-items:center;gap:12px;border-top:1px solid rgba(255,255,255,.3);padding-top:16px}
+.contact-who img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid #fff;flex:none}
+.contact-who p,.contact-nda{margin:0;font-size:15px;line-height:1.5;color:#EAF2FF}
+.contact-who b{color:#fff;font-size:16px}
+.gift-form label>span{display:block}
