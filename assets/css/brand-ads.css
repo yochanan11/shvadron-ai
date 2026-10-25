@@ -116,7 +116,7 @@ h2,.h-sec{font-size:clamp(34px,4.8vw,64px);line-height:1.08;color:var(--brand-bl
 
 /* התפר שמתחת לגל: כשהמקטע הבא אפור, הגל נצבע באותו אפור ובלי קו מפריד */
 #top + .sec{border-top:0}
-#top:has(+ .light)::after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140' preserveAspectRatio='none'%3E%3Cpath d='M0 140 L0 118 Q720 70 1440 8 L1440 140 Z' fill='%23F2F6FB'/%3E%3C/svg%3E")}
+#top:has(+ .light)::after{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 140' preserveAspectRatio='none'%3E%3Cpath d='M0 140 L0 118 Q720 70 1440 8 L1440 140 Z' fill='%23E9F0F9'/%3E%3C/svg%3E")}
 
 /* קופסת החבילה של צבא הסוכנים, ליד כרטיס הקנייה */
 .bonus-box{border:2px solid var(--brand-teal);border-radius:18px;padding:22px 22px 12px;background:#F2FBF9}
@@ -130,3 +130,26 @@ h2,.h-sec{font-size:clamp(34px,4.8vw,64px);line-height:1.08;color:var(--brand-bl
 .teaser-h{font-family:'Heebo',sans-serif;font-weight:800;font-size:clamp(36px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em;color:var(--brand-blue)}
 .teaser-punch{border-inline-start-color:var(--brand-teal)}
 .teaser .video-frame{border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(30,58,105,.18)}
+
+/* ── פחות חיוור: טקסט כהה יותר, גבולות ברורים, קופסאות עם נוכחות ── */
+:root{--muted:#3F4E68;--ink-2:#2B4370;--line:#BFCDE0;--line-soft:#D7E0EC;--light-muted:#3F4E68}
+.body,.small,.lead{color:var(--muted)}
+.lead{color:var(--ink-2)}
+.card,.biz-note,.buy-card,.cta-box,.tbl-wrap{border:1.5px solid var(--line);box-shadow:0 10px 30px rgba(30,58,105,.08);background:#fff}
+.biz-note,.card{border-inline-start:5px solid var(--brand-teal)}
+.card-title{color:var(--brand-blue)}
+.rule-top{border-top:3px solid var(--brand-blue)}
+.sec-2,.light{background:#E9F0F9}
+h2 .ghost,.ghost{color:var(--brand-teal)}
+
+/* טקסט בתוך קופסה ממלא את כל הרוחב, לא נעצר באמצע */
+.card .body,.biz-note .body,.buy-card .body,.cta-box p,.rule-top .body,.qa details>p,[class*="card"] p{max-width:none}
+
+/* שורת הסמכות בהירו של העסקים */
+.authority{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:16px;padding:12px 16px;width:fit-content;max-width:100%}
+.authority img{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid #fff;flex:none}
+.authority p{margin:0;font-size:15px;line-height:1.5;color:#fff}
+.authority b{font-size:17px}
+
+/* תמונת המירוץ רחבה: במחשב מגבילים ברוחב כדי שלא תיכנס לטקסט */
+@media (min-width:1000px){.hero-char[src*="character-speed"]{height:auto;width:min(560px,36vw);top:clamp(120px,12vw,170px)}}
