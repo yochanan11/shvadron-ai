@@ -442,7 +442,7 @@ function jsonLd(t) {
   const data = {
     '@context': 'https://schema.org',
     '@type': 'Course',
-    name: `${t.name} — ${t.sessions === 3 ? 'שלושה' : 'תשעה'} מפגשי זום`,
+    name: `${t.name}, ${t.sessions === 3 ? 'שלושה' : 'תשעה'} מפגשי זום`,
     description: t.ldDescription,
     provider: { '@type': 'Person', name: 'יוחנן שבדרון', url: 'https://ai.shwadron-ai.com/' },
     inLanguage: 'he',

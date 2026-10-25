@@ -128,7 +128,7 @@ export const ADVANCED = {
   name:     'צבא הסוכנים',
   short:    'צבא הסוכנים',
   legacyName: 'AI למתקדמים',
-  seatsLeft: 11,               // מקומות שנותרו מתוך 20. null = לא להציג מספר
+  seatsLeft: null,               // מקומות שנותרו מתוך 20. null = לא להציג מספר
   kicker:   'זום חי · מתקדמים, לעבודה ולעסק',
   sessions: 9,
   hours:    18,
