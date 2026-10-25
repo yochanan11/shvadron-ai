@@ -511,6 +511,8 @@ function config(t) {
     price:      ${price},
     vatRate:    ${t.vatRate},
     start:      ${t.start ? `'${t.start}'` : 'null'},
+    seats:      ${t.seats == null ? 'null' : t.seats},
+    seatsLeft:  ${t.seatsLeft == null ? 'null' : t.seatsLeft},
     couponPage: '${t.id}'
   };
 </` + `script>`;

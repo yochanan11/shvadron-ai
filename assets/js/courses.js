@@ -333,22 +333,50 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
   window.addEventListener('scroll', upd, {passive:true});
 })();
 
-/* ─── כמה ימים נשארו עד הפתיחה ──────────────────────────────
-   דחיפות אמיתית ולא מומצאת: התאריך הוא התאריך שמופיע בדף ממילא,
-   ואין כאן שום מונה מקומות או ספירה לאחור שאי אפשר לאמת. כשאין
-   תאריך, או שהמחזור כבר נפתח, האלמנט פשוט נשאר מוסתר. */
+/* ─── השורה שמעל המחיר ──────────────────────────────────────
+   כאן ישבה קודם ספירת ימים עד הפתיחה, והיא עבדה נגדנו: ״המחזור
+   נפתח בעוד 29 ימים״, במקום הכי חזק באזור ההחלטה, אומר לגולש
+   שיש לו חודש ושהוא יכול לחזור אחר כך. ספירה לאחור עוזרת רק
+   כשהזמן קצר באמת.
+
+   שלוש מדרגות, לפי מה שידוע בוודאות:
+   1. יש מספר מקומות אמיתי ב-seatsLeft -> מציגים אותו. זה המחסור
+      היחיד שאפשר להוכיח, והוא נקבע ידנית בקובץ הנתונים.
+   2. נשארו DAYS_URGENT ימים או פחות -> הספירה עובדת לטובתנו.
+   3. אחרת -> התקרה של הקבוצה, בלי מספר שנותר ובלי להמציא כלום.
+
+   אין כאן בשום מצב מספר שלא הגיע מקובץ הנתונים.                */
 (function(){
+  var DAYS_URGENT = 10;
+
   var els = document.querySelectorAll('[data-days-to-start]');
-  if(!els.length || !C.start) return;
+  if(!els.length) return;
 
-  var start = new Date(C.start + 'T00:00:00');
-  var today = new Date(); today.setHours(0,0,0,0);
-  var days  = Math.round((start - today) / 86400000);
-  if(!isFinite(days) || days < 0) return;
+  var text = '';
 
-  var text = days === 0 ? 'המחזור נפתח היום'
+  if(typeof C.seatsLeft === 'number' && C.seatsLeft > 0){
+    text = C.seats
+      ? 'נשארו ' + C.seatsLeft + ' מקומות מתוך ' + C.seats
+      : 'נשארו ' + C.seatsLeft + ' מקומות';
+  } else if(C.start){
+    var start = new Date(C.start + 'T00:00:00');
+    var today = new Date(); today.setHours(0,0,0,0);
+    var days  = Math.round((start - today) / 86400000);
+
+    if(!isFinite(days) || days < 0) return;
+
+    if(days <= DAYS_URGENT){
+      text = days === 0 ? 'המחזור נפתח היום'
            : days === 1 ? 'המחזור נפתח מחר'
            : 'המחזור נפתח בעוד ' + days + ' ימים';
+    } else if(C.seats){
+      text = 'הקבוצה מוגבלת ל-' + C.seats + ' משתתפים, נסגרת כשהיא מתמלאת';
+    }
+  } else if(C.seats){
+    text = 'הקבוצה מוגבלת ל-' + C.seats + ' משתתפים, נסגרת כשהיא מתמלאת';
+  }
+
+  if(!text) return;
 
   els.forEach(function(el){
     el.textContent = text;
