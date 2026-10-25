@@ -280,6 +280,10 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .case-label{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.04em}
 .case-col{display:flex;flex-direction:column;gap:6px}
 .case-built li{font-weight:600;color:var(--ink)}
+/* התוצאה המדידה. כשיש מספר הוא הדבר היחיד בכרטיס שצריך לקפוץ לעין */
+.case-result{padding:16px 20px;border-radius:14px;background:var(--accent);
+  color:var(--accent-ink);font-family:'Heebo',sans-serif;
+  font-size:clamp(18px,2.2vw,23px);font-weight:800;line-height:1.35}
 
 /* ── מסלולים אחרים ────────────────────────────────────────
    מקטע #other בתחתית כל דף מוצר. כל כרטיס הוא קישור שלם ולא
