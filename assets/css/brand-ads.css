@@ -219,7 +219,12 @@ p,li,blockquote,figcaption,dd,summary{text-wrap:pretty}
 main>section.sec:has(> .wrap.figures){background:var(--ad-blue) url("../public/brand/bg-blue.jpg") center/cover no-repeat!important}
 main>section.sec:has(> .wrap.figures) .fig{color:#fff}
 main>section.sec:has(> .wrap.figures) .fig-label{color:#E8F0FA}
-.card-name{font-size:clamp(30px,2.9vw,42px)!important;line-height:1.05;white-space:nowrap}
+/* שם המסלול. היה כאן white-space:nowrap, ובמסכים רחבים הגופן הגיע
+   ל-42px בזמן שהכרטיס נותן 305 פיקסל, אז שמות כמו ״קורס הדרכה והטמעה״
+   (367 פיקסל) גלשו אל מחוץ למסגרת הכרטיס. עכשיו הם נשברים לשורה שנייה
+   במקום לחרוג, והגופן נגזר גם מרוחב הכרטיס ולא רק מרוחב המסך. */
+.card-name{font-size:clamp(28px,2.6vw,38px)!important;line-height:1.1;
+  white-space:normal;overflow-wrap:break-word;text-wrap:balance}
 
 /* תמונת דמותג בכותרת של מקטע: כותרת מימין, תמונה משמאל */
 .sec-head-art{display:grid;gap:12px;align-items:center}
