@@ -57,7 +57,8 @@
       <a href="#security">מידע רגיש</a>
       <a href="#proof">מהשטח</a>
       <a href="#founder">מי מוביל</a>
-      <a href="index.html">הקורסים</a>
+      <a class="nav-x" href="#other">לעובד בודד</a>
+      <a class="nav-x" href="index.html">כל המסלולים</a>
     </nav>
     <a class="btn btn-primary btn-sm" href="#contact">לתיאום שיחה</a>
   </div>
@@ -75,14 +76,16 @@
       <img src="assets/public/yochanan-landing.jpg" alt="" width="64" height="64"/>
       <p><b>יוחנן שבדרון</b> · מדעי המחשב, התמחות בבינה מלאכותית<br/>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</p>
     </div>
-    <figure class="hero-proof">
-      <blockquote>״העובדים התחילו להספיק כמעט פי שניים בפחות זמן, וההכנסות בעסק הוכפלו.״</blockquote>
-      <figcaption>חיים, בעל עסק · אחרי סדרת הרצאות ותהליך הטמעה <a href="#proof">לעדות המלאה</a></figcaption>
-    </figure>
+    <!-- הכפתור הועלה מעל העדות: בטלפון הוא נפל 17 פיקסל מתחת לקו
+         הקיפול, והעדות דחפה אותו לשם. ההוכחה עובדת גם אחריו. -->
     <div style="display:flex;flex-wrap:wrap;gap:12px">
       <a class="btn btn-primary" href="#contact">לתיאום שיחת היכרות ←</a>
       <a class="btn btn-ghost" href="https://wa.me/972528189921" target="_blank" rel="noopener">לשיחה בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
     </div>
+    <figure class="hero-proof">
+      <blockquote>״העובדים התחילו להספיק כמעט פי שניים בפחות זמן, וההכנסות בעסק הוכפלו.״</blockquote>
+      <figcaption>חיים, בעל עסק · אחרי סדרת הרצאות ותהליך הטמעה <a href="#proof">לעדות המלאה</a></figcaption>
+    </figure>
     <div class="figures" style="margin-top:8px">
       <div><span class="fig ltr">30+</span><span class="fig-label">עסקים וגופים שהטמיעו</span></div>
       <div><span class="fig ltr">1,500+</span><span class="fig-label">בוגרים</span></div>
@@ -179,6 +182,16 @@
       <h3 class="card-title">על המחיר</h3>
       <p class="body">המחיר נקבע לפי המסלול וגודל הצוות, וההצעה המלאה נשלחת אחרי שיחת ההיכרות. לא צריך לחכות לשיחה כדי לדעת על איזה סדר גודל מדובר: כתבו בוואטסאפ כמה עובדים ואיזה מסלול מעניין אתכם, ותקבלו טווח מחיר בתשובה.</p>
       <div><a class="btn btn-ghost btn-sm" href="https://wa.me/972528189921?text=%D7%94%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%98%D7%95%D7%95%D7%97%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%94%D7%98%D7%9E%D7%A2%D7%94%20%D7%91%D7%A2%D7%A1%D7%A7" target="_blank" rel="noopener">לקבלת טווח מחיר בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a></div>
+    </div>
+    <!-- נקודת המרה ברגע ההחלטה. הטופס עצמו יושב בסוף הדף, ומי
+         שבחר מסלול כאן לא אמור לגלול עוד עשרה מסכים כדי להשאיר
+         פרטים. -->
+    <div class="cta-box" style="background:var(--card);border:1px solid var(--line)">
+      <div>
+        <b>יודעים איזה מסלול מתאים?</b>
+        <p>משאירים פרטים, ויוחנן חוזר אליכם לשיחת היכרות קצרה. בלי התחייבות, ועם הסכם סודיות אם צריך.</p>
+      </div>
+      <a class="btn btn-primary" href="#contact">לתיאום שיחת היכרות ←</a>
     </div>
   </div>
 </section>
@@ -363,12 +376,49 @@
   </div>
 </section>
 
+<!-- ===== לא תהליך צוותי =====
+     גשר חזרה למסלולים הפרטיים. בלעדיו מנהל שהתהליך הצוותי יקר לו
+     כרגע פשוט עוזב, במקום להתחיל בעצמו ולחזור אלינו עם הצוות. -->
+<section class="sec" id="other">
+  <div class="wrap stack">
+    <p class="eyebrow">08 · לא תהליך לכל הצוות</p>
+    <h2>אפשר להתחיל מעובד אחד.</h2>
+    <p class="lead">לא כל עסק מתחיל בתהליך לכל הצוות. אפשר לשלוח עובד אחד, או להתחיל בעצמך, ולהרחיב אחר כך.</p>
+    <div class="other-grid">
+      <a class="other-card" href="course-beginners.html">
+        <span class="other-kick">זום חי · הבסיס</span>
+        <b>מאפס למאה</b>
+        <p>שלושה ערבים למי שלא נגע או נגע קצת. יוצאים עם שיטת עבודה, סיכומי פגישות ומצגות.</p>
+        <span class="other-go">למאפס למאה ←</span>
+      </a>
+      <a class="other-card" href="course-advanced.html">
+        <span class="other-kick">זום חי · מתקדמים</span>
+        <b>צבא הסוכנים</b>
+        <p>תשעה מפגשים לבניית סוכנים ואוטומציות. המסלול שהכי קרוב למה שעושים בתהליך הטמעה, ברמה האישית.</p>
+        <span class="other-go">לצבא הסוכנים ←</span>
+      </a>
+      <a class="other-card" href="course.html">
+        <span class="other-kick">דיגיטלי · בקצב שלכם</span>
+        <b>המוח השני</b>
+        <p>הקלטות בגישה מיידית, בלי מועדים קבועים. הדרך הזולה ביותר לבדוק אם זה מתאים לעסק.</p>
+        <span class="other-go">למוח השני ←</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <p class="brand-tag"><span class="t">הניצחון בידיים שלך.</span> <span class="b">בוא לעבוד חכם!</span></p>
 <footer class="site-foot">
   <div class="wrap">
     <img class="brand-foot" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84" loading="lazy"/>
+    <nav aria-label="המסלולים" class="foot-tracks">
+      <a href="course-beginners.html">מאפס למאה</a>
+      <a href="course.html">המוח השני</a>
+      <a href="course-advanced.html">צבא הסוכנים</a>
+      <span aria-current="page">לעסקים ולארגונים</span>
+    </nav>
     <nav aria-label="קישורים משפטיים">
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
@@ -381,6 +431,7 @@
 </footer>
 
 <script src="assets/js/shw-motion.js" defer></script>
+<script src="assets/js/shw-nav.js" defer></script>
 <script>
 /* מחשבון "כמה עולה לא לעשות כלום": הכול מהמספרים של הגולש, שום הנחה משלנו.
    22 ימי עבודה בחודש, 8.5 שעות ביום, כדי לגזור עלות שעה מעלות מעסיק חודשית. */

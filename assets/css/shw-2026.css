@@ -35,7 +35,11 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* גלילה חלקה רק אחרי שהדף נטען. כשהיא דולקת כבר בטעינה, הדפדפן
+   מתחיל לגלול אל העוגן שבכתובת בזמן שהתמונות עוד נכנסות, הפריסה
+   זזה תחתיו והגלילה נקטעת באמצע. התוצאה: קישור אל #buy נוחת בראש
+   הדף. shw-nav.js קופץ ליעד מיידית ורק אז מדליק את המחלקה. */
+html.smooth-ok{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);direction:rtl;
   font-family:'Heebo',system-ui,-apple-system,'Segoe UI',sans-serif;
   font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -114,6 +118,31 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .site-nav{display:flex;flex-wrap:wrap;gap:28px;font-size:15px;color:var(--muted)}
 .site-nav a{color:var(--muted)}
 .site-nav a:hover{color:var(--ink)}
+/* קישור למסלול אחר בתוך הניווט: בולט מעט, כי זה המעבר שהכי
+   חסר לגולש ולא כדאי שייבלע בין עוגנים פנימיים */
+.site-nav a.nav-x{color:var(--ink-2)}
+.site-nav a.nav-x:hover{color:var(--accent)}
+
+/* ── תפריט מובייל ─────────────────────────────────────────
+   הכפתור והלוח נבנים ב-shw-nav.js מתוך ה-nav שכבר קיים בדף.
+   בדסקטופ שניהם מוסתרים וה-nav הרגיל מוצג כרגיל. */
+.nav-toggle{display:none;width:44px;height:44px;flex:0 0 auto;
+  align-items:center;justify-content:center;flex-direction:column;gap:5px;
+  background:transparent;border:1px solid var(--line);border-radius:12px;cursor:pointer}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;
+  transition:transform .2s ease,opacity .2s ease}
+.site-head.nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.site-head.nav-open .nav-toggle span:nth-child(2){opacity:0}
+.site-head.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-panel{display:none;border-top:1px solid var(--line-soft);
+  background:rgba(10,10,11,.97);backdrop-filter:blur(12px)}
+.nav-panel[hidden]{display:none}
+.nav-panel .site-nav{display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;
+  padding:8px var(--pad, 20px) 16px;font-size:17px}
+.nav-panel .site-nav a{display:block;padding:14px 0;color:var(--ink-2);
+  border-bottom:1px solid var(--line-soft)}
+.nav-panel .site-nav a:last-child{border-bottom:0}
+.nav-panel .site-nav a.nav-x{color:var(--ink);font-weight:700}
 
 /* ── רצועת מספרים ────────────────────────────────────────── */
 .figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
@@ -192,6 +221,52 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .cta-box b{font-size:24px;font-weight:800}
 .cta-box p{font-size:16px;color:var(--muted);margin-top:6px}
 
+/* כמה ימים עד הפתיחה. נבנה מהתאריך האמיתי של המחזור ולכן מופיע
+   רק כשיש תאריך והוא עוד לא עבר */
+.buy-urgency{display:inline-flex;align-items:center;gap:7px;margin-top:10px;
+  padding:5px 12px;border-radius:999px;font-size:14px;font-weight:700;
+  color:var(--accent-ink);background:var(--accent)}
+.buy-urgency::before{content:"";width:7px;height:7px;border-radius:50%;
+  background:currentColor;opacity:.8}
+
+/* הודעת הפסקה בלוח המפגשים: מסבירה חור של שבועיים בין תאריכים */
+.lesson-break{display:flex;align-items:center;gap:10px;margin:4px 0 18px;
+  font-size:14px;color:var(--muted)}
+.lesson-break::before,.lesson-break::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ── בחירה מהירה בדף הבית ─────────────────────────────────
+   שלוש אמירות של הגולש. הוא מזהה את שלו ולוחץ. הציטוט הוא
+   המשפט שהוא היה אומר, ולכן הוא קודם לשם של המסלול. מכוון
+   להיראות שונה מכרטיסי המסלול שמתחתיו: בלי רקע מלא, עם קו מדגיש
+   בצד. אחרת הגולש רואה את אותם שלושה שמות פעמיים ברצף וחושב
+   שהוא קורא את אותו דבר. */
+.pick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.pick{display:flex;flex-direction:column;gap:5px;padding:16px 18px;
+  background:transparent;border:1px solid var(--line);border-radius:14px;
+  border-inline-start:3px solid var(--accent);color:inherit;
+  transition:background .2s ease,border-color .2s ease}
+.pick:hover{background:var(--card)}
+.pick-say{font-size:16px;line-height:1.45;color:var(--ink-2)}
+.pick b{font-family:'Heebo',sans-serif;font-size:19px;font-weight:800;color:var(--accent)}
+.pick-meta{font-size:13px;color:var(--muted)}
+
+/* ── מסלולים אחרים ────────────────────────────────────────
+   מקטע #other בתחתית כל דף מוצר. כל כרטיס הוא קישור שלם ולא
+   טקסט עם קישור קטן בתוכו, כי זה הרכיב שאמור להציל גולש שהבין
+   שהוא בדף הלא נכון. */
+.other-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.other-card{display:flex;flex-direction:column;gap:8px;padding:26px 24px;
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  color:inherit;transition:border-color .2s ease,transform .2s ease}
+a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.other-kick{font-size:13px;color:var(--muted);letter-spacing:.02em}
+.other-card b{font-family:'Heebo',sans-serif;font-size:24px;font-weight:800;line-height:1.15}
+.other-card p{font-size:15px;color:var(--muted);margin:0}
+.other-go{margin-top:auto;padding-top:8px;font-weight:700;color:var(--accent)}
+/* כרטיס הסבר, לא קישור: אין לאן ללחוץ ולכן גם אין התנהגות של כפתור */
+.other-card.is-note{border-style:dashed}
+.other-card.is-note .other-go{color:var(--muted)}
+
 /* ── תגיות אמון ──────────────────────────────────────────── */
 .badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
 .badge{display:flex;gap:16px;align-items:flex-start}
@@ -240,6 +315,11 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .site-foot nav{display:flex;flex-wrap:wrap;gap:24px}
 .site-foot a{color:#8A8A90}
 .site-foot a:hover{color:var(--ink-2)}
+/* רצועת המסלולים בפוטר: הדרך היחידה להגיע לכל מוצר מכל דף גם
+   בלי ג׳אווהסקריפט. בולטת מעט מעל הקישורים המשפטיים */
+.foot-tracks a{color:var(--ink-2);font-weight:600}
+.foot-tracks a:hover{color:var(--accent)}
+.foot-tracks [aria-current="page"]{color:#6A6A70;font-weight:600}
 
 /* ── נייד ────────────────────────────────────────────────── */
 @media(max-width:520px){
@@ -249,7 +329,12 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   .figures>div{padding-block:22px}
 }
 @media(max-width:860px){
-  .site-nav{display:none}
+  .site-head > .wrap > .site-nav{display:none}
+  /* לוגו, כפתור וכפתור תפריט בשורה אחת. בלי זה הכפתור נופל לשורה
+     משלו וגוזל מהמסך הראשון בדיוק במקום שבו הוא הכי יקר */
+  .site-head .wrap{flex-wrap:nowrap;gap:10px}
+  .nav-toggle{display:flex}
+  .nav-panel:not([hidden]){display:block}
   .dock{display:flex}
   body{padding-bottom:84px}
   .card{padding:28px 24px}
