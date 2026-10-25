@@ -197,3 +197,29 @@ html{overflow-x:clip}
 .contact-who p,.contact-nda{margin:0;font-size:15px;line-height:1.5;color:#EAF2FF}
 .contact-who b{color:#fff;font-size:16px}
 .gift-form label>span{display:block}
+
+/* ── מעבר עיצוב (25.10) ─────────────────────────────────────── */
+/* גופן אחד למותג: Heebo עבה גם בשמות המסלולים ובמספרים, כמו במודעות */
+.card-name,.step-n,.lesson-n{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em}
+.card-name{color:var(--brand-blue)}
+.step-n,.lesson-n{color:var(--brand-teal)}
+/* השורה השנייה בכותרות תמיד בטורקיז, גם במקטעים האפורים */
+.light .ghost,.sec-2 .ghost,main>section.sec:nth-of-type(even) .ghost{color:var(--brand-teal)}
+/* הפס הטורקיז בצד נשאר רק לקופסאות מידע, לא לכרטיסי המסלולים */
+.card{border-inline-start-width:1.5px;border-inline-start-color:var(--line)}
+/* מקטע שכולו פס מספרים לא צריך גובה של מקטע שלם */
+main>section.sec:has(> .wrap > .figures:only-child),main>section.sec:has(> .wrap.figures){padding-block:clamp(32px,4vw,52px)}
+/* טקסט קריא יותר בעמודות */
+.rule-top .body,.rule-top p{font-size:17px;color:var(--ink-2)}
+.rule-top{border-top-color:var(--brand-teal)}
+
+/* ── נפילת שורות ── */
+h1,h2,h3,.h-sm,.teaser-h,.bonus-title,.card-title,.founder-quote{text-wrap:balance}
+p,li,blockquote,figcaption,dd,summary{text-wrap:pretty}
+/* צירופים שאסור לשבור באמצע */
+#top p.body b,.buy-pmt,.js-price-total,.fig,.card-price,.dock-price b,.stock b{white-space:nowrap}
+/* פס המספרים באמצע הדף: רצועה כחולה כמו המודעות, עם מספרים לבנים */
+main>section.sec:has(> .wrap.figures){background:var(--ad-blue) url("../public/brand/bg-blue.jpg") center/cover no-repeat!important}
+main>section.sec:has(> .wrap.figures) .fig{color:#fff}
+main>section.sec:has(> .wrap.figures) .fig-label{color:#E8F0FA}
+.card-name{font-size:clamp(30px,2.9vw,42px)!important;line-height:1.05;white-space:nowrap}
