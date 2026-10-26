@@ -144,18 +144,25 @@
       'aria-labelledby': 'shw-cookie-title',
       class: 'shw-cookie-banner'
     });
+    /* הנוסח קוצר והמבנה הפך לשורה אחת, כי הבאנר בגובהו הקודם (206px
+       ב-1280x800) כיסה במלואם את הכפתור הראשי ואת שורת העובדות בהירו
+       בכל ביקור ראשון. מה שנאמר לגולש נשמר: עוגיות חיוניות, עוגיות
+       סטטיסטיקה בשמן, המטרה שלהן, והעובדה שהן נטענות רק באישור.
+       המשפט ״פרטים מלאים במדיניות הפרטיות והעוגיות״ ירד בלבד משום
+       שהקישור עצמו עומד כאן ממילא. */
     b.innerHTML =
       '<div class="shw-cookie-inner">' +
-        '<h2 id="shw-cookie-title" tabindex="-1">שימוש בעוגיות באתר</h2>' +
-        '<p>אנחנו משתמשים בעוגיות חיוניות להפעלת האתר. בנוסף, אנחנו מעוניינים להשתמש ' +
-        'בעוגיות סטטיסטיקה (Google Analytics ו-Microsoft Clarity) כדי להבין איך משתמשים באתר ולשפר אותו. ' +
-        'עוגיות הסטטיסטיקה לא ייטענו בלי אישורכם. ' +
-        'פרטים מלאים במדיניות הפרטיות והעוגיות.</p>' +
+        '<div class="shw-cookie-text">' +
+          '<h2 id="shw-cookie-title" tabindex="-1">שימוש בעוגיות</h2>' +
+          '<p>עוגיות חיוניות להפעלת האתר, ועוגיות סטטיסטיקה ' +
+          '(Google Analytics ו-Microsoft Clarity) כדי לשפר אותו. ' +
+          'הסטטיסטיקה נטענת רק באישורכם.</p>' +
+        '</div>' +
         '<div class="shw-cookie-actions">' +
           '<button type="button" data-act="accept" class="shw-ck-btn shw-ck-primary">אני מאשר הכול</button>' +
           '<button type="button" data-act="reject" class="shw-ck-btn shw-ck-secondary">רק עוגיות חיוניות</button>' +
-          '<button type="button" data-act="settings" class="shw-ck-btn shw-ck-link">הגדרות עוגיות</button>' +
-          '<a href="privacy.html" class="shw-ck-btn shw-ck-link">מדיניות פרטיות ועוגיות</a>' +
+          '<button type="button" data-act="settings" class="shw-ck-btn shw-ck-link">הגדרות</button>' +
+          '<a href="privacy.html" class="shw-ck-btn shw-ck-link">מדיניות פרטיות</a>' +
         '</div>' +
       '</div>';
 
@@ -175,9 +182,15 @@
     return b;
   }
 
+  /* הבאנר הוא position:fixed ולכן אינו תופס מקום בפריסה, אבל הוא כן
+     מכסה את תחתית הקיפול. המחלקה הזו מאפשרת ל-CSS להדק את ההירו כל
+     עוד הבאנר מוצג, כדי שהכפתור הראשי לא יישב מתחתיו. */
+  var BANNER_CLASS = 'has-consent-banner';
+
   function closeBanner() {
     var b = document.getElementById(BANNER_ID);
     if (b) b.parentNode.removeChild(b);
+    document.documentElement.classList.remove(BANNER_CLASS);
     var t = document.getElementById('shw-consent-toggle');
     if (t) t.focus();
   }
@@ -186,6 +199,7 @@
     if (document.getElementById(BANNER_ID)) return;
     var b = buildBanner();
     document.body.appendChild(b);
+    document.documentElement.classList.add(BANNER_CLASS);
     // Announce the banner to assistive tech without stealing the caret
     // from a visitor who has already started interacting with the page.
     window.setTimeout(function () {
