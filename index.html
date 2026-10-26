@@ -73,17 +73,21 @@
 <!-- ההירו מהודק בכוונה: פס הפרומו שמעליו כבר אומר שמחזור נובמבר
      פתוח, ולכן התווית הכפולה ירדה. כל מה שמעל הכפתור נשאר קצר כדי
      שהכפתור עצמו ייכנס למסך הראשון גם בלפטופ וגם בטלפון. -->
-<section id="top" style="padding-top:clamp(36px,5vw,72px)">
+<section id="top" style="padding-top:clamp(28px,3.2vw,48px)">
   <div class="wrap stack">
     <p class="eyebrow" style="font-size:clamp(16px,2vw,21px);letter-spacing:0">AI אַיי אַיי</p>
     <h1 style="--fit:.19;--fit-m:.34">כולם כבר שם.<br/><span class="on-accent">ואתה?</span></h1>
-    <p class="lead">סיכום פגישה שלוקח שעה, מייל שנכתב שלוש פעמים, מצגת שנדחית לערב. זה הזמן שנשרף אצלך כל שבוע. לא צריך להפוך למתכנת ולא צריך אנגלית, צריך ללמוד להפעיל את הכלי הכי חזק של הדור.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:14px">
+    <p class="lead">סיכום פגישה שלוקח שעה, מייל שנכתב שלוש פעמים, מצגת שנדחית לערב. זה הזמן שנשרף אצלך כל שבוע, בלי להפוך למתכנת ובלי אנגלית.</p>
+    <!-- שורת העובדות: מחיר, מועד והוכחה אחת, בתוך הקיפול. נוצרת
+         מקובץ הנתונים, ראה heroFacts ב-tools/build-courses.mjs. -->
+    <!-- BUILD:herofacts -->
+  <p class="hero-facts"><b>מאפס למאה 885 ₪</b><span aria-hidden="true"> · </span>נפתח 23/11<span aria-hidden="true"> · </span>1,500 בוגרים</p>
+  <!-- /BUILD:herofacts -->
+    <!-- הוובינר ירד מכפתור לקישור טקסט: הוא הצעה חינמית שהתחרתה
+         בכפתור הראשי על אותו מבט. -->
+    <div class="hero-cta">
       <a class="btn btn-light" href="#tracks">בחר את המסלול שלך ←</a>
-      <a class="btn btn-ghost" href="#webinar">
-        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14"><path d="M3 1.5 L12 7 L3 12.5 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        צפה בוובינר המלא
-      </a>
+      <a class="hero-alt" href="#webinar">או צפה בוובינר המלא, חינם</a>
     </div>
     <div class="figures" style="margin-top:8px">
       <div><span class="fig ltr">1,500+</span><span class="fig-label">בוגרים</span></div>

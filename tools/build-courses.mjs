@@ -96,6 +96,19 @@ function lessonRow(n, when, title, desc, extra) {
 </article>`;
 }
 
+/* ─── שורת העובדות בקיפול העליון של דף הבית ──────────────────
+   מחיר, מועד פתיחה ופריט הוכחה אחד, בשורה אחת. נגזר מקובץ הנתונים
+   ולא נכתב ביד, כדי שלא ייווצר עוד מקום שצריך לזכור לעדכן כשמחיר
+   או תאריך זזים. פריט ההוכחה נלקח מרשימת המרקיזה של דף הבית.    */
+function heroFacts() {
+  const t = BEGINNERS;
+  const price = t.priceEx ? ils(totalOf(t)) : 'המחיר יעודכן';
+  const when  = t.start ? `נפתח ${dayMonth(sessionDate(t.start, 0))}` : 'מועד יעודכן';
+  const proof = MARQUEE.hub.find(x => x.includes('בוגרים')) || '';
+  const parts = [`<b>${esc(t.name)} ${price}</b>`, esc(when), esc(proof)].filter(Boolean);
+  return `<p class="hero-facts">${parts.join('<span aria-hidden="true"> · </span>')}</p>`;
+}
+
 /* ─── הודעת הפסקה בין שני מפגשים ─────────────────────────────
    כשהסדרה מדלגת על שבוע, בלוח נפער חור של שבועיים. בלי שורה
    שמסבירה אותו הגולש רואה תאריכים שלא מסתדרים ומאבד אמון בלוח.
@@ -511,6 +524,8 @@ function config(t) {
     price:      ${price},
     vatRate:    ${t.vatRate},
     start:      ${t.start ? `'${t.start}'` : 'null'},
+    seats:      ${t.seats == null ? 'null' : t.seats},
+    seatsLeft:  ${t.seatsLeft == null ? 'null' : t.seatsLeft},
     couponPage: '${t.id}'
   };
 </` + `script>`;
@@ -543,6 +558,7 @@ const BLOCKS = {
   // מוזרקים יותר: המקטעים שהשתמשו בהם הוסרו מהדפים כדי לקצר אותם.
   // להחזרת אחד מהם צריך להחזיר גם את סימני ה-BUILD לדף.
   'index.html': {
+    herofacts: heroFacts,
     tracks:  hubTracks,
     compare: hubCompare,
     logos:   logoRun,
