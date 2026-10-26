@@ -15,15 +15,19 @@
   border-top:4px solid var(--turquoise-500,#2edebf);
   box-shadow:0 -8px 32px rgba(10,26,51,.35);
   font-family:var(--font-sans,'Rubik',-apple-system,'Segoe UI',sans-serif);
-  font-size:.95rem;
-  line-height:1.6;
-  padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));
+  font-size:.9rem;
+  line-height:1.5;
+  padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));
 }
-.shw-cookie-inner{max-width:1180px;margin-inline:auto}
+/* שורה אחת ולא בלוק: הטקסט בצד אחד והפעולות בשני. בגובה הקודם הבאנר
+   כיסה את הכפתור הראשי בהירו בכל ביקור ראשון. */
+.shw-cookie-inner{max-width:1180px;margin-inline:auto;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+.shw-cookie-text{flex:1 1 420px;min-width:0}
 .shw-cookie-banner h2{
-  font-size:1.1rem;
+  font-size:.95rem;
   font-weight:800;
-  margin:0 0 8px;
+  margin:0 0 2px;
   color:#fff;
 }
 .shw-cookie-banner h2:focus-visible{
@@ -32,18 +36,27 @@
   box-shadow:none;
 }
 .shw-cookie-banner p{
-  margin:0 0 16px;
+  margin:0;
   color:#cfe4ff;
   max-width:90ch;
 }
-.shw-cookie-actions{display:flex;flex-wrap:wrap;gap:10px 12px;align-items:center}
+.shw-cookie-actions{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;flex:0 0 auto}
+
+/* הכותרת ״שימוש בעוגיות״ חוזרת על מה שהמשפט שמתחתיה כבר אומר, והיא
+   עולה כ-19 פיקסל מגובה הבאנר, שבהם הוא מכסה את הכפתור הראשי בהירו.
+   היא מוסתרת חזותית ונשארת לקוראי מסך, כי aria-labelledby של הבאנר
+   מצביע עליה והוא מה שנותן לאזור את שמו. */
+.shw-cookie-banner h2{
+  position:absolute;width:1px;height:1px;margin:0;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
 
 .shw-ck-btn{
   font-family:inherit;
-  font-size:.95rem;
+  font-size:.9rem;
   font-weight:700;
   border-radius:999px;
-  padding:12px 24px;
+  padding:9px 18px;
   cursor:pointer;
   border:2px solid transparent;
   text-decoration:none;
