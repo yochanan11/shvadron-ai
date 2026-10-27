@@ -74,6 +74,13 @@ const WEBINARS = {
     zoom: 'https://us06web.zoom.us/j/82945699160?pwd=ZL8rdX5bTHKJL4gUgZrVGA71cbJJmn.1',
     prepare: 'מחשב עם דפדפן Chrome, וחשבון ב-ChatGPT או בקלוד (אפשר גם חינמי).',
   },
+  'claude-code': {
+    title: 'עובד שיושב לך על המחשב: Claude Code למי שלא מתכנת',
+    when: 'יום שני, 2.11, בשעה 20:30',
+    start: '20261102T203000', end: '20261102T213000',
+    zoom: '',   // TODO: קישור הזום של 2.11
+    prepare: 'מחשב. לא צריך שום ידע בתכנות.',
+  },
   'pro-answers': {
     title: 'מתשובה בינונית לתשובה מקצועית: 7 הכללים, ותמונות שלא נראות כמו AI',
     when: 'יום רביעי, 11.11, בשעה 20:30',
