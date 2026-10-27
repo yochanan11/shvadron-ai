@@ -19,6 +19,9 @@
 
 const SHEET_NAME = 'לידים מהאתר';
 const SECRET = 'CHANGE-ME';
+// מזהה הגיליון (החלק שבין /d/ ל-/edit בקישור). כשהוא מלא, הלידים נכתבים לגיליון הזה
+// גם אם הסקריפט נפתח מגיליון אחר. ריק: הגיליון שממנו נפתח הסקריפט.
+const SHEET_ID = '';
 // סדר העמודות בלשונית. עמודה חדשה שנוספת כאן (כמו "מייל") מתווספת לבד
 // בסוף שורת הכותרות בלשונית קיימת, בלי לגעת בשורות הישנות.
 const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'כמה עובדים', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה', 'מייל', 'מסלול', 'מה רוצה ללמוד'];
@@ -144,7 +147,7 @@ function sendConfirmation(d) {
 }
 
 function getSheet() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
@@ -172,9 +175,13 @@ function testConfirmationMail() {
 }
 
 // להרצה ידנית מתוך עורך הסקריפט: יוצר את הלשונית ומוסיף שורת בדיקה
+// ביומן ההרצה רואים לאיזה גיליון נכתבה השורה, ומה הסקריפט החזיר
 function testRow() {
-  doPost({ postData: { contents: JSON.stringify({
+  const res = doPost({ postData: { contents: JSON.stringify({
     secret: SECRET, name: 'בדיקה', phone: '0500000000', course: 'בדיקה מהעורך',
     kind: 'callback', consent: false, email: 'test@example.com', ts: new Date().toISOString(),
   }) } });
+  const sheet = getSheet();
+  console.log('תשובה: ' + res.getContent());
+  console.log('נכתב לגיליון: ' + sheet.getParent().getUrl() + ' · לשונית: ' + sheet.getName() + ' · שורות: ' + sheet.getLastRow());
 }
