@@ -74,6 +74,20 @@ const WEBINARS = {
     zoom: 'https://us06web.zoom.us/j/82945699160?pwd=ZL8rdX5bTHKJL4gUgZrVGA71cbJJmn.1',
     prepare: 'מחשב עם דפדפן Chrome, וחשבון ב-ChatGPT או בקלוד (אפשר גם חינמי).',
   },
+  'claude-code': {
+    title: 'עובד שיושב לך על המחשב: Claude Code למי שלא מתכנת',
+    when: 'יום שני, 2.11, בשעה 20:30',
+    start: '20261102T203000', end: '20261102T213000',
+    zoom: 'https://us06web.zoom.us/j/85933675922?pwd=zNi9UUzfF6RzW2laktslkLUjP3jh8h.1',
+    prepare: 'מחשב. לא צריך שום ידע בתכנות.',
+  },
+  'pro-answers': {
+    title: 'מתשובה בינונית לתשובה מקצועית: 7 הכללים, ותמונות שלא נראות כמו AI',
+    when: 'יום רביעי, 11.11, בשעה 20:30',
+    start: '20261111T203000', end: '20261111T213000',
+    zoom: '',   // TODO: קישור הזום של 11.11. עד שיש קישור, המייל אומר שהקישור יישלח לפני הוובינר
+    prepare: 'מחשב, וחשבון ב-ChatGPT או בקלוד (אפשר גם חינמי).',
+  },
 };
 const TIPS_GROUP = 'https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv';
 
@@ -88,7 +102,7 @@ function sendConfirmation(d) {
     const cal = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
       + '&text=' + encodeURIComponent('וובינר · ' + w.title)
       + '&dates=' + w.start + '/' + w.end + '&ctz=Asia/Jerusalem'
-      + '&details=' + encodeURIComponent('קישור לזום ' + w.zoom);
+      + '&details=' + encodeURIComponent(w.zoom ? 'קישור לזום ' + w.zoom : 'קישור לזום יישלח במייל ובוואטסאפ לפני הוובינר');
     subject = 'נרשמת לוובינר · ' + w.title;
     body =
       '<p style="font-size:18px;margin:0 0 14px">שלום ' + esc(first) + ',</p>' +
@@ -98,7 +112,8 @@ function sendConfirmation(d) {
         '<p style="margin:0">📅 ' + esc(w.when) + '</p>' +
         '<p style="margin:0">💻 בזום, ללא עלות</p>' +
       '</div>' +
-      '<p style="margin:0 0 4px">הקישור להצטרפות</p>' + btn(w.zoom, 'כניסה לזום') +
+      (w.zoom ? '<p style="margin:0 0 4px">הקישור להצטרפות</p>' + btn(w.zoom, 'כניסה לזום')
+              : '<p style="margin:0 0 4px">את הקישור לזום אשלח לך לפני הוובינר.</p>') +
       '<p style="margin:14px 0 4px">וכדי לא לשכוח</p>' + btn(cal, 'הוספה ליומן') +
       '<p style="margin-top:18px"><b>מה כדאי להכין?</b><br/>' + esc(w.prepare) + ' נעבוד יחד בלייב, אז כדאי להגיע עם מחשב ולא רק מהטלפון.</p>';
   } else {
