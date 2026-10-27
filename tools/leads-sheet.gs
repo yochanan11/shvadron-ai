@@ -78,7 +78,7 @@ const WEBINARS = {
     title: 'עובד שיושב לך על המחשב: Claude Code למי שלא מתכנת',
     when: 'יום שני, 2.11, בשעה 20:30',
     start: '20261102T203000', end: '20261102T213000',
-    zoom: '',   // TODO: קישור הזום של 2.11
+    zoom: 'https://us06web.zoom.us/j/85933675922?pwd=zNi9UUzfF6RzW2laktslkLUjP3jh8h.1',
     prepare: 'מחשב. לא צריך שום ידע בתכנות.',
   },
   'pro-answers': {
