@@ -12,7 +12,8 @@ if (fs.existsSync(envPath)) {
 
 // דף הניהול (admin-coupons.html) קורא ל-endpoint הזה כדי לראות/לערוך את
 // רשימת הקופונים. הרשימה נשמרת ב-Vercel KV תחת המפתח "coupons", כמערך JSON
-// של אובייקטים: { code, type: 'fixed'|'percent', value, page, checkoutUrl, until? }.
+// של אובייקטים: { code, type: 'fixed'|'total'|'percent', value, page, checkoutUrl, until? }.
+// fixed = מחיר לפני מע״מ, total = מחיר כולל מע״מ, percent = אחוז הנחה.
 // api/coupon.js קורא מאותו מפתח כדי לאמת קופון שהוזן בדף.
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -48,7 +49,7 @@ module.exports = async (req, res) => {
     const cleaned = [];
     for (const c of codes) {
       const code = c && String(c.code || '').trim();
-      const type = c && c.type === 'percent' ? 'percent' : 'fixed';
+      const type = c && (c.type === 'percent' || c.type === 'total') ? c.type : 'fixed';
       const value = c ? Number(c.value) : NaN;
       const page = c && String(c.page || '').trim();
       const checkoutUrl = c && String(c.checkoutUrl || '').trim();

@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).json({ valid: false, error: 'method-not-allowed' });
 
   // רשימת הקופונים נשמרת ב-Vercel KV (שם דף הניהול admin-coupons.html
-  // עורך אותה). כל קופון הוא אובייקט: { code, type: 'fixed'|'percent',
+  // עורך אותה). כל קופון הוא אובייקט: { code, type: 'fixed'|'total'|'percent',
   // value, page, checkoutUrl, until? }. until הוא היום האחרון שבו הקופון
   // תקף (YYYY-MM-DD, שעון ישראל). checkoutUrl הוא קישור תשלום קיים ב-Morning
   // שגובה בדיוק את הסכום הזה — אין לנו כרגע גישת API ל-Morning שיוצרת
@@ -69,9 +69,19 @@ module.exports = async (req, res) => {
     return res.status(503).json({ valid: false, error: 'coupon-missing-checkout-url' });
   }
 
-  var price = coupon.type === 'percent'
-    ? (PAGE_PRICES[enteredPage] || REGULAR_PRICE) * (1 - Number(coupon.value) / 100)
-    : Number(coupon.value);
+  // בסוג 'total' הערך הוא הסכום לתשלום כולל מע״מ, והמחיר לפני מע״מ מחושב
+  // ממנו אחורה. בשאר הסוגים הערך נותן את המחיר לפני מע״מ.
+  var total = null;
+  var price;
+  if (coupon.type === 'total') {
+    // עיגול לאגורות לפני ה-ceil, כדי ש-336.3 לא יהפוך ל-336.4 בגלל שגיאת float
+    total = Math.max(0, Math.ceil(Math.round(Number(coupon.value) * 100) / 10) / 10);
+    price = total / (1 + VAT_RATE);
+  } else {
+    price = coupon.type === 'percent'
+      ? (PAGE_PRICES[enteredPage] || REGULAR_PRICE) * (1 - Number(coupon.value) / 100)
+      : Number(coupon.value);
+  }
   price = Math.max(0, Math.round(price * 100) / 100);
 
   // קופון שמעלה את המחיר מעל מחיר המסלול (למשל אחרי שהמחיר ירד והקופון
@@ -84,7 +94,7 @@ module.exports = async (req, res) => {
   // בודדת בישראל), וה-מע״מ המוצג מחושב אחורה מהסכום המעוגל כדי שהשורות
   // בטבלה יסתכמו בדיוק לסה״כ. חשוב: קישור התשלום שמוזן לקופון בדף
   // הניהול חייב לגבות בדיוק את הסכום המעוגל הזה, לא את הסכום הגולמי.
-  const total = Math.ceil(price * (1 + VAT_RATE) * 10) / 10;
+  if (total === null) total = Math.ceil(price * (1 + VAT_RATE) * 10) / 10;
   const vat   = Math.round((total - price) * 100) / 100;
 
   res.json({

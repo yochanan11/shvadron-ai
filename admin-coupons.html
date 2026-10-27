@@ -39,6 +39,7 @@
   .f-total{display:block;font-size:.74rem;margin-top:3px;color:var(--muted);line-height:1.3}
   .f-total.err{color:#b3261e;font-weight:800}
   td select.f-page{min-width:170px}
+  td select.f-type{min-width:140px}
   .tbl-wrap{overflow-x:auto}
   .empty{color:var(--muted);font-size:.9rem;padding:16px 4px}
 </style>
@@ -80,7 +81,8 @@
     </div>
     <p class="msg" id="panel-msg"></p>
     <p class="hint">
-      <b>סוג "מחיר קבוע"</b>: הערך הוא המחיר לפני מע״מ, למשל 675.<br/>
+      <b>סוג "מחיר כולל מע״מ"</b>: הערך הוא הסכום שהלקוח משלם, למשל 336.30. זה הסכום שהקישור ב-Morning צריך לגבות.<br/>
+      <b>סוג "מחיר לפני מע״מ"</b>: הערך הוא המחיר לפני מע״מ, למשל 675, והאתר מוסיף לו מע״מ.<br/>
       <b>סוג "אחוזים"</b>: הערך הוא אחוז ההנחה ממחיר המחירון, למשל 20 = 20% הנחה.<br/>
       <b>קורס</b>: בדף של איזה קורס הקופון עובד. קופון עובד רק בדף שנבחר, ואפשר ליצור אותו קוד לכמה קורסים בשורות נפרדות.<br/>
       <b>קישור תשלום</b>: חובה. חייב להיות קישור סליקה קיים ב-Morning שגובה בדיוק את הסכום המעוגל שהאתר יציג (הסה״כ כולל מע״מ, מעוגל <b>כלפי מעלה ל-10 אגורות הקרובות</b>) — אחרת הלקוח יראה מחיר אחד ויחויב בסכום אחר. לדוגמה: מחיר 436.50 + מע״מ נותן סכום גולמי של 515.07, אבל האתר יציג 515.10 ₪ — לכן הקישור ב-Morning צריך לגבות 515.10 ₪, לא 515.07.<br/>
@@ -139,11 +141,18 @@
     var page  = PAGES.filter(function(p){ return p.id === tr.querySelector('.f-page').value; })[0];
     out.className = 'f-total';
     if(!value || !page){ out.textContent = ''; return; }
-    var price = tr.querySelector('.f-type').value === 'percent' ? page.price * (1 - value / 100) : value;
-    price = Math.max(0, Math.round(price * 100) / 100);
-    var total = Math.ceil(price * (1 + VAT_RATE) * 10) / 10;
+    var type = tr.querySelector('.f-type').value;
+    var price, total;
+    if(type === 'total'){
+      total = Math.max(0, Math.ceil(Math.round(value * 100) / 10) / 10);
+      price = Math.round(total / (1 + VAT_RATE) * 100) / 100;
+    } else {
+      price = type === 'percent' ? page.price * (1 - value / 100) : value;
+      price = Math.max(0, Math.round(price * 100) / 100);
+      total = Math.ceil(price * (1 + VAT_RATE) * 10) / 10;
+    }
     if(price >= page.price){
-      out.textContent = 'ללקוח: ' + total.toFixed(2) + ' ₪, יקר מהרגיל! הערך לפני מע״מ';
+      out.textContent = 'ללקוח: ' + total.toFixed(2) + ' ₪, יקר מהרגיל!';
       out.className = 'f-total err';
     } else {
       out.textContent = 'ללקוח: ' + total.toFixed(2) + ' ₪';
@@ -159,18 +168,18 @@
   }
 
   function addRow(coupon){
-    coupon = coupon || { code:'', type:'fixed', value:'', page:'', checkoutUrl:'' };
+    coupon = coupon || { code:'', type:'total', value:'', page:'', checkoutUrl:'' };
     var tr = document.createElement('tr');
     tr.innerHTML =
       '<td><input class="f-code" value="" placeholder="KISLEV10"/></td>' +
-      '<td><select class="f-type"><option value="fixed">מחיר קבוע</option><option value="percent">אחוזים</option></select></td>' +
+      '<td><select class="f-type"><option value="total">מחיר כולל מע״מ</option><option value="fixed">מחיר לפני מע״מ</option><option value="percent">אחוזים</option></select></td>' +
       '<td class="num"><input class="f-value" type="number" step="0.01" placeholder="675"/><span class="f-total"></span></td>' +
       '<td><select class="f-page">' + pageOptions(coupon.page) + '</select></td>' +
       '<td><input class="f-url" placeholder="https://mrng.to/..."/></td>' +
       '<td><input class="f-until" type="date"/></td>' +
       '<td><button type="button" class="btn-danger f-del">מחיקה</button></td>';
     tr.querySelector('.f-code').value = coupon.code || '';
-    tr.querySelector('.f-type').value = coupon.type === 'percent' ? 'percent' : 'fixed';
+    tr.querySelector('.f-type').value = coupon.type === 'percent' || coupon.type === 'total' ? coupon.type : 'fixed';
     tr.querySelector('.f-value').value = coupon.value != null ? coupon.value : '';
     tr.querySelector('.f-url').value = coupon.checkoutUrl || '';
     tr.querySelector('.f-until').value = coupon.until || '';
