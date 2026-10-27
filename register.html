@@ -17,31 +17,28 @@
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
 <link rel="stylesheet" href="assets/css/fonts.css"/>
 <link rel="stylesheet" href="assets/css/shw-2026.css"/>
+<link rel="stylesheet" href="assets/css/brand-ads.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
 <link rel="stylesheet" href="assets/css/gift.css"/>
 <style>
-  /* דף ההרשמה: כרטיס אחד במרכז, באותה שפה של טופס "חזרו אליי" */
-  .reg{min-height:calc(100vh - 220px);display:flex;align-items:center;padding-block:clamp(40px,8vw,90px)}
-  .reg-card{max-width:620px;margin-inline:auto;background:var(--card);border:1px solid var(--line);border-radius:6px;
-            padding:clamp(24px,5vw,44px);display:flex;flex-direction:column;gap:18px}
-  .reg-logo{display:block;width:min(260px,70%);height:auto;margin-bottom:6px}
-  .reg-topic{margin:0;padding:12px 14px;border-radius:3px;background:rgba(62,230,176,.08);border:1px solid rgba(62,230,176,.35);
-             color:var(--accent);font-weight:700;line-height:1.5}
+  /* דף ההרשמה בשפת המודעות: אזור עליון כחול עם הדמותג, ומתחתיו טופס לבן וכרטיס כחול לצדו (כמו שיחת ההיכרות בעסקים) */
+  .reg-when{display:flex;flex-wrap:wrap;gap:8px}
+  .reg-when span{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:700}
   .reg .gift-form{max-width:none}
-  .reg .gift-fields select,.reg .gift-fields textarea{padding:13px 14px;border-radius:3px;border:1px solid rgba(255,255,255,.25);
-             background:rgba(255,255,255,.06);color:#fff;font:inherit;font-weight:400}
-  .reg .gift-fields select option{color:#0A0A0B}
-  .reg .gift-fields textarea{min-height:110px;resize:vertical;line-height:1.5}
-  .reg .gift-fields select:focus,.reg .gift-fields textarea:focus{outline:2px solid var(--teal, var(--accent));outline-offset:1px}
+  .reg .gift-fields textarea{padding:13px 14px;border-radius:12px;border:1.5px solid #9FB1CB;background:#fff;color:var(--ink);
+             font:inherit;font-weight:400;min-height:110px;resize:vertical;line-height:1.5}
+  .reg .gift-fields textarea::placeholder{color:#7D8BA3}
+  .reg .gift-fields textarea:focus{outline:2px solid var(--brand-teal);outline-offset:1px}
   .reg .wide{grid-column:1/-1}
   .reg-tracks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .reg-track{position:relative;display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:3px;cursor:pointer;
-             border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.04);font-weight:400}
+  .reg-track{position:relative;display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:12px;cursor:pointer;
+             border:1.5px solid #9FB1CB;background:#fff;font-weight:400}
   .reg-track input{position:absolute;opacity:0;pointer-events:none}
-  .reg-track b{color:#fff;font-size:1.05rem}
+  .reg-track b{color:var(--brand-blue);font-size:1.05rem}
   .reg-track span{color:var(--muted);font-size:.9rem}
-  .reg-track:has(input:checked){border-color:var(--accent);background:rgba(62,230,176,.1)}
-  .reg-track:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:1px}
+  .reg-track:has(input:checked){border-color:var(--brand-teal);background:#F2FBF9;box-shadow:0 0 0 1px var(--brand-teal)}
+  .reg-track:has(input:focus-visible){outline:2px solid var(--brand-teal);outline-offset:1px}
+  .reg legend{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:6px}
   @media (max-width:620px){.reg-tracks{grid-template-columns:1fr}}
 </style>
 <script src="assets/js/consent.js"></script>
@@ -52,15 +49,36 @@
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<main id="main" class="reg">
+<header class="site-head">
   <div class="wrap">
-    <div class="reg-card">
-      <a href="/" aria-label="SHWADRON.AI, לדף הבית"><img class="reg-logo" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84"/></a>
-      <div>
-        <p class="eyebrow">הרשמה</p>
-        <h1 class="h-sm">השאירו פרטים.<br/><span class="ghost">יוחנן יחזור אליכם.</span></h1>
-      </div>
-      <p class="reg-topic" data-topic hidden></p>
+    <a href="index.html" class="brand" aria-label="SHWADRON.AI, לדף הבית"><img src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84"/></a>
+    <nav class="site-nav" aria-label="ניווט ראשי">
+      <a class="nav-x" href="index.html">כל המסלולים</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#form">להרשמה</a>
+  </div>
+</header>
+
+<main id="main" class="reg">
+
+<!-- ===== HERO =====
+     בלי ?for= זה דף הרשמה כללי. עם ?for=<וובינר> הכותרת, השורה שמתחתיה
+     ותגיות המועד מתחלפות לפי TOPICS ב-assets/js/register.js. -->
+<section id="top" style="padding-top:clamp(48px,7vw,88px)">
+  <div class="wrap stack">
+    <p class="eyebrow" data-hero-eyebrow>הרשמה</p>
+    <h1 style="--fit:.30" data-hero-title>השאירו פרטים.<br/><span class="on-accent">יוחנן יחזור אליכם.</span></h1>
+    <p class="lead" data-hero-lead>בחרו את המסלול שמעניין אתכם, ויוחנן יחזור אליכם לשיחה קצרה ולהתאמה.</p>
+    <div class="reg-when" data-hero-when hidden></div>
+    <img class="hero-char" src="assets/public/brand/character-speed.webp" alt="הדמותג של SHWADRON.AI" width="654" height="900" loading="eager"/>
+  </div>
+</section>
+
+<section class="sec" id="form">
+  <div class="wrap contact-grid">
+    <div class="stack contact-main">
+      <p class="eyebrow">הרשמה</p>
+      <h2 class="h-sm">שתי דקות,<br/><span class="ghost">בלי התחייבות.</span></h2>
 
       <form class="gift-form" data-register novalidate>
         <div class="gift-fields">
@@ -70,32 +88,62 @@
           <label><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
 
           <fieldset class="wide" style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
-            <legend style="font-size:.92rem;font-weight:700;color:#fff;margin-bottom:6px">איזה מסלול מעניין אתכם?</legend>
+            <legend>איזה מסלול מעניין אתכם?</legend>
             <div class="reg-tracks">
               <label class="reg-track"><input type="radio" name="track" value="beginners" required/><b>מאפס למאה</b><span>מתחילים · 3 מפגשים בזום</span></label>
               <label class="reg-track"><input type="radio" name="track" value="advanced"/><b>צבא הסוכנים</b><span>מתקדמים · 9 מפגשים בזום</span></label>
             </div>
           </fieldset>
 
-          <label class="wide"><span>מה הייתם רוצים ללמוד? <small>(לא חובה)</small></span><textarea name="message" maxlength="1000" placeholder="למשל: לסכם פגישות, לבנות סוכן לעסק, לחסוך זמן בהצעות מחיר"></textarea></label>
+          <label class="wide"><span data-message-label>מה הייתם רוצים ללמוד? <small>(לא חובה)</small></span><textarea name="message" maxlength="1000" placeholder="למשל: לסכם פגישות, לבנות סוכן לעסק, לחסוך זמן בהצעות מחיר"></textarea></label>
         </div>
         <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-        <button class="btn btn-primary" type="submit">שליחה</button>
+        <button class="btn btn-primary" type="submit" data-submit>שליחה</button>
         <p class="gift-msg" role="status" aria-live="polite"></p>
         <p class="gift-fine">הפרטים משמשים לחזרה אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
       </form>
       <div class="gift-after" tabindex="-1" hidden>
-        <p class="lead"><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
+        <p class="lead" data-after-text><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
         <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
       </div>
+      <p class="small">מעדיפים לכתוב? <a href="https://wa.me/972528189921" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">שלחו ליוחנן הודעה בוואטסאפ</a> · <a href="https://wa.me/972528189921" class="ltr" style="color:inherit;white-space:nowrap">052-818-9921</a></p>
     </div>
+
+    <aside class="contact-aside" aria-label="מה קורה אחרי ההרשמה">
+      <p class="eyebrow">מה קורה אחרי ההרשמה</p>
+      <ol class="contact-steps" data-steps="general">
+        <li><span><b>משאירים פרטים.</b> שתי דקות, בלי התחייבות.</span></li>
+        <li><span><b>מקבלים מייל אישור.</b> עם המסלול שבחרתם.</span></li>
+        <li><span><b>יוחנן חוזר אליכם.</b> שיחה קצרה, ובוחרים יחד את המסלול שמתאים.</span></li>
+      </ol>
+      <ol class="contact-steps" data-steps="webinar" hidden>
+        <li><span><b>משאירים פרטים.</b> שתי דקות, והוובינר חינם.</span></li>
+        <li><span><b>מקבלים מייל אישור.</b> עם קישור לזום וכפתור להוספה ליומן.</span></li>
+        <li><span><b>מגיעים עם מחשב.</b> עובדים יחד בלייב, לא רק צופים.</span></li>
+      </ol>
+      <div class="contact-who">
+        <img src="assets/public/yochanan-landing.jpg" alt="" width="56" height="56"/>
+        <p><b>יוחנן שבדרון</b><br/>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</p>
+      </div>
+      <a class="btn btn-light btn-block" href="https://wa.me/972528189921" target="_blank" rel="noopener">שאלה? כתבו בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
+    </aside>
   </div>
+</section>
+
 </main>
 
+<p class="brand-tag"><span class="t">הניצחון בידיים שלך.</span> <span class="b">בוא לעבוד חכם!</span></p>
 <footer class="site-foot">
   <div class="wrap">
     <img class="brand-foot" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84" loading="lazy"/>
+    <nav aria-label="המסלולים" class="foot-tracks">
+      <a href="course-beginners.html">מאפס למאה</a>
+      <a href="course.html">המוח השני</a>
+      <a href="course-advanced.html">צבא הסוכנים</a>
+      <a href="business.html">לעסקים ולארגונים</a>
+    </nav>
     <nav aria-label="קישורים משפטיים">
+      <a href="index.html">כל המסלולים</a>
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
       <a href="accessibility.html">הצהרת נגישות</a>
