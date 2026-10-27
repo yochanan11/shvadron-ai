@@ -14,9 +14,9 @@ if (fs.existsSync(envPath)) {
 // מחזיר יסתור את מה שהאתר מציג.
 const LAUNCH_END   = new Date('2026-08-10T23:59:59+03:00').getTime();
 const REGULAR_PRICE = 326.27; // הקורס הדיגיטלי לפני מע״מ (385 ₪ כולל), בסיס להנחה באחוזים
-// המחיר לפני מע״מ של מסלולי הזום, לחישוב הנחה באחוזים בדפים שלהם.
-// חייב להישאר זהה ל-priceEx ב-assets/data/courses.mjs.
-const PAGE_PRICES = { 'course-beginners': 750, 'course-advanced': 2500 };
+// המחיר לפני מע״מ של כל קורס, לחישוב הנחה באחוזים ולחסימת קופון שמייקר.
+// מסלולי הזום חייבים להישאר זהים ל-priceEx ב-assets/data/courses.mjs.
+const PAGE_PRICES = { 'course-beginners': 750, 'course-advanced': 2500, 'course-digital': REGULAR_PRICE };
 const VAT_RATE      = 0.18;
 
 module.exports = async (req, res) => {

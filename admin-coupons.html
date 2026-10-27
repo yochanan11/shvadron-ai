@@ -35,7 +35,9 @@
   td{padding:4px 4px}
   td input,td select{width:100%;padding:8px 9px;border:1px solid var(--border);
     border-radius:8px;font-family:inherit;font-size:.88rem}
-  td.num{max-width:90px}
+  td.num{min-width:110px;max-width:130px}
+  .f-total{display:block;font-size:.74rem;margin-top:3px;color:var(--muted);line-height:1.3}
+  .f-total.err{color:#b3261e;font-weight:800}
   td select.f-page{min-width:170px}
   .tbl-wrap{overflow-x:auto}
   .empty{color:var(--muted);font-size:.9rem;padding:16px 4px}
@@ -121,11 +123,32 @@
   }
 
   // הקורסים שקופון יכול לחול עליהם. הערך הוא המזהה שהדף שולח ל-/api/coupon.
+  // price הוא המחיר לפני מע״מ, זהה ל-PAGE_PRICES ב-api/coupon.js.
   var PAGES = [
-    { id: 'course-beginners', name: 'AI למתחילים (זום)' },
-    { id: 'course-advanced',  name: 'AI למתקדמים (זום)' },
-    { id: 'course-digital',   name: 'הקורס הדיגיטלי' }
+    { id: 'course-beginners', name: 'AI למתחילים (זום)', price: 750 },
+    { id: 'course-advanced',  name: 'AI למתקדמים (זום)', price: 2500 },
+    { id: 'course-digital',   name: 'הקורס הדיגיטלי',    price: 326.27 }
   ];
+  var VAT_RATE = 0.18;
+
+  // מציג מתחת לערך את הסה״כ שהאתר יציג ללקוח, באותו חישוב כמו api/coupon.js,
+  // כדי שמחיר כולל מע״מ שהוזן בטעות כערך ייראה מיד.
+  function updateTotal(tr){
+    var out   = tr.querySelector('.f-total');
+    var value = Number(tr.querySelector('.f-value').value);
+    var page  = PAGES.filter(function(p){ return p.id === tr.querySelector('.f-page').value; })[0];
+    out.className = 'f-total';
+    if(!value || !page){ out.textContent = ''; return; }
+    var price = tr.querySelector('.f-type').value === 'percent' ? page.price * (1 - value / 100) : value;
+    price = Math.max(0, Math.round(price * 100) / 100);
+    var total = Math.ceil(price * (1 + VAT_RATE) * 10) / 10;
+    if(price >= page.price){
+      out.textContent = 'ללקוח: ' + total.toFixed(2) + ' ₪, יקר מהרגיל! הערך לפני מע״מ';
+      out.className = 'f-total err';
+    } else {
+      out.textContent = 'ללקוח: ' + total.toFixed(2) + ' ₪';
+    }
+  }
   function pageOptions(selected){
     var list = PAGES.slice();
     // קופון ישן עם מזהה שלא ברשימה נשמר כמו שהוא, כדי שלא יימחק בטעות
@@ -141,7 +164,7 @@
     tr.innerHTML =
       '<td><input class="f-code" value="" placeholder="KISLEV10"/></td>' +
       '<td><select class="f-type"><option value="fixed">מחיר קבוע</option><option value="percent">אחוזים</option></select></td>' +
-      '<td class="num"><input class="f-value" type="number" step="0.01" placeholder="675"/></td>' +
+      '<td class="num"><input class="f-value" type="number" step="0.01" placeholder="675"/><span class="f-total"></span></td>' +
       '<td><select class="f-page">' + pageOptions(coupon.page) + '</select></td>' +
       '<td><input class="f-url" placeholder="https://mrng.to/..."/></td>' +
       '<td><input class="f-until" type="date"/></td>' +
@@ -152,6 +175,10 @@
     tr.querySelector('.f-url').value = coupon.checkoutUrl || '';
     tr.querySelector('.f-until').value = coupon.until || '';
     tr.querySelector('.f-del').addEventListener('click', function(){ tr.remove(); toggleEmpty(); });
+    ['.f-value', '.f-type', '.f-page'].forEach(function(sel){
+      tr.querySelector(sel).addEventListener('input', function(){ updateTotal(tr); });
+    });
+    updateTotal(tr);
     tbody.appendChild(tr);
     toggleEmpty();
   }
