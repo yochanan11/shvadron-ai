@@ -167,7 +167,7 @@ function out(obj) {
 
 // להרצה ידנית מתוך עורך הסקריפט: שולח את מייל האישור של הוובינר לכתובת שלך, כדי לראות איך הוא נראה
 function testConfirmationMail() {
-  sendConfirmation({ name: 'יוחנן שבדרון', email: Session.getEffectiveUser().getEmail(), topicKey: 'browser-webinar', kind: 'register' });
+  sendConfirmation({ name: 'יוחנן שבדרון', email: Session.getEffectiveUser().getEmail(), topicKey: 'claude-code', kind: 'register' });
 }
 
 // להרצה ידנית מתוך עורך הסקריפט: יוצר את הלשונית ומוסיף שורת בדיקה
