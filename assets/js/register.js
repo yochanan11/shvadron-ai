@@ -9,12 +9,25 @@
   'use strict';
   // הקשרים שאפשר להעביר בקישור. מפתח חדש: מוסיפים שורה כאן, ושולחים קישור register.html?for=<מפתח>
   var TOPICS = {
-    'browser-webinar': 'וובינר חינם בזום · התוסף של קלוד ו-ChatGPT לדפדפן · יום רביעי 21.10 בשעה 20:30'
+    'browser-webinar': 'וובינר חינם בזום · התוסף של קלוד ו-ChatGPT לדפדפן · יום רביעי 21.10 בשעה 20:30',
+    'pro-answers':     'וובינר חינם בזום · מתשובה בינונית לתשובה מקצועית, 7 הכללים · יום רביעי 11.11 בשעה 20:30'
+  };
+  // בוובינר, שדה "מה הייתם רוצים ללמוד" הופך לשאלה אחת שהנרשם רוצה שתיענה בוובינר
+  var QUESTIONS = {
+    'pro-answers': { label: 'שאלה אחת שתרצו שאענה עליה בוובינר', placeholder: 'למשל: למה ChatGPT נותן לי תשובות כלליות, ואיך מקבלים תמונה שלא נראית כמו AI' }
   };
   var forKey = (new URLSearchParams(location.search).get('for') || '').trim();
   var topic = TOPICS[forKey] || '';
   var topicEl = document.querySelector('[data-topic]');
   if(topic && topicEl){ topicEl.textContent = topic; topicEl.hidden = false; }
+  var question = QUESTIONS[forKey];
+  var qLabel = document.querySelector('[data-message-label]');
+  if(question && qLabel){
+    qLabel.textContent = question.label + ' ';
+    var small = document.createElement('small'); small.textContent = '(לא חובה)'; qLabel.appendChild(small);
+    var ta = document.querySelector('[data-register] textarea[name="message"]');
+    if(ta) ta.placeholder = question.placeholder;
+  }
 
   var form = document.querySelector('[data-register]');
   if(!form) return;
