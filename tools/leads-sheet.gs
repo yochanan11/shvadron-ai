@@ -95,7 +95,7 @@ function sendConfirmation(d) {
   const first = String(d.name || '').trim().split(/\s+/)[0] || '';
   const w = WEBINARS[d.topicKey];
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  const btn = (href, text) => '<a href="' + esc(href) + '" style="display:inline-block;background:#3EE6B0;color:#0A0A0B;text-decoration:none;font-weight:bold;padding:13px 26px;border-radius:999px;margin:6px 0">' + esc(text) + '</a>';
+  const btn = (href, text) => '<a href="' + esc(href) + '" style="display:inline-block;background:#5FC3B1;color:#0B1F3A;text-decoration:none;font-weight:bold;padding:13px 26px;border-radius:999px;margin:6px 0">' + esc(text) + '</a>';
 
   let subject, body;
   if (w) {
@@ -107,8 +107,8 @@ function sendConfirmation(d) {
     body =
       '<p style="font-size:18px;margin:0 0 14px">שלום ' + esc(first) + ',</p>' +
       '<p>איזה כיף שנרשמת! מחכה לראות אותך בוובינר.</p>' +
-      '<div style="background:#F4F4F1;border-right:4px solid #3EE6B0;padding:14px 16px;margin:18px 0;border-radius:6px">' +
-        '<p style="margin:0 0 6px;font-weight:bold;font-size:17px">' + esc(w.title) + '</p>' +
+      '<div style="background:#F2F6FB;border-right:4px solid #5FC3B1;padding:14px 16px;margin:18px 0;border-radius:6px">' +
+        '<p style="margin:0 0 6px;font-weight:bold;font-size:17px;color:#4369AA">' + esc(w.title) + '</p>' +
         '<p style="margin:0">📅 ' + esc(w.when) + '</p>' +
         '<p style="margin:0">💻 בזום, ללא עלות</p>' +
       '</div>' +
@@ -126,16 +126,17 @@ function sendConfirmation(d) {
   body +=
     '<p>בינתיים, בקבוצת הטיפים בוואטסאפ אני משתף טיפים קצרים על AI כמעט כל יום.</p>' + btn(TIPS_GROUP, 'להצטרפות לקבוצת הטיפים') +
     '<p style="margin-top:22px">שאלות? אפשר פשוט להשיב למייל הזה, או לכתוב לי בוואטסאפ 052-818-9921.</p>' +
-    '<p style="margin:18px 0 0">להתראות,<br/><b>יוחנן שבדרון</b><br/><span style="color:#55555B">SHWADRON.AI</span></p>';
+    '<p style="margin:18px 0 0">להתראות,<br/><b>יוחנן שבדרון</b><br/><span style="color:#56657E">SHWADRON.AI</span></p>';
 
+  // צבעי המותג כמו באתר (brand-ads.css): כחול #4369AA, טורקיז #5FC3B1, טקסט כחול כהה #1E3A69
   const html =
-    '<div dir="rtl" style="background:#F4F4F1;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">' +
-      '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #DEDED8">' +
-        '<div style="background:#0A0A0B;padding:18px 24px;text-align:right">' +
+    '<div dir="rtl" style="background:#F2F6FB;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">' +
+      '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #D5DEEA">' +
+        '<div style="background:#4369AA;padding:18px 24px;text-align:right">' +
           // הלוגו מראש האתר (logo-shwadron-white.svg) כ-PNG, כי Gmail לא מציג SVG. אם תמונות חסומות, מוצג הטקסט החלופי
           '<img src="https://ai.shwadron-ai.com/assets/public/logo-email.png" alt="SHWADRON.AI" width="260" height="57" style="display:block;border:0;width:260px;height:auto;color:#ffffff;font-size:20px;font-weight:bold"/>' +
         '</div>' +
-        '<div style="padding:24px;color:#0A0A0B;font-size:16px;line-height:1.6;text-align:right">' + body + '</div>' +
+        '<div style="padding:24px;color:#1E3A69;font-size:16px;line-height:1.6;text-align:right">' + body + '</div>' +
       '</div>' +
     '</div>';
 
