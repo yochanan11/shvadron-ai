@@ -13,22 +13,42 @@
     'claude-code':     'וובינר חינם בזום · עובד שיושב לך על המחשב, Claude Code למי שלא מתכנת · יום שני 2.11 בשעה 20:30',
     'pro-answers':     'וובינר חינם בזום · מתשובה בינונית לתשובה מקצועית, 7 הכללים · יום רביעי 11.11 בשעה 20:30'
   };
-  // בוובינר, שדה "מה הייתם רוצים ללמוד" הופך לשאלה אחת שהנרשם רוצה שתיענה בוובינר
-  var QUESTIONS = {
-    'claude-code': { label: 'שאלה אחת שתרצו שאענה עליה בוובינר', placeholder: 'למשל: איזו עבודה במחשב הייתם רוצים שמישהו יעשה בשבילכם' },
-    'pro-answers': { label: 'שאלה אחת שתרצו שאענה עליה בוובינר', placeholder: 'למשל: למה ChatGPT נותן לי תשובות כלליות, ואיך מקבלים תמונה שלא נראית כמו AI' }
+  // וובינר: הכותרת בהירו (שתי שורות), תגיות המועד, ושדה "מה הייתם רוצים ללמוד" שהופך לשאלה אחת לוובינר
+  var WEBINARS = {
+    'claude-code': {
+      title: 'עובד שיושב לך על המחשב.', accent: 'Claude Code למי שלא מתכנת.',
+      lead: 'וובינר חינם בזום. נראה איך הוראה אחת בעברית עוברת על תיקייה של קבצים ומכינה מהם Excel מסודר, בלי שורת קוד.',
+      when: ['יום שני 2.11', '20:30', 'בזום', 'חינם'],
+      placeholder: 'למשל: איזו עבודה במחשב הייתם רוצים שמישהו יעשה בשבילכם'
+    },
+    'pro-answers': {
+      title: 'מתשובה בינונית', accent: 'לתשובה מקצועית.',
+      lead: 'וובינר חינם בזום. 7 הכללים, ותמונות שלא נראות כמו AI. אותה בקשה פעמיים, לפני ואחרי.',
+      when: ['יום רביעי 11.11', '20:30', 'בזום', 'חינם'],
+      placeholder: 'למשל: למה ChatGPT נותן לי תשובות כלליות, ואיך מקבלים תמונה שלא נראית כמו AI'
+    }
   };
   var forKey = (new URLSearchParams(location.search).get('for') || '').trim();
   var topic = TOPICS[forKey] || '';
-  var topicEl = document.querySelector('[data-topic]');
-  if(topic && topicEl){ topicEl.textContent = topic; topicEl.hidden = false; }
-  var question = QUESTIONS[forKey];
-  var qLabel = document.querySelector('[data-message-label]');
-  if(question && qLabel){
-    qLabel.textContent = question.label + ' ';
+  var w = WEBINARS[forKey];
+  function $(sel){ return document.querySelector(sel); }
+  if(w){
+    $('[data-hero-eyebrow]').textContent = 'וובינר חינם · הרשמה';
+    var h1 = $('[data-hero-title]'); h1.textContent = w.title; h1.appendChild(document.createElement('br'));
+    var acc = document.createElement('span'); acc.className = 'on-accent'; acc.textContent = w.accent; h1.appendChild(acc);
+    $('[data-hero-lead]').textContent = w.lead;
+    var whenEl = $('[data-hero-when]');
+    w.when.forEach(function(t){ var s = document.createElement('span'); s.textContent = t; whenEl.appendChild(s); });
+    whenEl.hidden = false;
+    var qLabel = $('[data-message-label]');
+    qLabel.textContent = 'שאלה אחת שתרצו שאענה עליה בוובינר ';
     var small = document.createElement('small'); small.textContent = '(לא חובה)'; qLabel.appendChild(small);
-    var ta = document.querySelector('[data-register] textarea[name="message"]');
-    if(ta) ta.placeholder = question.placeholder;
+    $('[data-register] textarea[name="message"]').placeholder = w.placeholder;
+    $('[data-submit]').textContent = 'שמרו לי מקום';
+    $('[data-steps="general"]').hidden = true;
+    $('[data-steps="webinar"]').hidden = false;
+    $('[data-after-text]').innerHTML = '<b>נרשמתם, איזה כיף!</b> מייל אישור עם קישור לזום ועם כפתור להוספה ליומן בדרך אליכם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.';
+    document.title = w.title.replace(/\.$/, '') + ' · וובינר חינם | SHWADRON.AI';
   }
 
   var form = document.querySelector('[data-register]');
