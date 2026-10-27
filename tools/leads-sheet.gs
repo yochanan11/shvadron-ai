@@ -24,7 +24,16 @@ const SECRET = 'CHANGE-ME';
 const SHEET_ID = '';
 // סדר העמודות בלשונית. עמודה חדשה שנוספת כאן (כמו "מייל") מתווספת לבד
 // בסוף שורת הכותרות בלשונית קיימת, בלי לגעת בשורות הישנות.
-const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'כמה עובדים', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה', 'מייל', 'מסלול', 'מה רוצה ללמוד'];
+const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'כמה עובדים', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה', 'מייל', 'מסלול', 'מה רוצה ללמוד', 'וובינר'];
+// utm_source מהקישור (ראו UTM.md) בשם שמובן בגיליון. מקור שלא ברשימה נכתב כמו שהוא
+const SOURCES = {
+  status: 'סטטוס', groups: 'קבוצות התוכן', whatsapp_community: 'קהילת הוואטסאפ', private: 'הודעה בפרטי',
+  alumni: 'בוגרים', email: 'מייל', partner: 'שיתוף פעולה', webinar: 'וובינר', direct: 'ישיר (קישור בלי תיוג)',
+};
+function sourceLabel(src) {
+  const [name, campaign] = String(src || 'direct').split('/');
+  return (SOURCES[name] || name) + (campaign ? ' · ' + campaign : '');
+}
 
 function doPost(e) {
   let d;
@@ -45,10 +54,11 @@ function doPost(e) {
       'כמה עובדים': d.employees || '',
       'סוג פנייה': d.kind === 'callback' ? 'בקשה לחזרה' : d.kind === 'register' ? 'הרשמה' : 'וובינר',
       'הסכמה לדיוור': d.consent ? 'כן' : 'לא',
-      'מקור הגעה': d.source || '',
+      'מקור הגעה': sourceLabel(d.source),
       'מייל': d.email || '',
       'מסלול': d.track || '',
       'מה רוצה ללמוד': d.message || '',
+      'וובינר': WEBINARS[d.topicKey] ? WEBINARS[d.topicKey].title + ' · ' + WEBINARS[d.topicKey].when : '',
     };
     const head = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     sheet.appendRow(head.map(h => (h in values ? values[h] : '')));

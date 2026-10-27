@@ -8,11 +8,19 @@
 |---|---|
 | קהילת הוואטסאפ | `?utm_source=whatsapp_community` |
 | סטטוס | `?utm_source=status` |
+| קבוצות התוכן בוואטסאפ | `?utm_source=groups` |
+| הודעה אישית בפרטי | `?utm_source=private` |
+| מייל | `?utm_source=email` |
 | בוגרי הקורסים | `?utm_source=alumni` (הקישור /alumni כבר כולל אותו) |
 | שיתוף פעולה | `?utm_source=partner&utm_campaign=<שם השותף>` |
 | וובינר | `?utm_source=webinar&utm_campaign=<שם או תאריך הוובינר>` |
 
 דוגמה: `https://ai.shwadron-ai.com/course-advanced.html?utm_source=status`
+
+בדף ההרשמה לוובינר מוסיפים עם `&` אחרי ה-`for`:
+`https://ai.shwadron-ai.com/register.html?for=claude-code&utm_source=status`
+בגיליון הלידים העמודה "מקור הגעה" מציגה את השם בעברית (SOURCES ב-`tools/leads-sheet.gs`),
+והעמודה "וובינר" את הוובינר שנרשמו אליו. קישור בלי תיוג נרשם כ"ישיר".
 
 ## מה נמדד
 - `select_course_track`: בחירת מסלול בדף הבית
