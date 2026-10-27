@@ -59,6 +59,15 @@
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
+<!-- פס מבצע. מוצג רק עד data-ends (שעה מדויקת עם אזור זמן), ורק אם הקוד
+     ב-data-code תקף ב-/api/coupon לדף course-digital; אז המחיר והקישור
+     מתחלפים לבד לכל המבקרים. הקוד חייב להיות זהה לקופון שב-admin-coupons.html,
+     ותאריך "תקף עד" שלו חייב להיות אותו יום. -->
+<div class="promo-bar" data-ends="2026-10-27T23:59:59+02:00" data-code="AI285" hidden>
+  <p><b>מבצע הבחירות נגמר הלילה ב-23:59</b> · <b class="js-promo-total"></b> במקום 385 ₪ <span class="promo-left" data-countdown></span></p>
+  <a href="#buy">למחיר המבצע ←</a>
+</div>
+
 <header class="site-head">
   <div class="wrap">
     <a href="index.html" class="brand" aria-label="SHWADRON.AI, חזרה לדף הבית"><img src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84"/></a>
@@ -94,6 +103,7 @@
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
       <a class="btn btn-primary" data-buy href="https://mrng.to/zoeR82jDpx">אני רוצה את המוח השני ←</a>
       <p class="buy-pmt" style="margin:0">
+        <s data-promo hidden style="font-weight:400;color:var(--muted)">385 ₪</s>
         <span class="js-price-total">385 ₪</span>
         <span style="font-weight:400;color:var(--muted)"> או עד 3 תשלומים</span>
       </p>
@@ -310,6 +320,7 @@
       <p class="card-kicker">המוח השני · גישה מיידית</p>
       <div class="buy-now">
         <b><span class="js-price-total">385 ₪</span></b>
+        <s data-promo hidden>385 ₪</s>
         <span>כולל מע״מ · בלי דמי טיפול ובלי תוספות</span>
       </div>
       <p class="buy-pmt">בתשלום אחד או עד 3 תשלומים</p>
@@ -684,12 +695,7 @@
           btn.disabled = false;
           return;
         }
-        document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(data.price); });
-        document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(data.vat); });
-        document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(data.total); });
-        document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = data.checkoutUrl; });
-        window.SHW_PRICE_EX = data.price;
-        window.SHW_PRICE = data.total;
+        applyData(data);
         setMsg('הקופון הופעל! המחיר עודכן ל-' + ils(data.total) + ' כולל מע״מ.', true);
         input.disabled = true;
       })
@@ -699,8 +705,48 @@
       });
   }
 
+  function applyData(data){
+    document.querySelectorAll('.js-price').forEach(function(el){ el.textContent = ils(data.price); });
+    document.querySelectorAll('.js-price-vat').forEach(function(el){ el.textContent = ils(data.vat); });
+    document.querySelectorAll('.js-price-total').forEach(function(el){ el.textContent = ils(data.total); });
+    document.querySelectorAll('[data-buy]').forEach(function(a){ a.href = data.checkoutUrl; });
+    window.SHW_PRICE_EX = data.price;
+    window.SHW_PRICE = data.total;
+  }
+
   btn.addEventListener('click', apply);
   input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); apply(); } });
+
+  // ─── מבצע אוטומטי מפס המבצע: אותה בדיקה מול /api/coupon, בלי להקליד קוד.
+  //     אם הקופון לא תקף או לא זול מהמחיר הרגיל, הדף נשאר כמו שהוא.
+  var bar = document.querySelector('.promo-bar[data-code]');
+  var ends = bar ? Date.parse(bar.getAttribute('data-ends')) : NaN;
+  if(!(ends > Date.now())) return;
+  fetch('/api/coupon', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ code: bar.getAttribute('data-code'), page: 'course-digital' })
+  })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if(!data.valid || !(data.total < window.SHW_PRICE)) return;
+      applyData(data);
+      document.querySelectorAll('.js-promo-total').forEach(function(el){ el.textContent = ils(data.total); });
+      document.querySelectorAll('[data-promo]').forEach(function(el){ el.hidden = false; });
+      // המבצע כבר מוחל, אז שדה הקופון רק היה מזמין להחליף אותו בקוד אחר
+      box.hidden = true;
+      bar.hidden = false;
+      var left = bar.querySelector('[data-countdown]');
+      function pad(n){ return (n < 10 ? '0' : '') + n; }
+      (function tick(){
+        var s = Math.floor((ends - Date.now()) / 1000);
+        // בסוף הזמן טוענים מחדש, והדף חוזר למחיר הרגיל
+        if(s <= 0){ location.reload(); return; }
+        left.textContent = '· נותרו ' + Math.floor(s / 3600) + ':' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60);
+        setTimeout(tick, 1000);
+      })();
+    })
+    .catch(function(){});
 })();
 
 // Reveal on scroll
