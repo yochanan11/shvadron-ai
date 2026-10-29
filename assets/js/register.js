@@ -17,9 +17,10 @@
   var WEBINARS = {
     'claude-code': {
       title: 'עובד שיושב לך על המחשב.', accent: 'Claude Code למי שלא מתכנת.',
-      lead: 'וובינר חינם בזום. נראה איך הוראה אחת בעברית עוברת על תיקייה של קבצים ומכינה מהם Excel מסודר, בלי שורת קוד.',
+      lead: 'וובינר חינם בזום, לשכירים ולבעלי עסקים. נראה איך הוראה אחת בעברית עוברת לבד על תיקייה שלמה של קבצים ומכינה מהם Excel מסודר, בלי שורת קוד.',
       when: ['יום שני 2.11', '20:30', 'בזום', 'חינם'],
-      placeholder: 'למשל: איזו עבודה במחשב הייתם רוצים שמישהו יעשה בשבילכם'
+      placeholder: 'למשל: איזו עבודה במחשב הייתם רוצים שמישהו יעשה בשבילכם',
+      who: true   // קהל רחב: שואלים "שכיר או בעל עסק" במקום לבחור מסלול
     },
     'pro-answers': {
       title: 'מתשובה בינונית', accent: 'לתשובה מקצועית.',
@@ -45,6 +46,10 @@
     var small = document.createElement('small'); small.textContent = '(לא חובה)'; qLabel.appendChild(small);
     $('[data-register] textarea[name="message"]').placeholder = w.placeholder;
     $('[data-submit]').textContent = 'שמרו לי מקום';
+    if(w.who){
+      $('[data-track]').hidden = true;
+      $('[data-who]').hidden = false;
+    }
     $('[data-steps="general"]').hidden = true;
     $('[data-steps="webinar"]').hidden = false;
     $('[data-after-text]').innerHTML = '<b>נרשמתם, איזה כיף!</b> מייל אישור עם קישור לזום ועם כפתור להוספה ליומן בדרך אליכם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.';
@@ -68,6 +73,7 @@
     var phone = el.phone.value.replace(/[^\d+]/g, '').replace(/^\+?972/, '0');
     var email = el.email.value.trim();
     var trackInput = form.querySelector('input[name="track"]:checked');
+    var whoInput = form.querySelector('input[name="who"]:checked');
     var message = el.message.value.trim();
     msg.classList.remove('err');
 
@@ -75,7 +81,9 @@
     if(!last){ return err('נא למלא שם משפחה.', el.lastName); }
     if(!/^0\d{8,9}$/.test(phone)){ return err('נא למלא מספר טלפון תקין.', el.phone); }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ return err('נא למלא כתובת מייל תקינה.', el.email); }
-    if(!trackInput){ return err('נא לבחור מסלול.', form.querySelector('input[name="track"]')); }
+    if(w && w.who){
+      if(!whoInput){ return err('נא לבחור מה מתאר אתכם.', form.querySelector('input[name="who"]')); }
+    } else if(!trackInput){ return err('נא לבחור מסלול.', form.querySelector('input[name="track"]')); }
 
     var btn = form.querySelector('button'); btn.disabled = true;
     msg.textContent = 'שולח…';
@@ -90,7 +98,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: first + ' ' + last, firstName: first, lastName: last, phone: phone, email: email,
-        track: trackInput.value, message: message, topic: topic, topicKey: topic ? forKey : '', kind: 'register',
+        track: trackInput ? trackInput.value : '', who: whoInput ? whoInput.value : '', message: message, topic: topic, topicKey: topic ? forKey : '', kind: 'register',
         consent: el.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '', page: 'register.html'
       })
     }).then(function(r){

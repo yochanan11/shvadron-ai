@@ -39,6 +39,11 @@ const TRACKS = {
   beginners: 'מאפס למאה (מתחילים)',
   advanced:  'צבא הסוכנים (מתקדמים)',
 };
+// וובינר לקהל רחב: במקום מסלול, מי נרשם
+const WHO = {
+  employee: 'שכיר',
+  business: 'בעל עסק / עצמאי',
+};
 
 // טופס "הוובינר במתנה" וטופס "חזרו אליי" (דפי הקורסים ודף העסקים): שומר שם, טלפון והסכמה לדיוור ברשימה "leads"
 // ב-Vercel KV. דף הניהול admin-leads.html קורא מאותה רשימה.
@@ -75,18 +80,19 @@ module.exports = async (req, res) => {
   // טופס ההרשמה: מסלול, מה רוצים ללמוד, ובשביל מה נרשמו (למשל וובינר)
   const register = b.kind === 'register';
   const track = register ? (TRACKS[b.track] || '') : '';
+  const who = register ? (WHO[b.who] || '') : '';
   const message = register ? String(b.message || '').trim().slice(0, 1000) : '';
   const topic = register ? String(b.topic || '').trim().slice(0, 160) : '';
   // מפתח הוובינר (?for= בקישור). סקריפט הגיליון שולח לפיו מייל אישור עם פרטי הוובינר והזום
   const topicKey = register ? String(b.topicKey || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) : '';
-  if (register && (!email || !track)) {
+  if (register && (!email || !(track || who))) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
   const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '')
     + (employees ? ' · ' + employees + ' עובדים' : '') + (callback ? ' · בקשה לחזרה' : '')
-    + (track ? ' · ' + track : '') + (topic ? ' · ' + topic : '');
-  const lead = { name, phone: local, email, consent, course, page, company, employees, source, track, message, topic, topicKey, ts: new Date().toISOString() };
+    + (track ? ' · ' + track : '') + (who ? ' · ' + who : '') + (topic ? ' · ' + topic : '');
+  const lead = { name, phone: local, email, consent, course, page, company, employees, source, track, who, message, topic, topicKey, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([

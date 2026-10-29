@@ -87,11 +87,20 @@
           <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
           <label><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
 
-          <fieldset class="wide" style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
+          <fieldset class="wide" data-track style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
             <legend>איזה מסלול מעניין אתכם?</legend>
             <div class="reg-tracks">
               <label class="reg-track"><input type="radio" name="track" value="beginners" required/><b>מאפס למאה</b><span>מתחילים · 3 מפגשים בזום</span></label>
               <label class="reg-track"><input type="radio" name="track" value="advanced"/><b>צבא הסוכנים</b><span>מתקדמים · 9 מפגשים בזום</span></label>
+            </div>
+          </fieldset>
+
+          <!-- וובינר לקהל רחב (who: true ב-WEBINARS ב-assets/js/register.js): במקום המסלול, מי נרשם -->
+          <fieldset class="wide" data-who hidden style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:6px">
+            <legend>מה מתאר אתכם?</legend>
+            <div class="reg-tracks">
+              <label class="reg-track"><input type="radio" name="who" value="employee"/><b>שכיר</b><span>עובד בארגון או בחברה</span></label>
+              <label class="reg-track"><input type="radio" name="who" value="business"/><b>בעל עסק או עצמאי</b><span>מנהל עסק משלו</span></label>
             </div>
           </fieldset>
 
