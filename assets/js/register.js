@@ -59,6 +59,11 @@
     slot.appendChild($('[data-register]'));
     slot.appendChild($('.gift-after'));
     slot.hidden = false;
+    // בטלפון התוויות מוסתרות (נשארות לקוראי מסך), ולכן שם השדה מופיע בתוכו
+    if(window.matchMedia('(max-width:899px)').matches) slot.querySelectorAll('.gift-fields label').forEach(function(l){
+      var t = l.querySelector('span'), i = l.querySelector('input');
+      if(t && i) i.placeholder = t.textContent.trim();
+    });
     $('main').classList.add('reg-webinar');
     $('[data-head-cta]').href = '#top';
   }
