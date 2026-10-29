@@ -54,6 +54,13 @@
     $('[data-steps="webinar"]').hidden = false;
     $('[data-after-text]').innerHTML = '<b>נרשמתם, איזה כיף!</b> מייל אישור עם קישור לזום ועם כפתור להוספה ליומן בדרך אליכם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.';
     document.title = w.title.replace(/\.$/, '') + ' · וובינר חינם | SHWADRON.AI';
+    // הטופס עולה לאזור העליון, שיופיע מיד בלי לגלול
+    var slot = $('[data-hero-form]');
+    slot.appendChild($('[data-register]'));
+    slot.appendChild($('.gift-after'));
+    slot.hidden = false;
+    $('main').classList.add('reg-webinar');
+    $('[data-head-cta]').href = '#top';
   }
 
   var form = document.querySelector('[data-register]');
