@@ -98,7 +98,7 @@ function notifyMakom(d) {
     'מעניין אותו: ' + (d.interest || ''),
     d.company ? 'עסק: ' + d.company : '',
     d.employees ? 'עובדים: ' + d.employees : '',
-    d.callTime ? 'לחזור מחר ב' + d.callTime : '',
+    d.callTime ? 'נוח לחזור ב' + d.callTime : '',
     'מקור: ' + (d.topicKey || 'וובינר') + ' · ' + sourceLabel(d.source),
     'נרשם ב-' + time,
   ].filter(Boolean);

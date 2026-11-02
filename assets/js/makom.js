@@ -81,7 +81,7 @@
       if(window.gtag) gtag('event', 'generate_lead', { lead_source: 'makom_' + interest, webinar: src, traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
       form.hidden = true;
       var after = wrap.querySelector('.gift-after');
-      if(isBiz) after.querySelector('[data-after-title]').textContent = 'קיבלנו, נדבר מחר על העסק שלך 🎉';
+      if(isBiz) after.querySelector('[data-after-title]').textContent = 'קיבלנו, נחזור אליך לדבר על העסק שלך 🎉';
       var cards = document.querySelector('.mk-cards'); if(cards) cards.hidden = true;
       after.hidden = false;
       wrap.scrollIntoView({ block: 'start' });
