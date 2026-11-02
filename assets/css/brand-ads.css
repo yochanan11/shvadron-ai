@@ -299,3 +299,17 @@ main>section.sec:has(> .wrap.figures) .fig-label{color:#E8F0FA}
   .sec-head-art{grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,64px)}
   .sec-art{width:clamp(260px,26vw,360px);margin-block:-24px -8px}
 }
+
+/* דף הבית: רצועת המספרים יושבת בתוך ההירו, מתחת לדמותג. במיקום
+   המוחלט הרכבת נכנסה למספרים, ולכן כאן ההירו הוא רשת של שני טורים:
+   הטקסט מימין, הרכבת משמאל וגובהה מוגבל לגובה הטקסט, והמספרים
+   והודעת הוובינר נפרשים על כל הרוחב מתחתיה. */
+@media (min-width:1000px){
+  #top .wrap.stack.hero-split{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,38fr);
+    column-gap:4%;align-items:start}
+  #top .wrap.stack.hero-split>*:not(.hero-char):not(.figures){grid-column:1;max-width:none}
+  #top .wrap.stack.hero-split>.figures,#top .wrap.stack.hero-split>.figures~p{grid-column:1 / -1}
+  #top .wrap.stack.hero-split>.hero-char{position:static;grid-column:2;grid-row:1 / span 5;
+    align-self:stretch;justify-self:start;height:0;min-height:100%;width:100%;max-width:none;
+    object-fit:contain;object-position:left bottom}
+}
