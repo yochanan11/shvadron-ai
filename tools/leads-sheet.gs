@@ -24,7 +24,13 @@ const SECRET = 'CHANGE-ME';
 const SHEET_ID = '';
 // סדר העמודות בלשונית. עמודה חדשה שנוספת כאן (כמו "מייל") מתווספת לבד
 // בסוף שורת הכותרות בלשונית קיימת, בלי לגעת בשורות הישנות.
-const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'כמה עובדים', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה', 'מייל', 'מסלול', 'מה רוצה ללמוד', 'וובינר'];
+const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'כמה עובדים', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה', 'מייל', 'מסלול', 'מה רוצה ללמוד', 'וובינר',
+                 'מתי לחזור', 'נציג', 'סטטוס', 'הערות'];
+// שמירת מקום אחרי וובינר (makom.html): לאן נשלחת התראה מיידית על כל נרשם.
+// ריק: רק לחשבון שמריץ את הסקריפט (יוחנן). להוסיף כאן את המייל של נציג המכירות.
+const NOTIFY_EMAILS = [];
+// ליד הטמעה מסומן בצבע, כדי שיבלוט בגיליון ויעבור ליוחנן
+const BUSINESS_ROW_COLOR = '#FFF2CC';
 // utm_source מהקישור (ראו UTM.md) בשם שמובן בגיליון. מקור שלא ברשימה נכתב כמו שהוא
 const SOURCES = {
   status: 'סטטוס', groups: 'קבוצות התוכן', whatsapp_community: 'קהילת הוואטסאפ', private: 'הודעה בפרטי',
@@ -52,16 +58,22 @@ function doPost(e) {
       'מאיזה דף': d.course || '',
       'שם העסק': d.company || '',
       'כמה עובדים': d.employees || '',
-      'סוג פנייה': d.kind === 'callback' ? 'בקשה לחזרה' : d.kind === 'register' ? 'הרשמה' : 'וובינר',
+      'סוג פנייה': d.kind === 'callback' ? 'בקשה לחזרה' : d.kind === 'register' ? 'הרשמה' : d.kind === 'makom' ? 'שמירת מקום' : 'וובינר',
       'הסכמה לדיוור': d.consent ? 'כן' : 'לא',
       'מקור הגעה': sourceLabel(d.source),
       'מייל': d.email || '',
       'מסלול': d.track || '',
       'מה רוצה ללמוד': d.message || '',
-      'וובינר': WEBINARS[d.topicKey] ? WEBINARS[d.topicKey].title + ' · ' + WEBINARS[d.topicKey].when : '',
+      'וובינר': WEBINARS[d.topicKey] ? WEBINARS[d.topicKey].title + ' · ' + WEBINARS[d.topicKey].when : (d.kind === 'makom' ? d.topicKey || '' : ''),
+      'מתי לחזור': d.callTime || '',
+      // סטטוס לנציג: לא חזרנו · דיברנו · נרשם · לא מעוניין · לא ענה
+      'סטטוס': d.kind === 'makom' ? 'לא חזרנו' : '',
     };
     const head = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     sheet.appendRow(head.map(h => (h in values ? values[h] : '')));
+    if (d.kind === 'makom' && d.interest === 'הטמעה בעסק') {
+      sheet.getRange(sheet.getLastRow(), 1, 1, head.length).setBackground(BUSINESS_ROW_COLOR);
+    }
   } finally {
     lock.releaseLock();
   }
@@ -69,7 +81,33 @@ function doPost(e) {
   if (d.kind === 'register' && d.email) {
     try { sendConfirmation(d); } catch (err) { console.error('confirmation mail: ' + err); }
   }
+  // שמירת מקום: התראה מיידית ליוחנן ולנציג
+  if (d.kind === 'makom') {
+    try { notifyMakom(d); } catch (err) { console.error('makom notify: ' + err); }
+  }
   return out({ ok: true });
+}
+
+function notifyMakom(d) {
+  const to = NOTIFY_EMAILS.length ? NOTIFY_EMAILS.join(',') : Session.getEffectiveUser().getEmail();
+  const biz = d.interest === 'הטמעה בעסק';
+  const time = Utilities.formatDate(d.ts ? new Date(d.ts) : new Date(), 'Asia/Jerusalem', 'dd.MM HH:mm');
+  const lines = [
+    'שם: ' + (d.name || ''),
+    'טלפון: ' + (d.phone || ''),
+    'מעניין אותו: ' + (d.interest || ''),
+    d.company ? 'עסק: ' + d.company : '',
+    d.employees ? 'עובדים: ' + d.employees : '',
+    d.callTime ? 'לחזור מחר ב' + d.callTime : '',
+    'מקור: ' + (d.topicKey || 'וובינר') + ' · ' + sourceLabel(d.source),
+    'נרשם ב-' + time,
+  ].filter(Boolean);
+  MailApp.sendEmail({
+    to: to,
+    subject: (biz ? '⭐ ליד הטמעה · ' : 'שמירת מקום · ') + (d.name || '') + ' · ' + (d.phone || ''),
+    body: lines.join('\n'),
+    name: 'האתר SHWADRON.AI',
+  });
 }
 
 /* ------------------------------------------------------------

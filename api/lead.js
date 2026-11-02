@@ -32,7 +32,17 @@ const COURSES = {
   'course.html':           'הקורס הדיגיטלי',
   'business.html':         'הטמעה בעסקים',
   'register.html':         'טופס הרשמה',
+  'makom.html':            'שמירת מקום אחרי וובינר',
 };
+
+// דף שמירת המקום (makom.html): מה מעניין את הנרשם
+const INTERESTS = {
+  beginners: 'מאפס למאה (מתחילים)',
+  advanced:  'צבא הסוכנים (מתקדמים)',
+  business:  'הטמעה בעסק',
+  unsure:    'לא בטוח, רוצה להתייעץ',
+};
+const CALL_TIMES = ['בוקר', 'צהריים', 'ערב'];
 
 // טופס ההרשמה (register.html): המסלול שבחרו
 const TRACKS = {
@@ -73,7 +83,13 @@ module.exports = async (req, res) => {
 
   // טלפון ישראלי: 05X-XXXXXXX, או עם קידומת 972
   const local = phone.replace(/^\+?972/, '0');
-  if (!name || !/^0\d{8,9}$/.test(local) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  // שמירת מקום אחרי וובינר: בלי מייל (הנציג חוזר בטלפון), אבל חייבים לבחור מה מעניין, ובהטמעה גם שם העסק
+  const makom = b.kind === 'makom';
+  const interest = makom ? (INTERESTS[b.interest] || '') : '';
+  const callTime = makom && CALL_TIMES.includes(b.callTime) ? b.callTime : '';
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!name || !/^0\d{8,9}$/.test(local) || (makom ? (email && !emailOk) : !emailOk)
+      || (makom && (!interest || (b.interest === 'business' && !company)))) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
@@ -84,20 +100,21 @@ module.exports = async (req, res) => {
   const message = register ? String(b.message || '').trim().slice(0, 1000) : '';
   const topic = register ? String(b.topic || '').trim().slice(0, 160) : '';
   // מפתח הוובינר (?for= בקישור). סקריפט הגיליון שולח לפיו מייל אישור עם פרטי הוובינר והזום
-  const topicKey = register ? String(b.topicKey || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) : '';
+  const topicKey = (register || makom) ? String(b.topicKey || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) : '';
   if (register && (!email || !(track || who))) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
   const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '')
     + (employees ? ' · ' + employees + ' עובדים' : '') + (callback ? ' · בקשה לחזרה' : '')
-    + (track ? ' · ' + track : '') + (who ? ' · ' + who : '') + (topic ? ' · ' + topic : '');
-  const lead = { name, phone: local, email, consent, course, page, company, employees, source, track, who, message, topic, topicKey, ts: new Date().toISOString() };
+    + (track ? ' · ' + track : '') + (who ? ' · ' + who : '') + (topic ? ' · ' + topic : '')
+    + (interest ? ' · ' + interest : '') + (callTime ? ' · לחזור ב' + callTime : '') + (makom && topicKey ? ' · ' + topicKey : '');
+  const lead = { name, phone: local, email, consent, course, page, company, employees, source, track: track || interest, who, message, topic, topicKey, interest, callTime, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([
     kvRequest(['RPUSH', 'leads', JSON.stringify(lead)]),
-    toSheet(lead, callback ? 'callback' : register ? 'register' : 'webinar'),
+    toSheet(lead, callback ? 'callback' : register ? 'register' : makom ? 'makom' : 'webinar'),
   ]);
   // נראה ב-Vercel > Logs. לא מכשיל את הבקשה אם הליד נשמר ב-KV.
   if (sheet.status === 'rejected' && sheet.reason.message !== 'sheet-not-configured') console.error('lead sheet:', sheet.reason.message);
