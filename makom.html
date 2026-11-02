@@ -100,7 +100,9 @@
   .mk-choice:has(input:checked){border-color:var(--brand-teal);background:#F2FBF9;box-shadow:0 0 0 1px var(--brand-teal)}
   .mk-choice:has(input:focus-visible){outline:2px solid var(--brand-teal);outline-offset:1px}
   .mk-time .mk-choices{grid-template-columns:repeat(3,1fr)}
-  .mk-time .mk-choice{justify-content:center}
+  /* gift.css מסדר כל תווית בטופס בעמודה, והטקסט נצמד למעלה. כפתורי הבחירה ממורכזים לרוחב ולגובה */
+  .mk .gift-fields .mk-choice{flex-direction:row;justify-content:center;align-items:center;text-align:center}
+  .mk .btn{justify-content:center;text-align:center}
   .mk-biz[hidden],.mk-cards[hidden]{display:none!important}
   .mk-biz{display:grid;gap:10px;padding:12px;border-radius:14px;background:#F2FBF9;border:1px dashed var(--brand-teal)}
   .mk .gift-form .btn{align-self:stretch;min-height:54px;font-size:1.1rem}
