@@ -22,31 +22,45 @@
 <link rel="stylesheet" href="assets/css/gift.css"/>
 <style>
   /* דף שמירת מקום אחרי הוובינר (makom.html). הבריף: my-agents, menahel-status/content/בריף-דף-שמירת-מקום.md
-     טלפון קודם. בטלפון הטופס עולה לפני הכרטיסים, כדי שיופיע בלי גלילה ארוכה. במחשב, הכרטיסים ואז הטופס. */
-  .mk #top{padding-top:clamp(20px,4vw,64px)!important;padding-bottom:clamp(80px,9vw,140px)!important}
-  .mk #top .eyebrow{display:inline-block;align-self:flex-start;background:var(--brand-teal);color:var(--accent-ink);opacity:1;
-    padding:5px 14px;border-radius:999px;font-weight:800;margin:0}
-  .mk #top h1{font-size:clamp(34px,9vw,72px);line-height:1.05;margin:0}
-  .mk #top .hero-char{height:clamp(170px,44vw,300px);margin:0 auto -6px}
-  @media (min-width:1000px){.mk #top .hero-char{height:min(520px,62vh);top:clamp(40px,5vw,80px)}}
+     טלפון קודם. */
+  /* הטופס בתוך האזור העליון, כדי שיופיע מיד כשנכנסים לדף.
+     טלפון: תגית, כותרת בשורה אחת, הטופס, ורק אחריו המשפט. מחשב: טקסט והדמותג מימין, הטופס משמאל. */
+  .mk #top{padding-top:clamp(14px,3vw,48px)!important;padding-bottom:clamp(70px,8vw,120px)!important}
+  .mk #top .wrap.stack{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;align-items:start}
+  .mk #top .wrap.stack>*{max-width:none!important}
+  .mk #top .eyebrow{justify-self:start;background:var(--brand-teal);color:var(--accent-ink);opacity:1;
+    padding:4px 14px;border-radius:999px;font-weight:800;margin:0;font-size:.85rem}
+  .mk #top h1{font-size:clamp(28px,8vw,64px);line-height:1.05;margin:0}
+  .mk-pitch{order:5;font-family:'Heebo',sans-serif;font-weight:800;color:#fff;font-size:clamp(17px,4.4vw,26px);line-height:1.4;margin:6px 0 0}
+  .mk #top .hero-char{display:none}
+  #top .mk-form-wrap{position:relative;z-index:4;order:4;
+    --ink:#1E3A69;--ink-2:#1E3A69;--muted:#56657E;--dim:#8090A8;--accent:#1F7F70;--line:#D5DEEA;color:var(--ink)}
+  #top .mk-form-wrap a:not(.btn){color:var(--accent)}
+  /* shw-2026.css צובע תוויות בתוך #top בלבן (טופס על רקע כהה). כאן הטופס בתיבה לבנה */
+  main #top .mk-form-wrap .gift-fields label,main #top .mk-form-wrap .gift-consent,main #top .mk-form-wrap legend{color:var(--ink)}
+  main #top .mk-form-wrap .gift-fields .mk-choice{color:var(--brand-blue)}
+  main #top .mk-form-wrap .gift-consent{color:var(--muted)}
   .mk #top + .sec{padding-top:clamp(8px,3vw,40px)}
-  /* טלפון: הדמותג לצד הכותרת ולא מתחתיה, כדי שהטופס יתחיל כבר במסך הראשון */
-  @media (max-width:999px){
-    .mk #top{padding-bottom:64px!important}
-    .mk #top .wrap.stack{display:grid;grid-template-columns:1fr auto;gap:10px 8px;align-items:center}
-    .mk #top .eyebrow{grid-column:1/-1;justify-self:start}
-    .mk #top h1{grid-column:1;font-size:clamp(32px,9.6vw,56px)}
-    .mk #top .hero-char{grid-column:2;grid-row:2;height:clamp(120px,32vw,220px);margin:0;max-width:none}
-    .mk-pitch{font-size:clamp(18px,4.8vw,26px)}
+  @media (max-width:899px){
+    /* טלפון: הטופס צפוף יותר, כדי שעד הכפתור ייכנס כמעט כולו במסך הראשון */
+    #top .mk-form-wrap .gift-form{padding:14px 12px;gap:9px}
+    #top .mk-form-wrap .gift-form h2{display:none}
+    #top .mk-form-wrap .gift-fields{gap:8px}
+    #top .mk-form-wrap .gift-fields label{gap:3px;font-size:.88rem}
+    #top .mk-form-wrap input:not([type=checkbox]):not([type=radio]),#top .mk-form-wrap select{min-height:44px;padding:9px 12px}
+    #top .mk-form-wrap .mk-choice{min-height:42px;padding:6px 10px;font-size:.95rem}
+    #top .mk-form-wrap legend{margin-bottom:3px;font-size:.88rem}
+  }
+  @media (min-width:900px){
+    .mk #top .wrap.stack{grid-template-columns:minmax(0,1fr) minmax(0,520px);column-gap:clamp(32px,5vw,72px);row-gap:16px}
+    .mk #top .wrap.stack>:not(.mk-form-wrap){grid-column:1}
+    .mk #top h1{font-size:clamp(46px,5vw,72px)}
+    .mk-pitch{order:0}
+    #top .mk-form-wrap{grid-column:2;grid-row:1/span 4;order:0}
+    .mk #top .hero-char{display:block;position:static;order:0;height:clamp(240px,26vw,380px);margin:8px 0 0;justify-self:center}
   }
 
-  .mk-pitch{font-family:'Heebo',sans-serif;font-weight:800;color:var(--brand-blue);font-size:clamp(20px,4.6vw,30px);
-    line-height:1.35;margin:0 auto;max-width:860px;text-align:center}
   .mk-body{display:flex;flex-direction:column;gap:clamp(28px,4vw,44px)}
-  .mk-form-wrap{order:1}
-  .mk-cards{order:2}
-  .mk-icons{order:3}
-  @media (min-width:900px){.mk-cards{order:1}.mk-form-wrap{order:2}}
 
   /* שלושה כרטיסים. שניים ללומדים בכחול, ואחד לעסקים בטורקיז ומופרד מעט */
   .mk-cards{display:grid;gap:16px;grid-template-columns:1fr}
@@ -65,7 +79,7 @@
   .mk-card.biz .btn{background:#fff;color:#1F6E62}
 
   /* הטופס: תיבה לבנה עם קו מתאר כחול */
-  .mk-form-wrap{max-width:640px;width:100%;margin:0 auto}
+  .mk-form-wrap{width:100%}
   .mk .gift-form,.mk .gift-after{max-width:none;background:#fff;border:2px solid var(--brand-blue);border-radius:24px;
     padding:clamp(18px,3vw,28px);gap:12px;box-shadow:0 18px 40px rgba(30,58,105,.12)}
   .mk .gift-form h2{margin:0;font-size:clamp(22px,3vw,28px);color:var(--brand-blue)}
@@ -127,51 +141,9 @@
 <section id="top">
   <div class="wrap stack">
     <p class="eyebrow">למשתתפי הוובינר</p>
-    <h1>המקום שלך<br/><span class="on-accent">שמור.</span></h1>
-    <img class="hero-char" src="assets/public/brand/character-train.webp" alt="הדמותג של SHWADRON.AI בדלת הקטר" width="654" height="900" loading="eager"/>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="wrap stack" style="gap:clamp(24px,4vw,40px)">
+    <h1>המקום שלך <span class="on-accent">שמור.</span></h1>
     <p class="mk-pitch">ראית הערב מה אפשר לבנות. עכשיו תורך. שמור מקום במחזור, ומחר חוזרים אליך עם כל הפרטים</p>
-
-    <div class="mk-body">
-      <div class="mk-cards">
-        <article class="mk-card">
-          <p class="kick">מתחילים</p>
-          <h3>מאפס למאה</h3>
-          <dl>
-            <dt>למי</dt><dd>מתחילים, בלי רקע טכני</dd>
-            <dt>מה</dt><dd>3 מפגשי זום, תוצר ביד בכל ערב</dd>
-            <dt>מתי</dt><dd>מתחיל ביום שני 23.11, בשעות 19:30 עד 21:30</dd>
-          </dl>
-          <a class="btn btn-primary" href="#makom-form" data-pick="beginners">שמרו לי מקום</a>
-        </article>
-        <article class="mk-card">
-          <p class="kick">מתקדמים</p>
-          <h3>צבא הסוכנים</h3>
-          <dl>
-            <dt>למי</dt><dd>מי שכבר משתמש כל יום ורוצה לבנות</dd>
-            <dt>מה</dt><dd>9 מפגשי זום. מתכננים ובונים פרויקט AI אישי, עם תרגול והכוונה</dd>
-            <dt>מתי</dt><dd>מתחיל ביום רביעי 25.11, בשעות 19:30 עד 21:30</dd>
-          </dl>
-          <a class="btn btn-primary" href="#makom-form" data-pick="advanced">שמרו לי מקום</a>
-        </article>
-        <article class="mk-card biz">
-          <p class="kick">לבעלי עסקים</p>
-          <h3>הטמעה בעסק שלך</h3>
-          <dl>
-            <dt>למי</dt><dd>בעל עסק שרוצה שה-AI יעבוד אצלו בעסק, לא רק אצלו בראש</dd>
-            <dt>מה</dt><dd>קורס לצוות שבסופו העובדים בונים כלים לעבודה שלהם, או שיוחנן בונה לעסק את הסוכנים בעצמו</dd>
-            <dt>מתי</dt><dd>לפי העסק. מתחילים בשיחת אפיון</dd>
-          </dl>
-          <p class="trust">30 עסקים הטמיעו איתנו AI בשנה האחרונה</p>
-          <a class="btn" href="#makom-form" data-pick="business">אני רוצה שיחת אפיון</a>
-        </article>
-      </div>
-
-      <div class="mk-form-wrap" id="makom-form" tabindex="-1">
+    <div class="mk-form-wrap" id="makom-form" tabindex="-1">
         <form class="gift-form" data-makom novalidate>
           <h2>שמירת מקום</h2>
           <div class="gift-fields">
@@ -221,6 +193,47 @@
           <p>מחר נחזור אליך מהטלפון <a href="tel:0528189921" class="ltr" style="color:inherit;white-space:nowrap">052-818-9921</a> עם כל הפרטים. שמור את המספר, כדי שתדע שזה אנחנו.</p>
           <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>הצטרפות לקבוצת הטיפים<span class="sr-only"> (נפתח בחלון חדש)</span></a>
         </div>
+      </div>
+
+    <img class="hero-char" src="assets/public/brand/character-train.webp" alt="הדמותג של SHWADRON.AI בדלת הקטר" width="654" height="900" loading="eager"/>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap stack" style="gap:clamp(24px,4vw,40px)">
+    <div class="mk-body">
+      <div class="mk-cards">
+        <article class="mk-card">
+          <p class="kick">מתחילים</p>
+          <h3>מאפס למאה</h3>
+          <dl>
+            <dt>למי</dt><dd>מתחילים, בלי רקע טכני</dd>
+            <dt>מה</dt><dd>3 מפגשי זום, תוצר ביד בכל ערב</dd>
+            <dt>מתי</dt><dd>מתחיל ביום שני 23.11, בשעות 19:30 עד 21:30</dd>
+          </dl>
+          <a class="btn btn-primary" href="#makom-form" data-pick="beginners">שמרו לי מקום</a>
+        </article>
+        <article class="mk-card">
+          <p class="kick">מתקדמים</p>
+          <h3>צבא הסוכנים</h3>
+          <dl>
+            <dt>למי</dt><dd>מי שכבר משתמש כל יום ורוצה לבנות</dd>
+            <dt>מה</dt><dd>9 מפגשי זום. מתכננים ובונים פרויקט AI אישי, עם תרגול והכוונה</dd>
+            <dt>מתי</dt><dd>מתחיל ביום רביעי 25.11, בשעות 19:30 עד 21:30</dd>
+          </dl>
+          <a class="btn btn-primary" href="#makom-form" data-pick="advanced">שמרו לי מקום</a>
+        </article>
+        <article class="mk-card biz">
+          <p class="kick">לבעלי עסקים</p>
+          <h3>הטמעה בעסק שלך</h3>
+          <dl>
+            <dt>למי</dt><dd>בעל עסק שרוצה שה-AI יעבוד אצלו בעסק, לא רק אצלו בראש</dd>
+            <dt>מה</dt><dd>קורס לצוות שבסופו העובדים בונים כלים לעבודה שלהם, או שיוחנן בונה לעסק את הסוכנים בעצמו</dd>
+            <dt>מתי</dt><dd>לפי העסק. מתחילים בשיחת אפיון</dd>
+          </dl>
+          <p class="trust">30 עסקים הטמיעו איתנו AI בשנה האחרונה</p>
+          <a class="btn" href="#makom-form" data-pick="business">אני רוצה שיחת אפיון</a>
+        </article>
       </div>
 
       <ul class="mk-icons">
