@@ -97,7 +97,7 @@ module.exports = async (req, res) => {
   const register = b.kind === 'register';
   const track = register ? (TRACKS[b.track] || '') : '';
   const who = register ? (WHO[b.who] || '') : '';
-  const message = register ? String(b.message || '').trim().slice(0, 1000) : '';
+  const message = (register || makom) ? String(b.message || '').trim().slice(0, 1000) : '';
   const topic = register ? String(b.topic || '').trim().slice(0, 160) : '';
   // מפתח הוובינר (?for= בקישור). סקריפט הגיליון שולח לפיו מייל אישור עם פרטי הוובינר והזום
   const topicKey = (register || makom) ? String(b.topicKey || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) : '';

@@ -1,6 +1,7 @@
 /* ============================================================
    דף שמירת מקום אחרי הוובינר (makom.html).
    שם מלא, טלפון, מה מעניין, ובהטמעה גם שם העסק וכמה עובדים.
+   שדה פתוח (לא חובה) כמה מילים על הנרשם, כדי שלנציג יהיה ממה לפתוח את השיחה.
    נשלח ל-/api/lead עם kind: 'makom', ומופיע ב-admin-leads.html
    ובגיליון הלידים (סוג פנייה "שמירת מקום").
    מאיזה וובינר הגיעו: ?src=<מפתח> בקישור (ברירת מחדל webinar-2-11),
@@ -51,6 +52,7 @@
     var phone = el.phone.value.replace(/[^\d+]/g, '').replace(/^\+?972/, '0');
     var interest = (form.querySelector('input[name="interest"]:checked') || {}).value || '';
     var when = (form.querySelector('input[name="when"]:checked') || {}).value || '';
+    var about = el.about.value.trim();
     var isBiz = interest === 'business';
     var company = isBiz ? el.company.value.trim() : '';
     var employees = isBiz ? el.employees.value : '';
@@ -73,7 +75,7 @@
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         kind: 'makom', name: name, phone: phone, interest: interest, company: company, employees: employees,
-        callTime: when, topicKey: src, consent: el.consent.checked,
+        callTime: when, message: about, topicKey: src, consent: el.consent.checked,
         source: window.SHW_SOURCE ? SHW_SOURCE() : '', page: 'makom.html'
       })
     }).then(function(r){
