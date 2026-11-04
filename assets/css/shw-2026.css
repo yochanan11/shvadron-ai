@@ -339,6 +339,23 @@ a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .founder-list li{display:flex;gap:12px}
 .founder-list li::before{content:"";flex-shrink:0;width:14px;height:2px;background:var(--accent);margin-top:13px}
 
+/* מכתב המלצה רשמי בסקשן "מי מוביל" */
+.founder-letter{display:flex;gap:20px;align-items:flex-start;border:1px solid var(--line);
+  border-radius:20px;padding:18px;background:var(--card)}
+.founder-letter-thumb{flex:0 0 112px;display:block;border-radius:10px;overflow:hidden;
+  border:1px solid var(--line);background:#fff;transition:border-color .2s}
+.founder-letter-thumb:hover{border-color:var(--accent)}
+.founder-letter-thumb img{width:100%;height:auto;display:block}
+.founder-letter-body{min-width:0;display:flex;flex-direction:column;gap:8px}
+.founder-letter-kicker{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+.founder-letter blockquote{font-size:17px;line-height:1.55;font-weight:500}
+.founder-letter figcaption{font-size:14px;color:var(--ink-2)}
+.founder-letter-link{font-size:14px;font-weight:700;color:var(--accent);text-decoration:underline;align-self:flex-start}
+@media (max-width:520px){
+  .founder-letter{flex-direction:column}
+  .founder-letter-thumb{flex-basis:auto;width:140px}
+}
+
 /* ── שאלות ───────────────────────────────────────────────── */
 .qa{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .qa details{border-bottom:1px solid var(--line)}
