@@ -575,11 +575,12 @@ a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
    יחס המסגרת ניתן לכוונון לכל קיר דרך --wall-ratio */
 .proof-wall{--wall-ratio:4/3;display:grid;gap:20px;grid-template-columns:repeat(2,minmax(0,1fr))}
 .proof-wall:not(:has(.shot:nth-child(4))){--wall-ratio:4/5;grid-template-columns:repeat(3,minmax(0,1fr))}
+.proof-wall.is-two:not(:has(.shot:nth-child(4))){--wall-ratio:4/3;grid-template-columns:repeat(2,minmax(0,1fr))}
 .proof-wall .shot{aspect-ratio:var(--wall-ratio);display:flex;align-items:center;justify-content:center;
   padding:14px;background:#f3efe6}
 .proof-wall .shot img{width:100%;height:100%;object-fit:contain;border-radius:10px}
 @media (max-width:760px){
-  .proof-wall,.proof-wall:not(:has(.shot:nth-child(4))){grid-template-columns:1fr}
+  .proof-wall,.proof-wall:not(:has(.shot:nth-child(4))),.proof-wall.is-two:not(:has(.shot:nth-child(4))){grid-template-columns:1fr}
   .proof-wall .shot{aspect-ratio:auto}
   .proof-wall .shot img{height:auto}
 }
