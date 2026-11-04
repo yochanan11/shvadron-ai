@@ -19,13 +19,17 @@ Products and their pages:
 
 ```bash
 node tools/build-courses.mjs      # regenerate track content after editing assets/data/courses.mjs
-node tools/build-syllabus.mjs     # regenerate syllabus-{beginners,advanced,digital}.html (printable A4 syllabus per course) from the same data
+node tools/build-syllabus.mjs     # regenerate syllabus-digital.html (printable A4 syllabus) from the same data
 npm start                         # local Express server (server.js) on the repo root, incl. a local /api/chat
 python3 -m http.server 8765       # quickest static preview (api/ calls will fail; mock them)
 node --check <file.js>            # syntax check; there is no test suite or linter
 ```
 
 Chromium + Playwright are available for visual/regression checks (`require('/opt/node-tools/node_modules/playwright')`); check pages at 390px and 1280px, with and without JavaScript.
+
+## Syllabus PDFs
+
+The two Zoom tracks link to branded PDF syllabi in `assets/public/syllabus/` (`syllabus-beginners.pdf`, `syllabus-advanced.pdf`), built in the owner's `my-agents` repo (`menahel-status/content/מודעות/*-syllabus.build.py`) in the SHWADRON.AI ad branding. The old `syllabus-beginners.html`/`syllabus-advanced.html` URLs redirect to them (vercel.json). When the syllabus in `courses.mjs` changes, rebuild the PDFs there and copy them here.
 
 ## Single source of truth for the Zoom tracks
 

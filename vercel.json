@@ -61,6 +61,16 @@
   ],
   "redirects": [
     {
+      "source": "/syllabus-beginners.html",
+      "destination": "/assets/public/syllabus/syllabus-beginners.pdf",
+      "permanent": false
+    },
+    {
+      "source": "/syllabus-advanced.html",
+      "destination": "/assets/public/syllabus/syllabus-advanced.pdf",
+      "permanent": false
+    },
+    {
       "source": "/assets/public/assets/letters/negev-ministry-dg-2025.pdf",
       "destination": "/assets/public/assets/letters/negev-ministry-dg-2025.webp",
       "permanent": false

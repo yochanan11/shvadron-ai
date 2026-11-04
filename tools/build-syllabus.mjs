@@ -377,8 +377,8 @@ ${sheets}
 }
 
 for (const [file, t, render] of [
-  ['syllabus-beginners.html', BEGINNERS, beginnersPage],
-  ['syllabus-advanced.html',  ADVANCED,  advancedPages],
+  // מאפס למאה וצבא הסוכנים: הסילבוס הוא PDF ממותג ב-assets/public/syllabus/
+  // (נבנה בריפו my-agents), ולכן לא נוצר כאן. הכתובות הישנות מפנות אליו ב-vercel.json.
   ['syllabus-digital.html',   DIGITAL,   digitalPage],
 ]) {
   writeFileSync(join(ROOT, file), doc(t, render()));
