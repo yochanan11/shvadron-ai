@@ -61,6 +61,11 @@
   ],
   "redirects": [
     {
+      "source": "/assets/public/assets/letters/negev-ministry-dg-2025.pdf",
+      "destination": "/assets/public/assets/letters/negev-ministry-dg-2025.webp",
+      "permanent": false
+    },
+    {
       "source": "/index1.html",
       "destination": "/",
       "permanent": false
