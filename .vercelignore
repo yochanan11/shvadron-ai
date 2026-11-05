@@ -52,3 +52,7 @@ extract-course.mjs
 
 CLAUDE.md
 UTM.md
+
+# Branded syllabus PDFs linked from the course pages must be deployed
+!assets/public/syllabus/
+!assets/public/syllabus/*.pdf
