@@ -29,7 +29,7 @@ Chromium + Playwright are available for visual/regression checks (`require('/opt
 
 ## Syllabus PDFs
 
-The two Zoom tracks link to branded PDF syllabi in `assets/public/syllabus/` (`syllabus-beginners.pdf`, `syllabus-advanced.pdf`), built in the owner's `my-agents` repo (`menahel-status/content/מודעות/*-syllabus.build.py`) in the SHWADRON.AI ad branding. The old `syllabus-beginners.html`/`syllabus-advanced.html` URLs redirect to them (vercel.json). When the syllabus in `courses.mjs` changes, rebuild the PDFs there and copy them here.
+The two Zoom tracks link to branded PDF syllabi in `assets/public/syllabus/` (`syllabus-beginners.pdf`, `syllabus-advanced.pdf`), built in the owner's `my-agents` repo (`menahel-status/content/מודעות/*-syllabus.build.py`) in the SHWADRON.AI ad branding. The old `syllabus-beginners.html`/`syllabus-advanced.html` URLs redirect to them (vercel.json). When the syllabus in `courses.mjs` changes, rebuild the PDFs there and copy them here. `.vercelignore` drops every `*.pdf`; the syllabus folder is exempted at the end of that file, so keep that exception or the links return 404.
 
 ## Single source of truth for the Zoom tracks
 
