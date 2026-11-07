@@ -4,15 +4,15 @@
    שדה פתוח (לא חובה) כמה מילים על הנרשם, כדי שלנציג יהיה ממה לפתוח את השיחה.
    נשלח ל-/api/lead עם kind: 'makom', ומופיע ב-admin-leads.html
    ובגיליון הלידים (סוג פנייה "שמירת מקום").
-   מאיזה וובינר הגיעו: ?src=<מפתח> בקישור (ברירת מחדל webinar-2-11),
-   כדי שאותו דף ישמש גם בוובינרים הבאים. לדוגמה makom.html?src=webinar-9-11
+   מאיזה וובינר הגיעו: ?src=<מפתח> בקישור (ברירת מחדל webinar-9-11),
+   כדי שאותו דף ישמש גם בוובינרים הבאים. לדוגמה makom.html?src=webinar-<יום>-<חודש>
    ============================================================ */
 (function(){
   'use strict';
   var form = document.querySelector('[data-makom]');
   if(!form) return;
   var params = new URLSearchParams(location.search);
-  var src = (params.get('src') || 'webinar-2-11').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40);
+  var src = (params.get('src') || 'webinar-9-11').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40);
   var msg = form.querySelector('.gift-msg');
   var biz = form.querySelector('[data-biz]');
   var btn = form.querySelector('[data-submit]');
