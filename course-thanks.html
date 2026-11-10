@@ -10,6 +10,7 @@
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
 <link rel="stylesheet" href="assets/css/fonts.css"/>
 <link rel="stylesheet" href="assets/css/shw-2026.css"/>
+<link rel="stylesheet" href="assets/css/brand-ads.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
@@ -51,7 +52,7 @@
     <h1 style="--fit:.60">תודה.</h1>
     <p class="lead">הגישה לקורס כבר בדרך אליך. מייל ההרשמה לאתר הקורסים נשלח אוטומטית לכתובת שהזנת בתשלום, ושם מחכים כל השיעורים והחומרים.</p>
     <div>
-      <a class="btn btn-primary" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener">כניסה לאתר הקורסים ←</a>
+      <a class="btn btn-light" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener">כניסה לאתר הקורסים</a>
     </div>
     <p class="small">נכנסים עם כתובת המייל שהזנת בתשלום, או פשוט עם חשבון גוגל.</p>
   </div>
@@ -61,9 +62,40 @@
   </svg>
 </section>
 
+<!-- ===== הצעת השדרוג לצבא הסוכנים =====
+     הקיזוז בתוקף עד UPGRADE_CREDIT_UNTIL שבקובץ הנתונים (24.11). אחרי התאריך
+     source.js מחליף את ההצעה בקישור רגיל לצבא הסוכנים, כדי שלא יישאר תאריך שעבר.
+     אין קישור תשלום למחיר שאחרי הקיזוז, ולכן השדרוג נסגר בוואטסאפ. -->
+<section class="sec" id="upgrade" data-closes="2026-11-24">
+  <div class="wrap">
+    <div class="offer-card" data-closing style="max-width:760px;margin-inline:auto">
+      <p class="eyebrow">שדרוג לצבא הסוכנים · עד 24.11</p>
+      <h2 class="h-sm">ה-385 שלך<br/><span class="ghost">מקוזזים במלואם.</span></h2>
+      <p class="body" style="margin:0">רוצה גם מרצה חי, קבוצה ופרויקט אישי עם הכוונה? מי שעולה לצבא הסוכנים עד 24.11 מקבל קיזוז מלא של ה-385 ₪ ששילם על המוח השני. תשעה מפגשים חיים בזום, בלי לדעת לתכנת.</p>
+      <ul class="cohort-facts">
+        <li>נפתח ביום רביעי 25.11</li>
+        <li>עד 20 איש בקבוצה</li>
+        <li class="is-seats" data-seats="advanced" hidden></li>
+        <li>החזר מלא אחרי המפגש הראשון</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%A7%D7%A0%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%95%D7%97%20%D7%94%D7%A9%D7%A0%D7%99%20%D7%95%D7%90%D7%A0%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A2%D7%9C%D7%95%D7%AA%20%D7%9C%D7%A6%D7%91%D7%90%20%D7%94%D7%A1%D7%95%D7%9B%D7%A0%D7%99%D7%9D%20%D7%A2%D7%9D%20%D7%A7%D7%99%D7%96%D7%95%D7%96%20%D7%94-385%20%E2%82%AA"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>לשדרג עם הקיזוז</a>
+        <a href="course-advanced.html" style="color:var(--accent);text-decoration:underline;font-weight:700">כל הפרטים על צבא הסוכנים</a>
+      </div>
+    </div>
+    <div class="cta-box" data-after-closing hidden style="background:var(--card);border:1px solid var(--line)">
+      <div>
+        <b>רוצה להמשיך משם?</b>
+        <p>בצבא הסוכנים לומדים יחד בזום, שואלים בזמן אמת ובונים סוכנים ואוטומציות, בלי לדעת לתכנת.</p>
+      </div>
+      <a class="btn btn-ghost" href="course-advanced.html">לצבא הסוכנים</a>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="help">
   <div class="wrap stack">
-    <p class="eyebrow">01 · לא רואה את מייל ההרשמה</p>
+    <p class="eyebrow">לא רואה את מייל ההרשמה</p>
     <h2 class="h-sm">שלוש בדיקות.</h2>
     <div class="grid-3">
       <div class="rule-top">
@@ -84,13 +116,6 @@
 
 <section class="sec sec-2">
   <div class="wrap stack">
-    <div class="cta-box" style="background:var(--card);border:1px solid var(--line)">
-      <div>
-        <b>רוצה להמשיך משם?</b>
-        <p>בקורסים החיים בזום לומדים יחד, שואלים בזמן אמת ובונים. צבא הסוכנים מלמד לבנות סוכנים ואוטומציות בלי לדעת לתכנת.</p>
-      </div>
-      <a class="btn btn-ghost" href="course-advanced.html">לצבא הסוכנים ←</a>
-    </div>
     <div class="cta-box" style="background:none;border:1px dashed var(--line)">
       <div>
         <b>בינתיים, בוא לקבוצת הטיפים</b>
@@ -107,7 +132,7 @@
   <div class="wrap">
     <img class="brand-foot" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84" loading="lazy"/>
     <nav aria-label="קישורים משפטיים">
-      <a href="index.html">כל המסלולים</a>
+      <a href="index.html">דף הבית</a>
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
       <a href="accessibility.html">הצהרת נגישות</a>

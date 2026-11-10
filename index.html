@@ -4,13 +4,13 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>קורסי AI לחרדים · בינה מלאכותית למתחילים ולמתקדמים | SHWADRON.AI</title>
-<meta name="description" content="קורסי AI בעברית לציבור החרדי עם יוחנן שבדרון. מאפס למאה, קורס AI למתחילים בזום. צבא הסוכנים, קורס AI למתקדמים. המוח השני, קורס דיגיטלי בקצב שלך. 1,500 בוגרים."/>
+<meta name="description" content="קורסי AI בעברית לציבור החרדי עם יוחנן שבדרון. לא לומדים כלים, לומדים לאמץ אותם. מאפס למאה, שלושה ערבים חיים בזום. צבא הסוכנים, תשעה מפגשים לבניית סוכנים ואוטומציות. יותר מ-1,500 בוגרים."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://ai.shwadron-ai.com/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://ai.shwadron-ai.com/"/>
 <meta property="og:title" content="קורסי AI לחרדים · בינה מלאכותית למתחילים ולמתקדמים | SHWADRON.AI"/>
-<meta property="og:description" content="מאפס למאה, עם מוח שני, עד צבא סוכנים שעובד בשבילך. שלושה מסלולים בעברית, בלי אנגלית ובלי רקע טכני."/>
+<meta property="og:description" content="לא לומדים כלים. לומדים לאמץ אותם. שני מחזורים חיים בזום, בעברית ובאינטרנט מסונן: מאפס למאה וצבא הסוכנים."/>
 <meta property="og:image" content="https://ai.shwadron-ai.com/assets/public/yochanan-card.jpg"/>
 <meta property="og:locale" content="he_IL"/>
 <meta name="twitter:card" content="summary_large_image"/>
@@ -29,94 +29,74 @@
 -->
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
-<script src="assets/js/gift.js" defer></script>
 <script src="assets/js/callback.js" defer></script>
 </head>
 <body>
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
 
-<!-- פס הדחיפות. פס המבצע מוצג רק עד data-until (כולל, שעון ישראל) ורק אם
-     הקוד שעליו תקף ב-/api/coupon, ואחרי התאריך מתחלף מעצמו בפס הקבוע.
-     הקוד ב-data-code חייב להיות זהה לקופון שהוגדר ב-admin-coupons.html -->
-<div class="promo-bar" data-until="2026-10-19" data-pct="10" data-code="KISLEV10" hidden>
-  <p><b>ההנחה נגמרת ביום שני 19.10 בחצות</b> · מאפס למאה 796.50 ₪ במקום 885 ₪ · צבא הסוכנים 2,655 ₪ במקום 2,950 ₪ <span class="promo-left" data-promo-fill="left"></span></p>
-  <a href="#tracks">לבחור מסלול ←</a>
-</div>
-<div class="promo-bar promo-ever" data-promo-else hidden>
-  <p><b>מחזור נובמבר</b> · עד 20 איש בקבוצה · נפתח ב-23.11</p>
-  <a href="#tracks">לבחור מסלול ←</a>
-</div>
+<!-- הפס העליון הדביק: שם המחזור, מקומות שנותרו וסגירת ההרשמה. הכול מגיע
+     מ-COHORT ומ-seatsLeft ב-assets/data/courses.mjs. אין כאן טיימר ואין
+     מספר שנכתב ביד. -->
+<!-- BUILD:topbar -->
+  <div class="top-bar" data-closes="2026-11-22">
+    <p><b>מחזור נובמבר</b><span data-closing>ההרשמה נסגרת ב-22.11</span></p>
+  </div>
+  <!-- /BUILD:topbar -->
 
 <header class="site-head">
   <div class="wrap">
     <a href="#top" class="brand" aria-label="SHWADRON.AI, חזרה לראש הדף"><img src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84"/></a>
     <nav class="site-nav" aria-label="ניווט ראשי">
-      <a href="#tracks">המסלולים</a>
-      <a href="#plan">תוכנית האב</a>
-      <a href="#live">השידור החי</a>
+      <a href="#tracks">שני המחזורים</a>
+      <a href="#why">יוטיוב מול אצלנו</a>
       <a href="#employers">מעסיקים</a>
-      <a href="business.html">לעסקים</a>
-      <a href="#webinar">הוובינר</a>
+      <a href="#founder">מי מלמד</a>
       <a href="#faq">שאלות</a>
+      <a class="nav-x" href="business.html">לעסקים</a>
     </nav>
     <div class="head-cta">
       <a class="btn btn-ghost btn-sm head-callback" href="#callback">מתלבטים? נחזור אליכם</a>
-      <a class="btn btn-primary btn-sm" href="#tracks">בחר מסלול</a>
+      <a class="btn btn-primary btn-sm" href="#tracks" data-join>לשריין מקום</a>
     </div>
   </div>
 </header>
 
 <main id="main">
 
-<!-- ===== HERO ===== -->
-<!-- ההירו מהודק בכוונה: פס הפרומו שמעליו כבר אומר שמחזור נובמבר
-     פתוח, ולכן התווית הכפולה ירדה. כל מה שמעל הכפתור נשאר קצר כדי
-     שהכפתור עצמו ייכנס למסך הראשון גם בלפטופ וגם בטלפון. -->
+<!-- ===== 1 · הפתיחה =====
+     המסר, כפתור אחד, שורת דדליין, שורת ביטחון ושורת אמון. הדף הזה הוא
+     שער: הוא אומר את המסר ומחלק בין שני המחזורים. -->
 <section id="top" data-consent-lift style="padding-top:clamp(28px,3.2vw,48px)">
   <div class="wrap stack hero-split">
-    <p class="eyebrow" style="font-size:clamp(16px,2vw,21px);letter-spacing:0">AI אַיי אַיי</p>
-    <h1 style="--fit:.19;--fit-m:.34">כולם כבר שם.<br/><span class="on-accent">ואתה?</span></h1>
-    <p class="lead">סיכום פגישה שלוקח שעה, מייל שנכתב שלוש פעמים, מצגת שנדחית לערב. זה הזמן שנשרף אצלך כל שבוע, בלי להפוך למתכנת ובלי אנגלית.</p>
-    <!-- שורת העובדות: מחיר, מועד והוכחה אחת, בתוך הקיפול. נוצרת
-         מקובץ הנתונים, ראה heroFacts ב-tools/build-courses.mjs. -->
-    <!-- BUILD:herofacts -->
-  <p class="hero-facts"><b>מאפס למאה 885 ₪</b><span aria-hidden="true"> · </span>נפתח 23/11<span aria-hidden="true"> · </span>1,500 בוגרים</p>
-  <!-- /BUILD:herofacts -->
-    <!-- הוובינר ירד מכפתור לקישור טקסט: הוא הצעה חינמית שהתחרתה
-         בכפתור הראשי על אותו מבט. -->
+    <h1 class="h-msg"><span>לא לומדים כלים.</span><span class="on-accent">לומדים לאמץ אותם.</span></h1>
+    <p class="lead">ביוטיוב רואים מה הכלי יודע. אצלנו לוקחים משימה אמיתית מהעבודה שלך, הצעת מחיר, סיכום פגישה, תיק לקוח, ויוצאים כשהכלי כבר עובד בתוכה. עם שיטה להמשיך לבד.</p>
     <div class="hero-cta">
-      <a class="btn btn-light" href="#tracks">בחר את המסלול שלך ←</a>
-      <a class="hero-alt" href="#webinar">או צפה בוובינר המלא, חינם</a>
+      <a class="btn btn-primary" href="#tracks" data-join>לבחור מחזור ולשריין מקום</a>
     </div>
-    <div class="figures" style="margin-top:8px">
-      <div><span class="fig ltr">1,500+</span><span class="fig-label">בוגרים</span></div>
-      <div><span class="fig">30</span><span class="fig-label">מחזורים</span></div>
-      <div><span class="fig ltr">30+</span><span class="fig-label">עסקים וגופים שהטמיעו</span></div>
-      <div><span class="fig on-accent">0</span><span class="fig-label">מילים באנגלית שצריך לדעת</span></div>
-    </div>
-    <!-- הודעת הוובינר ירדה מתחת לרצועת המספרים: היא הצעה מתחרה,
-         ולא כדאי שתעמוד בין הכפתור הראשי לבין ההוכחה -->
-    <p class="small" style="margin:0;padding:12px 16px;border:1px solid #2A2A2F;border-radius:14px;color:var(--ink-2)"><b style="color:var(--accent)">ביום רביעי 4.11, וובינר חינם:</b> Claude Code למי שלא מתכנת. אל תשאל אותו, תן לו עבודה. <a href="https://wa.me/972528189921?text=%D7%95%D7%95%D7%91%D7%99%D7%A0%D7%A8" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">כתוב לי וובינר בוואטסאפ</a> · <a href="https://did.li/shwadron-ai" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">שמור את המספר וקבל טיפ יומי בסטטוס</a></p>
-    <img class="hero-char" src="assets/public/brand/character-train.webp" alt="הדמותג של SHWADRON.AI מזמין לעלות על רכבת ה-AI" width="560" height="900" loading="eager"/>
+    <!-- BUILD:herodeadline -->
+  <p class="hero-deadline" data-closes="2026-11-22"><span>מאפס למאה נפתח ביום שני 23.11</span><span>צבא הסוכנים נפתח ביום רביעי 25.11</span></p>
+  <!-- /BUILD:herodeadline -->
+    <p class="hero-safe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>לא מתאים לך אחרי המפגש הראשון, כל הכסף חוזר. כל מפגש מוקלט.</span></p>
+    <ul class="hero-trust" aria-label="למה לסמוך עלינו">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>יותר מ-1,500 בוגרים</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>30 מחזורים</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><span class="ltr">30+</span> עסקים הטמיעו</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>מכתב המלצה ממשרד ממשלתי</span></li>
+    </ul>
+    <img class="hero-char" src="assets/public/brand/art-principle.webp" alt="הדמותג של SHWADRON.AI, ולידו עוזר AI שסוחב בשבילו ערימת מסמכים" width="578" height="760" loading="eager"/>
   </div>
-  <svg aria-hidden="true" viewBox="0 0 1440 220" preserveAspectRatio="none" class="arc">
-    <path d="M-40 220 Q720 -40 1480 220" fill="none" stroke="var(--accent)" stroke-opacity=".55" stroke-width="1.5"/>
-    <path d="M-40 220 Q720 10 1480 220" fill="none" stroke="#F4F4F1" stroke-opacity=".08" stroke-width="1"/>
-    <path d="M-40 220 Q720 60 1480 220" fill="none" stroke="#F4F4F1" stroke-opacity=".05" stroke-width="1"/>
-  </svg>
 </section>
 
-<!-- ===== רצועת אמון: הוכחה לפני ההצעה =====
-     הלוגואים והציטוט עלו לכאן, מעל המסלולים, כדי שהגולש יראה מי כבר
-     למד אצלנו לפני שהוא מגיע למחירים. הציטוט המלא נשאר במקטע מעסיקים. -->
-<section class="sec light" style="padding-block:clamp(32px,5vw,60px)">
-  <div class="wrap stack" style="gap:28px">
-    <figure class="quote-card" style="margin:0">
-      <blockquote>״הרבה קורסים מסתיימים עם ידע וחומר למחשבה. אצלך סיימנו עם כלים ותוכנות שעובדים בפועל בחברה ומשמשים את העובדים ביום-יום.״</blockquote>
-      <figcaption>יענקי · משרד יזמות נדל״ן · על קורס בן שישה מפגשים שהועבר לצוות החברה</figcaption>
+<!-- ===== 2 · הציטוט של יענקי =====
+     שורה וחצי, גדול. הנוסח הוא קטע מתוך המכתב המלא שלו, בלי שינוי מילים. -->
+<section class="sec light" id="quote" style="padding-block:clamp(36px,5vw,64px)">
+  <div class="wrap stack" style="gap:32px">
+    <figure class="quote-hero">
+      <blockquote>״הרבה קורסים מסתיימים עם ידע וחומר למחשבה. אצלך סיימנו עם כלים ותוכנות שעובדים בפועל בחברה.״</blockquote>
+      <figcaption>יענקי · משרד יזמות נדל״ן</figcaption>
     </figure>
-    <div style="display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;flex-direction:column;gap:14px">
       <p class="small" style="font-weight:500">הדרכנו והטמענו ב־</p>
       <div class="logo-panel">
       <!-- BUILD:logos -->
@@ -132,282 +112,115 @@
   </div>
 </section>
 
-<!-- ===== 01 המסלולים ===== -->
-<section class="sec sec-2" id="tracks">
+<!-- ===== 3 · יוטיוב מול אצלנו ===== -->
+<section class="sec" id="why">
   <div class="wrap stack">
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <p class="eyebrow">01 · המסלולים</p>
-      <h2>איפה אתה היום?</h2>
-      <p class="lead">שלושה מסלולים. סולם אחד. בוחרים לפי המקום שבו אתה עומד, לא לפי מה שנשמע הכי מרשים.</p>
-      <!-- בחירה מהירה. זה הרכיב שבשבילו הדף הזה קיים, ולכן הוא
-           כרטיסים לחיצים ולא רשימה עם קישור קטן בתוך משפט. הגולש
-           מזהה את המשפט שלו ולוחץ, בלי לקרוא את כל הכרטיסים. -->
-      <div class="pick-grid">
-        <a class="pick" href="course-beginners.html" data-track-pick="course-beginners">
-          <span class="pick-say">״ניסיתי קצת, וזה לא ממש יוצא לי״</span>
-          <b>מאפס למאה</b>
-          <span class="pick-meta">שלושה ערבים חיים בזום ←</span>
-        </a>
-        <a class="pick" href="course.html" data-track-pick="course-digital">
-          <span class="pick-say">״אין לי ערב פנוי קבוע, אני רוצה בקצב שלי״</span>
-          <b>המוח השני</b>
-          <span class="pick-meta">דיגיטלי, גישה מיידית ←</span>
-        </a>
-        <a class="pick" href="course-advanced.html" data-track-pick="course-advanced">
-          <span class="pick-say">״אני כבר עובד עם AI ורוצה שיעבוד בשבילי״</span>
-          <b>צבא הסוכנים</b>
-          <span class="pick-meta">סוכנים ואוטומציות ←</span>
-        </a>
-      </div>
-    </div>
-
-    <div class="grid">
-      <!-- BUILD:tracks -->
-  <article class="card">
-    <p class="card-kicker">זום חי · למי שלא נגע, או נגע קצת</p>
-    <h3 class="card-name">מאפס למאה</h3>
-    <p class="body" style="color:var(--ink-2)">מיועד למי שרוצה לעבור משימוש בסיסי ב-AI לעבודה נכונה ומקצועית.</p>
-    <div class="card-mini">
-      <div><span class="fig">3</span><span class="fig-label">ערבים חיים</span></div>
-      <div><span class="fig">20</span><span class="fig-label">משתתפים לכל היותר</span></div>
-      <div><span class="fig">0</span><span class="fig-label">ידע קודם</span></div>
-    </div>
-    <ul class="ticks">
-      <li>מרצה חי שעונה בזמן אמת</li>
-      <li>תרגול על המשימות שלך</li>
-      <li>קבוצת וואטסאפ לליווי</li>
-    </ul>
-    <div class="card-foot">
-      <div class="card-price">
-        <b>885 ₪</b>
-        <span class="when">פתיחה: יום שני, 23/11</span>
-      </div>
-      <span class="small">כולל מע״מ · או 3 תשלומים של כ-295 ₪</span>
-      <a class="btn btn-light btn-block" href="course-beginners.html#buy" data-track-pick="course-beginners">שריין מקום במחזור</a>
-    </div>
-  </article>
-
-  <article class="card">
-    <p class="card-kicker">דיגיטלי · בקצב שלך, מהבית</p>
-    <h3 class="card-name">המוח השני</h3>
-    <p class="body" style="color:var(--ink-2)">ארבעה שיעורים, ארבעה תוצרים ביד. בסוף יש לך סוכן אישי שמכיר את העבודה שלך וכותב בסגנון שלך.</p>
-    <div class="card-mini">
-      <div><span class="fig">4</span><span class="fig-label">שיעורים</span></div>
-      <div><span class="fig">8</span><span class="fig-label">שעות תוכן</span></div>
-      <div><span class="fig">∞</span><span class="fig-label">צפיות, בכל מכשיר</span></div>
-    </div>
-    <ul class="ticks">
-      <li>גישה מיידית</li>
-      <li>ספריית פרומפטים מוכנה</li>
-      <li>עדכוני תוכן בחינם</li>
-    </ul>
-    <div class="card-foot">
-      <div class="card-price">
-        <b>385 ₪</b>
-        <span class="">גישה מיידית</span>
-      </div>
-      <span class="small">כולל מע״מ · או 3 תשלומים · ביטול תוך 14 יום</span>
-      <a class="btn btn-light btn-block" href="course.html" data-track-pick="course-digital">אני רוצה את המוח השני ←</a>
-    </div>
-  </article>
-
-  <article class="card is-featured">
-    <span class="card-flag">המעסיקים מחפשים</span>
-    <p class="card-kicker">זום חי · מתקדמים, לעבודה ולעסק</p>
-    <h3 class="card-name">צבא הסוכנים</h3>
-    <p class="body" style="color:var(--ink-2)">מיועד למי שכבר מכיר ומשתמש ב-AI ורוצה לעבור לשלב הבא. אין צורך לדעת תכנות.</p>
-    <div class="card-mini">
-      <div><span class="fig">9</span><span class="fig-label">מפגשים חיים</span></div>
-      <div><span class="fig">20</span><span class="fig-label">משתתפים לכל היותר</span></div>
-      <div><span class="fig on-accent">1</span><span class="fig-label">פרויקט AI אישי</span></div>
-    </div>
-    <ul class="ticks">
-      <li>סוכנים שמכירים את העסק</li>
-      <li>אוטומציות ותהליכים שרצים לבד</li>
-      <li>יתרון מקצועי שמעסיקים רואים</li>
-    </ul>
-    <div class="card-foot">
-      <div class="card-price">
-        <b>2,950 ₪</b>
-        <span class="when">פתיחה: יום רביעי, 25/11</span>
-      </div>
-      <span class="small">כולל מע״מ · או 3 תשלומים של כ-983 ₪</span>
-      <a class="btn btn-primary btn-block" href="course-advanced.html#buy" data-track-pick="course-advanced">שריין מקום במחזור</a>
-    </div>
-  </article>
-  <!-- /BUILD:tracks -->
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <h3 class="card-title" style="font-size:24px">השוואה מהירה</h3>
-      <div class="tbl-wrap">
-        <!-- BUILD:compare -->
-  <table class="tbl">
-    <thead>
-      <tr>
-        <th scope="col" style="width:16%">&nbsp;</th>
-        <th scope="col">מאפס למאה</th>
-        <th scope="col">המוח השני</th>
-        <th scope="col" class="col-accent">צבא הסוכנים</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><th scope="row">למי</th><td>לא נגעו, או נגעו קצת</td><td>רוצים ללמוד לבד, בקצב שלהם</td><td>רוצים AI בעבודה ובעסק</td></tr>
-      <tr><th scope="row">פורמט</th><td>3 ערבים חיים בזום</td><td>4 שיעורים מוקלטים, 8 שעות</td><td>9 מפגשים חיים בזום, 18 שעות</td></tr>
-      <tr><th scope="row">ליווי</th><td>מרצה חי וקבוצת וואטסאפ</td><td>ספריית פרומפטים ועדכוני תוכן</td><td>מרצה חי והכוונה בבנייה</td></tr>
-      <tr><th scope="row">יוצאים עם</th><td>ביטחון ושימוש יומיומי</td><td>סוכן אישי וארבעה תוצרים</td><td>פרויקט AI אישי ותעודת סיום</td></tr>
-      <tr><th scope="row">מתחילים</th><td>יום שני 23/11</td><td>מיד עם הרכישה</td><td>יום רביעי 25/11</td></tr>
-      <tr><th scope="row">מחיר</th><td><b>885 ₪</b></td><td><b>385 ₪</b></td><td><b>2,950 ₪</b></td></tr>
-    </tbody>
-  </table>
-  <!-- /BUILD:compare -->
-      </div>
-      <p class="small">המחירים כוללים מע״מ. בכל מסלול אפשר עד שלושה תשלומים, בלי דמי טיפול.</p>
-      <!-- שני הדברים שמשנים את ההחלטה ולא הופיעו בדף הבית:
-           מה בוגר מאפס למאה מקבל אם ימשיך, ומה כלול בצבא הסוכנים -->
-      <ul class="ticks" style="font-size:16px">
-        <li>מי שנרשם ל<b>צבא הסוכנים</b> מקבל איתו את הקורס הדיגיטלי <b>המוח השני</b> במלואו, בלי תוספת תשלום.</li>
-        <li>בוגר <b>מאפס למאה</b> שממשיך לצבא הסוכנים מקבל <b>20% הנחה</b> על המסלול המתקדם.</li>
-        <li>בשני המסלולים החיים: לא מתאים לך אחרי המפגש הראשון, מקבל את כל הכסף בחזרה.</li>
-      </ul>
-      <!-- גשר למתלבטים: מי שראה את שלושת המסלולים ועדיין לא יודע לבחור
-           לא אמור לנשור כאן. מכאן הוא עובר להשארת פרטים. -->
-      <p class="body">לא בטוח איזה מסלול מתאים לך? <a href="#callback" style="color:var(--accent);text-decoration:underline;font-weight:700">השאירו פרטים ויוחנן יחזור אליכם לשיחה קצרה</a>, בלי התחייבות.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 02 העיקרון ===== -->
-<section class="sec" id="principle">
-  <div class="wrap stack">
-    <div class="sec-head-art">
-      <div class="stack">
-        <p class="eyebrow">02 · העיקרון</p>
-        <h2>AI לא יחליף אותך.<br/><span class="ghost">מי שיודע להפעיל AI, כן.</span></h2>
-      </div>
-      <img class="sec-art" src="assets/public/brand/art-principle.webp" alt="הדמותג של SHWADRON.AI לוחץ על שלט, ורובוט AI סוחב בשבילו ערימת מסמכים" width="578" height="760" loading="lazy"/>
+    <h2 class="h-sm">את הכלים כבר ראית.<br/><span class="ghost">מה שחסר זה שהם יעבדו אצלך.</span></h2>
+    <div class="vs-wrap">
+      <table class="vs">
+        <thead>
+          <tr><th scope="col">ביוטיוב</th><th scope="col">אצלנו</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>מה הכלי יודע לעשות</td><td>מה הוא עושה אצלך</td></tr>
+          <tr><td>דוגמאות של אחרים</td><td>המשימות שלך</td></tr>
+          <tr><td>לבד מול המסך</td><td>מרצה חי ושאלות בוואטסאפ</td></tr>
+          <tr><td>נגמר בסרטון</td><td>נגמר בכלי שעובד</td></tr>
+        </tbody>
+      </table>
     </div>
     <div class="grid-3">
       <div class="rule-top">
-        <h3 class="card-title">לא הופכים למתכנת</h3>
-        <p class="body">אתה טוב במשהו. הזמן שלך שווה כסף שם. לא באת ללמוד מקצוע חדש, באת להכפיל את המקצוע שיש לך.</p>
+        <h3>מתחילים מהמשימה שלך, לא מהכלי.</h3>
+        <p class="body">מביאים עבודה אמיתית מהשבוע, ופותרים אותה יחד.</p>
       </div>
       <div class="rule-top">
-        <h3 class="card-title">מתחילים ממשימה, לא מכלי</h3>
-        <p class="body">לא סקירה של עשרים אפליקציות. לוקחים עבודה אמיתית שלך, ופותרים אותה מול העיניים.</p>
+        <h3>יוצאים עם כלי שעובד, לא עם סיכום.</h3>
+        <p class="body">בקבוצה של עד 20 איש, עם ליווי בוואטסאפ, בעברית ובאינטרנט מסונן.</p>
       </div>
       <div class="rule-top">
-        <h3 class="card-title">מביאים את הרמה, לא מורידים אותה</h3>
-        <p class="body">אותם כלים ואותה רמה שעובדים איתם בחברות המובילות. בשפה ברורה, בעברית, ובסביבה שמתאימה לך.</p>
+        <h3>לומדים שיטה שנשארת.</h3>
+        <p class="body">כלים מתחלפים כל חודש. מי שלמד לאמץ כלי חדש לא מתחיל מאפס בכל פעם.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== תגיות אמון ===== -->
-<section class="sec">
-  <div class="wrap badges">
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 16.5 L14 21 L23 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p><b>לא צריך אנגלית</b><span>הכול בעברית: ההסברים, ההנחיות והתרגול.</span></p>
-    </div>
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M16 3 L27 7.5 V15.5 C27 22 22 27 16 29 C10 27 5 22 5 15.5 V7.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11 16 L15 20 L21.5 12.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p><b>עובד באינטרנט מסונן</b><span>הכלים שנלמדים נגישים דרך סינון, והמפגשים בזום.</span></p>
-    </div>
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M6 25 L8 19.5 A11 11 0 1 1 12.5 24 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      <p><b>ליווי בוואטסאפ</b><span>שאלה באמצע העבודה? יש מי שעונה.</span></p>
-    </div>
-    <div class="badge">
-      <svg aria-hidden="true" viewBox="0 0 32 32"><path d="M7 16 A9 9 0 1 0 10 9.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M6 5 V10 H11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p><b>החזר מלא אחרי השיעור הראשון</b><span>במסלולים החיים. בדיגיטלי, ביטול תוך 14 יום לפי <a href="cancellation.html" style="color:var(--accent);text-decoration:underline">התקנון</a>.</span></p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===== 03 תוכנית האב ===== -->
-<section class="sec" id="plan">
+<!-- ===== 4 · שני המחזורים =====
+     שני כרטיסים באותו גובה ובאותו סדר: עם מה יוצאים, איך, מחיר, תאריך
+     ומקומות, כפתור. הטקסט, המחירים והתאריכים מגיעים מקובץ הנתונים. -->
+<section class="sec sec-2" id="tracks">
   <div class="wrap stack">
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <p class="eyebrow">03 · תוכנית האב</p>
-      <h2>התוכנית. בגלוי.</h2>
-      <p class="lead">אצלי כל בוגר יוצא עם כלי שעובד אצלו בעבודה, ולא עם עוד חומר למחשבה. הכדור בידיים שלך. בוא לעבוד חכם!</p>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h2 class="h-sm">שני מחזורים.<br/><span class="ghost">בוחרים לפי המקום שבו אתה היום.</span></h2>
+      <p class="lead">שני מסלולים עם מטרות שונות. אחד לא תנאי לשני.</p>
     </div>
-    <div class="steps">
-      <div class="step">
-        <span class="step-n ltr">01</span>
-        <h3 class="card-title">מורידים את הפחד</h3>
-        <p class="body">כל אחד, מכל גיל ומכל רקע, עושה את הצעד הראשון. בלי בושה ובלי מונחים.</p>
-      </div>
-      <div class="step">
-        <span class="step-n ltr">02</span>
-        <h3 class="card-title">מוח שני לכל אחד</h3>
-        <p class="body">כלי אישי שחוסך שעות כל שבוע, ומחזיר את הזמן למה שחשוב באמת.</p>
-      </div>
-      <div class="step">
-        <span class="step-n ltr">03</span>
-        <h3 class="card-title">צבא סוכנים לכל עסק</h3>
-        <p class="body">כל עסק, קטן כגדול, עובד עם סוכנים ואוטומציות כמו החברות הגדולות.</p>
-      </div>
-      <div class="step">
-        <span class="step-n ltr">04</span>
-        <h3 class="card-title">מובילים, לא מדביקים</h3>
-        <p class="body">הבוגרים שלנו הם אלה שמעסיקים מחפשים, ואלה שמלמדים את הבאים אחריהם.</p>
-      </div>
+    <div class="cohorts">
+      <!-- BUILD:cohorts -->
+  <article class="cohort">
+    <header>
+      <h3 class="cohort-name">מאפס למאה</h3>
+      <p class="cohort-tag">ניסית קצת, ועכשיו זה ייכנס לעבודה</p>
+    </header>
+    <p class="cohort-who">למי שעוד לא נגע, או שנגע קצת וזה לא יצא.</p>
+    <div>
+      <p class="cohort-label">יוצאים עם</p>
+      <ul class="ticks">
+        <li>שבעת הכללים שהופכים תשובה בינונית לתשובה מקצועית</li>
+        <li>פגישה מוקלטת שהופכת לסיכום, למשימות ולמייל מעקב</li>
+        <li>מצגת מקצועית מאפס על חומר שלך</li>
+      </ul>
     </div>
+    <p class="cohort-how">שלושה ערבים חיים בזום, תרגול על המשימות שלך וקבוצת וואטסאפ. כל מפגש מוקלט.</p>
+    <div class="cohort-foot">
+      <p class="cohort-price"><b>885 ₪</b> <span>כולל מע״מ, עד 3 תשלומים</span></p>
+      <ul class="cohort-facts">
+        <li>3 חודשי מנוי במתנה</li>
+        <li>נפתח ביום שני 23.11</li>
+      </ul>
+      <a class="btn btn-primary btn-block" href="course-beginners.html#buy" data-track-pick="course-beginners">לשריין מקום במאפס למאה</a>
+      <a class="cohort-more" href="course-beginners.html" data-track-pick="course-beginners">כל הפרטים על מאפס למאה</a>
+    </div>
+  </article>
+
+  <article class="cohort is-pro">
+    <header>
+      <h3 class="cohort-name">צבא הסוכנים</h3>
+      <p class="cohort-tag">הכלים כבר אצלך. עכשיו הם יעבדו בשבילך</p>
+    </header>
+    <p class="cohort-who">למי שעובד עם AI כל יום ורוצה שהעבודה תרוץ לבד. לא צריך לדעת לתכנת.</p>
+    <div>
+      <p class="cohort-label">יוצאים עם</p>
+      <ul class="ticks">
+        <li>סוכנים שמכירים את העסק שלך</li>
+        <li>אוטומציות שרצות לבד</li>
+        <li>כלים משלך ב-Claude Code</li>
+        <li>פרויקט אישי שנשאר אצלך</li>
+      </ul>
+    </div>
+    <p class="cohort-how">תשעה מפגשים חיים בזום בימי רביעי, וכל מפגש מוקלט. המוח השני ו-3 חודשי מנוי במתנה.</p>
+    <div class="cohort-foot">
+      <p class="cohort-price"><b>2,950 ₪</b> <span>כולל מע״מ, עד 3 תשלומים, חשבונית גם על שם העסק</span></p>
+      <ul class="cohort-facts">
+        <li>לבוגרי מאפס למאה 20% הנחה</li>
+        <li>נפתח ביום רביעי 25.11</li>
+      </ul>
+      <a class="btn btn-primary btn-block" href="course-advanced.html#buy" data-track-pick="course-advanced">לשריין מקום בצבא הסוכנים</a>
+      <a class="cohort-more" href="course-advanced.html" data-track-pick="course-advanced">כל הפרטים על צבא הסוכנים</a>
+    </div>
+  </article>
+  <!-- /BUILD:cohorts -->
+    </div>
+    <p class="small">המחירים כוללים מע״מ. בשני המחזורים עד 20 משתתפים, החזר מלא למי שלא מתאים לו אחרי המפגש הראשון, ו-3 חודשי מנוי במתנה. בצבא הסוכנים הקורס הדיגיטלי המוח השני כלול במתנה.</p>
+    <p class="body">לא בטוח איזה מחזור מתאים לך? <a href="#callback" data-cta="כרטיסי המחזורים" style="color:var(--accent);text-decoration:underline;font-weight:700">השאירו טלפון ונחזור אליכם עוד היום</a>.</p>
   </div>
 </section>
 
-<!-- ===== 04 השידור החי =====
-     השידור כבר התקיים, וההקלטה שלו היא הוובינר שמחכה בתחתית הדף מאחורי
-     טופס שם וטלפון. לכן המקטע הזה הוא הוכחה ולא הזמנה, ואין בו ספירה
-     לאחור. כשייקבע מועד לשידור הבא, יש בהמשך הקובץ הערה עם הגרסה
-     ההפוכה, של אירוע עתידי עם תאריך. -->
-<section class="sec" id="live">
-  <div class="wrap">
-    <div style="border:1.5px solid var(--accent);border-radius:32px;padding:clamp(28px,6vw,80px);display:flex;flex-direction:column;gap:32px;background:#0F1312">
-      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
-        <p class="eyebrow">04 · השידור החי</p>
-        <p style="display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;border:1px solid #3A3A40;border-radius:999px;padding:8px 16px">
-          <span aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--live)"></span>
-          השידור האחרון · ההקלטה פתוחה
-        </p>
-      </div>
-      <h2 class="h-sm">שעה אחת.<br/>עסק אחד.<br/><span class="on-accent">מאפס.</span></h2>
-      <p class="lead">בשידור האחרון בנינו חי, מול כולם, סוכן שנכנס לתיבת המייל, מאתר חשבוניות ומעדכן אותן בטבלה בלי שנוגעים בזה, ועוד כמה דברים בדרך. בלי עריכה ובלי הכנה מראש, כולל המקומות שבהם נתקענו ותיקנו תוך כדי. ככה יודעים שזה אמיתי.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
-        <a class="btn btn-primary" href="#webinar">לצפות בשידור המלא</a>
-        <span class="small">חינם · משאירים שם וטלפון וההקלטה נפתחת כאן</span>
-      </div>
-      <p class="small" style="border-top:1px solid #2A2F2D;padding-top:20px;margin:0">השידור הבא יוכרז כאן ובקבוצת הוואטסאפ.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────────────────────────────────────────
-     הגרסה לשידור הבא, כשיהיה לו תאריך. להחלפה: להעתיק את התג
-     שלמטה במקום התג שלמעלה, ולמלא את התאריך והשעה.
-
-     <p style="...">
-       <span aria-hidden="true" style="...background:var(--live)"></span>
-       LIVE · [תאריך ושעה]
-     </p>
-     והכפתור: <a class="btn btn-primary" href="#webinar">שמור לי מקום בשידור</a>
-     ─────────────────────────────────────────────────────────── -->
-
-<!-- ===== 05 מעסיקים ===== -->
+<!-- ===== 5 · מעסיקים מבקשים בוגרים =====
+     ההודעות כפי שהגיעו לוואטסאפ, בראשי תיבות, ושורה אחת לקונה. -->
 <section class="sec light" id="employers">
   <div class="wrap stack">
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <p class="eyebrow">05 · מעסיקים</p>
-      <h2>מעסיקים כבר פונים אלינו.<br/><span class="ghost">הם רוצים את הבוגרים.</span></h2>
-    </div>
-    <figure class="quote-card is-big">
-      <blockquote>״כמשרד יזמות נדל״ן, העובדים שלנו הם אנשי תכנון, כספים, שיווק וניהול פרויקטים. לא מתכנתים ולא אנשי טכנולוגיה. בתוך שישה מפגשים הבאת אותם למקום שבו הם לא רק משתמשים ב-AI אלא ממש מפתחים באמצעותו. נבנו אצלנו כלים ותוכנות ייעודיות למחלקות, מערכות לבקרה ולניהול ותהליכי עבודה אוטומטיים, דברים שלפני הקורס לא הייתי מעלה על דעתי שהעובדים שלנו יוכלו לבנות בעצמם. הרבה קורסים מסתיימים עם ידע וחומר למחשבה. אצלך סיימנו עם כלים ותוכנות שעובדים בפועל בחברה ומשמשים את העובדים ביום-יום.״</blockquote>
-      <figcaption>יענקי · משרד יזמות נדל״ן · על קורס בן שישה מפגשים שהועבר לצוות החברה</figcaption>
-    </figure>
+    <h2 class="h-sm">מעסיקים כבר פונים אלינו.<br/><span class="ghost">הם רוצים את הבוגרים.</span></h2>
     <div class="grid">
       <figure class="quote-card">
         <blockquote>״היי יוחנן, אני מחפש עובד אצלי במשרד למשכנתאות. תמליץ לי על אחד שכבר עבר את הקורס.״</blockquote>
@@ -419,41 +232,24 @@
       </figure>
     </div>
     <p class="small">הודעות שהגיעו לוואטסאפ של יוחנן. הפרטים המזהים צומצמו לראשי תיבות.</p>
-    <div class="cta-box">
-      <div>
-        <b>מחפשים עובד שיודע להפעיל AI?</b>
-        <p>דברו איתנו. נחבר אתכם לבוגרים המתאימים, או נכשיר את הצוות שלכם.</p>
-      </div>
-      <a class="btn btn-primary" href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%91%D7%A2%D7%9C%20%D7%A2%D7%A1%D7%A7%20%D7%95%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%A9%D7%9C%D7%95%D7%97%20%D7%A2%D7%95%D7%91%D7%93%2F%D7%99%D7%9D%20%D7%9C%D7%9C%D7%9E%D7%95%D7%93.%20%D7%9B%D7%9E%D7%94%20%D7%A2%D7%95%D7%91%D7%93%D7%99%D7%9D%3A%20%5B%20%5D" target="_blank" rel="noopener">לדבר איתנו בוואטסאפ ←</a>
-    </div>
-    <!-- עמוד הסיפורים היה מקושר רק מהפוטר, כלומר ב-94% לתוך דף של
-         17,000 פיקסל. כאן, מיד אחרי ההוכחה, הוא במקום שבו הוא נחוץ. -->
-    <div class="cta-box" style="background:var(--card);border:1px solid var(--line)">
-      <div>
-        <b>מה באמת נבנה בעסקים האלה?</b>
-        <p>חמישה עסקים, שבעה עשר סוכנים, בשמם. משרד נדל״ן, רשת מוסדות, רואי חשבון, משרד פרסום ועוד.</p>
-      </div>
-      <a class="btn btn-ghost" href="cases.html">לראות מה נבנה ←</a>
-    </div>
-    <p class="small"><a href="business.html" style="color:#0B7A5A;text-decoration:underline;font-weight:700">הרצאה, סדנה או תהליך הטמעה בעסק שלכם ←</a></p>
+    <p class="note-line"><b>המעסיק משלם?</b> החשבונית יוצאת על שם העסק, ונשלח לכם דף קצר להציג למנהל.</p>
+    <p class="small">מעסיקים שמחפשים עובד שיודע להפעיל AI, או הכשרה לכל הצוות: <a href="business.html" style="color:var(--accent);text-decoration:underline;font-weight:700">לדף העסקים</a></p>
   </div>
 </section>
 
-
-<!-- ===== 06 מי מוביל ===== -->
+<!-- ===== 6 · יוחנן והמכתב מהמשרד הממשלתי ===== -->
 <section class="sec sec-2" id="founder">
   <div class="wrap founder">
     <figure class="founder-photo">
       <img src="assets/public/yochanan-landing.jpg" alt="יוחנן שבדרון, מרצה ומטמיע בינה מלאכותית" width="900" height="1350" loading="lazy"/>
     </figure>
     <div class="founder-body">
-      <p class="eyebrow">06 · מי מוביל</p>
+      <p class="eyebrow">מי מלמד</p>
       <h2 class="h-sm">יוחנן שבדרון</h2>
-      <p class="founder-quote">לא באתי להוריד את הרמה בשביל אף אחד. באתי להביא את הרמה הכי גבוהה, למקום שבו אתה נמצא.</p>
       <ul class="founder-list">
         <li>בוגר תואר ראשון במדעי המחשב, התמחות בבינה מלאכותית</li>
         <li>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</li>
-        <li>1,500 בוגרים ב-30 מחזורים</li>
+        <li>יותר מ-1,500 בוגרים ב-30 מחזורים</li>
       </ul>
       <figure class="founder-letter">
         <a class="founder-letter-thumb" href="assets/public/assets/letters/negev-ministry-dg-2025.webp" target="_blank" rel="noopener">
@@ -470,128 +266,83 @@
   </div>
 </section>
 
-<!-- BUILD:webinar -->
-  <section class="sec" id="webinar">
-    <div class="wrap stack">
-      <div style="display:flex;flex-direction:column;gap:20px">
-        <p class="eyebrow">07 · עוד לא מוכן להחליט</p>
-        <h2 class="h-sm">וובינר שלם,<br/><span class="on-accent">במתנה.</span></h2>
-        <p class="lead">עוד לא מוכן להחליט? זה וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד, וככה רואים בדיוק איך נראה שיעור אצלי עוד לפני שנרשמים.</p>
-        <p class="body">ואם אתם עצמאים או בעלי עסקים, תראו בו איך נראית עבודה אמיתית עם AI על משימה מהעבודה, עוד לפני שנפגשנו.</p>
-      </div>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
-        <form class="gift-form" data-gift novalidate>
-          <div class="gift-fields">
-            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
-            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-            <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
-          </div>
-          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-          <button class="btn btn-primary btn-block" type="submit">פתחו לי את הוובינר</button>
-          <p class="gift-msg" role="status" aria-live="polite"></p>
-          <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
-        </form>
-        <div class="gift-done" hidden>
-          <p class="lead"><b>הוובינר פתוח, צפייה מהנה.</b> רוצים להמשיך לקבל טיפים קצרים על AI? בקבוצת הטיפים יוחנן משתף טיפים שוטפים, בלי ספאם.</p>
-          <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
-        </div>
-        <div class="video-frame gift-locked">
-          <div class="gift-cover" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
-          </div>
-          <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
-        </div>
-      </div>
-      <a class="btn btn-light gift-after" href="#tracks" data-join hidden>לבחירת המסלול שלי</a>
-    </div>
-  </section>
-  <!-- /BUILD:webinar -->
-
-<!-- ===== 08 שאלות ===== -->
+<!-- ===== 7 · שאלות, לפי ההתנגדויות ===== -->
 <section class="sec" id="faq">
   <div class="wrap stack" style="max-width:880px">
-    <div style="display:flex;flex-direction:column;gap:20px">
-      <p class="eyebrow">08 · לפני שמחליטים</p>
-      <h2 class="h-sm">שאלות. תשובות קצרות.</h2>
-    </div>
+    <h2 class="h-sm">שאלות. תשובות קצרות.</h2>
     <div class="qa">
       <details open>
+        <summary><span>אין לי ערב פנוי קבוע</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>כל מפגש מוקלט. משלימים באותו שבוע ושואלים בוואטסאפ.</p>
+      </details>
+      <details>
+        <summary><span>אני מסתדר עם יוטיוב</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>ביוטיוב רואים מה הכלי יודע. כאן בונים אותו על העבודה שלך, נתקעים ומתקנים עם מישהו לידך, עד שזה רץ.</p>
+      </details>
+      <details>
+        <summary><span>צריך אישור מהמעסיק</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>החשבונית יוצאת על שם העסק, ויש דף קצר להציג למנהל.</p>
+      </details>
+      <details>
+        <summary><span>לא בטוח שזה בשבילי</span><span aria-hidden="true" class="sign">+</span></summary>
+        <p>בא למפגש הראשון. לא מתאים, כל הכסף חוזר. התנאים המלאים ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p>
+      </details>
+      <details>
         <summary><span>צריך לדעת אנגלית?</span><span aria-hidden="true" class="sign">+</span></summary>
-        <p>לא. הכול בעברית: ההסברים, ההנחיות והתרגול. גם עם הכלים עצמם עובדים בעברית.</p>
+        <p>ההסבר והתרגול כולם בעברית.</p>
       </details>
       <details>
         <summary><span>זה עובד עם הסינון שלי?</span><span aria-hidden="true" class="sign">+</span></summary>
-        <p>כן. הכלים שנלמדים נגישים דרך אינטרנט מסונן, והמפגשים עצמם מתקיימים בזום. אם יש לך שאלה על ספק סינון מסוים, כתוב לי ונבדוק מראש.</p>
-      </details>
-      <details>
-        <summary><span>אף פעם לא נגעתי ב-AI. זה בשבילי?</span><span aria-hidden="true" class="sign">+</span></summary>
-        <p>בדיוק בשבילך. מאפס למאה נבנה למי שמתחיל מאפס, ושלושה ערבים מספיקים כדי לעבוד בביטחון.</p>
-      </details>
-      <details>
-        <summary><span>איזה מסלול מתאים לי?</span><span aria-hidden="true" class="sign">+</span></summary>
-        <p>עוד לא התחלת או ניסית קצת, מאפס למאה. רוצה ללמוד לבד בקצב שלך, המוח השני. רוצה סוכנים ואוטומציות לעבודה או לעסק, צבא הסוכנים. בספק, <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%9C%D7%91%D7%98%20%D7%91%D7%99%D7%9F%20%D7%94%D7%9E%D7%A1%D7%9C%D7%95%D7%9C%D7%99%D7%9D.%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A9%D7%AA%D7%9E%D7%A9%20%D7%91-AI%20%5B%D7%91%D7%9B%D7%9C%D7%9C%20%D7%9C%D7%90%20%2F%20%D7%A7%D7%A6%D7%AA%20%2F%20%D7%9B%D7%9C%20%D7%99%D7%95%D7%9D%5D" target="_blank" rel="noopener">כתוב לי ונחליט יחד</a>.</p>
-      </details>
-      <details>
-        <summary><span>ואם זה לא מתאים לי?</span><span aria-hidden="true" class="sign">+</span></summary>
-        <p>במסלולים החיים, אחרי המפגש הראשון לא מתאים לך ומחזירים לך את כל הכסף, בבקשה שתגיע עד 48 שעות מתום המפגש. בדיגיטלי אפשר לבטל תוך 14 יום. התנאים המלאים ב<a href="cancellation.html">עמוד ביטול עסקה</a>.</p>
+        <p>כן, הכלים נגישים באינטרנט מסונן, והמפגשים בזום.</p>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ===== סגירה ===== -->
-<!-- ===== השארת פרטים: למי שעוד לא מוכן לשלם ===== -->
-<section class="sec" id="callback">
-  <div class="wrap">
-    <div class="callback">
-      <div class="callback-text">
-        <p class="eyebrow">שיחה קצרה עם יוחנן</p>
-        <h2 class="h-sm">מתלבטים?<br/><span class="ghost">יוחנן יחזור אליכם.</span></h2>
-        <p class="body">לא בטוחים שזה מתאים לכם, או שיש לכם שאלה לפני שנרשמים? משאירים פרטים, ויוחנן חוזר אליכם לשיחה קצרה. בלי התחייבות.</p>
-      </div>
-      <div>
-        <form class="gift-form" data-callback novalidate>
-          <div class="gift-fields">
-            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
-            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-            <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
+<!-- ===== 8 · טופס אחד, שם וטלפון, ואחריו הכפתור שוב ===== -->
+<!-- BUILD:leadform -->
+  <section class="sec" id="callback">
+    <div class="wrap">
+      <div class="callback">
+        <div class="callback-text">
+          <h2 class="h-sm">מתלבטים?<br/><span class="ghost">השאירו טלפון ונחזור אליכם עוד היום.</span></h2>
+          <p class="body">שיחה קצרה, בלי התחייבות. בודקים יחד איזה מחזור מתאים לכם, ועונים על כל מה שנשאר פתוח.</p>
+        </div>
+        <div>
+          <form class="gift-form lead-form" data-callback novalidate>
+            <input type="hidden" name="cta" value=""/>
+            <div class="gift-fields">
+              <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+              <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">חזרו אליי</button>
+            <p class="gift-msg" role="status" aria-live="polite"></p>
+            <p class="gift-fine">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+            <p class="wa-line">מעדיפים לכתוב? <a data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">כתבו לנו בוואטסאפ</a></p>
+          </form>
+          <div class="gift-after" tabindex="-1" hidden>
+            <p class="lead"><b>תודה, הפרטים התקבלו.</b> נחזור אליכם עוד היום. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
+            <a class="btn btn-ghost tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
           </div>
-          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-          <button class="btn btn-primary" type="submit">חזרו אליי</button>
-          <p class="gift-msg" role="status" aria-live="polite"></p>
-          <p class="gift-fine">הפרטים משמשים לחזרה אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
-        </form>
-        <div class="gift-after" tabindex="-1" hidden>
-          <p class="lead"><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
-          <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
         </div>
       </div>
+      <div class="again">
+        <a class="btn btn-primary" href="#tracks">לבחור מחזור ולשריין מקום</a>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="sec" style="text-align:center">
-  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:36px">
-    <h2>מאפס למאה.<br/><span class="on-accent">ואז, צבא.</span></h2>
-    <a class="btn btn-light" href="#tracks">בחר את המסלול שלך ←</a>
-  </div>
-</section>
+  </section>
+  <!-- /BUILD:leadform -->
 
 </main>
 
-<p class="brand-tag"><span class="t">הגיע הזמן לדהור.</span> <span class="b">בוא לעבוד חכם!</span></p>
+<p class="brand-tag"><span class="t">הכלים בידיים שלך.</span> <span class="b">בוא לעבוד חכם!</span></p>
 <footer class="site-foot">
   <div class="wrap">
     <img class="brand-foot" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84" loading="lazy"/>
-    <nav aria-label="המסלולים" class="foot-tracks">
-      <a href="course-beginners.html">מאפס למאה</a>
-      <a href="course.html">המוח השני</a>
-      <a href="course-advanced.html">צבא הסוכנים</a>
+    <nav aria-label="עוד באתר" class="foot-tracks">
       <a href="business.html">לעסקים ולארגונים</a>
       <a href="cases.html">מה נבנה בעסקים</a>
+      <a href="course.html">המוח השני</a>
     </nav>
     <nav aria-label="קישורים משפטיים">
       <a href="terms.html">תקנון</a>
@@ -600,24 +351,25 @@
       <a href="cancellation.html">ביטול עסקה</a>
       <a href="#" data-consent-settings>הגדרות עוגיות</a>
     </nav>
-    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">052-818-9921</a></span>
   </div>
 </footer>
 
+<!-- הרצועה הדביקה בתחתית המסך: הכפתור הראשי, ולצידו המשני -->
 <div class="dock" id="stickybar">
   <div class="dock-price dock-price--long">
     <b>מאפס למאה 885 ₪ · צבא הסוכנים 2,950 ₪</b>
-    <span>כולל מע״מ · החזר מלא אחרי השיעור הראשון</span>
+    <span>כולל מע״מ · החזר מלא אחרי המפגש הראשון</span>
   </div>
   <div class="dock-cta">
-    <a class="btn btn-ghost btn-sm" href="#callback">מתלבטים? נחזור אליכם</a>
-    <a class="btn btn-primary btn-sm" href="#tracks">בחר מסלול</a>
+    <a class="btn btn-ghost btn-sm" href="#callback">מתלבטים?</a>
+    <a class="btn btn-primary btn-sm" href="#tracks" data-join>לשריין מקום</a>
   </div>
 </div>
 
 <script>
-  // דף הבחירה אינו מוכר מסלול מסוים, ולכן אין בו מחיר.
-  window.SHW_COURSE = { id:'courses-hub', name:'מסלולי SHWADRON.AI', price:null, vatRate:0.18 };
+  // דף הבית אינו מוכר מחזור מסוים, ולכן אין בו מחיר.
+  window.SHW_COURSE = { id:'courses-hub', name:'שני המחזורים של SHWADRON.AI', price:null, vatRate:0.18 };
 </script>
 <script src="assets/js/courses.js"></script>
 <script src="assets/js/shw-motion.js" defer></script>

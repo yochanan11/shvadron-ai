@@ -16,7 +16,8 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, DIGITAL, ALL_TRACKS, COMPARE, TRACKS, SCHEDULE_NOTE,
-         TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR, TIPS_GROUP }
+         TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR, TIPS_GROUP,
+         COHORT, WHATSAPP, GIFT }
          from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -58,7 +59,7 @@ function sessionDate(startISO, i) {
     if (n++ === i) return d;
   }
 }
-const dayMonth  = d => `${d.getUTCDate()}/${d.getUTCMonth() + 1}`;
+const dayMonth  = d => `${d.getUTCDate()}.${d.getUTCMonth() + 1}`;
 const longDate  = d => `${d.getUTCDate()} ב${MONTHS[d.getUTCMonth()]}`;
 
 /* "יום שני, א׳ בחשוון · 12 באוקטובר" */
@@ -85,16 +86,137 @@ function flow(steps, label) {
 }
 
 /* ─── שורת מפגש בעיצוב החדש (.lesson ב-shw-2026.css) ─── */
-function lessonRow(n, when, title, desc, extra) {
+function lessonRow(n, when, title, desc, extra, out) {
   return `<article class="lesson">
   <span class="lesson-n ltr">${esc(n)}</span>
   <div>
     <p class="lesson-when">${esc(when)}</p>
     <h3 class="card-title">${esc(title)}</h3>
-    <p class="body">${esc(desc)}</p>${extra ? '\n' + ind(4, extra) : ''}
+    <p class="body">${esc(desc)}</p>${extra ? '\n' + ind(4, extra) : ''}${out ? `
+    <p class="lesson-out"><b>התוצר של המפגש:</b> ${esc(out)}</p>` : ''}
   </div>
 </article>`;
 }
+
+/* ─── המחזור: דדליין, מקומות, וואטסאפ ────────────────────────
+   כל מה שכאן נגזר מ-COHORT, מ-WHATSAPP ומ-seatsLeft שבקובץ
+   הנתונים. אין בדפים מספר מקומות או תאריך סגירה שנכתבו ביד. */
+const closesDate  = () => new Date(COHORT.closes + 'T00:00:00Z');
+const closesLabel = () => `ההרשמה נסגרת ב-${dayMonth(closesDate())}`;
+const opensLabel  = t => `נפתח ביום ${t.dayName} ${dayMonth(sessionDate(t.start, 0))}`;
+const seatsText   = n => (typeof n === 'number' && n > 0)
+  ? (n === 1 ? 'נשאר מקום אחד' : `נשארו ${n} מקומות`) : '';
+/* מקומות למסלול אחד, או לשני המחזורים יחד ('all'): סכום, ורק כששני
+   המספרים הוקלדו. מספר אחד בלבד לא מוצג כסך הכול, כי הוא לא. */
+function seatsFor(key) {
+  if (key === 'all') {
+    const [b, a] = TRACKS.map(t => t.seatsLeft);
+    return (b > 0 && a > 0) ? seatsText(b + a) : '';
+  }
+  const t = key === 'advanced' ? ADVANCED : BEGINNERS;
+  return seatsText(t.seatsLeft);
+}
+const WA_HREF = `https://wa.me/${WHATSAPP.number}?text=${encodeURIComponent(WHATSAPP.text)}`;
+const WA_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" ' +
+  'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+  '<path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>';
+
+/* הפס העליון הדק: שם המחזור, מקומות, סגירת ההרשמה. source.js מסתיר
+   את "ההרשמה נסגרת" אחרי data-closes, כדי שלא יישאר תאריך שעבר. */
+function topBar(key) {
+  const seats = seatsFor(key);
+  return `<div class="top-bar" data-closes="${COHORT.closes}">
+  <p><b>${esc(COHORT.name)}</b>${seats ? `<span>${esc(seats)}</span>` : ''}<span data-closing>${esc(closesLabel())}</span></p>
+</div>`;
+}
+
+/* שורת הדדליין שמתחת לכפתור בפתיחה */
+function heroDeadline(key) {
+  const seats = seatsFor(key);
+  const parts = key === 'all'
+    ? TRACKS.map(t => `${esc(t.name)} ${esc(opensLabel(t))}`)
+    : [esc(opensLabel(key === 'advanced' ? ADVANCED : BEGINNERS)),
+       `<span data-closing>${esc(closesLabel())}</span>`];
+  if (seats) parts.splice(key === 'all' ? parts.length : 1, 0, `<b>${esc(seats)}</b>`);
+  return `<p class="hero-deadline" data-closes="${COHORT.closes}">${
+    parts.map(x => `<span>${x}</span>`).join('')}</p>`;
+}
+
+/* ─── שני כרטיסי המחזורים בדף הבית ───────────────────────────
+   אותו סדר בשניהם: עם מה יוצאים, איך, מחיר, תאריך ומקומות, כפתור. */
+function cohortCard(t, opts = {}) {
+  const c = t.card;
+  const key = t === ADVANCED ? 'advanced' : 'beginners';
+  const seats = seatsFor(key);
+  const facts = [...(c.facts || []), opensLabel(t)];
+  return `<article class="cohort${t.tone ? ' is-' + t.tone : ''}">
+  <header>
+    <h3 class="cohort-name">${esc(t.name)}</h3>
+    <p class="cohort-tag">${esc(c.tagline)}</p>
+  </header>
+  <p class="cohort-who">${esc(c.who)}</p>
+  <div>
+    <p class="cohort-label">יוצאים עם</p>
+    <ul class="ticks">
+${c.outs.map(x => `      <li>${esc(x)}</li>`).join('\n')}
+    </ul>
+  </div>
+  <p class="cohort-how">${esc(c.how)}</p>
+  <div class="cohort-foot">
+    <p class="cohort-price"><b>${esc(fmt(totalOf(t)))}</b> <span>כולל מע״מ, ${esc(c.terms.join(', '))}</span></p>
+    <ul class="cohort-facts"${opts.closing ? ` data-closes="${COHORT.closes}"` : ''}>
+${facts.map(x => `      <li>${esc(x)}</li>`).join('\n')}${seats ? `
+      <li class="is-seats">${esc(seats)}</li>` : ''}${opts.closing ? `
+      <li data-closing>${esc(closesLabel())}</li>` : ''}
+    </ul>
+    <a class="btn btn-primary btn-block" href="${t.file}#buy" data-track-pick="${t.id}">${esc(c.cta)}</a>
+    <a class="cohort-more" href="${t.file}" data-track-pick="${t.id}">כל הפרטים על ${esc(t.name)}</a>
+  </div>
+</article>`;
+}
+const cohortCards = () => TRACKS.map(t => cohortCard(t)).join('\n\n');
+/* כרטיס מחזור אחד עם הדדליין, לעמודי התודה ולדף ההקלטה */
+const offerCard = t => cohortCard(t, { closing: true });
+
+/* ─── טופס "מתלבטים": שם וטלפון בלבד ─────────────────────────
+   אותו טופס בכל דף. השדות הנסתרים (דף וכפתור) מתמלאים ב-callback.js
+   ונשלחים עם הליד. opts.after הוא הכפתור הראשי שחוזר אחרי הטופס. */
+function leadForm(opts = {}) {
+  return `<section class="sec" id="callback">
+  <div class="wrap">
+    <div class="callback">
+      <div class="callback-text">
+        <h2 class="h-sm">מתלבטים?<br/><span class="ghost">השאירו טלפון ונחזור אליכם עוד היום.</span></h2>
+        <p class="body">שיחה קצרה, בלי התחייבות. בודקים יחד איזה מחזור מתאים לכם, ועונים על כל מה שנשאר פתוח.</p>
+      </div>
+      <div>
+        <form class="gift-form lead-form" data-callback novalidate>
+          <input type="hidden" name="cta" value=""/>
+          <div class="gift-fields">
+            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">חזרו אליי</button>
+          <p class="gift-msg" role="status" aria-live="polite"></p>
+          <p class="gift-fine">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+          <p class="wa-line">מעדיפים לכתוב? <a data-wa href="#">כתבו לנו בוואטסאפ</a></p>
+        </form>
+        <div class="gift-after" tabindex="-1" hidden>
+          <p class="lead"><b>תודה, הפרטים התקבלו.</b> נחזור אליכם עוד היום. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
+          <a class="btn btn-ghost tips-btn" href="${TIPS_GROUP}" target="_blank" rel="noopener">${WA_ICON}להצטרפות לקבוצת הטיפים בוואטסאפ</a>
+        </div>
+      </div>
+    </div>${opts.after ? `
+    <div class="again">
+${ind(6, opts.after)}
+    </div>` : ''}
+  </div>
+</section>`;
+}
+/* הכפתור הראשי שחוזר בסוף הדף, עם קישור הוואטסאפ האחד שלצידו */
+const againTrack = t => `<a class="btn btn-primary" data-join href="${t.checkout}">${esc(t.cta)}</a>
+<p class="again-note"><span class="js-price-total">${esc(fmt(totalOf(t)))}</span> כולל מע״מ · החזר מלא אחרי המפגש הראשון</p>`;
+const againHub = () => `<a class="btn btn-primary" href="#tracks">לבחור מחזור ולשריין מקום</a>`;
 
 /* ─── שורת העובדות בקיפול העליון של דף הבית ──────────────────
    מחיר, מועד פתיחה ופריט הוכחה אחד, בשורה אחת. נגזר מקובץ הנתונים
@@ -134,10 +256,7 @@ function breakNote(startISO, i) {
    מוביל למקטע ההרשמה שבדף המסלול, ושם גם מוחלת ההנחה.          */
 function trackCard(t, i) {
   const sr = i ? ' sr-2' : '';
-  const promoNote = t.priceEx
-    ? `\n    <b class="note promo" data-promo hidden>עד 19.10 בחצות ${
-        fmt(Math.round(totalOf(t) * 0.9 * 100) / 100)} כולל מע״מ</b>`
-    : '';
+  const promoNote = '';   // מבצע הרישום המוקדם הסתיים, ואין כאן תאריך שעבר
   return `<article class="track${t.tone ? ' ' + t.tone : ''} sr${sr}">
   <span class="lvl on-light${t.tone ? ' ' + t.tone : ''}">${esc(t.kicker.split('·')[0].trim())}</span>
   <div class="meta">${t.meta.map((m, j) =>
@@ -294,7 +413,20 @@ function beginnersSyllabus() {
     [s.flow ? flow(s.flow, `שלבי ${s.title}`) : '',
      s.flow2 ? `<p class="small" style="margin-top:18px">${esc(s.flow2Label)}</p>\n` +
        flow(s.flow2, `שלבי ${s.flow2Label}`).replace('class="flow"', 'class="flow" style="margin-top:8px"') : '',
-    ].filter(Boolean).join('\n'))).join('\n');
+    ].filter(Boolean).join('\n'), s.out)).join('\n');
+}
+
+/* ─── תשעת המפגשים של צבא הסוכנים, מפגש אחרי מפגש ───────────
+   כל שורה: מה עושים במפגש, ומה התוצר שלו. התאריכים נגזרים
+   מ-start, עם הדילוג על חנוכה, כמו בסילבוס להדפסה.          */
+function advancedPlan() {
+  const t = ADVANCED;
+  return t.plan.map((s, i) => breakNote(t.start, i) + lessonRow(
+    String(i + 1).padStart(2, '0'),
+    `מפגש ${i + 1} · יום ${t.dayName} ${dayMonth(sessionDate(t.start, i))} · ${s.domain}`,
+    s.title, s.desc,
+    s.flow ? flow(s.flow, `שלבי ${s.title}`) : '',
+    s.out)).join('\n');
 }
 
 /* ─── שלושת התחומים של מסלול המתקדמים (.lesson הקיים) ─── */
@@ -324,8 +456,12 @@ function projectBox() {
   <ul class="ticks">
 ${p.items.map(i => `    <li>${esc(i)}</li>`).join('\n')}
   </ul>${p.example ? `
-  <p class="small">${esc(p.example)}${p.exampleLink
-    ? ` <a href="${esc(p.exampleLink.href)}" style="color:var(--accent);text-decoration:underline">${esc(p.exampleLink.text)}</a>` : ''}</p>` : ''}
+  <p class="body" style="color:var(--ink-2)">${esc(p.example)} כך זה נראה, בשידור שבו בנינו אותו מול כולם:</p>
+  <div class="video-frame">
+    <iframe src="${videoSrc()}" title="דוגמה לפרויקט: סוכן שמאתר חשבוניות במייל ומעדכן אותן בטבלה" loading="lazy"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>` : ''}
 </div>`;
 }
 
@@ -369,7 +505,7 @@ function webinar(opts = {}) {
       </form>
       <div class="gift-done" hidden>
         <p class="lead"><b>הוובינר פתוח, צפייה מהנה.</b> רוצים להמשיך לקבל טיפים קצרים על AI? בקבוצת הטיפים יוחנן משתף טיפים שוטפים, בלי ספאם.</p>
-        <a class="btn btn-primary tips-btn" href="${TIPS_GROUP}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
+        <a class="btn btn-ghost tips-btn" href="${TIPS_GROUP}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
       </div>
       <div class="video-frame gift-locked">
         <div class="gift-cover" aria-hidden="true">
@@ -526,6 +662,7 @@ function config(t) {
     start:      ${t.start ? `'${t.start}'` : 'null'},
     seats:      ${t.seats == null ? 'null' : t.seats},
     seatsLeft:  ${t.seatsLeft == null ? 'null' : t.seatsLeft},
+    closes:     '${COHORT.closes}',
     couponPage: '${t.id}'
   };
 </` + `script>`;
@@ -554,22 +691,24 @@ const PRICED = { 'course-beginners.html': BEGINNERS, 'course-advanced.html': ADV
 
 /* ─── ההחלפה בפועל ─── */
 const BLOCKS = {
-  // fitCard, learnPills, details ו-detailsHub נשארים בקובץ אך אינם
-  // מוזרקים יותר: המקטעים שהשתמשו בהם הוסרו מהדפים כדי לקצר אותם.
-  // להחזרת אחד מהם צריך להחזיר גם את סימני ה-BUILD לדף.
+  // heroFacts, hubTracks, hubCompare, fitCard, learnPills, details, detailsHub
+  // ו-advancedBlocks נשארים בקובץ אך אינם מוזרקים יותר: המקטעים שהשתמשו
+  // בהם ירדו מהדפים. להחזרת אחד מהם צריך להחזיר גם את סימני ה-BUILD לדף.
   'index.html': {
-    herofacts: heroFacts,
-    tracks:  hubTracks,
-    compare: hubCompare,
-    logos:   logoRun,
-    webinar: () => webinar({ ctaHref: '#tracks' }),
+    topbar:       () => topBar('all'),
+    herodeadline: () => heroDeadline('all'),
+    cohorts:      cohortCards,
+    logos:        logoRun,
+    leadform:     () => leadForm({ after: againHub() }),
   },
   'course-beginners.html': {
-    logos:    logoRun,
-    syllabus: beginnersSyllabus,
-    config:   () => config(BEGINNERS),
-    ld:       () => jsonLd(BEGINNERS),
-    webinar:  () => webinar({ ctaHref: '#buy', num: '08' }),
+    topbar:       () => topBar('beginners'),
+    herodeadline: () => heroDeadline('beginners'),
+    logos:        logoRun,
+    syllabus:     beginnersSyllabus,
+    config:       () => config(BEGINNERS),
+    ld:           () => jsonLd(BEGINNERS),
+    leadform:     () => leadForm({ after: againTrack(BEGINNERS) }),
   },
   // דף העסקים ועמוד הסיפורים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
   'business.html': {
@@ -578,22 +717,49 @@ const BLOCKS = {
   'cases.html': {
     logos: logoRun,
   },
-  // הדף הדיגיטלי: רק הוובינר. שאר התוכן שלו אינו מנוהל כאן.
+  // דף ההקלטה של וובינר שהתקיים: מתחת להקלטה, כרטיס מאפס למאה עם הכפתור והדדליין
+  'register.html': {
+    offer: () => offerCard(BEGINNERS),
+  },
+  // הדף הדיגיטלי: הוובינר וטופס המתלבטים. שאר התוכן שלו אינו מנוהל כאן.
   'course.html': {
-    webinar: () => webinar({ ctaHref: '#buy', ctaText: 'אני רוצה להתחיל ללמוד', num: '08' }),
+    webinar:  () => webinar({ ctaHref: '#buy', ctaText: 'לקנות את המוח השני', num: '08' }),
+    leadform: () => leadForm(),
   },
   'course-advanced.html': {
-    logos:    logoRun,
-    syllabus: advancedBlocks,
-    project:  projectBox,
-    config:   () => config(ADVANCED),
-    ld:       () => jsonLd(ADVANCED),
-    webinar:  () => webinar({ ctaHref: '#buy', num: '09' }),
+    topbar:       () => topBar('advanced'),
+    herodeadline: () => heroDeadline('advanced'),
+    logos:        logoRun,
+    syllabus:     advancedPlan,
+    project:      projectBox,
+    config:       () => config(ADVANCED),
+    ld:           () => jsonLd(ADVANCED),
+    leadform:     () => leadForm({ after: againTrack(ADVANCED) }),
   },
 };
 
+/* ─── מה שמוחל על כל דף, גם מחוץ לסימני BUILD ────────────────
+   data-wa      קישור הוואטסאפ האחד: אותו מספר ואותו טקסט בכל האתר.
+   data-seats   מקומות שנותרו (beginners / advanced / all). כשאין
+                מספר בקובץ הנתונים, האלמנט נשאר ריק ומוסתר.       */
+const SITE_PAGES = ['index.html', 'course-beginners.html', 'course-advanced.html', 'course.html',
+  'business.html', 'cases.html', 'register.html', 'makom.html', 'paid.html', 'course-thanks.html'];
+function sitewide(html) {
+  html = html.replace(/<a\b([^>]*?)\sdata-wa\b([^>]*)>/g, (m, pre, post) => {
+    const rest = (pre + post).replace(/\s(href|target|rel)="[^"]*"/g, '');
+    return `<a${rest} data-wa href="${WA_HREF}" target="_blank" rel="noopener">`;
+  });
+  html = html.replace(/<(span|b|p|li)\b([^>]*?)\sdata-seats="(beginners|advanced|all)"( hidden)?([^>]*)>[^<]*</g,
+    (_m, tag, pre, key, _h, post) => {
+      const txt = seatsFor(key);
+      return `<${tag}${pre} data-seats="${key}"${txt ? '' : ' hidden'}${post}>${esc(txt)}<`;
+    });
+  return html;
+}
+
 let touched = 0;
-for (const [file, blocks] of Object.entries(BLOCKS)) {
+for (const file of SITE_PAGES) {
+  const blocks = BLOCKS[file] || {};
   const path = join(ROOT, file);
   let html = readFileSync(path, 'utf8');
   for (const [name, render] of Object.entries(blocks)) {
@@ -608,6 +774,7 @@ for (const [file, blocks] of Object.entries(BLOCKS)) {
       `${open}\n${ind(2, render())}\n${' '.repeat(2)}${close}`);
   }
   if (PRICED[file]) html = staticPrice(html, PRICED[file]);
+  html = sitewide(html);
   writeFileSync(path, html);
   console.log(`✓ ${file}`);
   touched++;

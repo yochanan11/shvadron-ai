@@ -20,8 +20,8 @@
   --dim:#8090A8;
   --accent:#1F7F70;       /* טורקיז כהה לקישורים ולטקסט, עובר ניגודיות על לבן */
   --accent-ink:#0B1F3A;
-  --brand-blue:#4369AA;   /* הכחול של המודעות */
-  --brand-teal:#5FC3B1;   /* הטורקיז של המודעות, לכפתורים ולמשטחים */
+  --brand-blue:#3B5BA5;   /* כחול המותג, לפי הבריף */
+  --brand-teal:#65B8AB;   /* טורקיז המותג, לפי הבריף. הכפתור הראשי */
   --ad-blue:#4A7DB5;
   --light-bg:#F2F6FB;
   /* שכבת הכהיה מעל תמונת הרקע הכחולה.
@@ -43,7 +43,7 @@ a:hover{color:var(--accent)}
 ::selection{background:var(--brand-teal);color:var(--accent-ink)}
 
 /* ── כותרות: עבות ועגולות כמו במודעות, לא דחוסות ─────────────── */
-.display,h1,h2,h3{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em}
+.display,h1,h2,h3{font-family:'Rubik',sans-serif;font-weight:800;letter-spacing:-.02em}
 h1,.h-hero,h1[style*="--fit"]{font-size:clamp(44px,6.6vw,96px);line-height:1.02}
 @media (max-width:600px){h1[style*="--fit-m"],h1[style*="--fit"]{font-size:clamp(40px,11vw,60px)}}
 h2,.h-sec{font-size:clamp(34px,4.8vw,64px);line-height:1.08;color:var(--brand-blue)}
@@ -52,7 +52,7 @@ h2,.h-sec{font-size:clamp(34px,4.8vw,64px);line-height:1.08;color:var(--brand-bl
 
 /* ── כפתורים ───────────────────────────────────────────────── */
 .btn-primary{background:var(--brand-teal);color:var(--accent-ink)}
-.btn-primary:hover{background:#4FB3A1;color:var(--accent-ink)}
+.btn-primary:hover{background:#55A89B;color:var(--accent-ink)}
 .btn-light{background:#fff;color:var(--brand-blue)}
 .btn-light:hover{background:#EAF2FF;color:var(--brand-blue)}
 .btn-ghost{color:var(--ink);border:1.5px solid var(--brand-blue)}
@@ -160,7 +160,7 @@ h2,.h-sec{font-size:clamp(34px,4.8vw,64px);line-height:1.08;color:var(--brand-bl
 .hero-alt:hover{opacity:1}
 
 /* ── שורת הטאגליין לפני הפוטר ─────────────────────────────── */
-.brand-tag{text-align:center;padding:48px 24px 8px;font-family:'Heebo',sans-serif;font-weight:800;
+.brand-tag{text-align:center;padding:48px 24px 8px;font-family:'Rubik',sans-serif;font-weight:800;
   font-size:clamp(22px,3vw,32px);line-height:1.3}
 .brand-tag .t{color:var(--brand-teal)}
 .brand-tag .b{color:var(--brand-blue)}
@@ -187,13 +187,13 @@ h2,.h-sec{font-size:clamp(34px,4.8vw,64px);line-height:1.08;color:var(--brand-bl
 /* קופסת החבילה של צבא הסוכנים, ליד כרטיס הקנייה */
 .bonus-box{border:2px solid var(--brand-teal);border-radius:18px;padding:22px 22px 12px;background:#F2FBF9}
 .bonus-box .card-kicker{color:var(--accent);margin:0 0 6px}
-.bonus-title{font-family:'Heebo',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,24px);line-height:1.3;color:var(--brand-blue);margin:0 0 12px}
+.bonus-title{font-family:'Rubik',sans-serif;font-weight:800;font-size:clamp(20px,2.2vw,24px);line-height:1.3;color:var(--brand-blue);margin:0 0 12px}
 .bonus-box .ticks{font-size:16px}
 .bonus-box .ticks b{color:var(--ink)}
 
 /* הטיזר של המוח השני: מקטע משלו מתחת לגל, הכותרת בשפת המודעות */
 #teaser .teaser{margin-top:0}
-.teaser-h{font-family:'Heebo',sans-serif;font-weight:800;font-size:clamp(36px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em;color:var(--brand-blue)}
+.teaser-h{font-family:'Rubik',sans-serif;font-weight:800;font-size:clamp(36px,4.2vw,56px);line-height:1.05;letter-spacing:-.02em;color:var(--brand-blue)}
 .teaser-punch{border-inline-start-color:var(--brand-teal)}
 .teaser .video-frame{border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(30,58,105,.18)}
 
@@ -263,7 +263,7 @@ html{overflow-x:clip}
 
 /* ── מעבר עיצוב (25.10) ─────────────────────────────────────── */
 /* גופן אחד למותג: Heebo עבה גם בשמות המסלולים ובמספרים, כמו במודעות */
-.card-name,.step-n,.lesson-n{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em}
+.card-name,.step-n,.lesson-n{font-family:'Rubik',sans-serif;font-weight:800;letter-spacing:-.02em}
 .card-name{color:var(--brand-blue)}
 .step-n,.lesson-n{color:var(--brand-teal)}
 /* השורה השנייה בכותרות תמיד בטורקיז, גם במקטעים האפורים */
@@ -313,3 +313,149 @@ main>section.sec:has(> .wrap.figures) .fig-label{color:#E8F0FA}
     align-self:stretch;justify-self:start;height:0;min-height:100%;width:100%;max-width:none;
     object-fit:contain;object-position:left bottom}
 }
+
+/* ============================================================
+   בריף נובמבר 2026 · האתר מוכר את שני המחזורים
+   ------------------------------------------------------------
+   כחול #3B5BA5, טורקיז #65B8AB ולבן. Rubik, כותרות 700 עד 800
+   וגוף 400. מובייל קודם: פס דדליין דק ודביק למעלה, וכפתור
+   דביק בתחתית המסך. כפתור ראשי אחד בכל דף (טורקיז), וכפתור
+   משני אחד שפותח את טופס המתלבטים.
+   ============================================================ */
+
+/* ── הפס העליון: שם המחזור, מקומות, סגירת ההרשמה ────────────── */
+.top-bar{position:sticky;top:0;z-index:46;box-sizing:border-box;min-height:36px;
+  display:flex;align-items:center;justify-content:center;padding:7px 12px;
+  background:var(--brand-blue);color:#fff;font-size:14px;line-height:1.4;text-align:center}
+.top-bar p{margin:0;display:flex;flex-wrap:wrap;justify-content:center}
+.top-bar b{font-weight:700}
+.top-bar span::before{content:"·";padding-inline:7px;opacity:.6}
+/* במחשב הכותרת נדבקת מתחת לפס. בטלפון היא נגללת עם הדף, כדי
+   שפס אחד למעלה וכפתור אחד למטה יהיו כל מה שנשאר קבוע על המסך. */
+@media (min-width:861px){.top-bar ~ .site-head{top:36px}}
+@media (max-width:860px){.top-bar{font-size:13px}.top-bar ~ .site-head{position:relative;top:auto}}
+@media (max-width:370px){.top-bar{font-size:12px;padding-inline:8px}.top-bar span::before{padding-inline:5px}}
+
+/* ── הפתיחה: המסר, כפתור, דדליין, ביטחון, אמון ──────────────── */
+h1.h-msg{font-size:clamp(31px,8.5vw,66px);line-height:1.08}
+#top h1.h-msg span{display:block}
+.hero-deadline{display:flex;flex-wrap:wrap;gap:2px 0;margin:0;font-size:15.5px;line-height:1.5;font-weight:500;color:#fff}
+.hero-deadline span+span::before{content:"·";padding-inline:8px;opacity:.6}
+.hero-deadline b{font-weight:700;color:#E2FBF5}
+.hero-safe{display:flex;gap:10px;align-items:flex-start;margin:0;font-size:16px;line-height:1.5;color:#fff;font-weight:500}
+.hero-safe svg{flex:none;width:20px;height:20px;margin-top:2px;color:#BFF3E8}
+.hero-trust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;margin:0;padding:14px 0 0;
+  border-top:1px solid rgba(255,255,255,.22);font-size:14.5px;color:#fff}
+.hero-trust li{display:flex;align-items:center;gap:7px}
+.hero-trust svg{flex:none;width:16px;height:16px;color:#BFF3E8}
+.hero-price{margin:0;font-size:17px;font-weight:700;color:#fff}
+.hero-price small{font-size:15px;font-weight:400;color:var(--muted)}
+@media (min-width:1000px){
+  #top .wrap.stack.hero-split>.hero-trust{grid-column:1 / -1}
+}
+
+/* ── הציטוט של יענקי, גדול ─────────────────────────────────── */
+.quote-hero{margin:0;display:flex;flex-direction:column;gap:14px;max-width:980px}
+.quote-hero blockquote{margin:0;font-size:clamp(23px,3.3vw,40px);line-height:1.3;font-weight:700;
+  color:var(--brand-blue);letter-spacing:-.01em}
+.quote-hero figcaption{font-size:16px;font-weight:500;color:var(--muted)}
+
+/* ── יוטיוב מול אצלנו ──────────────────────────────────────── */
+.vs-wrap{border:1.5px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;
+  box-shadow:0 10px 30px rgba(30,58,105,.08)}
+.vs{width:100%;border-collapse:collapse;text-align:right;table-layout:fixed}
+.vs th{background:var(--brand-blue);color:#fff;font-weight:700;font-size:17px;padding:14px 18px}
+.vs td{padding:15px 18px;border-top:1px solid var(--line-soft);font-size:17px;line-height:1.4;vertical-align:top}
+.vs td:first-child{color:var(--muted)}
+.vs td:last-child{font-weight:700;color:var(--ink);background:#F4FBF9}
+@media (max-width:480px){.vs th,.vs td{padding:12px 12px;font-size:15.5px}}
+.rule-top h3{font-size:19px;line-height:1.35;font-weight:700;color:var(--brand-blue);margin:0}
+
+/* ── שני כרטיסי המחזורים, באותו גובה ───────────────────────── */
+.cohorts{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));align-items:stretch}
+.cohort{display:flex;flex-direction:column;gap:18px;background:#fff;border:1.5px solid var(--line);
+  border-radius:24px;padding:clamp(22px,3vw,34px);box-shadow:0 10px 30px rgba(30,58,105,.08)}
+.cohort.is-pro{border-color:var(--brand-teal)}
+.cohort header{display:flex;flex-direction:column;gap:6px}
+.cohort-name{font-size:clamp(28px,3vw,38px);line-height:1.1;font-weight:800;color:var(--brand-blue);margin:0}
+.cohort-tag{margin:0;font-size:18px;line-height:1.35;font-weight:700;color:var(--accent)}
+.cohort-who{margin:0;font-size:17px;line-height:1.55;color:var(--ink-2)}
+.cohort-label{margin:0 0 10px;font-size:14px;font-weight:700;color:var(--muted)}
+.cohort .ticks{font-size:17px}
+.cohort-how{margin:0;font-size:16px;line-height:1.6;color:var(--ink-2)}
+.cohort-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--line);padding-top:18px}
+.cohort-price{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.cohort-price b{font-size:32px;line-height:1;font-weight:800;color:var(--ink)}
+.cohort-price span{font-size:15px;color:var(--muted)}
+.cohort-facts{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px;font-size:14px}
+.cohort-facts li{background:var(--bg-2);border-radius:999px;padding:5px 12px;font-weight:500;color:var(--ink)}
+.cohort-facts .is-seats{background:#FFF1DC;color:#7A4300;font-weight:700}
+.cohort-more{align-self:center;font-size:15px;color:var(--accent);text-decoration:underline;text-underline-offset:3px;
+  padding:6px 4px}
+
+/* ── שורה לקונה: המעסיק משלם ───────────────────────────────── */
+.note-line{margin:0;border-inline-start:4px solid var(--brand-teal);background:#F2FBF9;border-radius:12px;
+  padding:16px 18px;font-size:17px;line-height:1.55;color:var(--ink)}
+.light .note-line{background:#fff}
+
+/* ── תוצר לכל מפגש ─────────────────────────────────────────── */
+.lesson-out{margin:14px 0 0;padding:10px 14px;background:#F2FBF9;border-radius:10px;font-size:15.5px;
+  line-height:1.5;color:var(--ink);max-width:none}
+.lesson-out b{color:var(--accent)}
+
+/* ── טופס המתלבטים: שם וטלפון, והכפתור הראשי שוב אחריו ────── */
+.lead-form .gift-fields{grid-template-columns:1fr 1fr}
+@media (max-width:420px){.lead-form .gift-fields{grid-template-columns:1fr}}
+.again{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+  margin-top:clamp(32px,5vw,56px);padding-top:clamp(28px,4vw,44px);border-top:1px solid var(--line)}
+.again .btn{min-width:min(100%,320px)}
+.again-note{margin:0;font-size:15px;color:var(--muted)}
+.wa-line{margin:0;font-size:15.5px;color:var(--ink-2)}
+.wa-line a{color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* ── הרצועה התחתונה בנייד: כפתור ראשי אחד, ולצידו המשני ─────── */
+@media (max-width:640px){
+  .dock-cta .btn-primary{flex:1.25}
+  .dock-cta .btn{flex:1;white-space:nowrap}
+}
+/* כל עוד פס העוגיות מוצג, הרצועה יושבת מעליו ולא מתחתיו */
+.has-consent-banner .dock{bottom:var(--ck-h,0px)}
+
+/* ── כרטיס הצעה בעמודי התודה ───────────────────────────────── */
+.offer-card{display:flex;flex-direction:column;gap:16px;background:#fff;border:2px solid var(--brand-teal);
+  border-radius:24px;padding:clamp(22px,3vw,34px);box-shadow:0 14px 34px rgba(30,58,105,.1)}
+.offer-card h2,.offer-card h3{margin:0}
+.offer-card .cohort-facts li{background:var(--bg-2)}
+
+/* פס העוגיות על רקע לבן: "רק עוגיות חיוניות" ו"הגדרות" נשארו בלבן
+   מהגרסה הכהה, ולכן לא נראו בכלל. הסירוב חייב להיות גלוי כמו האישור. */
+.shw-cookie-banner .shw-ck-secondary{color:var(--ink);border-color:var(--brand-blue);background:#fff}
+.shw-cookie-banner .shw-ck-secondary:hover{background:var(--bg-2);color:var(--ink)}
+.shw-cookie-banner .shw-ck-link{color:var(--ink-2)}
+.shw-cookie-banner .shw-ck-link:hover{color:var(--accent)}
+.shw-cookie-banner .shw-ck-btn:focus-visible{outline-color:var(--brand-blue);box-shadow:none}
+.shw-cookie-banner p.shw-cookie-short{color:var(--ink-2)!important}
+
+/* שורת הדדליין בטלפון: כל פריט בשורה משלו, בלי נקודה שנשארת בתחילת שורה */
+@media (max-width:560px){
+  .hero-deadline{flex-direction:column;gap:2px}
+  .hero-deadline span+span::before{content:none}
+  .hero-trust{display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;font-size:14px}
+}
+
+/* האותיות הקטנות והודעת השגיאה שמתחת לטפסים: gift.css נטען אחרון וצבע
+   אותן בלבן (מהעיצוב הכהה), כך שעל רקע לבן הן לא נראו. */
+.gift-form .gift-fine{color:var(--muted)}
+.gift-form .gift-fine a{color:var(--accent)}
+.gift-form .gift-msg{color:var(--accent)}
+.gift-form .gift-msg.err{color:#B3261E}
+.gift-form .gift-msg.err a{color:#B3261E;text-decoration:underline}
+
+/* מה נבנה בעסקים: השורה שליד כל סיפור */
+.in-course{margin:0;font-size:16px;font-weight:700}
+.in-course a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+
+/* כפתור השליחה של טופס: כחול מלא. הטורקיז שמור לכפתור הראשי של הדף
+   (לשריין מקום, לקנות), כדי שבכל דף יהיה כפתור ראשי אחד שבולט. */
+.gift-form button.btn-primary{background:var(--brand-blue);color:#fff}
+.gift-form button.btn-primary:hover{background:#2F4C8E;color:#fff}

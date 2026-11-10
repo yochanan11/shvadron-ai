@@ -4,13 +4,13 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>הרשמה | SHWADRON.AI</title>
-<meta name="description" content="השאירו פרטים ובחרו מסלול: מאפס למאה למתחילים או צבא הסוכנים למתקדמים. יוחנן שבדרון יחזור אליכם."/>
+<meta name="description" content="השאירו פרטים ובחרו מסלול: מאפס למאה או צבא הסוכנים. נחזור אליכם עוד היום."/>
 <meta name="robots" content="noindex, follow"/>
 <link rel="canonical" href="https://ai.shwadron-ai.com/register.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://ai.shwadron-ai.com/register.html"/>
 <meta property="og:title" content="הרשמה | SHWADRON.AI"/>
-<meta property="og:description" content="השאירו פרטים ובחרו מסלול. יוחנן שבדרון יחזור אליכם."/>
+<meta property="og:description" content="השאירו פרטים ובחרו מסלול. נחזור אליכם עוד היום."/>
 <meta property="og:image" content="https://ai.shwadron-ai.com/assets/public/yochanan-card.jpg"/>
 <meta property="og:locale" content="he_IL"/>
 <link rel="icon" type="image/png" href="assets/public/icon.svg"/>
@@ -106,7 +106,7 @@
   <div class="wrap">
     <a href="index.html" class="brand" aria-label="SHWADRON.AI, לדף הבית"><img src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84"/></a>
     <nav class="site-nav" aria-label="ניווט ראשי">
-      <a class="nav-x" href="index.html">כל המסלולים</a>
+      <a class="nav-x" href="index.html">שני המחזורים</a>
     </nav>
     <a class="btn btn-primary btn-sm" href="#form" data-head-cta>להרשמה</a>
   </div>
@@ -120,11 +120,73 @@
 <section id="top" style="padding-top:clamp(48px,7vw,88px)">
   <div class="wrap stack">
     <p class="eyebrow" data-hero-eyebrow>הרשמה</p>
-    <h1 style="--fit:.30" data-hero-title>השאירו פרטים.<br/><span class="on-accent">יוחנן יחזור אליכם.</span></h1>
-    <p class="lead" data-hero-lead>בחרו את המסלול שמעניין אתכם, ויוחנן יחזור אליכם לשיחה קצרה ולהתאמה.</p>
+    <h1 style="--fit:.30" data-hero-title>השאירו פרטים.<br/><span class="on-accent">נחזור אליכם עוד היום.</span></h1>
+    <p class="lead" data-hero-lead>בחרו את המסלול שמעניין אתכם, ונחזור אליכם עוד היום לשיחה קצרה ולהתאמה.</p>
     <div class="reg-when" data-hero-when hidden></div>
     <div class="reg-hero-form" data-hero-form hidden></div>
     <img class="hero-char" src="assets/public/brand/character-speed.webp" alt="הדמותג של SHWADRON.AI" width="654" height="900" loading="eager"/>
+  </div>
+</section>
+
+<!-- ===== דף הקלטה (register.html?for=<וובינר שכבר התקיים>) =====
+     שם וטלפון פותחים את ההקלטה מיד, ומתחתיה כרטיס מאפס למאה עם הכפתור
+     והדדליין. ההקלטות מוגדרות ב-RECORDINGS ב-assets/js/register.js. -->
+<form class="gift-form lead-form" data-rec novalidate hidden>
+  <div class="gift-fields">
+    <label><span>שם</span><input name="name" autocomplete="name" placeholder="שם" required/></label>
+    <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="טלפון" required/></label>
+  </div>
+  <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
+  <button class="btn btn-primary" type="submit">לצפות בהקלטה</button>
+  <p class="gift-msg" role="status" aria-live="polite"></p>
+  <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+</form>
+<div class="gift-after" data-rec-open hidden>
+  <p class="lead" style="margin:0"><b>ההקלטה פתוחה, צפייה מהנה.</b></p>
+  <a class="btn btn-primary" href="#recording">לצפות בהקלטה</a>
+</div>
+
+<section class="sec" id="recording" hidden>
+  <div class="wrap stack">
+    <div class="video-frame">
+      <iframe title="הקלטת הוובינר" allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h2 class="h-sm">ראית איך זה נראה.<br/><span class="ghost">עכשיו על העבודה שלך.</span></h2>
+      <p class="lead">בוובינר רואים. במחזור עושים את זה על המשימות שלך, עם מרצה חי וקבוצה, עד שזה עובד אצלך.</p>
+    </div>
+    <div class="cohorts" style="max-width:640px">
+      <!-- BUILD:offer -->
+  <article class="cohort">
+    <header>
+      <h3 class="cohort-name">מאפס למאה</h3>
+      <p class="cohort-tag">ניסית קצת, ועכשיו זה ייכנס לעבודה</p>
+    </header>
+    <p class="cohort-who">למי שעוד לא נגע, או שנגע קצת וזה לא יצא.</p>
+    <div>
+      <p class="cohort-label">יוצאים עם</p>
+      <ul class="ticks">
+        <li>שבעת הכללים שהופכים תשובה בינונית לתשובה מקצועית</li>
+        <li>פגישה מוקלטת שהופכת לסיכום, למשימות ולמייל מעקב</li>
+        <li>מצגת מקצועית מאפס על חומר שלך</li>
+      </ul>
+    </div>
+    <p class="cohort-how">שלושה ערבים חיים בזום, תרגול על המשימות שלך וקבוצת וואטסאפ. כל מפגש מוקלט.</p>
+    <div class="cohort-foot">
+      <p class="cohort-price"><b>885 ₪</b> <span>כולל מע״מ, עד 3 תשלומים</span></p>
+      <ul class="cohort-facts" data-closes="2026-11-22">
+        <li>3 חודשי מנוי במתנה</li>
+        <li>נפתח ביום שני 23.11</li>
+        <li data-closing>ההרשמה נסגרת ב-22.11</li>
+      </ul>
+      <a class="btn btn-primary btn-block" href="course-beginners.html#buy" data-track-pick="course-beginners">לשריין מקום במאפס למאה</a>
+      <a class="cohort-more" href="course-beginners.html" data-track-pick="course-beginners">כל הפרטים על מאפס למאה</a>
+    </div>
+  </article>
+  <!-- /BUILD:offer -->
+    </div>
+    <p class="body">כבר עובד עם AI כל יום? <a href="course-advanced.html" style="color:var(--accent);text-decoration:underline;font-weight:700">צבא הסוכנים נפתח ביום רביעי 25.11</a>.</p>
   </div>
 </section>
 
@@ -163,13 +225,13 @@
         <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
         <button class="btn btn-primary" type="submit" data-submit>שליחה</button>
         <p class="gift-msg" role="status" aria-live="polite"></p>
-        <p class="gift-fine">הפרטים משמשים לחזרה אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+        <p class="gift-fine">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
       </form>
       <div class="gift-after" tabindex="-1" hidden>
-        <p class="lead" data-after-text><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
+        <p class="lead" data-after-text><b>תודה, הפרטים התקבלו.</b> נחזור אליכם עוד היום. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
         <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
       </div>
-      <p class="small">מעדיפים לכתוב? <a href="https://wa.me/972528189921" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">שלחו ליוחנן הודעה בוואטסאפ</a> · <a href="https://wa.me/972528189921" class="ltr" style="color:inherit;white-space:nowrap">052-818-9921</a></p>
+      <p class="small">מעדיפים לכתוב? <a style="color:var(--accent);text-decoration:underline" data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">כתבו לנו בוואטסאפ</a> · <span class="ltr" style="white-space:nowrap">052-818-9921</span></p>
     </div>
 
     <aside class="contact-aside" aria-label="מה קורה אחרי ההרשמה">
@@ -177,7 +239,7 @@
       <ol class="contact-steps" data-steps="general">
         <li><span><b>משאירים פרטים.</b> שתי דקות, בלי התחייבות.</span></li>
         <li><span><b>מקבלים מייל אישור.</b> עם המסלול שבחרתם.</span></li>
-        <li><span><b>יוחנן חוזר אליכם.</b> שיחה קצרה, ובוחרים יחד את המסלול שמתאים.</span></li>
+        <li><span><b>חוזרים אליכם עוד היום.</b> שיחה קצרה, ובוחרים יחד את המסלול שמתאים.</span></li>
       </ol>
       <ol class="contact-steps" data-steps="webinar" hidden>
         <li><span><b>משאירים פרטים.</b> שתי דקות, והוובינר חינם.</span></li>
@@ -188,7 +250,7 @@
         <img src="assets/public/yochanan-landing.jpg" alt="" width="56" height="56"/>
         <p><b>יוחנן שבדרון</b><br/>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</p>
       </div>
-      <a class="btn btn-light btn-block" href="https://wa.me/972528189921" target="_blank" rel="noopener">שאלה? כתבו בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
+      <a class="btn btn-light btn-block" data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">שאלה? כתבו בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
     </aside>
   </div>
 </section>
@@ -206,13 +268,13 @@
       <a href="business.html">לעסקים ולארגונים</a>
     </nav>
     <nav aria-label="קישורים משפטיים">
-      <a href="index.html">כל המסלולים</a>
+      <a href="index.html">דף הבית</a>
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
       <a href="accessibility.html">הצהרת נגישות</a>
       <a href="#" data-consent-settings>הגדרות עוגיות</a>
     </nav>
-    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">052-818-9921</a></span>
   </div>
 </footer>
 </body>

@@ -154,9 +154,12 @@
       '<div class="shw-cookie-inner">' +
         '<div class="shw-cookie-text">' +
           '<h2 id="shw-cookie-title" tabindex="-1">שימוש בעוגיות</h2>' +
-          '<p>עוגיות חיוניות להפעלת האתר, ועוגיות סטטיסטיקה ' +
+          '<p class="shw-cookie-full">עוגיות חיוניות להפעלת האתר, ועוגיות סטטיסטיקה ' +
           '(Google Analytics ו-Microsoft Clarity) כדי לשפר אותו. ' +
           'הסטטיסטיקה נטענת רק באישורכם.</p>' +
+          /* הנוסח הקצר מוצג רק בטלפון, שם הפס הוא שורה דקה אחת.
+             aria-hidden כי קורא מסך מקבל את הנוסח המלא שמעליו. */
+          '<p class="shw-cookie-short" aria-hidden="true">האתר משתמש בעוגיות. סטטיסטיקה נטענת רק באישורכם.</p>' +
         '</div>' +
         '<div class="shw-cookie-actions">' +
           '<button type="button" data-act="accept" class="shw-ck-btn shw-ck-primary">אני מאשר הכול</button>' +
@@ -191,6 +194,7 @@
     var b = document.getElementById(BANNER_ID);
     if (b) b.parentNode.removeChild(b);
     document.documentElement.classList.remove(BANNER_CLASS);
+    document.documentElement.style.removeProperty('--ck-h');
     var t = document.getElementById('shw-consent-toggle');
     if (t) t.focus();
   }
@@ -200,6 +204,13 @@
     var b = buildBanner();
     document.body.appendChild(b);
     document.documentElement.classList.add(BANNER_CLASS);
+    // גובה הפס כמשתנה CSS: הרצועה התחתונה עם כפתור ההרשמה יושבת מעליו
+    var measure = function () {
+      if (!document.getElementById(BANNER_ID)) return window.removeEventListener('resize', measure);
+      document.documentElement.style.setProperty('--ck-h', b.offsetHeight + 'px');
+    };
+    measure();
+    window.addEventListener('resize', measure);
     // Announce the banner to assistive tech without stealing the caret
     // from a visitor who has already started interacting with the page.
     window.setTimeout(function () {
