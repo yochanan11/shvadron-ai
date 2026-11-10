@@ -459,3 +459,66 @@ h1.h-msg{font-size:clamp(31px,8.5vw,66px);line-height:1.08}
    (לשריין מקום, לקנות), כדי שבכל דף יהיה כפתור ראשי אחד שבולט. */
 .gift-form button.btn-primary{background:var(--brand-blue);color:#fff}
 .gift-form button.btn-primary:hover{background:#2F4C8E;color:#fff}
+
+/* ============================================================
+   תיקונים מהמעבר החזותי על כל הדפים (390 ו-1280)
+   ============================================================ */
+
+/* הפס העליון והכותרת לא נדבקו בכלל: body עם overflow-x:hidden, כש-html
+   כבר ב-clip, הופך למיכל גלילה משלו, ו-position:sticky נמדד מולו ולא
+   מול המסך. clip חוסם גלישה אופקית באותה מידה, בלי ליצור מיכל גלילה.
+   דפדפן ישן שלא מכיר clip נשאר עם hidden מ-shw-2026.css. */
+body{overflow-x:clip}
+/* קפיצה לעוגן משאירה מקום למה שדבוק למעלה: פס וכותרת במחשב, פס בלבד בנייד */
+@media (min-width:861px){.top-bar ~ main section[id],.top-bar ~ main :target{scroll-margin-top:128px}}
+@media (max-width:860px){.top-bar ~ main section[id],.top-bar ~ main :target{scroll-margin-top:48px}}
+
+/* דף בלי רצועה תחתונה לא צריך את המקום ששמור לה מתחת לפוטר */
+@media (max-width:1239px){body:not(:has(.dock)){padding-bottom:0}}
+
+/* כפתור שהטקסט שלו נשבר לשתי שורות: ממורכז, ובכותרת הוא לא נשבר בכלל */
+.btn{text-align:center}
+.site-head .btn{white-space:nowrap}
+@media (max-width:420px){.site-head .btn-sm{padding-inline:16px}}
+
+/* כותרת של קופסת קריאה לפעולה שנשברת לשתי שורות */
+.cta-box b{display:block;line-height:1.25}
+
+/* הפוטר: האפורים של העיצוב הכהה לא עברו ניגודיות על הכחול */
+.site-foot .wrap{color:#C9D6EA}
+.foot-tracks [aria-current="page"]{color:#AFC3DD}
+
+/* שדה בחירה בטופס: החץ נמחק כשהרקע נצבע בלבן, והריפוד היה בצד הלא נכון */
+.gift-form select{
+  background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%233B5BA5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E") no-repeat left 16px center;
+  padding:14px 16px;padding-inline-end:44px}
+
+/* מקטע בהיר: כותרות הכרטיסים והווים בצבעי המותג, כמו בשאר הדף */
+.light .card-title{color:var(--brand-blue)}
+.light .ticks li::before{color:var(--accent)}
+.light .eyebrow{color:var(--accent)}
+
+/* ציטוט בכרטיס: 24 פיקסל הם יותר מדי לטלפון */
+@media (max-width:600px){.quote-card blockquote{font-size:19px;line-height:1.55}}
+
+/* מה נבנה בעסקים: מספר הסיפור לא יושב מתחת לשורת הפרטים בנייד, והתוצאה קריאה */
+@media (max-width:700px){.case .case-who{padding-left:76px}}
+.case-result{color:#fff;background:#1F7F70}
+
+/* קווי ההפרדה בין השלבים, בצבע הקווים של שאר הדף */
+.step{border-top-color:var(--line)}
+
+/* תגית הדחיפות בכרטיס המחיר: טקסט כהה על טורקיז כהה לא נקרא */
+.buy-urgency{color:#fff}
+
+/* שורת "מתחילים ביום..." בהצעה: inline-flex הפך כל קטע טקסט לעמודה, ובנייד
+   נשארה נקודה בתחילת שורה. כאן היא שורת טקסט רגילה בתוך המסגרת. */
+.stock{display:inline-block;line-height:1.5;border-radius:18px}
+
+/* שורות הסילבוס: עמודת המספר ברוחב קבוע כדי שהטקסט יתיישר בין השורות,
+   ו-01 באותו צבע כמו שאר המספרים */
+@media (min-width:700px){.lesson{grid-template-columns:92px 1fr}}
+.lesson:first-child .lesson-n{color:var(--brand-teal)}
+
+/* רצועת הלוגואים למי שביקש פחות תנועה: רווח מהקצוות */
+@media (prefers-reduced-motion:reduce){.logo-run .logos{padding:0 20px}}
