@@ -24,7 +24,8 @@
     'pro-answers': {
       name: 'מתשובה בינונית לתשובה מקצועית',
       title: 'מתשובה בינונית', accent: 'לתשובה מקצועית.',
-      lead: 'ההקלטה המלאה של הוובינר: 7 הכללים, ותמונות שלא נראות כמו AI. אותה בקשה פעמיים, לפני ואחרי. משאירים שם וטלפון, והיא נפתחת כאן מיד.',
+      lead: 'ההקלטה המלאה של הוובינר: 7 הכללים, ותמונות שלא נראות כמו AI. אותה בקשה פעמיים, לפני ואחרי.',
+      gate: 'משאירים שם וטלפון, והיא נפתחת כאן מיד.',
       src: 'https://drive.google.com/file/d/1zOvfpd7uOGD81hrUDq6YOMdBjG-drFcx/preview'
     }
   };
@@ -77,13 +78,18 @@
     $('[data-hero-eyebrow]').textContent = 'ההקלטה המלאה · חינם';
     var h1 = $('[data-hero-title]'); h1.textContent = rec.title; h1.appendChild(document.createElement('br'));
     var acc = document.createElement('span'); acc.className = 'on-accent'; acc.textContent = rec.accent; h1.appendChild(acc);
-    $('[data-hero-lead]').textContent = rec.lead;
+    $('[data-hero-lead]').textContent = rec.lead + ' ' + rec.gate;
     document.title = rec.name + ' · ההקלטה המלאה | SHWADRON.AI';
     frame.title = 'הקלטת הוובינר: ' + rec.name;
     // הטופס עולה לאזור העליון, והטופס הכללי של הדף יורד
     var slot = $('[data-hero-form]');
     slot.appendChild(form); slot.appendChild($('[data-rec-open]'));
     form.hidden = false; slot.hidden = false;
+    // בטלפון התוויות מוסתרות (נשארות לקוראי מסך), ולכן שם השדה מופיע בתוכו
+    if(window.matchMedia('(max-width:899px)').matches) form.querySelectorAll('.gift-fields label').forEach(function(l){
+      var t = l.querySelector('span'), i = l.querySelector('input');
+      if(t && i) i.placeholder = t.textContent.trim();
+    });
     $('#form').hidden = true;
     $('main').classList.add('reg-webinar');
     var cta = $('[data-head-cta]'); cta.href = '#top'; cta.textContent = 'לצפות בהקלטה';
@@ -92,6 +98,7 @@
       if(!frame.src) frame.src = rec.src;
       sec.hidden = false;
       form.hidden = true;
+      $('[data-hero-lead]').textContent = rec.lead;
       $('[data-rec-open]').hidden = false;
       cta.href = '#recording';
       if(scroll) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
