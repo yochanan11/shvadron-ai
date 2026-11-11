@@ -14,6 +14,7 @@
   'use strict';
   var page = location.pathname.split('/').pop() || 'index.html';
   var cameFrom = '';   // הכפתור האחרון שהוביל לטופס
+  var intent = '', pickedTrack = '';   // שריון מקום (ובאיזה מחזור) או התלבטות, לעמודות בגיליון של המוכרת
 
   function where(a){
     if(a.getAttribute('data-cta')) return a.getAttribute('data-cta');
@@ -33,12 +34,14 @@
     if(!target) return;
     e.preventDefault();
     cameFrom = where(a);
+    intent = a.getAttribute('data-intent') === 'reserve' ? 'reserve' : 'question';
+    pickedTrack = '';
     // הכותרת של הטופס מתאימה לכפתור שהביא אליו: שריון מקום (עם שם המחזור אם ידוע) או התלבטות
     var box = target.querySelector('.callback'), title = target.querySelector('[data-form-title]'),
         body = target.querySelector('[data-form-body]'), submit = target.querySelector('[data-form-submit]');
     if(box && title && body){
       if(a.getAttribute('data-intent') === 'reserve'){
-        var track = a.getAttribute('data-track') || box.getAttribute('data-track') || '';
+        var track = pickedTrack = a.getAttribute('data-track') || box.getAttribute('data-track') || '';
         if(track && !a.getAttribute('data-cta')) cameFrom += ' · שריון מקום';
         title.textContent = 'שריון מקום' + (track ? ' ב' + track : '') + '.';
         body.textContent = 'משאירים שם וטלפון, ונחזור אליכם עוד היום כדי להשלים את ההרשמה. בלי תשלום עכשיו.';
@@ -94,7 +97,7 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name, phone: phone, email: email, company: company, employees: employees, need: need,
-                               kind: 'callback', cta: cta, consent: !!(el.consent && el.consent.checked),
+                               kind: 'callback', cta: cta, intent: intent, track: pickedTrack, consent: !!(el.consent && el.consent.checked),
                                source: source, page: page })
       }).then(function(r){
         if(!r.ok) return fail();

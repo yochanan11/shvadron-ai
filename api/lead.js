@@ -93,6 +93,11 @@ module.exports = async (req, res) => {
   const cta = callback ? String(b.cta || '').replace(/[<>"'&]/g, '').trim().slice(0, 40) : '';
   // טופס העסקים: מה מעניין (הרצאה, הדרכה לצוות, שליחת עובד למחזור)
   const need = callback ? (NEEDS[b.need] || '') : '';
+  // טופס "חזרו אליי": שריון מקום או התלבטות, ובאיזה מחזור. בדף מסלול המחזור הוא של הדף.
+  const intent = callback ? (b.intent === 'reserve' ? 'reserve' : 'question') : '';
+  const COHORTS = ['מאפס למאה', 'צבא הסוכנים'];
+  const PAGE_COHORT = { 'course-beginners.html': 'מאפס למאה', 'course-advanced.html': 'צבא הסוכנים' };
+  const cohort = callback ? (COHORTS.includes(b.track) ? b.track : (PAGE_COHORT[page] || '')) : '';
 
   // טלפון ישראלי: 05X-XXXXXXX, או עם קידומת 972
   const local = phone.replace(/^\+?972/, '0');
@@ -124,10 +129,10 @@ module.exports = async (req, res) => {
 
   const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '')
     + (employees ? ' · ' + employees + ' עובדים' : '') + (need ? ' · מעניין: ' + need : '')
-    + (callback ? ' · בקשה לחזרה' : '') + (cta ? ' · כפתור: ' + cta : '')
+    + (callback ? (intent === 'reserve' ? ' · שריון מקום' : ' · בקשה לחזרה') : '') + (cta ? ' · כפתור: ' + cta : '')
     + (track ? ' · ' + track : '') + (who ? ' · ' + who : '') + (recording ? ' · צפייה בהקלטה' : '') + (topic ? ' · ' + topic : '')
     + (interest ? ' · ' + interest : '') + (callTime ? ' · לחזור ב' + callTime : '') + (makom && topicKey ? ' · ' + topicKey : '');
-  const lead = { name, phone: local, email, consent, course, page, company, employees, need, cta, source, track: track || interest, who, message, topic, topicKey, interest, callTime, ts: new Date().toISOString() };
+  const lead = { name, phone: local, email, consent, course, page, company, employees, need, cta, source, track: track || cohort || interest, intent, who, message, topic, topicKey, interest, callTime, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([
