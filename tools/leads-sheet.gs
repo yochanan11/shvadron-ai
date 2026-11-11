@@ -65,7 +65,8 @@ function doPost(e) {
       'שם העסק': d.company || '',
       'כמה עובדים': d.employees || '',
       'סוג פנייה': d.kind === 'callback' ? (d.intent === 'reserve' ? 'שריון מקום' : 'מתלבט, ביקש שיחה')
-                 : d.kind === 'register' ? 'הרשמה' : d.kind === 'makom' ? 'שמירת מקום' : 'וובינר',
+                 : d.kind === 'register' ? 'הרשמה' : d.kind === 'makom' ? 'שמירת מקום'
+                 : d.kind === 'recording' ? 'מתנה: הקלטה' : 'וובינר',
       'הסכמה לדיוור': d.consent ? 'כן' : 'לא',
       'מקור הגעה': sourceLabel(d.source),
       'מייל': d.email || '',
@@ -94,6 +95,10 @@ function doPost(e) {
   // שמירת מקום: התראה מיידית ליוחנן ולנציג
   if (d.kind === 'makom') {
     try { notifyMakom(d); } catch (err) { console.error('makom notify: ' + err); }
+  }
+  // הקלטה במתנה: שולחים למייל קישור לדף ההקלטה, כדי שתישאר אצלו
+  if (d.kind === 'recording' && d.email) {
+    try { sendGift(d); } catch (err) { console.error('gift mail: ' + err); }
   }
   // שריון מקום או מתלבט מהאתר: התראה מיידית לאשת המכירות, כדי לחזור עוד היום
   if (d.kind === 'callback') {
@@ -179,6 +184,34 @@ const WEBINARS = {
   },
 };
 const TIPS_GROUP = 'https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv';
+
+/* מייל המתנה: קישור לדף ההקלטה באתר (לא לסרטון עצמו), ומתחתיו המחזור הקרוב */
+const GIFTS = {
+  'rec-video-editing': { title: 'הוובינר על עריכת וידאו', key: 'video-editing' },
+};
+function sendGift(d) {
+  const g = GIFTS[d.topicKey];
+  if (!g) return;
+  const first = String(d.name || '').trim().split(/\s+/)[0] || '';
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const link = 'https://ai.shwadron-ai.com/register.html?for=' + g.key + '&src=email/gift';
+  const html =
+    '<div dir="rtl" style="background:#F2F6FB;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">' +
+      '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #D5DEEA">' +
+        '<div style="background:#3B5BA5;padding:18px 24px;text-align:right">' +
+          '<img src="https://ai.shwadron-ai.com/assets/public/logo-email.png" alt="SHWADRON.AI" width="260" height="57" style="display:block;border:0;width:260px;height:auto;color:#ffffff;font-size:20px;font-weight:bold"/>' +
+        '</div>' +
+        '<div style="padding:24px;color:#1E3A69;font-size:16px;line-height:1.6;text-align:right">' +
+          '<p style="font-size:18px;margin:0 0 14px">שלום ' + esc(first) + ',</p>' +
+          '<p>כמו שהבטחנו, ' + esc(g.title) + ' מחכה לך כאן:</p>' +
+          '<a href="' + esc(link) + '" style="display:inline-block;background:#65B8AB;color:#0B1F3A;text-decoration:none;font-weight:bold;padding:13px 26px;border-radius:999px;margin:6px 0">לצפייה בהקלטה</a>' +
+          '<p style="margin-top:18px">רוצים שזה ייכנס לעבודה שלכם, עם מרצה חי וקבוצה? בדף ההקלטה יש את פרטי המחזור הקרוב.</p>' +
+          '<p style="margin:18px 0 0">להתראות,<br/><b>יוחנן שבדרון</b><br/><span style="color:#56657E">SHWADRON.AI</span></p>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  MailApp.sendEmail({ to: d.email, subject: 'המתנה שלך: ' + g.title + ' | SHWADRON.AI', htmlBody: html, name: 'יוחנן שבדרון' });
+}
 
 function sendConfirmation(d) {
   const first = String(d.name || '').trim().split(/\s+/)[0] || '';

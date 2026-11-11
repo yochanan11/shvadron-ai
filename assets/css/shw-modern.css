@@ -316,3 +316,6 @@ main>section.sec .callback h2 .ghost{background:linear-gradient(95deg,#C9F7EE,#8
 .chooser li{padding:14px 18px;border-radius:16px;background:#fff;border:1px solid var(--hair);font-size:16.5px;line-height:1.5;color:var(--ink-2)}
 .chooser li b{color:var(--navy);font-weight:700}
 @media (min-width:860px){.chooser{grid-template-columns:1fr 1fr}}
+
+/* דף המתנה: שדה המייל על שורה מלאה */
+.gift-fields [data-rec-email]{grid-column:1 / -1}

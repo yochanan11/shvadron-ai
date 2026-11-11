@@ -108,7 +108,8 @@ module.exports = async (req, res) => {
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   // הקלטת וובינר (register.html?for=<וובינר שכבר התקיים>): שם וטלפון פותחים את ההקלטה, בלי מייל
   const recording = b.kind === 'recording';
-  if (!name || !/^0\d{8,9}$/.test(local) || ((makom || callback || recording) ? (email && !emailOk) : !emailOk)
+  // הקלטה במתנה: המייל חובה, כי ההקלטה נשלחת גם אליו
+  if (!name || !/^0\d{8,9}$/.test(local) || ((makom || callback) ? (email && !emailOk) : !emailOk)
       || (makom && (!interest || (b.interest === 'business' && !company)))) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }

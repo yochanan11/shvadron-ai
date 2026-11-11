@@ -20,16 +20,22 @@
   // וובינר שכבר התקיים: הדף אוסף שם וטלפון, ההקלטה נפתחת מיד, ומתחתיה הצעת המחזור.
   // src הוא כתובת ההטמעה של ההקלטה (Vimeo: https://player.vimeo.com/video/<מספר>?dnt=1,
   // דרייב: https://drive.google.com/file/d/<מזהה>/preview, והקובץ חייב להיות פתוח לצפייה לכל מי שיש לו קישור).
+  // email: true מוסיף שדה מייל חובה (המתנה נשלחת גם למייל, ונבנית רשימת מיילים).
   var RECORDINGS = {
-    'pro-answers': {
-      name: 'מתשובה בינונית לתשובה מקצועית',
-      title: 'מתשובה בינונית', accent: 'לתשובה מקצועית.',
-      lead: 'ההקלטה המלאה של הוובינר: 7 הכללים, ותמונות שלא נראות כמו AI. אותה בקשה פעמיים, לפני ואחרי.',
-      gate: 'משאירים שם וטלפון, והיא נפתחת כאן מיד.',
-      src: 'https://drive.google.com/file/d/1zOvfpd7uOGD81hrUDq6YOMdBjG-drFcx/preview'
+    'video-editing': {
+      name: 'עריכת וידאו',
+      eyebrow: 'מתנה · ההקלטה המלאה',
+      title: 'הוובינר על עריכת וידאו,', accent: 'במתנה.',
+      lead: 'ההקלטה המלאה של הוובינר על עריכת וידאו.',
+      gate: 'משאירים שם, טלפון ומייל, והיא נפתחת כאן מיד. נשלח אותה גם למייל.',
+      email: true,
+      src: 'https://player.vimeo.com/video/1239858986?dnt=1'
     }
   };
+  // קישורים ישנים להקלטות שנסגרו לחברי הקורס בלבד מובילים למתנה הנוכחית
+  var ALIAS = { 'pro-answers': 'video-editing' };
   var forKey = (new URLSearchParams(location.search).get('for') || '').trim();
+  if(ALIAS[forKey]) forKey = ALIAS[forKey];
   var topic = TOPICS[forKey] || '';
   var w = WEBINARS[forKey];
   function $(sel){ return document.querySelector(sel); }
@@ -75,7 +81,9 @@
     var KEY = 'shw_rec_' + forKey;
     var form = $('[data-rec]'), sec = $('#recording'), frame = sec.querySelector('iframe');
     var msg = form.querySelector('.gift-msg');
-    $('[data-hero-eyebrow]').textContent = 'ההקלטה המלאה · חינם';
+    $('[data-hero-eyebrow]').textContent = rec.eyebrow || 'ההקלטה המלאה · חינם';
+    var emailField = form.querySelector('[data-rec-email]');
+    if(rec.email && emailField){ emailField.hidden = false; emailField.querySelector('input').required = true; }
     var h1 = $('[data-hero-title]'); h1.textContent = rec.title; h1.appendChild(document.createElement('br'));
     var acc = document.createElement('span'); acc.className = 'on-accent'; acc.textContent = rec.accent; h1.appendChild(acc);
     $('[data-hero-lead]').textContent = rec.lead + ' ' + rec.gate;
@@ -115,6 +123,8 @@
       msg.classList.remove('err');
       if(!name){ msg.textContent = 'נא למלא שם.'; msg.classList.add('err'); el.name.focus(); return; }
       if(!/^0\d{8,9}$/.test(phone)){ msg.textContent = 'נא למלא מספר טלפון תקין.'; msg.classList.add('err'); el.phone.focus(); return; }
+      var email = rec.email && el.email ? el.email.value.trim() : '';
+      if(rec.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ msg.textContent = 'נא למלא כתובת מייל תקינה, לשם נשלח את ההקלטה.'; msg.classList.add('err'); el.email.focus(); return; }
       form.querySelector('button').disabled = true;
       msg.textContent = 'פותח…';
       // ההקלטה נפתחת גם אם השמירה נכשלה, כדי לא להעניש את הגולש
@@ -126,7 +136,7 @@
       fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ kind: 'recording', name: name, phone: phone, topic: rec.name, topicKey: forKey,
+        body: JSON.stringify({ kind: 'recording', name: name, phone: phone, email: email, topic: rec.name, topicKey: forKey,
                                consent: el.consent.checked, source: window.SHW_SOURCE ? SHW_SOURCE() : '', page: 'register.html' })
       }).then(open, open);
     });

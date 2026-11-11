@@ -11,7 +11,7 @@ Products and their pages:
 - `course-beginners.html`, `course-advanced.html`: live Zoom tracks
 - `course.html`: recorded digital course (own inline CSS/JS, does **not** load `courses.css`/`courses.js`)
 - `cases.html`, `business.html`: what was built in businesses, and the business offer
-- `register.html`: webinar registration. For a webinar that already took place (`RECORDINGS` in `assets/js/register.js`) it becomes a recording page: name + phone open the recording, with the beginners cohort card under it
+- `register.html`: webinar registration. For a webinar that already took place (`RECORDINGS` in `assets/js/register.js`) it becomes a recording page: name + phone (+ a required email when the entry has `email: true`) open the recording, with the beginners cohort card under it. The current gift is the video-editing webinar (`register.html?for=video-editing`, Vimeo, public in the course system); the sheet script emails the gift link (`GIFTS` in `tools/leads-sheet.gs`), so the owner builds an email list. Old links (`ALIAS`, e.g. `pro-answers`, now members-only) lead to the current gift
 - `paid.html`: thank-you after paying for a Zoom track (`?track=beginners|advanced` picks date and WhatsApp group), with a "send to a friend" button
 - `course-thanks.html`: thank-you after buying the digital course, with the upgrade offer to the advanced track
 - `admin-coupons.html`, `admin-leads.html`: password-protected admin pages (password = `ADMIN_PASSWORD` env)
