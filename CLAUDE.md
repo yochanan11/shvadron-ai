@@ -94,6 +94,7 @@ either price changes, re-check that sentence.
 ## Content constraints from the owner
 
 - Do not change prices, dates, coupons or purchase terms without explicit approval; check Morning amounts before publishing price changes.
+- Group discount (approved 11.11.2026): a business sending 3+ employees gets 10% off each (`GROUP` in the data file; FAQ answers use `{group:…}`/`{full:…}` tokens the build fills in). It has no Morning link: the saleswoman closes it, so the copy sends people to the form (`data-cta="הנחת קבוצה"`). Also on the manager sheets, `business.html`, `terms.html` and the sales bot prompt (hand-written amounts there).
 - The advanced track must not promise a finished working system. Approved project wording: "לאורך הקורס תתכננו ותבנו פרויקט AI אישי, עם תרגול והכוונה, ותלמדו איך לבדוק, לשפר ולהמשיך לפתח אותו בעצמכם." It is training, not personal implementation.
 - Beginners is not a prerequisite for advanced; present them as two tracks with different goals.
 - Never invent testimonials, names, numbers or results.

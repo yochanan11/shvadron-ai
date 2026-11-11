@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, DIGITAL, ALL_TRACKS, COMPARE, TRACKS, SCHEDULE_NOTE,
          TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR, TIPS_GROUP,
-         COHORT, WHATSAPP, REASSURE, FAQ }
+         COHORT, WHATSAPP, REASSURE, FAQ, GROUP }
          from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -251,7 +251,11 @@ function faq(page) {
   const items = FAQ.filter(f => f.on.includes(page));
   return `<div class="qa">
 ${items.map((f, i) => {
-    const a = typeof f.a === 'string' ? f.a : (f.a[page] || f.a.default);
+    const a = (typeof f.a === 'string' ? f.a : (f.a[page] || f.a.default))
+      .replace(/\{(group|full):(beginners|advanced)\}/g, (_, kind, k) => {
+        const t = k === 'advanced' ? ADVANCED : BEGINNERS;
+        return fmt(kind === 'full' ? totalOf(t) : groupPrice(t));
+      });
     return `  <details${i ? '' : ' open'}>
     <summary><span>${esc(f.q)}</span><span aria-hidden="true" class="sign">+</span></summary>
     <p>${a}</p>
@@ -719,6 +723,8 @@ function config(t) {
    הסקריפט בדף מחליף בין "המחיר יעודכן" למחיר, אבל מי שקורא את
    הדף בלי JS (גוגל, תצוגות מקדימות, כלי AI) ראה עד עכשיו "טרם
    פורסם". כאן ה-HTML נכתב כבר במצב הנכון, עם הסכומים עצמם.     */
+/* מחיר לעובד אחרי הנחת הקבוצה, כולל מע״מ, מעוגל לאגורה */
+const groupPrice = t => Math.round(totalOf(t) * (100 - GROUP.percent)) / 100;
 const fmt = n => (n % 1 === 0 ? n.toLocaleString('he-IL') : n.toFixed(2)) + ' ₪';
 function staticPrice(html, t) {
   const has = !!t.priceEx;

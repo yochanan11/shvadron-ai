@@ -16,7 +16,7 @@ import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
-import { BEGINNERS, ADVANCED, TIME, NO_CLASSES, COHORT, WHATSAPP } from '../assets/data/courses.mjs';
+import { BEGINNERS, ADVANCED, TIME, NO_CLASSES, COHORT, WHATSAPP, GROUP } from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = resolve(process.argv[2] || join(ROOT, 'assets/public/syllabus'));
@@ -106,7 +106,7 @@ h1 span{color:#A6E6DA}
 main{flex:1;padding:7mm 14mm 0;display:grid;grid-template-columns:1fr 66mm;gap:8mm}
 h2{margin:0 0 2.5mm;font-size:12pt;font-weight:800;color:#3B5BA5}
 .goal{margin:0 0 6mm;font-size:11pt}
-ol{list-style:none;margin:0 0 6mm;padding:0;display:grid;gap:${outs.length > 4 ? '1.6mm' : '3mm'}}
+ol{list-style:none;margin:0 0 6mm;padding:0;display:grid;gap:${outs.length > 4 ? '1.1mm' : '3mm'}}
 ol li{display:grid;grid-template-columns:7mm 1fr;gap:2.5mm;align-items:start}
 ol b.n{display:grid;place-items:center;width:7mm;height:7mm;border-radius:2mm;background:#EAF0FA;color:#3B5BA5;font-size:9.5pt;font-weight:800}
 ol .tt{font-weight:700;display:block;font-size:${outs.length > 4 ? '10pt' : '10.6pt'}}
@@ -114,8 +114,8 @@ ol .o{display:block;color:#47567A;font-size:${outs.length > 4 ? '9.3pt' : '10pt'
 ul.g{margin:0;padding:0;list-style:none;display:grid;gap:2mm}
 ul.g li{padding-inline-start:5mm;position:relative}
 ul.g li::before{content:"";position:absolute;inset-inline-start:0;top:2.2mm;width:2.2mm;height:2.2mm;border-radius:50%;background:#65B8AB}
-aside{display:flex;flex-direction:column;gap:4mm}
-.box{border:1px solid #D7E0EE;border-radius:4mm;padding:4mm 4.5mm;background:#F6F9FD}
+aside{display:flex;flex-direction:column;gap:3mm}
+.box{border:1px solid #D7E0EE;border-radius:4mm;padding:3.4mm 4.5mm;background:#F6F9FD}
 .box.price{background:#EEF8F5;border-color:#B9E2D9}
 dl{margin:0;display:grid;gap:2mm}
 dt{font-size:8.6pt;font-weight:700;color:#3B5BA5}
@@ -157,6 +157,7 @@ ${facts.map(([k, v]) => `      <div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)
       <p class="big">${esc(ils(t.priceEx))} <span style="font-size:11pt;font-weight:600">+ מע״מ</span></p>
       <p class="small">${esc(ils(total(t)))} כולל מע״מ · עד 3 תשלומים</p>
       <p class="small">החשבונית יוצאת על שם העסק.</p>
+      <p class="small"><b>מ-${GROUP.min} עובדים ומעלה:</b> ${GROUP.percent}% הנחה לכל אחד, ${esc(ils(Math.round(total(t) * (100 - GROUP.percent)) / 100))} לעובד כולל מע״מ.</p>
       <p class="small">החזר מלא אחרי המפגש הראשון: לא מתאים? מבקשים עד 48 שעות מתום המפגש, והכסף חוזר תוך 14 ימים.</p>
     </div>
     <div class="box"><p class="small"><b>מה צריך</b></p><p class="small">${esc(needs)}</p></div>

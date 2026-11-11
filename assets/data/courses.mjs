@@ -46,6 +46,12 @@ export const COHORT = {
   closes: '2026-11-22',
 };
 
+/* הנחת קבוצה לעסק ששולח כמה עובדים (אישור הבעלים, 11.11.2026).
+   אין לה קישור תשלום ב-Morning: המוכרת סוגרת אותה בשיחה. במחירים
+   שבתשובות נעשה שימוש בתבנית {group:beginners} / {group:advanced},
+   והבנייה מחליפה אותה במחיר לעובד אחרי ההנחה. */
+export const GROUP = { min: 3, percent: 10 };
+
 /* קישור הוואטסאפ היחיד באתר: אותו מספר ואותו טקסט מוכן בכל דף */
 export const WHATSAPP = {
   number: '972528189921',
@@ -95,6 +101,11 @@ export const FAQ = [
     a: { home: 'החשבונית יוצאת על שם העסק, ויש דף קצר להציג למנהל, עמוד אחד עם מה העובד ילמד, כמה זמן זה לוקח וכמה זה עולה: <a href="assets/public/syllabus/manager-beginners.pdf" target="_blank" rel="noopener">מאפס למאה</a> או <a href="assets/public/syllabus/manager-advanced.pdf" target="_blank" rel="noopener">צבא הסוכנים</a>.',
          beginners: 'החשבונית יוצאת על שם העסק, ויש <a href="assets/public/syllabus/manager-beginners.pdf" target="_blank" rel="noopener">דף קצר להציג למנהל</a>: עמוד אחד עם מה העובד ילמד, כמה זמן זה לוקח וכמה זה עולה.',
          default: 'החשבונית יוצאת על שם העסק, ויש <a href="assets/public/syllabus/manager-advanced.pdf" target="_blank" rel="noopener">דף קצר להציג למנהל</a>: עמוד אחד עם מה העובד ילמד, כמה זמן זה לוקח וכמה זה עולה.' } },
+
+  { on: ALL, q: 'אנחנו כמה עובדים מאותו עסק',
+    a: { home: 'מ-3 עובדים ומעלה, כל אחד מקבל 10% הנחה: {group:beginners} לעובד במאפס למאה, {group:advanced} לעובד בצבא הסוכנים, כולל מע״מ. חשבונית אחת על שם העסק. <a href="#callback" data-cta="הנחת קבוצה">השאירו פרטים</a> ונחזור אליכם עם הכול.',
+         beginners: 'מ-3 עובדים ומעלה, כל אחד מקבל 10% הנחה: {group:beginners} לעובד במקום {full:beginners}, כולל מע״מ. חשבונית אחת על שם העסק. <a href="#callback" data-cta="הנחת קבוצה">השאירו פרטים</a> ונחזור אליכם עם הכול.',
+         default: 'מ-3 עובדים ומעלה, כל אחד מקבל 10% הנחה: {group:advanced} לעובד במקום {full:advanced}, כולל מע״מ. חשבונית אחת על שם העסק. <a href="#callback" data-cta="הנחת קבוצה">השאירו פרטים</a> ונחזור אליכם עם הכול.' } },
 
   /* שאלות של המסלול המתקדם בלבד */
   { on: ['advanced'], q: 'צריך לדעת לתכנת?',
