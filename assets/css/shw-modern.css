@@ -289,3 +289,10 @@ main>section.sec .callback h2 .ghost{background:linear-gradient(95deg,#C9F7EE,#8
 
 /* שלוש התשובות להתנגדויות הנפוצות, מתחת לכפתור בכרטיס המחזור */
 .cohort-safe{margin:0;text-align:center;font-size:13.5px;line-height:1.5;color:var(--muted)}
+
+/* התשלום כאפשרות: קישור ליד המחיר, שורה מתחת לטופס, וכפתורים אחרי שהפרטים נשלחו */
+.pay-now{margin:0;text-align:center;font-size:15px;color:var(--muted)}
+.pay-now a,.pay-line a{color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.pay-line{margin:clamp(20px,3vw,32px) 0 0;text-align:center;font-size:16px;color:var(--ink-2)}
+.pay-opts{display:flex;flex-wrap:wrap;gap:10px}
+.callback .pay-opts .btn{flex:1 1 220px}

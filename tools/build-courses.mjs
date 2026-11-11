@@ -171,13 +171,15 @@ ${facts.map(x => `      <li>${esc(x)}</li>`).join('\n')}${seats ? `
       <li class="is-seats">${esc(seats)}</li>` : ''}${opts.closing ? `
       <li data-closing>${esc(closesLabel())}</li>` : ''}
     </ul>
-    <a class="btn btn-primary btn-block" href="${t.file}#buy" data-track-pick="${t.id}">${esc(c.cta)}</a>
+    <a class="btn btn-primary btn-block" ${opts.formHere
+      ? `href="#callback" data-intent="reserve" data-track="${esc(t.name)}" data-cta="כרטיס ${esc(t.name)}"`
+      : `href="${t.file}#callback"`} data-track-pick="${t.id}">${esc(c.cta)}</a>
     <p class="cohort-safe">${REASSURE.map(esc).join(' · ')}</p>
     <a class="cohort-more" href="${t.file}" data-track-pick="${t.id}">כל הפרטים על ${esc(t.name)}</a>
   </div>
 </article>`;
 }
-const cohortCards = () => TRACKS.map(t => cohortCard(t)).join('\n\n');
+const cohortCards = () => TRACKS.map(t => cohortCard(t, { formHere: true })).join('\n\n');
 /* כרטיס מחזור אחד עם הדדליין, לעמודי התודה ולדף ההקלטה */
 const offerCard = t => cohortCard(t, { closing: true });
 
@@ -185,12 +187,17 @@ const offerCard = t => cohortCard(t, { closing: true });
    אותו טופס בכל דף. השדות הנסתרים (דף וכפתור) מתמלאים ב-callback.js
    ונשלחים עם הליד. opts.after הוא הכפתור הראשי שחוזר אחרי הטופס. */
 function leadForm(opts = {}) {
+  /* opts.track  המסלול של הדף (בדפי הקורסים), כדי שהכותרת תאמר "שריון מקום במאפס למאה"
+     opts.pay    אפשרויות התשלום שמוצגות אחרי שהפרטים נשלחו, ומתחת לטופס */
+  const pay = opts.pay || [];
+  const payLinks = pay.map(x =>
+    `<a class="btn btn-ghost"${x.join ? ' data-join' : ''} href="${x.href}">${esc(x.label)}</a>`).join('\n            ');
   return `<section class="sec" id="callback">
   <div class="wrap">
-    <div class="callback">
+    <div class="callback"${opts.track ? ` data-track="${esc(opts.track.name)}"` : ''}>
       <div class="callback-text">
-        <h2 class="h-sm">מתלבטים?<br/><span class="ghost">השאירו טלפון ונחזור אליכם עוד היום.</span></h2>
-        <p class="body">שיחה קצרה, בלי התחייבות. בודקים יחד איזה מחזור מתאים לכם, ועונים על כל מה שנשאר פתוח.</p>
+        <h2 class="h-sm"><span data-form-title>השאירו שם וטלפון.</span><br/><span class="ghost">נחזור אליכם עוד היום.</span></h2>
+        <p class="body" data-form-body>לשריון מקום, לשאלה, או כדי לבדוק יחד איזה מחזור מתאים. בלי התחייבות ובלי תשלום עכשיו.</p>
       </div>
       <div>
         <form class="gift-form lead-form" data-callback novalidate>
@@ -199,23 +206,27 @@ function leadForm(opts = {}) {
             <label><span>שם</span><input name="name" autocomplete="name" required/></label>
             <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
           </div>
-          <button class="btn btn-primary btn-block" type="submit">חזרו אליי</button>
+          <button class="btn btn-primary btn-block" type="submit" data-form-submit>חזרו אליי</button>
           <p class="gift-msg" role="status" aria-live="polite"></p>
           <p class="gift-fine">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
           <p class="wa-line">מעדיפים לכתוב? <a data-wa href="#">כתבו לנו בוואטסאפ</a></p>
         </form>
         <div class="gift-after" tabindex="-1" hidden>
-          <p class="lead"><b>תודה, הפרטים התקבלו.</b> נחזור אליכם עוד היום. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
-          <a class="btn btn-ghost tips-btn" href="${TIPS_GROUP}" target="_blank" rel="noopener">${WA_ICON}להצטרפות לקבוצת הטיפים בוואטסאפ</a>
+          <p class="lead"><b>תודה, הפרטים התקבלו.</b> נחזור אליכם עוד היום כדי להשלים את ההרשמה.</p>${pay.length ? `
+          <p class="body">רוצים לסגור כבר עכשיו? המקום נשמר סופית עם התשלום.</p>
+          <div class="pay-opts">
+            ${payLinks}
+          </div>` : ''}
+          <p class="wa-line">בינתיים, טיפים קצרים על AI: <a href="${TIPS_GROUP}" target="_blank" rel="noopener">קבוצת הטיפים בוואטסאפ</a></p>
         </div>
       </div>
-    </div>${opts.after ? `
-    <div class="again">
-${ind(6, opts.after)}
-    </div>` : ''}
+    </div>${pay.length ? `
+    <p class="pay-line">מעדיפים לסגור עכשיו, בלי לחכות לשיחה? ${pay.map(x =>
+      `<a${x.join ? ' data-join' : ''} href="${x.href}">${esc(x.label)}</a>`).join(' · ')}</p>` : ''}
   </div>
 </section>`;
 }
+
 /* ─── שאלות ותשובות, לפי סדר ההתנגדויות שבקובץ הנתונים ─── */
 function faq(page) {
   const items = FAQ.filter(f => f.on.includes(page));
@@ -231,9 +242,9 @@ ${items.map((f, i) => {
 }
 
 /* הכפתור הראשי שחוזר בסוף הדף, עם קישור הוואטסאפ האחד שלצידו */
-const againTrack = t => `<a class="btn btn-primary" data-join href="${t.checkout}">${esc(t.cta)}</a>
-<p class="again-note"><span class="js-price-total">${esc(fmt(totalOf(t)))}</span> כולל מע״מ · החזר מלא אחרי המפגש הראשון</p>`;
-const againHub = () => `<a class="btn btn-primary" href="#tracks">לבחור מחזור ולשריין מקום</a>`;
+/* אפשרויות התשלום שליד הטופס: בדף מסלול קישור הסליקה שלו, בדף הבית שני דפי המסלולים */
+const payTrack = t => [{ label: `לתשלום מאובטח, ${fmt(totalOf(t))}`, href: t.checkout, join: true }];
+const payHub = () => TRACKS.map(t => ({ label: `לתשלום על ${t.name}`, href: `${t.file}#buy` }));
 
 /* ─── שורת העובדות בקיפול העליון של דף הבית ──────────────────
    מחיר, מועד פתיחה ופריט הוכחה אחד, בשורה אחת. נגזר מקובץ הנתונים
@@ -717,7 +728,7 @@ const BLOCKS = {
     cohorts:      cohortCards,
     logos:        logoRun,
     faq:          () => faq('home'),
-    leadform:     () => leadForm({ after: againHub() }),
+    leadform:     () => leadForm({ pay: payHub() }),
   },
   'course-beginners.html': {
     topbar:       () => topBar('beginners'),
@@ -727,7 +738,7 @@ const BLOCKS = {
     config:       () => config(BEGINNERS),
     ld:           () => jsonLd(BEGINNERS),
     faq:          () => faq('beginners'),
-    leadform:     () => leadForm({ after: againTrack(BEGINNERS) }),
+    leadform:     () => leadForm({ track: BEGINNERS, pay: payTrack(BEGINNERS) }),
   },
   // דף העסקים ועמוד הסיפורים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
   'business.html': {
@@ -754,7 +765,7 @@ const BLOCKS = {
     config:       () => config(ADVANCED),
     ld:           () => jsonLd(ADVANCED),
     faq:          () => faq('advanced'),
-    leadform:     () => leadForm({ after: againTrack(ADVANCED) }),
+    leadform:     () => leadForm({ track: ADVANCED, pay: payTrack(ADVANCED) }),
   },
 };
 

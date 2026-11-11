@@ -1,8 +1,9 @@
 /* ============================================================
    טופס "מתלבטים? השאירו טלפון ונחזור אליכם".
    ------------------------------------------------------------
-   שם וטלפון בלבד, בלי מייל. הטופס יושב בסוף כל דף, והכפתור המשני
-   (בכותרת, ברצועה התחתונה ובגוף הדף) גולל אליו. עם הליד נשלחים
+   שם וטלפון בלבד, בלי מייל. הטופס יושב בסוף כל דף, והוא היעד של הכפתור
+   הראשי ("לשריין מקום") ושל הכפתור המשני ("מתלבטים?"): בדף משאירים פרטים,
+   והתשלום הוא אפשרות למי שרוצה לסגור מיד. עם הליד נשלחים
    הדף שממנו הגיע והכפתור שהביא אותו לטופס (data-cta על הכפתור),
    כך שמי שחוזרת ללקוח יודעת מאיפה הוא בא.
    בדף העסקים הטופס כולל גם שם עסק, גודל צוות ומה מעניין.
@@ -32,6 +33,22 @@
     if(!target) return;
     e.preventDefault();
     cameFrom = where(a);
+    // הכותרת של הטופס מתאימה לכפתור שהביא אליו: שריון מקום (עם שם המחזור אם ידוע) או התלבטות
+    var box = target.querySelector('.callback'), title = target.querySelector('[data-form-title]'),
+        body = target.querySelector('[data-form-body]'), submit = target.querySelector('[data-form-submit]');
+    if(box && title && body){
+      if(a.getAttribute('data-intent') === 'reserve'){
+        var track = a.getAttribute('data-track') || box.getAttribute('data-track') || '';
+        if(track && !a.getAttribute('data-cta')) cameFrom += ' · שריון מקום';
+        title.textContent = 'שריון מקום' + (track ? ' ב' + track : '') + '.';
+        body.textContent = 'משאירים שם וטלפון, ונחזור אליכם עוד היום כדי להשלים את ההרשמה. בלי תשלום עכשיו.';
+        if(submit) submit.textContent = 'שריינו לי מקום';
+      } else {
+        title.textContent = 'מתלבטים?';
+        body.textContent = 'שיחה קצרה, בלי התחייבות. בודקים יחד איזה מחזור מתאים לכם, ועונים על כל מה שנשאר פתוח.';
+        if(submit) submit.textContent = 'חזרו אליי';
+      }
+    }
     // כפתור שבוחר מראש ערך בטופס (דף העסקים: "לשליחת עובד")
     var pick = a.getAttribute('data-need'), sel = target.querySelector('select[name=need]');
     if(pick && sel) sel.value = pick;
