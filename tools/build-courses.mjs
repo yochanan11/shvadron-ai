@@ -140,12 +140,30 @@ function heroDeadline(key) {
     : [esc(opensLabel(key === 'advanced' ? ADVANCED : BEGINNERS)),
        `<span data-closing>${esc(closesLabel())}</span>`];
   if (seats) parts.splice(key === 'all' ? 0 : 1, 0, `<b>${esc(seats)}</b>`);
-  return `<p class="hero-deadline" data-closes="${COHORT.closes}">${
+  const chips = `<p class="hero-deadline" data-closes="${COHORT.closes}">${
     parts.map(x => `<span>${x}</span>`).join('')}</p>`;
+  /* דף הבית: מי שקורא רק את המסך הראשון צריך לדעת מתי ובכמה. השורה נגזרת
+     מהנתונים, ונעלמת אחרי סגירת ההרשמה כדי שלא יישאר תאריך שעבר. */
+  if (key !== 'all' || TRACKS.some(t => !t.start || !t.priceEx)) return chips;
+  const cheapest = Math.min(...TRACKS.map(totalOf));
+  const when = `<p class="hero-when" data-closes="${COHORT.closes}"><span data-closing><span>שני מחזורים, נפתחים ב-${
+    TRACKS.map(t => dayMonth(sessionDate(t.start, 0))).join(' וב-')}</span> <span>החל מ-${esc(ils(cheapest))} כולל מע״מ</span></span></p>`;
+  return when + '\n' + chips;
 }
 
 /* ─── שני כרטיסי המחזורים בדף הבית ───────────────────────────
    אותו סדר בשניהם: עם מה יוצאים, איך, מחיר, תאריך ומקומות, כפתור. */
+/* מתי בדיוק: יום, שעה ותאריכים. עד ארבעה מפגשים כותבים את כולם, מעבר
+   לזה את הראשון והאחרון, ואם יש בדרך שבוע בלי מפגש אומרים איזה. */
+function whenLine(t) {
+  const dates = Array.from({ length: t.sessions }, (_, i) => sessionDate(t.start, i));
+  const head = `ימי ${t.dayName}, ${t.time || TIME}`;
+  const first = dates[0], last = dates[dates.length - 1];
+  const iso = d => d.toISOString().slice(0, 10);
+  const brk = NO_CLASSES.find(b => b.from > iso(first) && b.to < iso(last));
+  const span = dates.length <= 4 ? dates.map(dayMonth).join(', ') : `${dayMonth(first)} עד ${dayMonth(last)}`;
+  return `<b>${esc(head)}</b><span>${esc(span)}${brk ? ` <span>(בלי מפגש ב${esc(brk.label)})</span>` : ''}</span>`;
+}
 function cohortCard(t, opts = {}) {
   const c = t.card;
   const key = t === ADVANCED ? 'advanced' : 'beginners';
@@ -164,6 +182,7 @@ ${c.outs.map(x => `      <li>${esc(x)}</li>`).join('\n')}
     </ul>
   </div>
   <p class="cohort-how">${esc(c.how)}</p>
+  <p class="cohort-when">${whenLine(t)}</p>
   <div class="cohort-foot">
     <p class="cohort-price"><b>${esc(fmt(totalOf(t)))}</b> <span>כולל מע״מ, ${esc(c.terms.join(', '))}</span></p>
     <ul class="cohort-facts"${opts.closing ? ` data-closes="${COHORT.closes}"` : ''}>

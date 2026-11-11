@@ -296,3 +296,23 @@ main>section.sec .callback h2 .ghost{background:linear-gradient(95deg,#C9F7EE,#8
 .pay-line{margin:clamp(20px,3vw,32px) 0 0;text-align:center;font-size:16px;color:var(--ink-2)}
 .pay-opts{display:flex;flex-wrap:wrap;gap:10px}
 .callback .pay-opts .btn{flex:1 1 220px}
+
+/* ─── מה שעלה מקריאת הדף בעיני לקוחות: מתי, בכמה, ואיזה מחזור ─── */
+.hero-when{margin:0;font-size:16px;line-height:1.5;font-weight:600;color:#fff}
+.hero-when>span{display:flex;flex-wrap:wrap;gap:0 10px}
+.hero-when>span>span{white-space:nowrap}
+.hero-when>span>span+span{opacity:.86;font-weight:500}
+.hero-when:has([hidden]){display:none}
+.cohort-when{margin:0;display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:start;padding:12px 14px;border-radius:14px;
+  background:var(--tint);border:1px solid rgba(101,184,171,.4);font-size:15px;line-height:1.5;font-weight:600;color:var(--navy)}
+.cohort-when b{font-weight:700}
+.cohort-when>span{grid-column:2;font-weight:500;color:var(--ink-2)}
+.cohort-when>span>span{white-space:nowrap}
+.cohort-when::before{content:"";grid-row:1 / span 2;inline-size:18px;block-size:18px;margin-top:2px;
+  background:currentColor;opacity:.75;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E") center/contain no-repeat}
+.chooser{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.chooser li{padding:14px 18px;border-radius:16px;background:#fff;border:1px solid var(--hair);font-size:16.5px;line-height:1.5;color:var(--ink-2)}
+.chooser li b{color:var(--navy);font-weight:700}
+@media (min-width:860px){.chooser{grid-template-columns:1fr 1fr}}
