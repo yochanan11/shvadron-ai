@@ -140,7 +140,7 @@ export const BEGINNERS = {
   short:    'מאפס למאה',
   legacyName: 'AI למתחילים',   // השם שבו הוא מופיע בחשבוניות ובתקנון
   seats:     20,               // תקרת המשתתפים בקבוצה, כפי שמוצגת בדפים
-  seatsLeft: null,             // מקומות שנותרו. null = לא להציג מספר
+  seatsLeft: 8,                // מקומות שנותרו. null = לא להציג מספר
   kicker:   'זום חי · למי שלא נגע, או נגע קצת',
   sessions: 3,
   hours:    6,
@@ -251,7 +251,7 @@ export const ADVANCED = {
   short:    'צבא הסוכנים',
   legacyName: 'AI למתקדמים',
   seats:     20,               // תקרת המשתתפים בקבוצה, כפי שמוצגת בדפים
-  seatsLeft: null,             // מקומות שנותרו. null = לא להציג מספר
+  seatsLeft: 9,                // מקומות שנותרו. null = לא להציג מספר
   kicker:   'זום חי · מתקדמים, לעבודה ולעסק',
   sessions: 9,
   hours:    18,
