@@ -21,43 +21,10 @@
 <link rel="stylesheet" href="assets/css/brand-ads.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
 <link rel="stylesheet" href="assets/css/gift.css"/>
-<style>
-/* פס מבצע הבחירות: קלפי, שעון ספירה לאחור וכפתור, בצבעי המותג */
-.promo-bar.vote-bar{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px 22px;
-  padding:14px var(--pad,20px);background:#0B1F3A;color:#fff;
-  background-image:radial-gradient(ellipse at 50% 120%,rgba(95,195,177,.28),transparent 60%);
-  border-bottom:3px solid #5FC3B1}
-.vote-box{width:52px;height:52px;flex:none}
-.vote-title{margin:0;display:flex;flex-direction:column;line-height:1.25;font-weight:800;font-size:19px;color:#5FC3B1}
-.vote-title span{color:#fff;font-size:15px;font-weight:700}
-.vote-title s{color:#AFC3DD;font-weight:400}
-.vote-title small{color:#fff;font-size:15px;font-weight:700}
-.vote-clock{display:flex;direction:ltr;gap:8px}
-.vote-clock span{display:flex;flex-direction:column;align-items:center;min-width:62px;padding:6px 4px;
-  border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(95,195,177,.35)}
-.vote-clock b{font-family:'Heebo',sans-serif;font-size:30px;font-weight:800;line-height:1.1;
-  font-variant-numeric:tabular-nums;color:#fff}
-.vote-clock small{font-size:12px;font-weight:700;color:#AFC3DD}
-.promo-bar a.vote-cta{display:inline-block;padding:14px 30px;border-radius:999px;background:#5FC3B1;color:#0B1F3A;
-  font-size:19px;font-weight:800;text-decoration:none;box-shadow:0 0 0 4px rgba(95,195,177,.22),0 8px 22px rgba(0,0,0,.35);
-  transition:transform .15s ease,box-shadow .15s ease}
-.promo-bar a.vote-cta:hover{color:#0B1F3A;text-decoration:none;transform:translateY(-1px);
-  box-shadow:0 0 0 6px rgba(95,195,177,.3),0 10px 26px rgba(0,0,0,.4)}
-@media (max-width:640px){
-  .promo-bar.vote-bar{gap:8px 12px;padding:10px 14px}
-  .vote-box{width:40px;height:40px}
-  .vote-title{font-size:16px}
-  .vote-title span,.vote-title small{font-size:13px}
-  .vote-clock span{min-width:50px;padding:4px 2px}
-  .vote-clock b{font-size:22px}
-  .vote-clock small{font-size:11px}
-  .promo-bar a.vote-cta{width:100%;text-align:center;padding:11px 16px;font-size:16px}
-}
-@media (prefers-reduced-motion:reduce){.promo-bar a.vote-cta{transition:none}}
-</style>
+<link rel="stylesheet" href="assets/css/shw-modern.css"/>
+<link rel="stylesheet" href="assets/css/shw-soft.css"/>
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/source.js"></script>
-<script src="assets/js/gift.js" defer></script>
 <script src="assets/js/callback.js" defer></script>
 <script>document.documentElement.className += ' js';</script>
 
@@ -85,35 +52,13 @@
       "description":"385 ₪ כולל מע״מ 18% (326.27 ₪ לפני מע״מ)."
     }
   },
-  "image": "https://ai.shwadron-ai.com/yochanan.jpg"
+  "image": "https://ai.shwadron-ai.com/assets/public/yochanan-card.jpg"
 }
 </script>
 </head>
 <body>
 
 <a href="#main" class="skip">דילוג לתוכן המרכזי</a>
-
-<!-- פס מבצע. מוצג רק עד data-ends (שעה מדויקת עם אזור זמן), ורק אם הקוד
-     ב-data-code תקף ב-/api/coupon לדף course-digital; אז המחיר והקישור
-     מתחלפים לבד לכל המבקרים. הקוד חייב להיות זהה לקופון שב-admin-coupons.html,
-     ותאריך "תקף עד" שלו חייב להיות אותו יום. -->
-<div class="promo-bar vote-bar" data-ends="2026-10-27T23:59:59+02:00" data-code="AI285" hidden>
-  <svg class="vote-box" viewBox="0 0 64 64" aria-hidden="true">
-    <rect x="20" y="4" width="24" height="22" rx="2" fill="#fff" transform="rotate(-8 32 15)"/>
-    <path d="M27 11h12M27 16h12" stroke="#4369AA" stroke-width="2.4" stroke-linecap="round" transform="rotate(-8 32 15)"/>
-    <rect x="6" y="24" width="52" height="36" rx="5" fill="#4369AA"/>
-    <rect x="6" y="24" width="52" height="9" rx="4" fill="#5FC3B1"/>
-    <rect x="20" y="27" width="24" height="3.5" rx="1.75" fill="#0B1F3A"/>
-    <path d="M25 47l5 5 10-11" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <p class="vote-title">מבצע הבחירות <span><b class="js-promo-total"></b> במקום <s>385 ₪</s></span><small>מסתיים בעוד</small></p>
-  <div class="vote-clock" role="timer" aria-label="הזמן שנותר למבצע">
-    <span><b data-clock="h">00</b><small>שעות</small></span>
-    <span><b data-clock="m">00</b><small>דקות</small></span>
-    <span><b data-clock="s">00</b><small>שניות</small></span>
-  </div>
-  <a class="vote-cta" href="#buy">אני רוצה את המוח השני במחיר הבחירות!</a>
-</div>
 
 <header class="site-head">
   <div class="wrap">
@@ -129,7 +74,7 @@
     </nav>
     <div class="head-cta">
       <a class="btn btn-ghost btn-sm head-callback" href="#callback">מתלבטים? נחזור אליכם</a>
-      <a class="btn btn-primary btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
+      <a class="btn btn-primary btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">לקנות</a>
     </div>
   </div>
 </header>
@@ -141,20 +86,21 @@
   <div class="wrap stack">
     <p class="eyebrow">דיגיטלי · בקצב שלך, מהבית</p>
     <h1 style="--fit:.60">המוח<br/><span class="on-accent">השני.</span></h1>
-    <p class="lead">ארבעה שיעורים, ארבעה תוצרים ביד. בסוף יש לך סוכן אישי שמכיר את העבודה שלך וכותב בסגנון שלך.</p>
+    <p class="lead"><b>לא לומדים כלים. לומדים לאמץ אותם.</b> ארבעה שיעורים מוקלטים, ארבעה תוצרים ביד. בסוף יש לך סוכן אישי שמכיר את העבודה שלך וכותב בסגנון שלך.</p>
     <ul class="ticks" style="flex-direction:row;flex-wrap:wrap;gap:10px 28px">
       <li>לא צריך אנגלית</li>
       <li>גישה מיידית</li>
       <li>צפייה ללא הגבלה</li>
     </ul>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
-      <a class="btn btn-primary" data-buy href="https://mrng.to/zoeR82jDpx">אני רוצה את המוח השני ←</a>
+      <a class="btn btn-primary" data-buy href="https://mrng.to/zoeR82jDpx">לקנות את המוח השני</a>
       <p class="buy-pmt" style="margin:0">
-        <s data-promo hidden style="font-weight:400;color:var(--muted)">385 ₪</s>
         <span class="js-price-total">385 ₪</span>
         <span style="font-weight:400;color:var(--muted)"> או עד 3 תשלומים</span>
       </p>
     </div>
+    <!-- הקיזוז בתוקף עד UPGRADE_CREDIT_UNTIL שבקובץ הנתונים. source.js מסתיר את השורה אחרי התאריך. -->
+    <p class="body" data-closes="2026-11-24" style="margin:0"><span data-closing>קונים היום ומחליטים אחר כך לעלות לצבא הסוכנים? ה-385 שלך מקוזזים במלואם עד 24.11.</span></p>
     <p class="guarantee" style="max-width:460px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא, כל עוד לא נצפה יותר משיעור אחד.</p>
     <img class="hero-char" src="assets/public/brand/character-puzzle.webp" alt="הדמותג של SHWADRON.AI מחזיק חלק פאזל" width="560" height="900" loading="eager"/>
   </div>
@@ -183,17 +129,15 @@
   </div>
 </section>
 
-<!-- ===== נשמע מוכר ===== -->
+<!-- ===== 01 · למי זה =====
+     הסקשן הקודם ענה על "אין לי ערב פנוי קבוע" עם המוצר הזה, ובכך משך
+     לכאן את מי שמתאים למחזורים החיים. גם שם כל מפגש מוקלט. -->
 <section class="sec" id="pains">
   <div class="wrap stack">
-    <p class="eyebrow">01 · נשמע מוכר</p>
-    <h2 class="h-sm">ניסית לבד. נתקעת.</h2>
-    <div class="grid-3">
-      <div class="rule-top"><p class="body">ישבת על AI עשרות פעמים, ועדיין לא הגעת לאן שרצית.</p></div>
-      <div class="rule-top"><p class="body">ראית סרטונים ביוטיוב, אבל אף אחד לא הראה לך שיטה שלמה מקצה לקצה.</p></div>
-      <div class="rule-top"><p class="body">אין לך ערב פנוי קבוע בשבוע, ואתה צריך ללמוד בקצב שלך.</p></div>
-    </div>
-    <p class="lead">בדיוק בשביל זה המסלול הזה קיים. אותו תוכן, בלי מועדים קבועים.</p>
+    <p class="eyebrow">01 · למי זה</p>
+    <h2 class="h-sm">אין ערב פנוי קבוע?</h2>
+    <p class="lead">גם במחזורים החיים כל מפגש מוקלט. מי שרוצה ליווי, קבוצה ותשובות בזמן אמת מצטרף למחזור שנפתח ב-23.11. מי שרוצה רק את ההקלטות, זה המקום.</p>
+    <p class="body"><a href="index.html#tracks" style="color:var(--accent);text-decoration:underline;font-weight:700">לשני המחזורים החיים</a></p>
   </div>
 </section>
 
@@ -304,7 +248,7 @@
       <ul class="founder-list">
         <li>בוגר תואר ראשון במדעי המחשב, התמחות בבינה מלאכותית</li>
         <li>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</li>
-        <li>1,500 בוגרים ב-30 מחזורים</li>
+        <li>יותר מ-1,500 בוגרים ב-30 מחזורים</li>
       </ul>
     </div>
   </div>
@@ -343,7 +287,7 @@
     </div>
     <!-- גשר למתלבטים: מי שקרא את השאלות ועדיין לא בטוח לא אמור ליפול
          בין הכיסאות בדרך למחיר. מכאן הוא עובר להשארת פרטים. -->
-    <p class="body" style="text-align:center">עדיין מתלבטים? <a href="#callback" style="color:var(--accent);text-decoration:underline;font-weight:700">השאירו פרטים ויוחנן יחזור אליכם לשיחה קצרה</a>, בלי התחייבות.</p>
+    <p class="body" style="text-align:center">עדיין מתלבטים? <a href="#callback" data-cta="שאלות" style="color:var(--accent);text-decoration:underline;font-weight:700">השאירו טלפון ונחזור אליכם עוד היום</a>.</p>
   </div>
 </section>
 
@@ -367,7 +311,6 @@
       <p class="card-kicker">המוח השני · גישה מיידית</p>
       <div class="buy-now">
         <b><span class="js-price-total">385 ₪</span></b>
-        <s data-promo hidden>385 ₪</s>
         <span>כולל מע״מ · בלי דמי טיפול ובלי תוספות</span>
       </div>
       <p class="buy-pmt">בתשלום אחד או עד 3 תשלומים</p>
@@ -396,84 +339,49 @@
         </label>
       </div>
 
-      <a class="btn btn-primary btn-block" data-buy href="https://mrng.to/zoeR82jDpx">למעבר לתשלום מאובטח</a>
+      <a class="btn btn-primary btn-block" data-buy href="https://mrng.to/zoeR82jDpx">לקנות, מעבר לתשלום מאובטח</a>
       <p class="pay-row">תשלום מאובטח · גישה מיידית</p>
 
       <p class="guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l7 4v6c0 4.4-3 8.3-7 10-4-1.7-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>14 יום, לא מתאים? החזר מלא, כל עוד לא נצפה יותר משיעור אחד.</p>
-      <p class="ask">יש שאלה לפני? <a href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%94%D7%A7%D7%95%D7%A8%D7%A1%20%D7%94%D7%93%D7%99%D7%92%D7%99%D7%98%D7%9C%D7%99" target="_blank" rel="noopener">כתוב ליוחנן בוואטסאפ</a></p>
+      <p class="ask">יש שאלה לפני? <a data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">כתבו לנו בוואטסאפ</a></p>
       <a class="small" href="terms.html#product" target="_blank" rel="noopener" style="text-align:center;color:var(--accent);text-decoration:underline">לקריאת פרטי העסקה המלאים</a>
     </div>
   </div>
 </section>
 
-<!-- ===== השארת פרטים: למי שעוד לא מוכן לשלם ===== -->
-<section class="sec" id="callback">
-  <div class="wrap">
-    <div class="callback">
-      <div class="callback-text">
-        <p class="eyebrow">שיחה קצרה עם יוחנן</p>
-        <h2 class="h-sm">מתלבטים?<br/><span class="ghost">יוחנן יחזור אליכם.</span></h2>
-        <p class="body">לא בטוחים שזה מתאים לכם, או שיש לכם שאלה לפני שנרשמים? משאירים פרטים, ויוחנן חוזר אליכם לשיחה קצרה. בלי התחייבות.</p>
-      </div>
-      <div>
-        <form class="gift-form" data-callback novalidate>
-          <div class="gift-fields">
-            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
-            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-            <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
+<!-- ===== טופס המתלבטים: שם וטלפון בלבד ===== -->
+<!-- BUILD:leadform -->
+  <section class="sec" id="callback">
+    <div class="wrap">
+      <div class="callback">
+        <div class="callback-text">
+          <h2 class="h-sm"><span data-form-title>השאירו שם וטלפון.</span><br/><span class="ghost">נחזור אליכם עוד היום.</span></h2>
+          <p class="body" data-form-body>לשריון מקום, לשאלה, או כדי לבדוק יחד איזה מחזור מתאים. בלי התחייבות ובלי תשלום עכשיו.</p>
+        </div>
+        <div>
+          <form class="gift-form lead-form" data-callback novalidate>
+            <input type="hidden" name="cta" value=""/>
+            <div class="gift-fields">
+              <label><span>שם</span><input name="name" autocomplete="name" required/></label>
+              <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit" data-form-submit>חזרו אליי</button>
+            <p class="gift-msg" role="status" aria-live="polite"></p>
+            <p class="gift-fine">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+            <p class="wa-line">מעדיפים לכתוב? <a data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">כתבו לנו בוואטסאפ</a></p>
+          </form>
+          <div class="gift-after" tabindex="-1" hidden>
+            <p class="lead"><b>תודה, הפרטים התקבלו.</b> נחזור אליכם עוד היום כדי להשלים את ההרשמה.</p>
+            <p class="wa-line">בינתיים, טיפים קצרים על AI: <a href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener">קבוצת הטיפים בוואטסאפ</a></p>
           </div>
-          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-          <button class="btn btn-primary" type="submit">חזרו אליי</button>
-          <p class="gift-msg" role="status" aria-live="polite"></p>
-          <p class="gift-fine">הפרטים משמשים לחזרה אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
-        </form>
-        <div class="gift-after" tabindex="-1" hidden>
-          <p class="lead"><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
-          <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- BUILD:webinar -->
-  <section class="sec" id="webinar">
-    <div class="wrap stack">
-      <div style="display:flex;flex-direction:column;gap:20px">
-        <p class="eyebrow">08 · עוד לא מוכן להחליט</p>
-        <h2 class="h-sm">וובינר שלם,<br/><span class="on-accent">במתנה.</span></h2>
-        <p class="lead">עוד לא מוכן להחליט? זה וובינר מלא שהעברתי, במתנה. משאירים שם וטלפון, והוא נפתח כאן מיד, וככה רואים בדיוק איך נראה שיעור אצלי עוד לפני שנרשמים.</p>
-        <p class="body">ואם אתם עצמאים או בעלי עסקים, תראו בו איך נראית עבודה אמיתית עם AI על משימה מהעבודה, עוד לפני שנפגשנו.</p>
-      </div>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
-        <form class="gift-form" data-gift novalidate>
-          <div class="gift-fields">
-            <label><span>שם</span><input name="name" autocomplete="name" required/></label>
-            <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-            <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
-          </div>
-          <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
-          <button class="btn btn-primary btn-block" type="submit">פתחו לי את הוובינר</button>
-          <p class="gift-msg" role="status" aria-live="polite"></p>
-          <p class="gift-fine">הפרטים נשמרים רק אצלנו, לפי <a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
-        </form>
-        <div class="gift-done" hidden>
-          <p class="lead"><b>הוובינר פתוח, צפייה מהנה.</b> רוצים להמשיך לקבל טיפים קצרים על AI? בקבוצת הטיפים יוחנן משתף טיפים שוטפים, בלי ספאם.</p>
-          <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
-        </div>
-        <div class="video-frame gift-locked">
-          <div class="gift-cover" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            <span>הוובינר נפתח מיד אחרי מילוי הפרטים</span>
-          </div>
-          <iframe data-src="https://player.vimeo.com/video/1225883626?dnt=1" title="וובינר AI עם יוחנן שבדרון"
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
-        </div>
-      </div>
-      <a class="btn btn-light gift-after" href="#buy" data-join hidden>אני רוצה להתחיל ללמוד</a>
     </div>
   </section>
+  <!-- /BUILD:leadform -->
+
+<!-- BUILD:webinar -->
+
   <!-- /BUILD:webinar -->
 
 <!-- ===== מסלולים אחרים =====
@@ -481,9 +389,9 @@
      נרשם לצבא הסוכנים משלם פעמיים על אותו דבר. -->
 <section class="sec" id="other">
   <div class="wrap stack">
-    <p class="eyebrow">09 · לא בטוח שזה המסלול</p>
+    <p class="eyebrow">08 · לא בטוח שזה המסלול</p>
     <h2>אפשר גם אחרת.</h2>
-    <p class="lead">שלושה מסלולים, סולם אחד. אפשר להתחיל בכל מקום, ואפשר להמשיך הלאה אחר כך.</p>
+    <p class="lead">רוצה ליווי, קבוצה ותשובות בזמן אמת? שני המחזורים החיים נפתחים בנובמבר, וגם בהם כל מפגש מוקלט.</p>
     <div class="other-grid">
       <a class="other-card" href="course-beginners.html#buy" data-track-pick="course-beginners">
         <span class="other-kick">זום חי · עם קבוצה</span>
@@ -510,7 +418,7 @@
 
 </main>
 
-<p class="brand-tag"><span class="t">החלק שהיה חסר לך.</span> <span class="b">בוא לעבוד חכם!</span></p>
+<p class="brand-tag"><span class="t">הקצב בידיים שלך.</span> <span class="b">בוא לעבוד חכם!</span></p>
 <footer class="site-foot">
   <div class="wrap">
     <img class="brand-foot" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84" loading="lazy"/>
@@ -522,14 +430,14 @@
       <a href="cases.html">מה נבנה בעסקים</a>
     </nav>
     <nav aria-label="קישורים משפטיים">
-      <a href="index.html">כל המסלולים</a>
+      <a href="index.html">דף הבית</a>
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
       <a href="accessibility.html">הצהרת נגישות</a>
       <a href="cancellation.html">ביטול עסקה</a>
       <a href="#" data-consent-settings>הגדרות עוגיות</a>
     </nav>
-    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">052-818-9921</a></span>
   </div>
 </footer>
 
@@ -539,8 +447,8 @@
     <span>כולל מע״מ · עד 3 תשלומים</span>
   </div>
   <div class="dock-cta">
-    <a class="btn btn-ghost btn-sm" href="#callback">מתלבטים? נחזור אליכם</a>
-    <a class="btn btn-primary btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">להתחיל ללמוד</a>
+    <a class="btn btn-ghost btn-sm" href="#callback">מתלבטים?</a>
+    <a class="btn btn-primary btn-sm" data-buy href="https://mrng.to/zoeR82jDpx">לקנות</a>
   </div>
 </div>
 
@@ -719,7 +627,7 @@
 
   function setMsg(text, ok){
     msg.textContent = text;
-    msg.className = 'pd-coupon-msg ' + (ok ? 'ok' : 'err');
+    msg.classList.toggle('ok', !!ok); msg.classList.toggle('err', !ok);
   }
 
   function apply(){
@@ -764,39 +672,6 @@
   btn.addEventListener('click', apply);
   input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); apply(); } });
 
-  // ─── מבצע אוטומטי מפס המבצע: אותה בדיקה מול /api/coupon, בלי להקליד קוד.
-  //     אם הקופון לא תקף או לא זול מהמחיר הרגיל, הדף נשאר כמו שהוא.
-  var bar = document.querySelector('.promo-bar[data-code]');
-  var ends = bar ? Date.parse(bar.getAttribute('data-ends')) : NaN;
-  if(!(ends > Date.now())) return;
-  fetch('/api/coupon', {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ code: bar.getAttribute('data-code'), page: 'course-digital' })
-  })
-    .then(function(res){ return res.json(); })
-    .then(function(data){
-      if(!data.valid || !(data.total < window.SHW_PRICE)) return;
-      applyData(data);
-      document.querySelectorAll('.js-promo-total').forEach(function(el){ el.textContent = ils(data.total); });
-      document.querySelectorAll('[data-promo]').forEach(function(el){ el.hidden = false; });
-      // המבצע כבר מוחל, אז שדה הקופון רק היה מזמין להחליף אותו בקוד אחר
-      box.hidden = true;
-      bar.hidden = false;
-      var clock = {};
-      ['h', 'm', 's'].forEach(function(k){ clock[k] = bar.querySelector('[data-clock="' + k + '"]'); });
-      function pad(n){ return (n < 10 ? '0' : '') + n; }
-      (function tick(){
-        var s = Math.floor((ends - Date.now()) / 1000);
-        // בסוף הזמן טוענים מחדש, והדף חוזר למחיר הרגיל
-        if(s <= 0){ location.reload(); return; }
-        clock.h.textContent = pad(Math.floor(s / 3600));
-        clock.m.textContent = pad(Math.floor(s / 60) % 60);
-        clock.s.textContent = pad(s % 60);
-        setTimeout(tick, 1000);
-      })();
-    })
-    .catch(function(){});
 })();
 
 // Reveal on scroll

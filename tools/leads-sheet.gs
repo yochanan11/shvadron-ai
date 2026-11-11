@@ -5,7 +5,9 @@
 
    התקנה (פעם אחת):
    1. בגיליון: הרחבות > Apps Script. מוחקים את מה שיש ומדביקים את הקובץ הזה.
-   2. משנים את SECRET למטה למחרוזת אקראית משלכם, ושומרים.
+   2. משנים את SECRET למטה למחרוזת אקראית משלכם, ומוסיפים ל-NOTIFY_EMAILS
+      את המייל של אשת המכירות. שומרים. (את המייל שלה לא שומרים בקובץ שבאתר,
+      כי הקובץ הזה ציבורי. רק בעורך של הסקריפט.)
    3. פריסה > פריסה חדשה > סוג: אפליקציית אינטרנט.
       הפעלה בתור: אני. מי יכול לגשת: כל אחד. פריסה, ואישור ההרשאות.
    4. מעתיקים את כתובת ה-Web app.
@@ -26,9 +28,13 @@ const SHEET_ID = '';
 // בסוף שורת הכותרות בלשונית קיימת, בלי לגעת בשורות הישנות.
 const HEADERS = ['תאריך', 'שם', 'טלפון', 'מאיזה דף', 'שם העסק', 'כמה עובדים', 'סוג פנייה', 'הסכמה לדיוור', 'מקור הגעה', 'מייל', 'מסלול', 'מה רוצה ללמוד', 'וובינר',
                  'מתי לחזור', 'נציג', 'סטטוס', 'הערות'];
-// שמירת מקום אחרי וובינר (makom.html): לאן נשלחת התראה מיידית על כל נרשם.
-// ריק: רק לחשבון שמריץ את הסקריפט (יוחנן). להוסיף כאן את המייל של נציג המכירות.
+// לאן נשלחת התראה מיידית על כל ליד שמבקש שיחה (שריון מקום, מתלבט, שמירת מקום).
+// ריק: רק לחשבון שמריץ את הסקריפט (יוחנן). להוסיף כאן את המייל של אשת המכירות.
 const NOTIFY_EMAILS = [];
+// הסטטוסים שאשת המכירות בוחרת מהרשימה בעמודה "סטטוס". ליד חדש נכנס כ"חדש".
+const STATUSES = ['חדש', 'לא ענה', 'דיברנו, לחזור', 'ממתין לתשלום', 'שילם', 'לא מעוניין'];
+// שריון מקום מסומן בצבע: מי שלחץ "לשריין מקום" חם יותר ממי שמתלבט
+const RESERVE_ROW_COLOR = '#E2F4F0';
 // ליד הטמעה מסומן בצבע, כדי שיבלוט בגיליון ויעבור ליוחנן
 const BUSINESS_ROW_COLOR = '#FFF2CC';
 // utm_source מהקישור (ראו UTM.md) בשם שמובן בגיליון. מקור שלא ברשימה נכתב כמו שהוא
@@ -58,7 +64,9 @@ function doPost(e) {
       'מאיזה דף': d.course || '',
       'שם העסק': d.company || '',
       'כמה עובדים': d.employees || '',
-      'סוג פנייה': d.kind === 'callback' ? 'בקשה לחזרה' : d.kind === 'register' ? 'הרשמה' : d.kind === 'makom' ? 'שמירת מקום' : 'וובינר',
+      'סוג פנייה': d.kind === 'test' ? 'בדיקת חיבור' : d.kind === 'callback' ? (d.intent === 'reserve' ? 'שריון מקום' : 'מתלבט, ביקש שיחה')
+                 : d.kind === 'register' ? 'הרשמה' : d.kind === 'makom' ? 'שמירת מקום'
+                 : d.kind === 'recording' ? 'מתנה: הקלטה' : 'וובינר',
       'הסכמה לדיוור': d.consent ? 'כן' : 'לא',
       'מקור הגעה': sourceLabel(d.source),
       'מייל': d.email || '',
@@ -66,13 +74,17 @@ function doPost(e) {
       'מה רוצה ללמוד': d.message || '',
       'וובינר': WEBINARS[d.topicKey] ? WEBINARS[d.topicKey].title + ' · ' + WEBINARS[d.topicKey].when : (d.kind === 'makom' ? d.topicKey || '' : ''),
       'מתי לחזור': d.callTime || '',
-      // סטטוס לנציג: לא חזרנו · דיברנו · נרשם · לא מעוניין · לא ענה
-      'סטטוס': d.kind === 'makom' ? 'לא חזרנו' : '',
+      // סטטוס לאשת המכירות, מתוך STATUSES. כל ליד שמבקש שיחה נכנס כ"חדש".
+      // בדיקת החיבור מדף הניהול נכתבת בלי סטטוס ובלי התראה, כדי שלא תיראה כליד
+      'סטטוס': (d.kind === 'makom' || d.kind === 'callback' || d.kind === 'register') ? STATUSES[0] : '',
     };
     const head = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     sheet.appendRow(head.map(h => (h in values ? values[h] : '')));
+    const row = sheet.getLastRow();
     if (d.kind === 'makom' && d.interest === 'הטמעה בעסק') {
-      sheet.getRange(sheet.getLastRow(), 1, 1, head.length).setBackground(BUSINESS_ROW_COLOR);
+      sheet.getRange(row, 1, 1, head.length).setBackground(BUSINESS_ROW_COLOR);
+    } else if (d.kind === 'callback' && d.intent === 'reserve') {
+      sheet.getRange(row, 1, 1, head.length).setBackground(RESERVE_ROW_COLOR);
     }
   } finally {
     lock.releaseLock();
@@ -84,6 +96,14 @@ function doPost(e) {
   // שמירת מקום: התראה מיידית ליוחנן ולנציג
   if (d.kind === 'makom') {
     try { notifyMakom(d); } catch (err) { console.error('makom notify: ' + err); }
+  }
+  // הקלטה במתנה: שולחים למייל קישור לדף ההקלטה, כדי שתישאר אצלו
+  if (d.kind === 'recording' && d.email) {
+    try { sendGift(d); } catch (err) { console.error('gift mail: ' + err); }
+  }
+  // שריון מקום או מתלבט מהאתר: התראה מיידית לאשת המכירות, כדי לחזור עוד היום
+  if (d.kind === 'callback' || d.kind === 'register') {
+    try { notifyCallback(d); } catch (err) { console.error('callback notify: ' + err); }
   }
   return out({ ok: true });
 }
@@ -106,6 +126,29 @@ function notifyMakom(d) {
   MailApp.sendEmail({
     to: to,
     subject: (biz ? '⭐ ליד הטמעה · ' : 'שמירת מקום · ') + (d.name || '') + ' · ' + (d.phone || ''),
+    body: lines.join('\n'),
+    name: 'האתר SHWADRON.AI',
+  });
+}
+
+function notifyCallback(d) {
+  const to = NOTIFY_EMAILS.length ? NOTIFY_EMAILS.join(',') : Session.getEffectiveUser().getEmail();
+  const reserve = d.intent === 'reserve' || d.kind === 'register';
+  const time = Utilities.formatDate(d.ts ? new Date(d.ts) : new Date(), 'Asia/Jerusalem', 'dd.MM HH:mm');
+  const lines = [
+    'שם: ' + (d.name || ''),
+    'טלפון: ' + (d.phone || ''),
+    reserve ? 'ביקש לשריין מקום' + (d.track ? ' ב' + d.track : '') : 'מתלבט, ביקש שיחה' + (d.track ? ' (' + d.track + ')' : ''),
+    d.company ? 'עסק: ' + d.company : '',
+    d.employees ? 'עובדים: ' + d.employees : '',
+    'הגיע מ: ' + (d.course || '') + ' · ' + sourceLabel(d.source),
+    'השאיר פרטים ב-' + time,
+    '',
+    'באתר הבטחנו לחזור אליו עוד היום.',
+  ].filter((x, i, a) => x || (i && a[i - 1]));
+  MailApp.sendEmail({
+    to: to,
+    subject: (reserve ? 'שריון מקום' + (d.track ? ' · ' + d.track : '') : 'מתלבט') + ' · ' + (d.name || '') + ' · ' + (d.phone || ''),
     body: lines.join('\n'),
     name: 'האתר SHWADRON.AI',
   });
@@ -142,6 +185,34 @@ const WEBINARS = {
   },
 };
 const TIPS_GROUP = 'https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv';
+
+/* מייל המתנה: קישור לדף ההקלטה באתר (לא לסרטון עצמו), ומתחתיו המחזור הקרוב */
+const GIFTS = {
+  'rec-pro-answers': { title: 'הוובינר "מתשובה בינונית לתשובה מקצועית"', key: 'pro-answers' },
+};
+function sendGift(d) {
+  const g = GIFTS[d.topicKey];
+  if (!g) return;
+  const first = String(d.name || '').trim().split(/\s+/)[0] || '';
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const link = 'https://ai.shwadron-ai.com/register.html?for=' + g.key + '&src=email/gift';
+  const html =
+    '<div dir="rtl" style="background:#F2F6FB;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">' +
+      '<div style="max-width:560px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #D5DEEA">' +
+        '<div style="background:#3B5BA5;padding:18px 24px;text-align:right">' +
+          '<img src="https://ai.shwadron-ai.com/assets/public/logo-email.png" alt="SHWADRON.AI" width="260" height="57" style="display:block;border:0;width:260px;height:auto;color:#ffffff;font-size:20px;font-weight:bold"/>' +
+        '</div>' +
+        '<div style="padding:24px;color:#1E3A69;font-size:16px;line-height:1.6;text-align:right">' +
+          '<p style="font-size:18px;margin:0 0 14px">שלום ' + esc(first) + ',</p>' +
+          '<p>כמו שהבטחנו, ' + esc(g.title) + ' מחכה לך כאן:</p>' +
+          '<a href="' + esc(link) + '" style="display:inline-block;background:#65B8AB;color:#0B1F3A;text-decoration:none;font-weight:bold;padding:13px 26px;border-radius:999px;margin:6px 0">לצפייה בהקלטה</a>' +
+          '<p style="margin-top:18px">רוצים שזה ייכנס לעבודה שלכם, עם מרצה חי וקבוצה? בדף ההקלטה יש את פרטי המחזור הקרוב.</p>' +
+          '<p style="margin:18px 0 0">להתראות,<br/><b>יוחנן שבדרון</b><br/><span style="color:#56657E">SHWADRON.AI</span></p>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  MailApp.sendEmail({ to: d.email, subject: 'המתנה שלך: ' + g.title + ' | SHWADRON.AI', htmlBody: html, name: 'יוחנן שבדרון' });
+}
 
 function sendConfirmation(d) {
   const first = String(d.name || '').trim().split(/\s+/)[0] || '';
@@ -205,6 +276,12 @@ function getSheet() {
     sheet.setFrozenRows(1);
     sheet.getRange('A:A').setNumberFormat('dd/MM/yyyy HH:mm');
   }
+  // רשימה נפתחת בעמודת הסטטוס, כדי שכל המוכרות יכתבו אותו דבר ואפשר יהיה לסנן
+  const st = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0].indexOf('סטטוס') + 1;
+  if (st && !sheet.getRange(2, st).getDataValidation()) {
+    sheet.getRange(2, st, sheet.getMaxRows() - 1, 1).setDataValidation(
+      SpreadsheetApp.newDataValidation().requireValueInList(STATUSES, true).setAllowInvalid(true).build());
+  }
   // כותרות שחסרות בלשונית קיימת נוספות בסוף
   const head = sheet.getRange(1, 1, 1, Math.max(sheet.getLastColumn(), 1)).getValues()[0];
   HEADERS.filter(h => head.indexOf(h) === -1).forEach(h => {
@@ -228,7 +305,7 @@ function testConfirmationMail() {
 function testRow() {
   const res = doPost({ postData: { contents: JSON.stringify({
     secret: SECRET, name: 'בדיקה', phone: '0500000000', course: 'בדיקה מהעורך',
-    kind: 'callback', consent: false, email: 'test@example.com', ts: new Date().toISOString(),
+    kind: 'callback', intent: 'reserve', track: 'מאפס למאה', consent: false, email: 'test@example.com', ts: new Date().toISOString(),
   }) } });
   const sheet = getSheet();
   console.log('תשובה: ' + res.getContent());

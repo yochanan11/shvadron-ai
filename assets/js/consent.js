@@ -48,7 +48,32 @@
     }
   }
 
+  /* Statistics withdrawn: remove what it stored (traffic source, thank-you
+     flags, GA4 and Clarity cookies). Scripts that already started cannot be
+     stopped, so the page reloads without them. */
+  function forgetStatistics() {
+    try {
+      var drop = [];
+      for (var i = 0; i < window.localStorage.length; i++) {
+        var k = window.localStorage.key(i);
+        if (k === 'shw_src_v1' || k.indexOf('shw_thankyou_') === 0) drop.push(k);
+      }
+      drop.forEach(function (k) { window.localStorage.removeItem(k); });
+    } catch (e) {}
+    var host = location.hostname.split('.');
+    var domains = ['', location.hostname];
+    if (host.length > 1) domains.push('.' + host.slice(-2).join('.'));
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (!/^(_ga|_gid|_gat|_clck|_clsk|CLID|MUID)/.test(name)) return;
+      domains.forEach(function (d) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (d ? '; domain=' + d : '');
+      });
+    });
+  }
+
   function write(choice) {
+    var hadStatistics = has('statistics');
     state = {
       preferences: !!choice.preferences,
       statistics: !!choice.statistics,
@@ -60,6 +85,10 @@
       window.localStorage.setItem(STORE_KEY, JSON.stringify(state));
     } catch (e) {
       /* private mode: the choice still applies for this page view */
+    }
+    if (hadStatistics && !state.statistics) {
+      forgetStatistics();
+      if (started.ga4 || started.clarity) { location.reload(); return; }
     }
     apply();
   }
@@ -154,9 +183,12 @@
       '<div class="shw-cookie-inner">' +
         '<div class="shw-cookie-text">' +
           '<h2 id="shw-cookie-title" tabindex="-1">שימוש בעוגיות</h2>' +
-          '<p>עוגיות חיוניות להפעלת האתר, ועוגיות סטטיסטיקה ' +
+          '<p class="shw-cookie-full">עוגיות חיוניות להפעלת האתר, ועוגיות סטטיסטיקה ' +
           '(Google Analytics ו-Microsoft Clarity) כדי לשפר אותו. ' +
           'הסטטיסטיקה נטענת רק באישורכם.</p>' +
+          /* הנוסח הקצר מוצג רק בטלפון, שם הפס הוא שורה דקה אחת.
+             aria-hidden כי קורא מסך מקבל את הנוסח המלא שמעליו. */
+          '<p class="shw-cookie-short" aria-hidden="true">האתר משתמש בעוגיות. סטטיסטיקה נטענת רק באישורכם.</p>' +
         '</div>' +
         '<div class="shw-cookie-actions">' +
           '<button type="button" data-act="accept" class="shw-ck-btn shw-ck-primary">אני מאשר הכול</button>' +
@@ -191,6 +223,7 @@
     var b = document.getElementById(BANNER_ID);
     if (b) b.parentNode.removeChild(b);
     document.documentElement.classList.remove(BANNER_CLASS);
+    document.documentElement.style.removeProperty('--ck-h');
     var t = document.getElementById('shw-consent-toggle');
     if (t) t.focus();
   }
@@ -200,6 +233,13 @@
     var b = buildBanner();
     document.body.appendChild(b);
     document.documentElement.classList.add(BANNER_CLASS);
+    // גובה הפס כמשתנה CSS: הרצועה התחתונה עם כפתור ההרשמה יושבת מעליו
+    var measure = function () {
+      if (!document.getElementById(BANNER_ID)) return window.removeEventListener('resize', measure);
+      document.documentElement.style.setProperty('--ck-h', b.offsetHeight + 'px');
+    };
+    measure();
+    window.addEventListener('resize', measure);
     // Announce the banner to assistive tech without stealing the caret
     // from a visitor who has already started interacting with the page.
     window.setTimeout(function () {

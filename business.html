@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="assets/css/brand-ads.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
 <link rel="stylesheet" href="assets/css/gift.css"/>
+<link rel="stylesheet" href="assets/css/shw-modern.css"/>
+<link rel="stylesheet" href="assets/css/shw-soft.css"/>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -59,7 +61,7 @@
       <a class="nav-x" href="cases.html">מה נבנה בעסקים</a>
       <a href="#founder">מי מוביל</a>
       <a class="nav-x" href="#other">לעובד בודד</a>
-      <a class="nav-x" href="index.html">כל המסלולים</a>
+      <a class="nav-x" href="index.html">שני המחזורים</a>
     </nav>
     <a class="btn btn-primary btn-sm" href="#contact">לתיאום שיחה</a>
   </div>
@@ -80,8 +82,8 @@
     <!-- הכפתור הועלה מעל העדות: בטלפון הוא נפל 17 פיקסל מתחת לקו
          הקיפול, והעדות דחפה אותו לשם. ההוכחה עובדת גם אחריו. -->
     <div style="display:flex;flex-wrap:wrap;gap:12px">
-      <a class="btn btn-primary" href="#contact">לתיאום שיחת היכרות ←</a>
-      <a class="btn btn-ghost" href="https://wa.me/972528189921" target="_blank" rel="noopener">לשיחה בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
+      <a class="btn btn-primary" href="#contact">לתיאום שיחת היכרות</a>
+      <a class="btn btn-ghost" data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">לשיחה בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
     </div>
     <figure class="hero-proof">
       <blockquote>״העובדים התחילו להספיק כמעט פי שניים בפחות זמן, וההכנסות בעסק הוכפלו.״</blockquote>
@@ -121,9 +123,9 @@
     <p class="body">אין כאן רק עלות של להתחיל עם AI. יש עלות של להמשיך בלעדיו, והיא כבר משולמת היום, בשכר, על שעות שהולכות על עבודה חוזרת. הנה החשבון, עם המספרים שלך.</p>
     <div class="calc" data-calc>
       <div class="calc-fields">
-        <label><span>כמה עובדים בצוות</span><input type="number" min="1" max="500" step="1" value="10" inputmode="numeric" data-calc-emp/></label>
-        <label><span>שעות ביום על עבודה חוזרת, לעובד</span><input type="number" min="0" max="8" step="0.5" value="2" inputmode="decimal" data-calc-hours/></label>
-        <label><span>עלות מעסיק חודשית לעובד, בשקלים</span><input type="number" min="1000" max="100000" step="500" value="12000" inputmode="numeric" data-calc-cost/></label>
+        <label><span>כמה עובדים בצוות</span><input type="number" min="1" max="500" step="1" value="5" inputmode="numeric" data-calc-emp/></label>
+        <label><span>שעות ביום על עבודה חוזרת, לעובד</span><input type="number" min="0" max="8" step="0.5" value="1" inputmode="decimal" data-calc-hours/></label>
+        <label><span>עלות מעסיק חודשית לעובד, בשקלים</span><input type="number" min="1000" max="100000" step="500" value="10000" inputmode="numeric" data-calc-cost/></label>
       </div>
       <div class="calc-out">
         <span class="fig-label">שווי השעות האלה בשנה</span>
@@ -133,8 +135,8 @@
     </div>
     <p class="small">החישוב נעשה מהמספרים שאתם מזינים, לפי 22 ימי עבודה בחודש ו-8.5 שעות ליום. הוא לא הבטחה לחיסכון מלא. גם החזרה של חלק מהשעות האלה משנה את התמונה.</p>
     <div style="display:flex;flex-wrap:wrap;gap:12px">
-      <a class="btn btn-primary" href="#offer">לשלושת המסלולים ←</a>
-      <a class="btn btn-ghost" href="#contact">לתיאום שיחת היכרות</a>
+      <a class="btn btn-primary" href="#contact">לתיאום שיחת היכרות</a>
+      <a class="btn btn-ghost" href="#offer">לשלושת המסלולים</a>
     </div>
   </div>
 </section>
@@ -145,6 +147,16 @@
     <p class="eyebrow">02 · המסלולים</p>
     <h2 class="h-sm">שלושה מסלולי הטמעה.<br/><span class="ghost">לפי מה שהעסק צריך.</span></h2>
     <p class="body">אצלי לא יושבים על תיאוריה. העובדים יוצאים עם כלי עבודה שהם משתמשים בהם למחרת, לומדים לכתוב הוראות טובות ל-AI ולבנות סוכנים, והכל מותאם למה שהעסק שלכם צריך באמת.</p>
+    <!-- כרטיס שליחת עובד: מעסיק שלא מתחיל בתהליך לכל הצוות יכול לשלוח עובד
+         אחד למחזור הקרוב. הכפתור פותח את הטופס שלמטה עם "שליחת עובד למחזור"
+         מסומן מראש. -->
+    <div class="cta-box" style="background:#F2FBF9;border-color:var(--brand-teal)">
+      <div>
+        <b>רוצים בוגר כזה אצלכם?</b>
+        <p style="color:var(--ink-2)">מעסיקים פונים אליי ומבקשים בוגרים. שלחו עובד למחזור הקרוב, והחשבונית תצא על שם העסק. מאפס למאה נפתח ב-23.11, צבא הסוכנים ב-25.11. שולחים 3 עובדים או יותר? 10% הנחה לכל אחד.</p>
+      </div>
+      <a class="btn btn-primary" href="#contact" data-cta="שליחת עובד" data-need="employee">לשליחת עובד</a>
+    </div>
     <div class="grid">
       <!-- המסלול המומלץ. ההמלצה כאן היא על הצעד הראשון ולא על המסלול
            היקר, כי החסם הוא כמות פניות ולא סגירה: מחיר סופי בלי כוכבית
@@ -166,7 +178,7 @@
           <p class="biz-price-what">שלוש שעות · אצלכם במשרד · בלי הגבלת משתתפים · כולל נסיעות</p>
           <p class="biz-price-fine">לצפון הרחוק ולדרום הרחוק נתאם בנפרד</p>
         </div>
-        <a class="btn btn-primary btn-block" href="#contact">לתאם הרצאת חשיפה ←</a>
+        <a class="btn btn-primary btn-block" href="#contact" data-cta="הרצאת חשיפה" data-need="lecture">לתיאום שיחת היכרות</a>
       </article>
       <article class="card">
         <p class="card-kicker">מסלול 2 · 5 מפגשים, 10 שעות · עד 10 משתתפים</p>
@@ -199,7 +211,7 @@
            בצבא הסוכנים כרגע. אם אחד משני המחירים ישתנה, לבדוק שהמשפט
            הזה עדיין נכון. -->
       <p class="body">כדי לתת לזה קנה מידה: באותו סכום שעולה לשלוח עובד אחד למסלול המתקדם שלי, אני מגיע אליכם למשרד ומעביר את ההרצאה לכל הצוות.</p>
-      <div><a class="btn btn-ghost btn-sm" href="https://wa.me/972528189921?text=%D7%94%D7%99%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%98%D7%95%D7%95%D7%97%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%94%D7%98%D7%9E%D7%A2%D7%94%20%D7%91%D7%A2%D7%A1%D7%A7" target="_blank" rel="noopener">לקבלת טווח מחיר בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a></div>
+      <div><a class="btn btn-ghost btn-sm" data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">לקבלת טווח מחיר בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a></div>
     </div>
     <!-- נקודת המרה ברגע ההחלטה. הטופס עצמו יושב בסוף הדף, ומי
          שבחר מסלול כאן לא אמור לגלול עוד עשרה מסכים כדי להשאיר
@@ -207,9 +219,9 @@
     <div class="cta-box" style="background:var(--card);border:1px solid var(--line)">
       <div>
         <b>יודעים איזה מסלול מתאים?</b>
-        <p>משאירים פרטים, ויוחנן חוזר אליכם לשיחת היכרות קצרה. בלי התחייבות, ועם הסכם סודיות אם צריך.</p>
+        <p>משאירים פרטים, ונחזור אליכם עוד היום לשיחת היכרות קצרה. בלי התחייבות, ועם הסכם סודיות אם צריך.</p>
       </div>
-      <a class="btn btn-primary" href="#contact">לתיאום שיחת היכרות ←</a>
+      <a class="btn btn-primary" href="#contact">לתיאום שיחת היכרות</a>
     </div>
   </div>
 </section>
@@ -280,6 +292,10 @@
   <div class="wrap stack">
     <p class="eyebrow">05 · מהשטח</p>
     <h2 class="h-sm">מה אומרים<br/>בעסקים.</h2>
+    <figure class="vq">
+      <a class="vq-frame" href="https://drive.google.com/file/d/1SGZScG_lN-TFxFPEjeRBTw9ZviojulH-/view" target="_blank" rel="noopener" data-vq="1SGZScG_lN-TFxFPEjeRBTw9ZviojulH-" data-vq-title="המלצה מצולמת: אהרן זאב ברנשטיין, תהליך הטמעה בעסק"><img src="assets/public/assets/video-testimonials/aharon-zeev-bernstein.webp" alt="" width="540" height="960" loading="lazy"/><span class="vq-play" aria-hidden="true"></span><span class="sr-only">המלצה מצולמת: אהרן זאב ברנשטיין, תהליך הטמעה בעסק: הפעלת הסרטון</span></a>
+      <figcaption><p class="vq-kicker">המלצה מצולמת</p><b>אהרן זאב ברנשטיין</b><span class="vq-role">תהליך הטמעה בעסק</span><p class="vq-line">למה כולם מדברים על AI ומעטים יודעים מה לעשות איתו, ואיך הוא נכנס אצלו לעסק.</p></figcaption>
+    </figure>
     <figure class="quote-card is-big">
       <blockquote>״בתוך שישה מפגשים הבאת את האנשים למקום שבו הם לא רק משתמשים ב-AI, אלא ממש מפתחים באמצעותו. הרבה קורסים מסתיימים עם ידע וחומר למחשבה. אצלך סיימנו עם כלים ותוכנות שעובדים בפועל בתוך החברה ומשמשים את העובדים ביום-יום. זה אומר הכול.״</blockquote>
       <figcaption>יענקי · משרד יזמות נדל״ן · אחרי שישה מפגשי הדרכה והטמעה</figcaption>
@@ -327,7 +343,7 @@
         <b>רוצים לראות מה נבנה בפועל?</b>
         <p>חמישה עסקים, שבעה עשר סוכנים, בשמם. כולל מה נבנה, על ידי מי, ומה השתנה אחרי.</p>
       </div>
-      <a class="btn btn-primary" href="cases.html">לראות מה נבנה ←</a>
+      <a class="btn btn-ghost" href="cases.html">לראות מה נבנה</a>
     </div>
     <div class="biz-note">
       <h3 class="card-title">מה נשאר בעסק אחרי שהקורס נגמר</h3>
@@ -354,7 +370,7 @@
       <ul class="founder-list">
         <li>בוגר תואר ראשון במדעי המחשב, התמחות בבינה מלאכותית</li>
         <li>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</li>
-        <li>1,500 בוגרים ב-30 מחזורים</li>
+        <li>יותר מ-1,500 בוגרים ב-30 מחזורים</li>
       </ul>
       <figure class="founder-letter">
         <a class="founder-letter-thumb" href="assets/public/assets/letters/negev-ministry-dg-2025.webp" target="_blank" rel="noopener">
@@ -377,13 +393,20 @@
     <div class="stack contact-main">
     <p class="eyebrow">07 · בואו נדבר</p>
     <h2 class="h-sm">שיחת היכרות<br/><span class="ghost">בלי התחייבות.</span></h2>
-    <p class="body">כל חודש בלי AI עולה לעסק שעות עבודה. משאירים פרטים, ויוחנן חוזר אליכם לתיאום מועדים ולבחירת המסלול.</p>
+    <p class="body">כל חודש בלי AI עולה לעסק שעות עבודה. משאירים פרטים, ונחזור אליכם עוד היום לתיאום מועדים ולבחירת המסלול.</p>
     <form class="gift-form" data-callback novalidate>
+      <input type="hidden" name="cta" value=""/>
       <div class="gift-fields">
         <label><span>שם</span><input name="name" autocomplete="name" required/></label>
         <label><span>טלפון</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required/></label>
-            <label class="biz-wide"><span>מייל</span><input name="email" type="email" inputmode="email" autocomplete="email" required/></label>
         <label class="biz-wide"><span>שם העסק או הארגון</span><input name="company" autocomplete="organization"/></label>
+        <label class="biz-wide"><span>מה מעניין אתכם</span><select name="need">
+          <option value="unsure">עוד לא בטוח</option>
+          <option value="lecture">הרצאה</option>
+          <option value="team">הדרכה לצוות</option>
+          <option value="employee">שליחת עובד למחזור</option>
+        </select></label>
+        <label class="biz-wide"><span>מייל <small>(לא חובה)</small></span><input name="email" type="email" inputmode="email" autocomplete="email"/></label>
         <label class="biz-wide"><span>כמה עובדים בצוות</span><select name="employees">
           <option value="">עוד לא בטוח</option>
           <option value="1-5">1 עד 5</option>
@@ -396,19 +419,19 @@
       <label class="gift-consent"><input type="checkbox" name="consent"/> <span>אשמח לקבל מיוחנן עדכונים, טיפים והטבות בוואטסאפ (אפשר להסיר בכל עת)</span></label>
       <button class="btn btn-primary" type="submit">חזרו אליי</button>
       <p class="gift-msg" role="status" aria-live="polite"></p>
-      <p class="gift-fine">הפרטים משמשים לחזרה אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
+      <p class="gift-fine">הפרטים משמשים רק כדי לחזור אליכם. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</p>
     </form>
     <div class="gift-after" tabindex="-1" hidden>
-          <p class="lead"><b>תודה, הפרטים התקבלו.</b> יוחנן יחזור אליכם בהקדם. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
-          <a class="btn btn-primary tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
+          <p class="lead"><b>תודה, הפרטים התקבלו.</b> נחזור אליכם עוד היום. בינתיים, בקבוצת הטיפים יוחנן משתף טיפים קצרים על AI, בלי ספאם.</p>
+          <a class="btn btn-ghost tips-btn" href="https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>להצטרפות לקבוצת הטיפים בוואטסאפ</a>
         </div>
-    <p class="small">מעדיפים לכתוב? <a href="https://wa.me/972528189921" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline">שלחו ליוחנן הודעה בוואטסאפ</a> · <a href="https://wa.me/972528189921" class="ltr" style="color:inherit;white-space:nowrap">052-818-9921</a></p>
+    <p class="small">מעדיפים לכתוב? <a style="color:var(--accent);text-decoration:underline" data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">כתבו לנו בוואטסאפ</a> · <span class="ltr" style="white-space:nowrap">052-818-9921</span></p>
     </div>
     <aside class="contact-aside" aria-label="מה קורה בשיחה">
       <p class="eyebrow">מה קורה בשיחה</p>
       <ol class="contact-steps">
         <li><span><b>משאירים פרטים.</b> שתי דקות, בלי התחייבות.</span></li>
-        <li><span><b>יוחנן חוזר אליכם.</b> שומע איך העסק עובד היום ואיפה הולכות השעות.</span></li>
+        <li><span><b>חוזרים אליכם עוד היום.</b> שומעים איך העסק עובד היום ואיפה הולכות השעות.</span></li>
         <li><span><b>בוחרים מסלול.</b> הרצאת חשיפה, קורס הדרכה והטמעה לצוות, או ליווי אישי לכל עובד.</span></li>
       </ol>
       <div class="contact-who">
@@ -416,7 +439,7 @@
         <p><b>יוחנן שבדרון</b><br/>הוביל הטמעות AI במשרדי ממשלה וביותר מ-30 עסקים</p>
       </div>
       <p class="contact-nda">צריכים הסכם סודיות? חותמים עוד לפני המפגש הראשון.</p>
-      <a class="btn btn-light btn-block" href="https://wa.me/972528189921" target="_blank" rel="noopener">לשיחה בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
+      <a class="btn btn-light btn-block" data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">לשיחה בוואטסאפ<span class="sr-only"> (נפתח בחלון חדש)</span></a>
     </aside>
   </div>
 </section>
@@ -466,13 +489,14 @@
       <a href="cases.html">מה נבנה בעסקים</a>
     </nav>
     <nav aria-label="קישורים משפטיים">
+      <a href="index.html">דף הבית</a>
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
       <a href="accessibility.html">הצהרת נגישות</a>
       <a href="cancellation.html">ביטול עסקה</a>
       <a href="#" data-consent-settings>הגדרות עוגיות</a>
     </nav>
-    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a href="https://wa.me/972528189921">052-818-9921</a></span>
+    <span>יוחנן שבדרון · עוסק מורשה 203223078 · <a data-wa href="https://wa.me/972528189921?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%9E%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%A9%D7%90%D7%9C%D7%94%20%D7%A2%D7%9C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8" target="_blank" rel="noopener">052-818-9921</a></span>
   </div>
 </footer>
 

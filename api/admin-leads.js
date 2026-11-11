@@ -16,7 +16,7 @@ async function testSheet() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ secret: process.env.LEADS_SHEET_SECRET, name: 'בדיקת חיבור', phone: '0500000000',
-        course: 'בדיקה מדף הניהול', kind: 'callback', consent: false, ts: new Date().toISOString() }),
+        course: 'בדיקה מדף הניהול', kind: 'test', consent: false, ts: new Date().toISOString() }),
     });
     status = r.status; text = await r.text();
   } catch (e) {

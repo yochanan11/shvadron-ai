@@ -26,13 +26,22 @@ async function toSheet(lead, kind) {
 
 // מאיזה דף הגיע הטופס, בשם שמובן בדף הניהול
 const COURSES = {
-  'index.html':            'דף הבית (שני המסלולים)',
-  'course-beginners.html': 'AI למתחילים (זום)',
-  'course-advanced.html':  'AI למתקדמים (זום)',
-  'course.html':           'הקורס הדיגיטלי',
+  'index.html':            'דף הבית (שני המחזורים)',
+  'course-beginners.html': 'מאפס למאה (זום)',
+  'course-advanced.html':  'צבא הסוכנים (זום)',
+  'course.html':           'המוח השני (דיגיטלי)',
   'business.html':         'הטמעה בעסקים',
+  'cases.html':            'מה נבנה בעסקים',
   'register.html':         'טופס הרשמה',
   'makom.html':            'שמירת מקום אחרי וובינר',
+};
+
+// טופס העסקים: מה מעניין את הפונה
+const NEEDS = {
+  lecture:  'הרצאה',
+  team:     'הדרכה לצוות',
+  employee: 'שליחת עובד למחזור',
+  unsure:   'עוד לא בטוח',
 };
 
 // דף שמירת המקום (makom.html): מה מעניין את הנרשם
@@ -55,7 +64,7 @@ const WHO = {
   business: 'בעל עסק / עצמאי',
 };
 
-// טופס "הוובינר במתנה" וטופס "חזרו אליי" (דפי הקורסים ודף העסקים): שומר שם, טלפון והסכמה לדיוור ברשימה "leads"
+// טופס "הוובינר במתנה" וטופס "מתלבטים, חזרו אליי" (כל הדפים): שומר שם, טלפון והסכמה לדיוור ברשימה "leads"
 // ב-Vercel KV. דף הניהול admin-leads.html קורא מאותה רשימה.
 // הוובינר נפתח בדפדפן גם אם השמירה נכשלה, כדי לא להעניש את הגולש.
 module.exports = async (req, res) => {
@@ -78,8 +87,17 @@ module.exports = async (req, res) => {
   const callback = b.kind === 'callback';
   // מקור ההגעה (utm_source הראשון), אם הגולש אישר עוגיות סטטיסטיקה
   const source = String(b.source || '').trim().slice(0, 40);
-  // מייל: שדה חובה בכל הטפסים
+  // מייל: חובה בטופס הוובינר ובטופס ההרשמה. בטופס "חזרו אליי" אין שדה מייל (שם וטלפון בלבד)
   const email = String(b.email || '').trim().slice(0, 120);
+  // טופס "חזרו אליי": הכפתור שהביא את הגולש לטופס (כותרת, רצועה תחתונה, פתיחה וכו')
+  const cta = callback ? String(b.cta || '').replace(/[<>"'&]/g, '').trim().slice(0, 40) : '';
+  // טופס העסקים: מה מעניין (הרצאה, הדרכה לצוות, שליחת עובד למחזור)
+  const need = callback ? (NEEDS[b.need] || '') : '';
+  // טופס "חזרו אליי": שריון מקום או התלבטות, ובאיזה מחזור. בדף מסלול המחזור הוא של הדף.
+  const intent = callback ? (b.intent === 'reserve' ? 'reserve' : 'question') : '';
+  const COHORTS = ['מאפס למאה', 'צבא הסוכנים'];
+  const PAGE_COHORT = { 'course-beginners.html': 'מאפס למאה', 'course-advanced.html': 'צבא הסוכנים' };
+  const cohort = callback ? (COHORTS.includes(b.track) ? b.track : (PAGE_COHORT[page] || '')) : '';
 
   // טלפון ישראלי: 05X-XXXXXXX, או עם קידומת 972
   const local = phone.replace(/^\+?972/, '0');
@@ -88,7 +106,10 @@ module.exports = async (req, res) => {
   const interest = makom ? (INTERESTS[b.interest] || '') : '';
   const callTime = makom && CALL_TIMES.includes(b.callTime) ? b.callTime : '';
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!name || !/^0\d{8,9}$/.test(local) || (makom ? (email && !emailOk) : !emailOk)
+  // הקלטת וובינר (register.html?for=<וובינר שכבר התקיים>): שם וטלפון פותחים את ההקלטה, בלי מייל
+  const recording = b.kind === 'recording';
+  // הקלטה במתנה: המייל חובה, כי ההקלטה נשלחת גם אליו
+  if (!name || !/^0\d{8,9}$/.test(local) || ((makom || callback) ? (email && !emailOk) : !emailOk)
       || (makom && (!interest || (b.interest === 'business' && !company)))) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
@@ -98,18 +119,21 @@ module.exports = async (req, res) => {
   const track = register ? (TRACKS[b.track] || '') : '';
   const who = register ? (WHO[b.who] || '') : '';
   const message = (register || makom) ? String(b.message || '').trim().slice(0, 1000) : '';
-  const topic = register ? String(b.topic || '').trim().slice(0, 160) : '';
+  const topic = (register || recording) ? String(b.topic || '').trim().slice(0, 160) : '';
   // מפתח הוובינר (?for= בקישור). סקריפט הגיליון שולח לפיו מייל אישור עם פרטי הוובינר והזום
-  const topicKey = (register || makom) ? String(b.topicKey || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) : '';
+  // בהקלטה המפתח מקבל קידומת rec-, כדי שסקריפט הגיליון לא ישלח מייל אישור עם קישור זום של וובינר שכבר התקיים
+  const topicKey = (register || makom || recording)
+    ? (recording ? 'rec-' : '') + String(b.topicKey || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40) : '';
   if (register && (!email || !(track || who))) {
     return res.status(400).json({ ok: false, error: 'invalid' });
   }
 
   const course = (COURSES[page] || COURSES['index.html']) + (company ? ' · ' + company : '')
-    + (employees ? ' · ' + employees + ' עובדים' : '') + (callback ? ' · בקשה לחזרה' : '')
-    + (track ? ' · ' + track : '') + (who ? ' · ' + who : '') + (topic ? ' · ' + topic : '')
+    + (employees ? ' · ' + employees + ' עובדים' : '') + (need ? ' · מעניין: ' + need : '')
+    + (callback ? (intent === 'reserve' ? ' · שריון מקום' : ' · בקשה לחזרה') : '') + (cta ? ' · כפתור: ' + cta : '')
+    + (track ? ' · ' + track : '') + (who ? ' · ' + who : '') + (recording ? ' · צפייה בהקלטה' : '') + (topic ? ' · ' + topic : '')
     + (interest ? ' · ' + interest : '') + (callTime ? ' · לחזור ב' + callTime : '') + (makom && topicKey ? ' · ' + topicKey : '');
-  const lead = { name, phone: local, email, consent, course, page, company, employees, source, track: track || interest, who, message, topic, topicKey, interest, callTime, ts: new Date().toISOString() };
+  const lead = { name, phone: local, email, consent, course, page, company, employees, need, cta, source, track: track || cohort || interest, intent, who, message, topic, topicKey, interest, callTime, ts: new Date().toISOString() };
 
   // KV (דף הניהול) והגיליון במקביל. מספיק שאחד מהם הצליח כדי שהליד לא ילך לאיבוד.
   const [kv, sheet] = await Promise.allSettled([

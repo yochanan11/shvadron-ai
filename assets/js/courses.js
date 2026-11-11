@@ -92,10 +92,11 @@ if (hasPrice) {
 (function(){
   function where(el){
     if(el.closest('header'))      return 'header';
-    if(el.closest('.stickybar'))  return 'sticky_mobile';
-    if(el.closest('.hero'))       return 'hero';
-    if(el.closest('.price-card')) return 'price_card';
-    if(el.closest('.track'))      return 'track_card';
+    if(el.closest('.dock'))       return 'sticky_mobile';
+    if(el.closest('#top'))        return 'hero';
+    if(el.closest('.buy-card'))   return 'price_card';
+    if(el.closest('.cohort'))     return 'cohort_card';
+    if(el.closest('.again'))      return 'page_end';
     var s = el.closest('section');
     return (s && s.id) ? s.id : 'other';
   }
@@ -186,7 +187,7 @@ function applyCoupon(data){
 
   function setMsg(text, ok){
     msg.textContent = text;
-    msg.className = 'pd-coupon-msg ' + (ok ? 'ok' : 'err');
+    msg.classList.toggle('ok', !!ok); msg.classList.toggle('err', !ok);
   }
 
   function apply(){
@@ -271,7 +272,7 @@ var ALUMNI = C.id === 'course-advanced' && /[?&]offer=alumni(&|$)/.test(location
        התשלום מתחלף. אם הקופון לא מוגדר, הדף נשאר במחיר הרגיל.    ─── */
 (function(){
   var bar = document.querySelector('.promo-bar:not(.alumni-bar):not(.promo-ever)');
-  // הפס הקבוע ("מחזור כסליו · עד 20 איש") מחליף את פס המבצע ברגע
+  // הפס הקבוע (data-promo-else) מחליף את פס המבצע ברגע
   // שההנחה אינה בתוקף, כדי שלא יישאר ראש הדף בלי קריאה לפעולה.
   function evergreen(){ each('[data-promo-else]', function(el){ el.hidden = false; }); }
   if(ALUMNI) return;

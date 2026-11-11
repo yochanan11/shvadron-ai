@@ -41,7 +41,7 @@
    הדף. shw-nav.js קופץ ליעד מיידית ורק אז מדליק את המחלקה. */
 html.smooth-ok{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);direction:rtl;
-  font-family:'Heebo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-family:'Rubik',system-ui,-apple-system,'Segoe UI',sans-serif;
   font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:var(--ink);text-decoration:none}
@@ -67,7 +67,7 @@ a:hover{color:#fff}
 .stack{display:flex;flex-direction:column;gap:clamp(32px,5vw,56px)}
 
 /* ── טיפוגרפיה ───────────────────────────────────────────── */
-.display,h1,h2,h3{font-family:'Karantina','Heebo',sans-serif;font-weight:700;letter-spacing:-.01em}
+.display,h1,h2,h3{font-family:'Rubik',sans-serif;font-weight:700;letter-spacing:-.01em}
 h1,.h-hero{font-size:clamp(72px,13vw,200px);line-height:.86}
 /* הכותרת הראשית צועקת בכל מסך: מתמלאת לכ-90% מרוחב התוכן, עד 200px במחשב.
    --fit נקבע בכל עמוד לפי אורך השורה הארוכה בכותרת */
@@ -80,7 +80,7 @@ h1[style*="--fit"]{font-size:clamp(56px,calc((min(100vw,var(--wrap)) - 2*var(--p
 h2,.h-sec{font-size:clamp(56px,8vw,120px);line-height:.92}
 .h-sm{font-size:clamp(48px,7vw,104px);line-height:.92}
 /* כותרות המשנה בתוך כרטיסים הן Heebo, לא Karantina */
-h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-size:21px;
+h3.card-title,.card-title{font-family:'Rubik',sans-serif;font-weight:700;font-size:21px;
   line-height:1.3;letter-spacing:0}
 .lead{font-size:clamp(18px,2.2vw,22px);line-height:1.6;color:var(--ink-2);max-width:66ch}
 .body{font-size:17px;line-height:1.65;color:var(--muted);max-width:66ch}
@@ -89,12 +89,12 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .on-accent{color:var(--accent)}
 
 /* תווית מקטע ממוספרת */
-.eyebrow{font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;
+.eyebrow{font-family:'Rubik',sans-serif;font-size:14px;font-weight:700;
   letter-spacing:.14em;color:var(--accent)}
 
 /* ── כפתורים ─────────────────────────────────────────────── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-family:'Heebo',sans-serif;font-weight:700;font-size:17px;
+  font-family:'Rubik',sans-serif;font-weight:700;font-size:17px;
   padding:16px 32px;min-height:56px;border:0;border-radius:999px;cursor:pointer;
   transition:background .18s,color .18s,border-color .18s}
 .btn-primary{background:var(--accent);color:var(--accent-ink)}
@@ -151,7 +151,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .figures>div{padding-block:28px;display:flex;flex-direction:column;gap:4px;min-width:0;
   align-items:center;text-align:center}
 /* ספרות ב-Heebo ולא ב-Karantina: בגופן הצר 8 נראה כמו 0 */
-.fig{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:clamp(44px,5.5vw,60px);line-height:1}
+.fig{font-family:'Rubik',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:clamp(44px,5.5vw,60px);line-height:1}
 .fig-label{font-size:15px;color:var(--muted)}
 /* מספר עם + נכתב משמאל לימין, אבל חייב להתיישר לימין כמו התווית שלו, אחרת הוא נצמד למספר של התא הסמוך */
 .fig.ltr,.step-n.ltr{text-align:right}
@@ -168,7 +168,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 /* מחיר בדף העסקים. מוצג לפני מע״מ, בניגוד לשאר האתר, כמקובל מול
    לקוח עסקי. ההחלטה מתועדת ב-CLAUDE.md */
 .biz-price{margin-top:auto;padding-top:18px;border-top:1px solid var(--line)}
-.biz-price b{font-family:'Heebo',sans-serif;font-size:34px;font-weight:800;line-height:1}
+.biz-price b{font-family:'Rubik',sans-serif;font-size:34px;font-weight:800;line-height:1}
 .biz-price>span{font-size:16px;color:var(--muted);font-weight:600}
 .biz-price-what{margin-top:8px;font-size:14px;color:var(--ink-2);line-height:1.6}
 .biz-price-fine{margin-top:4px;font-size:13px;color:var(--muted)}
@@ -184,7 +184,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .card-flag.is-quiet{background:var(--card);color:var(--accent);
   border:1px solid var(--accent);font-weight:700}
 .card-kicker{font-size:14px;font-weight:500;color:var(--muted)}
-.card-name{font-family:'Karantina','Heebo',sans-serif;font-weight:700;
+.card-name{font-family:'Rubik',sans-serif;font-weight:700;
   font-size:clamp(56px,8vw,72px);line-height:.9}
 .card-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:20px}
@@ -219,7 +219,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
 .step{padding:32px 0 32px 24px;border-top:1px solid #3A3A40;display:flex;flex-direction:column;gap:14px}
 .step:first-child{border-top-color:var(--ink)}
-.step-n{font-family:'Karantina','Heebo',sans-serif;font-weight:700;font-size:64px;line-height:1;color:var(--dim)}
+.step-n{font-family:'Rubik',sans-serif;font-weight:700;font-size:64px;line-height:1;color:var(--dim)}
 .step:first-child .step-n{color:var(--accent)}
 
 /* ── מקטע המעסיקים, הבהיר היחיד ──────────────────────────── */
@@ -269,7 +269,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   transition:background .2s ease,border-color .2s ease}
 .pick:hover{background:var(--card)}
 .pick-say{font-size:16px;line-height:1.45;color:var(--ink-2)}
-.pick b{font-family:'Heebo',sans-serif;font-size:19px;font-weight:800;color:var(--accent)}
+.pick b{font-family:'Rubik',sans-serif;font-size:19px;font-weight:800;color:var(--accent)}
 .pick-meta{font-size:13px;color:var(--muted)}
 
 /* ── סיפור לקוח ───────────────────────────────────────────
@@ -279,7 +279,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   background:var(--card);border:1px solid var(--line);border-radius:22px}
 .case-head{display:flex;flex-direction:column;gap:6px}
 .case-who{font-size:14px;color:var(--muted);letter-spacing:.02em}
-.case-title{font-family:'Heebo',sans-serif;font-size:clamp(25px,3vw,34px);
+.case-title{font-family:'Rubik',sans-serif;font-size:clamp(25px,3vw,34px);
   font-weight:800;line-height:1.15}
 .case-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
 .case-label{font-size:13px;font-weight:800;color:var(--accent);letter-spacing:.04em}
@@ -296,12 +296,12 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
 /* מספר הסיפור, גדול ודהוי, נותן קצב לעמוד שהוא אחרת קיר של טקסט */
 .case{position:relative;overflow:hidden}
 .case::before{content:attr(data-n);position:absolute;top:10px;left:26px;
-  font-family:'Heebo',sans-serif;font-weight:800;font-size:92px;line-height:1;
+  font-family:'Rubik',sans-serif;font-weight:800;font-size:92px;line-height:1;
   color:var(--accent);opacity:.09;pointer-events:none}
 @media(max-width:700px){.case::before{font-size:62px;left:16px}}
 /* התוצאה המדידה. כשיש מספר הוא הדבר היחיד בכרטיס שצריך לקפוץ לעין */
 .case-result{padding:16px 20px;border-radius:14px;background:var(--accent);
-  color:var(--accent-ink);font-family:'Heebo',sans-serif;
+  color:var(--accent-ink);font-family:'Rubik',sans-serif;
   font-size:clamp(18px,2.2vw,23px);font-weight:800;line-height:1.35}
 
 /* ── מסלולים אחרים ────────────────────────────────────────
@@ -314,7 +314,7 @@ h3.card-title,.card-title{font-family:'Heebo',sans-serif;font-weight:700;font-si
   color:inherit;transition:border-color .2s ease,transform .2s ease}
 a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .other-kick{font-size:13px;color:var(--muted);letter-spacing:.02em}
-.other-card b{font-family:'Heebo',sans-serif;font-size:24px;font-weight:800;line-height:1.15}
+.other-card b{font-family:'Rubik',sans-serif;font-size:24px;font-weight:800;line-height:1.15}
 .other-card p{font-size:15px;color:var(--muted);margin:0}
 .other-go{margin-top:auto;padding-top:8px;font-weight:700;color:var(--accent)}
 /* כרטיס הסבר, לא קישור: אין לאן ללחוץ ולכן גם אין התנהגות של כפתור */
@@ -467,7 +467,7 @@ a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 /* טיזר בראש עמוד הקורס הדיגיטלי: וידאו ולצידו הסבר קצר */
 .teaser{display:grid;gap:24px;margin-top:clamp(16px,3vw,40px)}
 .teaser-copy{display:flex;flex-direction:column;gap:14px;order:-1}
-.teaser-h{font-family:'Karantina','Heebo',sans-serif;font-weight:700;font-size:clamp(52px,5.6vw,80px);line-height:.9;letter-spacing:-.01em;color:var(--ink)}
+.teaser-h{font-family:'Rubik',sans-serif;font-weight:700;font-size:clamp(52px,5.6vw,80px);line-height:.9;letter-spacing:-.01em;color:var(--ink)}
 .teaser-p{font-size:17px;line-height:1.65;color:var(--ink-2);max-width:46ch}
 .teaser-punch{font-weight:800;font-size:clamp(18px,1.8vw,21px);line-height:1.45;border-inline-start:3px solid var(--accent);padding-inline-start:14px}
 @media (min-width:960px){
@@ -499,7 +499,7 @@ a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .lessons{display:flex;flex-direction:column;border-bottom:1px solid var(--line)}
 .lesson{display:grid;grid-template-columns:auto 1fr;gap:20px 32px;align-items:start;
   padding-block:clamp(26px,3vw,40px);border-top:1px solid var(--line)}
-.lesson-n{font-family:'Karantina','Heebo',sans-serif;font-weight:700;
+.lesson-n{font-family:'Rubik',sans-serif;font-weight:700;
   font-size:clamp(44px,5vw,64px);line-height:.9;color:var(--dim)}
 .lesson:first-child .lesson-n{color:var(--accent)}
 .lesson-when{font-size:14px;font-weight:700;color:var(--accent);margin-bottom:6px}
@@ -517,7 +517,7 @@ a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .buy-card{background:var(--card);border:1px solid var(--line);border-radius:24px;
   padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:20px}
 .buy-now{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
-.buy-now b{font-family:'Heebo',sans-serif;font-weight:800;letter-spacing:-.02em;
+.buy-now b{font-family:'Rubik',sans-serif;font-weight:800;letter-spacing:-.02em;
   font-size:clamp(48px,5.5vw,64px);line-height:1}
 .buy-now s{font-size:21px;color:var(--muted)}
 /* רק השורה "כולל מע״מ", לא ה-span של המחיר שבתוך <b> (שהיה מתכווץ ל-15px) */
@@ -544,7 +544,7 @@ a.other-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .coupon-row input::placeholder{color:#8A8A90}
 .coupon-row input:disabled{opacity:.6}
 .coupon-row button{background:var(--ink);color:var(--bg);border:0;border-radius:14px;
-  padding:14px 20px;font-family:'Heebo',sans-serif;font-weight:800;font-size:15px;
+  padding:14px 20px;font-family:'Rubik',sans-serif;font-weight:800;font-size:15px;
   cursor:pointer;white-space:nowrap;min-height:50px}
 .coupon-row button:disabled{opacity:.6;cursor:default}
 .coupon-msg{font-size:14px;font-weight:600}

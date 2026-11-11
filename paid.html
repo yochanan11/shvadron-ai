@@ -10,7 +10,10 @@
 <link rel="apple-touch-icon" href="assets/public/icon-logo.png"/>
 <link rel="stylesheet" href="assets/css/fonts.css"/>
 <link rel="stylesheet" href="assets/css/shw-2026.css"/>
+<link rel="stylesheet" href="assets/css/brand-ads.css"/>
 <link rel="stylesheet" href="assets/css/consent.css"/>
+<link rel="stylesheet" href="assets/css/shw-modern.css"/>
+<link rel="stylesheet" href="assets/css/shw-soft.css"/>
 <script src="assets/js/consent.js" defer></script>
 <script src="assets/js/source.js" defer></script>
 </head>
@@ -36,7 +39,7 @@
     <p class="eyebrow"><span data-t="badge">ברוך הבא למחזור נובמבר</span></p>
     <h1 style="--fit:.35">תודה<br/><span class="on-accent">שנרשמת.</span></h1>
     <p class="lead" data-t="sub">המקום שלך במחזור שמור.</p>
-    <p class="body" style="font-size:19px;color:var(--ink-2)">הצעד הבא לוקח עשר שניות: להצטרף לקבוצת הוואטסאפ של המחזור. <b style="color:var(--ink)">שם יישלחו קישור הזום, התזכורות וחומרי ההכנה.</b></p>
+    <p class="body" style="font-size:19px;color:var(--ink-2)">הצעד הבא לוקח עשר שניות: להצטרף לקבוצת הוואטסאפ של המחזור. <b style="color:var(--ink);white-space:normal">שם יישלחו קישור הזום, התזכורות וחומרי ההכנה.</b></p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
       <a href="https://wa.me/972528189921" data-group target="_blank" rel="noopener" class="btn btn-primary">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>
@@ -51,10 +54,23 @@
   </svg>
 </section>
 
+<!-- ===== שלח לחבר =====
+     הרגע הכי חם: מי שנרשם עכשיו הוא מי שהכי סביר שיביא עוד אחד. הקישור
+     נושא ?src=friend, כך שהפניות נספרות כמקור תנועה (ראו UTM.md). -->
+<section class="sec" id="share">
+  <div class="wrap">
+    <div class="offer-card" style="max-width:760px;margin-inline:auto">
+      <h2 class="h-sm">מכיר מישהו שזה בשבילו?</h2>
+      <p class="body" style="margin:0">ללמוד עם חבר זה קל יותר: מתרגלים יחד, ומזכירים אחד לשני להגיע. הטקסט כבר מוכן, רק לבחור למי לשלוח.</p>
+      <div><a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/?text=%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20AI%20%D7%A9%D7%9C%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%20%D7%A9%D7%91%D7%93%D7%A8%D7%95%D7%9F%20%D7%91%D7%96%D7%95%D7%9D%2C%20%D7%9E%D7%97%D7%96%D7%95%D7%A8%20%D7%A0%D7%95%D7%91%D7%9E%D7%91%D7%A8.%20%D7%9C%D7%95%D7%9E%D7%93%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%94%D7%9E%D7%A9%D7%99%D7%9E%D7%95%D7%AA%20%D7%94%D7%90%D7%9E%D7%99%D7%AA%D7%99%D7%95%D7%AA%20%D7%9E%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%94.%20%D7%A9%D7%95%D7%95%D7%94%20%D7%9C%D7%9A%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%3A%20https%3A%2F%2Fai.shwadron-ai.com%2F%3Fsrc%3Dfriend"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5z"/></svg>שלח את זה לחבר בוואטסאפ</a></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== מה מחכה לך ===== -->
 <section class="sec" id="next">
   <div class="wrap stack">
-    <p class="eyebrow">01 · מה מחכה לך עכשיו</p>
+    <p class="eyebrow">מה מחכה לך עכשיו</p>
     <h2 class="h-sm">הכול מסודר מכאן.</h2>
     <div class="grid">
       <div class="card">
@@ -69,7 +85,7 @@
       </div>
       <div class="card is-featured">
         <span class="lesson-n ltr" style="color:var(--accent)">03</span>
-        <h3 class="card-title" data-t="date">23/11 ו-25/11 · יוצאים לדרך</h3>
+        <h3 class="card-title" data-t="date">23.11 ו-25.11 · יוצאים לדרך</h3>
         <p class="body" data-t="when">מאפס למאה נפתח ביום שני, י״ג בכסליו, וצבא הסוכנים ביום רביעי, ט״ו בכסליו, בשעה 19:30 בזום. בחנוכה אין מפגשים.</p>
       </div>
     </div>
@@ -83,8 +99,8 @@
       <p class="card-kicker">אתר הקורס שלך</p>
       <p class="lead" style="color:var(--ink)">כל ההקלטות והחומרים מחכים לך שם.</p>
       <p class="body">נכנסים עם כתובת המייל שהזנת בתשלום, או פשוט עם חשבון גוגל.</p>
-      <a class="btn btn-light" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener">כניסה לאתר הקורסים ←</a>
-      <p class="small">לא מצליח להיכנס? חפש בתיבת המייל את מייל ההרשמה מ-SHWADRON, או כתוב לי בוואטסאפ ל-<a href="https://wa.me/972528189921" style="color:var(--accent);text-decoration:underline">052-818-9921</a>.</p>
+      <a class="btn btn-ghost" href="https://courses.shwadron-ai.com/" target="_blank" rel="noopener">כניסה לאתר הקורסים</a>
+      <p class="small">לא מצליח להיכנס? חפש בתיבת המייל את מייל ההרשמה מ-SHWADRON, או כתוב לי בוואטסאפ: <a href="https://wa.me/972528189921" class="ltr" style="color:var(--accent);text-decoration:underline;white-space:nowrap">052-818-9921</a>.</p>
     </div>
   </div>
 </section>
@@ -92,7 +108,7 @@
 <!-- ===== איך להגיע מוכן ===== -->
 <section class="sec" id="prep">
   <div class="wrap stack">
-    <p class="eyebrow">02 · לפני המפגש הראשון</p>
+    <p class="eyebrow">לפני המפגש הראשון</p>
     <h2 class="h-sm">איך להגיע מוכן.</h2>
     <div class="grid-3">
       <div class="rule-top">
@@ -111,17 +127,6 @@
   </div>
 </section>
 
-<!-- ===== שיתוף ===== -->
-<section class="sec sec-2">
-  <div class="wrap cta-box" style="background:var(--card);border:1px solid var(--line)">
-    <div>
-      <b>מכיר מישהו שזה בשבילו?</b>
-      <p>ללמוד עם חבר זה כיף יותר. שלח לו את הקישור לפני שהמקומות נגמרים.</p>
-    </div>
-    <a class="btn btn-ghost" target="_blank" rel="noopener" href="https://wa.me/?text=%D7%A0%D7%A8%D7%A9%D7%9E%D7%AA%D7%99%20%D7%9C%D7%A7%D7%95%D7%A8%D7%A1%20AI%20%D7%A9%D7%9C%20%D7%99%D7%95%D7%97%D7%A0%D7%9F%20%D7%A9%D7%91%D7%93%D7%A8%D7%95%D7%9F%20%D7%91%D7%96%D7%95%D7%9D.%20%D7%A9%D7%95%D7%95%D7%94%20%D7%9C%D7%9A%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%3A%20https%3A%2F%2Fai.shwadron-ai.com">שלח לחבר בוואטסאפ ←</a>
-  </div>
-</section>
-
 <script>
 /* מורנינג מפנה לכאן אחרי התשלום. בקישור התשלום מגדירים כתובת חזרה
    paid.html?track=beginners או paid.html?track=advanced, וכך הדף
@@ -132,13 +137,13 @@
   var TRACKS = {
     beginners: {
       name: 'מאפס למאה', GROUP: 'https://chat.whatsapp.com/I0SqI1c2AC8K3RzFn9e6Np',
-      date: '23/11 · יוצאים לדרך',
-      when: 'המפגש הראשון ביום שני, י״ג בכסליו (23/11), בשעה 19:30 בזום. ממשיכים פעם בשבוע, ובחנוכה אין מפגש.'
+      date: '23.11 · יוצאים לדרך',
+      when: 'המפגש הראשון ביום שני, י״ג בכסליו (23.11), בשעה 19:30 בזום. ממשיכים פעם בשבוע, ובחנוכה אין מפגש.'
     },
     advanced: {
       name: 'צבא הסוכנים', GROUP: 'https://chat.whatsapp.com/CMvfHZJGW9k2Fz6AbOf2dd',
-      date: '25/11 · יוצאים לדרך',
-      when: 'המפגש הראשון ביום רביעי, ט״ו בכסליו (25/11), בשעה 19:30 בזום. ממשיכים פעם בשבוע, ובחנוכה אין מפגש.'
+      date: '25.11 · יוצאים לדרך',
+      when: 'המפגש הראשון ביום רביעי, ט״ו בכסליו (25.11), בשעה 19:30 בזום. ממשיכים פעם בשבוע, ובחנוכה אין מפגש.'
     }
   };
   var key = new URLSearchParams(location.search).get('track');
@@ -162,7 +167,7 @@
   <div class="wrap">
     <img class="brand-foot" src="assets/public/logo-shwadron-white.svg" alt="SHWADRON.AI" width="380" height="84" loading="lazy"/>
     <nav aria-label="קישורים משפטיים">
-      <a href="index.html">כל המסלולים</a>
+      <a href="index.html">דף הבית</a>
       <a href="terms.html">תקנון</a>
       <a href="privacy.html">מדיניות פרטיות</a>
       <a href="accessibility.html">הצהרת נגישות</a>
@@ -180,10 +185,10 @@
 // consent.js נטען כאן עם defer, ולכן מחכים לסוף טעינת הדף.
 document.addEventListener('DOMContentLoaded', function(){
   try {
+    // הדגל נכתב רק אחרי הסכמה, כדי שלא יישמר דבר בלעדיה ושהאירוע לא יאבד
     var KEY = 'shw_thankyou_sent_zoom';
-    if (localStorage.getItem(KEY)) return;
-    localStorage.setItem(KEY, '1');
     window.SHW.consent.onGrant('statistics', function(){
+      try { if (localStorage.getItem(KEY)) return; localStorage.setItem(KEY, '1'); } catch(e){}
       gtag('event','reached_thank_you',{ product: (new URLSearchParams(location.search).get('track') || 'unknown'), traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
     });
   } catch(e){}
