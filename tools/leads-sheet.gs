@@ -187,7 +187,7 @@ const TIPS_GROUP = 'https://chat.whatsapp.com/LPJw92Y30OV78GmbFzh5xv';
 
 /* מייל המתנה: קישור לדף ההקלטה באתר (לא לסרטון עצמו), ומתחתיו המחזור הקרוב */
 const GIFTS = {
-  'rec-video-editing': { title: 'הוובינר על עריכת וידאו', key: 'video-editing' },
+  'rec-pro-answers': { title: 'הוובינר "מתשובה בינונית לתשובה מקצועית"', key: 'pro-answers' },
 };
 function sendGift(d) {
   const g = GIFTS[d.topicKey];

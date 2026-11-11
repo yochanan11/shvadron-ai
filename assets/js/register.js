@@ -22,18 +22,19 @@
   // דרייב: https://drive.google.com/file/d/<מזהה>/preview, והקובץ חייב להיות פתוח לצפייה לכל מי שיש לו קישור).
   // email: true מוסיף שדה מייל חובה (המתנה נשלחת גם למייל, ונבנית רשימת מיילים).
   var RECORDINGS = {
-    'video-editing': {
-      name: 'עריכת וידאו',
+    'pro-answers': {
+      name: 'מתשובה בינונית לתשובה מקצועית',
       eyebrow: 'מתנה · ההקלטה המלאה',
-      title: 'הוובינר על עריכת וידאו,', accent: 'במתנה.',
-      lead: 'ההקלטה המלאה של הוובינר על עריכת וידאו.',
+      title: 'מתשובה בינונית', accent: 'לתשובה מקצועית.',
+      lead: 'ההקלטה המלאה של הוובינר: איך כותבים פרומפט, 7 הכללים, ותמונות שלא נראות כמו AI. אותה בקשה פעמיים, לפני ואחרי.',
       gate: 'משאירים שם, טלפון ומייל, והיא נפתחת כאן מיד. נשלח אותה גם למייל.',
       email: true,
-      src: 'https://player.vimeo.com/video/1239858986?dnt=1'
+      // הקובץ בדרייב חייב להיות פתוח לצפייה לכל מי שיש לו קישור
+      src: 'https://drive.google.com/file/d/1zOvfpd7uOGD81hrUDq6YOMdBjG-drFcx/preview'
     }
   };
-  // קישורים ישנים להקלטות שנסגרו לחברי הקורס בלבד מובילים למתנה הנוכחית
-  var ALIAS = { 'pro-answers': 'video-editing' };
+  // קישורים אחרים למתנה מובילים למתנה הנוכחית
+  var ALIAS = { 'video-editing': 'pro-answers', 'gift': 'pro-answers' };
   var forKey = (new URLSearchParams(location.search).get('for') || '').trim();
   if(ALIAS[forKey]) forKey = ALIAS[forKey];
   var topic = TOPICS[forKey] || '';

@@ -770,9 +770,11 @@ const BLOCKS = {
   'register.html': {
     offer: () => offerCard(BEGINNERS),
   },
-  // הדף הדיגיטלי: הוובינר וטופס המתלבטים. שאר התוכן שלו אינו מנוהל כאן.
+  // הדף הדיגיטלי: טופס המתלבטים. שאר התוכן שלו אינו מנוהל כאן.
+  // הוובינר במתנה הוסר מהאתר (בקשת הבעלים, 11.11.2026). הסמנים נשארים ריקים;
+  // להחזרתו: webinar({ ctaHref: '#buy', ctaText: 'לקנות את המוח השני', num: '08' }).
   'course.html': {
-    webinar:  () => webinar({ ctaHref: '#buy', ctaText: 'לקנות את המוח השני', num: '08' }),
+    webinar:  () => '',
     leadform: () => leadForm(),
   },
   'course-advanced.html': {
