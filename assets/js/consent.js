@@ -349,7 +349,20 @@
   apply();
 
   function boot() {
-    if (!state) showBanner();
+    /* A calm first entry: the banner waits until the visitor starts reading
+       (first scroll or touch) or a few seconds pass. Nothing non-essential
+       loads before consent anyway, so the wait changes no tracking. */
+    if (!state) {
+      var shown = false;
+      var go = function () {
+        if (shown) return; shown = true;
+        window.removeEventListener('scroll', go); window.removeEventListener('touchstart', go);
+        showBanner();
+      };
+      window.addEventListener('scroll', go, { passive: true });
+      window.addEventListener('touchstart', go, { passive: true });
+      window.setTimeout(go, 5000);
+    }
     // Footer link (rendered by footer.js or hand-written) opens settings.
     document.addEventListener('click', function (e) {
       var t = e.target.closest && e.target.closest('[data-consent-settings]');

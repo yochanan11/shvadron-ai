@@ -497,3 +497,13 @@ h2 .ghost,.light .ghost,.sec-2 .ghost,main>section.sec:nth-of-type(even) .ghost,
   #top:has(.h-msg) p.hero-deadline>span::before{width:5px;height:5px;margin-inline-end:6px}
   #top:has(.h-msg) .hero-char{margin-top:26px;max-height:190px}
 }
+
+/* ── כניסה ראשונה שקטה: הפתיחה מופיעה בבת אחת בדעיכה רכה אחת,
+      בלי שורות שעולות אחת אחרי השנייה. פס העוגיות עולה בעדינות. */
+.motion #top .eyebrow,.motion #top .lead,.motion #top .ticks,.motion #top .body,.motion #top .guarantee,
+.motion #top .done-mark,.motion #top>.wrap>div,.motion #top p,.motion #top h1 .mask>span,.motion #top .hero-stage{animation:none}
+.motion #top>.wrap{animation:shw-calm .55s ease-out both}
+@keyframes shw-calm{from{opacity:0}to{opacity:1}}
+#shw-cookie-banner{animation:shw-ck-in .45s ease-out both}
+@keyframes shw-ck-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.motion #top>.wrap,#shw-cookie-banner{animation:none}}
