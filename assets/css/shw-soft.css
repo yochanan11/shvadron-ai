@@ -507,3 +507,40 @@ h2 .ghost,.light .ghost,.sec-2 .ghost,main>section.sec:nth-of-type(even) .ghost,
 #shw-cookie-banner{animation:shw-ck-in .45s ease-out both}
 @keyframes shw-ck-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.motion #top>.wrap,#shw-cookie-banner{animation:none}}
+
+/* הטופס על המסך: הרצועה התחתונה יורדת ולא מכסה את השדות */
+.dock{transition:transform .3s ease,opacity .3s ease}
+.form-in-view .dock{transform:translateY(140%);opacity:0;pointer-events:none}
+/* פס העוגיות מופיע עכשיו מאוחר, ולכן הפתיחה לא מתכווצת כשהוא עולה (זה הקפיץ את הדף) */
+.has-consent-banner #top[data-consent-lift]{padding-top:clamp(28px,4vw,64px)!important}
+.has-consent-banner #top[data-consent-lift] .wrap.stack{gap:clamp(20px,2.2vw,28px)}
+@media (max-width:640px){
+  .has-consent-banner #top[data-consent-lift] .wrap.stack{gap:18px}
+  .has-consent-banner #top[data-consent-lift]:has(.h-msg){padding-top:44px!important}
+  .has-consent-banner #top[data-consent-lift]:has(.h-msg) .wrap.stack{gap:0}
+}
+
+/* ── אותה כניסה אוורירית בכל הדפים (בקשת הבעלים): בטלפון, הפתיחה של
+      כל דף ממורכזת, עם רווח סביב הכותרת והכפתור, ושורות עובדות שקטות ── */
+@media (max-width:640px){
+  #top{padding-top:40px!important;padding-bottom:32px!important}
+  #top .wrap.stack{align-items:center;text-align:center;gap:16px}
+  #top .hero-split>.eyebrow,#top .wrap.stack>.eyebrow{order:-1;margin-bottom:2px;font-size:13px;font-weight:500;color:var(--muted)}
+  #top h1{margin:0}
+  #top .lead,#top .wrap.stack>p.body{margin-inline:auto;max-width:32ch;font-size:16.5px;line-height:1.65}
+  #top .hero-cta,#top .wrap.stack>div:has(>.btn){margin-top:14px;justify-content:center;width:100%}
+  #top .wrap.stack>div:has(>.btn){display:flex;flex-direction:column;align-items:center;gap:12px}
+  #top .btn-primary{min-height:56px;padding-inline:28px;font-size:17px}
+  #top .btn-ghost{min-height:50px}
+  #top .hero-price{justify-content:center;text-align:center}
+  #top p.hero-deadline{justify-content:center}
+  #top .hero-safe{justify-content:center;text-align:center;font-size:13.5px}
+  #top .ticks{display:inline-flex;flex-direction:column;align-items:flex-start;text-align:start;margin-inline:auto}
+  #top .authority{text-align:start;max-width:34ch}
+  #top .hero-proof{text-align:center;max-width:32ch;margin-inline:auto;border:0;padding:0}
+  #top .hero-proof blockquote{font-size:17px;line-height:1.55}
+  #top .figures{width:100%}
+  #top .hero-char{max-height:200px;width:auto;margin:14px auto 0}
+  #top form,#top .gift-form,#top .lead-form{text-align:start;width:100%}
+  #top .note-line,#top [class*="note"]{text-align:start}
+}

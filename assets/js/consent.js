@@ -354,13 +354,16 @@
        loads before consent anyway, so the wait changes no tracking. */
     if (!state) {
       var shown = false;
+      /* Not on touch: a first tap on a button would bring the banner up under
+         the finger, shift the page and lose the tap. Only after real
+         scrolling, or after a few seconds. */
       var go = function () {
         if (shown) return; shown = true;
-        window.removeEventListener('scroll', go); window.removeEventListener('touchstart', go);
+        window.removeEventListener('scroll', onScroll);
         showBanner();
       };
-      window.addEventListener('scroll', go, { passive: true });
-      window.addEventListener('touchstart', go, { passive: true });
+      var onScroll = function () { if (window.scrollY > 160) go(); };
+      window.addEventListener('scroll', onScroll, { passive: true });
       window.setTimeout(go, 5000);
     }
     // Footer link (rendered by footer.js or hand-written) opens settings.
