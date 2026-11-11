@@ -92,9 +92,9 @@ export const FAQ = [
   { on: ALL, q: 'אני מסתדר עם יוטיוב',
     a: 'ביוטיוב רואים מה הכלי יודע. כאן הוא נכנס לעבודה שלך, עם מישהו לידך עד שזה רץ.' },
   { on: ALL, q: 'צריך אישור מהמעסיק',
-    a: { home: 'החשבונית יוצאת על שם העסק, ויש דף קצר להציג למנהל. כבר עכשיו אפשר להראות לו את הסילבוס: <a href="assets/public/syllabus/syllabus-beginners.pdf">מאפס למאה</a> או <a href="assets/public/syllabus/syllabus-advanced.pdf">צבא הסוכנים</a>.',
-         beginners: 'החשבונית יוצאת על שם העסק, ויש דף קצר להציג למנהל. כבר עכשיו אפשר להראות לו את <a href="assets/public/syllabus/syllabus-beginners.pdf">הסילבוס המלא</a>.',
-         default: 'החשבונית יוצאת על שם העסק, ויש דף קצר להציג למנהל. כבר עכשיו אפשר להראות לו את <a href="assets/public/syllabus/syllabus-advanced.pdf">הסילבוס המלא</a>.' } },
+    a: { home: 'החשבונית יוצאת על שם העסק, ויש דף קצר להציג למנהל, עמוד אחד עם מה העובד ילמד, כמה זמן זה לוקח וכמה זה עולה: <a href="assets/public/syllabus/manager-beginners.pdf" target="_blank" rel="noopener">מאפס למאה</a> או <a href="assets/public/syllabus/manager-advanced.pdf" target="_blank" rel="noopener">צבא הסוכנים</a>.',
+         beginners: 'החשבונית יוצאת על שם העסק, ויש <a href="assets/public/syllabus/manager-beginners.pdf" target="_blank" rel="noopener">דף קצר להציג למנהל</a>: עמוד אחד עם מה העובד ילמד, כמה זמן זה לוקח וכמה זה עולה.',
+         default: 'החשבונית יוצאת על שם העסק, ויש <a href="assets/public/syllabus/manager-advanced.pdf" target="_blank" rel="noopener">דף קצר להציג למנהל</a>: עמוד אחד עם מה העובד ילמד, כמה זמן זה לוקח וכמה זה עולה.' } },
 
   /* שאלות של המסלול המתקדם בלבד */
   { on: ['advanced'], q: 'צריך לדעת לתכנת?',

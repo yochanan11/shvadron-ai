@@ -7,11 +7,12 @@
    ילמד, עם מה הוא חוזר לעבודה, כמה זמן זה לוקח, מה צריך, מחיר
    וחשבונית. הכול נגזר מ-assets/data/courses.mjs, כך שאחרי שינוי
    בתאריכים או במחיר מריצים שוב. הפלט: manager-beginners.pdf ו-
-   manager-advanced.pdf (וגם ה-HTML שממנו נבנו).
+   manager-advanced.pdf. ה-HTML שממנו הם נבנים נכתב לתיקייה זמנית ולא עולה לאתר.
    ברירת המחדל לפלט היא assets/public/syllabus/, שהקבצים בה עולים
    לאתר (ראו .vercelignore).
    ============================================================ */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
@@ -170,13 +171,14 @@ ${facts.map(([k, v]) => `      <div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)
 }
 
 mkdirSync(OUT, { recursive: true });
+const TMP = mkdtempSync(join(tmpdir(), 'shw-manager-'));
 const require = createRequire(import.meta.url);
 let chromium;
 try { ({ chromium } = require('playwright')); } catch { ({ chromium } = require('/opt/node-tools/node_modules/playwright')); }
 const browser = await chromium.launch();
 const pg = await browser.newPage();
 for (const key of Object.keys(TRACK)) {
-  const html = join(OUT, `manager-${key}.html`);
+  const html = join(TMP, `manager-${key}.html`);
   writeFileSync(html, page(key));
   await pg.goto(pathToFileURL(html).href, { waitUntil: 'load' });
   await pg.evaluate(() => document.fonts.ready);
