@@ -96,4 +96,18 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', closing);
   else closing();
+  /* המלצות מצולמות: תמונה עם כפתור הפעלה, והנגן של דרייב נטען רק בלחיצה.
+     בלי ג׳אווהסקריפט הקישור פותח את הסרטון בדרייב בחלון חדש. */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[data-vq]');
+    if(!a) return;
+    e.preventDefault();
+    var f = document.createElement('iframe');
+    f.src = 'https://drive.google.com/file/d/' + a.getAttribute('data-vq') + '/preview';
+    f.title = a.getAttribute('data-vq-title') || '';
+    f.allow = 'autoplay; fullscreen'; f.setAttribute('allowfullscreen', '');
+    var box = document.createElement('div'); box.className = 'vq-frame is-playing'; box.appendChild(f);
+    a.replaceWith(box);
+    if(window.SHW_EVENT) window.SHW_EVENT('play_video_testimonial', { video: f.title });
+  });
 })(window, document);
