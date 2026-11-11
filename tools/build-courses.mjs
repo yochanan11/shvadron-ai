@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, DIGITAL, ALL_TRACKS, COMPARE, TRACKS, SCHEDULE_NOTE,
          TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR, TIPS_GROUP,
-         COHORT, WHATSAPP, GIFT }
+         COHORT, WHATSAPP, GIFT, REASSURE, FAQ }
          from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -133,15 +133,13 @@ function topBar(key) {
 /* שורת הדדליין שמתחת לכפתור בפתיחה */
 function heroDeadline(key) {
   const seats = seatsFor(key);
-  /* דף הבית: שלושה תאריכים במסך אחד (נסגר, נפתח, נפתח) בלבלו. כאן נשארים
-     שני מועדי הפתיחה בתגית אחת, ולצידה ההחזר. סגירת ההרשמה כבר בפס העליון. */
-  const [b, a] = TRACKS;
+  /* דף הבית: מתחת לכפתור רק התשובות לשלוש ההתנגדויות הנפוצות (REASSURE).
+     סגירת ההרשמה כבר בפס העליון, ומועדי הפתיחה בכרטיסי המחזורים. */
   const parts = key === 'all'
-    ? [`נפתח ב-${esc(dayMonth(sessionDate(b.start, 0)))} וב-${esc(dayMonth(sessionDate(a.start, 0)))}`,
-       'החזר מלא אחרי המפגש הראשון']
+    ? REASSURE.map(esc)
     : [esc(opensLabel(key === 'advanced' ? ADVANCED : BEGINNERS)),
        `<span data-closing>${esc(closesLabel())}</span>`];
-  if (seats) parts.splice(1, 0, `<b>${esc(seats)}</b>`);
+  if (seats) parts.splice(key === 'all' ? 0 : 1, 0, `<b>${esc(seats)}</b>`);
   return `<p class="hero-deadline" data-closes="${COHORT.closes}">${
     parts.map(x => `<span>${x}</span>`).join('')}</p>`;
 }
@@ -174,6 +172,7 @@ ${facts.map(x => `      <li>${esc(x)}</li>`).join('\n')}${seats ? `
       <li data-closing>${esc(closesLabel())}</li>` : ''}
     </ul>
     <a class="btn btn-primary btn-block" href="${t.file}#buy" data-track-pick="${t.id}">${esc(c.cta)}</a>
+    <p class="cohort-safe">${REASSURE.map(esc).join(' · ')}</p>
     <a class="cohort-more" href="${t.file}" data-track-pick="${t.id}">כל הפרטים על ${esc(t.name)}</a>
   </div>
 </article>`;
@@ -217,6 +216,20 @@ ${ind(6, opts.after)}
   </div>
 </section>`;
 }
+/* ─── שאלות ותשובות, לפי סדר ההתנגדויות שבקובץ הנתונים ─── */
+function faq(page) {
+  const items = FAQ.filter(f => f.on.includes(page));
+  return `<div class="qa">
+${items.map((f, i) => {
+    const a = typeof f.a === 'string' ? f.a : (f.a[page] || f.a.default);
+    return `  <details${i ? '' : ' open'}>
+    <summary><span>${esc(f.q)}</span><span aria-hidden="true" class="sign">+</span></summary>
+    <p>${a}</p>
+  </details>`;
+  }).join('\n')}
+</div>`;
+}
+
 /* הכפתור הראשי שחוזר בסוף הדף, עם קישור הוואטסאפ האחד שלצידו */
 const againTrack = t => `<a class="btn btn-primary" data-join href="${t.checkout}">${esc(t.cta)}</a>
 <p class="again-note"><span class="js-price-total">${esc(fmt(totalOf(t)))}</span> כולל מע״מ · החזר מלא אחרי המפגש הראשון</p>`;
@@ -703,6 +716,7 @@ const BLOCKS = {
     herodeadline: () => heroDeadline('all'),
     cohorts:      cohortCards,
     logos:        logoRun,
+    faq:          () => faq('home'),
     leadform:     () => leadForm({ after: againHub() }),
   },
   'course-beginners.html': {
@@ -712,6 +726,7 @@ const BLOCKS = {
     syllabus:     beginnersSyllabus,
     config:       () => config(BEGINNERS),
     ld:           () => jsonLd(BEGINNERS),
+    faq:          () => faq('beginners'),
     leadform:     () => leadForm({ after: againTrack(BEGINNERS) }),
   },
   // דף העסקים ועמוד הסיפורים: רק רצועת הלוגואים הנעה, כמו בדף הבית.
@@ -738,6 +753,7 @@ const BLOCKS = {
     project:      projectBox,
     config:       () => config(ADVANCED),
     ld:           () => jsonLd(ADVANCED),
+    faq:          () => faq('advanced'),
     leadform:     () => leadForm({ after: againTrack(ADVANCED) }),
   },
 };

@@ -286,3 +286,6 @@ main>section.sec .callback h2 .ghost{background:linear-gradient(95deg,#C9F7EE,#8
 .fact-row{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0}
 .fact-row li{padding:8px 16px;border-radius:999px;background:var(--tint);border:1px solid rgba(101,184,171,.4);
   font-size:15.5px;font-weight:500;color:var(--ink)}
+
+/* שלוש התשובות להתנגדויות הנפוצות, מתחת לכפתור בכרטיס המחזור */
+.cohort-safe{margin:0;text-align:center;font-size:13.5px;line-height:1.5;color:var(--muted)}
