@@ -471,3 +471,29 @@ h2 .ghost,.light .ghost,.sec-2 .ghost,main>section.sec:nth-of-type(even) .ghost,
   .vq b{font-size:21px}
   .brand-tag{font-size:26px;font-weight:700}
 }
+
+/* ── הכניסה לדף הבית בטלפון: אוויר, לא עומס (בקשת הבעלים) ─────
+   ממורכז, הרבה רווח סביב הכותרת והכפתור, והעובדות בשורות קטנות
+   ושקטות מתחת. הפס העליון בהיר, כדי שהמסך הראשון לא ייפתח בגוש כהה. */
+@media (max-width:640px){
+  .top-bar{background:rgba(255,255,255,.55);color:var(--e-navy);border-bottom:1px solid rgba(59,91,165,.08)}
+  .top-bar p,.top-bar span,.top-bar b{color:var(--e-navy)}
+  .top-bar p{font-size:12.5px}
+
+  #top:has(.h-msg){padding-top:44px!important;padding-bottom:28px!important}
+  #top:has(.h-msg) .wrap.stack{gap:0;align-items:center;text-align:center}
+  #top:has(.h-msg) .hero-split>.eyebrow{order:-1;margin:0 0 14px;font-size:13px;font-weight:500;color:var(--muted)}
+  #top:has(.h-msg) h1.h-msg{margin:0;font-size:clamp(32px,9.6vw,38px);line-height:1.15}
+  #top:has(.h-msg) h1.h-msg span{display:block}
+  #top:has(.h-msg) .lead{margin:20px auto 0;max-width:30ch;font-size:16.5px;line-height:1.65;color:var(--ink-2)}
+  #top:has(.h-msg) .hero-cta{margin-top:30px;width:100%;display:flex;justify-content:center}
+  #top:has(.h-msg) .hero-cta .btn-primary{width:auto;min-height:56px;padding-inline:28px;font-size:17px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 16px 30px -16px rgba(31,127,112,.7)}
+  #top:has(.h-msg) .hero-when{margin-top:22px;font-size:14px;font-weight:500;color:var(--ink-2)}
+  #top:has(.h-msg) .hero-when>span{justify-content:center;gap:0 6px}
+  #top:has(.h-msg) .hero-when>span{flex-direction:column;align-items:center}
+  #top:has(.h-msg) p.hero-deadline{margin-top:8px;justify-content:center;gap:2px 12px}
+  #top:has(.h-msg) .hero-deadline span{font-size:13px;color:var(--muted)}
+  #top:has(.h-msg) p.hero-deadline>span::before{width:5px;height:5px;margin-inline-end:6px}
+  #top:has(.h-msg) .hero-char{margin-top:26px;max-height:190px}
+}
