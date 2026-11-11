@@ -342,3 +342,6 @@ a.vq-frame:hover .vq-play{transform:translate(-50%,-50%) scale(1.07)}
   .vq-frame{width:min(100%,300px);margin-inline:auto}
   .vq figcaption{text-align:center;align-items:center}
 }
+
+/* the message line inside the hero lead was inline white; now styled here */
+#top .lead>b{color:#fff}
