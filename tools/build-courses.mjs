@@ -250,9 +250,11 @@ function leadForm(opts = {}) {
 
 /* ─── שאלות ותשובות, לפי סדר ההתנגדויות שבקובץ הנתונים ─── */
 function faq(page) {
+  /* שש השאלות הראשונות (הנפוצות ביותר בגיליון) פתוחות לעין, והשאר
+     מקופלות מתחת ל"עוד שאלות", כדי שהדף לא ייגמר ברשימה ארוכה */
+  const SHOWN = 6;
   const items = FAQ.filter(f => f.on.includes(page));
-  return `<div class="qa">
-${items.map((f, i) => {
+  const one = (f, i) => {
     const a = (typeof f.a === 'string' ? f.a : (f.a[page] || f.a.default))
       .replace(/\{(group|full):(beginners|advanced)\}/g, (_, kind, k) => {
         const t = k === 'advanced' ? ADVANCED : BEGINNERS;
@@ -262,8 +264,17 @@ ${items.map((f, i) => {
     <summary><span>${esc(f.q)}</span><span aria-hidden="true" class="sign">+</span></summary>
     <p>${a}</p>
   </details>`;
-  }).join('\n')}
-</div>`;
+  };
+  const head = items.slice(0, SHOWN), rest = items.slice(SHOWN);
+  return `<div class="qa">
+${head.map(one).join('\n')}
+</div>${rest.length ? `
+<details class="qa-more">
+  <summary>עוד ${rest.length} שאלות</summary>
+  <div class="qa">
+${rest.map((f, i) => one(f, i + 1)).join('\n')}
+  </div>
+</details>` : ''}`;
 }
 
 /* הכפתור הראשי שחוזר בסוף הדף, עם קישור הוואטסאפ האחד שלצידו */
