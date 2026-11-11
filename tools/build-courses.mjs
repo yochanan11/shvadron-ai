@@ -17,7 +17,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { BEGINNERS, ADVANCED, DIGITAL, ALL_TRACKS, COMPARE, TRACKS, SCHEDULE_NOTE,
          TIME, NO_CLASSES, ORGS, ORGS_TITLE, ORGS_QUOTE, MARQUEE, WEBINAR, TIPS_GROUP,
-         COHORT, WHATSAPP, GIFT, REASSURE, FAQ }
+         COHORT, WHATSAPP, REASSURE, FAQ }
          from '../assets/data/courses.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
