@@ -64,7 +64,7 @@ function doPost(e) {
       'מאיזה דף': d.course || '',
       'שם העסק': d.company || '',
       'כמה עובדים': d.employees || '',
-      'סוג פנייה': d.kind === 'callback' ? (d.intent === 'reserve' ? 'שריון מקום' : 'מתלבט, ביקש שיחה')
+      'סוג פנייה': d.kind === 'test' ? 'בדיקת חיבור' : d.kind === 'callback' ? (d.intent === 'reserve' ? 'שריון מקום' : 'מתלבט, ביקש שיחה')
                  : d.kind === 'register' ? 'הרשמה' : d.kind === 'makom' ? 'שמירת מקום'
                  : d.kind === 'recording' ? 'מתנה: הקלטה' : 'וובינר',
       'הסכמה לדיוור': d.consent ? 'כן' : 'לא',
@@ -75,7 +75,8 @@ function doPost(e) {
       'וובינר': WEBINARS[d.topicKey] ? WEBINARS[d.topicKey].title + ' · ' + WEBINARS[d.topicKey].when : (d.kind === 'makom' ? d.topicKey || '' : ''),
       'מתי לחזור': d.callTime || '',
       // סטטוס לאשת המכירות, מתוך STATUSES. כל ליד שמבקש שיחה נכנס כ"חדש".
-      'סטטוס': (d.kind === 'makom' || d.kind === 'callback') ? STATUSES[0] : '',
+      // בדיקת החיבור מדף הניהול נכתבת בלי סטטוס ובלי התראה, כדי שלא תיראה כליד
+      'סטטוס': (d.kind === 'makom' || d.kind === 'callback' || d.kind === 'register') ? STATUSES[0] : '',
     };
     const head = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
     sheet.appendRow(head.map(h => (h in values ? values[h] : '')));
@@ -101,7 +102,7 @@ function doPost(e) {
     try { sendGift(d); } catch (err) { console.error('gift mail: ' + err); }
   }
   // שריון מקום או מתלבט מהאתר: התראה מיידית לאשת המכירות, כדי לחזור עוד היום
-  if (d.kind === 'callback') {
+  if (d.kind === 'callback' || d.kind === 'register') {
     try { notifyCallback(d); } catch (err) { console.error('callback notify: ' + err); }
   }
   return out({ ok: true });
@@ -132,7 +133,7 @@ function notifyMakom(d) {
 
 function notifyCallback(d) {
   const to = NOTIFY_EMAILS.length ? NOTIFY_EMAILS.join(',') : Session.getEffectiveUser().getEmail();
-  const reserve = d.intent === 'reserve';
+  const reserve = d.intent === 'reserve' || d.kind === 'register';
   const time = Utilities.formatDate(d.ts ? new Date(d.ts) : new Date(), 'Asia/Jerusalem', 'dd.MM HH:mm');
   const lines = [
     'שם: ' + (d.name || ''),

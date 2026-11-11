@@ -187,7 +187,7 @@ function applyCoupon(data){
 
   function setMsg(text, ok){
     msg.textContent = text;
-    msg.className = 'pd-coupon-msg ' + (ok ? 'ok' : 'err');
+    msg.classList.toggle('ok', !!ok); msg.classList.toggle('err', !ok);
   }
 
   function apply(){

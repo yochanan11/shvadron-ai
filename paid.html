@@ -185,10 +185,10 @@
 // consent.js נטען כאן עם defer, ולכן מחכים לסוף טעינת הדף.
 document.addEventListener('DOMContentLoaded', function(){
   try {
+    // הדגל נכתב רק אחרי הסכמה, כדי שלא יישמר דבר בלעדיה ושהאירוע לא יאבד
     var KEY = 'shw_thankyou_sent_zoom';
-    if (localStorage.getItem(KEY)) return;
-    localStorage.setItem(KEY, '1');
     window.SHW.consent.onGrant('statistics', function(){
+      try { if (localStorage.getItem(KEY)) return; localStorage.setItem(KEY, '1'); } catch(e){}
       gtag('event','reached_thank_you',{ product: (new URLSearchParams(location.search).get('track') || 'unknown'), traffic_source: window.SHW_SOURCE ? SHW_SOURCE() : 'direct' });
     });
   } catch(e){}

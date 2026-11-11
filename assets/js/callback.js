@@ -25,6 +25,31 @@
     return (s && s.id) ? 'מקטע ' + s.id : 'גוף הדף';
   }
 
+  /* מצב הטופס: למה הגולש הגיע אליו (intent: reserve שריון מקום, question
+     מתלבט), לאיזה מחזור ומאיזה כפתור. מצב אחד, ופונקציה אחת שמציירת אותו:
+     כותרת, טקסט וכפתור השליחה. המצב נשמר גם ב-history.state, כדי שרענון
+     הדף לא יהפוך שריון מקום למתלבט, ומגיע גם מדף אחר דרך ?intent=reserve. */
+  function setIntent(target, next, track, cta){
+    intent = next; pickedTrack = track || ''; cameFrom = cta || cameFrom;
+    var box = target.querySelector('.callback'), title = target.querySelector('[data-form-title]'),
+        body = target.querySelector('[data-form-body]'), submit = target.querySelector('[data-form-submit]');
+    if(!box || !title || !body) return;
+    if(intent === 'reserve'){
+      title.textContent = 'שריון מקום' + (pickedTrack ? ' ב' + pickedTrack : '') + '.';
+      body.textContent = 'משאירים שם וטלפון, ונחזור אליכם עוד היום כדי להשלים את ההרשמה. בלי תשלום עכשיו.';
+      if(submit) submit.textContent = 'שריינו לי מקום';
+    } else {
+      title.textContent = 'מתלבטים?';
+      body.textContent = 'שיחה קצרה, בלי התחייבות. בודקים יחד איזה מחזור מתאים לכם, ועונים על כל מה שנשאר פתוח.';
+      if(submit) submit.textContent = 'חזרו אליי';
+    }
+    try { history.replaceState({ shwIntent: intent, track: pickedTrack, cta: cameFrom }, '', location.pathname + location.search.replace(/([?&])intent=reserve&?/, '$1').replace(/[?&]$/, '') + '#callback'); } catch(err){}
+  }
+  function formSent(target){
+    var f = target.querySelector('[data-callback]');
+    return !!(f && f.hidden);
+  }
+
   // קישורי הטופס (כותרת, רצועה תחתונה, גוף הדף): תמונות שנטענות בזמן הגלילה
   // מזיזות את הטופס למטה, ולכן מכוונים שוב אחרי שהדף התייצב
   document.addEventListener('click', function(e){
@@ -33,33 +58,37 @@
     var target = document.querySelector(a.getAttribute('href'));
     if(!target) return;
     e.preventDefault();
-    cameFrom = where(a);
-    intent = a.getAttribute('data-intent') === 'reserve' ? 'reserve' : 'question';
-    pickedTrack = '';
-    // הכותרת של הטופס מתאימה לכפתור שהביא אליו: שריון מקום (עם שם המחזור אם ידוע) או התלבטות
-    var box = target.querySelector('.callback'), title = target.querySelector('[data-form-title]'),
-        body = target.querySelector('[data-form-body]'), submit = target.querySelector('[data-form-submit]');
-    if(box && title && body){
+    // אחרי שהפרטים נשלחו: רק גוללים לתודה, בלי להחליף את הכותרת שמעליה
+    if(!formSent(target)){
+      var box = target.querySelector('.callback');
+      var cta = where(a);
       if(a.getAttribute('data-intent') === 'reserve'){
-        var track = pickedTrack = a.getAttribute('data-track') || box.getAttribute('data-track') || '';
-        if(track && !a.getAttribute('data-cta')) cameFrom += ' · שריון מקום';
-        title.textContent = 'שריון מקום' + (track ? ' ב' + track : '') + '.';
-        body.textContent = 'משאירים שם וטלפון, ונחזור אליכם עוד היום כדי להשלים את ההרשמה. בלי תשלום עכשיו.';
-        if(submit) submit.textContent = 'שריינו לי מקום';
+        var track = a.getAttribute('data-track') || (box && box.getAttribute('data-track')) || '';
+        if(track && !a.getAttribute('data-cta')) cta += ' · שריון מקום';
+        setIntent(target, 'reserve', track, cta);
       } else {
-        title.textContent = 'מתלבטים?';
-        body.textContent = 'שיחה קצרה, בלי התחייבות. בודקים יחד איזה מחזור מתאים לכם, ועונים על כל מה שנשאר פתוח.';
-        if(submit) submit.textContent = 'חזרו אליי';
+        setIntent(target, 'question', '', cta);
       }
+      // כפתור שבוחר מראש ערך בטופס (דף העסקים: "לשליחת עובד")
+      var pick = a.getAttribute('data-need'), sel = target.querySelector('select[name=need]');
+      if(pick && sel) sel.value = pick;
     }
-    // כפתור שבוחר מראש ערך בטופס (דף העסקים: "לשליחת עובד")
-    var pick = a.getAttribute('data-need'), sel = target.querySelector('select[name=need]');
-    if(pick && sel) sel.value = pick;
-    history.replaceState(null, '', a.getAttribute('href'));
     target.scrollIntoView({ behavior: 'smooth' });
     setTimeout(function(){ target.scrollIntoView({ behavior: 'smooth' }); }, 900);
-    setTimeout(function(){ var i = target.querySelector('input[name=name]'); if(i) i.focus({ preventScroll: true }); }, 1600);
+    setTimeout(function(){ var i = target.querySelector('input[name=name]'); if(i && !formSent(target)) i.focus({ preventScroll: true }); }, 1600);
   });
+
+  // רענון, חזרה אחורה, או הגעה מדף אחר עם ?intent=reserve#callback
+  (function restore(){
+    var target = document.getElementById('callback');
+    if(!target || formSent(target)) return;
+    var box = target.querySelector('.callback');
+    var st = history.state;
+    if(st && st.shwIntent){ setIntent(target, st.shwIntent, st.track, st.cta); return; }
+    if(new URLSearchParams(location.search).get('intent') === 'reserve'){
+      setIntent(target, 'reserve', box && box.getAttribute('data-track'), 'הגיע מדף אחר · שריון מקום');
+    }
+  })();
 
   document.querySelectorAll('[data-callback]').forEach(function(form){
     var msg = form.querySelector('.gift-msg');
@@ -93,19 +122,23 @@
         msg.querySelector('a').href = wa ? wa.href : 'https://wa.me/972528189921';
       }
       var source = window.SHW_SOURCE ? SHW_SOURCE() : '';
+      // בלי תשובה תוך 15 שניות: לא משאירים את הכפתור תקוע על "שולח…"
+      var ctl = window.AbortController ? new AbortController() : null;
+      var timer = ctl ? setTimeout(function(){ ctl.abort(); }, 15000) : 0;
       fetch('/api/lead', {
-        method: 'POST',
+        method: 'POST', signal: ctl ? ctl.signal : undefined,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name, phone: phone, email: email, company: company, employees: employees, need: need,
                                kind: 'callback', cta: cta, intent: intent, track: pickedTrack, consent: !!(el.consent && el.consent.checked),
                                source: source, page: page })
       }).then(function(r){
+        clearTimeout(timer);
         if(!r.ok) return fail();
         if(window.gtag) gtag('event', 'generate_lead', { lead_source: 'callback_' + page.replace('.html', ''), cta: cta, traffic_source: source || 'direct' });
         form.hidden = true;
         var after = form.parentNode.querySelector('.gift-after');
         if(after){ after.hidden = false; after.focus(); }
-      }, fail);
+      }, function(){ clearTimeout(timer); fail(); });
     });
   });
 })();

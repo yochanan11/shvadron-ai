@@ -48,7 +48,32 @@
     }
   }
 
+  /* Statistics withdrawn: remove what it stored (traffic source, thank-you
+     flags, GA4 and Clarity cookies). Scripts that already started cannot be
+     stopped, so the page reloads without them. */
+  function forgetStatistics() {
+    try {
+      var drop = [];
+      for (var i = 0; i < window.localStorage.length; i++) {
+        var k = window.localStorage.key(i);
+        if (k === 'shw_src_v1' || k.indexOf('shw_thankyou_') === 0) drop.push(k);
+      }
+      drop.forEach(function (k) { window.localStorage.removeItem(k); });
+    } catch (e) {}
+    var host = location.hostname.split('.');
+    var domains = ['', location.hostname];
+    if (host.length > 1) domains.push('.' + host.slice(-2).join('.'));
+    document.cookie.split(';').forEach(function (c) {
+      var name = c.split('=')[0].trim();
+      if (!/^(_ga|_gid|_gat|_clck|_clsk|CLID|MUID)/.test(name)) return;
+      domains.forEach(function (d) {
+        document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + (d ? '; domain=' + d : '');
+      });
+    });
+  }
+
   function write(choice) {
+    var hadStatistics = has('statistics');
     state = {
       preferences: !!choice.preferences,
       statistics: !!choice.statistics,
@@ -60,6 +85,10 @@
       window.localStorage.setItem(STORE_KEY, JSON.stringify(state));
     } catch (e) {
       /* private mode: the choice still applies for this page view */
+    }
+    if (hadStatistics && !state.statistics) {
+      forgetStatistics();
+      if (started.ga4 || started.clarity) { location.reload(); return; }
     }
     apply();
   }

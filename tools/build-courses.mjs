@@ -126,7 +126,7 @@ const WA_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" str
 function topBar(key) {
   const seats = seatsFor(key);
   return `<div class="top-bar" data-closes="${COHORT.closes}">
-  <p><b>${esc(COHORT.name)}</b>${seats ? `<span>${esc(seats)}</span>` : ''}<span data-closing>${esc(closesLabel())}</span></p>
+  <p><b>${esc(COHORT.name)}</b>${seats ? `<span data-closing>${esc(seats)}</span>` : ''}<span data-closing>${esc(closesLabel())}</span></p>
 </div>`;
 }
 
@@ -135,13 +135,15 @@ function heroDeadline(key) {
   const seats = seatsFor(key);
   /* דף הבית: מתחת לכפתור רק התשובות לשלוש ההתנגדויות הנפוצות (REASSURE).
      סגירת ההרשמה כבר בפס העליון, ומועדי הפתיחה בכרטיסי המחזורים. */
+  /* כל תגית שקשורה למחזור הזה (פתיחה, מקומות, סגירה) מסומנת data-closing,
+     ונעלמת אחרי סגירת ההרשמה. התשובות להתנגדויות נשארות. */
+  const dated = x => ({ html: x, dated: true });
   const parts = key === 'all'
-    ? REASSURE.map(esc)
-    : [esc(opensLabel(key === 'advanced' ? ADVANCED : BEGINNERS)),
-       `<span data-closing>${esc(closesLabel())}</span>`];
-  if (seats) parts.splice(key === 'all' ? 0 : 1, 0, `<b>${esc(seats)}</b>`);
+    ? REASSURE.map(x => ({ html: esc(x) }))
+    : [dated(esc(opensLabel(key === 'advanced' ? ADVANCED : BEGINNERS))), dated(esc(closesLabel()))];
+  if (seats) parts.splice(key === 'all' ? 0 : 1, 0, dated(`<b>${esc(seats)}</b>`));
   const chips = `<p class="hero-deadline" data-closes="${COHORT.closes}">${
-    parts.map(x => `<span>${x}</span>`).join('')}</p>`;
+    parts.map(x => `<span${x.dated ? ' data-closing' : ''}>${x.html}</span>`).join('')}</p>`;
   /* דף הבית: מי שקורא רק את המסך הראשון צריך לדעת מתי ובכמה. השורה נגזרת
      מהנתונים, ונעלמת אחרי סגירת ההרשמה כדי שלא יישאר תאריך שעבר. */
   if (key !== 'all' || TRACKS.some(t => !t.start || !t.priceEx)) return chips;
@@ -168,7 +170,6 @@ function cohortCard(t, opts = {}) {
   const c = t.card;
   const key = t === ADVANCED ? 'advanced' : 'beginners';
   const seats = seatsFor(key);
-  const facts = [...(c.facts || []), opensLabel(t)];
   return `<article class="cohort${t.tone ? ' is-' + t.tone : ''}">
   <header>
     <h3 class="cohort-name">${esc(t.name)}</h3>
@@ -182,17 +183,18 @@ ${c.outs.map(x => `      <li>${esc(x)}</li>`).join('\n')}
     </ul>
   </div>
   <p class="cohort-how">${esc(c.how)}</p>
-  <p class="cohort-when">${whenLine(t)}</p>
+  <p class="cohort-when" data-closes="${COHORT.closes}" data-closing>${whenLine(t)}</p>
   <div class="cohort-foot">
     <p class="cohort-price"><b>${esc(fmt(totalOf(t)))}</b> <span>כולל מע״מ, ${esc(c.terms.join(', '))}</span></p>
-    <ul class="cohort-facts"${opts.closing ? ` data-closes="${COHORT.closes}"` : ''}>
-${facts.map(x => `      <li>${esc(x)}</li>`).join('\n')}${seats ? `
-      <li class="is-seats">${esc(seats)}</li>` : ''}${opts.closing ? `
+    <ul class="cohort-facts" data-closes="${COHORT.closes}">
+${(c.facts || []).map(x => `      <li>${esc(x)}</li>`).join('\n')}
+      <li data-closing>${esc(opensLabel(t))}</li>${seats ? `
+      <li class="is-seats" data-closing>${esc(seats)}</li>` : ''}${opts.closing ? `
       <li data-closing>${esc(closesLabel())}</li>` : ''}
     </ul>
     <a class="btn btn-primary btn-block" ${opts.formHere
       ? `href="#callback" data-intent="reserve" data-track="${esc(t.name)}" data-cta="כרטיס ${esc(t.name)}"`
-      : `href="${t.file}#callback"`} data-track-pick="${t.id}">${esc(c.cta)}</a>
+      : `href="${t.file}?intent=reserve#callback"`} data-track-pick="${t.id}">${esc(c.cta)}</a>
     <p class="cohort-safe">${REASSURE.map(esc).join(' · ')}</p>
     <a class="cohort-more" href="${t.file}" data-track-pick="${t.id}">כל הפרטים על ${esc(t.name)}</a>
   </div>
@@ -210,7 +212,7 @@ function leadForm(opts = {}) {
      opts.pay    אפשרויות התשלום שמוצגות אחרי שהפרטים נשלחו, ומתחת לטופס */
   const pay = opts.pay || [];
   const payLinks = pay.map(x =>
-    `<a class="btn btn-ghost"${x.join ? ' data-join' : ''} href="${x.href}">${esc(x.label)}</a>`).join('\n            ');
+    `<a class="btn btn-ghost"${x.join ? ' data-join' : ''} href="${x.href}">${x.html || esc(x.label)}</a>`).join('\n            ');
   return `<section class="sec" id="callback">
   <div class="wrap">
     <div class="callback"${opts.track ? ` data-track="${esc(opts.track.name)}"` : ''}>
@@ -241,7 +243,7 @@ function leadForm(opts = {}) {
       </div>
     </div>${pay.length ? `
     <p class="pay-line">מעדיפים לסגור עכשיו, בלי לחכות לשיחה? ${pay.map(x =>
-      `<a${x.join ? ' data-join' : ''} href="${x.href}">${esc(x.label)}</a>`).join(' · ')}</p>` : ''}
+      `<a${x.join ? ' data-join' : ''} href="${x.href}">${x.html || esc(x.label)}</a>`).join(' · ')}</p>` : ''}
   </div>
 </section>`;
 }
@@ -266,7 +268,8 @@ ${items.map((f, i) => {
 
 /* הכפתור הראשי שחוזר בסוף הדף, עם קישור הוואטסאפ האחד שלצידו */
 /* אפשרויות התשלום שליד הטופס: בדף מסלול קישור הסליקה שלו, בדף הבית שני דפי המסלולים */
-const payTrack = t => [{ label: `לתשלום מאובטח, ${fmt(totalOf(t))}`, href: t.checkout, join: true }];
+/* הסכום בתוך התווית הוא js-price-total, כדי שקופון יעדכן גם אותו ולא רק את הקישור */
+const payTrack = t => [{ html: `לתשלום מאובטח, <span class="js-price-total">${esc(fmt(totalOf(t)))}</span>`, href: t.checkout, join: true }];
 const payHub = () => TRACKS.map(t => ({ label: `לתשלום על ${t.name}`, href: `${t.file}#buy` }));
 
 /* ─── שורת העובדות בקיפול העליון של דף הבית ──────────────────
