@@ -40,6 +40,7 @@ The site sells the two cohorts. Every page does one thing: gets people into a co
 - Whoever calls back is the saleswoman, so the copy says "נחזור אליכם עוד היום", not "יוחנן יחזור אליכם".
 - Always "יותר מ-1,500 בוגרים", never a bare "1,500".
 - No date that has passed anywhere on the site. `[data-closes]` + `[data-closing]` hide deadline text after its date (`assets/js/source.js`).
+- Look: `assets/css/shw-modern.css` is the 2026 layer, loaded last on every page (after `brand-ads.css`). Same branding, newer language: depth instead of the paper texture and the wave, soft rounded surfaces, glass chips on the blue, chat bubbles for the employers' messages (`.grid.chat`), a floating bottom bar on phones. It holds appearance only, no content.
 - Design: blue `#3B5BA5`, teal `#65B8AB`, white; Rubik (self-hosted in `assets/fonts`, because content filters block Google Fonts); mobile first; no women in images, faces and names blurred in Zoom screenshots; conservative tone, no fear clichés and no military metaphors beyond the track name.
 
 ## Syllabus PDFs
