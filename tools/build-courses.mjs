@@ -133,11 +133,15 @@ function topBar(key) {
 /* שורת הדדליין שמתחת לכפתור בפתיחה */
 function heroDeadline(key) {
   const seats = seatsFor(key);
+  /* דף הבית: שלושה תאריכים במסך אחד (נסגר, נפתח, נפתח) בלבלו. כאן נשארים
+     שני מועדי הפתיחה בתגית אחת, ולצידה ההחזר. סגירת ההרשמה כבר בפס העליון. */
+  const [b, a] = TRACKS;
   const parts = key === 'all'
-    ? TRACKS.map(t => `${esc(t.name)} ${esc(opensLabel(t))}`)
+    ? [`נפתח ב-${esc(dayMonth(sessionDate(b.start, 0)))} וב-${esc(dayMonth(sessionDate(a.start, 0)))}`,
+       'החזר מלא אחרי המפגש הראשון']
     : [esc(opensLabel(key === 'advanced' ? ADVANCED : BEGINNERS)),
        `<span data-closing>${esc(closesLabel())}</span>`];
-  if (seats) parts.splice(key === 'all' ? parts.length : 1, 0, `<b>${esc(seats)}</b>`);
+  if (seats) parts.splice(1, 0, `<b>${esc(seats)}</b>`);
   return `<p class="hero-deadline" data-closes="${COHORT.closes}">${
     parts.map(x => `<span>${x}</span>`).join('')}</p>`;
 }
