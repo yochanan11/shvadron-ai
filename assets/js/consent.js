@@ -349,7 +349,23 @@
   apply();
 
   function boot() {
-    if (!state) showBanner();
+    /* A calm first entry: the banner waits until the visitor starts reading
+       (first scroll or touch) or a few seconds pass. Nothing non-essential
+       loads before consent anyway, so the wait changes no tracking. */
+    if (!state) {
+      var shown = false;
+      /* Not on touch: a first tap on a button would bring the banner up under
+         the finger, shift the page and lose the tap. Only after real
+         scrolling, or after a few seconds. */
+      var go = function () {
+        if (shown) return; shown = true;
+        window.removeEventListener('scroll', onScroll);
+        showBanner();
+      };
+      var onScroll = function () { if (window.scrollY > 160) go(); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.setTimeout(go, 5000);
+    }
     // Footer link (rendered by footer.js or hand-written) opens settings.
     document.addEventListener('click', function (e) {
       var t = e.target.closest && e.target.closest('[data-consent-settings]');

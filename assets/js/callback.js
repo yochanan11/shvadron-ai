@@ -78,6 +78,16 @@
     setTimeout(function(){ var i = target.querySelector('input[name=name]'); if(i && !formSent(target)) i.focus({ preventScroll: true }); }, 1600);
   });
 
+  /* כשהטופס על המסך, הרצועה התחתונה ("כתוב לי / לשריין מקום") יורדת, כדי
+     שלא תכסה את שדה הטלפון ואת כפתור השליחה. היא חוזרת כשגוללים ממנו. */
+  (function dockAwayFromForm(){
+    var form = document.getElementById('callback') || document.getElementById('contact');
+    if(!form || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ document.documentElement.classList.toggle('form-in-view', e.isIntersecting); });
+    }, { threshold: 0, rootMargin: '0px 0px -25% 0px' }).observe(form);
+  })();
+
   // רענון, חזרה אחורה, או הגעה מדף אחר עם ?intent=reserve#callback
   (function restore(){
     var target = document.getElementById('callback');

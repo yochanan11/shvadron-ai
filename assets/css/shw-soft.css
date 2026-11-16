@@ -362,3 +362,185 @@ main>section.sec:has(> .wrap.figures) .fig{color:var(--e-blue)}
 main>section.sec:has(> .wrap.figures) .fig-label{color:var(--muted)}
 main>section.sec:has(> .wrap.figures) .wrap.figures{padding:clamp(18px,2.6vw,30px);border-radius:var(--r-xl);
   border:var(--e-edge)!important;background:var(--e-glass);box-shadow:var(--e-sh);-webkit-backdrop-filter:var(--e-blur);backdrop-filter:var(--e-blur)}
+
+/* ── טלפון: שיהיה לדף אוויר (בקשת הבעלים, 11.11.2026) ─────────
+   פחות קופסאות בתוך קופסאות, פחות פריטים במסך הראשון, יותר רווח
+   בין המקטעים. שום תוכן לא יורד: מה שמוסתר כאן מופיע כבר במקום
+   אחר באותו מסך (המקומות בפס העליון, ההתנגדויות בפתיחה). */
+@media (max-width:640px){
+  main>section.sec{padding-block:clamp(76px,20vw,96px)}
+  .wrap.stack{gap:22px}
+
+  /* הפתיחה: כותרת, משפט, כפתור, ושורה שקטה אחת של עובדות */
+  #top{padding-bottom:40px!important}
+  #top .wrap.stack{gap:18px}
+  #top .eyebrow,#top p.eyebrow{background:none;border:0;box-shadow:none;padding:0;font-size:13.5px;font-weight:600;letter-spacing:0}
+  #top .lead{font-size:17px;line-height:1.6}
+  #top .hero-cta{margin-top:6px}
+  .hero-when{font-size:15px;font-weight:600}
+  .hero-when>span{gap:0 8px}
+  p.hero-deadline{gap:4px 14px;margin-top:2px}
+  .hero-deadline span{padding:0;background:none;border:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none;
+    font-size:13.5px;color:var(--ink-2)}
+  p.hero-deadline>span::before{width:6px;height:6px;margin-inline-end:7px;box-shadow:none}
+  .hero-deadline span:has(b){background:none}
+  #top .hero-deadline span:has(> b:only-child){display:none}  /* המקומות כבר בפס העליון */
+  #top .hero-char{max-height:230px;width:auto;margin-inline:auto;margin-top:8px}
+  #top .hero-price{font-size:15px}
+
+  /* כרטיסי המחזורים: שכבה אחת במקום ארבע */
+  .cohort{padding:26px 20px 22px;gap:16px}
+  .cohort-name{font-size:32px}
+  .cohort-tag{font-size:16.5px}
+  .cohort-label{background:none;padding:0;font-size:13px;color:var(--muted)}
+  .cohort .ticks{gap:8px}
+  .cohort .ticks li{font-size:16px}
+  .cohort-how{font-size:15.5px;color:var(--muted)}
+  .cohort-when{padding:0;background:none;border:0;font-size:15px}
+  .cohort-foot{padding:18px 0 0;background:none;border:0;border-top:1px solid rgba(59,91,165,.12);border-radius:0;gap:12px}
+  .cohort-price b{font-size:44px}
+  .cohort-facts{gap:4px 14px}
+  .cohort-facts li,.cohort-facts .is-seats{padding:0;background:none;border:0;box-shadow:none;font-size:13.5px;color:var(--ink-2)}
+  .cohort-facts .is-seats{color:#7A4300;font-weight:700}
+  .cohort-safe{display:none}                 /* שלוש ההתנגדויות כבר בפתיחה */
+
+  /* בחירת מחזור והערות: טקסט, לא עוד כרטיסים */
+  .chooser{gap:14px}
+  .chooser li{padding:0 14px 0 0;background:none;border:0;border-inline-start:3px solid var(--e-teal);border-radius:0;box-shadow:none}
+  .note-line,.light .note-line{padding:16px 18px;border:0;background:rgba(255,255,255,.55);box-shadow:none}
+
+  /* שאלות: פחות צל, יותר מרווח לנשימה */
+  .qa{gap:10px}
+  #faq .qa details{box-shadow:none;background:rgba(255,255,255,.5)}
+  .qa summary{padding:16px 0;font-size:16.5px}
+  .qa .sign{width:32px;height:32px}
+
+  /* המלצה מצולמת: תמונה קטנה יותר */
+  .vq{padding:14px}
+  .vq-frame{width:min(100%,240px)}
+  .vq-line{font-size:15.5px}
+}
+
+/* "עוד שאלות": כפתור כמוסה שפותח את שאר השאלות */
+.qa-more{margin-top:14px}
+.qa-more>summary{list-style:none;display:flex;justify-content:center;align-items:center;gap:8px;width:max-content;margin-inline:auto;
+  min-height:50px;padding:0 26px;border-radius:999px;cursor:pointer;font-weight:700;font-size:16px;color:var(--e-blue);
+  background:rgba(255,255,255,.8);border:var(--e-edge);box-shadow:0 0 0 1px rgba(59,91,165,.12),0 12px 24px -16px rgba(59,91,165,.5)}
+.qa-more>summary::-webkit-details-marker{display:none}
+.qa-more>summary::after{content:"+";font-size:20px;line-height:1;color:var(--e-deep)}
+.qa-more[open]>summary{display:none}
+.qa-more>.qa{margin-top:12px}
+@media (max-width:640px){
+  .fact-row{gap:6px 16px}
+  .fact-row li{padding:0;background:none;border:0;box-shadow:none;font-size:14.5px;color:var(--ink-2)}
+  .fact-row li::before{content:"";display:inline-block;width:6px;height:6px;margin-inline-end:7px;border-radius:50%;background:var(--e-teal);vertical-align:middle}
+}
+
+/* קיר צילומי הוואטסאפ: בטלפון שורה אחת שגוללים הצידה, במקום שישה צילומים זה מתחת לזה */
+@media (max-width:640px){
+  .proof-wall{display:flex!important;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    margin-inline:-16px;padding:4px 16px 14px;columns:auto!important;scrollbar-width:none}
+  .proof-wall::-webkit-scrollbar{display:none}
+  .proof-wall .shot{flex:0 0 72%;scroll-snap-align:center;margin:0!important;break-inside:auto}
+  .proof-wall .shot img{width:100%;height:auto;max-height:420px;object-fit:cover;object-position:top}
+}
+
+/* ── כותרות שלא משדרות עומס (בקשת הבעלים, 11.11.2026) ──────────
+   משקל נמוך יותר, גודל מתון, הקו השני של הכותרת שקט מהראשון,
+   ותגיות קטנות מעל כותרות הופכות לטקסט רגיל. בעיקר בטלפון. */
+h2.h-sm{font-weight:700;letter-spacing:-.03em}
+h2 .ghost,.light .ghost,.sec-2 .ghost,main>section.sec:nth-of-type(even) .ghost,main>section.sec .callback h2 .ghost{font-weight:500}
+.quote-hero blockquote{font-weight:700}
+@media (max-width:640px){
+  h1.h-msg{font-size:clamp(30px,9vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.12}
+  #top h1:not(.h-msg),#top .h-hero{font-size:clamp(34px,10vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1.08}
+  h2.h-sm{font-size:clamp(23px,6.6vw,27px);line-height:1.25;letter-spacing:-.02em;max-width:none}
+  h2.h-sm .ghost{display:inline;font-size:1em}
+  h2.h-sm br{display:none}
+  h2.h-sm .ghost::before{content:" "}
+  .callback h2,.callback h2.h-sm{font-size:clamp(23px,6.6vw,27px)}
+  .cohort-name{font-size:28px;font-weight:800;letter-spacing:-.03em}
+  .cohort-tag{font-size:15.5px;font-weight:500}
+  .quote-hero blockquote{font-size:clamp(20px,5.8vw,23px);line-height:1.45;font-weight:600;letter-spacing:-.01em}
+  .quote-hero::before{font-size:64px}
+  .card-title,h3.card-title{font-size:19px;font-weight:700;letter-spacing:-.01em}
+  .rule-top::before{font-size:38px}
+  .rule-top h3{font-size:19px;font-weight:700}
+  .lesson-n{font-size:30px}
+  main>section .eyebrow,main>section p.eyebrow{background:none;border:0;box-shadow:none;padding:0;font-size:13px;font-weight:600}
+  .vq b{font-size:21px}
+  .brand-tag{font-size:26px;font-weight:700}
+}
+
+/* ── הכניסה לדף הבית בטלפון: אוויר, לא עומס (בקשת הבעלים) ─────
+   ממורכז, הרבה רווח סביב הכותרת והכפתור, והעובדות בשורות קטנות
+   ושקטות מתחת. הפס העליון בהיר, כדי שהמסך הראשון לא ייפתח בגוש כהה. */
+@media (max-width:640px){
+  .top-bar{background:rgba(255,255,255,.55);color:var(--e-navy);border-bottom:1px solid rgba(59,91,165,.08)}
+  .top-bar p,.top-bar span,.top-bar b{color:var(--e-navy)}
+  .top-bar p{font-size:12.5px}
+
+  #top:has(.h-msg){padding-top:44px!important;padding-bottom:28px!important}
+  #top:has(.h-msg) .wrap.stack{gap:0;align-items:center;text-align:center}
+  #top:has(.h-msg) .hero-split>.eyebrow{order:-1;margin:0 0 14px;font-size:13px;font-weight:500;color:var(--muted)}
+  #top:has(.h-msg) h1.h-msg{margin:0;font-size:clamp(32px,9.6vw,38px);line-height:1.15}
+  #top:has(.h-msg) h1.h-msg span{display:block}
+  #top:has(.h-msg) .lead{margin:20px auto 0;max-width:30ch;font-size:16.5px;line-height:1.65;color:var(--ink-2)}
+  #top:has(.h-msg) .hero-cta{margin-top:30px;width:100%;display:flex;justify-content:center}
+  #top:has(.h-msg) .hero-cta .btn-primary{width:auto;min-height:56px;padding-inline:28px;font-size:17px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 16px 30px -16px rgba(31,127,112,.7)}
+  #top:has(.h-msg) .hero-when{margin-top:22px;font-size:14px;font-weight:500;color:var(--ink-2)}
+  #top:has(.h-msg) .hero-when>span{justify-content:center;gap:0 6px}
+  #top:has(.h-msg) .hero-when>span{flex-direction:column;align-items:center}
+  #top:has(.h-msg) p.hero-deadline{margin-top:8px;justify-content:center;gap:2px 12px}
+  #top:has(.h-msg) .hero-deadline span{font-size:13px;color:var(--muted)}
+  #top:has(.h-msg) p.hero-deadline>span::before{width:5px;height:5px;margin-inline-end:6px}
+  #top:has(.h-msg) .hero-char{margin-top:26px;max-height:190px}
+}
+
+/* ── כניסה ראשונה שקטה: הפתיחה מופיעה בבת אחת בדעיכה רכה אחת,
+      בלי שורות שעולות אחת אחרי השנייה. פס העוגיות עולה בעדינות. */
+.motion #top .eyebrow,.motion #top .lead,.motion #top .ticks,.motion #top .body,.motion #top .guarantee,
+.motion #top .done-mark,.motion #top>.wrap>div,.motion #top p,.motion #top h1 .mask>span,.motion #top .hero-stage{animation:none}
+.motion #top>.wrap{animation:shw-calm .55s ease-out both}
+@keyframes shw-calm{from{opacity:0}to{opacity:1}}
+#shw-cookie-banner{animation:shw-ck-in .45s ease-out both}
+@keyframes shw-ck-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.motion #top>.wrap,#shw-cookie-banner{animation:none}}
+
+/* הטופס על המסך: הרצועה התחתונה יורדת ולא מכסה את השדות */
+.dock{transition:transform .3s ease,opacity .3s ease}
+.form-in-view .dock{transform:translateY(140%);opacity:0;pointer-events:none}
+/* פס העוגיות מופיע עכשיו מאוחר, ולכן הפתיחה לא מתכווצת כשהוא עולה (זה הקפיץ את הדף) */
+.has-consent-banner #top[data-consent-lift]{padding-top:clamp(28px,4vw,64px)!important}
+.has-consent-banner #top[data-consent-lift] .wrap.stack{gap:clamp(20px,2.2vw,28px)}
+@media (max-width:640px){
+  .has-consent-banner #top[data-consent-lift] .wrap.stack{gap:18px}
+  .has-consent-banner #top[data-consent-lift]:has(.h-msg){padding-top:44px!important}
+  .has-consent-banner #top[data-consent-lift]:has(.h-msg) .wrap.stack{gap:0}
+}
+
+/* ── אותה כניסה אוורירית בכל הדפים (בקשת הבעלים): בטלפון, הפתיחה של
+      כל דף ממורכזת, עם רווח סביב הכותרת והכפתור, ושורות עובדות שקטות ── */
+@media (max-width:640px){
+  #top{padding-top:40px!important;padding-bottom:32px!important}
+  #top .wrap.stack{align-items:center;text-align:center;gap:16px}
+  #top .hero-split>.eyebrow,#top .wrap.stack>.eyebrow{order:-1;margin-bottom:2px;font-size:13px;font-weight:500;color:var(--muted)}
+  #top h1{margin:0}
+  #top .lead,#top .wrap.stack>p.body{margin-inline:auto;max-width:32ch;font-size:16.5px;line-height:1.65}
+  #top .hero-cta,#top .wrap.stack>div:has(>.btn){margin-top:14px;justify-content:center;width:100%}
+  #top .wrap.stack>div:has(>.btn){display:flex;flex-direction:column;align-items:center;gap:12px}
+  #top .btn-primary{min-height:56px;padding-inline:28px;font-size:17px}
+  #top .btn-ghost{min-height:50px}
+  #top .hero-price{justify-content:center;text-align:center}
+  #top p.hero-deadline{justify-content:center}
+  #top .hero-safe{justify-content:center;text-align:center;font-size:13.5px}
+  #top .ticks{display:inline-flex;flex-direction:column;align-items:flex-start;text-align:start;margin-inline:auto}
+  #top .authority{text-align:start;max-width:34ch}
+  #top .hero-proof{text-align:center;max-width:32ch;margin-inline:auto;border:0;padding:0}
+  #top .hero-proof blockquote{font-size:17px;line-height:1.55}
+  #top .figures{width:100%}
+  #top .hero-char{max-height:200px;width:auto;margin:14px auto 0}
+  #top form,#top .gift-form,#top .lead-form{text-align:start;width:100%}
+  #top .note-line,#top [class*="note"]{text-align:start}
+}
